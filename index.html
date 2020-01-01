@@ -21,7 +21,7 @@
 <meta name="description" content="不忘初心，砥砺前行。只争朝夕，不负韶华！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="成华的博客">
-<meta property="og:url" content="https://dayandnight2018.github.io/blog/index.html">
+<meta property="og:url" content="https://dayandnight2018.github.io/index.html">
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="不忘初心，砥砺前行。只争朝夕，不负韶华！">
 <meta property="og:locale" content="en_US">
@@ -187,7 +187,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
                     </div>
                 </section>
                 
@@ -263,6 +263,149 @@
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-springMVC01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/01/01/springMVC01/" class="article-date">
+      <time datetime="2020-01-01T11:57:30.000Z" itemprop="datePublished">2020-01-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/01/01/springMVC01/">Spring MVC开发环境配置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="配置JAVA"><a href="#配置JAVA" class="headerlink" title="配置JAVA"></a>配置JAVA</h2><ol>
+<li><p>从<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">JAVA开发环境下载地址</a>下载JDK开发环境</p>
+</li>
+<li><p>如图所示，安装JDK，在JDK中已经包含JRE</p>
+</li>
+</ol>
+<img src="/blog/2020/01/01/springMVC01/8cf53021-eff0-4987-992e-fab6acb0ca80.jpg" style="margin:30px;display:block" alt="title"> 
+
+<ol start="3">
+<li>将JDK路径配置到环境变量</li>
+</ol>
+<img src="/blog/2020/01/01/springMVC01/263d9a58-e2a4-407e-a77c-5c1b0a7bf9f1.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="4">
+<li>测试JDK</li>
+</ol>
+<pre style="background:#e6e6e6;padding=10px;">
+
+     java -version
+
+</pre>
+
+<img src="/blog/2020/01/01/springMVC01/e7965238-9843-4ff9-b3d5-2d24cb125cd8.jpg" style="margin:30px;display:block" alt="title">
+
+
+<hr>
+<h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><ol>
+<li><p>从<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven下载地址</a>下载Maven安装包</p>
+</li>
+<li><p>解压后，添加环境变量</p>
+</li>
+</ol>
+<img src="/blog/2020/01/01/springMVC01/9753ca75-5f7a-4495-a95a-1e1294c877f1.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="3">
+<li>测试Maven</li>
+</ol>
+<pre style="background:#e6e6e6;padding=10px;">
+
+     mvn -version
+
+</pre>
+
+<img src="/blog/2020/01/01/springMVC01/1baafde0-0eae-430e-9404-bebfb1980253.jpg" style="margin:30px;display:block" alt="title">
+
+
+<hr>
+<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><ol>
+<li><p>从<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">此处</a>下载安装包</p>
+</li>
+<li><p>一直下一步，安装即可。</p>
+</li>
+</ol>
+<img src="/blog/2020/01/01/springMVC01/0589c8d1-7aa8-41ca-8e1f-9fac1b24a840.jpg" style="margin:30px;display:block" alt="title">
+
+
+<hr>
+<h2 id="STS"><a href="#STS" class="headerlink" title="STS"></a>STS</h2><ol>
+<li><p>由<a href="http://spring.io/tools/sts/all" target="_blank" rel="noopener">此处</a>下载STS安装包</p>
+</li>
+<li><p>一直next安装即可。在某个步骤需要配置JDK路径。</p>
+</li>
+</ol>
+<img src="/blog/2020/01/01/springMVC01/f8522a20-4d79-4604-8a4e-73dcfa566bac.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="3">
+<li>打开STS，找到<code style="background:#ff3385;color:white;padding:5px;">window</code>-<code style="background:#ff3385;color:white;padding:5px;">preferences</code>-<code style="background:#ff3385;color:white;padding:5px;">Server</code>-<code style="background:#ff3385;color:white;padding:5px;">Runtime Environment</code> 添加tomcat服务器</li>
+</ol>
+<img src="/blog/2020/01/01/springMVC01/3f41ff6f-5fab-436a-8af1-3d280485e8d8.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="4">
+<li>选择合适的版本，并将tomcat的安装路径配置好</li>
+</ol>
+<img src="/blog/2020/01/01/springMVC01/d04bf7a4-b479-498b-a16e-69a4c04070c5.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="5">
+<li>打开STS，找到<code style="background:#ff3385;color:white;padding:5px;">window</code>-<code style="background:#ff3385;color:white;padding:5px;">preferences</code>-<code style="background:#ff3385;color:white;padding:5px;">Maven</code>-<code style="background:#ff3385;color:white;padding:5px;">Installations</code>添加Maven的安装路径到STS</li>
+</ol>
+<img src="/blog/2020/01/01/springMVC01/e7bb906e-4b94-48fc-8f06-233144dd2a55.jpg" style="margin:30px;display:block" alt="title">
+
+
+
+<hr>
+<p>至此，Spring MVC开发环境配置完毕。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
