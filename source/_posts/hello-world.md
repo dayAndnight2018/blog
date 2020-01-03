@@ -1,5 +1,6 @@
 ---
 title: 第一篇日志
+tags: other
 ---
 
 这是通过MarkBook编写的第一篇日志
