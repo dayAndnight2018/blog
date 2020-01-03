@@ -15,29 +15,33 @@
 
 
 
-<meta name="description" content="配置JAVA 从JAVA开发环境下载地址下载JDK开发环境  如图所示，安装JDK，在JDK中已经包含JRE       将JDK路径配置到环境变量     测试JDK         java -version        Maven 从Maven下载地址下载Maven安装包  解压后，添加环境变量      测试Maven         mvn -version        Tomcat">
+<meta name="description" content="在STS中创建项目 通过File-New-Project创建一个Maven项目     填写相关信息，结束创建    GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项目名称，因为我们想要部署到tomcat中，因此打包方式设置为war包。  生成的项目结构如图所示    添加Spring依赖 打开pom.xml文件，并添加依赖，输入Spring MVC的相关信息">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring MVC开发环境配置">
-<meta property="og:url" content="https://dayandnight2018.github.io/2020/01/01/springMVC01/index.html">
+<meta property="og:title" content="Spring MVC创建一个项目">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/01/03/springMVC02/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="配置JAVA 从JAVA开发环境下载地址下载JDK开发环境  如图所示，安装JDK，在JDK中已经包含JRE       将JDK路径配置到环境变量     测试JDK         java -version        Maven 从Maven下载地址下载Maven安装包  解压后，添加环境变量      测试Maven         mvn -version        Tomcat">
+<meta property="og:description" content="在STS中创建项目 通过File-New-Project创建一个Maven项目     填写相关信息，结束创建    GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项目名称，因为我们想要部署到tomcat中，因此打包方式设置为war包。  生成的项目结构如图所示    添加Spring依赖 打开pom.xml文件，并添加依赖，输入Spring MVC的相关信息">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/8cf53021-eff0-4987-992e-fab6acb0ca80.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/263d9a58-e2a4-407e-a77c-5c1b0a7bf9f1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/e7965238-9843-4ff9-b3d5-2d24cb125cd8.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/9753ca75-5f7a-4495-a95a-1e1294c877f1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/1baafde0-0eae-430e-9404-bebfb1980253.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/0589c8d1-7aa8-41ca-8e1f-9fac1b24a840.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/f8522a20-4d79-4604-8a4e-73dcfa566bac.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/3f41ff6f-5fab-436a-8af1-3d280485e8d8.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/d04bf7a4-b479-498b-a16e-69a4c04070c5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/e7bb906e-4b94-48fc-8f06-233144dd2a55.jpg">
-<meta property="article:published_time" content="2020-01-01T11:57:30.000Z">
-<meta property="article:modified_time" content="2020-01-01T15:34:50.213Z">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/41d6b37a-2ffe-4532-85b3-8d9e2e646e52.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/b70b4f0c-020b-42ae-8cf2-01e5b3654a84.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/b087dbe1-46b4-4d22-8411-bdc8bec172e6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/f1e6eea8-2f58-4720-b995-5da786b2fb55.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/83a94160-538d-400e-b64e-5cea5156fe1b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/17f8b5f1-24bf-4ed2-af8d-7cb75a51e973.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/54109039-f24e-4cc4-bf74-2554c652b1c3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/4335d3b6-81aa-4fa4-855f-a10641331ea6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/d1245300-444a-4015-a538-7a3ab3e74936.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/59fc7aa2-0133-4147-8db2-10251b26448b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/fab7cdf7-eb8b-4cba-aac5-b42a9d8d1fec.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/9da14ede-34bc-4b83-9479-5e1b6f6dd5f4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/12a0d456-f3da-49f0-9ca8-326ddd297de9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/2a261bff-3bb2-404d-9fbd-bfbaa600846d.jpg">
+<meta property="article:published_time" content="2020-01-03T13:16:03.000Z">
+<meta property="article:modified_time" content="2020-01-03T14:21:57.419Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring mvc">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/8cf53021-eff0-4987-992e-fab6acb0ca80.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/41d6b37a-2ffe-4532-85b3-8d9e2e646e52.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -71,7 +75,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Spring MVC开发环境配置 | 成华的博客</title>
+<title>Spring MVC创建一个项目 | 成华的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -271,11 +275,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-springMVC01" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-springMVC02" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2020/01/01/springMVC01/" class="article-date">
-      <time datetime="2020-01-01T11:57:30.000Z" itemprop="datePublished">2020-01-01</time>
+      <a href="/blog/2020/01/03/springMVC02/" class="article-date">
+      <time datetime="2020-01-03T13:16:03.000Z" itemprop="datePublished">2020-01-03</time>
 </a>
 
 
@@ -290,7 +294,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Spring MVC开发环境配置
+      Spring MVC创建一个项目
     </h1>
   
 
@@ -311,91 +315,83 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="配置JAVA"><a href="#配置JAVA" class="headerlink" title="配置JAVA"></a>配置JAVA</h2><ol>
-<li><p>从<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">JAVA开发环境下载地址</a>下载JDK开发环境</p>
-</li>
-<li><p>如图所示，安装JDK，在JDK中已经包含JRE</p>
-</li>
+        <h2 id="在STS中创建项目"><a href="#在STS中创建项目" class="headerlink" title="在STS中创建项目"></a>在STS中创建项目</h2><ol>
+<li>通过File-New-Project创建一个Maven项目</li>
 </ol>
-<img src="/blog/2020/01/01/springMVC01/8cf53021-eff0-4987-992e-fab6acb0ca80.jpg" style="margin:30px;display:block" alt="title"> 
+<img src="/blog/2020/01/03/springMVC02/41d6b37a-2ffe-4532-85b3-8d9e2e646e52.jpg" style="margin:30px;display:block" alt="title">
 
+<ol start="2">
+<li>填写相关信息，结束创建</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/b70b4f0c-020b-42ae-8cf2-01e5b3654a84.jpg" style="margin:30px;display:block" alt="title">
+
+<p>GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项目名称，因为我们想要部署到tomcat中，因此打包方式设置为war包。</p>
 <ol start="3">
-<li>将JDK路径配置到环境变量</li>
+<li>生成的项目结构如图所示</li>
 </ol>
-<img src="/blog/2020/01/01/springMVC01/263d9a58-e2a4-407e-a77c-5c1b0a7bf9f1.jpg" style="margin:30px;display:block" alt="title">
+<img src="/blog/2020/01/03/springMVC02/b087dbe1-46b4-4d22-8411-bdc8bec172e6.jpg" style="margin:30px;display:block" alt="title">
 
+<h2 id="添加Spring依赖"><a href="#添加Spring依赖" class="headerlink" title="添加Spring依赖"></a>添加Spring依赖</h2><ol>
+<li>打开pom.xml文件，并添加依赖，输入Spring MVC的相关信息</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/f1e6eea8-2f58-4720-b995-5da786b2fb55.jpg" style="margin:30px;display:block" alt="title">
+
+<p>groupID 为<code style="background:#ff3385;color:white;padding:5px;">org.springframework</code>，ArtifactID为<code style="background:#ff3385;color:white;padding:5px;">spring-webmvc</code>，版本为<code style="background:#ff3385;color:white;padding:5px;">4.0.3.RELEASE</code>,范围选择<code style="background:#ff3385;color:white;padding:5px;">编译</code>。</p>
+<ol start="2">
+<li>同样的，为了显示页面，需要添加JSTL依赖</li>
+</ol>
+<p>groupID 为<code style="background:#ff3385;color:white;padding:5px;">javax.servlet</code>，ArtifactID为<code style="background:#ff3385;color:white;padding:5px;">jstl</code>，版本为<code style="background:#ff3385;color:white;padding:5px;">1.2</code>,范围选择<code style="background:#ff3385;color:white;padding:5px;">编译</code>。</p>
+<ol start="3">
+<li>添加Servlet-api依赖</li>
+</ol>
+<p>groupID 为<code style="background:#ff3385;color:white;padding:5px;">javax.servlet</code>，ArtifactID为<code style="background:#ff3385;color:white;padding:5px;">javax.servlet-api</code>，版本为<code style="background:#ff3385;color:white;padding:5px;">3.1.0</code>,范围选择<code style="background:#ff3385;color:white;padding:5px;">Provided</code>。</p>
 <ol start="4">
-<li>测试JDK</li>
+<li>依赖添加完毕</li>
 </ol>
-<pre style="background:#e6e6e6;padding=10px;">
+<img src="/blog/2020/01/03/springMVC02/83a94160-538d-400e-b64e-5cea5156fe1b.jpg" style="margin:30px;display:block" alt="title">
 
-     java -version
+<p>在此对依赖添加作出解释：Maven是一种包管理机制，会解决包之间的依赖关系和版本问题。我们制定组名、包名、版本即可告诉Maven我们想要什么包，它自动完成下载和相关依赖包的下载。<br>编译期间需要打入包内的是编译包，不需要打入的是提供包，因为tomcat里面有servlet-api，所以无需打包。</p>
+<h2 id="JAVA小配置"><a href="#JAVA小配置" class="headerlink" title="JAVA小配置"></a>JAVA小配置</h2><p>打开pom.xml文件，在底部找到overView视图，找到properties并添加属性：maven.compiler.source=1.7</p>
+<img src="/blog/2020/01/03/springMVC02/17f8b5f1-24bf-4ed2-af8d-7cb75a51e973.jpg" style="margin:30px;display:block" alt="title">
 
-</pre>
-
-<img src="/blog/2020/01/01/springMVC01/e7965238-9843-4ff9-b3d5-2d24cb125cd8.jpg" style="margin:30px;display:block" alt="title">
-
-
-<hr>
-<h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><ol>
-<li><p>从<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven下载地址</a>下载Maven安装包</p>
-</li>
-<li><p>解压后，添加环境变量</p>
-</li>
+<p>同时，设置目标版本maven.compiler.target=1.7</p>
+<h2 id="创建一个欢迎界面"><a href="#创建一个欢迎界面" class="headerlink" title="创建一个欢迎界面"></a>创建一个欢迎界面</h2><ol>
+<li>在src/main/webapp下面创建WEB-INF/jsp路径，并创建welcome.jsp文件</li>
 </ol>
-<img src="/blog/2020/01/01/springMVC01/9753ca75-5f7a-4495-a95a-1e1294c877f1.jpg" style="margin:30px;display:block" alt="title">
+<img src="/blog/2020/01/03/springMVC02/54109039-f24e-4cc4-bf74-2554c652b1c3.jpg" style="width:600px;height:400px;margin:30px;display:block" alt="title">
+
+<p>页面很简单，就是显示一个greeting和一个tagline字段</p>
+<ol start="2">
+<li>在src/main/java路径下创建一个com.packt.webstore.controller包，并在本包下创建HomeController.java文件</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/4335d3b6-81aa-4fa4-855f-a10641331ea6.jpg" style="margin:30px;display:block" alt="title">
+
+<p>在jsp文件中，有两个jstl标签，用于显示两个变量的值：</p>
+<img src="/blog/2020/01/03/springMVC02/d1245300-444a-4015-a538-7a3ab3e74936.jpg" style="margin:30px;display:block" alt="title">
+
+<p>这两个值来自于控制器存储到model中的数据</p>
+<img src="/blog/2020/01/03/springMVC02/59fc7aa2-0133-4147-8db2-10251b26448b.jpg" style="margin:30px;display:block" alt="title">
 
 <ol start="3">
-<li>测试Maven</li>
+<li>配置DispatcherServlet</li>
 </ol>
-<pre style="background:#e6e6e6;padding=10px;">
+<p>没有这个是无法访问的，DispatcherServlet将会拦截用户的请求，根据实际请求地址映射到相关的controller，甚至具体的action。在src/main/webapp/WEB-INF/路径下创建web.xml配置文件：</p>
+<img src="/blog/2020/01/03/springMVC02/fab7cdf7-eb8b-4cba-aac5-b42a9d8d1fec.jpg" style="margin:30px;display:block" alt="title">
 
-     mvn -version
-
-</pre>
-
-<img src="/blog/2020/01/01/springMVC01/1baafde0-0eae-430e-9404-bebfb1980253.jpg" style="margin:30px;display:block" alt="title">
-
-
-<hr>
-<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><ol>
-<li><p>从<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">此处</a>下载安装包</p>
-</li>
-<li><p>一直下一步，安装即可。</p>
-</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/0589c8d1-7aa8-41ca-8e1f-9fac1b24a840.jpg" style="margin:30px;display:block" alt="title">
-
-
-<hr>
-<h2 id="STS"><a href="#STS" class="headerlink" title="STS"></a>STS</h2><ol>
-<li><p>由<a href="http://spring.io/tools/sts/all" target="_blank" rel="noopener">此处</a>下载STS安装包</p>
-</li>
-<li><p>一直next安装即可。在某个步骤需要配置JDK路径。</p>
-</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/f8522a20-4d79-4604-8a4e-73dcfa566bac.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="3">
-<li>打开STS，找到<code style="background:#ff3385;color:white;padding:5px;">window</code>-<code style="background:#ff3385;color:white;padding:5px;">preferences</code>-<code style="background:#ff3385;color:white;padding:5px;">Server</code>-<code style="background:#ff3385;color:white;padding:5px;">Runtime Environment</code> 添加tomcat服务器</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/3f41ff6f-5fab-436a-8af1-3d280485e8d8.jpg" style="margin:30px;display:block" alt="title">
-
+<p>创建servlet用于拦截前端请求，servlet-mapping用于配置映射路径，一般拦截全部请求，所以url-pattern是/，表示所有路径</p>
 <ol start="4">
-<li>选择合适的版本，并将tomcat的安装路径配置好</li>
+<li>在src/main/webapp/WEB-INF/路径下，创建另外一个配置文件DefaultServlet-servlet.xml</li>
 </ol>
-<img src="/blog/2020/01/01/springMVC01/d04bf7a4-b479-498b-a16e-69a4c04070c5.jpg" style="margin:30px;display:block" alt="title">
+<img src="/blog/2020/01/03/springMVC02/9da14ede-34bc-4b83-9479-5e1b6f6dd5f4.jpg" style="margin:30px;display:block" alt="title">
 
+<p>这个配置文件配置了注解扫描、组件扫描的包路径，并配置了前端页面的存储位置，在/WEB-INF/jsp文件夹下，并且以.jsp结尾</p>
 <ol start="5">
-<li>打开STS，找到<code style="background:#ff3385;color:white;padding:5px;">window</code>-<code style="background:#ff3385;color:white;padding:5px;">preferences</code>-<code style="background:#ff3385;color:white;padding:5px;">Maven</code>-<code style="background:#ff3385;color:white;padding:5px;">Installations</code>添加Maven的安装路径到STS</li>
+<li>通过run as 即可选择tomcat部署运行</li>
 </ol>
-<img src="/blog/2020/01/01/springMVC01/e7bb906e-4b94-48fc-8f06-233144dd2a55.jpg" style="margin:30px;display:block" alt="title">
+<img src="/blog/2020/01/03/springMVC02/12a0d456-f3da-49f0-9ca8-326ddd297de9.jpg" style="margin:30px;display:block" alt="title">
 
-
-
-<hr>
-<p>至此，Spring MVC开发环境配置完毕。</p>
-
+<p>我们可以打开浏览器访问了</p>
+<img src="/blog/2020/01/03/springMVC02/2a261bff-3bb2-404d-9fbd-bfbaa600846d.jpg" style="margin:30px;display:block" alt="title">
       
     </div>
     
@@ -403,13 +399,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/blog/2020/01/01/springMVC01/">Spring MVC开发环境配置</a></p>
+        <p><span>Title:</span><a href="/blog/2020/01/03/springMVC02/">Spring MVC创建一个项目</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">成华</a></p>
-        <p><span>Created:</span>2020-01-01, 19:57:30</p>
-        <p><span>Updated:</span>2020-01-01, 23:34:50</p>
+        <p><span>Created:</span>2020-01-03, 21:16:03</p>
+        <p><span>Updated:</span>2020-01-03, 22:21:57</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/blog/2020/01/01/springMVC01/" title="Spring MVC开发环境配置">https://dayandnight2018.github.io/2020/01/01/springMVC01/</a>
-            <span class="copy-path" data-clipboard-text="From https://dayandnight2018.github.io/2020/01/01/springMVC01/　　By 成华" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/blog/2020/01/03/springMVC02/" title="Spring MVC创建一个项目">https://dayandnight2018.github.io/2020/01/03/springMVC02/</a>
+            <span class="copy-path" data-clipboard-text="From https://dayandnight2018.github.io/2020/01/03/springMVC02/　　By 成华" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -421,12 +417,12 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/blog/2020/01/03/hello-world/">
-                    第一篇日志
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/blog/2020/01/03/gitCommand01/">
+                    Git常用指令
                 </a>
             </div>
-        
         
     </nav>
 
@@ -436,7 +432,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置JAVA"><span class="toc-number">1.</span> <span class="toc-text">配置JAVA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven"><span class="toc-number">2.</span> <span class="toc-text">Maven</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tomcat"><span class="toc-number">3.</span> <span class="toc-text">Tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STS"><span class="toc-number">4.</span> <span class="toc-text">STS</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在STS中创建项目"><span class="toc-number">1.</span> <span class="toc-text">在STS中创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加Spring依赖"><span class="toc-number">2.</span> <span class="toc-text">添加Spring依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA小配置"><span class="toc-number">3.</span> <span class="toc-text">JAVA小配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个欢迎界面"><span class="toc-number">4.</span> <span class="toc-text">创建一个欢迎界面</span></a></li></ol>
         
     </div>
     <style>
@@ -472,7 +468,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Spring MVC开发环境配置　| 成华的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Spring MVC创建一个项目　| 成华的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -492,15 +488,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/blog/2020/01/03/hello-world/" title="Pre: 第一篇日志">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/blog/2020/01/03/gitCommand01/" title="Next: Git常用指令">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
