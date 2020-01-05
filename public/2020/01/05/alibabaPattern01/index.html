@@ -15,29 +15,18 @@
 
 
 
-<meta name="description" content="配置JAVA 从JAVA开发环境下载地址下载JDK开发环境  如图所示，安装JDK，在JDK中已经包含JRE       将JDK路径配置到环境变量     测试JDK         java -version        Maven 从Maven下载地址下载Maven安装包  解压后，添加环境变量      测试Maven         mvn -version        Tomcat">
+<meta name="description" content="命名风格 禁止命名以_或$开始或结束  禁用拼音、中文命名方式  类名需要首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外  方法名称、参数名称、成员变量、局部变量需要统一使用驼峰命名。  常量需要用全大写，单词之间用下划线连接  抽象类需要以Abstract开头，异常以Exception结尾，测试类以测试类名称开始，以Test结尾  数组符号与类型需要紧挨着，如：int[">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring MVC开发环境配置">
-<meta property="og:url" content="https://dayandnight2018.github.io/2020/01/01/springMVC01/index.html">
+<meta property="og:title" content="阿里巴巴开发手册01 命名风格">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/01/05/alibabaPattern01/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="配置JAVA 从JAVA开发环境下载地址下载JDK开发环境  如图所示，安装JDK，在JDK中已经包含JRE       将JDK路径配置到环境变量     测试JDK         java -version        Maven 从Maven下载地址下载Maven安装包  解压后，添加环境变量      测试Maven         mvn -version        Tomcat">
+<meta property="og:description" content="命名风格 禁止命名以_或$开始或结束  禁用拼音、中文命名方式  类名需要首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外  方法名称、参数名称、成员变量、局部变量需要统一使用驼峰命名。  常量需要用全大写，单词之间用下划线连接  抽象类需要以Abstract开头，异常以Exception结尾，测试类以测试类名称开始，以Test结尾  数组符号与类型需要紧挨着，如：int[">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/8cf53021-eff0-4987-992e-fab6acb0ca80.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/263d9a58-e2a4-407e-a77c-5c1b0a7bf9f1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/e7965238-9843-4ff9-b3d5-2d24cb125cd8.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/9753ca75-5f7a-4495-a95a-1e1294c877f1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/1baafde0-0eae-430e-9404-bebfb1980253.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/0589c8d1-7aa8-41ca-8e1f-9fac1b24a840.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/f8522a20-4d79-4604-8a4e-73dcfa566bac.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/3f41ff6f-5fab-436a-8af1-3d280485e8d8.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/d04bf7a4-b479-498b-a16e-69a4c04070c5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/e7bb906e-4b94-48fc-8f06-233144dd2a55.jpg">
-<meta property="article:published_time" content="2020-01-01T11:57:30.000Z">
-<meta property="article:modified_time" content="2020-01-01T15:34:50.213Z">
+<meta property="article:published_time" content="2020-01-05T14:44:31.000Z">
+<meta property="article:modified_time" content="2020-01-05T15:30:19.240Z">
 <meta property="article:author" content="成华">
-<meta property="article:tag" content="spring mvc">
+<meta property="article:tag" content="alibaba">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/01/01/springMVC01/8cf53021-eff0-4987-992e-fab6acb0ca80.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -71,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Spring MVC开发环境配置 | 成华的博客</title>
+<title>阿里巴巴开发手册01 命名风格 | 成华的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -271,11 +260,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-springMVC01" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-alibabaPattern01" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2020/01/01/springMVC01/" class="article-date">
-      <time datetime="2020-01-01T11:57:30.000Z" itemprop="datePublished">2020-01-01</time>
+      <a href="/blog/2020/01/05/alibabaPattern01/" class="article-date">
+      <time datetime="2020-01-05T14:44:31.000Z" itemprop="datePublished">2020-01-05</time>
 </a>
 
 
@@ -290,7 +279,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Spring MVC开发环境配置
+      阿里巴巴开发手册01 命名风格
     </h1>
   
 
@@ -301,7 +290,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -311,90 +300,52 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="配置JAVA"><a href="#配置JAVA" class="headerlink" title="配置JAVA"></a>配置JAVA</h2><ol>
-<li><p>从<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">JAVA开发环境下载地址</a>下载JDK开发环境</p>
+        <h2 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h2><ol>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">禁止</code>命名以_或$开始或结束</p>
 </li>
-<li><p>如图所示，安装JDK，在JDK中已经包含JRE</p>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">禁用</code>拼音、中文命名方式</p>
 </li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/8cf53021-eff0-4987-992e-fab6acb0ca80.jpg" style="margin:30px;display:block" alt="title"> 
-
-<ol start="3">
-<li>将JDK路径配置到环境变量</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/263d9a58-e2a4-407e-a77c-5c1b0a7bf9f1.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="4">
-<li>测试JDK</li>
-</ol>
-<pre style="background:#e6e6e6;padding=10px;">
-
-     java -version
-
-</pre>
-
-<img src="/blog/2020/01/01/springMVC01/e7965238-9843-4ff9-b3d5-2d24cb125cd8.jpg" style="margin:30px;display:block" alt="title">
-
-
-<hr>
-<h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><ol>
-<li><p>从<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven下载地址</a>下载Maven安装包</p>
+<li><p>类名<code style="background:#ff3385;color:white;padding:5px;">需要</code>首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外</p>
 </li>
-<li><p>解压后，添加环境变量</p>
+<li><p>方法名称、参数名称、成员变量、局部变量<code style="background:#ff3385;color:white;padding:5px;">需要</code>统一使用驼峰命名。</p>
 </li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/9753ca75-5f7a-4495-a95a-1e1294c877f1.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="3">
-<li>测试Maven</li>
-</ol>
-<pre style="background:#e6e6e6;padding=10px;">
-
-     mvn -version
-
-</pre>
-
-<img src="/blog/2020/01/01/springMVC01/1baafde0-0eae-430e-9404-bebfb1980253.jpg" style="margin:30px;display:block" alt="title">
-
-
-<hr>
-<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><ol>
-<li><p>从<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">此处</a>下载安装包</p>
+<li><p>常量<code style="background:#ff3385;color:white;padding:5px;">需要</code>用全大写，单词之间用下划线连接</p>
 </li>
-<li><p>一直下一步，安装即可。</p>
+<li><p>抽象类<code style="background:#ff3385;color:white;padding:5px;">需要</code>以Abstract开头，异常以Exception结尾，测试类以测试类名称开始，以Test结尾</p>
+</li>
+<li><p>数组符号与类型<code style="background:#ff3385;color:white;padding:5px;">需要</code>紧挨着，如：int[] array</p>
+</li>
+<li><p>POJO类中的布尔类型，<code style="background:#ff3385;color:white;padding:5px;">禁止</code>以is开头</p>
+</li>
+<li><p>包名<code style="background:#ff3385;color:white;padding:5px;">需要</code>保持小写，单数语义，类名<code style="background:#ff3385;color:white;padding:5px;">可以</code>使用复数</p>
+</li>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">禁止</code>不规范的缩写</p>
+</li>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">需要</code>使用完整的单词组合</p>
+</li>
+<li><p>模块、接口、类、方法使用设计模式，<code style="background:#ff3385;color:white;padding:5px;">需要</code>体现出设计模式：OrderFactory、LoginProxy、ResourceObserver</p>
+</li>
+<li><p>接口类方法上<code style="background:#ff3385;color:white;padding:5px;">不要</code>添加修饰，<code style="background:#ff3385;color:white;padding:5px;">避免</code>在接口中定义变量。</p>
+</li>
+<li><p>Service或DAO接口，<code style="background:#ff3385;color:white;padding:5px;">要求</code>使用xxxService、xxxServiceImpl命名接口和实现类。普通接口，以形容词为接口名称，Translatable接口或AbstractTranslator实现类</p>
+</li>
+<li><p>枚举<code style="background:#ff3385;color:white;padding:5px;">要求</code>使用Enum后缀，枚举成员用大写，下划线连接。</p>
+</li>
+<li><p>Service/DAO层命名<code style="background:#ff3385;color:white;padding:5px;">要求</code>：</p>
 </li>
 </ol>
-<img src="/blog/2020/01/01/springMVC01/0589c8d1-7aa8-41ca-8e1f-9fac1b24a840.jpg" style="margin:30px;display:block" alt="title">
-
-
-<hr>
-<h2 id="STS"><a href="#STS" class="headerlink" title="STS"></a>STS</h2><ol>
-<li><p>由<a href="http://spring.io/tools/sts/all" target="_blank" rel="noopener">此处</a>下载STS安装包</p>
-</li>
-<li><p>一直next安装即可。在某个步骤需要配置JDK路径。</p>
-</li>
+<p>获取单个对象用get前缀</p>
+<p>获取多个对象用list做前缀，复数形式结尾如：listObjects</p>
+<p>获取数量count做前缀</p>
+<p>插入用insert做前缀</p>
+<p>删除用delete做前缀</p>
+<p>修改用update做前缀</p>
+<ol start="17">
+<li>领域数据模型命名<code style="background:#ff3385;color:white;padding:5px;">要求</code>：</li>
 </ol>
-<img src="/blog/2020/01/01/springMVC01/f8522a20-4d79-4604-8a4e-73dcfa566bac.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="3">
-<li>打开STS，找到<code style="background:#ff3385;color:white;padding:5px;">window</code>-<code style="background:#ff3385;color:white;padding:5px;">preferences</code>-<code style="background:#ff3385;color:white;padding:5px;">Server</code>-<code style="background:#ff3385;color:white;padding:5px;">Runtime Environment</code> 添加tomcat服务器</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/3f41ff6f-5fab-436a-8af1-3d280485e8d8.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="4">
-<li>选择合适的版本，并将tomcat的安装路径配置好</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/d04bf7a4-b479-498b-a16e-69a4c04070c5.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="5">
-<li>打开STS，找到<code style="background:#ff3385;color:white;padding:5px;">window</code>-<code style="background:#ff3385;color:white;padding:5px;">preferences</code>-<code style="background:#ff3385;color:white;padding:5px;">Maven</code>-<code style="background:#ff3385;color:white;padding:5px;">Installations</code>添加Maven的安装路径到STS</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/e7bb906e-4b94-48fc-8f06-233144dd2a55.jpg" style="margin:30px;display:block" alt="title">
-
-
-
-<hr>
-<p>至此，Spring MVC开发环境配置完毕。</p>
+<p>数据对象使用DO作后缀</p>
+<p>数据传输对象以DTO做后缀</p>
+<p>视图对象以VO做后缀</p>
 
       
     </div>
@@ -403,13 +354,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/blog/2020/01/01/springMVC01/">Spring MVC开发环境配置</a></p>
+        <p><span>Title:</span><a href="/blog/2020/01/05/alibabaPattern01/">阿里巴巴开发手册01 命名风格</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">成华</a></p>
-        <p><span>Created:</span>2020-01-01, 19:57:30</p>
-        <p><span>Updated:</span>2020-01-01, 23:34:50</p>
+        <p><span>Created:</span>2020-01-05, 22:44:31</p>
+        <p><span>Updated:</span>2020-01-05, 23:30:19</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/blog/2020/01/01/springMVC01/" title="Spring MVC开发环境配置">https://dayandnight2018.github.io/2020/01/01/springMVC01/</a>
-            <span class="copy-path" data-clipboard-text="From https://dayandnight2018.github.io/2020/01/01/springMVC01/　　By 成华" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/blog/2020/01/05/alibabaPattern01/" title="阿里巴巴开发手册01 命名风格">https://dayandnight2018.github.io/2020/01/05/alibabaPattern01/</a>
+            <span class="copy-path" data-clipboard-text="From https://dayandnight2018.github.io/2020/01/05/alibabaPattern01/　　By 成华" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -421,12 +372,12 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/blog/2020/01/03/hello-world/">
-                    第一篇日志
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/blog/2020/01/03/springMVC02/">
+                    Spring MVC创建一个项目
                 </a>
             </div>
-        
         
     </nav>
 
@@ -436,7 +387,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置JAVA"><span class="toc-number">1.</span> <span class="toc-text">配置JAVA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven"><span class="toc-number">2.</span> <span class="toc-text">Maven</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tomcat"><span class="toc-number">3.</span> <span class="toc-text">Tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STS"><span class="toc-number">4.</span> <span class="toc-text">STS</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#命名风格"><span class="toc-number">1.</span> <span class="toc-text">命名风格</span></a></li></ol>
         
     </div>
     <style>
@@ -472,7 +423,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Spring MVC开发环境配置　| 成华的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"阿里巴巴开发手册01 命名风格　| 成华的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -492,15 +443,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/blog/2020/01/03/hello-world/" title="Pre: 第一篇日志">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/blog/2020/01/03/springMVC02/" title="Next: Spring MVC创建一个项目">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
