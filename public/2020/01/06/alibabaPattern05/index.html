@@ -15,15 +15,22 @@
 
 
 
-<meta name="description" content="不忘初心，砥砺前行。只争朝夕，不负韶华！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="成华的博客">
-<meta property="og:url" content="https://dayandnight2018.github.io/archives/index.html">
+<meta name="description" content="集合处理 hashcode与equals  只要重写equals，必须重写hashcode 使用set存储的类，必须重写hashcode和equals 使用自定义对象作为Map的键，必须重写hashcode和equals  ArrayList的subList结果不可以强转ArrayList，原集合的元素增加删除均会对子列表的遍历、增加、删除产生异常  使用集合转数组，必须使用toArray(T[]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里巴巴开发手册05 集合处理">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/01/06/alibabaPattern05/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="不忘初心，砥砺前行。只争朝夕，不负韶华！">
+<meta property="og:description" content="集合处理 hashcode与equals  只要重写equals，必须重写hashcode 使用set存储的类，必须重写hashcode和equals 使用自定义对象作为Map的键，必须重写hashcode和equals  ArrayList的subList结果不可以强转ArrayList，原集合的元素增加删除均会对子列表的遍历、增加、删除产生异常  使用集合转数组，必须使用toArray(T[]">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/06/alibabaPattern05/9c5442aa-1310-4aca-99b2-4162e735e5b9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/06/alibabaPattern05/b5598902-0e50-4ecd-87ac-4f3dce253de1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/06/alibabaPattern05/7ab63e0c-b81a-457a-a06a-e4321ade5d46.jpg">
+<meta property="article:published_time" content="2020-01-06T02:11:17.000Z">
+<meta property="article:modified_time" content="2020-01-06T03:15:09.865Z">
 <meta property="article:author" content="成华">
+<meta property="article:tag" content="alibaba">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/01/06/alibabaPattern05/9c5442aa-1310-4aca-99b2-4162e735e5b9.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +64,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives | 成华的博客</title>
+<title>阿里巴巴开发手册05 集合处理 | 成华的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,8 +74,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -257,320 +264,210 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-alibabaPattern05" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/blog/2020/01/06/alibabaPattern05/" class="article-date">
+      <time datetime="2020-01-06T02:11:17.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      阿里巴巴开发手册05 集合处理
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/blog/2020/01/06/alibabaPattern05/" class="archive-article-date">
-      <time datetime="2020-01-06T02:11:17.000Z" itemprop="datePublished">01-06</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2020/01/06/alibabaPattern05/">阿里巴巴开发手册05 集合处理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <h2 id="集合处理"><a href="#集合处理" class="headerlink" title="集合处理"></a>集合处理</h2><ol>
+<li>hashcode与equals</li>
+</ol>
+<p>只要重写equals，<code style="background:#ff3385;color:white;padding:5px;">必须</code>重写hashcode</p>
+<p>使用set存储的类，<code style="background:#ff3385;color:white;padding:5px;">必须</code>重写hashcode和equals</p>
+<p>使用自定义对象作为Map的键，<code style="background:#ff3385;color:white;padding:5px;">必须</code>重写hashcode和equals</p>
+<ol start="2">
+<li><p>ArrayList的subList结果<code style="background:#ff3385;color:white;padding:5px;">不可以</code>强转ArrayList，原集合的元素增加删除均会对子列表的遍历、增加、删除产生异常</p>
+</li>
+<li><p>使用集合转数组，<code style="background:#ff3385;color:white;padding:5px;">必须</code>使用toArray(T[] array)，传入的是类型完全一样的数组，大小就是list.size()</p>
+</li>
+<li><p>使用工具类Arrays.asList()把数组转为集合时，<code style="background:#ff3385;color:white;padding:5px;">不能</code>使用修改集合的方法（add remove clear）</p>
+</li>
+<li><p>泛型通配符&lt;? extends T&gt;来接收的数据，不能使用add方法。使用&lt;? super T&gt;接收的数据不能使用get方法。所以，频繁读取的<code style="background:#ff3385;color:white;padding:5px;">使用</code>&lt;? extends T&gt;，频繁插入的<code style="background:#ff3385;color:white;padding:5px;">使用</code>&lt;? super T&gt;</p>
+</li>
+<li><p>在foreach中<code style="background:#ff3385;color:white;padding:5px;">禁止</code>remove和add操作，remove<code style="background:#ff3385;color:white;padding:5px;">需要</code>使用Iterator，如果并发，<code style="background:#ff3385;color:white;padding:5px;">需要</code>对Iterator加锁</p>
+</li>
+</ol>
+<img src="/blog/2020/01/06/alibabaPattern05/9c5442aa-1310-4aca-99b2-4162e735e5b9.jpg" style="margin:30px;display:block" alt="title">
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
+<ol start="7">
+<li>Comparator<code style="background:#ff3385;color:white;padding:5px;">需要</code>满足以下条件：</li>
+</ol>
+<p>x，y的比较结果与y, x的比较结果相反</p>
+<p>x &gt; y, y &gt; z，则x &gt; z</p>
+<p>x = y, 则比较x, z的结果与y, z的结果相同</p>
+<ol start="8">
+<li><code style="background:#ff3385;color:white;padding:5px;">推荐</code>在泛型集合定义时，使用diamond格式</li>
+</ol>
+<img src="/blog/2020/01/06/alibabaPattern05/b5598902-0e50-4ecd-87ac-4f3dce253de1.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="9">
+<li><p><code style="background:#ff3385;color:white;padding:5px;">建议</code>在集合初始化时，指定大小。Capacity = (存储个数/负载因子) + 1，若不明确，请设置16</p>
+</li>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">建议</code>使用EntrySet而不是KeySet对Map集合进行遍历</p>
+</li>
+<li><p>Map集合空值问题</p>
+</li>
+</ol>
+<img src="/blog/2020/01/06/alibabaPattern05/7ab63e0c-b81a-457a-a06a-e4321ade5d46.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="12">
+<li><p><code style="background:#ff3385;color:white;padding:5px;">合理利用</code>集合的有序性和稳定性</p>
+</li>
+<li><p>利用Set的唯一性可以实现快速去重，<code style="background:#ff3385;color:white;padding:5px;">避免</code>List的contains方法</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/blog/2020/01/06/alibabaPattern05/">阿里巴巴开发手册05 集合处理</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">成华</a></p>
+        <p><span>Created:</span>2020-01-06, 10:11:17</p>
+        <p><span>Updated:</span>2020-01-06, 11:15:09</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/blog/2020/01/06/alibabaPattern05/" title="阿里巴巴开发手册05 集合处理">https://dayandnight2018.github.io/2020/01/06/alibabaPattern05/</a>
+            <span class="copy-path" data-clipboard-text="From https://dayandnight2018.github.io/2020/01/06/alibabaPattern05/　　By 成华" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/blog/2020/01/06/alibabaPattern04/">
+                    阿里巴巴开发手册04 OOP约定
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/blog/2020/01/06/alibabaPattern04/" class="archive-article-date">
-      <time datetime="2020-01-06T01:35:29.000Z" itemprop="datePublished">01-06</time>
-</a>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#集合处理"><span class="toc-number">1.</span> <span class="toc-text">集合处理</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
 
 
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2020/01/06/alibabaPattern04/">阿里巴巴开发手册04 OOP约定</a>
-    </h1>
-  
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"阿里巴巴开发手册05 集合处理　| 成华的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
 
-        <div class="article-info info-on-archive">
-          
+    
+</div>
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/blog/2020/01/06/alibabaPattern04/" title="Next: 阿里巴巴开发手册04 OOP约定">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/blog/2020/01/06/alibabaPattern03/" class="archive-article-date">
-      <time datetime="2020-01-06T00:56:50.000Z" itemprop="datePublished">01-06</time>
-</a>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/06/alibabaPattern05/">阿里巴巴开发手册05 集合处理</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/06/alibabaPattern04/">阿里巴巴开发手册04 OOP约定</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/06/alibabaPattern03/">阿里巴巴手册03 代码格式</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/05/alibabaPattern02/">阿里巴巴开发手册02  常量定义</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/05/alibabaPattern01/">阿里巴巴开发手册01 命名风格</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/springMVC02/">Spring MVC创建一个项目</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/gitCommand01/">Git常用指令</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/hello-world/">第一篇日志</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/01/springMVC01/">Spring MVC开发环境配置</a></li></ul>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2020/01/06/alibabaPattern03/">阿里巴巴手册03 代码格式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/blog/2020/01/05/alibabaPattern02/" class="archive-article-date">
-      <time datetime="2020-01-05T15:35:12.000Z" itemprop="datePublished">01-05</time>
-</a>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2020/01/05/alibabaPattern02/">阿里巴巴开发手册02  常量定义</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/blog/2020/01/05/alibabaPattern01/" class="archive-article-date">
-      <time datetime="2020-01-05T14:44:31.000Z" itemprop="datePublished">01-05</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2020/01/05/alibabaPattern01/">阿里巴巴开发手册01 命名风格</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/blog/2020/01/03/springMVC02/" class="archive-article-date">
-      <time datetime="2020-01-03T13:16:03.000Z" itemprop="datePublished">01-03</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2020/01/03/springMVC02/">Spring MVC创建一个项目</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/blog/2020/01/03/gitCommand01/" class="archive-article-date">
-      <time datetime="2020-01-03T02:46:13.000Z" itemprop="datePublished">01-03</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2020/01/03/gitCommand01/">Git常用指令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/blog/2020/01/03/hello-world/" class="archive-article-date">
-      <time datetime="2020-01-03T02:28:45.058Z" itemprop="datePublished">01-03</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2020/01/03/hello-world/">第一篇日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/other/" rel="tag">other</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/blog/2020/01/01/springMVC01/" class="archive-article-date">
-      <time datetime="2020-01-01T11:57:30.000Z" itemprop="datePublished">01-01</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2020/01/01/springMVC01/">Spring MVC开发环境配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
