@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="成华" />
+
+
+
+<meta name="description" content="File Systems and PathsFileSystem代表一个文件系统。它是一个抽象类。 获取FileSystem对象  获取分割符  win下是\，Linux下是&#x2F; 获取根目录  获取到一个Iterable 获取一个路径  后续的参数可以用于拼接   java.nio.file.Paths也提供了类似的方法：     &#x2F;&#x2F;获取名称 Path getName(int index)  Pa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java13 输入输出">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="File Systems and PathsFileSystem代表一个文件系统。它是一个抽象类。 获取FileSystem对象  获取分割符  win下是\，Linux下是&#x2F; 获取根目录  获取到一个Iterable 获取一个路径  后续的参数可以用于拼接   java.nio.file.Paths也提供了类似的方法：     &#x2F;&#x2F;获取名称 Path getName(int index)  Pa">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/2b912a34-df1d-41d1-a1aa-e522dd575f4f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/ae620946-4f88-4327-94ef-5cb232cca4ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/6c777170-1972-4c5c-bfe4-98f0d1ef2abf.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/de2eb829-01c9-43a4-9c2a-7d574a879b2c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/cc37d25e-0add-4e45-9bd0-1c48242cbf92.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/acbba703-b077-4b47-bd49-5d5939b7c05f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/45740644-0457-4b80-a7e0-e385448a3343.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c5579496-a47a-456a-b246-a889d3c64d77.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/4138a502-0afb-454d-bb08-9c7de77517d8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/1a302b1c-bc59-4d1b-898f-0fa774117f13.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c31932b7-052d-4677-a187-60cd99cb4689.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/2e3fdbef-974e-4e02-ab5d-10d2a6ed1162.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/9341c8e5-24bf-4fea-a2b4-03b8d14c069f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/4e138aef-9edf-4e05-b947-284f5451cbbb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/e220392e-3c3e-43eb-a79e-cdf41b7db454.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/11740d87-f39e-4e0e-813a-016fc199d413.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/9d766191-db65-498b-9989-a1bbca527a91.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/b9a52e27-41ad-4839-bdcb-4b6ed85e83b4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/8ef3fdca-8683-4667-b354-4bef867b081f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/e2d061c2-e47e-4d26-a60f-b7887650b9a2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/02fd782e-ede8-4972-8feb-2fe62f6dedd7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/5950ae67-ccbd-4aa1-9cf2-90d16b7f8659.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c04ec6cd-888b-4186-9e8c-89f5b5ef9053.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/11f79073-169c-4005-a6f2-b3e8143ee5e1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/1f99320b-e33b-4607-a396-0d39b70f94cb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/800a89fd-2c2d-437d-bbd4-08e34bf6146d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/7790c7f6-7eec-4472-a942-f58c66b7f292.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/072c515d-ac0d-4184-9713-09f7f080e0e4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/629ef8df-1105-457f-ade2-ad223636ddb0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/291d4940-4cbb-4970-a2bd-b240667aec9f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/3c52b39e-36e1-4422-a1c7-3503a3c1ea01.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/a6443ff0-3374-48bf-af0e-f7b3f1449244.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c457a25f-a193-41b6-b2a3-6729737c5b03.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/442af3ce-b0f4-40d4-911d-ba258babea27.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/fe3ed325-c039-4c8d-b19e-3d388181d86d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/271d3878-73b2-4735-bfff-a178a3050fbc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c0e9ba62-9190-461e-a8a4-7be61b8e9e0c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c753ffc8-f23c-4ac5-9180-941e891c2163.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/43cebc83-18d2-4a27-aa14-e6411a72e75d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/9890dbaf-7e9c-406e-bb5d-aec4877eb4f3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/b3d3ee62-7c53-4887-ad79-a46fb6c9c6e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/6eb26a88-d7cc-41bc-b27c-e7be21f73b74.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/503b5f71-6570-40de-8d51-b5cd1f91bced.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/b446df6a-bc89-4c42-bbf4-b0cafc16e565.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/12aecef2-9d59-48ac-92b5-e9ed03fc2036.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/b05dbf43-b103-4db5-8310-0b8462b4ba3d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/82b2ad15-e3ea-4a99-a10b-b23c2badf47f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/d6aa4170-5154-4ee6-90b0-cc0ca64a4a1c.jpg">
+<meta property="article:published_time" content="2020-02-22T04:35:29.000Z">
+<meta property="article:modified_time" content="2020-02-29T02:12:38.622Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/2b912a34-df1d-41d1-a1aa-e522dd575f4f.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/blog/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>java13 输入输出 | 成华的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/blog/" class="profilepic">
+            <img src="/blog/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/blog/">成华</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/blog/">主页</a></li>
+                        
+                            <li><a href="/blog/archives/">所有文章</a></li>
+                        
+                            <li><a href="/blog/tags/">标签云</a></li>
+                        
+                            <li><a href="/blog/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/blog/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/" target="_blank" rel="noopener">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">成华</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/blog/" class="profilepic">
+                <img src="/blog/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/blog/" title="回到主页">成华</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/blog/">主页</a></li>
+                
+                    <li><a href="/blog/archives/">所有文章</a></li>
+                
+                    <li><a href="/blog/tags/">标签云</a></li>
+                
+                    <li><a href="/blog/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/blog/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-java13-Input-Output" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/22/java13-Input-Output/" class="article-date">
+      <time datetime="2020-02-22T04:35:29.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java13 输入输出
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="File-Systems-and-Paths"><a href="#File-Systems-and-Paths" class="headerlink" title="File Systems and Paths"></a>File Systems and Paths</h2><p>FileSystem代表一个文件系统。它是一个抽象类。</p>
+<h3 id="获取FileSystem对象"><a href="#获取FileSystem对象" class="headerlink" title="获取FileSystem对象"></a>获取FileSystem对象</h3><img src="/blog/2020/02/22/java13-Input-Output/2b912a34-df1d-41d1-a1aa-e522dd575f4f.jpg">
+
+<h3 id="获取分割符"><a href="#获取分割符" class="headerlink" title="获取分割符"></a>获取分割符</h3><img src="/blog/2020/02/22/java13-Input-Output/ae620946-4f88-4327-94ef-5cb232cca4ee.jpg">
+
+<p>win下是\，Linux下是/</p>
+<h3 id="获取根目录"><a href="#获取根目录" class="headerlink" title="获取根目录"></a>获取根目录</h3><img src="/blog/2020/02/22/java13-Input-Output/6c777170-1972-4c5c-bfe4-98f0d1ef2abf.jpg">
+
+<p>获取到一个Iterable<Path></Path></p>
+<h3 id="获取一个路径"><a href="#获取一个路径" class="headerlink" title="获取一个路径"></a>获取一个路径</h3><img src="/blog/2020/02/22/java13-Input-Output/de2eb829-01c9-43a4-9c2a-7d574a879b2c.jpg">
+
+<p>后续的参数可以用于拼接</p>
+<img src="/blog/2020/02/22/java13-Input-Output/cc37d25e-0add-4e45-9bd0-1c48242cbf92.jpg">
+
+<p>java.nio.file.Paths也提供了类似的方法：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/acbba703-b077-4b47-bd49-5d5939b7c05f.jpg">
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//获取名称
+Path getName(int index)
+
+Path path = Paths.get("/home/user/images");
+System.out.println(path.getNameCount()); // prints 3
+System.out.println(path.getName(0)); // prints home
+System.out.println(path.getName(1)); // prints user
+System.out.println(path.getName(2)); // prints images
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//获取文件名
+Path getFileName()
+
+//获取父目录
+Path getParent()
+
+//获取根目录
+Path getRoot()
+
+</pre>
+
+<h2 id="文件目录操作"><a href="#文件目录操作" class="headerlink" title="文件目录操作"></a>文件目录操作</h2><p><code style="background:#ff3385;color:white;padding:5px;">Files</code>类的方法：</p>
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><img src="/blog/2020/02/22/java13-Input-Output/45740644-0457-4b80-a7e0-e385448a3343.jpg">
+
+<h3 id="创建路径"><a href="#创建路径" class="headerlink" title="创建路径"></a>创建路径</h3><img src="/blog/2020/02/22/java13-Input-Output/c5579496-a47a-456a-b246-a889d3c64d77.jpg">
+
+<h3 id="删除文件、路径、链接"><a href="#删除文件、路径、链接" class="headerlink" title="删除文件、路径、链接"></a>删除文件、路径、链接</h3><img src="/blog/2020/02/22/java13-Input-Output/4138a502-0afb-454d-bb08-9c7de77517d8.jpg">
+
+<p>如果路径不存在将抛出异常，为此，可以使用以下方法：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/1a302b1c-bc59-4d1b-898f-0fa774117f13.jpg">
+
+<h3 id="操作目录"><a href="#操作目录" class="headerlink" title="操作目录"></a>操作目录</h3><img src="/blog/2020/02/22/java13-Input-Output/c31932b7-052d-4677-a187-60cd99cb4689.jpg">
+
+<p>使用<code style="background:#ff3385;color:white;padding:5px;">DirectoryStream</code>对目录进行遍历(注意资源释放)：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+Path parent = ...
+try (DirectoryStream<Path> children =
+&nbsp;&nbsp;Files.newDirectoryStream(parent)) {
+&nbsp;&nbsp;&nbsp;&nbsp;for (Path child : children) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(child);
+&nbsp;&nbsp;}
+} catch (IOException e) {
+&nbsp;&nbsp;e.printStackTrace();
+}
+
+</Path></pre>
+
+<h3 id="文件复制"><a href="#文件复制" class="headerlink" title="文件复制"></a>文件复制</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public static Path copy(Path source, Path target,CopyOption... options)
+
+</pre>
+
+<p>StandardCopyOption包含以下几种枚举：</p>
+<p>ATOMIC_MOVE（原子操作）</p>
+<p>COPY_ATTRIBUTES（复制文件属性）</p>
+<p>REPLACE_EXISTING（覆盖已有文件）</p>
+<p>示例代码：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/2e3fdbef-974e-4e02-ab5d-10d2a6ed1162.jpg">
+
+<h3 id="文件移动"><a href="#文件移动" class="headerlink" title="文件移动"></a>文件移动</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public static Path move(Path source, Path target,CopyOption... options) throws java.io.IOException
+
+</pre>
+
+<p>示例代码：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/9341c8e5-24bf-4fea-a2b4-03b8d14c069f.jpg">
+
+<h2 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h2><p>Files类可以读写小型文本或二进制文件。</p>
+<h3 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h3><p>读取<code style="background:#ff3385;color:white;padding:5px;">二进制</code>文件：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public static byte[] readAllBytes(Path path)
+         throws java.io.IOException
+
+</pre>
+
+<p>读取<code style="background:#ff3385;color:white;padding:5px;">字符串</code>文本：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public static List<String> readAllLines(Path path,java.nio.charset.Charset charset)   
+         throws java.io.IOException
+
+</String></pre>
+
+<h3 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h3><p>写入<code style="background:#ff3385;color:white;padding:5px;">二进制</code>：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public static Path write(Path path, byte[] bytes,OpenOption... options) 
+          throws java.io.IOException
+
+</pre>
+
+<p>写入<code style="background:#ff3385;color:white;padding:5px;">文本</code>：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public static Path write(Path path, java.lang.Iterable<? extends CharSequence> lines, java.nio.charset.Charset charset,OpenOption... options)
+           throws java.io.IOException
+
+</pre>
+
+<p>StandardOpenOption选项：</p>
+<p>APPEND追加</p>
+<p>CREATE如果不存在则创建</p>
+<p>CREATE_NEW不存在则创建，否则抛出异常</p>
+<p>DELETE_ON_CLOSE文件关闭时，删除</p>
+<p>READ读取</p>
+<p>WRITE写入</p>
+<p>TRUNCATE_EXISTING文件存在则清空内容</p>
+<p>SPARSE稀疏文件</p>
+<p>SYNC同步内容和元数据写入</p>
+<p>DSYNC同步内容写入</p>
+<p>编码方法：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/4e138aef-9edf-4e05-b947-284f5451cbbb.jpg">
+
+<p>读写示例：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/e220392e-3c3e-43eb-a79e-cdf41b7db454.jpg">
+
+<h2 id="输入输出流"><a href="#输入输出流" class="headerlink" title="输入输出流"></a>输入输出流</h2><table cellpadding="8" border="1" style="background:#EAF2D3;text-align:center">
+<tr>
+&nbsp;<td>
+类型
+&nbsp;</td>
+&nbsp;<td>
+描述
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+Reader
+&nbsp;</td>
+&nbsp;<td>
+读取字符
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+Writer
+&nbsp;</td>
+&nbsp;<td>
+写入字符
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+InputStream
+&nbsp;</td>
+&nbsp;<td>
+二进制读取流
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+OutputStream
+&nbsp;</td>
+&nbsp;<td>
+二进制输出流
+&nbsp;</td>
+</tr>
+
+</table>
+
+<h2 id="读取二进制数据"><a href="#读取二进制数据" class="headerlink" title="读取二进制数据"></a>读取二进制数据</h2><img src="/blog/2020/02/22/java13-Input-Output/11740d87-f39e-4e0e-813a-016fc199d413.jpg">
+
+<p>java7之前可以new一个FileInputStream，现在也可以使用Files类创建：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/9d766191-db65-498b-9989-a1bbca527a91.jpg">
+
+<p>示例代码：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+Path path = ...
+try (InputStream inputStream = Files.newInputStream(path,
+&nbsp;&nbsp;StandardOpenOption.READ) {
+&nbsp;&nbsp;// manipulate inputStream
+} catch (IOException e) {
+&nbsp;&nbsp;// do something with e
+}
+
+</pre>
+
+<p>为了提升效率，使用BufferedInputStream:</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+Path path = ...
+try (InputStream inputStream = Files.newInputStream(path,StandardOpenOption.READ);
+&nbsp;&nbsp;&nbsp;&nbsp;BufferedInputStream buffered = new BufferedInputStream(inputStream)) {
+&nbsp;&nbsp;// manipulate buffered, not inputStream
+} catch (IOException e) {
+&nbsp;&nbsp;// do something with e
+}
+
+</pre>
+
+<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><img src="/blog/2020/02/22/java13-Input-Output/b9a52e27-41ad-4839-bdcb-4b6ed85e83b4.jpg">
+
+<p>到达流的末尾时，返回-1</p>
+<h3 id="获取可读取数据大小"><a href="#获取可读取数据大小" class="headerlink" title="获取可读取数据大小"></a>获取可读取数据大小</h3><img src="/blog/2020/02/22/java13-Input-Output/8ef3fdca-8683-4667-b354-4bef867b081f.jpg">
+
+<h3 id="跳过指定个数字节"><a href="#跳过指定个数字节" class="headerlink" title="跳过指定个数字节"></a>跳过指定个数字节</h3><img src="/blog/2020/02/22/java13-Input-Output/e2d061c2-e47e-4d26-a60f-b7887650b9a2.jpg">
+
+<h3 id="标记位置"><a href="#标记位置" class="headerlink" title="标记位置"></a>标记位置</h3><img src="/blog/2020/02/22/java13-Input-Output/02fd782e-ede8-4972-8feb-2fe62f6dedd7.jpg">
+
+<h3 id="返回标记处"><a href="#返回标记处" class="headerlink" title="返回标记处"></a>返回标记处</h3><img src="/blog/2020/02/22/java13-Input-Output/5950ae67-ccbd-4aa1-9cf2-90d16b7f8659.jpg">
+
+<h3 id="关闭流"><a href="#关闭流" class="headerlink" title="关闭流"></a>关闭流</h3><img src="/blog/2020/02/22/java13-Input-Output/c04ec6cd-888b-4186-9e8c-89f5b5ef9053.jpg">
+
+<h2 id="写入二进制数据"><a href="#写入二进制数据" class="headerlink" title="写入二进制数据"></a>写入二进制数据</h2><img src="/blog/2020/02/22/java13-Input-Output/11f79073-169c-4005-a6f2-b3e8143ee5e1.jpg">
+
+<p>java7之前可以new一个FileOutputStream，现在也可以使用Files类创建：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/1f99320b-e33b-4607-a396-0d39b70f94cb.jpg">
+
+<p>示例代码：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+Path path = ...
+try (OutputStream outputStream = Files.newOutputStream(path,
+StandardOpenOption.CREATE, StandardOpenOption.APPEND) {
+&nbsp;&nbsp;// manipulate outputStream
+} catch (IOException e) {
+&nbsp;&nbsp;// do something with e
+}
+
+</pre>
+
+<p>为了提高效率，使用缓冲流：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/800a89fd-2c2d-437d-bbd4-08e34bf6146d.jpg">
+
+<h3 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h3><img src="/blog/2020/02/22/java13-Input-Output/7790c7f6-7eec-4472-a942-f58c66b7f292.jpg">
+
+<h3 id="关闭流、刷新流"><a href="#关闭流、刷新流" class="headerlink" title="关闭流、刷新流"></a>关闭流、刷新流</h3><p>close用于关闭，一般使用try结构即可。</p>
+<p>flush方法用于将数据刷新写入。</p>
+<p>数据写入示例：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/072c515d-ac0d-4184-9713-09f7f080e0e4.jpg">
+
+<h2 id="写文本"><a href="#写文本" class="headerlink" title="写文本"></a>写文本</h2><img src="/blog/2020/02/22/java13-Input-Output/629ef8df-1105-457f-ade2-ad223636ddb0.jpg">
+
+<h2 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h2><h3 id="写入文本"><a href="#写入文本" class="headerlink" title="写入文本"></a>写入文本</h3><img src="/blog/2020/02/22/java13-Input-Output/291d4940-4cbb-4970-a2bd-b240667aec9f.jpg">
+
+<p>也可以写入字符串：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/3c52b39e-36e1-4422-a1c7-3503a3c1ea01.jpg">
+
+<h3 id="OutputStreamWriter"><a href="#OutputStreamWriter" class="headerlink" title="OutputStreamWriter"></a>OutputStreamWriter</h3><img src="/blog/2020/02/22/java13-Input-Output/a6443ff0-3374-48bf-af0e-f7b3f1449244.jpg">
+
+<p>按照指定的编码方式进行写入。</p>
+<p>写入文件时，可以使用OutputStream和OutputStreamWriter包装：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+OutputStream os = Files.newOutputStream(path, openOption);
+OutputStreamWriter writer = new OutputStreamWriter(os, charset);
+
+</pre>
+
+<p>使用示例：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/c457a25f-a193-41b6-b2a3-6729737c5b03.jpg">
+
+<h3 id="PrintWriter"><a href="#PrintWriter" class="headerlink" title="PrintWriter"></a>PrintWriter</h3><p>相比来说，PrinterWriter更好用：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/442af3ce-b0f4-40d4-911d-ba258babea27.jpg">
+
+<p>它的print方法支持大量类型：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/fe3ed325-c039-4c8d-b19e-3d388181d86d.jpg">
+
+<p>同样，它也包含大量println方法，自动换行。</p>
+<p>为了提升性能，包装一层缓冲流：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/271d3878-73b2-4735-bfff-a178a3050fbc.jpg">
+
+<p>使用示例：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+PrintWriter pw = new PrintWriter(new BufferedWriter(writer));
+
+</pre>
+
+<p>完整示例：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/c0e9ba62-9190-461e-a8a4-7be61b8e9e0c.jpg">
+
+<h2 id="读取文本"><a href="#读取文本" class="headerlink" title="读取文本"></a>读取文本</h2><img src="/blog/2020/02/22/java13-Input-Output/c753ffc8-f23c-4ac5-9180-941e891c2163.jpg">
+
+<h3 id="读取文本数据"><a href="#读取文本数据" class="headerlink" title="读取文本数据"></a>读取文本数据</h3><img src="/blog/2020/02/22/java13-Input-Output/43cebc83-18d2-4a27-aa14-e6411a72e75d.jpg">
+
+<p>直接读取char[]数组数据。</p>
+<p>也可以将数据读入NIO的CharBuffer:</p>
+<img src="/blog/2020/02/22/java13-Input-Output/9890dbaf-7e9c-406e-bb5d-aec4877eb4f3.jpg">
+
+<h2 id="InputStreamReader"><a href="#InputStreamReader" class="headerlink" title="InputStreamReader"></a>InputStreamReader</h2><p>可以读取二进制流，按照指定的编码格式转换成字符。</p>
+<img src="/blog/2020/02/22/java13-Input-Output/b3d3ee62-7c53-4887-ad79-a46fb6c9c6e7.jpg">
+
+<p>使用示例：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+Path path = ...
+Charset charset = ...
+//创建InputStream
+InputStream inputStream = Files.newInputStream(path,StandardOpenOption.READ);
+//构造InputStreamReader
+InputStreamReader reader = new InputStreamReader(inputStream, charset);
+
+</pre>
+
+<h2 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a>BufferedReader</h2><p>使用BufferedReader可以提升读取性能。</p>
+<p>在NIO中，Files提供了以下构造方法：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public static java.io.BufferedReader newBufferedReader(Path path,java.nio.charset.Charset charset)
+
+</pre>
+
+<p>使用示例：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+Path path = ...
+BufferedReader br = Files.newBufferedReader(path, charset);
+String line = br.readLine();
+while (line != null) {
+    System.out.println(line);
+    line = br.readLine();
+}
+
+</pre>
+
+<p>也可以包装InputStreamReader:</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public static String getUserInput() {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    try {
+        return br.readLine();
+    } catch (IOException ioe) {
+    }
+    return null;
+}
+
+</pre>
+
+
+<h2 id="PrintStream"><a href="#PrintStream" class="headerlink" title="PrintStream"></a>PrintStream</h2><p>PrintStream是一种输出流，类似于PrintWriter,构造函数如下：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public PrintStream(OutputStream out)
+public PrintStream(OutputStream out, boolean autoFlush)
+public PrintStream(OutputStream out, boolean autoFlush,String encoding)
+
+</pre>
+
+<img src="/blog/2020/02/22/java13-Input-Output/6eb26a88-d7cc-41bc-b27c-e7be21f73b74.jpg">
+
+<p>建立<code style="background:#ff3385;color:white;padding:5px;">OutputStream</code>，操作文件。使用<code style="background:#ff3385;color:white;padding:5px;">Print Stream</code>包装一层。将System的<code style="background:#ff3385;color:white;padding:5px;">标准输出</code>设置为PrintStream。</p>
+<h2 id="Random-Access-Files"><a href="#Random-Access-Files" class="headerlink" title="Random Access Files"></a>Random Access Files</h2><p>随机读取文件的需求如下：</p>
+<p>对文件的随机读取是对文件的指定位置的随机访问而不是从头到尾依次读取，类似于List和LinkedList的区别。<br>实现文件的随机访问有两种方式：</p>
+<ol>
+<li><p>RandomAccessFile</p>
+</li>
+<li><p>SeekableByteChannel</p>
+</li>
+</ol>
+<pre style="background:#e6e6e6;padding=10px;">
+
+SeekableByteChannel sbc = Files.newByteChannel(Path path, OpenOption... options);
+
+//设置读写权限
+SeekableByteChannel readOnlyByteChannel = Files.newByteChannel(path1, EnumSet.of(READ)));
+SeekableByteChannel writableByteChannel = Files.newByteChannel(path2, EnumSet.of(CREATE,APPEND));
+
+</pre>
+
+<p>获取当前指针的位置：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+long position() throws java.io.IOException
+
+</pre>
+
+<p>切换位置：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+SeekableByteChannel position(long newPosition) throws java.io.IOException
+
+</pre>
+
+<p>获取文件大小：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+long size() throws java.io.IOException
+
+</pre>
+
+<p>读取写入：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+int read(java.nio.ByteBuffer buffer) throws java.io.IOException
+
+int write(java.nio.ByteBuffer buffer) throws java.io.IOException
+
+</pre>
+
+<h2 id="ByteBuffer"><a href="#ByteBuffer" class="headerlink" title="ByteBuffer"></a>ByteBuffer</h2><p>ByteBuffer是Buffer的一种实现，还有CharBuffer, DoubleBuffer, FloatBuffer, IntBuffer, LongBuffer, ShortBuffer</p>
+<p>ByteBuffer的一种简单的构造方法：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/503b5f71-6570-40de-8d51-b5cd1f91bced.jpg">
+
+<p>示例：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+ByteBuffer byteBuffer = ByteBuffer.allocate(100);
+
+</pre>
+
+<p>在ByteBuffer内部维护了一个Byte Array，可以通过以下方法获得：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/b446df6a-bc89-4c42-bbf4-b0cafc16e565.jpg">
+
+<p>ByteBuffer的几种读写方法：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+//直接添加
+public abstract ByteBuffer put(byte b)
+//在指定位置添加
+public abstract ByteBuffer put(int index, byte b)
+//添加数组
+public ByteBuffer put(byte[] src)
+//添加数组的一部分
+public ByteBuffer put(byte[] src, int offset, int length)
+
+//添加指定类型
+public abstract ByteBuffer putInt(int value)
+public abstract ByteBuffer putInt(int index, int value)
+
+//读取
+public abstract byte get()
+public abstract byte get(int index)
+public abstract float getFloat()
+public abstract float getFloat(int index)
+
+</pre>
+
+<p>SeekableByteChannel操作完整示例：</p>
+<ol>
+<li>创建ByteBuffer并添加数据</li>
+</ol>
+<img src="/blog/2020/02/22/java13-Input-Output/12aecef2-9d59-48ac-92b5-e9ed03fc2036.jpg">
+
+<ol start="2">
+<li>创建SeekableByteChannel，写入数据</li>
+</ol>
+<img src="/blog/2020/02/22/java13-Input-Output/b05dbf43-b103-4db5-8310-0b8462b4ba3d.jpg">
+
+
+<h2 id="对象的序列化"><a href="#对象的序列化" class="headerlink" title="对象的序列化"></a>对象的序列化</h2><p>对对象进行序列化可以用于存储对象状态，通过网络进行传输。再进行反序列化即可还原。对象进行序列化，需要实现Serializable接口。</p>
+<ol>
+<li>构造ObjectOutputStream</li>
+</ol>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public ObjectOutputStream(OutputStream out)
+
+</pre>
+
+<ol start="2">
+<li>添加数据</li>
+</ol>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public void writeBoolean(boolean value)
+public void writeByte(int value)
+public void writeBytes(String value)
+public void writeChar(int value)
+public void writeChars(String value)
+public void writeDouble(double value)
+public void writeFloat(float value)
+public void writeInt(int value)
+public void writeLong(long value)
+public void writeShort(short value)
+public void writeObject(java.lang.Object value)
+
+</pre>
+
+<p>反序列化的过程：</p>
+<ol>
+<li>构造ObjectInputStream</li>
+</ol>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public ObjectInputStream(InputStream in)
+
+</pre>
+
+<ol start="2">
+<li>读取数据</li>
+</ol>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public boolean readBoolean()
+public byte readByte()
+public char readChar()
+public double readDouble()
+public float readFloat()
+public int readInt()
+public long readLong()
+public short readShort()
+public java.lang.Object readObject()
+
+</pre>
+
+<p>完整示例：</p>
+<p>序列化：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/82b2ad15-e3ea-4a99-a10b-b23c2badf47f.jpg">
+
+<p>反序列化：</p>
+<img src="/blog/2020/02/22/java13-Input-Output/d6aa4170-5154-4ee6-90b0-cc0ca64a4a1c.jpg">
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/blog/2020/02/22/java13-Input-Output/">java13 输入输出</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">成华</a></p>
+        <p><span>Created:</span>2020-02-22, 12:35:29</p>
+        <p><span>Updated:</span>2020-02-29, 10:12:38</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/blog/2020/02/22/java13-Input-Output/" title="java13 输入输出">https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/</a>
+            <span class="copy-path" data-clipboard-text="From https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/　　By 成华" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/">
+                    java14 内部类
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/blog/2020/02/22/java12-Generics/">
+                    java12 泛型
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#File-Systems-and-Paths"><span class="toc-number">1.</span> <span class="toc-text">File Systems and Paths</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取FileSystem对象"><span class="toc-number">1.1.</span> <span class="toc-text">获取FileSystem对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取分割符"><span class="toc-number">1.2.</span> <span class="toc-text">获取分割符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取根目录"><span class="toc-number">1.3.</span> <span class="toc-text">获取根目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取一个路径"><span class="toc-number">1.4.</span> <span class="toc-text">获取一个路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件目录操作"><span class="toc-number">2.</span> <span class="toc-text">文件目录操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建文件"><span class="toc-number">2.1.</span> <span class="toc-text">创建文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建路径"><span class="toc-number">2.2.</span> <span class="toc-text">创建路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除文件、路径、链接"><span class="toc-number">2.3.</span> <span class="toc-text">删除文件、路径、链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作目录"><span class="toc-number">2.4.</span> <span class="toc-text">操作目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件复制"><span class="toc-number">2.5.</span> <span class="toc-text">文件复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件移动"><span class="toc-number">2.6.</span> <span class="toc-text">文件移动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读写文件"><span class="toc-number">3.</span> <span class="toc-text">读写文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取"><span class="toc-number">3.1.</span> <span class="toc-text">读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写入"><span class="toc-number">3.2.</span> <span class="toc-text">写入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入输出流"><span class="toc-number">4.</span> <span class="toc-text">输入输出流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取二进制数据"><span class="toc-number">5.</span> <span class="toc-text">读取二进制数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取数据"><span class="toc-number">5.1.</span> <span class="toc-text">读取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取可读取数据大小"><span class="toc-number">5.2.</span> <span class="toc-text">获取可读取数据大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跳过指定个数字节"><span class="toc-number">5.3.</span> <span class="toc-text">跳过指定个数字节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标记位置"><span class="toc-number">5.4.</span> <span class="toc-text">标记位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回标记处"><span class="toc-number">5.5.</span> <span class="toc-text">返回标记处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭流"><span class="toc-number">5.6.</span> <span class="toc-text">关闭流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写入二进制数据"><span class="toc-number">6.</span> <span class="toc-text">写入二进制数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写入数据"><span class="toc-number">6.1.</span> <span class="toc-text">写入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭流、刷新流"><span class="toc-number">6.2.</span> <span class="toc-text">关闭流、刷新流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写文本"><span class="toc-number">7.</span> <span class="toc-text">写文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Writer"><span class="toc-number">8.</span> <span class="toc-text">Writer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写入文本"><span class="toc-number">8.1.</span> <span class="toc-text">写入文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OutputStreamWriter"><span class="toc-number">8.2.</span> <span class="toc-text">OutputStreamWriter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PrintWriter"><span class="toc-number">8.3.</span> <span class="toc-text">PrintWriter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取文本"><span class="toc-number">9.</span> <span class="toc-text">读取文本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取文本数据"><span class="toc-number">9.1.</span> <span class="toc-text">读取文本数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InputStreamReader"><span class="toc-number">10.</span> <span class="toc-text">InputStreamReader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BufferedReader"><span class="toc-number">11.</span> <span class="toc-text">BufferedReader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrintStream"><span class="toc-number">12.</span> <span class="toc-text">PrintStream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Random-Access-Files"><span class="toc-number">13.</span> <span class="toc-text">Random Access Files</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ByteBuffer"><span class="toc-number">14.</span> <span class="toc-text">ByteBuffer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象的序列化"><span class="toc-number">15.</span> <span class="toc-text">对象的序列化</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"java13 输入输出　| 成华的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/" title="Pre: java14 内部类">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/blog/2020/02/22/java12-Generics/" title="Next: java12 泛型">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/spring02-Wiring-beans/">spring02 绑定Bean</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/spring01-introduction/">spring01 简介</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/java21-Reflection/">java21 反射</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java20-Concurrency-Utilities/">java20 并发包</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java19-Threads/">java19 线程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java18-Java-Database-Connectivity/">java18 数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java17-Networking/">java17 网络</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java16-Annotations/">java16 注解</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java15-Polymorphism/">java15 多态</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/">java14 内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java13-Input-Output/">java13 输入输出</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java12-Generics/">java12 泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java11-The-Collections-Framework/">java11 集合</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java10-Enums/">java10 枚举</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/">java09 接口与抽象类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java08-Numbers-and-Dates/">java08 数字与日期</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java07-Error-Handling/">java07 异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java06-Inheritance/">java06 继承</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java05-Core-Classes/">java05 核心类库</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/19/java04-Objects-and-Classes/">java04 对象与类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/18/java03-Statements/">java03 语句</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/18/java02-Language-Fundamentals/">java02 语言基础</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/16/java01-preparement/">java01 准备工作</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/05/hello-world/">第一篇日志</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/springMVC02/">Spring MVC创建一个项目</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/gitCommand01/">Git常用指令</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/01/springMVC01/">Spring MVC开发环境配置</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 成华
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/blog/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

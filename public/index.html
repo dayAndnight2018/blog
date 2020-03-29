@@ -187,7 +187,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
                     </div>
                 </section>
                 
@@ -264,11 +264,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-springMVC02" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-spring02-Wiring-beans" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2020/01/03/springMVC02/" class="article-date">
-      <time datetime="2020-01-03T13:16:03.000Z" itemprop="datePublished">2020-01-03</time>
+      <a href="/blog/2020/03/01/spring02-Wiring-beans/" class="article-date">
+      <time datetime="2020-03-01T07:28:39.000Z" itemprop="datePublished">2020-03-01</time>
 </a>
 
 
@@ -283,7 +283,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2020/01/03/springMVC02/">Spring MVC创建一个项目</a>
+      <a class="article-title" href="/blog/2020/03/01/spring02-Wiring-beans/">spring02 绑定Bean</a>
     </h1>
   
 
@@ -293,512 +293,327 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="在STS中创建项目"><a href="#在STS中创建项目" class="headerlink" title="在STS中创建项目"></a>在STS中创建项目</h2><ol>
-<li>通过File-New-Project创建一个Maven项目</li>
-</ol>
-<img src="/blog/2020/01/03/springMVC02/41d6b37a-2ffe-4532-85b3-8d9e2e646e52.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="2">
-<li>填写相关信息，结束创建</li>
-</ol>
-<img src="/blog/2020/01/03/springMVC02/b70b4f0c-020b-42ae-8cf2-01e5b3654a84.jpg" style="margin:30px;display:block" alt="title">
-
-<p>GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项目名称，因为我们想要部署到tomcat中，因此打包方式设置为war包。</p>
-<ol start="3">
-<li>生成的项目结构如图所示</li>
-</ol>
-<img src="/blog/2020/01/03/springMVC02/b087dbe1-46b4-4d22-8411-bdc8bec172e6.jpg" style="margin:30px;display:block" alt="title">
-
-<h2 id="添加Spring依赖"><a href="#添加Spring依赖" class="headerlink" title="添加Spring依赖"></a>添加Spring依赖</h2><ol>
-<li>打开pom.xml文件，并添加依赖，输入Spring MVC的相关信息</li>
-</ol>
-<img src="/blog/2020/01/03/springMVC02/f1e6eea8-2f58-4720-b995-5da786b2fb55.jpg" style="margin:30px;display:block" alt="title">
-
-<p>groupID 为<code style="background:#ff3385;color:white;padding:5px;">org.springframework</code>，ArtifactID为<code style="background:#ff3385;color:white;padding:5px;">spring-webmvc</code>，版本为<code style="background:#ff3385;color:white;padding:5px;">4.0.3.RELEASE</code>,范围选择<code style="background:#ff3385;color:white;padding:5px;">编译</code>。</p>
-<ol start="2">
-<li>同样的，为了显示页面，需要添加JSTL依赖</li>
-</ol>
-<p>groupID 为<code style="background:#ff3385;color:white;padding:5px;">javax.servlet</code>，ArtifactID为<code style="background:#ff3385;color:white;padding:5px;">jstl</code>，版本为<code style="background:#ff3385;color:white;padding:5px;">1.2</code>,范围选择<code style="background:#ff3385;color:white;padding:5px;">编译</code>。</p>
-<ol start="3">
-<li>添加Servlet-api依赖</li>
-</ol>
-<p>groupID 为<code style="background:#ff3385;color:white;padding:5px;">javax.servlet</code>，ArtifactID为<code style="background:#ff3385;color:white;padding:5px;">javax.servlet-api</code>，版本为<code style="background:#ff3385;color:white;padding:5px;">3.1.0</code>,范围选择<code style="background:#ff3385;color:white;padding:5px;">Provided</code>。</p>
-<ol start="4">
-<li>依赖添加完毕</li>
-</ol>
-<img src="/blog/2020/01/03/springMVC02/83a94160-538d-400e-b64e-5cea5156fe1b.jpg" style="margin:30px;display:block" alt="title">
-
-<p>在此对依赖添加作出解释：Maven是一种包管理机制，会解决包之间的依赖关系和版本问题。我们制定组名、包名、版本即可告诉Maven我们想要什么包，它自动完成下载和相关依赖包的下载。<br>编译期间需要打入包内的是编译包，不需要打入的是提供包，因为tomcat里面有servlet-api，所以无需打包。</p>
-<h2 id="JAVA小配置"><a href="#JAVA小配置" class="headerlink" title="JAVA小配置"></a>JAVA小配置</h2><p>打开pom.xml文件，在底部找到overView视图，找到properties并添加属性：maven.compiler.source=1.7</p>
-<img src="/blog/2020/01/03/springMVC02/17f8b5f1-24bf-4ed2-af8d-7cb75a51e973.jpg" style="margin:30px;display:block" alt="title">
-
-<p>同时，设置目标版本maven.compiler.target=1.7</p>
-<h2 id="创建一个欢迎界面"><a href="#创建一个欢迎界面" class="headerlink" title="创建一个欢迎界面"></a>创建一个欢迎界面</h2><ol>
-<li>在src/main/webapp下面创建WEB-INF/jsp路径，并创建welcome.jsp文件</li>
-</ol>
-<img src="/blog/2020/01/03/springMVC02/54109039-f24e-4cc4-bf74-2554c652b1c3.jpg" style="width:600px;height:400px;margin:30px;display:block" alt="title">
-
-<p>页面很简单，就是显示一个greeting和一个tagline字段</p>
-<ol start="2">
-<li>在src/main/java路径下创建一个com.packt.webstore.controller包，并在本包下创建HomeController.java文件</li>
-</ol>
-<img src="/blog/2020/01/03/springMVC02/4335d3b6-81aa-4fa4-855f-a10641331ea6.jpg" style="margin:30px;display:block" alt="title">
-
-<p>在jsp文件中，有两个jstl标签，用于显示两个变量的值：</p>
-<img src="/blog/2020/01/03/springMVC02/d1245300-444a-4015-a538-7a3ab3e74936.jpg" style="margin:30px;display:block" alt="title">
-
-<p>这两个值来自于控制器存储到model中的数据</p>
-<img src="/blog/2020/01/03/springMVC02/59fc7aa2-0133-4147-8db2-10251b26448b.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="3">
-<li>配置DispatcherServlet</li>
-</ol>
-<p>没有这个是无法访问的，DispatcherServlet将会拦截用户的请求，根据实际请求地址映射到相关的controller，甚至具体的action。在src/main/webapp/WEB-INF/路径下创建web.xml配置文件：</p>
-<img src="/blog/2020/01/03/springMVC02/fab7cdf7-eb8b-4cba-aac5-b42a9d8d1fec.jpg" style="margin:30px;display:block" alt="title">
-
-<p>创建servlet用于拦截前端请求，servlet-mapping用于配置映射路径，一般拦截全部请求，所以url-pattern是/，表示所有路径</p>
-<ol start="4">
-<li>在src/main/webapp/WEB-INF/路径下，创建另外一个配置文件DefaultServlet-servlet.xml</li>
-</ol>
-<img src="/blog/2020/01/03/springMVC02/9da14ede-34bc-4b83-9479-5e1b6f6dd5f4.jpg" style="margin:30px;display:block" alt="title">
-
-<p>这个配置文件配置了注解扫描、组件扫描的包路径，并配置了前端页面的存储位置，在/WEB-INF/jsp文件夹下，并且以.jsp结尾</p>
-<ol start="5">
-<li>通过run as 即可选择tomcat部署运行</li>
-</ol>
-<img src="/blog/2020/01/03/springMVC02/12a0d456-f3da-49f0-9ca8-326ddd297de9.jpg" style="margin:30px;display:block" alt="title">
-
-<p>我们可以打开浏览器访问了</p>
-<img src="/blog/2020/01/03/springMVC02/2a261bff-3bb2-404d-9fbd-bfbaa600846d.jpg" style="margin:30px;display:block" alt="title">
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-gitCommand01" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2020/01/03/gitCommand01/" class="article-date">
-      <time datetime="2020-01-03T02:46:13.000Z" itemprop="datePublished">2020-01-03</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2020/01/03/gitCommand01/">Git常用指令</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h2><h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git init
-
-</pre>
-
-<h3 id="添加文件到缓冲区"><a href="#添加文件到缓冲区" class="headerlink" title="添加文件到缓冲区"></a>添加文件到缓冲区</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git add filename
-
-</pre>
-
-<h3 id="添加所有文件到缓冲区"><a href="#添加所有文件到缓冲区" class="headerlink" title="添加所有文件到缓冲区"></a>添加所有文件到缓冲区</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git add .
-    git add --all
-
-</pre>
-
-<h3 id="清除缓冲区"><a href="#清除缓冲区" class="headerlink" title="清除缓冲区"></a>清除缓冲区</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git rm -r --cached
-
-</pre>
-
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git rm filename
-
-</pre>
-
-<h3 id="提交备注"><a href="#提交备注" class="headerlink" title="提交备注"></a>提交备注</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git comment -m '备注内容'
-
-</pre>
-
-<p><code style="background:#ff3385;color:white;padding:5px;">注意：git add或git comment失败将不会提交。所以，comment必须有备注内容</code></p>
-<h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git status
-
-</pre>
-
-<h3 id="查看差异"><a href="#查看差异" class="headerlink" title="查看差异"></a>查看差异</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git diff filename
-
-</pre>
-
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git reset
-    git reset --hard HEAD^
-    git reset --hard version
-
-</pre>
-
-<h3 id="日志查看"><a href="#日志查看" class="headerlink" title="日志查看"></a>日志查看</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git log
-    git reflog
-
-</pre>
-
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git branch
-
-</pre>
-
-<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git branch branchName
-
-</pre>
-
-<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git checkout branchName
-
-</pre>
-
-<h3 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git checkout -b branchName
-
-</pre>
-
-<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git branch -d branchName
-
-</pre>
-
-<h3 id="合并某分支到当前分支"><a href="#合并某分支到当前分支" class="headerlink" title="合并某分支到当前分支"></a>合并某分支到当前分支</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git merge branchName
-
-</pre>
-
-<h2 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h2><h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git tag tagName version
-
-</pre>
-
-<h3 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git tag
-
-</pre>
-
-<h3 id="查看标签详情"><a href="#查看标签详情" class="headerlink" title="查看标签详情"></a>查看标签详情</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git show tagName
-
-</pre>
-
-<h3 id="推送某个tag"><a href="#推送某个tag" class="headerlink" title="推送某个tag"></a>推送某个tag</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git push origin v1.0
-
-</pre>
-
-<h3 id="推送所有tag"><a href="#推送所有tag" class="headerlink" title="推送所有tag"></a>推送所有tag</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git push origin --tags
-
-</pre>
-
-<h2 id="远端库相关"><a href="#远端库相关" class="headerlink" title="远端库相关"></a>远端库相关</h2><h3 id="添加远端库"><a href="#添加远端库" class="headerlink" title="添加远端库"></a>添加远端库</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git remote add origin git://xxx/abc.git
-
-</pre>
-
-<h3 id="移除远端库"><a href="#移除远端库" class="headerlink" title="移除远端库"></a>移除远端库</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git remote remove origin git://xxx/abc.git
-
-</pre>
-
-<h3 id="推送到远端"><a href="#推送到远端" class="headerlink" title="推送到远端"></a>推送到远端</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git push -u origin master
-
-</pre>
-
-<h3 id="更新远端的内容到本地"><a href="#更新远端的内容到本地" class="headerlink" title="更新远端的内容到本地"></a>更新远端的内容到本地</h3><pre style="background:#e6e6e6;padding=10px;">
-
-    git pull
-
-</pre>
-
-<h2 id="组合提交指令"><a href="#组合提交指令" class="headerlink" title="组合提交指令"></a>组合提交指令</h2><pre style="background:#e6e6e6;padding=10px;">
-
-    git rm -r --cached
-    git add .
-    git comment -m 'update'
-    git push origin master
-
-</pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2020/01/03/hello-world/" class="article-date">
-      <time datetime="2020-01-03T02:28:45.058Z" itemprop="datePublished">2020-01-03</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2020/01/03/hello-world/">第一篇日志</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>这是通过MarkBook编写的第一篇日志</p>
-<h4 id="新的一年，新的开始，请珍惜时光！"><a href="#新的一年，新的开始，请珍惜时光！" class="headerlink" title="新的一年，新的开始，请珍惜时光！"></a>新的一年，新的开始，请珍惜时光！</h4><hr>
-<h2 id="快速开始Hexo"><a href="#快速开始Hexo" class="headerlink" title="快速开始Hexo"></a>快速开始Hexo</h2><h3 id="创建新的文章"><a href="#创建新的文章" class="headerlink" title="创建新的文章"></a>创建新的文章</h3><p><code style="background:#ff3385;color:white;padding:5px;">$ hexo new "My New Post"</code></p>
-<h3 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h3><p><code style="background:#ff3385;color:white;padding:5px;">$ hexo server</code></p>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><p><code style="background:#ff3385;color:white;padding:5px;">$ hexo generate</code></p>
-<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p><code style="background:#ff3385;color:white;padding:5px;">$ hexo deploy</code></p>
-<hr>
-<h2 id="不忘初心，砥砺前行。只争朝夕，不负韶华！"><a href="#不忘初心，砥砺前行。只争朝夕，不负韶华！" class="headerlink" title="不忘初心，砥砺前行。只争朝夕，不负韶华！"></a><strong><em>不忘初心，砥砺前行。只争朝夕，不负韶华！</em></strong></h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/other/" rel="tag">other</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-springMVC01" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2020/01/01/springMVC01/" class="article-date">
-      <time datetime="2020-01-01T11:57:30.000Z" itemprop="datePublished">2020-01-01</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2020/01/01/springMVC01/">Spring MVC开发环境配置</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="配置JAVA"><a href="#配置JAVA" class="headerlink" title="配置JAVA"></a>配置JAVA</h2><ol>
-<li><p>从<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">JAVA开发环境下载地址</a>下载JDK开发环境</p>
+        <h2 id="如何告诉spring我有哪些Bean？"><a href="#如何告诉spring我有哪些Bean？" class="headerlink" title="如何告诉spring我有哪些Bean？"></a>如何告诉spring我有哪些Bean？</h2><ol>
+<li><p>在XML中进行显式配置：通过xml配置文件注册Bean</p>
 </li>
-<li><p>如图所示，安装JDK，在JDK中已经包含JRE</p>
+<li><p>在Java中进行显式配置：通过java配置类注册Bean</p>
+</li>
+<li><p>隐式的bean发现机制和自动装配：让spring自己去扫描（配合注解使用）</p>
 </li>
 </ol>
-<img src="/blog/2020/01/01/springMVC01/8cf53021-eff0-4987-992e-fab6acb0ca80.jpg" style="margin:30px;display:block" alt="title"> 
+<h2 id="发现机制和自动装配"><a href="#发现机制和自动装配" class="headerlink" title="发现机制和自动装配"></a>发现机制和自动装配</h2><p>发现机制就是Bean<code style="background:#ff3385;color:white;padding:5px;">扫描机制</code></p>
+<p>自动装配就是对Bean实施<code style="background:#ff3385;color:white;padding:5px;">自动注入</code>，而不需要配置。</p>
+<p>我们先来创建一个接口，表示CD:</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/e39447f3-9cca-4593-8593-bbeee49a23bc.jpg">
 
-<ol start="3">
-<li>将JDK路径配置到环境变量</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/263d9a58-e2a4-407e-a77c-5c1b0a7bf9f1.jpg" style="margin:30px;display:block" alt="title">
+<p>然后给出一种实现：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/da0f5453-79e7-4967-a951-8dd33f04a2e7.jpg">
 
-<ol start="4">
-<li>测试JDK</li>
+<p>我们把这个类进行了@Component标记，这就告诉spring，他就是一个Bean</p>
+<p>在相同的包下，我们创建了一个配置类，这个配置类表名，spring需要扫描这个配置类所在的包及所有子包里的Bean。</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/2cd29d83-a440-47f9-a5c0-7e928186ccbf.jpg">
+
+<p>@Configuration表示这是一个配置类</p>
+<p>@ComponentScan表示开启Bean扫描机制</p>
+<p>然后可以进行测试了：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/33301175-60c4-4673-9428-d1580b8f879f.jpg">
+
+<p>@ContextConfiguration配置了对包扫描范围进行设定的那个配置类。</p>
+<p>@Autowired实现自动绑定。</p>
+<p>为Bean<code style="background:#ff3385;color:white;padding:5px;">设置别名</code>：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/ffc361e3-207b-40f8-80eb-c48dcd4c83d2.jpg">
+
+<p>可以设置<code style="background:#ff3385;color:white;padding:5px;">配置类</code>所在的位置：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/ca29213c-8984-48e5-87c8-4e01df9a1fd6.jpg">
+
+
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-spring01-introduction" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/03/01/spring01-introduction/" class="article-date">
+      <time datetime="2020-03-01T04:12:14.000Z" itemprop="datePublished">2020-03-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/03/01/spring01-introduction/">spring01 简介</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h2><p>在spring中，都是一个个组件，这些组件我们可以称为<code style="background:#ff3385;color:white;padding:5px;">Bean</code>，这些Bean由Spring来维护，你只需要提供业务功能。</p>
+<img src="/blog/2020/03/01/spring01-introduction/9572c008-6497-483a-8ef9-19252bcdaa3d.jpg">
+
+<p>这样一个<code style="background:#ff3385;color:white;padding:5px;">POJO</code>就是一个Bean。</p>
+<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>以往的代码中，我们需要<code style="background:#ff3385;color:white;padding:5px;">主动</code>new一个对象，用来产生类的实例：</p>
+<img src="/blog/2020/03/01/spring01-introduction/755e218b-fdf8-48b6-9fc6-4b3b57b8bf7a.jpg">
+
+<p>依赖注入避免了这样的操作，spring负责为你管理，为你new对象，你要做的只是告诉他，<code style="background:#ff3385;color:white;padding:5px;">我需要xxx</code></p>
+<img src="/blog/2020/03/01/spring01-introduction/6ffc1bc2-1fa6-4e66-b9bf-487b5090930e.jpg">
+
+<p>这样，所有的依赖对象，都可以交给spring去new,如果设定为接口，可以实现抽插式<code style="background:#ff3385;color:white;padding:5px;">替换</code>。</p>
+<img src="/blog/2020/03/01/spring01-introduction/d5a98ccf-5a4d-476a-a1a3-3f797a76c768.jpg">
+
+<h2 id="怎么告诉spring，你需要什么？"><a href="#怎么告诉spring，你需要什么？" class="headerlink" title="怎么告诉spring，你需要什么？"></a>怎么告诉spring，你需要什么？</h2><ol>
+<li>xml配置</li>
 </ol>
+<p>通过xml配置文件，将一个个Bean注册给spring，Spring知道都有哪些Bean，与此同时，也要试图告诉spring，谁需要什么：</p>
+<img src="/blog/2020/03/01/spring01-introduction/638d6418-d4e8-4d9b-b900-419fb1a2d6c4.jpg">
+
+<ol start="2">
+<li>java Config</li>
+</ol>
+<img src="/blog/2020/03/01/spring01-introduction/68bc637f-9a6a-4d46-b4a0-be22621adc6f.jpg">
+
+<p>通过注解，告诉spring，这个是一个配置类，里面的Bean你都要注册。</p>
+<h2 id="怎么获取我想要用的Bean？"><a href="#怎么获取我想要用的Bean？" class="headerlink" title="怎么获取我想要用的Bean？"></a>怎么获取我想要用的Bean？</h2><img src="/blog/2020/03/01/spring01-introduction/94005c3b-7b17-45dd-81a4-2d991f33997d.jpg">
+
+<p>创建Application Context的对象，通过它获取Bean的实例。</p>
+<p>通过Class&lt;?&gt; getBean(Class class)获取相关的Bean对象。</p>
+<p>然后就可以对实例进行任何操作了。</p>
+<h2 id="什么是AOP"><a href="#什么是AOP" class="headerlink" title="什么是AOP?"></a>什么是AOP?</h2><p>为了彻底让<code style="background:#ff3385;color:white;padding:5px;">业务和组件分离</code>，让业务无需关注组件的额外操作，AOP出现了。</p>
+<p>例如我们想要在某个方法执行前，打印一下，在他执行后，打印一下。</p>
+<img src="/blog/2020/03/01/spring01-introduction/e20a5887-3322-42d6-b07d-a6f719b2645f.jpg">
+
+<p>一种，我们可以<code style="background:#ff3385;color:white;padding:5px;">显式地</code>在调用方法<code style="background:#ff3385;color:white;padding:5px;">前后</code>分别打印：</p>
+<img src="/blog/2020/03/01/spring01-introduction/428a29b9-4dfa-43a2-a7fa-1d8b58e6bf6a.jpg">
+
+<p>这样的化，业务需要关注很多不必要的东西，比如打印这件事。避免业务代码显式地调用这样的功能组件，我们可以采取另外的思路（以xml配置为例）：</p>
+<ol>
+<li>我们先把打印组件注册到spring</li>
+</ol>
+<img src="/blog/2020/03/01/spring01-introduction/a51f5a74-ecb5-48d5-a6c4-c8ecb48a804e.jpg">
+
+<ol start="2">
+<li>有了打印功能，我们创建切面</li>
+</ol>
+<img src="/blog/2020/03/01/spring01-introduction/b15b18e9-891d-4364-b602-194bebc9cf6c.jpg">
+
+<p>切面就是<code style="background:#ff3385;color:white;padding:5px;">组件功能</code>。</p>
+<p>切点就是被<code style="background:#ff3385;color:white;padding:5px;">监视</code>的那个方法。</p>
+<p>在方法执行前，执行<code style="background:#ff3385;color:white;padding:5px;">before</code>代码</p>
+<p>在方法执行后，执行<code style="background:#ff3385;color:white;padding:5px;">after</code>代码</p>
+<p>这样，业务并不需要知道组件的存在，而组件的功能也得以实现。</p>
+<h2 id="消除样板代码"><a href="#消除样板代码" class="headerlink" title="消除样板代码"></a>消除样板代码</h2><p>我们先来看一部分JDBC使用的代码：</p>
+<img src="/blog/2020/03/01/spring01-introduction/1926b27d-4ed3-4f26-9380-ee63d8b405a4.jpg">
+
+<p>眼花缭乱不是吗？真正有用的代码有多少？很少。</p>
+<p>JDBCTemplate为我们简化了这些代码：</p>
+<img src="/blog/2020/03/01/spring01-introduction/52fa307d-d699-4252-b32f-b62cb470830c.jpg">
+
+<p>我们只需要关心如何处理表和对象的映射。</p>
+<h2 id="Application-Context的几种实现"><a href="#Application-Context的几种实现" class="headerlink" title="Application Context的几种实现"></a>Application Context的几种实现</h2><p>AnnotationConfigApplicationContext：从一个或多个基于Java的配置类中加载Spring应用上下文</p>
+<p>AnnotationConfigWebApplicationContext：从一个或多个基于Java的配置类中加载Spring Web应用上下文</p>
+<p>ClassPathXmlApplicationContext：从类路径下的一个或多个XML配置文件中加载上下文定义，把应用上下文的定义文件作为类资源。</p>
+<p>FileSystemXmlapplicationcontext：从文件系统下的一个或多个XML配置文件中加载上下文定义。</p>
+<p>XmlWebApplicationContext：从Web应用下的一个或多个XML配置文件中加载上下文定义。</p>
+<p>使用示例：</p>
+<p>从文件系统的某个xml文件中注册Bean:</p>
+<img src="/blog/2020/03/01/spring01-introduction/65c6c9fc-c146-48e1-b0bd-24a6cc080a65.jpg">
+
+<p>从ClassPath读取xml注册Bean：</p>
+<img src="/blog/2020/03/01/spring01-introduction/3e0952b6-f552-49a4-ae42-03dddab31f7a.jpg">
+
+<p>JavaBeanconfig文件中注册Bean：</p>
+<img src="/blog/2020/03/01/spring01-introduction/f2cf5d4b-7bcf-4b3e-ac3c-2a143b70ef86.jpg">
+
+<h2 id="Spring组成部分"><a href="#Spring组成部分" class="headerlink" title="Spring组成部分"></a>Spring组成部分</h2><img src="/blog/2020/03/01/spring01-introduction/4acb1a26-3aa3-43ef-8b60-3bf5d88fb4c3.jpg">
+
+
+
+
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java21-Reflection" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/03/01/java21-Reflection/" class="article-date">
+      <time datetime="2020-03-01T01:53:20.000Z" itemprop="datePublished">2020-03-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/03/01/java21-Reflection/">java21 反射</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="java-lang-Class"><a href="#java-lang-Class" class="headerlink" title="java.lang.Class"></a>java.lang.Class</h2><p>可以调用实例的getClass()方法获取Class对象，也可以直接使用.class:</p>
+<img src="/blog/2020/03/01/java21-Reflection/734edc18-1b3b-411c-a341-a0225ae01df1.jpg">
+
+<p>相关方法：</p>
 <pre style="background:#e6e6e6;padding=10px;">
 
-     java -version
+//反射获取
+public static Class<?> forName(String className) throws ClassNotFoundException
 
-</pre>
+//获取公共构造器
+public java.lang.reflect.Constructor<?>[] getConstructors() throws SecurityException
 
-<img src="/blog/2020/01/01/springMVC01/e7965238-9843-4ff9-b3d5-2d24cb125cd8.jpg" style="margin:30px;display:block" alt="title">
+//获取指定的公共构造器
+public java.lang.reflect.Constructor<T> getConstructor(Class<?>...parameterTypes) throws NoSuchMethodException,SecurityException
 
+//获取公共域
+public java.lang.reflect.Field[] getFields() throws SecurityException
 
-<hr>
-<h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><ol>
-<li><p>从<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven下载地址</a>下载Maven安装包</p>
-</li>
-<li><p>解压后，添加环境变量</p>
-</li>
+//获取指定公共域
+public java.lang.reflect.Field getField(String fieldName) throws NoSuchFieldException, SecurityException
+
+//获取本类公共域
+public java.lang.reflect.Field[] getDeclaredFields() throws SecurityException
+
+//获取本类指定公共域
+public java.lang.reflect.Field getDeclaredField(String fieldName) throws NoSuchFieldException, SecurityException
+
+//获取公共方法
+public java.lang.reflect.Method[] getMethods() throws SecurityException
+
+//获取指定公共方法
+public java.lang.reflect.Method getMethod(String methodName, Class<?>... parameterTypes) throws NoSuchFieldException, SecurityException
+
+//获取本类公共方法
+public java.lang.reflect.Method[] getDeclaredMethods() throws SecurityException
+
+//获取本类指定公共方法
+public java.lang.reflect.Method getDeclaredMethod(String methodName, Class<?>... parameterTypes) throws NoSuchMethodException, SecurityException
+
+</T></pre>
+
+<h2 id="反射法创建对象"><a href="#反射法创建对象" class="headerlink" title="反射法创建对象"></a>反射法创建对象</h2><ol>
+<li>使用class对象的newInstance方法</li>
 </ol>
-<img src="/blog/2020/01/01/springMVC01/9753ca75-5f7a-4495-a95a-1e1294c877f1.jpg" style="margin:30px;display:block" alt="title">
+<img src="/blog/2020/03/01/java21-Reflection/043f067d-f926-433c-9e2d-71b76aea0480.jpg">
 
-<ol start="3">
-<li>测试Maven</li>
+<ol start="2">
+<li>获取构造器，使用构造器调用newInstance方法</li>
 </ol>
-<pre style="background:#e6e6e6;padding=10px;">
+<img src="/blog/2020/03/01/java21-Reflection/a590dd3a-53c7-4ed9-8486-b44fdeb49687.jpg">
 
-     mvn -version
+<h2 id="反射法创建数组"><a href="#反射法创建数组" class="headerlink" title="反射法创建数组"></a>反射法创建数组</h2><p>使用Array的newInstance方法：</p>
+<img src="/blog/2020/03/01/java21-Reflection/fdf0d9e1-f89f-4b72-9119-4e2aab427e79.jpg">
 
-</pre>
+<p>设置指定位置的值（Array的set方法）：</p>
+<img src="/blog/2020/03/01/java21-Reflection/a18d03cf-9e27-4df3-bf31-fba5f1f68095.jpg">
 
-<img src="/blog/2020/01/01/springMVC01/1baafde0-0eae-430e-9404-bebfb1980253.jpg" style="margin:30px;display:block" alt="title">
+<p>获取指定位置的值（Array的get方法）：</p>
+<img src="/blog/2020/03/01/java21-Reflection/179b04e7-8a64-4b31-831e-92568c8dc363.jpg">
 
+<h2 id="域"><a href="#域" class="headerlink" title="域"></a>域</h2><p>获取的域，可以获取或设置值：</p>
+<p>getXXX (getByte,getInt, getShort, getLong···）</p>
+<img src="/blog/2020/03/01/java21-Reflection/156d702d-7ee4-45a9-bc80-707e63501bcf.jpg">
 
-<hr>
-<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><ol>
-<li><p>从<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">此处</a>下载安装包</p>
-</li>
-<li><p>一直下一步，安装即可。</p>
-</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/0589c8d1-7aa8-41ca-8e1f-9fac1b24a840.jpg" style="margin:30px;display:block" alt="title">
+<p>setXXX (setBoolean, setChar, setFloat···）</p>
+<img src="/blog/2020/03/01/java21-Reflection/6b122ec3-82ad-4b68-b6ba-5cb635102e2d.jpg">
 
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>获取方法名称：</p>
+<img src="/blog/2020/03/01/java21-Reflection/80650428-d467-4b61-8b27-09d4f48c171a.jpg">
 
-<hr>
-<h2 id="STS"><a href="#STS" class="headerlink" title="STS"></a>STS</h2><ol>
-<li><p>由<a href="http://spring.io/tools/sts/all" target="_blank" rel="noopener">此处</a>下载STS安装包</p>
-</li>
-<li><p>一直next安装即可。在某个步骤需要配置JDK路径。</p>
-</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/f8522a20-4d79-4604-8a4e-73dcfa566bac.jpg" style="margin:30px;display:block" alt="title">
+<p>获取访问修饰符：</p>
+<img src="/blog/2020/03/01/java21-Reflection/2e22d374-577f-4ce4-90a0-d60b26288a42.jpg">
 
-<ol start="3">
-<li>打开STS，找到<code style="background:#ff3385;color:white;padding:5px;">window</code>-<code style="background:#ff3385;color:white;padding:5px;">preferences</code>-<code style="background:#ff3385;color:white;padding:5px;">Server</code>-<code style="background:#ff3385;color:white;padding:5px;">Runtime Environment</code> 添加tomcat服务器</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/3f41ff6f-5fab-436a-8af1-3d280485e8d8.jpg" style="margin:30px;display:block" alt="title">
+<p>获取声明这个方法的类（可能来自于继承）：</p>
+<img src="/blog/2020/03/01/java21-Reflection/cfd05863-50f3-4902-9409-53a333d14ba3.jpg">
 
-<ol start="4">
-<li>选择合适的版本，并将tomcat的安装路径配置好</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/d04bf7a4-b479-498b-a16e-69a4c04070c5.jpg" style="margin:30px;display:block" alt="title">
+<p>获取返回值类型：</p>
+<img src="/blog/2020/03/01/java21-Reflection/8aa9920e-e796-48ed-ae8e-3f0ad8373c41.jpg">
 
-<ol start="5">
-<li>打开STS，找到<code style="background:#ff3385;color:white;padding:5px;">window</code>-<code style="background:#ff3385;color:white;padding:5px;">preferences</code>-<code style="background:#ff3385;color:white;padding:5px;">Maven</code>-<code style="background:#ff3385;color:white;padding:5px;">Installations</code>添加Maven的安装路径到STS</li>
-</ol>
-<img src="/blog/2020/01/01/springMVC01/e7bb906e-4b94-48fc-8f06-233144dd2a55.jpg" style="margin:30px;display:block" alt="title">
+<p>获取参数类型：</p>
+<img src="/blog/2020/03/01/java21-Reflection/2d22c7d2-2f53-4216-8687-7e9bf3ed2b83.jpg">
 
+<p>执行方法：</p>
+<img src="/blog/2020/03/01/java21-Reflection/ddb72d6c-1e56-46bc-8236-59f6244c4c08.jpg">
 
-
-<hr>
-<p>至此，Spring MVC开发环境配置完毕。</p>
+<p>静态方法的第一个参数可以为null。</p>
 
       
     </div>
@@ -809,7 +624,7 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
     </div>
 
       
@@ -829,6 +644,1267 @@
 
 
   
+    <article id="post-java20-Concurrency-Utilities" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/29/java20-Concurrency-Utilities/" class="article-date">
+      <time datetime="2020-02-29T11:42:57.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/02/29/java20-Concurrency-Utilities/">java20 并发包</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="原子变量"><a href="#原子变量" class="headerlink" title="原子变量"></a>原子变量</h2><p>AtomicBoolean, AtomicInteger, AtomicLong，AtomicReference等都属于原子变量，提供原子操作。</p>
+<p>提供了很多原子操作方法：addAndGet, decrementAndGet,getAndIncrement, incrementAndGet</p>
+<p>getAndIncrement 与 incrementAndGet是有区别的，在于自增在前还是在后。</p>
+<p>自增在后：</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/e9c1af03-edd8-408b-8d9a-35534a4a9ca4.jpg">
+
+<p>自增在前：</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/01782e20-eb2e-4761-b4b5-eaf9a35f93a2.jpg">
+
+<p>这样，即便是不再使用同步标志，也可以实现线程安全，因为所有的操作都是原子的。</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/9f2f8203-2cdd-424e-b464-7a0c0463693a.jpg">
+
+<h2 id="Executor-amp-ExecutorService"><a href="#Executor-amp-ExecutorService" class="headerlink" title="Executor &amp; ExecutorService"></a>Executor &amp; ExecutorService</h2><p>建议使用Executor替换Thread执行Runnable多线程方法：</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/66a977eb-b924-4f5d-b46b-1892e2c66df5.jpg">
+
+<p>也可以使用Executors的辅助方法创建ExecutorService：</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/ef4a52bc-5793-4014-83e3-d62b02c15541.jpg">
+
+<p>newSingleThreadExecutor只包含一个thread，只能同时执行一个线程。</p>
+<p>newCacheThreadPool 只要内存足够就创建线程，容易out of memory</p>
+<p>newFixedThreadPool 创建指定个数线程</p>
+<p>提交到Executor:</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/e74042da-7958-4d54-b092-bb08f36d4708.jpg">
+
+<p>Callable类似于Runnable，但是可以有返回值，也可以抛出异常。其执行的方法是call()</p>
+<p>可以通过ExecutorService的submit方法传递Callable对象：</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/5c611e1e-8d7e-424a-8f38-3c7dee84a69a.jpg">
+
+<p>Future可以中止线程，或者获取返回值。</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/d0ef58c6-d21f-4a6c-9f91-78dc25fc1c38.jpg">
+
+<p>也可以获取返回值：</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/01d743fa-0f0b-4696-b669-e3837cdc12b6.jpg">
+
+<p>判断任务被取消或已完成：</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/5373625c-7f12-4ce4-a29b-8b7addbb68d7.jpg">
+
+<p>获取结果：</p>
+<img src="/blog/2020/02/29/java20-Concurrency-Utilities/42a2e30c-bf10-44fe-9c63-4289b4c51eb1.jpg">
+
+<h2 id="锁可以实现随时锁定和释放"><a href="#锁可以实现随时锁定和释放" class="headerlink" title="锁可以实现随时锁定和释放"></a>锁可以实现随时锁定和释放</h2><img src="/blog/2020/02/29/java20-Concurrency-Utilities/2738e76b-cdd4-4de5-b46e-b955329656b4.jpg">
+
+<p>ReentrantLock是其中一种实现，lock用于锁定，unlock解锁。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java19-Threads" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/29/java19-Threads/" class="article-date">
+      <time datetime="2020-02-29T08:58:47.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/02/29/java19-Threads/">java19 线程</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><ol>
+<li><p>继承Thread类</p>
+</li>
+<li><p>实现Runnable接口</p>
+</li>
+</ol>
+<p>继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。</p>
+<h3 id="线程的六种状态"><a href="#线程的六种状态" class="headerlink" title="线程的六种状态"></a>线程的六种状态</h3><ol>
+<li><p>new 线程还没开始start</p>
+</li>
+<li><p>runnable线程已经开启</p>
+</li>
+<li><p>blocked被阻断，等待锁</p>
+</li>
+<li><p>waiting等待其他线程执行</p>
+</li>
+<li><p>timed_waiting超时等待</p>
+</li>
+<li><p>terminated线程退出</p>
+</li>
+</ol>
+<h3 id="Thread构造器"><a href="#Thread构造器" class="headerlink" title="Thread构造器"></a>Thread构造器</h3><pre style="background:#e6e6e6;padding=10px;">
+
+//无参构造
+public Thread()
+//指定名称
+public Thread(String name)
+//添加接口
+public Thread(Runnable target)
+//添加接口，指定名称
+public Thread(Runnable target, String name)
+
+</pre>
+
+<h3 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h3><pre style="background:#e6e6e6;padding=10px;">
+
+//获取名称
+public String getName()
+//获取状态
+public Thread.State getState()
+//中断线程
+public void interrupt()
+//开启线程
+public void start()
+//睡眠一定的时间
+public static void sleep(long millis)
+
+</pre>
+
+<p>获取当前的线程：</p>
+<img src="/blog/2020/02/29/java19-Threads/61e2ebda-6fad-45af-9ea3-78d92fa93acc.jpg">
+
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><img src="/blog/2020/02/29/java19-Threads/3eb48243-3db1-40bc-be96-3c8e6929d6f2.jpg">
+
+<p>继承Thread，重写run方法，创建对象并调用start方法。</p>
+<h2 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h2><p>需要实现Runnable接口，重写run方法，创建Thread对象，使用Thread对象启动。</p>
+<img src="/blog/2020/02/29/java19-Threads/f57af7b2-53bf-430f-9536-76098f49baa8.jpg">
+
+<h2 id="设置优先级"><a href="#设置优先级" class="headerlink" title="设置优先级"></a>设置优先级</h2><p>通过setPriority设置优先级，数值越大，优先级越高，执行频率越高，速度越快。</p>
+<img src="/blog/2020/02/29/java19-Threads/5879fabb-1684-4fbc-bc3e-6ec012531e9a.jpg">
+
+<h2 id="线程终止的方法"><a href="#线程终止的方法" class="headerlink" title="线程终止的方法"></a>线程终止的方法</h2><p>Thread自带了一个stop方法，但是不安全，建议不要使用。</p>
+<p>对于线程内部的run方法，设置while标志位而退出线程是最安全的。</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+class CounterThread extends Thread {
+    public void run() {
+        //使用标志位
+        while (!stopped) {
+            try {
+                sleep(10);
+            } catch (InterruptedException e) {
+            }
+            if (count == 1000) {
+                count = 1;
+            }
+            counterLabel.setText(Integer.toString(count++));
+        }
+    }
+}
+
+</pre>
+
+<p>终止线程，只需要设置标志位即可：</p>
+<img src="/blog/2020/02/29/java19-Threads/5ef6c5ed-c542-432a-bea5-200c237f2ffd.jpg">
+
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><h3 id="线程干扰"><a href="#线程干扰" class="headerlink" title="线程干扰"></a>线程干扰</h3><pre style="background:#e6e6e6;padding=10px;">
+
+package app23;
+public class UserStat {
+    int userCount;
+    public int getUserCount() {
+        return userCount;
+    }
+    public void increment() {
+        userCount++;
+    }
+    public void decrement() {
+        userCount--;
+    }
+}
+
+</pre>
+
+<p>自增自减操作是三个步骤，读取-更改-写入</p>
+<p>多个线程对相同的数据进行读写容易出现线程干扰。线程干扰容易出现竞争条件，然后数据出现不一致。</p>
+<h3 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h3><p>原子操作指的是最小的操作单元，不会发生线程干扰。除long和double，其他基本数据类型的读写操作都是原子操作。</p>
+<h2 id="锁同步"><a href="#锁同步" class="headerlink" title="锁同步"></a>锁同步</h2><p>锁是实现<code style="background:#ff3385;color:white;padding:5px;">线程同步</code>一种方式，synchronized可以用于锁定对象，非静态方法被访问时，先获取锁，<code style="background:#ff3385;color:white;padding:5px;">获取</code>锁的才能执行方法，否则将<code style="background:#ff3385;color:white;padding:5px;">等待</code>锁释放。</p>
+<p>锁被锁定的时候，其他线程<code style="background:#ff3385;color:white;padding:5px;">不得</code>访问与该锁相关的所有方法。锁是<code style="background:#ff3385;color:white;padding:5px;">可重入</code>的，即，获取了锁就可以获取使用相同锁同步的方法。</p>
+<p>静态方法需要使用<code style="background:#ff3385;color:white;padding:5px;">Class类</code>的对象进行锁定。</p>
+<p>重写上面的类，使之线程安全：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+package app23;
+public class SafeUserStat {
+    int userCount;
+    public synchronized int getUserCount() {
+        return userCount;
+    }
+    public synchronized void increment() {
+        userCount++;
+    }
+    public synchronized void decrement() {
+        userCount--;
+    }
+}
+
+</pre>
+
+<p>这里使用synchronized修饰了三个方法，进而保证了线程安全性。</p>
+<h2 id="代码块锁定"><a href="#代码块锁定" class="headerlink" title="代码块锁定"></a>代码块锁定</h2><p>如果接触不到源码，你是无法使用synchronized同步方法的，因此，可以使用块同步。</p>
+<img src="/blog/2020/02/29/java19-Threads/a8a22510-a77d-4d37-9a2b-c06e42505705.jpg">
+
+<p>示例代码：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+UserStat userStat = new UserStat();
+
+public void incrementCounter() {
+    synchronized(userStat) {
+        // statements to be synchronized, such as calls to
+        // the increment, decrement, and getUserCount methods
+        // on userStat
+        userStat.increment();
+    }
+}
+
+</pre>
+
+<p>锁定了UserStat对象，可以实现块同步。</p>
+<p>可以直接使用this代替这个对象：</p>
+<img src="/blog/2020/02/29/java19-Threads/a290f1a3-39b6-497a-87fb-5f1980e29ced.jpg">
+
+<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>我们先看一个不安全的代码。来说明线程之间的变量可见性问题。</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public class Inconsistent {
+    static boolean started = false;
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                }
+                started = true;
+                System.out.println("started set to true");
+            }
+        });
+    thread1.start();
+    while (!started) {
+        // wait until started
+    }
+    System.out.println("Wait 3 seconds and exit");
+    }
+}
+
+</pre>
+
+<p>外围主线程等待started标志位改变，终止主线程。然而，这段打印退出代码始终没有执行。</p>
+<p>这是因为不同线程之间的数据变更的可见性问题。</p>
+<p>修改一：使用同步代码</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public class Consistent {
+    static boolean started = false;
+    public synchronized static void setStarted() {
+        started = true;
+    }
+    public synchronized static boolean getStarted() {
+        return started;
+    }
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                }
+                setStarted();
+                System.out.println("started set to true");
+            }
+        });
+        thread1.start();
+        while (!getStarted()) {
+            // wait until started
+        }
+        System.out.println("Wait 3 seconds and exit");
+    }
+}
+
+</pre>
+
+<p>使用同步代码，对可见性进行强制保障。但是，没有多个线程写入的问题，使用同步代码添加了 很多性能损失，因此，使用volatile更合适：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public class LightAndConsistent {
+    static volatile boolean started = false;
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                }
+                started = true;
+                System.out.println("started set to true");
+            }
+        });
+        thread1.start();
+        while (!started) {
+            // wait until started
+        }
+        System.out.println("Wait 3 seconds and exit");
+    }
+}
+
+</pre>
+
+
+<h2 id="线程协作"><a href="#线程协作" class="headerlink" title="线程协作"></a>线程协作</h2><p>object自带的方法：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+//等待
+public final void wait() throws InterruptedException
+//等待一定时长
+public final void wait(long timeout) throws InterruptedException
+//通知
+public final void notify()
+//通知所有线程
+pubic final void notifyAll()
+
+</pre>
+
+<p>我们来实现一个货物处理的案例：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public class DeliveryNoteHolder {
+    //货物
+    private String deliveryNote;
+    //标志位
+    private boolean available = false;
+    //派送货物同步方法
+    public synchronized String get() {
+        //没有货物
+        while (available == false) {
+            try {
+                //等待
+                wait();
+            } catch (InterruptedException e) { }
+        }
+        //修改标志，处理货物
+        available = false;
+        System.out.println(System.currentTimeMillis() + ": got " + deliveryNote);
+        //通知其他线程
+        notifyAll();
+        return deliveryNote;
+    }
+    //追加货物
+    public synchronized void put(String deliveryNote) {
+        //有货等待
+        while (available == true) {
+            try {
+                wait(); //等待
+            } catch (InterruptedException e) { }
+        }
+        //修改状态，处理货物，通知其他线程
+        this.deliveryNote = deliveryNote;
+        available = true;
+        System.out.println(System.currentTimeMillis() + ": Put " + deliveryNote);
+        notifyAll();
+    }
+}
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+public class DispatcherThread extends Thread {
+    private DeliveryNoteHolder deliveryNoteHolder;
+    String[] deliveryNotes = { "XY23. 1234 Arnie Rd.",
+        "XY24. 3330 Quebec St.",
+        "XY25. 909 Swenson Ave.",
+        "XY26. 4830 Davidson Blvd.",
+        "XY27. 9900 Old York Dr." };
+    public DispatcherThread(DeliveryNoteHolder holder) {
+        deliveryNoteHolder = holder;
+    }
+    public void run() {
+        for (int i = 0; i < deliveryNotes.length; i++) {
+            String deliveryNote = deliveryNotes[i];
+            //追加货物
+            deliveryNoteHolder.put(deliveryNote);
+            try {
+                sleep(100);
+            } catch (InterruptedException e) {
+            }
+        }
+    }
+}
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+public class DriverThread extends Thread {
+    DeliveryNoteHolder deliveryNoteHolder;
+    boolean stopped = false;
+    String driverName;
+    public DriverThread(DeliveryNoteHolder holder, String driverName) {
+        deliveryNoteHolder = holder;
+        this.driverName = driverName;
+    }
+    public void run() {
+        while (!stopped) {
+            //配送货物
+            String deliveryNote = deliveryNoteHolder.get();
+            try {
+                sleep(300);
+            } catch (InterruptedException e) {
+            }
+        }
+    }
+}
+
+</pre>
+
+<p>两个线程共享同一个对象的实例，遵守wait方法和notifyAll方法</p>
+<h2 id="java-util-Timer"><a href="#java-util-Timer" class="headerlink" title="java.util.Timer"></a>java.util.Timer</h2><p>定时器主要用于执行定时任务。</p>
+<p>构造器：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public Timer()
+
+</pre>
+
+<p>调用schedule方法：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+//固定时间点执行一次
+public void schedule(TimerTask task, Date time)
+
+//定时任务，从某时刻开始，定时执行
+public void schedule(TimerTask task, Date firstTime, long period)
+
+//指定延时后开始执行，定时执行
+public void schedule(TimerTask task, long delay, long period)
+
+//取消任务
+public void cancel()
+
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java18-Java-Database-Connectivity" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/29/java18-Java-Database-Connectivity/" class="article-date">
+      <time datetime="2020-02-29T08:18:35.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/02/29/java18-Java-Database-Connectivity/">java18 数据库操作</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="四个步骤获取数据"><a href="#四个步骤获取数据" class="headerlink" title="四个步骤获取数据"></a>四个步骤获取数据</h2><ol>
+<li><p>加载JDBC驱动</p>
+</li>
+<li><p>获取JDBC连接</p>
+</li>
+<li><p>创建SQL 语句实例java.sql.Statement</p>
+</li>
+<li><p>获取数据java.sql.ResultSet</p>
+</li>
+<li><p>释放连接</p>
+</li>
+</ol>
+<h3 id="加载JDBC驱动"><a href="#加载JDBC驱动" class="headerlink" title="加载JDBC驱动"></a>加载JDBC驱动</h3><pre style="background:#e6e6e6;padding=10px;">
+
+Class.forName("com.mysql.jdbc.Driver");
+
+</pre>
+
+<p>为了防止无法找到，捕获异常</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+try {
+    Class.forName("com.mysql.jdbc.Driver");
+} catch (ClassNotFoundException e) {
+    // process the exception or re-throw it
+}
+
+</pre>
+
+<h3 id="获取JDBC连接"><a href="#获取JDBC连接" class="headerlink" title="获取JDBC连接"></a>获取JDBC连接</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public static Connection getConnection(java.lang.String url) throws SQLException
+
+public static Connection getConnection(java.lang.String url,java.lang.String userName, java.lang.String password) throws SQLException
+
+</pre>
+
+<p>连接字符串示例：</p>
+<img src="/blog/2020/02/29/java18-Java-Database-Connectivity/70610e18-1d9d-4352-a6a5-a9ea25fce062.jpg">
+
+<h3 id="创建SQL-语句实例java-sql-Statement"><a href="#创建SQL-语句实例java-sql-Statement" class="headerlink" title="创建SQL 语句实例java.sql.Statement"></a>创建SQL 语句实例java.sql.Statement</h3><p>创建sql语句以便于数据库执行。</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+Statement statement = connection.createStatement();
+
+</pre>
+
+<p>两种执行方式：查询与执行。</p>
+<img src="/blog/2020/02/29/java18-Java-Database-Connectivity/88984ac3-c304-4db5-8e92-bcd14d595b6a.jpg">
+
+<p>executeUpdate执行插入、删除、修改操作</p>
+<p>executeQuery执行查询操作</p>
+<p>PreparedStatement<code style="background:#ff3385;color:white;padding:5px;">更好</code>：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+PreparedStatement pStatement = connection.prepareStatement(java.lang.String sql);
+
+</pre>
+
+<h3 id="获取数据java-sql-ResultSet"><a href="#获取数据java-sql-ResultSet" class="headerlink" title="获取数据java.sql.ResultSet"></a>获取数据java.sql.ResultSet</h3><p>ResultSet是查询数据的存储结果，开始时，其内部指针指向第0行，next可以移动指针到下一行，如果存在返回true，否则返回false</p>
+<p>可以通过 getInt, getLong, getShort等获取列的值。GetString也是很常用的。</p>
+<img src="/blog/2020/02/29/java18-Java-Database-Connectivity/ec7a8a04-9b10-427f-b713-eb5444339795.jpg">
+
+<h3 id="释放连接"><a href="#释放连接" class="headerlink" title="释放连接"></a>释放连接</h3><p>安全释放连接的方法：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+Connection connection = null;
+PreparedStatement pStatement = null;
+ResultSet resultSet = null;
+try {
+    connection = getConnection();
+    pStatement = connection.prepareStatement(sql);
+    resultSet = pStatement.executeQuery();
+    while (resultSet.next()) {
+        // manipulate the data here
+    }
+} catch (SQLException e) {
+    throw newException;
+} finally {
+//此处捕获的异常，防止关闭时出现错误
+    if (resultSet != null) {
+        try {
+            resultSet.close();
+        } catch (Exception e) {
+        }
+    }
+    if (statement != null) {
+        try {
+            statement.close();
+        } catch (Exception e) {
+        }
+    }
+    if (connection != null) {
+        try {
+            connection.close();
+        } catch (Exception e) {
+        }
+    }
+}
+
+</pre>
+
+<p>在java7以后，更方便的方式即可实现自动释放：</p>
+<img src="/blog/2020/02/29/java18-Java-Database-Connectivity/bbbbbd7e-e90c-45bc-a6a1-9ea1b6926e23.jpg">
+
+<h2 id="java-sql-ResultSetMetaData"><a href="#java-sql-ResultSetMetaData" class="headerlink" title="java.sql.ResultSetMetaData"></a>java.sql.ResultSetMetaData</h2><p>元数据就是数据表的格式数据</p>
+<p>可以使用ResultSet对象获取元数据：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public ResultSetMetaData getMetaData() throws SQLException
+
+</pre>
+
+<h3 id="获取列数"><a href="#获取列数" class="headerlink" title="获取列数"></a>获取列数</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public int getColumnCount() throws SQLException
+
+</pre>
+
+<h3 id="获取列名称"><a href="#获取列名称" class="headerlink" title="获取列名称"></a>获取列名称</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public java.lang.String getColumnName(int columnIndex)throws SQLException
+
+</pre>
+
+<h3 id="获取列类型"><a href="#获取列类型" class="headerlink" title="获取列类型"></a>获取列类型</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public int getColumnType(int columnIndex) throws SQLException
+
+</pre>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java17-Networking" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/29/java17-Networking/" class="article-date">
+      <time datetime="2020-02-29T06:28:36.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/02/29/java17-Networking/">java17 网络</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="URL解析"><a href="#URL解析" class="headerlink" title="URL解析"></a>URL解析</h2><img src="/blog/2020/02/29/java17-Networking/d17276fe-9b57-4c87-addb-5635055776fe.jpg">
+
+<h2 id="java-net-URL"><a href="#java-net-URL" class="headerlink" title="java.net.URL"></a>java.net.URL</h2><h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public URL(java.lang.String spec)
+public URL(java.lang.String protocol, java.lang.String host,java.lang.String file)
+public URL(java.lang.String protocol, java.lang.String host, int port, java.lang.String file)
+public URL(URL context, String spec)
+
+</pre>
+
+<p>使用示例：</p>
+<img src="/blog/2020/02/29/java17-Networking/68a76d94-d17c-415d-8fa5-2eaaf17508c5.jpg">
+
+<h3 id="解析URL地址"><a href="#解析URL地址" class="headerlink" title="解析URL地址"></a>解析URL地址</h3><pre style="background:#e6e6e6;padding=10px;">
+
+//获取文件
+public java.lang.String getFile()
+//获取host
+public java.lang.String getHost()
+//获取path
+public java.lang.String getPath()
+//获取port
+public int getPort()
+//获取协议
+public java.lang.String getProtocol()
+//获取查询字符串
+public java.lang.String getQuery()
+
+</pre>
+
+<h3 id="读取资源"><a href="#读取资源" class="headerlink" title="读取资源"></a>读取资源</h3><p>使用openStream获取资源：</p>
+<img src="/blog/2020/02/29/java17-Networking/bbef70f3-feed-4501-a61e-bd07237d475c.jpg">
+
+<h2 id="java-net-URLConnection"><a href="#java-net-URLConnection" class="headerlink" title="java.net.URLConnection"></a>java.net.URLConnection</h2><p>采用Url实例的openConnection可以获取URLConnection对象。</p>
+<h3 id="设置读取和写入"><a href="#设置读取和写入" class="headerlink" title="设置读取和写入"></a>设置读取和写入</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public void setDoInput(boolean value)
+public void setDoOutput(boolean value)
+
+</pre>
+
+<h3 id="获取读取和写入"><a href="#获取读取和写入" class="headerlink" title="获取读取和写入"></a>获取读取和写入</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public boolean getDoInput()
+public boolean getDoOutput()
+
+</pre>
+
+<h3 id="获得读取流"><a href="#获得读取流" class="headerlink" title="获得读取流"></a>获得读取流</h3><img src="/blog/2020/02/29/java17-Networking/655ab8b3-20c3-481c-a94b-5d124903429b.jpg">
+
+<h3 id="其他相关方法"><a href="#其他相关方法" class="headerlink" title="其他相关方法"></a>其他相关方法</h3><pre style="background:#e6e6e6;padding=10px;">
+
+//获取请求头
+public java.lang.String getHeaderField(java.lang.String headerName)
+
+//获取请求头时间
+public long getHeaderFieldDate(java.lang.String headerName, long default)
+
+//获取请求头键值对
+public java.util.Map getHeaderFields()
+
+//获取编码格式
+public java.lang.String getContentEncoding()
+
+//获取内容长度
+public int getContentLength()
+
+//获取内容类型
+public java.lang.String getContentType()
+
+//获取日期
+public long getDate()
+
+//获取过期时间
+public long getExpiration()
+
+</pre>
+
+<h3 id="写入流"><a href="#写入流" class="headerlink" title="写入流"></a>写入流</h3><img src="/blog/2020/02/29/java17-Networking/93b5b1ca-d270-4468-ba88-f159b9359716.jpg">
+
+<p>通过UrlConnection的对象getOutputStream()获取输出流.</p>
+<h2 id="java-net-Socket"><a href="#java-net-Socket" class="headerlink" title="java.net.Socket"></a>java.net.Socket</h2><h3 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public Socket(java.lang.String host, int port)
+
+</pre>
+
+<p>使用示例：</p>
+<img src="/blog/2020/02/29/java17-Networking/299a105c-fbaa-4614-bddc-f061f586351c.jpg">
+
+<h3 id="读写Socket"><a href="#读写Socket" class="headerlink" title="读写Socket"></a>读写Socket</h3><p>getInputStream获取读取流，getOutputStream获取输出流</p>
+<img src="/blog/2020/02/29/java17-Networking/2a0eaa8a-740d-4de6-b406-c7b2b420ec6c.jpg">
+
+<h2 id="java-net-ServerSocket"><a href="#java-net-ServerSocket" class="headerlink" title="java.net.ServerSocket"></a>java.net.ServerSocket</h2><h3 id="构造器-2"><a href="#构造器-2" class="headerlink" title="构造器"></a>构造器</h3><pre style="background:#e6e6e6;padding=10px;">
+
+public ServerSocket(int port, int backLog, InetAddress bindingAddress);
+
+</pre>
+
+<p>使用示例：</p>
+<img src="/blog/2020/02/29/java17-Networking/6a792bc5-8a5e-4bb9-984b-2c2fd9572a92.jpg">
+
+<p>通过accept接受连接过来的Socket</p>
+<p>其后的操作方法与Socket类似。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java16-Annotations" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/29/java16-Annotations/" class="article-date">
+      <time datetime="2020-02-29T03:35:17.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/02/29/java16-Annotations/">java16 注解</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>注解就是一种标记作用的特性。</p>
+<h2 id="注解的类型"><a href="#注解的类型" class="headerlink" title="注解的类型"></a>注解的类型</h2><p>注解类型是 一种<code style="background:#ff3385;color:white;padding:5px;">模板</code>，注解是注解模板的<code style="background:#ff3385;color:white;padding:5px;">具体实例</code>。</p>
+<p>注解类型可以包含键值对，没有键值对的叫<code style="background:#ff3385;color:white;padding:5px;">标记注解</code>，有单个键值对的叫<code style="background:#ff3385;color:white;padding:5px;">单值注解</code>。</p>
+<h2 id="注解的使用"><a href="#注解的使用" class="headerlink" title="注解的使用"></a>注解的使用</h2><p>不带参数：</p>
+<img src="/blog/2020/02/29/java16-Annotations/85551201-69c0-4f08-83d5-63ed991b4bbd.jpg">
+
+<p>带参数：</p>
+<img src="/blog/2020/02/29/java16-Annotations/ed377e91-6510-4fca-bad3-7b2db24c3a6e.jpg">
+
+<p>不带参数使用示例：</p>
+<img src="/blog/2020/02/29/java16-Annotations/d1e77ed3-6a17-419c-a249-22a3bdb515a4.jpg">
+
+<p>带参数使用示例：</p>
+<img src="/blog/2020/02/29/java16-Annotations/c6419b07-8952-42b7-b317-d783a4e47ced.jpg">
+
+<p>对于单值注解，可以省略键：</p>
+<img src="/blog/2020/02/29/java16-Annotations/fa8eb52d-254f-424f-8f79-fb7806810f48.jpg">
+
+<p>等价于，</p>
+<img src="/blog/2020/02/29/java16-Annotations/78f0c90e-406b-4b82-bf6c-5c7784f218ee.jpg">
+
+<h2 id="标准注解"><a href="#标准注解" class="headerlink" title="标准注解"></a>标准注解</h2><p>Override,Deprecated, and SuppressWarnings是java5添加的标准注解</p>
+<h3 id="Override"><a href="#Override" class="headerlink" title="Override"></a>Override</h3><p>这个注解主要用于<code style="background:#ff3385;color:white;padding:5px;">方法</code>，表面此方法是用于重写父类的方法。</p>
+<img src="/blog/2020/02/29/java16-Annotations/a5b3a8de-7c9b-491b-9214-122c9a3f8149.jpg">
+
+<h3 id="Deprecated"><a href="#Deprecated" class="headerlink" title="Deprecated"></a>Deprecated</h3><p>这个注解主要用于提醒调用方，这个<code style="background:#ff3385;color:white;padding:5px;">方法</code> / <code style="background:#ff3385;color:white;padding:5px;">类</code> / <code style="background:#ff3385;color:white;padding:5px;">接口</code>是不推荐使用的，过时的。</p>
+<img src="/blog/2020/02/29/java16-Annotations/a04c5e34-af4f-4621-bdde-fe62bd1b19ed.jpg">
+
+<h3 id="SuppressWarnings"><a href="#SuppressWarnings" class="headerlink" title="SuppressWarnings"></a>SuppressWarnings</h3><p>压制<code style="background:#ff3385;color:white;padding:5px;">编译</code>错误，可以用于类型,构造器, 方法, 域, 参数, 局部变量.</p>
+<img src="/blog/2020/02/29/java16-Annotations/4201b15f-fb89-4bfb-af7d-18b4e7566a4e.jpg">
+
+<p>参数类型：</p>
+<p>unchecked 未检查</p>
+<p>path 位置不存在</p>
+<p>serial 序列化id</p>
+<p>finally 方法不能正常结束</p>
+<p>fallthrough 对switch贯穿代码的压制</p>
+<p>示例（压制unchecked 和serial ）：</p>
+<img src="/blog/2020/02/29/java16-Annotations/187f442a-d231-4b11-bccd-c9ddd3a5b8f0.jpg">
+
+<h2 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h2><p>元注解就是用来注解注解类型的注解。Documented, Inherited, Retention, and Target</p>
+<h3 id="Documented"><a href="#Documented" class="headerlink" title="Documented"></a>Documented</h3><p>表示这个注解要写入javaDoc文档。</p>
+<p>@Deprecated注解是带有@Documented修饰的，因此，在JavaDoc文档中包含注释，而@Override没有@Documented修饰，在文档中没有呈现。</p>
+<img src="/blog/2020/02/29/java16-Annotations/b9794ec9-c2a8-4954-ad91-b69419c40c03.jpg">
+
+<h3 id="Inherited"><a href="#Inherited" class="headerlink" title="Inherited"></a>Inherited</h3><p>对此标记的注解，凡是标记了注解的类，其子类将继承这个注解。</p>
+<h3 id="Retention"><a href="#Retention" class="headerlink" title="Retention"></a>Retention</h3><p>表示注解的有效范围，有效值：</p>
+<p>SOURCE.源码级别，编译器将忽略。</p>
+<p>CLASS默认级别，jvm忽略。</p>
+<p>RUNTIME可以使用反射，运行时级别。</p>
+<p>以下表明有效范围是源码级：</p>
+<img src="/blog/2020/02/29/java16-Annotations/4478e252-6345-42ac-9acc-7852132303d6.jpg">
+
+<h3 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h3><p>指向的注解对象。</p>
+<p>▪ ANNOTATION_TYPE 注解定义</p>
+<p>▪ CONSTRUCTOR. 构造器</p>
+<p>▪ FIELD. 域</p>
+<p>▪ LOCAL_VARIABLE. 局部变量</p>
+<p>▪ METHOD. 方法</p>
+<p>▪ PACKAGE. 包</p>
+<p>▪ PARAMETER. 参数</p>
+<p>▪ TYPE. 类型</p>
+<p>使用示例：</p>
+<img src="/blog/2020/02/29/java16-Annotations/3824930a-1ee7-437e-a301-4b64d358625e.jpg">
+
+<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><pre style="background:#e6e6e6;padding=10px;">
+
+public @interface CustomAnnotation {
+}
+
+</pre>
+
+<p>注解定义示例：</p>
+<img src="/blog/2020/02/29/java16-Annotations/8afcad6c-f6c7-4dd0-889a-451ef07bbbb9.jpg">
+
+<p>注解使用：</p>
+<img src="/blog/2020/02/29/java16-Annotations/74f95d1b-b42c-464f-8026-95e267000877.jpg">
+
+<h2 id="注解的反射用法"><a href="#注解的反射用法" class="headerlink" title="注解的反射用法"></a>注解的反射用法</h2><pre style="background:#e6e6e6;padding=10px;">
+
+//获取注解,没有则为null
+public <A extends java.lang.annotation.annotation> A getAnnotation (Class<A> annotationClass)
+
+//获取所有注解
+public java.lang.annotation.Annotation[] getAnnotations()
+
+//判断是否为注解类
+public boolean isAnnotation()
+
+//判断是否包含注解
+public boolean isAnnotationPresent(Class<? extends java.lang.annotation.Annotation> annotationClass)
+
+</A></A></pre>
+
+<p>使用示例：</p>
+<img src="/blog/2020/02/29/java16-Annotations/5a50e87a-c532-41b9-a069-f2c423b95c51.jpg">
+
+
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java15-Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/29/java15-Polymorphism/" class="article-date">
+      <time datetime="2020-02-29T03:01:58.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/02/29/java15-Polymorphism/">java15 多态</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="什么是多态？"><a href="#什么是多态？" class="headerlink" title="什么是多态？"></a>什么是多态？</h2><pre style="background:#e6e6e6;padding=10px;">
+
+A a = new B();
+
+</pre>
+
+<p>如上所示的定义方法是允许的，条件如下：</p>
+<ol>
+<li><p>B是A的子类</p>
+</li>
+<li><p>B是A接口的具体实现</p>
+</li>
+</ol>
+<p>有什么特别之处呢？</p>
+<p>当<code style="background:#ff3385;color:white;padding:5px;">编译</code>时，a的类型是A，这个时候，只允许调用在A类中定义的方法。在<code style="background:#ff3385;color:white;padding:5px;">运行</code>时，a变成了类型B，所以，</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+a.getClass().getName()  //结果是B
+
+</pre>
+
+<p>那么，假设A有个play方法，B重写了这个方法，调用a.play()是调的是谁？<code style="background:#ff3385;color:white;padding:5px;">调用B的方法</code>。这个调用在运行时决定。</p>
+<p>假如，A有个方法stop，而B<code style="background:#ff3385;color:white;padding:5px;">没有</code>重写这个方法（B不是直接继承或实现A），那么调用a.stop(),调用的是谁？调用<code style="background:#ff3385;color:white;padding:5px;">B的父类</code>的方法，能具体则具体，找到父类的重写方法进行调用。</p>
+<h2 id="多态的一个应用场景"><a href="#多态的一个应用场景" class="headerlink" title="多态的一个应用场景"></a>多态的一个应用场景</h2><p>假如我们有个订单服务Order,有个处理订单的接口OrderHandler</p>
+<p>但是对于订单的处理，如：接受订单，处理订单需要不同的持久化工具，如Sql Server,MySql, Oracle等等</p>
+<p>为了实现不同数据库的适配，需要定义不同的实现类，SqlServerOrderHandler, MySqlOrderHandler, OracleOrderHandler。</p>
+<p>到底使用哪个呢？需要根据运行时决定。</p>
+<img src="/blog/2020/02/29/java15-Polymorphism/d3158b32-219e-4097-8254-4afb87484899.jpg">
+
+<p>或者</p>
+<img src="/blog/2020/02/29/java15-Polymorphism/ca1ae812-cc61-456b-b753-1c14def49d84.jpg">
+
+<p>通过反射，动态的根据输入参数创建实现类的实例：</p>
+<img src="/blog/2020/02/29/java15-Polymorphism/4d6add47-fb4a-403a-a973-40c0ef0408ce.jpg">
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java14-Nested-and-Inner-Classes" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/" class="article-date">
+      <time datetime="2020-02-29T02:14:01.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/">java14 内部类</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="内部类的定义"><a href="#内部类的定义" class="headerlink" title="内部类的定义"></a>内部类的定义</h2><p>内部类就是在其它类内部的类：</p>
+<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/425b4d6b-c0ac-4f45-acd5-43fc21d894bc.jpg">
+
+<p>如果你喜欢，可以在内部类内部再定义内部类：</p>
+<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/77548d4e-f647-4ec1-b0ff-12772c2c6e07.jpg">
+
+<p>内部类类似于域、方法，可以有四种访问修饰符：public / private / default / protected</p>
+<h2 id="静态内部类和内部类区别"><a href="#静态内部类和内部类区别" class="headerlink" title="静态内部类和内部类区别"></a>静态内部类和内部类区别</h2><ol>
+<li><p>静态内部类可以包含静态域，内部类不行。</p>
+</li>
+<li><p>实例内部类可以访问外部的静态、实例域，方法，包括私有的。静态内部类仅可以访问外部的静态资源。</p>
+</li>
+<li><p>静态内部类可以不用创建外部类，直接创建实例。实例内部类需要先创建外部类的实例。</p>
+</li>
+</ol>
+<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><p>创建静态类：</p>
+<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/25086175-1c78-46e0-a853-f926856d4629.jpg">
+
+<p>使用其创建对象：</p>
+<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/b3f347ef-65f7-4c9a-a359-5442cc7ba493.jpg">
+
+<p>外部类.内部类 创建对象。</p>
+<h2 id="实例内部类"><a href="#实例内部类" class="headerlink" title="实例内部类"></a>实例内部类</h2><img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/e8c232a2-322d-454b-aff6-fc045f14adfc.jpg">
+
+<p>内部类创建实例：</p>
+<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/fa5fd1c3-2901-40f0-a476-55a4ac516e25.jpg">
+
+<p>需要外部类的实例.new 内部类</p>
+<h2 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h2><img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/ffab32ff-27e6-4ffb-bb41-663d8afbcb01.jpg">
+
+<p>在方法的内部定义内部类称为局部内部类。</p>
+<p>布局内部类可以使用方法的参数，但是只能使用final参数：</p>
+<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/90a27107-e989-4239-909e-5d7b8d11fa3e.jpg">
+
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p>创建接口：</p>
+<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/18bc7bef-c670-419c-ad33-f90063c79ead.jpg">
+
+<p>创建接口的匿名内部类：</p>
+<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/46969a31-64a7-4f7f-b06c-269ef48f89a3.jpg">
+
+<p>抽象类也可以：</p>
+<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/acd4f4f7-84c2-42db-be94-39dffe751bec.jpg">
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">

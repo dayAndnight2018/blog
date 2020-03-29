@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="成华" />
+
+
+
+<meta name="description" content="常用的java标点符号  八大基本数据类型  其中，byte,short, int, long, float, double表示数值，其位数和数值范围如表所示。 以byte为例做出解释： 占用8位，也就是2^8 &#x3D; 256个数值,前128个数值为-128——-1，0占一个，剩余127个为正数。所以它的范围是-128——127 在选择数据类型的时候，要尽可能的小，因为大范围的数值类型分配的空间更大，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java02 语言基础">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/02/18/java02-Language-Fundamentals/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="常用的java标点符号  八大基本数据类型  其中，byte,short, int, long, float, double表示数值，其位数和数值范围如表所示。 以byte为例做出解释： 占用8位，也就是2^8 &#x3D; 256个数值,前128个数值为-128——-1，0占一个，剩余127个为正数。所以它的范围是-128——127 在选择数据类型的时候，要尽可能的小，因为大范围的数值类型分配的空间更大，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/40d04f70-a554-4201-adb0-69c912913523.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/e4f8600a-4bdc-4442-829a-0c2107aab57a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/a3c64e8d-26fc-4fff-bb00-85d00de9e114.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/e72ed210-af26-4b78-970a-0d7117dad16b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/b6680e0c-bc4d-4f65-8528-766d31104f0a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/3910afb2-3a36-4e25-b7b2-a536d7f0e2aa.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/7633e333-f92b-4317-a4ef-9c3c22e67afb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/6961d166-e05a-4b9a-9327-20ff37d3bbed.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/169d0faa-511f-48db-80cc-a4f734877a82.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/3b7aa78c-d1c4-4c83-8dd5-92092dc42fc5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/49dd3158-4507-4e5f-947a-eedbac37edf4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/d8876135-9f3d-47c8-a002-ea0fecadfd23.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/ab7f5eca-59f2-48da-8323-531796f4dbb5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/54c90be3-a592-4af0-bf79-cbb9b3d495a1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/4bf22b19-22d1-4a01-b4cf-34612aff6f65.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/d2db3944-b88e-4c4d-95d0-f5a7480f5ccb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/1da1369e-84f1-4c05-a45a-efe562b9892a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/5bb1ec56-2ceb-42e2-8427-39d7984dfc82.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/de223479-b56e-44e0-ab0e-11e1efa65e74.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/afdc21f4-0d83-4e86-ac54-58df9687e5d8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/6489416e-4e8b-47f7-97f7-4a5cfc6947a9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/f042feab-b605-4856-be34-18b18d41a808.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/6cd696dc-e69f-41e8-8770-bff4372af431.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/0e7797fd-e917-46ed-88fa-11d4f227cc4d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/7995a187-a7d2-4985-91d4-5580ef6eeb4a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/7f2ba6c8-78b6-4473-bd01-7230add2407f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/37f60070-e0ff-4c3e-8d9a-d4a1f31c26f9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/b1fa1ea6-4b79-4162-b041-88454131669f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/d5e1e471-eec0-4b9e-afad-883750c2bafd.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/e4ce0951-6c79-41f7-a60e-03a6df06f17b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/998f06cd-f15c-4951-97fb-0caf4260fac4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/59f05262-f6e8-48e1-b350-2d98b6ae7710.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/389d1446-c8f3-408b-8c2d-ffaf1999ef25.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/47e13e00-6d3c-4ffa-bdcd-13b0f61c7446.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/dd5c5bf0-b166-4a57-ad5b-8b71c03d6107.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/465562ae-49d4-412f-b394-f2a605ed93af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/865c46eb-5ad6-4395-b8ff-5af9122f1cb8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/a0178f80-6981-4360-9513-8f44cbe7fe75.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/948309d3-f3b0-446e-8ee2-bb9b9ba43bee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/16d97a50-85b7-4ad8-81b8-09b0e248f336.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/0854e07f-0a8d-45d4-9aa5-46172adc3021.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/a6ff2622-77c0-42c1-b9a0-fd99651e0728.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/f331b50e-ab98-4558-92b6-545d3126c615.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/b709373b-51f5-44c2-86ca-7700f8ea241c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/3524caaf-19cd-49d7-8ce1-46fb665fcc7d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/63e53d0a-2610-4163-a39e-40969787e22c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/59b9b2fd-3cdb-49aa-bfe7-f20b588e8107.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/bf3dd85b-e21d-48a9-a76e-b4bf406623b1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/9eab97d0-02f1-472f-adf6-5bbc94b8c81d.jpg">
+<meta property="article:published_time" content="2020-02-18T04:08:37.000Z">
+<meta property="article:modified_time" content="2020-02-18T12:09:06.559Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/40d04f70-a554-4201-adb0-69c912913523.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/blog/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>java02 语言基础 | 成华的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/blog/" class="profilepic">
+            <img src="/blog/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/blog/">成华</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/blog/">主页</a></li>
+                        
+                            <li><a href="/blog/archives/">所有文章</a></li>
+                        
+                            <li><a href="/blog/tags/">标签云</a></li>
+                        
+                            <li><a href="/blog/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/blog/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/" target="_blank" rel="noopener">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">成华</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/blog/" class="profilepic">
+                <img src="/blog/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/blog/" title="回到主页">成华</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/blog/">主页</a></li>
+                
+                    <li><a href="/blog/archives/">所有文章</a></li>
+                
+                    <li><a href="/blog/tags/">标签云</a></li>
+                
+                    <li><a href="/blog/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/blog/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-java02-Language-Fundamentals" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/18/java02-Language-Fundamentals/" class="article-date">
+      <time datetime="2020-02-18T04:08:37.000Z" itemprop="datePublished">2020-02-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java02 语言基础
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="常用的java标点符号"><a href="#常用的java标点符号" class="headerlink" title="常用的java标点符号"></a>常用的java标点符号</h2><img src="/blog/2020/02/18/java02-Language-Fundamentals/40d04f70-a554-4201-adb0-69c912913523.jpg">
+
+<h2 id="八大基本数据类型"><a href="#八大基本数据类型" class="headerlink" title="八大基本数据类型"></a>八大基本数据类型</h2><img src="/blog/2020/02/18/java02-Language-Fundamentals/e4f8600a-4bdc-4442-829a-0c2107aab57a.jpg">
+
+<p>其中，byte,short, int, long, float, double表示数值，其位数和数值范围如表所示。</p>
+<p>以byte为例做出解释：</p>
+<p>占用8位，也就是2^8 = 256个数值,前128个数值为-128——-1，0占一个，剩余127个为正数。所以它的范围是-128——127</p>
+<p>在选择数据类型的时候，要尽可能的<code style="background:#ff3385;color:white;padding:5px;">小</code>，因为大范围的数值类型分配的空间更大，会造成内存的<code style="background:#ff3385;color:white;padding:5px;">浪费</code>。</p>
+<p>byte, short, int, long用于存储整数，float和double用于存储小数。</p>
+<p>char 类型允许存储一个Unicode字符</p>
+<p>Boolean用于存储两种结果：true 或者 false</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>在Java中存在两种变量：</p>
+<ol>
+<li><p>引用变量：存储的是对象的引用</p>
+</li>
+<li><p>基本变量：存储的基本数据类型</p>
+</li>
+</ol>
+<p>变量除了具有指定的数据类型外，还具有名称（标识符），其命名规则必须遵循以下几种要求：</p>
+<ol>
+<li><p>变量名称可以是有限长度的字母、数字、下划线、美元符号组成，需要以字母或下划线开头。</p>
+</li>
+<li><p>变量名称不得与关键字重复</p>
+</li>
+<li><p>变量名符合作用域要求。</p>
+</li>
+</ol>
+<p>以下是Java的关键字列表：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/a3c64e8d-26fc-4fff-bb00-85d00de9e114.jpg">
+
+<h2 id="变量的定义格式"><a href="#变量的定义格式" class="headerlink" title="变量的定义格式"></a>变量的定义格式</h2><p>类型 + 变量名称 + “;”</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/e72ed210-af26-4b78-970a-0d7117dad16b.jpg">
+
+<p>分别定义了byte类型的x、int类型的rowCount、char类型的c</p>
+<p>也可以在一行中定义多个相同类型的变量：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/b6680e0c-bc4d-4f65-8528-766d31104f0a.jpg">
+
+<p>在变量声明的同时，也可以完成赋值：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/3910afb2-3a36-4e25-b7b2-a536d7f0e2aa.jpg">
+
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>常量指的是一旦赋值不再更改的变量。常常用final修饰定义，全部使用大写，使用下划线分隔：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/7633e333-f92b-4317-a4ef-9c3c22e67afb.jpg">
+
+<h2 id="Integer字面值"><a href="#Integer字面值" class="headerlink" title="Integer字面值"></a>Integer字面值</h2><p>分为十进制，八进制，十六进制，二进制字面值，默认是十进制，八进制以0开头，十六进制以0X开头，二进制以0B开头。</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+int a = 100;
+int b = 0100;
+int c = 0X100;
+int d = 0B100;
+
+</pre>
+
+<p>对于合适的数据类型，不要超过其数值范围。</p>
+<p>在定义long类型的数据时，需要在数值末尾使用L作为备注标记。</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/6961d166-e05a-4b9a-9327-20ff37d3bbed.jpg">
+
+<p>对于较大的数值，可以使用下划线分隔表示，不影响数值大小，且放置位置任意。（从Java 7开始）</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/169d0faa-511f-48db-80cc-a4f734877a82.jpg">
+
+<h2 id="浮点类型字面值"><a href="#浮点类型字面值" class="headerlink" title="浮点类型字面值"></a>浮点类型字面值</h2><p>包括float和double两种，分别为32位和64位。分为整数部分 、小数部分、E指数部分。默认是double类型，float类型需要以F作为标记。</p>
+<p>以下均为有效的float浮点型字面值表示：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/3b7aa78c-d1c4-4c83-8dd5-92092dc42fc5.jpg">
+
+<p>以下均为有效的double浮点型字面值表示：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/49dd3158-4507-4e5f-947a-eedbac37edf4.jpg">
+
+<h2 id="布尔类型字面值"><a href="#布尔类型字面值" class="headerlink" title="布尔类型字面值"></a>布尔类型字面值</h2><p>只有true和false两种：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/d8876135-9f3d-47c8-a002-ea0fecadfd23.jpg">
+
+<h2 id="字符类型字面值"><a href="#字符类型字面值" class="headerlink" title="字符类型字面值"></a>字符类型字面值</h2><p>字符类型的字面值包含单个引号表示的单个Unicode字符：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/ab7f5eca-59f2-48da-8323-531796f4dbb5.jpg">
+
+<p>或者某些转义字符：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/54c90be3-a592-4af0-bf79-cbb9b3d495a1.jpg">
+
+<p>对于键盘无法输入的特殊ASCII字符，可以使用\uxxxx方式表示：</p>
+<p>例如，\u2299表示</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/4bf22b19-22d1-4a01-b4cf-34612aff6f65.jpg">
+
+<h2 id="基本数据类型转换"><a href="#基本数据类型转换" class="headerlink" title="基本数据类型转换"></a>基本数据类型转换</h2><p>自动转型：</p>
+<p>以下几种数据类型的转换是自动的，</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/d2db3944-b88e-4c4d-95d0-f5a7480f5ccb.jpg">
+
+<p>无需在代码中做任何额外的工作：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/1da1369e-84f1-4c05-a45a-efe562b9892a.jpg">
+
+<p>强制转型：</p>
+<p>以下数据类型的转换容易出现精度损失：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/5bb1ec56-2ceb-42e2-8427-39d7984dfc82.jpg">
+
+<p>没有精度损失：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/de223479-b56e-44e0-ab0e-11e1efa65e74.jpg">
+
+<p>损失精度：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/afdc21f4-0d83-4e86-ac54-58df9687e5d8.jpg">
+
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>java常见的操作符：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/6489416e-4e8b-47f7-97f7-4a5cfc6947a9.jpg">
+
+<h3 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h3><ol>
+<li>“-” 表示相反数。</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/f042feab-b605-4856-be34-18b18d41a808.jpg">
+
+<ol start="2">
+<li>“+”表示正数</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/6cd696dc-e69f-41e8-8770-bff4372af431.jpg">
+
+<ol start="3">
+<li>“++”表示自增1</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/0e7797fd-e917-46ed-88fa-11d4f227cc4d.jpg">
+
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/7995a187-a7d2-4985-91d4-5580ef6eeb4a.jpg">
+
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/7f2ba6c8-78b6-4473-bd01-7230add2407f.jpg">
+
+<p>++在前先做自增，后参与表达式运算。++在后，先参与表达式运算，后自增。</p>
+<ol start="4">
+<li>“–”自减1</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/37f60070-e0ff-4c3e-8d9a-d4a1f31c26f9.jpg">
+
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/b1fa1ea6-4b79-4162-b041-88454131669f.jpg">
+
+<p>区别同自增运算符。</p>
+<ol start="5">
+<li>“！”非运算</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/d5e1e471-eec0-4b9e-afad-883750c2bafd.jpg">
+
+<ol start="6">
+<li>“~”按位取反</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/e4ce0951-6c79-41f7-a60e-03a6df06f17b.jpg">
+
+<h3 id="算术操作符"><a href="#算术操作符" class="headerlink" title="算术操作符"></a>算术操作符</h3><ol>
+<li>“+”求和</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/998f06cd-f15c-4951-97fb-0caf4260fac4.jpg">
+
+<ol start="2">
+<li>“-”求差</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/59f05262-f6e8-48e1-b350-2d98b6ae7710.jpg">
+
+<ol start="3">
+<li>“*”求积</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/389d1446-c8f3-408b-8c2d-ffaf1999ef25.jpg">
+
+<ol start="4">
+<li>“/”求商</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/47e13e00-6d3c-4ffa-bdcd-13b0f61c7446.jpg">
+
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/dd5c5bf0-b166-4a57-ad5b-8b71c03d6107.jpg">
+
+<ol start="5">
+<li>“%”取余</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/465562ae-49d4-412f-b394-f2a605ed93af.jpg">
+
+<ol start="6">
+<li>“==” 、“！=”相等判断</li>
+</ol>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/865c46eb-5ad6-4395-b8ff-5af9122f1cb8.jpg">
+
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/a0178f80-6981-4360-9513-8f44cbe7fe75.jpg">
+
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p>&lt;  &lt;=  &gt;  &gt;= 所得结果均是Boolean类型</p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>“&amp;&amp;”表示并且</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/948309d3-f3b0-446e-8ee2-bb9b9ba43bee.jpg">
+
+<p>“||”表示或者</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/16d97a50-85b7-4ad8-81b8-09b0e248f336.jpg">
+
+<p>“？：”表示三元运算</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/0854e07f-0a8d-45d4-9aa5-46172adc3021.jpg">
+
+<p>“&amp;”与、“|”或、”^”异或</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/a6ff2622-77c0-42c1-b9a0-fd99651e0728.jpg">
+
+<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>“&lt;&lt;”左移</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/f331b50e-ab98-4558-92b6-545d3126c615.jpg">
+
+<p>“&gt;&gt;”右移</p>
+<p>有符号右移，补符号位</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/b709373b-51f5-44c2-86ca-7700f8ea241c.jpg">
+
+<p>“&gt;&gt;&gt;”无符号右移</p>
+<p>无符号右移，最左侧补0</p>
+<p>“&amp;”位与、”|”位或、”^”异或</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/3524caaf-19cd-49d7-8ce1-46fb665fcc7d.jpg">
+
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><img src="/blog/2020/02/18/java02-Language-Fundamentals/63e53d0a-2610-4163-a39e-40969787e22c.jpg">
+
+<p>上述赋值运算符属于复合型赋值运算符，例如：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/59b9b2fd-3cdb-49aa-bfe7-f20b588e8107.jpg">
+
+
+<h3 id="类型提升问题"><a href="#类型提升问题" class="headerlink" title="类型提升问题"></a>类型提升问题</h3><p>一元运算符，在byte、short、char操作的时候，操作结果是int类型，有类型提升。</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/bf3dd85b-e21d-48a9-a76e-b4bf406623b1.jpg">
+
+<p>应手动做强转:</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/9eab97d0-02f1-472f-adf6-5bbc94b8c81d.jpg">
+
+<p>对于二元操作符：</p>
+<p>1.如有任一操作数是byte或short类型，类型自动提升为int，操作结果也为int </p>
+<p>2.如有任一操作数是double类型，类型自动提升为double，操作结果也为double</p>
+<ol start="3">
+<li>如有任一操作数是float类型，类型自动提升为float，操作结果也为float</li>
+</ol>
+<p>4.如有任一操作数是long类型，类型自动提升为long，操作结果也为long</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>两种注释方式：</p>
+<ol>
+<li>// code</li>
+</ol>
+<p>2./*  code  */</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/blog/2020/02/18/java02-Language-Fundamentals/">java02 语言基础</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">成华</a></p>
+        <p><span>Created:</span>2020-02-18, 12:08:37</p>
+        <p><span>Updated:</span>2020-02-18, 20:09:06</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/blog/2020/02/18/java02-Language-Fundamentals/" title="java02 语言基础">https://dayandnight2018.github.io/2020/02/18/java02-Language-Fundamentals/</a>
+            <span class="copy-path" data-clipboard-text="From https://dayandnight2018.github.io/2020/02/18/java02-Language-Fundamentals/　　By 成华" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/blog/2020/02/18/java03-Statements/">
+                    java03 语句
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/blog/2020/02/16/java01-preparement/">
+                    java01 准备工作
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用的java标点符号"><span class="toc-number">1.</span> <span class="toc-text">常用的java标点符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八大基本数据类型"><span class="toc-number">2.</span> <span class="toc-text">八大基本数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量的定义格式"><span class="toc-number">4.</span> <span class="toc-text">变量的定义格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常量"><span class="toc-number">5.</span> <span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Integer字面值"><span class="toc-number">6.</span> <span class="toc-text">Integer字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮点类型字面值"><span class="toc-number">7.</span> <span class="toc-text">浮点类型字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔类型字面值"><span class="toc-number">8.</span> <span class="toc-text">布尔类型字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符类型字面值"><span class="toc-number">9.</span> <span class="toc-text">字符类型字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据类型转换"><span class="toc-number">10.</span> <span class="toc-text">基本数据类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作符"><span class="toc-number">11.</span> <span class="toc-text">操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一元操作符"><span class="toc-number">11.1.</span> <span class="toc-text">一元操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算术操作符"><span class="toc-number">11.2.</span> <span class="toc-text">算术操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系运算符"><span class="toc-number">11.3.</span> <span class="toc-text">关系运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑运算符"><span class="toc-number">11.4.</span> <span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算符"><span class="toc-number">11.5.</span> <span class="toc-text">位运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值运算符"><span class="toc-number">11.6.</span> <span class="toc-text">赋值运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类型提升问题"><span class="toc-number">11.7.</span> <span class="toc-text">类型提升问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">11.8.</span> <span class="toc-text">注释</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"java02 语言基础　| 成华的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/blog/2020/02/18/java03-Statements/" title="Pre: java03 语句">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/blog/2020/02/16/java01-preparement/" title="Next: java01 准备工作">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/spring02-Wiring-beans/">spring02 绑定Bean</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/spring01-introduction/">spring01 简介</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/java21-Reflection/">java21 反射</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java20-Concurrency-Utilities/">java20 并发包</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java19-Threads/">java19 线程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java18-Java-Database-Connectivity/">java18 数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java17-Networking/">java17 网络</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java16-Annotations/">java16 注解</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java15-Polymorphism/">java15 多态</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/">java14 内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java13-Input-Output/">java13 输入输出</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java12-Generics/">java12 泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java11-The-Collections-Framework/">java11 集合</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java10-Enums/">java10 枚举</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/">java09 接口与抽象类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java08-Numbers-and-Dates/">java08 数字与日期</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java07-Error-Handling/">java07 异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java06-Inheritance/">java06 继承</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java05-Core-Classes/">java05 核心类库</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/19/java04-Objects-and-Classes/">java04 对象与类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/18/java03-Statements/">java03 语句</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/18/java02-Language-Fundamentals/">java02 语言基础</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/16/java01-preparement/">java01 准备工作</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/05/hello-world/">第一篇日志</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/springMVC02/">Spring MVC创建一个项目</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/gitCommand01/">Git常用指令</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/01/springMVC01/">Spring MVC开发环境配置</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 成华
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/blog/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

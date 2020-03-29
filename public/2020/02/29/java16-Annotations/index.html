@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="成华" />
+
+
+
+<meta name="description" content="注解就是一种标记作用的特性。 注解的类型注解类型是 一种模板，注解是注解模板的具体实例。 注解类型可以包含键值对，没有键值对的叫标记注解，有单个键值对的叫单值注解。 注解的使用不带参数：   带参数：   不带参数使用示例：   带参数使用示例：   对于单值注解，可以省略键：   等价于，   标准注解Override,Deprecated, and SuppressWarnings是java5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java16 注解">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/02/29/java16-Annotations/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="注解就是一种标记作用的特性。 注解的类型注解类型是 一种模板，注解是注解模板的具体实例。 注解类型可以包含键值对，没有键值对的叫标记注解，有单个键值对的叫单值注解。 注解的使用不带参数：   带参数：   不带参数使用示例：   带参数使用示例：   对于单值注解，可以省略键：   等价于，   标准注解Override,Deprecated, and SuppressWarnings是java5">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/85551201-69c0-4f08-83d5-63ed991b4bbd.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/ed377e91-6510-4fca-bad3-7b2db24c3a6e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/d1e77ed3-6a17-419c-a249-22a3bdb515a4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/c6419b07-8952-42b7-b317-d783a4e47ced.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/fa8eb52d-254f-424f-8f79-fb7806810f48.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/78f0c90e-406b-4b82-bf6c-5c7784f218ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/a5b3a8de-7c9b-491b-9214-122c9a3f8149.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/a04c5e34-af4f-4621-bdde-fe62bd1b19ed.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/4201b15f-fb89-4bfb-af7d-18b4e7566a4e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/187f442a-d231-4b11-bccd-c9ddd3a5b8f0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/b9794ec9-c2a8-4954-ad91-b69419c40c03.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/4478e252-6345-42ac-9acc-7852132303d6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/3824930a-1ee7-437e-a301-4b64d358625e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/8afcad6c-f6c7-4dd0-889a-451ef07bbbb9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/74f95d1b-b42c-464f-8026-95e267000877.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/5a50e87a-c532-41b9-a069-f2c423b95c51.jpg">
+<meta property="article:published_time" content="2020-02-29T03:35:17.000Z">
+<meta property="article:modified_time" content="2020-02-29T06:28:05.957Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java16-Annotations/85551201-69c0-4f08-83d5-63ed991b4bbd.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/blog/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>java16 注解 | 成华的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/blog/" class="profilepic">
+            <img src="/blog/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/blog/">成华</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/blog/">主页</a></li>
+                        
+                            <li><a href="/blog/archives/">所有文章</a></li>
+                        
+                            <li><a href="/blog/tags/">标签云</a></li>
+                        
+                            <li><a href="/blog/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/blog/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/" target="_blank" rel="noopener">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">成华</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/blog/" class="profilepic">
+                <img src="/blog/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/blog/" title="回到主页">成华</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/blog/">主页</a></li>
+                
+                    <li><a href="/blog/archives/">所有文章</a></li>
+                
+                    <li><a href="/blog/tags/">标签云</a></li>
+                
+                    <li><a href="/blog/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/blog/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-java16-Annotations" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/29/java16-Annotations/" class="article-date">
+      <time datetime="2020-02-29T03:35:17.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java16 注解
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>注解就是一种标记作用的特性。</p>
+<h2 id="注解的类型"><a href="#注解的类型" class="headerlink" title="注解的类型"></a>注解的类型</h2><p>注解类型是 一种<code style="background:#ff3385;color:white;padding:5px;">模板</code>，注解是注解模板的<code style="background:#ff3385;color:white;padding:5px;">具体实例</code>。</p>
+<p>注解类型可以包含键值对，没有键值对的叫<code style="background:#ff3385;color:white;padding:5px;">标记注解</code>，有单个键值对的叫<code style="background:#ff3385;color:white;padding:5px;">单值注解</code>。</p>
+<h2 id="注解的使用"><a href="#注解的使用" class="headerlink" title="注解的使用"></a>注解的使用</h2><p>不带参数：</p>
+<img src="/blog/2020/02/29/java16-Annotations/85551201-69c0-4f08-83d5-63ed991b4bbd.jpg">
+
+<p>带参数：</p>
+<img src="/blog/2020/02/29/java16-Annotations/ed377e91-6510-4fca-bad3-7b2db24c3a6e.jpg">
+
+<p>不带参数使用示例：</p>
+<img src="/blog/2020/02/29/java16-Annotations/d1e77ed3-6a17-419c-a249-22a3bdb515a4.jpg">
+
+<p>带参数使用示例：</p>
+<img src="/blog/2020/02/29/java16-Annotations/c6419b07-8952-42b7-b317-d783a4e47ced.jpg">
+
+<p>对于单值注解，可以省略键：</p>
+<img src="/blog/2020/02/29/java16-Annotations/fa8eb52d-254f-424f-8f79-fb7806810f48.jpg">
+
+<p>等价于，</p>
+<img src="/blog/2020/02/29/java16-Annotations/78f0c90e-406b-4b82-bf6c-5c7784f218ee.jpg">
+
+<h2 id="标准注解"><a href="#标准注解" class="headerlink" title="标准注解"></a>标准注解</h2><p>Override,Deprecated, and SuppressWarnings是java5添加的标准注解</p>
+<h3 id="Override"><a href="#Override" class="headerlink" title="Override"></a>Override</h3><p>这个注解主要用于<code style="background:#ff3385;color:white;padding:5px;">方法</code>，表面此方法是用于重写父类的方法。</p>
+<img src="/blog/2020/02/29/java16-Annotations/a5b3a8de-7c9b-491b-9214-122c9a3f8149.jpg">
+
+<h3 id="Deprecated"><a href="#Deprecated" class="headerlink" title="Deprecated"></a>Deprecated</h3><p>这个注解主要用于提醒调用方，这个<code style="background:#ff3385;color:white;padding:5px;">方法</code> / <code style="background:#ff3385;color:white;padding:5px;">类</code> / <code style="background:#ff3385;color:white;padding:5px;">接口</code>是不推荐使用的，过时的。</p>
+<img src="/blog/2020/02/29/java16-Annotations/a04c5e34-af4f-4621-bdde-fe62bd1b19ed.jpg">
+
+<h3 id="SuppressWarnings"><a href="#SuppressWarnings" class="headerlink" title="SuppressWarnings"></a>SuppressWarnings</h3><p>压制<code style="background:#ff3385;color:white;padding:5px;">编译</code>错误，可以用于类型,构造器, 方法, 域, 参数, 局部变量.</p>
+<img src="/blog/2020/02/29/java16-Annotations/4201b15f-fb89-4bfb-af7d-18b4e7566a4e.jpg">
+
+<p>参数类型：</p>
+<p>unchecked 未检查</p>
+<p>path 位置不存在</p>
+<p>serial 序列化id</p>
+<p>finally 方法不能正常结束</p>
+<p>fallthrough 对switch贯穿代码的压制</p>
+<p>示例（压制unchecked 和serial ）：</p>
+<img src="/blog/2020/02/29/java16-Annotations/187f442a-d231-4b11-bccd-c9ddd3a5b8f0.jpg">
+
+<h2 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h2><p>元注解就是用来注解注解类型的注解。Documented, Inherited, Retention, and Target</p>
+<h3 id="Documented"><a href="#Documented" class="headerlink" title="Documented"></a>Documented</h3><p>表示这个注解要写入javaDoc文档。</p>
+<p>@Deprecated注解是带有@Documented修饰的，因此，在JavaDoc文档中包含注释，而@Override没有@Documented修饰，在文档中没有呈现。</p>
+<img src="/blog/2020/02/29/java16-Annotations/b9794ec9-c2a8-4954-ad91-b69419c40c03.jpg">
+
+<h3 id="Inherited"><a href="#Inherited" class="headerlink" title="Inherited"></a>Inherited</h3><p>对此标记的注解，凡是标记了注解的类，其子类将继承这个注解。</p>
+<h3 id="Retention"><a href="#Retention" class="headerlink" title="Retention"></a>Retention</h3><p>表示注解的有效范围，有效值：</p>
+<p>SOURCE.源码级别，编译器将忽略。</p>
+<p>CLASS默认级别，jvm忽略。</p>
+<p>RUNTIME可以使用反射，运行时级别。</p>
+<p>以下表明有效范围是源码级：</p>
+<img src="/blog/2020/02/29/java16-Annotations/4478e252-6345-42ac-9acc-7852132303d6.jpg">
+
+<h3 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h3><p>指向的注解对象。</p>
+<p>▪ ANNOTATION_TYPE 注解定义</p>
+<p>▪ CONSTRUCTOR. 构造器</p>
+<p>▪ FIELD. 域</p>
+<p>▪ LOCAL_VARIABLE. 局部变量</p>
+<p>▪ METHOD. 方法</p>
+<p>▪ PACKAGE. 包</p>
+<p>▪ PARAMETER. 参数</p>
+<p>▪ TYPE. 类型</p>
+<p>使用示例：</p>
+<img src="/blog/2020/02/29/java16-Annotations/3824930a-1ee7-437e-a301-4b64d358625e.jpg">
+
+<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><pre style="background:#e6e6e6;padding=10px;">
+
+public @interface CustomAnnotation {
+}
+
+</pre>
+
+<p>注解定义示例：</p>
+<img src="/blog/2020/02/29/java16-Annotations/8afcad6c-f6c7-4dd0-889a-451ef07bbbb9.jpg">
+
+<p>注解使用：</p>
+<img src="/blog/2020/02/29/java16-Annotations/74f95d1b-b42c-464f-8026-95e267000877.jpg">
+
+<h2 id="注解的反射用法"><a href="#注解的反射用法" class="headerlink" title="注解的反射用法"></a>注解的反射用法</h2><pre style="background:#e6e6e6;padding=10px;">
+
+//获取注解,没有则为null
+public <A extends java.lang.annotation.annotation> A getAnnotation (Class<A> annotationClass)
+
+//获取所有注解
+public java.lang.annotation.Annotation[] getAnnotations()
+
+//判断是否为注解类
+public boolean isAnnotation()
+
+//判断是否包含注解
+public boolean isAnnotationPresent(Class<? extends java.lang.annotation.Annotation> annotationClass)
+
+</A></A></pre>
+
+<p>使用示例：</p>
+<img src="/blog/2020/02/29/java16-Annotations/5a50e87a-c532-41b9-a069-f2c423b95c51.jpg">
+
+
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/blog/2020/02/29/java16-Annotations/">java16 注解</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">成华</a></p>
+        <p><span>Created:</span>2020-02-29, 11:35:17</p>
+        <p><span>Updated:</span>2020-02-29, 14:28:05</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/blog/2020/02/29/java16-Annotations/" title="java16 注解">https://dayandnight2018.github.io/2020/02/29/java16-Annotations/</a>
+            <span class="copy-path" data-clipboard-text="From https://dayandnight2018.github.io/2020/02/29/java16-Annotations/　　By 成华" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/blog/2020/02/29/java17-Networking/">
+                    java17 网络
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/blog/2020/02/29/java15-Polymorphism/">
+                    java15 多态
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#注解的类型"><span class="toc-number">1.</span> <span class="toc-text">注解的类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解的使用"><span class="toc-number">2.</span> <span class="toc-text">注解的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标准注解"><span class="toc-number">3.</span> <span class="toc-text">标准注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Override"><span class="toc-number">3.1.</span> <span class="toc-text">Override</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deprecated"><span class="toc-number">3.2.</span> <span class="toc-text">Deprecated</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SuppressWarnings"><span class="toc-number">3.3.</span> <span class="toc-text">SuppressWarnings</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元注解"><span class="toc-number">4.</span> <span class="toc-text">元注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Documented"><span class="toc-number">4.1.</span> <span class="toc-text">Documented</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inherited"><span class="toc-number">4.2.</span> <span class="toc-text">Inherited</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Retention"><span class="toc-number">4.3.</span> <span class="toc-text">Retention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Target"><span class="toc-number">4.4.</span> <span class="toc-text">Target</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义注解"><span class="toc-number">5.</span> <span class="toc-text">自定义注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解的反射用法"><span class="toc-number">6.</span> <span class="toc-text">注解的反射用法</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"java16 注解　| 成华的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/blog/2020/02/29/java17-Networking/" title="Pre: java17 网络">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/blog/2020/02/29/java15-Polymorphism/" title="Next: java15 多态">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/spring02-Wiring-beans/">spring02 绑定Bean</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/spring01-introduction/">spring01 简介</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/java21-Reflection/">java21 反射</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java20-Concurrency-Utilities/">java20 并发包</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java19-Threads/">java19 线程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java18-Java-Database-Connectivity/">java18 数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java17-Networking/">java17 网络</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java16-Annotations/">java16 注解</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java15-Polymorphism/">java15 多态</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/">java14 内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java13-Input-Output/">java13 输入输出</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java12-Generics/">java12 泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java11-The-Collections-Framework/">java11 集合</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java10-Enums/">java10 枚举</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/">java09 接口与抽象类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java08-Numbers-and-Dates/">java08 数字与日期</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java07-Error-Handling/">java07 异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java06-Inheritance/">java06 继承</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java05-Core-Classes/">java05 核心类库</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/19/java04-Objects-and-Classes/">java04 对象与类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/18/java03-Statements/">java03 语句</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/18/java02-Language-Fundamentals/">java02 语言基础</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/16/java01-preparement/">java01 准备工作</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/05/hello-world/">第一篇日志</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/springMVC02/">Spring MVC创建一个项目</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/gitCommand01/">Git常用指令</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/01/springMVC01/">Spring MVC开发环境配置</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 成华
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/blog/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

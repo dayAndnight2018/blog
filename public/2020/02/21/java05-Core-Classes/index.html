@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="成华" />
+
+
+
+<meta name="description" content="java.lang.Object这个是Java的核心类，表示对象，任何类都直接或间接地继承着这个类。   &#x2F;&#x2F;克隆方法，重写这个方法的类可以实现对象的复制。 protected Object clone()      &#x2F;&#x2F;对象的相等比较方法。 public boolean equals(Object obj)      &#x2F;&#x2F;资源释放的方法 protected void finalize()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java05 核心类库">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/02/21/java05-Core-Classes/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="java.lang.Object这个是Java的核心类，表示对象，任何类都直接或间接地继承着这个类。   &#x2F;&#x2F;克隆方法，重写这个方法的类可以实现对象的复制。 protected Object clone()      &#x2F;&#x2F;对象的相等比较方法。 public boolean equals(Object obj)      &#x2F;&#x2F;资源释放的方法 protected void finalize()">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/081eade3-4f91-401e-9b61-60ac9a15661e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/ebb445d9-d07a-4898-b47f-87397a039ea5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/0713ac84-9fad-4052-9904-9706bb8c3b37.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/9809a401-f79e-432a-a6f0-f5b7a725078c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/5dd979db-7e21-42e5-9d92-585fc4795854.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/f3805075-922d-4bcf-967b-24ec7a026377.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/bfd13fdf-a7d1-4c05-930e-4bdbe79ca776.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/d89cd4ca-0e97-452e-8597-4109c0373499.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/a6c8b92e-f118-401e-9ac4-09f796459d7a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/9482b9be-80fd-4546-b107-d92c971bc290.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/0e44bc35-2895-477e-8dcc-df3a7731f1c5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/7c8d93d8-9c5f-44bb-8edf-e172f0f6e8a8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/2ab1388d-2dac-484f-b6f6-2d97c429bf64.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/b0b44b10-6f4a-4aac-b777-bde98537b22e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/de9134a7-140d-433e-b5b2-f3d860e2926f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/04f47d2c-207d-45b5-9518-6daec85902a7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/6248cf32-4575-47cb-9464-df56e9301786.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/97d4af7c-8920-4000-8898-128495ea178d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/b7d1e97d-e131-4c39-9b4b-7a4a1ddce8e4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/d8e2f452-9664-4ce6-8a5d-72aa8569cc06.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/4a5cf78c-afb9-456a-8729-ba1a584266c4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/5c3bdee7-b9b0-4084-b934-9b3d7267a6cd.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/a8f7d299-5d9f-4b8d-b8e6-79b30e6d7d27.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/6361e788-082d-4c37-b654-906d5bed693a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/a639119d-d7b4-448c-980f-17745c5a285e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/aaaf816b-9537-4f92-9ec8-ce0be05a66ed.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/a2f64b02-975b-40b5-8326-05c1bdcf1fd8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/bb7e5c6e-7f6e-4cf4-a9db-b2ac6abd7b0d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/1ed6bfb5-f43c-4abb-80f0-82b229f90352.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/b6889dd7-1275-45eb-a427-a3562ddef058.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/fa04b82c-6b50-4753-87fc-c50174203d0d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/6a0b2ce6-54cf-4e38-bafb-bdbb75f0f517.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/01be6142-16f5-49f7-8e4b-18003d97ab00.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/705950db-e69d-4eb8-a105-8eff1b275f0f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/6d742284-9c2b-402e-b8b0-0937fe45fb81.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/674d0b59-7054-48b4-93fe-18a17193fb7a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/81764b63-d232-479c-8df4-424af28a9c21.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/3afbcb0a-9a13-4c94-a8f5-698914798200.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/3995a06b-cab5-45d1-8640-c68458b3a56f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/df3faa3d-4976-468c-b8d1-985504f12097.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/aeab86fb-4a8d-4cb1-a994-c91b56291008.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/d422e897-ee3a-4ba0-9bc4-3a8827946c24.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/4a841218-e5a9-4ad3-bb07-15bef25cbdf3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/822b2cc3-a69b-4b4a-a60c-93a4527a7aee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/f61ad021-8259-4712-96bc-3f750ccdcec3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/48fc6552-d93c-416b-ab17-9c7d0785bba1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/e0060425-5297-4d04-817f-db3fb7915119.jpg">
+<meta property="article:published_time" content="2020-02-21T05:10:45.000Z">
+<meta property="article:modified_time" content="2020-02-21T11:24:12.980Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java05-Core-Classes/081eade3-4f91-401e-9b61-60ac9a15661e.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/blog/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>java05 核心类库 | 成华的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/blog/" class="profilepic">
+            <img src="/blog/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/blog/">成华</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/blog/">主页</a></li>
+                        
+                            <li><a href="/blog/archives/">所有文章</a></li>
+                        
+                            <li><a href="/blog/tags/">标签云</a></li>
+                        
+                            <li><a href="/blog/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/blog/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/" target="_blank" rel="noopener">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">成华</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/blog/" class="profilepic">
+                <img src="/blog/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/blog/" title="回到主页">成华</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/blog/">主页</a></li>
+                
+                    <li><a href="/blog/archives/">所有文章</a></li>
+                
+                    <li><a href="/blog/tags/">标签云</a></li>
+                
+                    <li><a href="/blog/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/blog/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-java05-Core-Classes" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/02/21/java05-Core-Classes/" class="article-date">
+      <time datetime="2020-02-21T05:10:45.000Z" itemprop="datePublished">2020-02-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java05 核心类库
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="java-lang-Object"><a href="#java-lang-Object" class="headerlink" title="java.lang.Object"></a>java.lang.Object</h2><p>这个是Java的核心类，表示对象，任何类都直接或间接地继承着这个类。</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+//克隆方法，重写这个方法的类可以实现对象的复制。
+protected Object clone()
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//对象的相等比较方法。
+public boolean equals(Object obj)
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//资源释放的方法
+protected void finalize()
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//获取类型的方法
+public final Class getClass()
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//hashcode方法
+public int hashCode()
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//类的描述方法
+public String toString()
+
+</pre>
+
+<h2 id="java-lang-String"><a href="#java-lang-String" class="headerlink" title="java.lang.String"></a>java.lang.String</h2><p>字符串是存储文本的一种引用数据类型，同时，它是不可变的，进而是线程安全的。</p>
+<p>字符串创建：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/081eade3-4f91-401e-9b61-60ac9a15661e.jpg">
+
+<p>等价于：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/ebb445d9-d07a-4898-b47f-87397a039ea5.jpg">
+
+<p>两种创建对象的方法有所区别：</p>
+<p>使用new关键字创建的对象，将<code style="background:#ff3385;color:white;padding:5px;">始终创建新的对象</code>，而直接赋值的方法将会从<code style="background:#ff3385;color:white;padding:5px;">缓存池</code>获取已经存在的字符串对象。</p>
+<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><img src="/blog/2020/02/21/java05-Core-Classes/0713ac84-9fad-4052-9904-9706bb8c3b37.jpg">
+
+<p>返回的结果是相等的，s1和s2指向的是相同的地址。</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/9809a401-f79e-432a-a6f0-f5b7a725078c.jpg">
+
+<p>返回的结果是不等，因为new始终创建新的对象，地址不同。</p>
+<p>只比较文本内容，可以使用equals方法：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/5dd979db-7e21-42e5-9d92-585fc4795854.jpg">
+
+<p>防止空指针，可以使用：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/f3805075-922d-4bcf-967b-24ec7a026377.jpg">
+
+<h3 id="String字面量"><a href="#String字面量" class="headerlink" title="String字面量"></a>String字面量</h3><img src="/blog/2020/02/21/java05-Core-Classes/bfd13fdf-a7d1-4c05-930e-4bdbe79ca776.jpg">
+
+<p>这种换行方式是无法编译的，不允许这样换行。</p>
+<p>使用+号进行连接是可以的：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/d89cd4ca-0e97-452e-8597-4109c0373499.jpg">
+
+<p>一个基本类型和一个String可以连接，一个对象与String连接会调用toString方法进行连接。</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/a6c8b92e-f118-401e-9ac4-09f796459d7a.jpg">
+
+<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><img src="/blog/2020/02/21/java05-Core-Classes/9482b9be-80fd-4546-b107-d92c971bc290.jpg">
+
+<p>一些无法输入的字符可以使用转义字符表示。</p>
+<h3 id="String可以用于switch方法"><a href="#String可以用于switch方法" class="headerlink" title="String可以用于switch方法"></a>String可以用于switch方法</h3><img src="/blog/2020/02/21/java05-Core-Classes/0e44bc35-2895-477e-8dcc-df3a7731f1c5.jpg">
+
+<p>从java7开始，switch语句的条件可以使用String。</p>
+<h3 id="String的构造函数"><a href="#String的构造函数" class="headerlink" title="String的构造函数"></a>String的构造函数</h3><p>String的构造函数一定会创建新的对象，可以创建空的字符串、复制字符串、字符数组或字节数组。</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+//创建空字符串
+public String()
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//创建副本
+public String(String original)
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//字符数组
+public String(char[] value)
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//字节数组
+public String(byte[] bytes)
+
+</pre>
+
+<pre style="background:#e6e6e6;padding=10px;">
+
+//指定字节数组及编码方式
+public String(byte[] bytes, String encoding)
+
+</pre>
+
+<h3 id="String类的方法"><a href="#String类的方法" class="headerlink" title="String类的方法"></a>String类的方法</h3><pre style="background:#e6e6e6;padding=10px;">
+
+//获取指定位置的字符
+public char charAt(int index)
+
+//连接字符串
+public String concat(String s)
+
+//相等判断
+public boolean equals(String anotherString)
+
+//结尾字符判断
+public boolean endsWith(String suffix)
+
+//字符位置判断
+public int indexOf(String substring)
+
+//从指定位置查找
+public int indexOf(String substring, int fromIndex)
+
+//最后一次出现
+public int lastIndexOf(String substring)
+
+public int lastIndexOf(String substring, int fromIndex)
+
+//字符串截取
+public String substring(int beginIndex)
+
+public String substring(int beginIndex, int endIndex)
+
+//替换字符
+public String replace(char oldChar, char newChar)
+
+//获取长度
+public int length()
+
+//判空
+public boolean isEmpty()
+
+//正则匹配分割
+public String[] split(String regEx)
+
+//开始判断
+public boolean startsWith(String prefix)
+
+//转换为字符数组
+public char[] toCharArray()
+
+//转小写
+public String toLowerCase()
+
+//转大写
+public String toUpperCase()
+
+//去除空格
+public String trim()
+
+</pre>
+
+<p>一些静态构造方法：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/7c8d93d8-9c5f-44bb-8edf-e172f0f6e8a8.jpg">
+
+<p>格式输出：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/2ab1388d-2dac-484f-b6f6-2d97c429bf64.jpg">
+
+<h2 id="StringBuilder-amp-String-Buffer"><a href="#StringBuilder-amp-String-Buffer" class="headerlink" title="StringBuilder &amp; String Buffer"></a>StringBuilder &amp; String Buffer</h2><p>String Buffer是线程安全的，内部采用了同步措施，StringBuilder是非同步的，效率高。</p>
+<h3 id="StringBuilder构造器"><a href="#StringBuilder构造器" class="headerlink" title="StringBuilder构造器"></a>StringBuilder构造器</h3><p>可以使用无参构造，或指定空间，或传入字符串。<br><img src="/blog/2020/02/21/java05-Core-Classes/b0b44b10-6f4a-4aac-b777-bde98537b22e.jpg"></p>
+<p>默认的容量是<code style="background:#ff3385;color:white;padding:5px;">16</code>，超出大小再进行扩容。如果你预先知道空间占用，请预先指定容量。</p>
+<h3 id="StringBuilder的方法"><a href="#StringBuilder的方法" class="headerlink" title="StringBuilder的方法"></a>StringBuilder的方法</h3><pre style="background:#e6e6e6;padding=10px;">
+
+//获取容量
+public int capacity()
+
+//获取长度
+public int length()
+
+//追加字符串，可以使用很多基本类型数据
+public StringBuilder append(String string)
+
+//在指定位置插入字符串
+public StringBuilder insert(int offset, String string)
+
+//转换为字符串
+public String toString()
+
+
+</pre>
+
+<h2 id="包装类型"><a href="#包装类型" class="headerlink" title="包装类型"></a>包装类型</h2><table cellpadding="8" border="1" style="background:#EAF2D3;text-align:center">
+<tr>
+&nbsp;<td>
+基本数据类型
+&nbsp;</td>
+&nbsp;<td>
+包装类型
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+int
+&nbsp;</td>
+&nbsp;<td>
+Integer
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+byte
+&nbsp;</td>
+&nbsp;<td>
+Byte
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+short
+&nbsp;</td>
+&nbsp;<td>
+Short
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+long
+&nbsp;</td>
+&nbsp;<td>
+Long
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+float
+&nbsp;</td>
+&nbsp;<td>
+Float
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+double
+&nbsp;</td>
+&nbsp;<td>
+Double
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+boolean
+&nbsp;</td>
+&nbsp;<td>
+Boolean
+&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;<td>
+char
+&nbsp;</td>
+&nbsp;<td>
+Character
+&nbsp;</td>
+</tr>
+
+</table>
+
+<h3 id="Integer"><a href="#Integer" class="headerlink" title="Integer"></a>Integer</h3><p>最大值与最小值：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+Integer.MIN_VALUE
+
+Integer.MAX_VALUE
+
+</pre>
+
+<p>构造器:</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public Integer(int value)
+
+public Integer(String value)
+
+</pre>
+
+<p>字符串转换：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public static int parsetInt(String string)
+
+public static String toString(int i)
+
+</pre>
+
+<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><p>构造器：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public Boolean(boolean value)
+
+public Boolean(String value)
+
+</pre>
+
+<p>获取boolean:</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public boolean booleanValue()
+
+</pre>
+
+<p>字符串转换：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public static Boolean valueOf(String string)
+
+public static String toString(boolean boolean)
+
+</pre>
+
+<h3 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h3><p>构造器：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public Character(char value)
+
+</pre>
+
+<p>获取char:</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public char charValue()
+
+</pre>
+
+<p>数字判断：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public static boolean isDigit(char ch)
+
+</pre>
+
+<p>大小写转换：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+
+public static char toLowerCase(char ch)
+
+public static char toUpperCase(char ch)
+
+</pre>
+
+<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><p>一组相同的数据可以存储在数组里，数组的大小可以使用length获得，同时大小不可变。数组可以根据索引读写数据，索引从0开始。</p>
+<p>没有元素的数组称为null:</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/de9134a7-140d-433e-b5b2-f3d860e2926f.jpg">
+
+<p>数组的定义：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/04f47d2c-207d-45b5-9518-6daec85902a7.jpg">
+
+<p>不创建对象是不会分配内存空间的，可以这样创建对象：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/6248cf32-4575-47cb-9464-df56e9301786.jpg">
+
+<p>直接赋值，不用new关键字也可以创建对象：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/97d4af7c-8920-4000-8898-128495ea178d.jpg">
+
+<h3 id="数组的迭代"><a href="#数组的迭代" class="headerlink" title="数组的迭代"></a>数组的迭代</h3><p>可以使用for循环和索引迭代：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/b7d1e97d-e131-4c39-9b4b-7a4a1ddce8e4.jpg">
+
+<p>可以使用foreach循环：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/d8e2f452-9664-4ce6-8a5d-72aa8569cc06.jpg">
+
+<p>示例如下:</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/4a5cf78c-afb9-456a-8729-ba1a584266c4.jpg">
+
+<h3 id="数组的复制"><a href="#数组的复制" class="headerlink" title="数组的复制"></a>数组的复制</h3><p>for循环迭代读写：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/5c3bdee7-b9b0-4084-b934-9b3d7267a6cd.jpg">
+
+<p>使用Arrays的copyOf方法：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/a8f7d299-5d9f-4b8d-b8e6-79b30e6d7d27.jpg">
+
+<p>支持多种类型及泛型：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/6361e788-082d-4c37-b654-906d5bed693a.jpg">
+
+<p>当原数组是<code style="background:#ff3385;color:white;padding:5px;">null</code>或者newLength为<code style="background:#ff3385;color:white;padding:5px;">负值</code>，会<code style="background:#ff3385;color:white;padding:5px;">抛出异常</code>。newLength指的是新数组的大小，可以<code style="background:#ff3385;color:white;padding:5px;">大于</code>原数组，复制原数组的元素靠前插入，多余的位置补充默认值；可以<code style="background:#ff3385;color:white;padding:5px;">等于</code>原数组，原样复制；可以<code style="background:#ff3385;color:white;padding:5px;">小于</code>原数组，只复制前newLength个元素。</p>
+<p>copyOfRange可以复制指定范围的元素：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/a639119d-d7b4-448c-980f-17745c5a285e.jpg">
+
+<h2 id="java-lang-Class"><a href="#java-lang-Class" class="headerlink" title="java.lang.Class"></a>java.lang.Class</h2><p>jvm创建对象的时候，会自动创建一个同类型的Class类的对象，所有相同的类的实例共享同一个class对象。</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/aaaf816b-9537-4f92-9ec8-ce0be05a66ed.jpg">
+
+<p>可以使用class对象的getName方法获取全限定名称:</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/a2f64b02-975b-40b5-8326-05c1bdcf1fd8.jpg">
+
+<p>根据全限定名称创建对象：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/bb7e5c6e-7f6e-4cf4-a9db-b2ac6abd7b0d.jpg">
+
+<p>示例：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/1ed6bfb5-f43c-4abb-80f0-82b229f90352.jpg">
+
+<h2 id="java-lang-System"><a href="#java-lang-System" class="headerlink" title="java.lang.System"></a>java.lang.System</h2><p>三个流：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/b6889dd7-1275-45eb-a427-a3562ddef058.jpg">
+
+<p>可以通过out输出到控制台：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/fa04b82c-6b50-4753-87fc-c50174203d0d.jpg">
+
+<p>也可以使用println函数，自动换行。</p>
+<p>输出错误信息：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/6a0b2ce6-54cf-4e38-bafb-bdbb75f0f517.jpg">
+
+<p>可以读取控制台输入：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/01be6142-16f5-49f7-8e4b-18003d97ab00.jpg">
+
+<p>可以使用arraycopy复制数组：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/705950db-e69d-4eb8-a105-8eff1b275f0f.jpg">
+
+<p>exit退出：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/6d742284-9c2b-402e-b8b0-0937fe45fb81.jpg">
+
+<p>0表示正常退出。</p>
+<p>获取当前的时间：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/674d0b59-7054-48b4-93fe-18a17193fb7a.jpg">
+
+<p>一个更精准的时间表示：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/81764b63-d232-479c-8df4-424af28a9c21.jpg">
+
+<p>获取属性：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/3afbcb0a-9a13-4c94-a8f5-698914798200.jpg">
+
+<img src="/blog/2020/02/21/java05-Core-Classes/3995a06b-cab5-45d1-8640-c68458b3a56f.jpg">
+
+<p>设置属性：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/df3faa3d-4976-468c-b8d1-985504f12097.jpg">
+
+<p>示例：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/aeab86fb-4a8d-4cb1-a994-c91b56291008.jpg">
+
+<p>获取所有系统属性：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/d422e897-ee3a-4ba0-9bc4-3a8827946c24.jpg">
+
+<h2 id="java-util-Scanner"><a href="#java-util-Scanner" class="headerlink" title="java.util.Scanner"></a>java.util.Scanner</h2><p>可以对System.in进行包装，获取控制台输入：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/4a841218-e5a9-4ad3-bb07-15bef25cbdf3.jpg">
+
+<h2 id="装箱与拆箱"><a href="#装箱与拆箱" class="headerlink" title="装箱与拆箱"></a>装箱与拆箱</h2><p>装箱与拆箱是自动进行的，指的是基本数据类型和包装类的自动转换。</p>
+<p>装箱：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/822b2cc3-a69b-4b4a-a60c-93a4527a7aee.jpg">
+
+<p>拆箱：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/f61ad021-8259-4712-96bc-3f750ccdcec3.jpg">
+
+<h2 id="不定个数参数"><a href="#不定个数参数" class="headerlink" title="不定个数参数"></a>不定个数参数</h2><img src="/blog/2020/02/21/java05-Core-Classes/48fc6552-d93c-416b-ab17-9c7d0785bba1.jpg">
+
+<p>与数组参数类似</p>
+<h2 id="打印参数"><a href="#打印参数" class="headerlink" title="打印参数"></a>打印参数</h2><p>可以使用format方法标准化字符串格式（String或：PrintStream均有）：</p>
+<img src="/blog/2020/02/21/java05-Core-Classes/e0060425-5297-4d04-817f-db3fb7915119.jpg">
+
+
+
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/blog/2020/02/21/java05-Core-Classes/">java05 核心类库</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">成华</a></p>
+        <p><span>Created:</span>2020-02-21, 13:10:45</p>
+        <p><span>Updated:</span>2020-02-21, 19:24:12</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/blog/2020/02/21/java05-Core-Classes/" title="java05 核心类库">https://dayandnight2018.github.io/2020/02/21/java05-Core-Classes/</a>
+            <span class="copy-path" data-clipboard-text="From https://dayandnight2018.github.io/2020/02/21/java05-Core-Classes/　　By 成华" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/blog/2020/02/21/java06-Inheritance/">
+                    java06 继承
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/blog/2020/02/19/java04-Objects-and-Classes/">
+                    java04 对象与类
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#java-lang-Object"><span class="toc-number">1.</span> <span class="toc-text">java.lang.Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-lang-String"><span class="toc-number">2.</span> <span class="toc-text">java.lang.String</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串比较"><span class="toc-number">2.1.</span> <span class="toc-text">字符串比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String字面量"><span class="toc-number">2.2.</span> <span class="toc-text">String字面量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转义字符"><span class="toc-number">2.3.</span> <span class="toc-text">转义字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String可以用于switch方法"><span class="toc-number">2.4.</span> <span class="toc-text">String可以用于switch方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String的构造函数"><span class="toc-number">2.5.</span> <span class="toc-text">String的构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String类的方法"><span class="toc-number">2.6.</span> <span class="toc-text">String类的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringBuilder-amp-String-Buffer"><span class="toc-number">3.</span> <span class="toc-text">StringBuilder &amp; String Buffer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#StringBuilder构造器"><span class="toc-number">3.1.</span> <span class="toc-text">StringBuilder构造器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StringBuilder的方法"><span class="toc-number">3.2.</span> <span class="toc-text">StringBuilder的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包装类型"><span class="toc-number">4.</span> <span class="toc-text">包装类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Integer"><span class="toc-number">4.1.</span> <span class="toc-text">Integer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Boolean"><span class="toc-number">4.2.</span> <span class="toc-text">Boolean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Character"><span class="toc-number">4.3.</span> <span class="toc-text">Character</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays"><span class="toc-number">5.</span> <span class="toc-text">Arrays</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的迭代"><span class="toc-number">5.1.</span> <span class="toc-text">数组的迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的复制"><span class="toc-number">5.2.</span> <span class="toc-text">数组的复制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-lang-Class"><span class="toc-number">6.</span> <span class="toc-text">java.lang.Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-lang-System"><span class="toc-number">7.</span> <span class="toc-text">java.lang.System</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-util-Scanner"><span class="toc-number">8.</span> <span class="toc-text">java.util.Scanner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#装箱与拆箱"><span class="toc-number">9.</span> <span class="toc-text">装箱与拆箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不定个数参数"><span class="toc-number">10.</span> <span class="toc-text">不定个数参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打印参数"><span class="toc-number">11.</span> <span class="toc-text">打印参数</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"java05 核心类库　| 成华的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/blog/2020/02/21/java06-Inheritance/" title="Pre: java06 继承">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/blog/2020/02/19/java04-Objects-and-Classes/" title="Next: java04 对象与类">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/spring02-Wiring-beans/">spring02 绑定Bean</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/spring01-introduction/">spring01 简介</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/03/01/java21-Reflection/">java21 反射</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java20-Concurrency-Utilities/">java20 并发包</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java19-Threads/">java19 线程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java18-Java-Database-Connectivity/">java18 数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java17-Networking/">java17 网络</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java16-Annotations/">java16 注解</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java15-Polymorphism/">java15 多态</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/">java14 内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java13-Input-Output/">java13 输入输出</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java12-Generics/">java12 泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java11-The-Collections-Framework/">java11 集合</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java10-Enums/">java10 枚举</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/">java09 接口与抽象类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java08-Numbers-and-Dates/">java08 数字与日期</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java07-Error-Handling/">java07 异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java06-Inheritance/">java06 继承</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/21/java05-Core-Classes/">java05 核心类库</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/19/java04-Objects-and-Classes/">java04 对象与类</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/18/java03-Statements/">java03 语句</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/18/java02-Language-Fundamentals/">java02 语言基础</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/02/16/java01-preparement/">java01 准备工作</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/05/hello-world/">第一篇日志</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/springMVC02/">Spring MVC创建一个项目</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/03/gitCommand01/">Git常用指令</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2020/01/01/springMVC01/">Spring MVC开发环境配置</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 成华
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/blog/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
