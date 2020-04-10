@@ -57,13 +57,13 @@
 				<ul>
 					<ul>
 					 
-						<li><a href="/blog/">Home</a></li>
+						<li><a href="/blog/">首页</a></li>
 					
-						<li><a href="/blog/archives/">Archives</a></li>
+						<li><a href="/blog/archives/">博客</a></li>
 					
-						<li><a href="/blog/tags/">Tags</a></li>
+						<li><a href="/blog/tags/">标签</a></li>
 					
-						<li><a href="/blog/about/">About</a></li>
+						<li><a href="/blog/about/">关于</a></li>
 					
 					<li>
  					
@@ -81,2194 +81,348 @@
     <div id="container">
       <div id="main">
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/02/29/java19-Threads/" title="java19 线程" itemprop="url">java19 线程</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-02-29T08:58:47.000Z" itemprop="datePublished"> Published 2020-02-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><ol>
-<li><p>继承Thread类</p>
-</li>
-<li><p>实现Runnable接口</p>
-</li>
-</ol>
-<p>继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。</p>
-<h3 id="线程的六种状态"><a href="#线程的六种状态" class="headerlink" title="线程的六种状态"></a>线程的六种状态</h3><ol>
-<li><p>new 线程还没开始start</p>
-</li>
-<li><p>runnable线程已经开启</p>
-</li>
-<li><p>blocked被阻断，等待锁</p>
-</li>
-<li><p>waiting等待其他线程执行</p>
-</li>
-<li><p>timed_waiting超时等待</p>
-</li>
-<li><p>terminated线程退出</p>
-</li>
-</ol>
-<h3 id="Thread构造器"><a href="#Thread构造器" class="headerlink" title="Thread构造器"></a>Thread构造器</h3><pre style="background:#e6e6e6;padding=10px;">
-
-//无参构造
-public Thread()
-//指定名称
-public Thread(String name)
-//添加接口
-public Thread(Runnable target)
-//添加接口，指定名称
-public Thread(Runnable target, String name)
-
-</pre>
-
-<h3 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h3><pre style="background:#e6e6e6;padding=10px;">
-
-//获取名称
-public String getName()
-//获取状态
-public Thread.State getState()
-//中断线程
-public void interrupt()
-//开启线程
-public void start()
-//睡眠一定的时间
-public static void sleep(long millis)
-
-</pre>
-
-<p>获取当前的线程：</p>
-<img src="/blog/2020/02/29/java19-Threads/61e2ebda-6fad-45af-9ea3-78d92fa93acc.jpg">
-
-<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><img src="/blog/2020/02/29/java19-Threads/3eb48243-3db1-40bc-be96-3c8e6929d6f2.jpg">
-
-<p>继承Thread，重写run方法，创建对象并调用start方法。</p>
-<h2 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h2><p>需要实现Runnable接口，重写run方法，创建Thread对象，使用Thread对象启动。</p>
-<img src="/blog/2020/02/29/java19-Threads/f57af7b2-53bf-430f-9536-76098f49baa8.jpg">
-
-<h2 id="设置优先级"><a href="#设置优先级" class="headerlink" title="设置优先级"></a>设置优先级</h2><p>通过setPriority设置优先级，数值越大，优先级越高，执行频率越高，速度越快。</p>
-<img src="/blog/2020/02/29/java19-Threads/5879fabb-1684-4fbc-bc3e-6ec012531e9a.jpg">
-
-<h2 id="线程终止的方法"><a href="#线程终止的方法" class="headerlink" title="线程终止的方法"></a>线程终止的方法</h2><p>Thread自带了一个stop方法，但是不安全，建议不要使用。</p>
-<p>对于线程内部的run方法，设置while标志位而退出线程是最安全的。</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-class CounterThread extends Thread {
-    public void run() {
-        //使用标志位
-        while (!stopped) {
-            try {
-                sleep(10);
-            } catch (InterruptedException e) {
-            }
-            if (count == 1000) {
-                count = 1;
-            }
-            counterLabel.setText(Integer.toString(count++));
-        }
-    }
-}
-
-</pre>
-
-<p>终止线程，只需要设置标志位即可：</p>
-<img src="/blog/2020/02/29/java19-Threads/5ef6c5ed-c542-432a-bea5-200c237f2ffd.jpg">
-
-<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><h3 id="线程干扰"><a href="#线程干扰" class="headerlink" title="线程干扰"></a>线程干扰</h3><pre style="background:#e6e6e6;padding=10px;">
-
-package app23;
-public class UserStat {
-    int userCount;
-    public int getUserCount() {
-        return userCount;
-    }
-    public void increment() {
-        userCount++;
-    }
-    public void decrement() {
-        userCount--;
-    }
-}
-
-</pre>
-
-<p>自增自减操作是三个步骤，读取-更改-写入</p>
-<p>多个线程对相同的数据进行读写容易出现线程干扰。线程干扰容易出现竞争条件，然后数据出现不一致。</p>
-<h3 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h3><p>原子操作指的是最小的操作单元，不会发生线程干扰。除long和double，其他基本数据类型的读写操作都是原子操作。</p>
-<h2 id="锁同步"><a href="#锁同步" class="headerlink" title="锁同步"></a>锁同步</h2><p>锁是实现<code style="background:#ff3385;color:white;padding:5px;">线程同步</code>一种方式，synchronized可以用于锁定对象，非静态方法被访问时，先获取锁，<code style="background:#ff3385;color:white;padding:5px;">获取</code>锁的才能执行方法，否则将<code style="background:#ff3385;color:white;padding:5px;">等待</code>锁释放。</p>
-<p>锁被锁定的时候，其他线程<code style="background:#ff3385;color:white;padding:5px;">不得</code>访问与该锁相关的所有方法。锁是<code style="background:#ff3385;color:white;padding:5px;">可重入</code>的，即，获取了锁就可以获取使用相同锁同步的方法。</p>
-<p>静态方法需要使用<code style="background:#ff3385;color:white;padding:5px;">Class类</code>的对象进行锁定。</p>
-<p>重写上面的类，使之线程安全：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-package app23;
-public class SafeUserStat {
-    int userCount;
-    public synchronized int getUserCount() {
-        return userCount;
-    }
-    public synchronized void increment() {
-        userCount++;
-    }
-    public synchronized void decrement() {
-        userCount--;
-    }
-}
-
-</pre>
-
-<p>这里使用synchronized修饰了三个方法，进而保证了线程安全性。</p>
-<h2 id="代码块锁定"><a href="#代码块锁定" class="headerlink" title="代码块锁定"></a>代码块锁定</h2><p>如果接触不到源码，你是无法使用synchronized同步方法的，因此，可以使用块同步。</p>
-<img src="/blog/2020/02/29/java19-Threads/a8a22510-a77d-4d37-9a2b-c06e42505705.jpg">
-
-<p>示例代码：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-UserStat userStat = new UserStat();
-
-public void incrementCounter() {
-    synchronized(userStat) {
-        // statements to be synchronized, such as calls to
-        // the increment, decrement, and getUserCount methods
-        // on userStat
-        userStat.increment();
-    }
-}
-
-</pre>
-
-<p>锁定了UserStat对象，可以实现块同步。</p>
-<p>可以直接使用this代替这个对象：</p>
-<img src="/blog/2020/02/29/java19-Threads/a290f1a3-39b6-497a-87fb-5f1980e29ced.jpg">
-
-<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>我们先看一个不安全的代码。来说明线程之间的变量可见性问题。</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public class Inconsistent {
-    static boolean started = false;
-    public static void main(String[] args) {
-        Thread thread1 = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                }
-                started = true;
-                System.out.println("started set to true");
-            }
-        });
-    thread1.start();
-    while (!started) {
-        // wait until started
-    }
-    System.out.println("Wait 3 seconds and exit");
-    }
-}
-
-</pre>
-
-<p>外围主线程等待started标志位改变，终止主线程。然而，这段打印退出代码始终没有执行。</p>
-<p>这是因为不同线程之间的数据变更的可见性问题。</p>
-<p>修改一：使用同步代码</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public class Consistent {
-    static boolean started = false;
-    public synchronized static void setStarted() {
-        started = true;
-    }
-    public synchronized static boolean getStarted() {
-        return started;
-    }
-    public static void main(String[] args) {
-        Thread thread1 = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                }
-                setStarted();
-                System.out.println("started set to true");
-            }
-        });
-        thread1.start();
-        while (!getStarted()) {
-            // wait until started
-        }
-        System.out.println("Wait 3 seconds and exit");
-    }
-}
-
-</pre>
-
-<p>使用同步代码，对可见性进行强制保障。但是，没有多个线程写入的问题，使用同步代码添加了 很多性能损失，因此，使用volatile更合适：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public class LightAndConsistent {
-    static volatile boolean started = false;
-    public static void main(String[] args) {
-        Thread thread1 = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                }
-                started = true;
-                System.out.println("started set to true");
-            }
-        });
-        thread1.start();
-        while (!started) {
-            // wait until started
-        }
-        System.out.println("Wait 3 seconds and exit");
-    }
-}
-
-</pre>
-
-
-<h2 id="线程协作"><a href="#线程协作" class="headerlink" title="线程协作"></a>线程协作</h2><p>object自带的方法：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-//等待
-public final void wait() throws InterruptedException
-//等待一定时长
-public final void wait(long timeout) throws InterruptedException
-//通知
-public final void notify()
-//通知所有线程
-pubic final void notifyAll()
-
-</pre>
-
-<p>我们来实现一个货物处理的案例：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public class DeliveryNoteHolder {
-    //货物
-    private String deliveryNote;
-    //标志位
-    private boolean available = false;
-    //派送货物同步方法
-    public synchronized String get() {
-        //没有货物
-        while (available == false) {
-            try {
-                //等待
-                wait();
-            } catch (InterruptedException e) { }
-        }
-        //修改标志，处理货物
-        available = false;
-        System.out.println(System.currentTimeMillis() + ": got " + deliveryNote);
-        //通知其他线程
-        notifyAll();
-        return deliveryNote;
-    }
-    //追加货物
-    public synchronized void put(String deliveryNote) {
-        //有货等待
-        while (available == true) {
-            try {
-                wait(); //等待
-            } catch (InterruptedException e) { }
-        }
-        //修改状态，处理货物，通知其他线程
-        this.deliveryNote = deliveryNote;
-        available = true;
-        System.out.println(System.currentTimeMillis() + ": Put " + deliveryNote);
-        notifyAll();
-    }
-}
-
-</pre>
-
-<pre style="background:#e6e6e6;padding=10px;">
-
-public class DispatcherThread extends Thread {
-    private DeliveryNoteHolder deliveryNoteHolder;
-    String[] deliveryNotes = { "XY23. 1234 Arnie Rd.",
-        "XY24. 3330 Quebec St.",
-        "XY25. 909 Swenson Ave.",
-        "XY26. 4830 Davidson Blvd.",
-        "XY27. 9900 Old York Dr." };
-    public DispatcherThread(DeliveryNoteHolder holder) {
-        deliveryNoteHolder = holder;
-    }
-    public void run() {
-        for (int i = 0; i < deliveryNotes.length; i++) {
-            String deliveryNote = deliveryNotes[i];
-            //追加货物
-            deliveryNoteHolder.put(deliveryNote);
-            try {
-                sleep(100);
-            } catch (InterruptedException e) {
-            }
-        }
-    }
-}
-
-</pre>
-
-<pre style="background:#e6e6e6;padding=10px;">
-
-public class DriverThread extends Thread {
-    DeliveryNoteHolder deliveryNoteHolder;
-    boolean stopped = false;
-    String driverName;
-    public DriverThread(DeliveryNoteHolder holder, String driverName) {
-        deliveryNoteHolder = holder;
-        this.driverName = driverName;
-    }
-    public void run() {
-        while (!stopped) {
-            //配送货物
-            String deliveryNote = deliveryNoteHolder.get();
-            try {
-                sleep(300);
-            } catch (InterruptedException e) {
-            }
-        }
-    }
-}
-
-</pre>
-
-<p>两个线程共享同一个对象的实例，遵守wait方法和notifyAll方法</p>
-<h2 id="java-util-Timer"><a href="#java-util-Timer" class="headerlink" title="java.util.Timer"></a>java.util.Timer</h2><p>定时器主要用于执行定时任务。</p>
-<p>构造器：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public Timer()
-
-</pre>
-
-<p>调用schedule方法：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-//固定时间点执行一次
-public void schedule(TimerTask task, Date time)
-
-//定时任务，从某时刻开始，定时执行
-public void schedule(TimerTask task, Date firstTime, long period)
-
-//指定延时后开始执行，定时执行
-public void schedule(TimerTask task, long delay, long period)
-
-//取消任务
-public void cancel()
-
-</pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/02/29/java18-Java-Database-Connectivity/" title="java18 数据库操作" itemprop="url">java18 数据库操作</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-02-29T08:18:35.000Z" itemprop="datePublished"> Published 2020-02-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="四个步骤获取数据"><a href="#四个步骤获取数据" class="headerlink" title="四个步骤获取数据"></a>四个步骤获取数据</h2><ol>
-<li><p>加载JDBC驱动</p>
-</li>
-<li><p>获取JDBC连接</p>
-</li>
-<li><p>创建SQL 语句实例java.sql.Statement</p>
-</li>
-<li><p>获取数据java.sql.ResultSet</p>
-</li>
-<li><p>释放连接</p>
-</li>
-</ol>
-<h3 id="加载JDBC驱动"><a href="#加载JDBC驱动" class="headerlink" title="加载JDBC驱动"></a>加载JDBC驱动</h3><pre style="background:#e6e6e6;padding=10px;">
-
-Class.forName("com.mysql.jdbc.Driver");
-
-</pre>
-
-<p>为了防止无法找到，捕获异常</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-try {
-    Class.forName("com.mysql.jdbc.Driver");
-} catch (ClassNotFoundException e) {
-    // process the exception or re-throw it
-}
-
-</pre>
-
-<h3 id="获取JDBC连接"><a href="#获取JDBC连接" class="headerlink" title="获取JDBC连接"></a>获取JDBC连接</h3><pre style="background:#e6e6e6;padding=10px;">
-
-public static Connection getConnection(java.lang.String url) throws SQLException
-
-public static Connection getConnection(java.lang.String url,java.lang.String userName, java.lang.String password) throws SQLException
-
-</pre>
-
-<p>连接字符串示例：</p>
-<img src="/blog/2020/02/29/java18-Java-Database-Connectivity/70610e18-1d9d-4352-a6a5-a9ea25fce062.jpg">
-
-<h3 id="创建SQL-语句实例java-sql-Statement"><a href="#创建SQL-语句实例java-sql-Statement" class="headerlink" title="创建SQL 语句实例java.sql.Statement"></a>创建SQL 语句实例java.sql.Statement</h3><p>创建sql语句以便于数据库执行。</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-Statement statement = connection.createStatement();
-
-</pre>
-
-<p>两种执行方式：查询与执行。</p>
-<img src="/blog/2020/02/29/java18-Java-Database-Connectivity/88984ac3-c304-4db5-8e92-bcd14d595b6a.jpg">
-
-<p>executeUpdate执行插入、删除、修改操作</p>
-<p>executeQuery执行查询操作</p>
-<p>PreparedStatement<code style="background:#ff3385;color:white;padding:5px;">更好</code>：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-PreparedStatement pStatement = connection.prepareStatement(java.lang.String sql);
-
-</pre>
-
-<h3 id="获取数据java-sql-ResultSet"><a href="#获取数据java-sql-ResultSet" class="headerlink" title="获取数据java.sql.ResultSet"></a>获取数据java.sql.ResultSet</h3><p>ResultSet是查询数据的存储结果，开始时，其内部指针指向第0行，next可以移动指针到下一行，如果存在返回true，否则返回false</p>
-<p>可以通过 getInt, getLong, getShort等获取列的值。GetString也是很常用的。</p>
-<img src="/blog/2020/02/29/java18-Java-Database-Connectivity/ec7a8a04-9b10-427f-b713-eb5444339795.jpg">
-
-<h3 id="释放连接"><a href="#释放连接" class="headerlink" title="释放连接"></a>释放连接</h3><p>安全释放连接的方法：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-Connection connection = null;
-PreparedStatement pStatement = null;
-ResultSet resultSet = null;
-try {
-    connection = getConnection();
-    pStatement = connection.prepareStatement(sql);
-    resultSet = pStatement.executeQuery();
-    while (resultSet.next()) {
-        // manipulate the data here
-    }
-} catch (SQLException e) {
-    throw newException;
-} finally {
-//此处捕获的异常，防止关闭时出现错误
-    if (resultSet != null) {
-        try {
-            resultSet.close();
-        } catch (Exception e) {
-        }
-    }
-    if (statement != null) {
-        try {
-            statement.close();
-        } catch (Exception e) {
-        }
-    }
-    if (connection != null) {
-        try {
-            connection.close();
-        } catch (Exception e) {
-        }
-    }
-}
-
-</pre>
-
-<p>在java7以后，更方便的方式即可实现自动释放：</p>
-<img src="/blog/2020/02/29/java18-Java-Database-Connectivity/bbbbbd7e-e90c-45bc-a6a1-9ea1b6926e23.jpg">
-
-<h2 id="java-sql-ResultSetMetaData"><a href="#java-sql-ResultSetMetaData" class="headerlink" title="java.sql.ResultSetMetaData"></a>java.sql.ResultSetMetaData</h2><p>元数据就是数据表的格式数据</p>
-<p>可以使用ResultSet对象获取元数据：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public ResultSetMetaData getMetaData() throws SQLException
-
-</pre>
-
-<h3 id="获取列数"><a href="#获取列数" class="headerlink" title="获取列数"></a>获取列数</h3><pre style="background:#e6e6e6;padding=10px;">
-
-public int getColumnCount() throws SQLException
-
-</pre>
-
-<h3 id="获取列名称"><a href="#获取列名称" class="headerlink" title="获取列名称"></a>获取列名称</h3><pre style="background:#e6e6e6;padding=10px;">
-
-public java.lang.String getColumnName(int columnIndex)throws SQLException
-
-</pre>
-
-<h3 id="获取列类型"><a href="#获取列类型" class="headerlink" title="获取列类型"></a>获取列类型</h3><pre style="background:#e6e6e6;padding=10px;">
-
-public int getColumnType(int columnIndex) throws SQLException
-
-</pre>
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <a href="/blog/2020/02/29/java19-Threads/" title="java19 线程" itemprop="url">
+  
+    <h1 itemprop="name">java19 线程</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/02/29/java17-Networking/" title="java17 网络" itemprop="url">java17 网络</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-02-29T06:28:36.000Z" itemprop="datePublished"> Published 2020-02-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
+     
+           <p itemprop="description" >创建线程
+继承Thread类
+
+实现Runnable接口
+
+
+继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。
+线程的六种状态
+new 线程还没开始start
+
+ru</p>
         
-        <h2 id="URL解析"><a href="#URL解析" class="headerlink" title="URL解析"></a>URL解析</h2><img src="/blog/2020/02/29/java17-Networking/d17276fe-9b57-4c87-addb-5635055776fe.jpg">
+    
+    <time datetime="2020-02-29T08:58:47.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
 
-<h2 id="java-net-URL"><a href="#java-net-URL" class="headerlink" title="java.net.URL"></a>java.net.URL</h2><h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><pre style="background:#e6e6e6;padding=10px;">
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/29/java18-Java-Database-Connectivity/" title="java18 数据库操作" itemprop="url">
+  
+    <h1 itemprop="name">java18 数据库操作</h1>
+    
+     
+           <p itemprop="description" >四个步骤获取数据
+加载JDBC驱动
+
+获取JDBC连接
+
+创建SQL 语句实例java.sql.Statement
+
+获取数据java.sql.ResultSet
+
+释放连接
+
+
+加载JDBC驱动
+
+Class.forName(&#34;com.mysql.jdbc.Driver&#34;);
+</p>
+        
+    
+    <time datetime="2020-02-29T08:18:35.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/29/java17-Networking/" title="java17 网络" itemprop="url">
+  
+    <h1 itemprop="name">java17 网络</h1>
+    
+     
+           <p itemprop="description" >URL解析
+
+java.net.URL构造器
 
 public URL(java.lang.String spec)
-public URL(java.lang.String protocol, java.lang.String host,java.lang.String file)
-public URL(java.lang.String protocol, java.lang.String host, int port, java.lang.String file)
-public URL(URL context, String spec)
-
-</pre>
-
-<p>使用示例：</p>
-<img src="/blog/2020/02/29/java17-Networking/68a76d94-d17c-415d-8fa5-2eaaf17508c5.jpg">
-
-<h3 id="解析URL地址"><a href="#解析URL地址" class="headerlink" title="解析URL地址"></a>解析URL地址</h3><pre style="background:#e6e6e6;padding=10px;">
-
-//获取文件
-public java.lang.String getFile()
-//获取host
-public java.lang.String getHost()
-//获取path
-public java.lang.String getPath()
-//获取port
-public int getPort()
-//获取协议
-public java.lang.String getProtocol()
-//获取查询字符串
-public java.lang.String getQuery()
-
-</pre>
-
-<h3 id="读取资源"><a href="#读取资源" class="headerlink" title="读取资源"></a>读取资源</h3><p>使用openStream获取资源：</p>
-<img src="/blog/2020/02/29/java17-Networking/bbef70f3-feed-4501-a61e-bd07237d475c.jpg">
-
-<h2 id="java-net-URLConnection"><a href="#java-net-URLConnection" class="headerlink" title="java.net.URLConnection"></a>java.net.URLConnection</h2><p>采用Url实例的openConnection可以获取URLConnection对象。</p>
-<h3 id="设置读取和写入"><a href="#设置读取和写入" class="headerlink" title="设置读取和写入"></a>设置读取和写入</h3><pre style="background:#e6e6e6;padding=10px;">
-
-public void setDoInput(boolean value)
-public void setDoOutput(boolean value)
-
-</pre>
-
-<h3 id="获取读取和写入"><a href="#获取读取和写入" class="headerlink" title="获取读取和写入"></a>获取读取和写入</h3><pre style="background:#e6e6e6;padding=10px;">
-
-public boolean getDoInput()
-public boolean getDoOutput()
-
-</pre>
-
-<h3 id="获得读取流"><a href="#获得读取流" class="headerlink" title="获得读取流"></a>获得读取流</h3><img src="/blog/2020/02/29/java17-Networking/655ab8b3-20c3-481c-a94b-5d124903429b.jpg">
-
-<h3 id="其他相关方法"><a href="#其他相关方法" class="headerlink" title="其他相关方法"></a>其他相关方法</h3><pre style="background:#e6e6e6;padding=10px;">
-
-//获取请求头
-public java.lang.String getHeaderField(java.lang.String headerName)
-
-//获取请求头时间
-public long getHeaderFieldDate(java.lang.String headerName, long default)
-
-//获取请求头键值对
-public java.util.Map getHeaderFields()
-
-//获取编码格式
-public java.lang.String getContentEncoding()
-
-//获取内容长度
-public int getContentLength()
-
-//获取内容类型
-public java.lang.String getContentType()
-
-//获取日期
-public long getDate()
-
-//获取过期时间
-public long getExpiration()
-
-</pre>
-
-<h3 id="写入流"><a href="#写入流" class="headerlink" title="写入流"></a>写入流</h3><img src="/blog/2020/02/29/java17-Networking/93b5b1ca-d270-4468-ba88-f159b9359716.jpg">
-
-<p>通过UrlConnection的对象getOutputStream()获取输出流.</p>
-<h2 id="java-net-Socket"><a href="#java-net-Socket" class="headerlink" title="java.net.Socket"></a>java.net.Socket</h2><h3 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h3><pre style="background:#e6e6e6;padding=10px;">
-
-public Socket(java.lang.String host, int port)
-
-</pre>
-
-<p>使用示例：</p>
-<img src="/blog/2020/02/29/java17-Networking/299a105c-fbaa-4614-bddc-f061f586351c.jpg">
-
-<h3 id="读写Socket"><a href="#读写Socket" class="headerlink" title="读写Socket"></a>读写Socket</h3><p>getInputStream获取读取流，getOutputStream获取输出流</p>
-<img src="/blog/2020/02/29/java17-Networking/2a0eaa8a-740d-4de6-b406-c7b2b420ec6c.jpg">
-
-<h2 id="java-net-ServerSocket"><a href="#java-net-ServerSocket" class="headerlink" title="java.net.ServerSocket"></a>java.net.ServerSocket</h2><h3 id="构造器-2"><a href="#构造器-2" class="headerlink" title="构造器"></a>构造器</h3><pre style="background:#e6e6e6;padding=10px;">
-
-public ServerSocket(int port, int backLog, InetAddress bindingAddress);
-
-</pre>
-
-<p>使用示例：</p>
-<img src="/blog/2020/02/29/java17-Networking/6a792bc5-8a5e-4bb9-984b-2c2fd9572a92.jpg">
-
-<p>通过accept接受连接过来的Socket</p>
-<p>其后的操作方法与Socket类似。</p>
-
+public URL(java.lang.String protocol, java.lang.String host,java.lang.String file)</p>
         
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
+    
+    <time datetime="2020-02-29T06:28:36.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
 
 
-  <div class="article-tags">
+
+
+
+
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/02/29/java16-Annotations/" title="java16 注解" itemprop="url">java16 注解</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-02-29T03:35:17.000Z" itemprop="datePublished"> Published 2020-02-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>注解就是一种标记作用的特性。</p>
-<h2 id="注解的类型"><a href="#注解的类型" class="headerlink" title="注解的类型"></a>注解的类型</h2><p>注解类型是 一种<code style="background:#ff3385;color:white;padding:5px;">模板</code>，注解是注解模板的<code style="background:#ff3385;color:white;padding:5px;">具体实例</code>。</p>
-<p>注解类型可以包含键值对，没有键值对的叫<code style="background:#ff3385;color:white;padding:5px;">标记注解</code>，有单个键值对的叫<code style="background:#ff3385;color:white;padding:5px;">单值注解</code>。</p>
-<h2 id="注解的使用"><a href="#注解的使用" class="headerlink" title="注解的使用"></a>注解的使用</h2><p>不带参数：</p>
-<img src="/blog/2020/02/29/java16-Annotations/85551201-69c0-4f08-83d5-63ed991b4bbd.jpg">
-
-<p>带参数：</p>
-<img src="/blog/2020/02/29/java16-Annotations/ed377e91-6510-4fca-bad3-7b2db24c3a6e.jpg">
-
-<p>不带参数使用示例：</p>
-<img src="/blog/2020/02/29/java16-Annotations/d1e77ed3-6a17-419c-a249-22a3bdb515a4.jpg">
-
-<p>带参数使用示例：</p>
-<img src="/blog/2020/02/29/java16-Annotations/c6419b07-8952-42b7-b317-d783a4e47ced.jpg">
-
-<p>对于单值注解，可以省略键：</p>
-<img src="/blog/2020/02/29/java16-Annotations/fa8eb52d-254f-424f-8f79-fb7806810f48.jpg">
-
-<p>等价于，</p>
-<img src="/blog/2020/02/29/java16-Annotations/78f0c90e-406b-4b82-bf6c-5c7784f218ee.jpg">
-
-<h2 id="标准注解"><a href="#标准注解" class="headerlink" title="标准注解"></a>标准注解</h2><p>Override,Deprecated, and SuppressWarnings是java5添加的标准注解</p>
-<h3 id="Override"><a href="#Override" class="headerlink" title="Override"></a>Override</h3><p>这个注解主要用于<code style="background:#ff3385;color:white;padding:5px;">方法</code>，表面此方法是用于重写父类的方法。</p>
-<img src="/blog/2020/02/29/java16-Annotations/a5b3a8de-7c9b-491b-9214-122c9a3f8149.jpg">
-
-<h3 id="Deprecated"><a href="#Deprecated" class="headerlink" title="Deprecated"></a>Deprecated</h3><p>这个注解主要用于提醒调用方，这个<code style="background:#ff3385;color:white;padding:5px;">方法</code> / <code style="background:#ff3385;color:white;padding:5px;">类</code> / <code style="background:#ff3385;color:white;padding:5px;">接口</code>是不推荐使用的，过时的。</p>
-<img src="/blog/2020/02/29/java16-Annotations/a04c5e34-af4f-4621-bdde-fe62bd1b19ed.jpg">
-
-<h3 id="SuppressWarnings"><a href="#SuppressWarnings" class="headerlink" title="SuppressWarnings"></a>SuppressWarnings</h3><p>压制<code style="background:#ff3385;color:white;padding:5px;">编译</code>错误，可以用于类型,构造器, 方法, 域, 参数, 局部变量.</p>
-<img src="/blog/2020/02/29/java16-Annotations/4201b15f-fb89-4bfb-af7d-18b4e7566a4e.jpg">
-
-<p>参数类型：</p>
-<p>unchecked 未检查</p>
-<p>path 位置不存在</p>
-<p>serial 序列化id</p>
-<p>finally 方法不能正常结束</p>
-<p>fallthrough 对switch贯穿代码的压制</p>
-<p>示例（压制unchecked 和serial ）：</p>
-<img src="/blog/2020/02/29/java16-Annotations/187f442a-d231-4b11-bccd-c9ddd3a5b8f0.jpg">
-
-<h2 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h2><p>元注解就是用来注解注解类型的注解。Documented, Inherited, Retention, and Target</p>
-<h3 id="Documented"><a href="#Documented" class="headerlink" title="Documented"></a>Documented</h3><p>表示这个注解要写入javaDoc文档。</p>
-<p>@Deprecated注解是带有@Documented修饰的，因此，在JavaDoc文档中包含注释，而@Override没有@Documented修饰，在文档中没有呈现。</p>
-<img src="/blog/2020/02/29/java16-Annotations/b9794ec9-c2a8-4954-ad91-b69419c40c03.jpg">
-
-<h3 id="Inherited"><a href="#Inherited" class="headerlink" title="Inherited"></a>Inherited</h3><p>对此标记的注解，凡是标记了注解的类，其子类将继承这个注解。</p>
-<h3 id="Retention"><a href="#Retention" class="headerlink" title="Retention"></a>Retention</h3><p>表示注解的有效范围，有效值：</p>
-<p>SOURCE.源码级别，编译器将忽略。</p>
-<p>CLASS默认级别，jvm忽略。</p>
-<p>RUNTIME可以使用反射，运行时级别。</p>
-<p>以下表明有效范围是源码级：</p>
-<img src="/blog/2020/02/29/java16-Annotations/4478e252-6345-42ac-9acc-7852132303d6.jpg">
-
-<h3 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h3><p>指向的注解对象。</p>
-<p>▪ ANNOTATION_TYPE 注解定义</p>
-<p>▪ CONSTRUCTOR. 构造器</p>
-<p>▪ FIELD. 域</p>
-<p>▪ LOCAL_VARIABLE. 局部变量</p>
-<p>▪ METHOD. 方法</p>
-<p>▪ PACKAGE. 包</p>
-<p>▪ PARAMETER. 参数</p>
-<p>▪ TYPE. 类型</p>
-<p>使用示例：</p>
-<img src="/blog/2020/02/29/java16-Annotations/3824930a-1ee7-437e-a301-4b64d358625e.jpg">
-
-<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><pre style="background:#e6e6e6;padding=10px;">
-
-public @interface CustomAnnotation {
-}
-
-</pre>
-
-<p>注解定义示例：</p>
-<img src="/blog/2020/02/29/java16-Annotations/8afcad6c-f6c7-4dd0-889a-451ef07bbbb9.jpg">
-
-<p>注解使用：</p>
-<img src="/blog/2020/02/29/java16-Annotations/74f95d1b-b42c-464f-8026-95e267000877.jpg">
-
-<h2 id="注解的反射用法"><a href="#注解的反射用法" class="headerlink" title="注解的反射用法"></a>注解的反射用法</h2><pre style="background:#e6e6e6;padding=10px;">
-
-//获取注解,没有则为null
-public <A extends java.lang.annotation.annotation> A getAnnotation (Class<A> annotationClass)
-
-//获取所有注解
-public java.lang.annotation.Annotation[] getAnnotations()
-
-//判断是否为注解类
-public boolean isAnnotation()
-
-//判断是否包含注解
-public boolean isAnnotationPresent(Class<? extends java.lang.annotation.Annotation> annotationClass)
-
-</A></A></pre>
-
-<p>使用示例：</p>
-<img src="/blog/2020/02/29/java16-Annotations/5a50e87a-c532-41b9-a069-f2c423b95c51.jpg">
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <a href="/blog/2020/02/29/java16-Annotations/" title="java16 注解" itemprop="url">
+  
+    <h1 itemprop="name">java16 注解</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/02/29/java15-Polymorphism/" title="java15 多态" itemprop="url">java15 多态</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-02-29T03:01:58.000Z" itemprop="datePublished"> Published 2020-02-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
+     
+           <p itemprop="description" >注解就是一种标记作用的特性。
+注解的类型注解类型是 一种模板，注解是注解模板的具体实例。
+注解类型可以包含键值对，没有键值对的叫标记注解，有单个键值对的叫单值注解。
+注解的使用不带参数：
+
+
+带参数：
+
+
+不带参数使用示例：
+
+
+带参数使用示例：
+
+
+对于单值注解，可以省略键：
+</p>
         
-        <h2 id="什么是多态？"><a href="#什么是多态？" class="headerlink" title="什么是多态？"></a>什么是多态？</h2><pre style="background:#e6e6e6;padding=10px;">
+    
+    <time datetime="2020-02-29T03:35:17.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/29/java15-Polymorphism/" title="java15 多态" itemprop="url">
+  
+    <h1 itemprop="name">java15 多态</h1>
+    
+     
+           <p itemprop="description" >什么是多态？
 
 A a = new B();
 
-</pre>
 
-<p>如上所示的定义方法是允许的，条件如下：</p>
-<ol>
-<li><p>B是A的子类</p>
-</li>
-<li><p>B是A接口的具体实现</p>
-</li>
-</ol>
-<p>有什么特别之处呢？</p>
-<p>当<code style="background:#ff3385;color:white;padding:5px;">编译</code>时，a的类型是A，这个时候，只允许调用在A类中定义的方法。在<code style="background:#ff3385;color:white;padding:5px;">运行</code>时，a变成了类型B，所以，</p>
-<pre style="background:#e6e6e6;padding=10px;">
 
-a.getClass().getName()  //结果是B
+如上所示的定义方法是允许的，条件如下：
 
-</pre>
+B是A的子类
 
-<p>那么，假设A有个play方法，B重写了这个方法，调用a.play()是调的是谁？<code style="background:#ff3385;color:white;padding:5px;">调用B的方法</code>。这个调用在运行时决定。</p>
-<p>假如，A有个方法stop，而B<code style="background:#ff3385;color:white;padding:5px;">没有</code>重写这个方法（B不是直接继承或实现A），那么调用a.stop(),调用的是谁？调用<code style="background:#ff3385;color:white;padding:5px;">B的父类</code>的方法，能具体则具体，找到父类的重写方法进行调用。</p>
-<h2 id="多态的一个应用场景"><a href="#多态的一个应用场景" class="headerlink" title="多态的一个应用场景"></a>多态的一个应用场景</h2><p>假如我们有个订单服务Order,有个处理订单的接口OrderHandler</p>
-<p>但是对于订单的处理，如：接受订单，处理订单需要不同的持久化工具，如Sql Server,MySql, Oracle等等</p>
-<p>为了实现不同数据库的适配，需要定义不同的实现类，SqlServerOrderHandler, MySqlOrderHandler, OracleOrderHandler。</p>
-<p>到底使用哪个呢？需要根据运行时决定。</p>
-<img src="/blog/2020/02/29/java15-Polymorphism/d3158b32-219e-4097-8254-4afb87484899.jpg">
+B是A接口的具体实现
 
-<p>或者</p>
-<img src="/blog/2020/02/29/java15-Polymorphism/ca1ae812-cc61-456b-b753-1c14def49d84.jpg">
 
-<p>通过反射，动态的根据输入参数创建实现类的实例：</p>
-<img src="/blog/2020/02/29/java15-Polymorphism/4d6add47-fb4a-403a-a973-40c0ef0408ce.jpg">
+有什么特别之处呢？
+当编译时，a的类型是A，这个时候，只允许调用在A类中定义的方法。在运行时，a变成了类型B，所以，
 
+
+a.getClass(</p>
         
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
+    
+    <time datetime="2020-02-29T03:01:58.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
 
 
-  <div class="article-tags">
+
+
+
+
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/" title="java14 内部类" itemprop="url">java14 内部类</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-02-29T02:14:01.000Z" itemprop="datePublished"> Published 2020-02-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="内部类的定义"><a href="#内部类的定义" class="headerlink" title="内部类的定义"></a>内部类的定义</h2><p>内部类就是在其它类内部的类：</p>
-<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/425b4d6b-c0ac-4f45-acd5-43fc21d894bc.jpg">
-
-<p>如果你喜欢，可以在内部类内部再定义内部类：</p>
-<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/77548d4e-f647-4ec1-b0ff-12772c2c6e07.jpg">
-
-<p>内部类类似于域、方法，可以有四种访问修饰符：public / private / default / protected</p>
-<h2 id="静态内部类和内部类区别"><a href="#静态内部类和内部类区别" class="headerlink" title="静态内部类和内部类区别"></a>静态内部类和内部类区别</h2><ol>
-<li><p>静态内部类可以包含静态域，内部类不行。</p>
-</li>
-<li><p>实例内部类可以访问外部的静态、实例域，方法，包括私有的。静态内部类仅可以访问外部的静态资源。</p>
-</li>
-<li><p>静态内部类可以不用创建外部类，直接创建实例。实例内部类需要先创建外部类的实例。</p>
-</li>
-</ol>
-<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><p>创建静态类：</p>
-<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/25086175-1c78-46e0-a853-f926856d4629.jpg">
-
-<p>使用其创建对象：</p>
-<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/b3f347ef-65f7-4c9a-a359-5442cc7ba493.jpg">
-
-<p>外部类.内部类 创建对象。</p>
-<h2 id="实例内部类"><a href="#实例内部类" class="headerlink" title="实例内部类"></a>实例内部类</h2><img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/e8c232a2-322d-454b-aff6-fc045f14adfc.jpg">
-
-<p>内部类创建实例：</p>
-<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/fa5fd1c3-2901-40f0-a476-55a4ac516e25.jpg">
-
-<p>需要外部类的实例.new 内部类</p>
-<h2 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h2><img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/ffab32ff-27e6-4ffb-bb41-663d8afbcb01.jpg">
-
-<p>在方法的内部定义内部类称为局部内部类。</p>
-<p>布局内部类可以使用方法的参数，但是只能使用final参数：</p>
-<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/90a27107-e989-4239-909e-5d7b8d11fa3e.jpg">
-
-<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p>创建接口：</p>
-<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/18bc7bef-c670-419c-ad33-f90063c79ead.jpg">
-
-<p>创建接口的匿名内部类：</p>
-<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/46969a31-64a7-4f7f-b06c-269ef48f89a3.jpg">
-
-<p>抽象类也可以：</p>
-<img src="/blog/2020/02/29/java14-Nested-and-Inner-Classes/acd4f4f7-84c2-42db-be94-39dffe751bec.jpg">
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/02/22/java13-Input-Output/" title="java13 输入输出" itemprop="url">java13 输入输出</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-02-22T04:35:29.000Z" itemprop="datePublished"> Published 2020-02-22</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="File-Systems-and-Paths"><a href="#File-Systems-and-Paths" class="headerlink" title="File Systems and Paths"></a>File Systems and Paths</h2><p>FileSystem代表一个文件系统。它是一个抽象类。</p>
-<h3 id="获取FileSystem对象"><a href="#获取FileSystem对象" class="headerlink" title="获取FileSystem对象"></a>获取FileSystem对象</h3><img src="/blog/2020/02/22/java13-Input-Output/2b912a34-df1d-41d1-a1aa-e522dd575f4f.jpg">
-
-<h3 id="获取分割符"><a href="#获取分割符" class="headerlink" title="获取分割符"></a>获取分割符</h3><img src="/blog/2020/02/22/java13-Input-Output/ae620946-4f88-4327-94ef-5cb232cca4ee.jpg">
-
-<p>win下是\，Linux下是/</p>
-<h3 id="获取根目录"><a href="#获取根目录" class="headerlink" title="获取根目录"></a>获取根目录</h3><img src="/blog/2020/02/22/java13-Input-Output/6c777170-1972-4c5c-bfe4-98f0d1ef2abf.jpg">
-
-<p>获取到一个Iterable<Path></Path></p>
-<h3 id="获取一个路径"><a href="#获取一个路径" class="headerlink" title="获取一个路径"></a>获取一个路径</h3><img src="/blog/2020/02/22/java13-Input-Output/de2eb829-01c9-43a4-9c2a-7d574a879b2c.jpg">
-
-<p>后续的参数可以用于拼接</p>
-<img src="/blog/2020/02/22/java13-Input-Output/cc37d25e-0add-4e45-9bd0-1c48242cbf92.jpg">
-
-<p>java.nio.file.Paths也提供了类似的方法：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/acbba703-b077-4b47-bd49-5d5939b7c05f.jpg">
-
-<pre style="background:#e6e6e6;padding=10px;">
-
-//获取名称
-Path getName(int index)
-
-Path path = Paths.get("/home/user/images");
-System.out.println(path.getNameCount()); // prints 3
-System.out.println(path.getName(0)); // prints home
-System.out.println(path.getName(1)); // prints user
-System.out.println(path.getName(2)); // prints images
-
-</pre>
-
-<pre style="background:#e6e6e6;padding=10px;">
-
-//获取文件名
-Path getFileName()
-
-//获取父目录
-Path getParent()
-
-//获取根目录
-Path getRoot()
-
-</pre>
-
-<h2 id="文件目录操作"><a href="#文件目录操作" class="headerlink" title="文件目录操作"></a>文件目录操作</h2><p><code style="background:#ff3385;color:white;padding:5px;">Files</code>类的方法：</p>
-<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><img src="/blog/2020/02/22/java13-Input-Output/45740644-0457-4b80-a7e0-e385448a3343.jpg">
-
-<h3 id="创建路径"><a href="#创建路径" class="headerlink" title="创建路径"></a>创建路径</h3><img src="/blog/2020/02/22/java13-Input-Output/c5579496-a47a-456a-b246-a889d3c64d77.jpg">
-
-<h3 id="删除文件、路径、链接"><a href="#删除文件、路径、链接" class="headerlink" title="删除文件、路径、链接"></a>删除文件、路径、链接</h3><img src="/blog/2020/02/22/java13-Input-Output/4138a502-0afb-454d-bb08-9c7de77517d8.jpg">
-
-<p>如果路径不存在将抛出异常，为此，可以使用以下方法：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/1a302b1c-bc59-4d1b-898f-0fa774117f13.jpg">
-
-<h3 id="操作目录"><a href="#操作目录" class="headerlink" title="操作目录"></a>操作目录</h3><img src="/blog/2020/02/22/java13-Input-Output/c31932b7-052d-4677-a187-60cd99cb4689.jpg">
-
-<p>使用<code style="background:#ff3385;color:white;padding:5px;">DirectoryStream</code>对目录进行遍历(注意资源释放)：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-Path parent = ...
-try (DirectoryStream<Path> children =
-&nbsp;&nbsp;Files.newDirectoryStream(parent)) {
-&nbsp;&nbsp;&nbsp;&nbsp;for (Path child : children) {
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(child);
-&nbsp;&nbsp;}
-} catch (IOException e) {
-&nbsp;&nbsp;e.printStackTrace();
-}
-
-</Path></pre>
-
-<h3 id="文件复制"><a href="#文件复制" class="headerlink" title="文件复制"></a>文件复制</h3><pre style="background:#e6e6e6;padding=10px;">
-
-public static Path copy(Path source, Path target,CopyOption... options)
-
-</pre>
-
-<p>StandardCopyOption包含以下几种枚举：</p>
-<p>ATOMIC_MOVE（原子操作）</p>
-<p>COPY_ATTRIBUTES（复制文件属性）</p>
-<p>REPLACE_EXISTING（覆盖已有文件）</p>
-<p>示例代码：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/2e3fdbef-974e-4e02-ab5d-10d2a6ed1162.jpg">
-
-<h3 id="文件移动"><a href="#文件移动" class="headerlink" title="文件移动"></a>文件移动</h3><pre style="background:#e6e6e6;padding=10px;">
-
-public static Path move(Path source, Path target,CopyOption... options) throws java.io.IOException
-
-</pre>
-
-<p>示例代码：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/9341c8e5-24bf-4fea-a2b4-03b8d14c069f.jpg">
-
-<h2 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h2><p>Files类可以读写小型文本或二进制文件。</p>
-<h3 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h3><p>读取<code style="background:#ff3385;color:white;padding:5px;">二进制</code>文件：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public static byte[] readAllBytes(Path path)
-         throws java.io.IOException
-
-</pre>
-
-<p>读取<code style="background:#ff3385;color:white;padding:5px;">字符串</code>文本：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public static List<String> readAllLines(Path path,java.nio.charset.Charset charset)   
-         throws java.io.IOException
-
-</String></pre>
-
-<h3 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h3><p>写入<code style="background:#ff3385;color:white;padding:5px;">二进制</code>：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public static Path write(Path path, byte[] bytes,OpenOption... options) 
-          throws java.io.IOException
-
-</pre>
-
-<p>写入<code style="background:#ff3385;color:white;padding:5px;">文本</code>：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public static Path write(Path path, java.lang.Iterable<? extends CharSequence> lines, java.nio.charset.Charset charset,OpenOption... options)
-           throws java.io.IOException
-
-</pre>
-
-<p>StandardOpenOption选项：</p>
-<p>APPEND追加</p>
-<p>CREATE如果不存在则创建</p>
-<p>CREATE_NEW不存在则创建，否则抛出异常</p>
-<p>DELETE_ON_CLOSE文件关闭时，删除</p>
-<p>READ读取</p>
-<p>WRITE写入</p>
-<p>TRUNCATE_EXISTING文件存在则清空内容</p>
-<p>SPARSE稀疏文件</p>
-<p>SYNC同步内容和元数据写入</p>
-<p>DSYNC同步内容写入</p>
-<p>编码方法：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/4e138aef-9edf-4e05-b947-284f5451cbbb.jpg">
-
-<p>读写示例：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/e220392e-3c3e-43eb-a79e-cdf41b7db454.jpg">
-
-<h2 id="输入输出流"><a href="#输入输出流" class="headerlink" title="输入输出流"></a>输入输出流</h2><table cellpadding="8" border="1" style="background:#EAF2D3;text-align:center">
-<tr>
-&nbsp;<td>
-类型
-&nbsp;</td>
-&nbsp;<td>
-描述
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-Reader
-&nbsp;</td>
-&nbsp;<td>
-读取字符
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-Writer
-&nbsp;</td>
-&nbsp;<td>
-写入字符
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-InputStream
-&nbsp;</td>
-&nbsp;<td>
-二进制读取流
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-OutputStream
-&nbsp;</td>
-&nbsp;<td>
-二进制输出流
-&nbsp;</td>
-</tr>
-
-</table>
-
-<h2 id="读取二进制数据"><a href="#读取二进制数据" class="headerlink" title="读取二进制数据"></a>读取二进制数据</h2><img src="/blog/2020/02/22/java13-Input-Output/11740d87-f39e-4e0e-813a-016fc199d413.jpg">
-
-<p>java7之前可以new一个FileInputStream，现在也可以使用Files类创建：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/9d766191-db65-498b-9989-a1bbca527a91.jpg">
-
-<p>示例代码：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-Path path = ...
-try (InputStream inputStream = Files.newInputStream(path,
-&nbsp;&nbsp;StandardOpenOption.READ) {
-&nbsp;&nbsp;// manipulate inputStream
-} catch (IOException e) {
-&nbsp;&nbsp;// do something with e
-}
-
-</pre>
-
-<p>为了提升效率，使用BufferedInputStream:</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-Path path = ...
-try (InputStream inputStream = Files.newInputStream(path,StandardOpenOption.READ);
-&nbsp;&nbsp;&nbsp;&nbsp;BufferedInputStream buffered = new BufferedInputStream(inputStream)) {
-&nbsp;&nbsp;// manipulate buffered, not inputStream
-} catch (IOException e) {
-&nbsp;&nbsp;// do something with e
-}
-
-</pre>
-
-<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><img src="/blog/2020/02/22/java13-Input-Output/b9a52e27-41ad-4839-bdcb-4b6ed85e83b4.jpg">
-
-<p>到达流的末尾时，返回-1</p>
-<h3 id="获取可读取数据大小"><a href="#获取可读取数据大小" class="headerlink" title="获取可读取数据大小"></a>获取可读取数据大小</h3><img src="/blog/2020/02/22/java13-Input-Output/8ef3fdca-8683-4667-b354-4bef867b081f.jpg">
-
-<h3 id="跳过指定个数字节"><a href="#跳过指定个数字节" class="headerlink" title="跳过指定个数字节"></a>跳过指定个数字节</h3><img src="/blog/2020/02/22/java13-Input-Output/e2d061c2-e47e-4d26-a60f-b7887650b9a2.jpg">
-
-<h3 id="标记位置"><a href="#标记位置" class="headerlink" title="标记位置"></a>标记位置</h3><img src="/blog/2020/02/22/java13-Input-Output/02fd782e-ede8-4972-8feb-2fe62f6dedd7.jpg">
-
-<h3 id="返回标记处"><a href="#返回标记处" class="headerlink" title="返回标记处"></a>返回标记处</h3><img src="/blog/2020/02/22/java13-Input-Output/5950ae67-ccbd-4aa1-9cf2-90d16b7f8659.jpg">
-
-<h3 id="关闭流"><a href="#关闭流" class="headerlink" title="关闭流"></a>关闭流</h3><img src="/blog/2020/02/22/java13-Input-Output/c04ec6cd-888b-4186-9e8c-89f5b5ef9053.jpg">
-
-<h2 id="写入二进制数据"><a href="#写入二进制数据" class="headerlink" title="写入二进制数据"></a>写入二进制数据</h2><img src="/blog/2020/02/22/java13-Input-Output/11f79073-169c-4005-a6f2-b3e8143ee5e1.jpg">
-
-<p>java7之前可以new一个FileOutputStream，现在也可以使用Files类创建：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/1f99320b-e33b-4607-a396-0d39b70f94cb.jpg">
-
-<p>示例代码：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-Path path = ...
-try (OutputStream outputStream = Files.newOutputStream(path,
-StandardOpenOption.CREATE, StandardOpenOption.APPEND) {
-&nbsp;&nbsp;// manipulate outputStream
-} catch (IOException e) {
-&nbsp;&nbsp;// do something with e
-}
-
-</pre>
-
-<p>为了提高效率，使用缓冲流：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/800a89fd-2c2d-437d-bbd4-08e34bf6146d.jpg">
-
-<h3 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h3><img src="/blog/2020/02/22/java13-Input-Output/7790c7f6-7eec-4472-a942-f58c66b7f292.jpg">
-
-<h3 id="关闭流、刷新流"><a href="#关闭流、刷新流" class="headerlink" title="关闭流、刷新流"></a>关闭流、刷新流</h3><p>close用于关闭，一般使用try结构即可。</p>
-<p>flush方法用于将数据刷新写入。</p>
-<p>数据写入示例：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/072c515d-ac0d-4184-9713-09f7f080e0e4.jpg">
-
-<h2 id="写文本"><a href="#写文本" class="headerlink" title="写文本"></a>写文本</h2><img src="/blog/2020/02/22/java13-Input-Output/629ef8df-1105-457f-ade2-ad223636ddb0.jpg">
-
-<h2 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h2><h3 id="写入文本"><a href="#写入文本" class="headerlink" title="写入文本"></a>写入文本</h3><img src="/blog/2020/02/22/java13-Input-Output/291d4940-4cbb-4970-a2bd-b240667aec9f.jpg">
-
-<p>也可以写入字符串：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/3c52b39e-36e1-4422-a1c7-3503a3c1ea01.jpg">
-
-<h3 id="OutputStreamWriter"><a href="#OutputStreamWriter" class="headerlink" title="OutputStreamWriter"></a>OutputStreamWriter</h3><img src="/blog/2020/02/22/java13-Input-Output/a6443ff0-3374-48bf-af0e-f7b3f1449244.jpg">
-
-<p>按照指定的编码方式进行写入。</p>
-<p>写入文件时，可以使用OutputStream和OutputStreamWriter包装：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-OutputStream os = Files.newOutputStream(path, openOption);
-OutputStreamWriter writer = new OutputStreamWriter(os, charset);
-
-</pre>
-
-<p>使用示例：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/c457a25f-a193-41b6-b2a3-6729737c5b03.jpg">
-
-<h3 id="PrintWriter"><a href="#PrintWriter" class="headerlink" title="PrintWriter"></a>PrintWriter</h3><p>相比来说，PrinterWriter更好用：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/442af3ce-b0f4-40d4-911d-ba258babea27.jpg">
-
-<p>它的print方法支持大量类型：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/fe3ed325-c039-4c8d-b19e-3d388181d86d.jpg">
-
-<p>同样，它也包含大量println方法，自动换行。</p>
-<p>为了提升性能，包装一层缓冲流：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/271d3878-73b2-4735-bfff-a178a3050fbc.jpg">
-
-<p>使用示例：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-PrintWriter pw = new PrintWriter(new BufferedWriter(writer));
-
-</pre>
-
-<p>完整示例：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/c0e9ba62-9190-461e-a8a4-7be61b8e9e0c.jpg">
-
-<h2 id="读取文本"><a href="#读取文本" class="headerlink" title="读取文本"></a>读取文本</h2><img src="/blog/2020/02/22/java13-Input-Output/c753ffc8-f23c-4ac5-9180-941e891c2163.jpg">
-
-<h3 id="读取文本数据"><a href="#读取文本数据" class="headerlink" title="读取文本数据"></a>读取文本数据</h3><img src="/blog/2020/02/22/java13-Input-Output/43cebc83-18d2-4a27-aa14-e6411a72e75d.jpg">
-
-<p>直接读取char[]数组数据。</p>
-<p>也可以将数据读入NIO的CharBuffer:</p>
-<img src="/blog/2020/02/22/java13-Input-Output/9890dbaf-7e9c-406e-bb5d-aec4877eb4f3.jpg">
-
-<h2 id="InputStreamReader"><a href="#InputStreamReader" class="headerlink" title="InputStreamReader"></a>InputStreamReader</h2><p>可以读取二进制流，按照指定的编码格式转换成字符。</p>
-<img src="/blog/2020/02/22/java13-Input-Output/b3d3ee62-7c53-4887-ad79-a46fb6c9c6e7.jpg">
-
-<p>使用示例：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-Path path = ...
-Charset charset = ...
-//创建InputStream
-InputStream inputStream = Files.newInputStream(path,StandardOpenOption.READ);
-//构造InputStreamReader
-InputStreamReader reader = new InputStreamReader(inputStream, charset);
-
-</pre>
-
-<h2 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a>BufferedReader</h2><p>使用BufferedReader可以提升读取性能。</p>
-<p>在NIO中，Files提供了以下构造方法：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public static java.io.BufferedReader newBufferedReader(Path path,java.nio.charset.Charset charset)
-
-</pre>
-
-<p>使用示例：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-Path path = ...
-BufferedReader br = Files.newBufferedReader(path, charset);
-String line = br.readLine();
-while (line != null) {
-    System.out.println(line);
-    line = br.readLine();
-}
-
-</pre>
-
-<p>也可以包装InputStreamReader:</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public static String getUserInput() {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    try {
-        return br.readLine();
-    } catch (IOException ioe) {
-    }
-    return null;
-}
-
-</pre>
-
-
-<h2 id="PrintStream"><a href="#PrintStream" class="headerlink" title="PrintStream"></a>PrintStream</h2><p>PrintStream是一种输出流，类似于PrintWriter,构造函数如下：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public PrintStream(OutputStream out)
-public PrintStream(OutputStream out, boolean autoFlush)
-public PrintStream(OutputStream out, boolean autoFlush,String encoding)
-
-</pre>
-
-<img src="/blog/2020/02/22/java13-Input-Output/6eb26a88-d7cc-41bc-b27c-e7be21f73b74.jpg">
-
-<p>建立<code style="background:#ff3385;color:white;padding:5px;">OutputStream</code>，操作文件。使用<code style="background:#ff3385;color:white;padding:5px;">Print Stream</code>包装一层。将System的<code style="background:#ff3385;color:white;padding:5px;">标准输出</code>设置为PrintStream。</p>
-<h2 id="Random-Access-Files"><a href="#Random-Access-Files" class="headerlink" title="Random Access Files"></a>Random Access Files</h2><p>随机读取文件的需求如下：</p>
-<p>对文件的随机读取是对文件的指定位置的随机访问而不是从头到尾依次读取，类似于List和LinkedList的区别。<br>实现文件的随机访问有两种方式：</p>
-<ol>
-<li><p>RandomAccessFile</p>
-</li>
-<li><p>SeekableByteChannel</p>
-</li>
-</ol>
-<pre style="background:#e6e6e6;padding=10px;">
-
-SeekableByteChannel sbc = Files.newByteChannel(Path path, OpenOption... options);
-
-//设置读写权限
-SeekableByteChannel readOnlyByteChannel = Files.newByteChannel(path1, EnumSet.of(READ)));
-SeekableByteChannel writableByteChannel = Files.newByteChannel(path2, EnumSet.of(CREATE,APPEND));
-
-</pre>
-
-<p>获取当前指针的位置：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-long position() throws java.io.IOException
-
-</pre>
-
-<p>切换位置：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-SeekableByteChannel position(long newPosition) throws java.io.IOException
-
-</pre>
-
-<p>获取文件大小：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-long size() throws java.io.IOException
-
-</pre>
-
-<p>读取写入：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-int read(java.nio.ByteBuffer buffer) throws java.io.IOException
-
-int write(java.nio.ByteBuffer buffer) throws java.io.IOException
-
-</pre>
-
-<h2 id="ByteBuffer"><a href="#ByteBuffer" class="headerlink" title="ByteBuffer"></a>ByteBuffer</h2><p>ByteBuffer是Buffer的一种实现，还有CharBuffer, DoubleBuffer, FloatBuffer, IntBuffer, LongBuffer, ShortBuffer</p>
-<p>ByteBuffer的一种简单的构造方法：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/503b5f71-6570-40de-8d51-b5cd1f91bced.jpg">
-
-<p>示例：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-ByteBuffer byteBuffer = ByteBuffer.allocate(100);
-
-</pre>
-
-<p>在ByteBuffer内部维护了一个Byte Array，可以通过以下方法获得：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/b446df6a-bc89-4c42-bbf4-b0cafc16e565.jpg">
-
-<p>ByteBuffer的几种读写方法：</p>
-<pre style="background:#e6e6e6;padding=10px;">
-
-//直接添加
-public abstract ByteBuffer put(byte b)
-//在指定位置添加
-public abstract ByteBuffer put(int index, byte b)
-//添加数组
-public ByteBuffer put(byte[] src)
-//添加数组的一部分
-public ByteBuffer put(byte[] src, int offset, int length)
-
-//添加指定类型
-public abstract ByteBuffer putInt(int value)
-public abstract ByteBuffer putInt(int index, int value)
-
-//读取
-public abstract byte get()
-public abstract byte get(int index)
-public abstract float getFloat()
-public abstract float getFloat(int index)
-
-</pre>
-
-<p>SeekableByteChannel操作完整示例：</p>
-<ol>
-<li>创建ByteBuffer并添加数据</li>
-</ol>
-<img src="/blog/2020/02/22/java13-Input-Output/12aecef2-9d59-48ac-92b5-e9ed03fc2036.jpg">
-
-<ol start="2">
-<li>创建SeekableByteChannel，写入数据</li>
-</ol>
-<img src="/blog/2020/02/22/java13-Input-Output/b05dbf43-b103-4db5-8310-0b8462b4ba3d.jpg">
-
-
-<h2 id="对象的序列化"><a href="#对象的序列化" class="headerlink" title="对象的序列化"></a>对象的序列化</h2><p>对对象进行序列化可以用于存储对象状态，通过网络进行传输。再进行反序列化即可还原。对象进行序列化，需要实现Serializable接口。</p>
-<ol>
-<li>构造ObjectOutputStream</li>
-</ol>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public ObjectOutputStream(OutputStream out)
-
-</pre>
-
-<ol start="2">
-<li>添加数据</li>
-</ol>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public void writeBoolean(boolean value)
-public void writeByte(int value)
-public void writeBytes(String value)
-public void writeChar(int value)
-public void writeChars(String value)
-public void writeDouble(double value)
-public void writeFloat(float value)
-public void writeInt(int value)
-public void writeLong(long value)
-public void writeShort(short value)
-public void writeObject(java.lang.Object value)
-
-</pre>
-
-<p>反序列化的过程：</p>
-<ol>
-<li>构造ObjectInputStream</li>
-</ol>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public ObjectInputStream(InputStream in)
-
-</pre>
-
-<ol start="2">
-<li>读取数据</li>
-</ol>
-<pre style="background:#e6e6e6;padding=10px;">
-
-public boolean readBoolean()
-public byte readByte()
-public char readChar()
-public double readDouble()
-public float readFloat()
-public int readInt()
-public long readLong()
-public short readShort()
-public java.lang.Object readObject()
-
-</pre>
-
-<p>完整示例：</p>
-<p>序列化：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/82b2ad15-e3ea-4a99-a10b-b23c2badf47f.jpg">
-
-<p>反序列化：</p>
-<img src="/blog/2020/02/22/java13-Input-Output/d6aa4170-5154-4ee6-90b0-cc0ca64a4a1c.jpg">
-
-
-
-
-
-
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+    <a href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/" title="java14 内部类" itemprop="url">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">java14 内部类</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >内部类的定义内部类就是在其它类内部的类：
+
+
+如果你喜欢，可以在内部类内部再定义内部类：
+
+
+内部类类似于域、方法，可以有四种访问修饰符：public / private / default / protected
+静态内部类和内部类区别
+静态内部类可以包含静态域，内部类不行。
+</p>
+        
     
-      <a href="/blog/2020/02/22/java12-Generics/" title="java12 泛型" itemprop="url">java12 泛型</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-02-22T03:46:56.000Z" itemprop="datePublished"> Published 2020-02-22</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>如果不使用泛型，在List中读取数据 就需要频繁的强制转化，类型不合适还会出现异常：</p>
-<img src="/blog/2020/02/22/java12-Generics/5fdfbb8d-8708-4ec7-92de-fc60ebf99989.jpg">
-
-<h2 id="泛型方法举例"><a href="#泛型方法举例" class="headerlink" title="泛型方法举例"></a>泛型方法举例</h2><p>泛型列表：</p>
-<img src="/blog/2020/02/22/java12-Generics/dc8f804a-12a9-4bc2-9d1a-56ee64026ff2.jpg">
-
-<p>插入和获取元素方法：</p>
-<img src="/blog/2020/02/22/java12-Generics/1caed39d-ecf3-4ef6-8b53-770a2f38d863.jpg">
-
-<p>实例化：</p>
-<img src="/blog/2020/02/22/java12-Generics/458e0721-cc8c-4221-aad3-f40fb04983ff.jpg">
-
-<p>Map:</p>
-<img src="/blog/2020/02/22/java12-Generics/e2c8dea5-3a7a-4dbb-8c32-d595f30cf43d.jpg">
-
-<p>插入、获取：</p>
-<img src="/blog/2020/02/22/java12-Generics/d2b8a1d7-2a64-473a-908f-1c88ca35ef81.jpg">
-
-<p>泛型列表嵌套：</p>
-<img src="/blog/2020/02/22/java12-Generics/ecf519cf-be8d-4cfe-9790-1b94bb57f8e0.jpg">
-
-<p>使用示例：</p>
-<img src="/blog/2020/02/22/java12-Generics/ee20de0a-a4ef-43d5-8146-59caaf986892.jpg">
-
-<p>hashMap使用示例：</p>
-<img src="/blog/2020/02/22/java12-Generics/2720dff5-de6c-494a-8986-0158b2598f45.jpg">
-
-<h2 id="List-lt-gt-类型通配"><a href="#List-lt-gt-类型通配" class="headerlink" title="List&lt;?&gt;类型通配"></a>List&lt;?&gt;类型通配</h2><p>在List中可以传入自身的对象或者子类对象。但是List<String>传入List<Object>是无法编译的：</Object></String></p>
-<img src="/blog/2020/02/22/java12-Generics/ce5c869b-164a-449e-b43f-00976ab09a20.jpg">
-
-<p>替换为List&lt;?&gt;即可接受任意类型的列表：</p>
-<img src="/blog/2020/02/22/java12-Generics/eaf9d52e-fcee-4196-bd70-0305a87bac8b.jpg">
-
-<p>还可以限定类型属于某类型或其子类型：</p>
-<img src="/blog/2020/02/22/java12-Generics/8c3d32d5-cdab-44b7-9337-52c5b9007567.jpg">
-
-<p>使用List&lt;? extends Number&gt;可以限定部分类型可用：</p>
-<img src="/blog/2020/02/22/java12-Generics/c44e6327-6c3d-4c47-9335-d46bea9dd31c.jpg">
-
-<h2 id="自定义泛型类"><a href="#自定义泛型类" class="headerlink" title="自定义泛型类"></a>自定义泛型类</h2><img src="/blog/2020/02/22/java12-Generics/3aa8deb3-cd86-4198-b43b-6aed1d83322a.jpg">
-
-<p>使用T表示泛型类型。</p>
-<p>使用时需要指定泛型的具体类型：</p>
-<img src="/blog/2020/02/22/java12-Generics/af41f68d-325d-4516-a044-e2f8577f7749.jpg">
+    <time datetime="2020-02-29T02:14:01.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
 
 
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
 
 
-  <div class="article-tags">
+
+
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/02/22/java11-The-Collections-Framework/" title="java11 集合" itemprop="url">java11 集合</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-02-22T01:45:26.000Z" itemprop="datePublished"> Published 2020-02-22</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="一张图认识集合的关系"><a href="#一张图认识集合的关系" class="headerlink" title="一张图认识集合的关系"></a>一张图认识集合的关系</h2><p>集合用于分组处理对象。</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/7a0985f1-46c8-4aa0-8a61-424c5af6d082.jpg">
-
-<p>Collection的继承接口是List / Queue / Set</p>
-<p>Map用于存储键值对。</p>
-<p>ArrayList是List的非同步实现，Vector是同步实现。</p>
-<p>SortedMap是排序了的Map</p>
-<p>HashMap是一种基于哈希算法的键值对实现</p>
-<p>Comparator用于实现排序</p>
-<p>Iterator用于实现迭代</p>
-<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>Collection用于存储不同数据类型的数据，同时大小可变。</p>
-<table cellpadding="8" border="1" style="background:#EAF2D3;text-align:center">
-<tr>
-&nbsp;<td>
-方法
-&nbsp;</td>
-&nbsp;<td>
-备注
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-add
-&nbsp;</td>
-&nbsp;<td>
-添加元素
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-addAll
-&nbsp;</td>
-&nbsp;<td>
-添加其他Collection里的元素
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-clear
-&nbsp;</td>
-&nbsp;<td>
-移除所有元素
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-size
-&nbsp;</td>
-&nbsp;<td>
-获取元素个数
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-isEmpty
-&nbsp;</td>
-&nbsp;<td>
-判空
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-toArray
-&nbsp;</td>
-&nbsp;<td>
-转换为数组
-&nbsp;</td>
-</tr>
-
-
-</table>
-
-<h2 id="List-and-ArrayList"><a href="#List-and-ArrayList" class="headerlink" title="List and ArrayList"></a>List and ArrayList</h2><p>List是有序的集合，使用索引操作元素。</p>
-<h3 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/1853c8bc-ea6b-4ab0-9dcd-135034b3b819.jpg">
-
-<p>可以在末尾插入元素，插入成功返回true，否则false</p>
-<h3 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/e3352fc9-c386-436f-8d8e-b4cd9549c57e.jpg">
-
-<p>允许在指定的位置插入元素</p>
-<h3 id="修改某位置的元素"><a href="#修改某位置的元素" class="headerlink" title="修改某位置的元素"></a>修改某位置的元素</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/6ce21df3-97cb-4f88-a244-2cc22fc2f4cf.jpg">
-
-<p>修改指定位置的元素</p>
-<h3 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/d4892479-6209-40e6-a16e-a28c935c2d9a.jpg">
-
-<p>移除指定位置的元素</p>
-<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/1956dec7-9c00-424b-8a4c-a02bd710925b.jpg">
-
-<p>也可以指定容量：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/605ab093-cbc6-4bda-bbf9-f7052e8ceff9.jpg">
-
-<h3 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/401c4685-e036-44a6-aeeb-cdb937ee7b9b.jpg">
-
-<h3 id="附加方法"><a href="#附加方法" class="headerlink" title="附加方法"></a>附加方法</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/d10be918-3dfc-4658-a65c-046f88ad441f.jpg">
-
-
-<h2 id="Collection元素迭代"><a href="#Collection元素迭代" class="headerlink" title="Collection元素迭代"></a>Collection元素迭代</h2><h3 id="使用迭代器"><a href="#使用迭代器" class="headerlink" title="使用迭代器"></a>使用迭代器</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/21048bda-6e9e-49dc-9839-c03f48efb434.jpg">
-
-<h3 id="Foreach"><a href="#Foreach" class="headerlink" title="Foreach"></a>Foreach</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/97e57903-ff50-46ea-94d9-411e80465cb8.jpg">
-
-<h2 id="Set-and-HashSet"><a href="#Set-and-HashSet" class="headerlink" title="Set and HashSet"></a>Set and HashSet</h2><p>Set不允许出现两个相同的对象插入。</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/2e3b508a-c51f-45ba-ac8a-e8558e0b897b.jpg">
-
-<p>支持多个null</p>
-<p>不维护插入次序，相比LinkedHashSet及TreeSet速度要快。</p>
-<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p>先进先出序列：</p>
-<table cellpadding="8" border="1" style="background:#EAF2D3;text-align:center">
-<tr>
-&nbsp;<td>
-方法
-&nbsp;</td>
-&nbsp;<td>
-备注
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-offer ★
-&nbsp;</td>
-&nbsp;<td>
-区别于add,插入失败不会抛出异常
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-remove
-&nbsp;</td>
-&nbsp;<td>
-移除队头元素
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-poll ★
-&nbsp;</td>
-&nbsp;<td>
-移除队头元素，不会抛出异常
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-element
-&nbsp;</td>
-&nbsp;<td>
-获取队头元素
-&nbsp;</td>
-</tr>
-
-<tr>
-&nbsp;<td>
-peek ★
-&nbsp;</td>
-&nbsp;<td>
-获取队头元素，但不会抛异常
-&nbsp;</td>
-</tr>
-
-
-</table>
-
-<p>示例：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/10c37da0-be7d-47c6-a4d8-87f8f86d14ed.jpg">
-
-
-<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><img src="/blog/2020/02/22/java11-The-Collections-Framework/a4862048-31c8-454b-8939-116e912d5316.jpg">
-
-<p>均接受父类对象进行构造，因此可以转换。</p>
-<p>Queue转Array List：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/07630ed3-fd95-4183-882c-debf27f1ff38.jpg">
-
-<p>ArrayList转Hash Set：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/e19ab2b4-f8d9-4632-a7ab-88afbd213ab0.jpg">
-
-<h2 id="Map-and-HashMap"><a href="#Map-and-HashMap" class="headerlink" title="Map and HashMap"></a>Map and HashMap</h2><h3 id="插入元素-1"><a href="#插入元素-1" class="headerlink" title="插入元素"></a>插入元素</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/cbe301c0-451a-4740-bac6-9652996b1d72.jpg">
-
-<p>以键值对形式插入。</p>
-<p>插入另一个Map中的元素：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/5d1ac712-6eef-4b2e-92c2-ce00d324d4a0.jpg">
-
-<h3 id="移除元素-1"><a href="#移除元素-1" class="headerlink" title="移除元素"></a>移除元素</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/b82a9d67-5e0b-421a-9b3f-1fc59431e4d4.jpg">
-
-<p>根据键移除元素。</p>
-<h3 id="查询元素"><a href="#查询元素" class="headerlink" title="查询元素"></a>查询元素</h3><img src="/blog/2020/02/22/java11-The-Collections-Framework/6e63ffc5-c5b5-4c50-a7ff-33f16e4754c8.jpg">
-
-<p>根据键获取元素。</p>
-<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><p>keys获取键set</p>
-<p>values获取值集合</p>
-<p>entrySet获取键值对，getKey获取键,getValue获取值</p>
-<p>HashMap和HashTable的区别是前者非同步，后者同步。</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/1ca1e0cc-2c81-4fda-8c3d-f600b9633095.jpg">
-
-<h2 id="java-lang-Comparable"><a href="#java-lang-Comparable" class="headerlink" title="java.lang.Comparable"></a>java.lang.Comparable</h2><p>Arrays提供了一个静态比较方法：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/6fea8441-d9df-4801-ab4b-b0b87566e391.jpg">
-
-<p>对于自定义类的比较，需要实现接口：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/d81af4a2-b976-4944-89c2-987051123a64.jpg">
-
-<p>重写CompareTo方法：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/42ff7494-b9cb-41de-8c3c-5add23d41b5b.jpg">
-
-<p>使用：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/e1f02509-3ed7-4ead-86e9-ecb4a544d39b.jpg">
-
-<h2 id="Comparator"><a href="#Comparator" class="headerlink" title="Comparator"></a>Comparator</h2><p>对于Comparable，提供了一种排序方法。</p>
-<p>对于不同的排序方式实现，需要使用Comparator。重写compare方法即可：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/6a7b1350-7e34-468a-88a9-7ada3350cd95.jpg">
-
-<p>示例1：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/934a3db6-454a-40f4-93f3-dc06f5a91c12.jpg">
-
-<p>示例2：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/5154bc08-543e-4766-851a-71215ffa2b3c.jpg">
-
-<p>使用时，传入Comparator具体实现即可：</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/9bc3d361-26f6-4ddc-85ea-145e6246a117.jpg">
-
-<p>also,</p>
-<img src="/blog/2020/02/22/java11-The-Collections-Framework/1ee5896a-a99b-461c-98d0-0fa52a64f3f3.jpg">
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/02/22/java10-Enums/" title="java10 枚举" itemprop="url">java10 枚举</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-02-22T01:32:02.000Z" itemprop="datePublished"> Published 2020-02-22</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="枚举简介"><a href="#枚举简介" class="headerlink" title="枚举简介"></a>枚举简介</h2><p>枚举主要用于限制输入范围：</p>
-<img src="/blog/2020/02/22/java10-Enums/bfea2293-b740-4f18-90e9-01812dca2000.jpg">
-
-<p>枚举可以作为类的域变量出现：</p>
-<img src="/blog/2020/02/22/java10-Enums/32fa17a6-e7ae-402a-82fd-87cbaf4c6e24.jpg">
-
-<p>其初始化方法类似于静态变量：</p>
-<img src="/blog/2020/02/22/java10-Enums/6c5029a4-e99a-4116-91b3-381f39a4e900.jpg">
-
-<p>枚举也可以在类的内部定义：</p>
-<img src="/blog/2020/02/22/java10-Enums/13a62aa4-cdd4-4655-9b0e-8f513647f534.jpg">
-
-<h2 id="java-lang-Enum"><a href="#java-lang-Enum" class="headerlink" title="java.lang.Enum"></a>java.lang.Enum</h2><ol>
-<li><p>没有公共构造器，不能初始化变量</p>
-</li>
-<li><p>默认静态</p>
-</li>
-<li><p>可以调用方法进行迭代</p>
-</li>
-</ol>
-<h2 id="迭代枚举值"><a href="#迭代枚举值" class="headerlink" title="迭代枚举值"></a>迭代枚举值</h2><p>可以获取枚举的values然后 使用foreach迭代：</p>
-<img src="/blog/2020/02/22/java10-Enums/0ce8cc79-6e4a-49fa-98c5-b2fd4d2193fb.jpg">
-
-<h2 id="Switch用法"><a href="#Switch用法" class="headerlink" title="Switch用法"></a>Switch用法</h2><p>可以使用枚举作为switch的条件：</p>
-<img src="/blog/2020/02/22/java10-Enums/da448e44-4ab9-498c-ab8a-40b18f4152da.jpg">
-
-<p><code style="background:#ff3385;color:white;padding:5px;">case的写法</code>一定要注意！！</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+    <a href="/blog/2020/02/22/java13-Input-Output/" title="java13 输入输出" itemprop="url">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
+    <h1 itemprop="name">java13 输入输出</h1>
+    
+     
+           <p itemprop="description" >File Systems and PathsFileSystem代表一个文件系统。它是一个抽象类。
+获取FileSystem对象
 
-</div>
+获取分割符
 
+win下是\，Linux下是/
+获取根目录
 
+获取到一个Iterable
+获取一个路径
 
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
+后续的参数可以用于拼接
 
 
+java.nio</p>
+        
+    
+    <time datetime="2020-02-22T04:35:29.000Z" itemprop="datePublished">2020-02-22</time>
+  </a>
+</section>
 
 
 
 
-  <nav id="page-nav" class="clearfix">
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/22/java12-Generics/" title="java12 泛型" itemprop="url">
+  
+    <h1 itemprop="name">java12 泛型</h1>
+    
+     
+           <p itemprop="description" >如果不使用泛型，在List中读取数据 就需要频繁的强制转化，类型不合适还会出现异常：
+
+
+泛型方法举例泛型列表：
+
+
+插入和获取元素方法：
+
+
+实例化：
+
+
+Map:
+
+
+插入、获取：
+
+
+泛型列表嵌套：
+
+
+使用示例：
+
+
+hashMap使用示例：
+
+
+List&amp;lt;?&amp;gt</p>
+        
+    
+    <time datetime="2020-02-22T03:46:56.000Z" itemprop="datePublished">2020-02-22</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/22/java11-The-Collections-Framework/" title="java11 集合" itemprop="url">
+  
+    <h1 itemprop="name">java11 集合</h1>
+    
+     
+           <p itemprop="description" >一张图认识集合的关系集合用于分组处理对象。
+
+
+Collection的继承接口是List / Queue / Set
+Map用于存储键值对。
+ArrayList是List的非同步实现，Vector是同步实现。
+SortedMap是排序了的Map
+HashMap是一种基于哈希算法的</p>
+        
+    
+    <time datetime="2020-02-22T01:45:26.000Z" itemprop="datePublished">2020-02-22</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/22/java10-Enums/" title="java10 枚举" itemprop="url">
+  
+    <h1 itemprop="name">java10 枚举</h1>
+    
+     
+           <p itemprop="description" >枚举简介枚举主要用于限制输入范围：
+
+
+枚举可以作为类的域变量出现：
+
+
+其初始化方法类似于静态变量：
+
+
+枚举也可以在类的内部定义：
+
+
+java.lang.Enum
+没有公共构造器，不能初始化变量
+
+默认静态
+
+可以调用方法进行迭代
+
+
+迭代枚举值可以获取枚举的values然</p>
+        
+    
+    <time datetime="2020-02-22T01:32:02.000Z" itemprop="datePublished">2020-02-22</time>
+  </a>
+</section>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix unexpand">
     <a class="extend prev" rel="prev" href="/blog/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
@@ -2280,6 +434,12 @@ peek ★
 <aside class="clearfix">
 
   
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
 
 
   
@@ -2327,7 +487,7 @@ peek ★
         
           <li>
             
-            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
             
           </li>
         
@@ -2349,7 +509,7 @@ peek ★
 
   <div class="weiboshow">
   <p class="asidetitle">Weibo</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
 </div>
 
 
@@ -2365,14 +525,14 @@ peek ★
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
 		
-		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
 		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
 		
 		
 		
