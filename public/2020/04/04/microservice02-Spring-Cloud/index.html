@@ -1,0 +1,692 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>microservice03-Spring Cloud | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="Spring Boot用于开发微服务应用，而实际的微服务架构不仅仅包含应用，还有服务注册、服务发现等部分：   下面以Dalston SR3为例进行介绍Spring Cloud. 服务发现服务发现介绍服务发现主要采用Spring Cloud Netflix中的Eureka。 主要包括Eureka Server（服务端发现组件）和Eureka Client（客户端发现组件）两个部分。   Eurek">
+<meta property="og:type" content="article">
+<meta property="og:title" content="microservice03-Spring Cloud">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/04/04/microservice02-Spring-Cloud/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="Spring Boot用于开发微服务应用，而实际的微服务架构不仅仅包含应用，还有服务注册、服务发现等部分：   下面以Dalston SR3为例进行介绍Spring Cloud. 服务发现服务发现介绍服务发现主要采用Spring Cloud Netflix中的Eureka。 主要包括Eureka Server（服务端发现组件）和Eureka Client（客户端发现组件）两个部分。   Eurek">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/30350f6f-9169-4e7d-815f-8d9a719fb85f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/92197523-a6f0-43b9-8a78-279ec85e2107.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/83a0a45d-172a-4225-a13a-8895fcfa362c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/4c0ea19c-621c-4b7c-babc-3ec315f570d1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/60bdd203-2d65-4201-aea4-a8984868a618.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/9bdd2f1d-0d10-4d95-aa26-adef46bd4522.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/a1d32b50-4763-4dad-b89e-38d572398a22.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/f698027b-10db-4d97-870a-6cf4dfcacc8d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/c349af84-4c38-4913-bca3-3d3538e7bdf3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/344a56cc-91c9-466f-b937-ca7f52bb86ed.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/ea09111b-7337-4e37-b904-8bc8dc25c0d8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/20267eb7-bc0e-42df-94f2-db74737b5d6f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/1e13f4a5-1cb1-4d72-bf75-a5293f6e2248.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/d20d33b7-a221-404d-8793-d2ce30206092.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/042af9fc-15c5-42d1-8817-c075d61a02d6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/04ca9d88-89d3-4ec1-bd7c-d3d880d524c2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/4f00d874-e74f-48b2-b228-a7a7bfed4f31.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/78ece87b-60d3-4651-a71d-2b6e28a64267.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/16854ff4-b648-4b02-a092-2b0466c84f08.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/98e1ad20-1488-4676-a647-b93f722e9c97.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/0a8c2ffa-4279-4d8e-b83e-5037d2a9aa18.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/10a0eedb-4d1f-4a7c-9f80-a8c7c9ef02a2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/0b2567a3-8504-4f58-9d94-26ed2c1fab75.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/b7715133-2ef6-485c-8716-05c84edd2a7c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/89319af8-3612-4106-a28d-eb73372d978d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/6acddc2f-811f-4588-9962-c6f91dfce09d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/c4b6f6dc-31da-4685-a9b2-20a3c83fc71c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/a98442b4-4b47-4f70-9cef-3ca41ab1ad8c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/d22c1367-1e90-483a-ac96-41a3ef998cbe.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/ec161863-0240-42cc-8510-47741de9a100.jpg">
+<meta property="article:published_time" content="2020-04-04T02:24:42.000Z">
+<meta property="article:modified_time" content="2020-04-04T08:08:33.842Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="microservice">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/04/04/microservice02-Spring-Cloud/30350f6f-9169-4e7d-815f-8d9a719fb85f.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives/">Archives</a></li>
+					
+						<li><a href="/blog/tags/">Tags</a></li>
+					
+						<li><a href="/blog/about/">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/04/04/microservice02-Spring-Cloud/" title="microservice03-Spring Cloud" itemprop="url">microservice03-Spring Cloud</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-04-04T02:24:42.000Z" itemprop="datePublished"> Published 2020-04-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务发现"><span class="toc-number">1.</span> <span class="toc-text">服务发现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务发现介绍"><span class="toc-number">1.1.</span> <span class="toc-text">服务发现介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-number">1.2.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务间调用"><span class="toc-number">1.3.</span> <span class="toc-text">服务间调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端负载均衡"><span class="toc-number">2.</span> <span class="toc-text">客户端负载均衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务容错"><span class="toc-number">3.</span> <span class="toc-text">服务容错</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#熔断器的三种状态"><span class="toc-number">3.1.</span> <span class="toc-text">熔断器的三种状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现-1"><span class="toc-number">3.2.</span> <span class="toc-text">实现</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>Spring Boot用于开发微服务应用，而实际的微服务架构不仅仅包含应用，还有服务注册、服务发现等部分：</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/30350f6f-9169-4e7d-815f-8d9a719fb85f.jpg">
+
+<p>下面以Dalston SR3为例进行介绍Spring Cloud.</p>
+<h2 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h2><h3 id="服务发现介绍"><a href="#服务发现介绍" class="headerlink" title="服务发现介绍"></a>服务发现介绍</h3><p>服务发现主要采用Spring Cloud Netflix中的Eureka。</p>
+<p>主要包括Eureka Server（服务端发现组件）和Eureka Client（客户端发现组件）两个部分。</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/92197523-a6f0-43b9-8a78-279ec85e2107.jpg">
+
+<p>Eureka Server定时检测服务的可用性。</p>
+<p>Eureka Client将服务注册到服务管理中心。</p>
+<p>服务发现中，服务消费者、服务管理中心，服务提供者的关系：</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/83a0a45d-172a-4225-a13a-8895fcfa362c.jpg">
+
+<p>服务消费者与服务管理中心维持心跳，更新最新调用地址。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ol>
+<li>新建Maven项目，添加Spring Cloud的依赖</li>
+</ol>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/4c0ea19c-621c-4b7c-babc-3ec315f570d1.jpg">
+
+<ol start="2">
+<li>创建服务端工程子模块</li>
+</ol>
+<p>a. 创建Server子工程，添加eureka server依赖：</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/60bdd203-2d65-4201-aea4-a8984868a618.jpg">
+
+<p>b. 为eureka server添加配置文件：</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/9bdd2f1d-0d10-4d95-aa26-adef46bd4522.jpg">
+
+<p>配置文件中配置了项目的端口号8761，实例名称为localhost, register-with-eukera与fetch-registry都是服务发现客户端需要做的，配置为false，并设置服务发现服务端地址。</p>
+<p>c. 为启动类添加EnableEukeraServer注解</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/a1d32b50-4763-4dad-b89e-38d572398a22.jpg">
+
+<p>d. 测试</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/f698027b-10db-4d97-870a-6cf4dfcacc8d.jpg">
+
+<ol start="3">
+<li>创建客户端工程子模块</li>
+</ol>
+<p>a. 创建客户端子项目，添加依赖</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/c349af84-4c38-4913-bca3-3d3538e7bdf3.jpg">
+
+<p>b. 添加配置信息</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/344a56cc-91c9-466f-b937-ca7f52bb86ed.jpg">
+
+<p>配置客户端端口，显示主机ip,配置服务端地址，配置客户端应用名称。</p>
+<p>c. 为启动类添加EnableEukeraClient注解</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/ea09111b-7337-4e37-b904-8bc8dc25c0d8.jpg">
+
+<p>d. 测试</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/20267eb7-bc0e-42df-94f2-db74737b5d6f.jpg">
+
+<h3 id="服务间调用"><a href="#服务间调用" class="headerlink" title="服务间调用"></a>服务间调用</h3><p>测试订单与用户服务之间的调用。</p>
+<ol>
+<li>添加订单服务项目：</li>
+</ol>
+<p>a. 添加依赖</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/1e13f4a5-1cb1-4d72-bf75-a5293f6e2248.jpg">
+
+<p>b. 添加配置</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/d20d33b7-a221-404d-8793-d2ce30206092.jpg">
+
+<p>c. 添加POJO</p>
+<pre style="background:#e6e6e6;padding=10px;">
+public class Order{
+    private String id;
+    private Double price;
+    private String receiverName;
+    private String receiverAddress;
+    private String receiverPhone;
+    /**getters and setters**/
+}
+</pre>
+
+<p>d. 添加控制器类</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/042af9fc-15c5-42d1-8817-c075d61a02d6.jpg">
+
+<p>e. 在引导类上添加EnableEukeraClient注解</p>
+<ol start="2">
+<li>为用户服务添加RestTemplate的Bean</li>
+</ol>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/04ca9d88-89d3-4ec1-bd7c-d3d880d524c2.jpg">
+
+<ol start="3">
+<li>添加控制器类</li>
+</ol>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/4f00d874-e74f-48b2-b228-a7a7bfed4f31.jpg">
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/78ece87b-60d3-4651-a71d-2b6e28a64267.jpg">
+
+<p>restTemplate将完成远程调用，获取订单信息。</p>
+<ol start="4">
+<li>测试</li>
+</ol>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/16854ff4-b648-4b02-a092-2b0466c84f08.jpg">
+
+<h2 id="客户端负载均衡"><a href="#客户端负载均衡" class="headerlink" title="客户端负载均衡"></a>客户端负载均衡</h2><p>客户端负载均衡采用Ribbon实现。</p>
+<p>在Eukera中内置了Ribbon，只需要在配置RestTemplate时添加LoadBalanced注解：</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/98e1ad20-1488-4676-a647-b93f722e9c97.jpg">
+
+<p>在调用服务时，取消主机+端口调用，而直接使用服务的实例名称：</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/0a8c2ffa-4279-4d8e-b83e-5037d2a9aa18.jpg">
+
+<h2 id="服务容错"><a href="#服务容错" class="headerlink" title="服务容错"></a>服务容错</h2><p>多个服务层之间调用关系会存在级联的关系：</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/10a0eedb-4d1f-4a7c-9f80-a8c7c9ef02a2.jpg">
+
+<p>一旦某个服务出现故障，将会出现故障传递。</p>
+<h3 id="熔断器的三种状态"><a href="#熔断器的三种状态" class="headerlink" title="熔断器的三种状态"></a>熔断器的三种状态</h3><p>关闭、打开、半开：</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/0b2567a3-8504-4f58-9d94-26ed2c1fab75.jpg">
+
+<p>服务健康状况 = (请求失败数 / 请求总数) 和 设定阈值（默认10秒内20次失败）</p>
+<p>健康值高于域值熔断器关闭，否则熔断器打开，阻止请求。打开后一定的时间窗内，将恢复半开。半开状态只允许一个请求，若请求成功则关闭，否则继续回到打开状态。</p>
+<p>服务调用失败时，若有fallback方法，将执行fallback：</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/b7715133-2ef6-485c-8716-05c84edd2a7c.jpg">
+
+<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><p>原有的父项目及订单服务可以复用，新建熔断user项目：</p>
+<ol>
+<li>添加依赖</li>
+</ol>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/89319af8-3612-4106-a28d-eb73372d978d.jpg">
+
+<p>除了eukera还需要hystrix.</p>
+<ol start="2">
+<li>配置信息与上面类似</li>
+</ol>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/6acddc2f-811f-4588-9962-c6f91dfce09d.jpg">
+
+<ol start="3">
+<li>配置启动类</li>
+</ol>
+<p>添加EnableCircuitBreaker及EnableEukeraClient注解</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/c4b6f6dc-31da-4685-a9b2-20a3c83fc71c.jpg">
+
+<ol start="4">
+<li>新建控制器</li>
+</ol>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/a98442b4-4b47-4f70-9cef-3ca41ab1ad8c.jpg">
+
+<p>为动作方法添加HystrixCommand注解，指定调用失败的方法，二者参数列表应当一致。</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/d22c1367-1e90-483a-ac96-41a3ef998cbe.jpg">
+
+<ol start="5">
+<li>测试</li>
+</ol>
+<p>使用ribbon进行负载均衡时，会对订单服务进行轮询，将其中一个服务停掉，再次轮询到时会进入fallback方法：</p>
+<img src="/blog/2020/04/04/microservice02-Spring-Cloud/ec161863-0240-42cc-8510-47741de9a100.jpg">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/microservice/">microservice</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/04/04/microservice02-Spring-Cloud/" data-title="microservice03-Spring Cloud | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/04/07/crazySSM01-introduction/" title="crazySSM01-简介">
+  <strong>上一篇：</strong><br/>
+  <span>
+  crazySSM01-简介</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/04/03/microservice02-Spring-Boot/"  title="microservice02-Spring Boot">
+ <strong>下一篇：</strong><br/> 
+ <span>microservice02-Spring Boot
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务发现"><span class="toc-number">1.</span> <span class="toc-text">服务发现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务发现介绍"><span class="toc-number">1.1.</span> <span class="toc-text">服务发现介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-number">1.2.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务间调用"><span class="toc-number">1.3.</span> <span class="toc-text">服务间调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端负载均衡"><span class="toc-number">2.</span> <span class="toc-text">客户端负载均衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务容错"><span class="toc-number">3.</span> <span class="toc-text">服务容错</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#熔断器的三种状态"><span class="toc-number">3.1.</span> <span class="toc-text">熔断器的三种状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现-1"><span class="toc-number">3.2.</span> <span class="toc-text">实现</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,640 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>spring04 面向切面的Spring | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="几个定义切面：用于提供额外功能的中间件叫做切面。 通知：切面执行的方法叫通知。   连接点：连接点就是通知切入的一些时机。 切点：切点就是不同的织入的方法。 切面：切面就是切点和通知的集合。 引入：对现有类的方法或属性进行扩展。无需改动现有的类，而添加额外的功能。 织入：切面植入到切点生成代理的过程。 注意Spring AOP是基于动态代理实现的，只适用于方法而不是字段和构造器。若使用字段和构造器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring04 面向切面的Spring">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="几个定义切面：用于提供额外功能的中间件叫做切面。 通知：切面执行的方法叫通知。   连接点：连接点就是通知切入的一些时机。 切点：切点就是不同的织入的方法。 切面：切面就是切点和通知的集合。 引入：对现有类的方法或属性进行扩展。无需改动现有的类，而添加额外的功能。 织入：切面植入到切点生成代理的过程。 注意Spring AOP是基于动态代理实现的，只适用于方法而不是字段和构造器。若使用字段和构造器">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/c64b7c74-85e6-42d4-97f8-e7b6a5cd8b65.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/7385c942-3ba5-43fd-ba75-6e4e545a63c1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/f926f52e-8ddd-41a0-9cbc-c83bfde15f28.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/d4678178-4bed-44a5-83cc-1e53fc2c76ae.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/56011dbe-8bdc-4a03-97a4-041f8aa1f89a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/887ef2e3-11b3-4a2a-b1c3-8a4681f45b81.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/1b322723-f1d8-419e-a23a-6e2fe2e31087.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/cbed781f-3322-4b51-8543-2f91dc69cd98.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/bc95ae3b-6e8e-4ebd-9bea-d7ba365bc4c2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/e3ff83ab-2ea0-431d-8fbf-f9aaf68463f6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/7d19c545-4d73-4e5a-a784-9e4f308443df.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/88360916-71af-4e63-8e08-103d49e06832.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/8680967a-1c74-425c-9f72-ba14e0534cd1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/7c1466a4-1c94-49a4-adb8-8d73b9e78686.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/9f93f4ae-7070-4666-bece-ad4550c6e42b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/56c7f07e-7e22-4443-8476-10a454496ba0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/beb218e8-3c8d-4f54-8b1e-2bb11cd672fd.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/d939a402-47fa-4fd0-91e1-fb7400f0b1e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/e21999cb-2e6b-420f-8bb8-dfd824502c00.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/a9cbc369-23f6-4daa-9779-d8a4520cc8e9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/fe6c3d7f-e5ca-4236-9cb1-a32a7c2e868f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/c9b9c3d0-97b5-4fc3-af71-0975aa34ad70.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/7ca5de4b-6e04-462c-bec0-7aa8e6f8173d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/0bf7c997-57cf-4c0f-b781-c06457138d1b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/21f64518-e009-4e51-a043-0fcd7a880087.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/f7ed6ef4-8fc4-4470-9764-4ab537a56fe1.jpg">
+<meta property="article:published_time" content="2020-03-02T10:18:27.000Z">
+<meta property="article:modified_time" content="2020-03-03T02:57:12.188Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/c64b7c74-85e6-42d4-97f8-e7b6a5cd8b65.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives/">Archives</a></li>
+					
+						<li><a href="/blog/tags/">Tags</a></li>
+					
+						<li><a href="/blog/about/">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/03/02/spring04-Aspect-oriented-Spring/" title="spring04 面向切面的Spring" itemprop="url">spring04 面向切面的Spring</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-03-02T10:18:27.000Z" itemprop="datePublished"> Published 2020-03-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#几个定义"><span class="toc-number">1.</span> <span class="toc-text">几个定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">2.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切点的定义"><span class="toc-number">3.</span> <span class="toc-text">切点的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切面的定义"><span class="toc-number">4.</span> <span class="toc-text">切面的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环绕代码"><span class="toc-number">5.</span> <span class="toc-text">环绕代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入"><span class="toc-number">6.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用xml配置切面"><span class="toc-number">7.</span> <span class="toc-text">使用xml配置切面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#切面所涉及的标签"><span class="toc-number">7.1.</span> <span class="toc-text">切面所涉及的标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重写切面POJO类"><span class="toc-number">7.2.</span> <span class="toc-text">重写切面POJO类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml引入的实现"><span class="toc-number">7.3.</span> <span class="toc-text">xml引入的实现</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="几个定义"><a href="#几个定义" class="headerlink" title="几个定义"></a>几个定义</h2><p><code style="background:#ff3385;color:white;padding:5px;">切面</code>：用于提供额外功能的中间件叫做切面。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">通知</code>：切面执行的方法叫通知。</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/c64b7c74-85e6-42d4-97f8-e7b6a5cd8b65.jpg">
+
+<p><code style="background:#ff3385;color:white;padding:5px;">连接点</code>：连接点就是通知切入的一些时机。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">切点</code>：切点就是不同的织入的方法。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">切面</code>：切面就是切点和通知的集合。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">引入</code>：对现有类的方法或属性进行扩展。无需改动现有的类，而添加额外的功能。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">织入</code>：切面植入到切点生成代理的过程。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>Spring AOP是基于动态代理实现的，只适用于方法而不是字段和构造器。若使用字段和构造器切入，可以使用AspectJ</p>
+<h2 id="切点的定义"><a href="#切点的定义" class="headerlink" title="切点的定义"></a>切点的定义</h2><p>Spring Aop借助于AspectJ的注解创建切点：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/7385c942-3ba5-43fd-ba75-6e4e545a63c1.jpg">
+
+<p>定义一个业务功能点接口</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/f926f52e-8ddd-41a0-9cbc-c83bfde15f28.jpg">
+
+<p>构建注解匹配方法：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/d4678178-4bed-44a5-83cc-1e53fc2c76ae.jpg">
+
+<p>如果需要限定包名：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/56011dbe-8bdc-4a03-97a4-041f8aa1f89a.jpg">
+
+<p>如果限定Bean的名称：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/887ef2e3-11b3-4a2a-b1c3-8a4681f45b81.jpg">
+
+<p>排除法：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/1b322723-f1d8-419e-a23a-6e2fe2e31087.jpg">
+
+<h2 id="切面的定义"><a href="#切面的定义" class="headerlink" title="切面的定义"></a>切面的定义</h2><p>使用AspectJ的一些标记进行切面的定义，所谓切面就是监听到切点方法执行的时候，所执行的嵌入的代码。</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/cbed781f-3322-4b51-8543-2f91dc69cd98.jpg">
+
+<p>首先使用@Aspect标记了切面类，然后分别使用不同的注解表名不同方法执行的时机。</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/bc95ae3b-6e8e-4ebd-9bea-d7ba365bc4c2.jpg">
+
+<p>可以使用Pointcut进行切点引用，并实现切点的复用：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/e3ff83ab-2ea0-431d-8fbf-f9aaf68463f6.jpg">
+
+<p>将切面配置为Bean，并设置开启AspectJ自动代理：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/7d19c545-4d73-4e5a-a784-9e4f308443df.jpg">
+
+<p>也可以使用xml配置aop:aspectj-autoproxy开启：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/88360916-71af-4e63-8e08-103d49e06832.jpg">
+
+<h2 id="环绕代码"><a href="#环绕代码" class="headerlink" title="环绕代码"></a>环绕代码</h2><img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/8680967a-1c74-425c-9f72-ba14e0534cd1.jpg">
+
+<p>需要一个PRoceedingJoinPoint参数，用来调用方法proceed方法执行切点方法。</p>
+<p>传参数：</p>
+<p>当方法有参数时候，怎么截取参数传递到切面呢？</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/7c1466a4-1c94-49a4-adb8-8d73b9e78686.jpg">
+
+<p>此处出现两个变动：</p>
+<ol>
+<li><p>pointcut体现参数类型</p>
+</li>
+<li><p>使用args()拦截参数</p>
+</li>
+</ol>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/9f93f4ae-7070-4666-bece-ad4550c6e42b.jpg">
+
+<p>切入点定义时，设置的参数名称要与切面方法参数保持一致。</p>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>我们想在Performance的基础上实现另外的接口方法：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/56c7f07e-7e22-4443-8476-10a454496ba0.jpg">
+
+<p>但是源码我们没法修改，怎么引入这个新的接口方法呢？</p>
+<p>创建新的切面</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/beb218e8-3c8d-4f54-8b1e-2bb11cd672fd.jpg">
+
+<p>在内部声明一个静态的接口变量引用。并使用DeclareParents注解进行标记。</p>
+<p>value属性指定了哪种类型的<code style="background:#ff3385;color:white;padding:5px;">bean要引入</code>该接口。在本例中，也就是所有实现Performance的类型。（标记符后面的加号表示是Performance的所有<code style="background:#ff3385;color:white;padding:5px;">子类型</code>，而不是Performance本身。）</p>
+<p>defaultImpl属性指定了为引入功能<code style="background:#ff3385;color:white;padding:5px;">提供实现的类</code>。在这里，我们指定的是DefaultEncoreable提供实现。</p>
+<p>@DeclareParents注解所标注的静态属性指明了<code style="background:#ff3385;color:white;padding:5px;">要引入了接口</code>。在这里，我们所引入的是Encoreable接口。</p>
+<p>这样，所以实现了Performance接口的子类，都多出来了Encoreable接口的方法。</p>
+<h2 id="使用xml配置切面"><a href="#使用xml配置切面" class="headerlink" title="使用xml配置切面"></a>使用xml配置切面</h2><h3 id="切面所涉及的标签"><a href="#切面所涉及的标签" class="headerlink" title="切面所涉及的标签"></a>切面所涉及的标签</h3><img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/d939a402-47fa-4fd0-91e1-fb7400f0b1e7.jpg">
+
+<p>接上文：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/e21999cb-2e6b-420f-8bb8-dfd824502c00.jpg">
+
+<h3 id="重写切面POJO类"><a href="#重写切面POJO类" class="headerlink" title="重写切面POJO类"></a>重写切面POJO类</h3><img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/a9cbc369-23f6-4daa-9779-d8a4520cc8e9.jpg">
+
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/fe6c3d7f-e5ca-4236-9cb1-a32a7c2e868f.jpg">
+
+<p>aop:config代表一个切面配置</p>
+<p>aop:aspect表示切面</p>
+<p>aop:before前置通知</p>
+<p>aop:after-returning成功执行</p>
+<p>aop:after-throwing抛出异常执行</p>
+<p>同样，我们可以使用aop:pointcut复用连接点方法：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/c9b9c3d0-97b5-4fc3-af71-0975aa34ad70.jpg">
+
+<p>在xml中配置参数传递是一样的：</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/7ca5de4b-6e04-462c-bec0-7aa8e6f8173d.jpg">
+
+<h3 id="xml引入的实现"><a href="#xml引入的实现" class="headerlink" title="xml引入的实现"></a>xml引入的实现</h3><img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/0bf7c997-57cf-4c0f-b781-c06457138d1b.jpg">
+
+<p>types-matching指明<code style="background:#ff3385;color:white;padding:5px;">连接点方法</code></p>
+<p>implement-interface指明<code style="background:#ff3385;color:white;padding:5px;">扩展接口</code></p>
+<p>default-impl指明<code style="background:#ff3385;color:white;padding:5px;">默认实现类</code></p>
+<p>也可以使用delegate-ref指明默认实现的bean</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/21f64518-e009-4e51-a043-0fcd7a880087.jpg">
+
+<p>引用的bean(实现类):</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/f7ed6ef4-8fc4-4470-9764-4ab537a56fe1.jpg">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring/">spring</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/" data-title="spring04 面向切面的Spring | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/04/03/microservice01-introduction/" title="microservice01-微服务简介">
+  <strong>上一篇：</strong><br/>
+  <span>
+  microservice01-微服务简介</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/03/01/spring03-Advanced-wiring/"  title="spring03 Bean高级装配">
+ <strong>下一篇：</strong><br/> 
+ <span>spring03 Bean高级装配
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#几个定义"><span class="toc-number">1.</span> <span class="toc-text">几个定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">2.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切点的定义"><span class="toc-number">3.</span> <span class="toc-text">切点的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切面的定义"><span class="toc-number">4.</span> <span class="toc-text">切面的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环绕代码"><span class="toc-number">5.</span> <span class="toc-text">环绕代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入"><span class="toc-number">6.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用xml配置切面"><span class="toc-number">7.</span> <span class="toc-text">使用xml配置切面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#切面所涉及的标签"><span class="toc-number">7.1.</span> <span class="toc-text">切面所涉及的标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重写切面POJO类"><span class="toc-number">7.2.</span> <span class="toc-text">重写切面POJO类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml引入的实现"><span class="toc-number">7.3.</span> <span class="toc-text">xml引入的实现</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
