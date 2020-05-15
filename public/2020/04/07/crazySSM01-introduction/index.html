@@ -11,16 +11,21 @@
     
 
     
-    <meta name="description" content="JavaEE应用分层Domain Objects: 领域对象层，由POJO组成。 DAO: 数据操作层， 对数据库进行CURD。JDBC、Mybatis、Hibernate Service: 服务层，实现相关的业务逻辑。 Controller: 控制器层，接受请求，调用服务层处理并返回视图层。Spring MVC View: 视图层，用于数据显示。JSP、Velocity、FreeMaker、Th">
+    <meta name="description" content="JavaEE应用分层Domain Objects: 领域对象层，由POJO组成。 DAO: 数据操作层， 对数据库进行CURD。（JDBC、Mybatis、Hibernate） Service: 服务层，调用DAO层实现相关的业务逻辑。 Controller: 控制器层，接受请求，调用服务层处理并返回视图层。（Spring MVC） View: 视图层，用于数据显示。（JSP、Velocity、F">
 <meta property="og:type" content="article">
 <meta property="og:title" content="crazySSM01-简介">
 <meta property="og:url" content="https://dayandnight2018.github.io/2020/04/07/crazySSM01-introduction/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="JavaEE应用分层Domain Objects: 领域对象层，由POJO组成。 DAO: 数据操作层， 对数据库进行CURD。JDBC、Mybatis、Hibernate Service: 服务层，实现相关的业务逻辑。 Controller: 控制器层，接受请求，调用服务层处理并返回视图层。Spring MVC View: 视图层，用于数据显示。JSP、Velocity、FreeMaker、Th">
+<meta property="og:description" content="JavaEE应用分层Domain Objects: 领域对象层，由POJO组成。 DAO: 数据操作层， 对数据库进行CURD。（JDBC、Mybatis、Hibernate） Service: 服务层，调用DAO层实现相关的业务逻辑。 Controller: 控制器层，接受请求，调用服务层处理并返回视图层。（Spring MVC） View: 视图层，用于数据显示。（JSP、Velocity、F">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/07/crazySSM01-introduction/8f7fea39-3a82-43e6-bfe5-84c780b7da33.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/07/crazySSM01-introduction/fa981f70-fd7e-420b-b30f-13c23d1e2f29.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/07/crazySSM01-introduction/3345209b-222b-4642-a0c0-80ef42ef8327.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/07/crazySSM01-introduction/234f5337-0af6-49b8-876f-255141bbbe53.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/07/crazySSM01-introduction/e6d076d2-f971-4dc9-b702-7211087bc11b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/07/crazySSM01-introduction/ff5b1062-4a4f-47c0-b8cc-05678d674e84.jpg">
 <meta property="article:published_time" content="2020-04-07T12:01:49.000Z">
-<meta property="article:modified_time" content="2020-04-07T12:38:35.249Z">
+<meta property="article:modified_time" content="2020-04-19T12:42:51.065Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="SSM">
 <meta name="twitter:card" content="summary">
@@ -103,19 +108,69 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaEE应用分层"><span class="toc-number">1.</span> <span class="toc-text">JavaEE应用分层</span></a></li></ol>
-		
-		</div>
-		
 		<h2 id="JavaEE应用分层"><a href="#JavaEE应用分层" class="headerlink" title="JavaEE应用分层"></a>JavaEE应用分层</h2><p>Domain Objects: 领域对象层，由POJO组成。</p>
-<p>DAO: 数据操作层， 对数据库进行CURD。JDBC、Mybatis、Hibernate</p>
-<p>Service: 服务层，实现相关的业务逻辑。</p>
-<p>Controller: 控制器层，接受请求，调用服务层处理并返回视图层。Spring MVC</p>
-<p>View: 视图层，用于数据显示。JSP、Velocity、FreeMaker、Thymeleaf</p>
+<p>DAO: 数据操作层， 对数据库进行CURD。（JDBC、Mybatis、Hibernate）</p>
+<p>Service: 服务层，调用DAO层实现相关的业务逻辑。</p>
+<p>Controller: 控制器层，接受请求，调用服务层处理并返回视图层。（Spring MVC）</p>
+<p>View: 视图层，用于数据显示。（JSP、Velocity、FreeMaker、Thymeleaf）</p>
 <img src="/blog/2020/04/07/crazySSM01-introduction/8f7fea39-3a82-43e6-bfe5-84c780b7da33.jpg" style="width: 480px;height: 360px;">
+
+
+<h2 id="安装及准备"><a href="#安装及准备" class="headerlink" title="安装及准备"></a>安装及准备</h2><p>1.下载安装spring</p>
+<p><a href="http://repo.springsource.org/libs-release-local/" target="_blank" rel="noopener">spring下载链接</a>  下载spring压缩包。</p>
+<p>解压后，获得四个部分：</p>
+<ul>
+<li>docs: 相关文档</li>
+<li>libs: 类库</li>
+<li>schemas: 配置文件头</li>
+<li>readme、notice、license等文档</li>
+</ul>
+<p>将class文件复制到项目，并添加到类加载路径。</p>
+<p>2.下载安装common-logging</p>
+<p><a href="http://commons.apache.org" target="_blank" rel="noopener">common-logging下载地址</a></p>
+<p>下载解压后得到common-logging的jar包，复制到项目并添加到类加载路径</p>
+<img src="/blog/2020/04/07/crazySSM01-introduction/fa981f70-fd7e-420b-b30f-13c23d1e2f29.jpg">
+
+<ol start="3">
+<li>配置前端控制器</li>
+</ol>
+<p>在WEB-INF下的web.xml文件中，配置前端控制器。</p>
+<img src="/blog/2020/04/07/crazySSM01-introduction/3345209b-222b-4642-a0c0-80ef42ef8327.jpg">
+
+<p>这里加载的配置文件，为了生成ApplicationContext，对Bean进行管理，对于web项目会自动加载并生成，java项目需要手动读取配置文件生成ApplicationContext实例。</p>
+<ol start="4">
+<li>配置文件springmvc-config.xml</li>
+</ol>
+<img src="/blog/2020/04/07/crazySSM01-introduction/234f5337-0af6-49b8-876f-255141bbbe53.jpg">
+
+<ol start="5">
+<li>添加测试</li>
+</ol>
+<p>使用@Controller注解</p>
+<img src="/blog/2020/04/07/crazySSM01-introduction/e6d076d2-f971-4dc9-b702-7211087bc11b.jpg">
+
+<ol start="6">
+<li>测试结果</li>
+</ol>
+<img src="/blog/2020/04/07/crazySSM01-introduction/ff5b1062-4a4f-47c0-b8cc-05678d674e84.jpg">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 	</div>
@@ -147,6 +202,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/blog/2020/04/10/common-links/" title="常用资源及链接">
+  <strong>上一篇：</strong><br/>
+  <span>
+  常用资源及链接</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/blog/2020/04/04/microservice02-Spring-Cloud/"  title="microservice03-Spring Cloud">
@@ -168,7 +231,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaEE应用分层"><span class="toc-number">1.</span> <span class="toc-text">JavaEE应用分层</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaEE应用分层"><span class="toc-number">1.</span> <span class="toc-text">JavaEE应用分层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装及准备"><span class="toc-number">2.</span> <span class="toc-text">安装及准备</span></a></li></ol>
  
   </div>
 
@@ -197,6 +260,10 @@
 			
 		
 			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>4</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring/" title="spring">spring<sup>4</sup></a></li>
 			
 		
@@ -205,19 +272,15 @@
 			
 		
 			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
 			
 		
 		</ul>

@@ -150,13 +150,6 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#File-Systems-and-Paths"><span class="toc-number">1.</span> <span class="toc-text">File Systems and Paths</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取FileSystem对象"><span class="toc-number">1.1.</span> <span class="toc-text">获取FileSystem对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取分割符"><span class="toc-number">1.2.</span> <span class="toc-text">获取分割符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取根目录"><span class="toc-number">1.3.</span> <span class="toc-text">获取根目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取一个路径"><span class="toc-number">1.4.</span> <span class="toc-text">获取一个路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件目录操作"><span class="toc-number">2.</span> <span class="toc-text">文件目录操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建文件"><span class="toc-number">2.1.</span> <span class="toc-text">创建文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建路径"><span class="toc-number">2.2.</span> <span class="toc-text">创建路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除文件、路径、链接"><span class="toc-number">2.3.</span> <span class="toc-text">删除文件、路径、链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作目录"><span class="toc-number">2.4.</span> <span class="toc-text">操作目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件复制"><span class="toc-number">2.5.</span> <span class="toc-text">文件复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件移动"><span class="toc-number">2.6.</span> <span class="toc-text">文件移动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读写文件"><span class="toc-number">3.</span> <span class="toc-text">读写文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取"><span class="toc-number">3.1.</span> <span class="toc-text">读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写入"><span class="toc-number">3.2.</span> <span class="toc-text">写入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入输出流"><span class="toc-number">4.</span> <span class="toc-text">输入输出流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取二进制数据"><span class="toc-number">5.</span> <span class="toc-text">读取二进制数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取数据"><span class="toc-number">5.1.</span> <span class="toc-text">读取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取可读取数据大小"><span class="toc-number">5.2.</span> <span class="toc-text">获取可读取数据大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跳过指定个数字节"><span class="toc-number">5.3.</span> <span class="toc-text">跳过指定个数字节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标记位置"><span class="toc-number">5.4.</span> <span class="toc-text">标记位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回标记处"><span class="toc-number">5.5.</span> <span class="toc-text">返回标记处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭流"><span class="toc-number">5.6.</span> <span class="toc-text">关闭流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写入二进制数据"><span class="toc-number">6.</span> <span class="toc-text">写入二进制数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写入数据"><span class="toc-number">6.1.</span> <span class="toc-text">写入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭流、刷新流"><span class="toc-number">6.2.</span> <span class="toc-text">关闭流、刷新流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写文本"><span class="toc-number">7.</span> <span class="toc-text">写文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Writer"><span class="toc-number">8.</span> <span class="toc-text">Writer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写入文本"><span class="toc-number">8.1.</span> <span class="toc-text">写入文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OutputStreamWriter"><span class="toc-number">8.2.</span> <span class="toc-text">OutputStreamWriter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PrintWriter"><span class="toc-number">8.3.</span> <span class="toc-text">PrintWriter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取文本"><span class="toc-number">9.</span> <span class="toc-text">读取文本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取文本数据"><span class="toc-number">9.1.</span> <span class="toc-text">读取文本数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InputStreamReader"><span class="toc-number">10.</span> <span class="toc-text">InputStreamReader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BufferedReader"><span class="toc-number">11.</span> <span class="toc-text">BufferedReader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrintStream"><span class="toc-number">12.</span> <span class="toc-text">PrintStream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Random-Access-Files"><span class="toc-number">13.</span> <span class="toc-text">Random Access Files</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ByteBuffer"><span class="toc-number">14.</span> <span class="toc-text">ByteBuffer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象的序列化"><span class="toc-number">15.</span> <span class="toc-text">对象的序列化</span></a></li></ol>
-		
-		</div>
-		
 		<h2 id="File-Systems-and-Paths"><a href="#File-Systems-and-Paths" class="headerlink" title="File Systems and Paths"></a>File Systems and Paths</h2><p>FileSystem代表一个文件系统。它是一个抽象类。</p>
 <h3 id="获取FileSystem对象"><a href="#获取FileSystem对象" class="headerlink" title="获取FileSystem对象"></a>获取FileSystem对象</h3><img src="/blog/2020/02/22/java13-Input-Output/2b912a34-df1d-41d1-a1aa-e522dd575f4f.jpg">
 
@@ -788,6 +781,10 @@ public java.lang.Object readObject()
 			
 		
 			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>4</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring/" title="spring">spring<sup>4</sup></a></li>
 			
 		
@@ -796,19 +793,15 @@ public java.lang.Object readObject()
 			
 		
 			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
 			
 		
 		</ul>

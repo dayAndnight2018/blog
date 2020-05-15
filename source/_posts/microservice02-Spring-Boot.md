@@ -16,11 +16,11 @@ tags: microservice
 
 ## 项目结构图
 
-<img src='microservice02-Spring-Boot\2d18439d-8523-413f-84a9-1991a5ec49eb.jpg'>
+<img src='microservice02-Spring-Boot\2d18439d-8523-413f-84a9-1991a5ec49eb.jpg' style="width:480px;height:400px">
 
 ## 创建一个测试类
 
-<img src='microservice02-Spring-Boot\333b2856-b628-4620-8726-fb402c638eb9.jpg'>
+<img src='microservice02-Spring-Boot\333b2856-b628-4620-8726-fb402c638eb9.jpg' style="width:560px;height:240px">
 
 RestController指明返回的是API数据而不是视图。
 RequestMapping指明方法的路径

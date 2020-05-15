@@ -84,15 +84,119 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/blog/2020/04/23/crazySSM04-data-bind/" title="crazySSM04-数据绑定" itemprop="url">
+  
+    <h1 itemprop="name">crazySSM04-数据绑定</h1>
+    
+     
+           <p itemprop="description" >数据绑定流程
+
+完成数据绑定主要任务的是DataBinder, 接收请求转为ServletRequest对象，根据反射获取数据及处理方法的参数，通过ConversionService转换数据，然后通过Validator验证数据的格式，最终将数据绑定的结果保存到BindingRes</p>
+        
+    
+    <time datetime="2020-04-23T11:08:57.000Z" itemprop="datePublished">2020-04-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/04/23/crazySSM03-mvc-tags/" title="crazySSM03-Spring MVC 常用标签" itemprop="url">
+  
+    <h1 itemprop="name">crazySSM03-Spring MVC 常用标签</h1>
+    
+     
+           <p itemprop="description" >spring MVC的标签库主要用于处理使用JSP进行数据显示的工作。
+表单标签库表单标签库的实现类位与spring-webmvc.jar, 说明文档在spring-form.tld
+使用表单标签库需要添加声明：
+&amp;lt;%@ taglib prefix=”form” uri=”</p>
+        
+    
+    <time datetime="2020-04-23T02:31:33.000Z" itemprop="datePublished">2020-04-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/04/19/crazySSM02-commonAnnotations/" title="crazySSM02-常见的注解" itemprop="url">
+  
+    <h1 itemprop="name">crazySSM02-常见的注解</h1>
+    
+     
+           <p itemprop="description" >Controller控制器注解表明本类是一个控制器，当开启了自动扫描时，使用该注解的类被认定为Bean。
+
+
+使用示例：
+
+
+这里返回类型由ModelAndView改为String，用来表示返回的字符串即视图模板的名称。方法参数Model要求框架生成Model对象传递进来。方法返</p>
+        
+    
+    <time datetime="2020-04-19T12:47:21.000Z" itemprop="datePublished">2020-04-19</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/04/10/common-links/" title="常用资源及链接" itemprop="url">
+  
+    <h1 itemprop="name">常用资源及链接</h1>
+    
+     
+           <p itemprop="description" >常用网站链接
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+链接
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+备注
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+Library Genesis
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;</p>
+        
+    
+    <time datetime="2020-04-10T04:26:16.000Z" itemprop="datePublished">2020-04-10</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/blog/2020/04/07/crazySSM01-introduction/" title="crazySSM01-简介" itemprop="url">
   
     <h1 itemprop="name">crazySSM01-简介</h1>
     
      
            <p itemprop="description" >JavaEE应用分层Domain Objects: 领域对象层，由POJO组成。
-DAO: 数据操作层， 对数据库进行CURD。JDBC、Mybatis、Hibernate
-Service: 服务层，实现相关的业务逻辑。
-Controller: 控制器层，接受请求，调用服务层处理</p>
+DAO: 数据操作层， 对数据库进行CURD。（JDBC、Mybatis、Hibernate）
+Service: 服务层，调用DAO层实现相关的业务逻辑。
+Controller: 控制器层，接受请求</p>
         
     
     <time datetime="2020-04-07T12:01:49.000Z" itemprop="datePublished">2020-04-07</time>
@@ -255,113 +359,9 @@ Beans内部可以包含其他Beans：
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/03/01/spring02-Wiring-beans/" title="spring02 绑定Bean" itemprop="url">
-  
-    <h1 itemprop="name">spring02 绑定Bean</h1>
-    
-     
-           <p itemprop="description" >如何告诉spring我有哪些Bean？
-在XML中进行显式配置：通过xml配置文件注册Bean
-
-在Java中进行显式配置：通过java配置类注册Bean
-
-隐式的bean发现机制和自动装配：让spring自己去扫描（配合注解使用）
-
-
-发现机制发现机制就是Bean扫描机制
-自动</p>
-        
-    
-    <time datetime="2020-03-01T07:28:39.000Z" itemprop="datePublished">2020-03-01</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/03/01/spring01-introduction/" title="spring01 简介" itemprop="url">
-  
-    <h1 itemprop="name">spring01 简介</h1>
-    
-     
-           <p itemprop="description" >JavaBean在spring中，都是一个个组件，这些组件我们可以称为Bean，这些Bean由Spring来维护，你只需要提供业务功能。
-
-
-这样一个POJO就是一个Bean。
-依赖注入以往的代码中，我们需要主动new一个对象，用来产生类的实例：
-
-
-依赖注入避免了这样的操作，s</p>
-        
-    
-    <time datetime="2020-03-01T04:12:14.000Z" itemprop="datePublished">2020-03-01</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/03/01/java21-Reflection/" title="java21 反射" itemprop="url">
-  
-    <h1 itemprop="name">java21 反射</h1>
-    
-     
-           <p itemprop="description" >java.lang.Class可以调用实例的getClass()方法获取Class对象，也可以直接使用.class:
-
-
-相关方法：
-
-
-//反射获取
-public static Class forName(String className) throws ClassNotFou</p>
-        
-    
-    <time datetime="2020-03-01T01:53:20.000Z" itemprop="datePublished">2020-03-01</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/29/java20-Concurrency-Utilities/" title="java20 并发包" itemprop="url">
-  
-    <h1 itemprop="name">java20 并发包</h1>
-    
-     
-           <p itemprop="description" >原子变量AtomicBoolean, AtomicInteger, AtomicLong，AtomicReference等都属于原子变量，提供原子操作。
-提供了很多原子操作方法：addAndGet, decrementAndGet,getAndIncrement, increme</p>
-        
-    
-    <time datetime="2020-02-29T11:42:57.000Z" itemprop="datePublished">2020-02-29</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/2/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/2/">下一页</a>
   </nav>
 
 </div>
@@ -392,6 +392,10 @@ public static Class forName(String className) throws ClassNotFou</p>
 			
 		
 			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>4</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring/" title="spring">spring<sup>4</sup></a></li>
 			
 		
@@ -400,19 +404,15 @@ public static Class forName(String className) throws ClassNotFou</p>
 			
 		
 			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
 			
 		
 		</ul>

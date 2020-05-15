@@ -1,0 +1,667 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>crazySSM04-数据绑定 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="数据绑定流程  完成数据绑定主要任务的是DataBinder, 接收请求转为ServletRequest对象，根据反射获取数据及处理方法的参数，通过ConversionService转换数据，然后通过Validator验证数据的格式，最终将数据绑定的结果保存到BindingResult对象中。 spring支持的数据转换器ConversionService实现以下三种中的任意一种接口即可实现自定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="crazySSM04-数据绑定">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="数据绑定流程  完成数据绑定主要任务的是DataBinder, 接收请求转为ServletRequest对象，根据反射获取数据及处理方法的参数，通过ConversionService转换数据，然后通过Validator验证数据的格式，最终将数据绑定的结果保存到BindingResult对象中。 spring支持的数据转换器ConversionService实现以下三种中的任意一种接口即可实现自定义">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/7cd5c153-df74-4404-9983-2339047f3fd7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/8a9fbc9c-92c6-4e50-ab6f-9a04088754ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/4a08d00b-a1b3-4c47-b3cc-10fc6aad60fb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/81c7ab52-6478-4c1e-872d-e0d9c7cb76af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/b5bb6a3e-4b5d-4be6-8fe3-ba1fd7a12f8d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/49673d27-6f87-4b8b-bcdf-b63b514e623f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/339dbbb7-b11f-4257-8281-1cc2ae4aba2b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/8f7e5ebc-024a-4084-bb3c-1da4652148af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/994ce6f6-28de-4580-bd3e-042d03d56bc9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/3d652fd0-1239-47b5-a9a3-4726291bbf97.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/59d1b419-7549-447c-b112-380a905fd7c9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/e9d0eb90-b5a9-48e0-8df2-d45bf75135b4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/e8476241-1baf-417a-bee1-dc49e17dddbc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/24abfc74-20d9-4c59-989f-2082bdadbe7e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/4c4788f4-9039-42f8-b732-5ca5e2201c90.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/343622d0-b991-403b-9bdf-65d6dccedc47.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/c97edcf0-9cca-46bc-ae75-c4c2c347f37e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/969a45a6-c633-4fd0-86bc-03c309592492.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/8a07f701-9445-4d20-a412-53c21a7cdc78.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/b94a1a0f-f759-459b-890c-1b08a1a3f2c7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/76760459-a24c-4be5-8606-50a996c5ebf4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/51657190-831f-4cab-9682-c898b9037798.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/2d1ccb4a-8c87-4cf1-8e00-5ed771571097.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/f50be5b1-b24d-4d58-8f33-f3a2c5aaa0ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/9f7e5ada-5662-453c-92eb-43ce91ad5ec2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/be39150e-7c75-4499-8914-bab45f79827a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/8246fbed-8ef5-45db-b885-c1f72e5909d4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/b8155d37-07a0-40c4-b402-f6d464012643.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/c35139cc-19f2-42fa-9e9a-f75e006fbb21.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/76a9655a-9010-41b3-bbab-51aa03c1bc9b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/168e8598-d3e8-46d3-8c8f-5f5e8d0922a4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/d630dc57-5bf3-4052-ae5e-6a429918e2e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/19c79e1e-b748-4222-8301-a4634e381491.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/6e92aa55-4def-4610-8741-f1854d4a6720.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/739db0a0-b1af-4a23-821b-55858787d4fe.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/f17ca3bc-076c-4a3e-9ef2-da059e997c06.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/5c0eef67-3e49-40db-b8ad-fa97b7277195.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/d92e75c7-db7e-44c8-832f-f182cd779e2e.jpg">
+<meta property="article:published_time" content="2020-04-23T11:08:57.000Z">
+<meta property="article:modified_time" content="2020-04-23T12:38:44.722Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="SSM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/7cd5c153-df74-4404-9983-2339047f3fd7.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/04/23/crazySSM04-data-bind/" title="crazySSM04-数据绑定" itemprop="url">crazySSM04-数据绑定</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-04-23T11:08:57.000Z" itemprop="datePublished"> Published 2020-04-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="数据绑定流程"><a href="#数据绑定流程" class="headerlink" title="数据绑定流程"></a>数据绑定流程</h2><img src="/blog/2020/04/23/crazySSM04-data-bind/7cd5c153-df74-4404-9983-2339047f3fd7.jpg">
+
+<p>完成数据绑定主要任务的是<code style="background:#ff3385;color:white;padding:5px;">DataBinder</code>, 接收请求转为<code style="background:#ff3385;color:white;padding:5px;">ServletRequest</code>对象，根据反射获取数据及处理方法的参数，通过<code style="background:#ff3385;color:white;padding:5px;">ConversionService</code>转换数据，然后通过<code style="background:#ff3385;color:white;padding:5px;">Validator</code>验证数据的格式，最终将数据绑定的结果保存到<code style="background:#ff3385;color:white;padding:5px;">BindingResult</code>对象中。</p>
+<h2 id="spring支持的数据转换器"><a href="#spring支持的数据转换器" class="headerlink" title="spring支持的数据转换器"></a>spring支持的数据转换器</h2><h3 id="ConversionService"><a href="#ConversionService" class="headerlink" title="ConversionService"></a>ConversionService</h3><p>实现以下三种中的任意一种接口即可实现自定义的转换逻辑:</p>
+<ol>
+<li>将S类型的数据转为T</li>
+</ol>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/8a9fbc9c-92c6-4e50-ab6f-9a04088754ee.jpg">
+
+<p>重写方法：</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/4a08d00b-a1b3-4c47-b3cc-10fc6aad60fb.jpg">
+
+<ol start="2">
+<li>将S转为R的子类T</li>
+</ol>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/81c7ab52-6478-4c1e-872d-e0d9c7cb76af.jpg">
+
+<p>重写方法：</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/b5bb6a3e-4b5d-4be6-8fe3-ba1fd7a12f8d.jpg">
+
+<ol start="3">
+<li>基于上下文信息的转换</li>
+</ol>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/49673d27-6f87-4b8b-bcdf-b63b514e623f.jpg">
+
+<p>重写方法：</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/339dbbb7-b11f-4257-8281-1cc2ae4aba2b.jpg">
+
+<p>使用示例：</p>
+<p>页面中存在生日信息，格式为xxxx-xx-xx</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/8f7e5ebc-024a-4084-bb3c-1da4652148af.jpg">
+
+<p>POJO格式</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/994ce6f6-28de-4580-bd3e-042d03d56bc9.jpg">
+
+<p>直接绑定数据会出错。</p>
+<p>定义数据转换器：</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/3d652fd0-1239-47b5-a9a3-4726291bbf97.jpg">
+<img src="/blog/2020/04/23/crazySSM04-data-bind/59d1b419-7549-447c-b112-380a905fd7c9.jpg">
+
+<p>使用最简单的Converter&lt;S,T&gt;进行转换。</p>
+<p>将定义的转换器注册到conversionServiceFactoryBean</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/e9d0eb90-b5a9-48e0-8df2-d45bf75135b4.jpg">
+
+<h3 id="PropertyEditor"><a href="#PropertyEditor" class="headerlink" title="PropertyEditor"></a>PropertyEditor</h3><p>通过继承PropertyEditorSupport实现setAsText方法，实现数据转换。</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/e8476241-1baf-417a-bee1-dc49e17dddbc.jpg">
+
+<p>怎么注册到框架？</p>
+<ol>
+<li>通过InitBind注册到控制器</li>
+</ol>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/24abfc74-20d9-4c59-989f-2082bdadbe7e.jpg">
+
+<ol start="2">
+<li>全局转换器</li>
+</ol>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/4c4788f4-9039-42f8-b732-5ca5e2201c90.jpg">
+
+<p>实现WebBindingInitializer接口，重写initBinder方法，注册转换器</p>
+<ol start="3">
+<li>将全局转换器注册为Bean</li>
+</ol>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/343622d0-b991-403b-9bdf-65d6dccedc47.jpg">
+
+<p><code style="background:#ff3385;color:white;padding:5px;">优先级是@InitBinder > ConversionService > WebBindingInitilizer</code></p>
+<h2 id="数据格式化器"><a href="#数据格式化器" class="headerlink" title="数据格式化器"></a>数据格式化器</h2><p>数据格式化其主要面向于web层的数据转化，完成的是String类型的数据与java类型数据的转换，适用范围较小，粒度小。</p>
+<p>包含以下接口：</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/c97edcf0-9cca-46bc-ae75-c4c2c347f37e.jpg">
+
+<p>实现方法</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/969a45a6-c633-4fd0-86bc-03c309592492.jpg">
+
+<p>本接口实现的是T类型到String类型的转换。</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/8a07f701-9445-4d20-a412-53c21a7cdc78.jpg">
+
+<p>实现方法</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/b94a1a0f-f759-459b-890c-1b08a1a3f2c7.jpg">
+
+<p>本接口实现的是String到T类型的转换。</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/76760459-a24c-4be5-8606-50a996c5ebf4.jpg">
+
+<p>继承了Printer<T>及Parser<T>接口，包含完整转换。</T></T></p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/51657190-831f-4cab-9682-c898b9037798.jpg">
+
+<p>用于注册格式化器。</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/2d1ccb4a-8c87-4cf1-8e00-5ed771571097.jpg">
+
+<p>基于注解的格式化器</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/f50be5b1-b24d-4d58-8f33-f3a2c5aaa0ee.jpg">
+
+<p>使用示例：</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/9f7e5ada-5662-453c-92eb-43ce91ad5ec2.jpg">
+
+<p>注册到Bean</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/be39150e-7c75-4499-8914-bab45f79827a.jpg">
+
+<p>这个FormattingConversionServiceFactoryBean包含一个converters和一个formatters属性，可以接受转换器和格式化器。</p>
+<p>也可以通过FormatterRegister接口实现格式化器注册：</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/8246fbed-8ef5-45db-b885-c1f72e5909d4.jpg">
+
+<p>注册到Bean</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/b8155d37-07a0-40c4-b402-f6d464012643.jpg">
+
+<h3 id="基于注解的格式化器"><a href="#基于注解的格式化器" class="headerlink" title="基于注解的格式化器"></a>基于注解的格式化器</h3><img src="/blog/2020/04/23/crazySSM04-data-bind/c35139cc-19f2-42fa-9e9a-f75e006fbb21.jpg">
+
+<h2 id="数据验证"><a href="#数据验证" class="headerlink" title="数据验证"></a>数据验证</h2><p>数据验证包含格式，合法性等验证。</p>
+<h3 id="Validator"><a href="#Validator" class="headerlink" title="Validator"></a>Validator</h3><p>示例：</p>
+<p>POJO</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/76a9655a-9010-41b3-bbab-51aa03c1bc9b.jpg">
+
+<p>验证器</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/168e8598-d3e8-46d3-8c8f-5f5e8d0922a4.jpg">
+<img src="/blog/2020/04/23/crazySSM04-data-bind/d630dc57-5bf3-4052-ae5e-6a429918e2e7.jpg">
+
+<p>控制器</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/19c79e1e-b748-4222-8301-a4634e381491.jpg">
+
+<h3 id="JSR-303（常用）"><a href="#JSR-303（常用）" class="headerlink" title="JSR 303（常用）"></a>JSR 303（常用）</h3><img src="/blog/2020/04/23/crazySSM04-data-bind/6e92aa55-4def-4610-8741-f1854d4a6720.jpg">
+<img src="/blog/2020/04/23/crazySSM04-data-bind/739db0a0-b1af-4a23-821b-55858787d4fe.jpg">
+<img src="/blog/2020/04/23/crazySSM04-data-bind/f17ca3bc-076c-4a3e-9ef2-da059e997c06.jpg">
+
+<p>使用示例：</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/5c0eef67-3e49-40db-b8ad-fa97b7277195.jpg">
+
+<p>验证数据</p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/d92e75c7-db7e-44c8-832f-f182cd779e2e.jpg">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/SSM/">SSM</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/" data-title="crazySSM04-数据绑定 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/blog/2020/04/23/crazySSM03-mvc-tags/"  title="crazySSM03-Spring MVC 常用标签">
+ <strong>下一篇：</strong><br/> 
+ <span>crazySSM03-Spring MVC 常用标签
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据绑定流程"><span class="toc-number">1.</span> <span class="toc-text">数据绑定流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring支持的数据转换器"><span class="toc-number">2.</span> <span class="toc-text">spring支持的数据转换器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ConversionService"><span class="toc-number">2.1.</span> <span class="toc-text">ConversionService</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PropertyEditor"><span class="toc-number">2.2.</span> <span class="toc-text">PropertyEditor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据格式化器"><span class="toc-number">3.</span> <span class="toc-text">数据格式化器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于注解的格式化器"><span class="toc-number">3.1.</span> <span class="toc-text">基于注解的格式化器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据验证"><span class="toc-number">4.</span> <span class="toc-text">数据验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Validator"><span class="toc-number">4.1.</span> <span class="toc-text">Validator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSR-303（常用）"><span class="toc-number">4.2.</span> <span class="toc-text">JSR 303（常用）</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

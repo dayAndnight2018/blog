@@ -84,6 +84,110 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/blog/2020/03/01/spring02-Wiring-beans/" title="spring02 绑定Bean" itemprop="url">
+  
+    <h1 itemprop="name">spring02 绑定Bean</h1>
+    
+     
+           <p itemprop="description" >如何告诉spring我有哪些Bean？
+在XML中进行显式配置：通过xml配置文件注册Bean
+
+在Java中进行显式配置：通过java配置类注册Bean
+
+隐式的bean发现机制和自动装配：让spring自己去扫描（配合注解使用）
+
+
+发现机制发现机制就是Bean扫描机制
+自动</p>
+        
+    
+    <time datetime="2020-03-01T07:28:39.000Z" itemprop="datePublished">2020-03-01</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/03/01/spring01-introduction/" title="spring01 简介" itemprop="url">
+  
+    <h1 itemprop="name">spring01 简介</h1>
+    
+     
+           <p itemprop="description" >JavaBean在spring中，都是一个个组件，这些组件我们可以称为Bean，这些Bean由Spring来维护，你只需要提供业务功能。
+
+
+这样一个POJO就是一个Bean。
+依赖注入以往的代码中，我们需要主动new一个对象，用来产生类的实例：
+
+
+依赖注入避免了这样的操作，s</p>
+        
+    
+    <time datetime="2020-03-01T04:12:14.000Z" itemprop="datePublished">2020-03-01</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/03/01/java21-Reflection/" title="java21 反射" itemprop="url">
+  
+    <h1 itemprop="name">java21 反射</h1>
+    
+     
+           <p itemprop="description" >java.lang.Class可以调用实例的getClass()方法获取Class对象，也可以直接使用.class:
+
+
+相关方法：
+
+
+//反射获取
+public static Class forName(String className) throws ClassNotFou</p>
+        
+    
+    <time datetime="2020-03-01T01:53:20.000Z" itemprop="datePublished">2020-03-01</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/29/java20-Concurrency-Utilities/" title="java20 并发包" itemprop="url">
+  
+    <h1 itemprop="name">java20 并发包</h1>
+    
+     
+           <p itemprop="description" >原子变量AtomicBoolean, AtomicInteger, AtomicLong，AtomicReference等都属于原子变量，提供原子操作。
+提供了很多原子操作方法：addAndGet, decrementAndGet,getAndIncrement, increme</p>
+        
+    
+    <time datetime="2020-02-29T11:42:57.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/blog/2020/02/29/java19-Threads/" title="java19 线程" itemprop="url">
   
     <h1 itemprop="name">java19 线程</h1>
@@ -273,157 +377,9 @@ a.getClass(</p>
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/22/java13-Input-Output/" title="java13 输入输出" itemprop="url">
-  
-    <h1 itemprop="name">java13 输入输出</h1>
-    
-     
-           <p itemprop="description" >File Systems and PathsFileSystem代表一个文件系统。它是一个抽象类。
-获取FileSystem对象
-
-获取分割符
-
-win下是\，Linux下是/
-获取根目录
-
-获取到一个Iterable
-获取一个路径
-
-后续的参数可以用于拼接
-
-
-java.nio</p>
-        
-    
-    <time datetime="2020-02-22T04:35:29.000Z" itemprop="datePublished">2020-02-22</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/22/java12-Generics/" title="java12 泛型" itemprop="url">
-  
-    <h1 itemprop="name">java12 泛型</h1>
-    
-     
-           <p itemprop="description" >如果不使用泛型，在List中读取数据 就需要频繁的强制转化，类型不合适还会出现异常：
-
-
-泛型方法举例泛型列表：
-
-
-插入和获取元素方法：
-
-
-实例化：
-
-
-Map:
-
-
-插入、获取：
-
-
-泛型列表嵌套：
-
-
-使用示例：
-
-
-hashMap使用示例：
-
-
-List&amp;lt;?&amp;gt</p>
-        
-    
-    <time datetime="2020-02-22T03:46:56.000Z" itemprop="datePublished">2020-02-22</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/22/java11-The-Collections-Framework/" title="java11 集合" itemprop="url">
-  
-    <h1 itemprop="name">java11 集合</h1>
-    
-     
-           <p itemprop="description" >一张图认识集合的关系集合用于分组处理对象。
-
-
-Collection的继承接口是List / Queue / Set
-Map用于存储键值对。
-ArrayList是List的非同步实现，Vector是同步实现。
-SortedMap是排序了的Map
-HashMap是一种基于哈希算法的</p>
-        
-    
-    <time datetime="2020-02-22T01:45:26.000Z" itemprop="datePublished">2020-02-22</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/22/java10-Enums/" title="java10 枚举" itemprop="url">
-  
-    <h1 itemprop="name">java10 枚举</h1>
-    
-     
-           <p itemprop="description" >枚举简介枚举主要用于限制输入范围：
-
-
-枚举可以作为类的域变量出现：
-
-
-其初始化方法类似于静态变量：
-
-
-枚举也可以在类的内部定义：
-
-
-java.lang.Enum
-没有公共构造器，不能初始化变量
-
-默认静态
-
-可以调用方法进行迭代
-
-
-迭代枚举值可以获取枚举的values然</p>
-        
-    
-    <time datetime="2020-02-22T01:32:02.000Z" itemprop="datePublished">2020-02-22</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/blog/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
+    <a class="extend prev" rel="prev" href="/blog/">上一页</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">下一页</a>
   </nav>
 
 </div>
@@ -454,6 +410,10 @@ java.lang.Enum
 			
 		
 			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>4</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring/" title="spring">spring<sup>4</sup></a></li>
 			
 		
@@ -462,19 +422,15 @@ java.lang.Enum
 			
 		
 			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
 			
 		
 		</ul>
