@@ -84,6 +84,168 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/blog/2020/02/29/java18-Java-Database-Connectivity/" title="java18 数据库操作" itemprop="url">
+  
+    <h1 itemprop="name">java18 数据库操作</h1>
+    
+     
+           <p itemprop="description" >四个步骤获取数据
+加载JDBC驱动
+
+获取JDBC连接
+
+创建SQL 语句实例java.sql.Statement
+
+获取数据java.sql.ResultSet
+
+释放连接
+
+
+加载JDBC驱动
+
+Class.forName(&#34;com.mysql.jdbc.Driver&#34;);
+</p>
+        
+    
+    <time datetime="2020-02-29T08:18:35.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/29/java17-Networking/" title="java17 网络" itemprop="url">
+  
+    <h1 itemprop="name">java17 网络</h1>
+    
+     
+           <p itemprop="description" >URL解析
+
+java.net.URL构造器
+
+public URL(java.lang.String spec)
+public URL(java.lang.String protocol, java.lang.String host,java.lang.String file)</p>
+        
+    
+    <time datetime="2020-02-29T06:28:36.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/29/java16-Annotations/" title="java16 注解" itemprop="url">
+  
+    <h1 itemprop="name">java16 注解</h1>
+    
+     
+           <p itemprop="description" >注解就是一种标记作用的特性。
+注解的类型注解类型是 一种模板，注解是注解模板的具体实例。
+注解类型可以包含键值对，没有键值对的叫标记注解，有单个键值对的叫单值注解。
+注解的使用不带参数：
+
+
+带参数：
+
+
+不带参数使用示例：
+
+
+带参数使用示例：
+
+
+对于单值注解，可以省略键：
+</p>
+        
+    
+    <time datetime="2020-02-29T03:35:17.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/29/java15-Polymorphism/" title="java15 多态" itemprop="url">
+  
+    <h1 itemprop="name">java15 多态</h1>
+    
+     
+           <p itemprop="description" >什么是多态？
+
+A a = new B();
+
+
+
+如上所示的定义方法是允许的，条件如下：
+
+B是A的子类
+
+B是A接口的具体实现
+
+
+有什么特别之处呢？
+当编译时，a的类型是A，这个时候，只允许调用在A类中定义的方法。在运行时，a变成了类型B，所以，
+
+
+a.getClass(</p>
+        
+    
+    <time datetime="2020-02-29T03:01:58.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/" title="java14 内部类" itemprop="url">
+  
+    <h1 itemprop="name">java14 内部类</h1>
+    
+     
+           <p itemprop="description" >内部类的定义内部类就是在其它类内部的类：
+
+
+如果你喜欢，可以在内部类内部再定义内部类：
+
+
+内部类类似于域、方法，可以有四种访问修饰符：public / private / default / protected
+静态内部类和内部类区别
+静态内部类可以包含静态域，内部类不行。
+</p>
+        
+    
+    <time datetime="2020-02-29T02:14:01.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/blog/2020/02/22/java13-Input-Output/" title="java13 输入输出" itemprop="url">
   
     <h1 itemprop="name">java13 输入输出</h1>
@@ -263,179 +425,9 @@ java.lang.Enum
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/21/java08-Numbers-and-Dates/" title="java08 数字与日期" itemprop="url">
-  
-    <h1 itemprop="name">java08 数字与日期</h1>
-    
-     
-           <p itemprop="description" >数字转换可以使用包装类对字符串进行转换：
-
-
-
-
-&amp;nbsp;&amp;nbsp;
-包装类
-&amp;nbsp;&amp;nbsp;
-&amp;nbsp;&amp;nbsp;
-解析方法
-&amp;nbsp;&amp;nbsp;
-
-
-
-&amp;nbsp;&amp;nbsp;
-Byte
-&amp;nbsp;&amp;nbsp;
-&amp;nbsp;&amp;nbsp;
-parseBy</p>
-        
-    
-    <time datetime="2020-02-21T12:42:50.000Z" itemprop="datePublished">2020-02-21</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/21/java07-Error-Handling/" title="java07 异常处理" itemprop="url">
-  
-    <h1 itemprop="name">java07 异常处理</h1>
-    
-     
-           <p itemprop="description" >异常捕获可以使用try+catch+finally捕获并处理异常：
-
-
-对于parseDouble方法需要使用throws标记异常:
-
-
-没有catch
-
-对于不使用catch的代码常用于释放资源，为了确保资源释放代码能够执行。
-JDK7优化了这一点，使用try带上资源，表示资源</p>
-        
-    
-    <time datetime="2020-02-21T12:07:52.000Z" itemprop="datePublished">2020-02-21</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/21/java06-Inheritance/" title="java06 继承" itemprop="url">
-  
-    <h1 itemprop="name">java06 继承</h1>
-    
-     
-           <p itemprop="description" >一个类与类的继承关系
-
-一个类派生一个类，称为继承关系。原类叫父类，新类叫子类。
-extends父类与子类的关系表示：
-
-
-继承：
-
-
-is-a关系
-
-子类是一种特殊的父类。
-父类：
-
-
-子类：
-
-
-子类继承父类的字段，weight和eat方法。同时扩展了numberOfLegs</p>
-        
-    
-    <time datetime="2020-02-21T11:25:16.000Z" itemprop="datePublished">2020-02-21</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/21/java05-Core-Classes/" title="java05 核心类库" itemprop="url">
-  
-    <h1 itemprop="name">java05 核心类库</h1>
-    
-     
-           <p itemprop="description" >java.lang.Object这个是Java的核心类，表示对象，任何类都直接或间接地继承着这个类。
-
-
-//克隆方法，重写这个方法的类可以实现对象的复制。
-protected Object clone()
-
-
-
-
-
-//对象的相等比较方法。
-public boolean equ</p>
-        
-    
-    <time datetime="2020-02-21T05:10:45.000Z" itemprop="datePublished">2020-02-21</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/19/java04-Objects-and-Classes/" title="java04 对象与类" itemprop="url">
-  
-    <h1 itemprop="name">java04 对象与类</h1>
-    
-     
-           <p itemprop="description" >对象的两大属性
-特征（域）
-
-动作（方法）
-
-
-例如，一辆车可以有以下特征：
-
-
-有颜色，轮胎数量，方向盘数量，阀门数量等等。
-可以有以下几种动作：
-
-
-行驶和刹车
-类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对</p>
-        
-    
-    <time datetime="2020-02-19T05:30:35.000Z" itemprop="datePublished">2020-02-19</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/blog/page/2/">上一页</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/">上一页</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/4/">下一页</a>
   </nav>
 
 </div>
@@ -463,6 +455,10 @@ public boolean equ</p>
 		
 			
 				<li><a href="/blog/tags/java/" title="java">java<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
 			
 		
 			
