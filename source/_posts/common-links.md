@@ -7,14 +7,16 @@ tags: other
 ## 常用网站链接
 
 <table cellpadding='8' border='1' style='background:#EAF2D3;text-align:center'>
-&nbsp;<tr>
+<thead>
+<tr>
 &nbsp;&nbsp;<td>
 链接
 &nbsp;&nbsp;</td>
 &nbsp;&nbsp;<td>
 备注
 &nbsp;&nbsp;</td>
-&nbsp;</tr>
+</tr>
+</thead>
 &nbsp;<tr>
 &nbsp;&nbsp;<td>
 <a href='http://gen.lib.rus.ec' target='_blank'>Library Genesis</a>

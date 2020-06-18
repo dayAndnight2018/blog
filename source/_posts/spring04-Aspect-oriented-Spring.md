@@ -169,6 +169,38 @@ default-impl指明<code style='background:#ff3385;color:white;padding:5px;'>默�
 
 <img src='spring04-Aspect-oriented-Spring\f7ed6ef4-8fc4-4470-9764-4ab537a56fe1.jpg'>
 
+## 切面注入问题
+
+在java开发中，很多功能不可能一个POJO完全实现，需要多个类的相互配合，在切面中也不例外。
+
+1. 创建评论Bean接口CriticismEngine
+
+2. 创建一个实现类
+
+<img src='spring04-Aspect-oriented-Spring\0bee3cd0-7276-4c6a-8569-19fc8faa801c.jpg'>
+
+3. 创建切面
+
+<img src='spring04-Aspect-oriented-Spring\f90b717a-7bc4-4bb5-b959-d4d0693c1d5a.jpg' >
+
+此处的切面创建方式稍有不同，使用aspect关键字替换class，同时直接使用pointcut及after-returning声明切面方法。
+
+这里通过set方法注入CriticismEngine的实例。
+
+4. 配置xml注入
+
+首先注入CriticismEngine
+
+<img src='spring04-Aspect-oriented-Spring\1c8380d8-2ea3-4722-ac1f-84d40363f8b1.jpg'>
+<img src='spring04-Aspect-oriented-Spring\8d2f956f-1d91-44a1-98f8-18e4581bb441.jpg'>
+
+然后为切面注入CriticismEngine
+
+<img src='spring04-Aspect-oriented-Spring\a05eb364-2cb7-446e-a509-5281439d5a4b.jpg'>
+
+实际上，切面方法不属于spring管理，这里采用factory-method来定义其“Bean”。
+
+
 
 
 

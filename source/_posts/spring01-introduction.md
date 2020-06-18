@@ -22,7 +22,7 @@ tags: spring
 
 <img src='spring01-introduction\6ffc1bc2-1fa6-4e66-b9bf-487b5090930e.jpg'>
 
-这样，所有的依赖对象，都可以交给spring去new,如果设定为接口，可以实现抽插式<code style='background:#ff3385;color:white;padding:5px;'>替换</code>。
+这样，所有的依赖对象，都可以交给spring去new,如果设定为接口，可以实现抽插式<code>替换</code>。
 
 <img src='spring01-introduction\d5a98ccf-5a4d-476a-a1a3-3f797a76c768.jpg'>
 

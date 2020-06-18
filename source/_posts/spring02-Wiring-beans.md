@@ -4,7 +4,7 @@ date: 2020-03-01 15:28:39
 tags: spring
 ---
 
-## 如何告诉spring我有哪些Bean？
+## 如何注册Bean？
 
 1. 在XML中进行显式配置：通过xml配置文件注册Bean
 
@@ -17,8 +17,6 @@ tags: spring
 
 发现机制就是Bean<code style='background:#ff3385;color:white;padding:5px;'>扫描机制</code>
 
-自动装配就是对Bean实施<code style='background:#ff3385;color:white;padding:5px;'>自动注入</code>，而不需要配置。
-
 1. 我们先来创建一个接口，表示CD:
 
 <img src='spring02-Wiring-beans\e39447f3-9cca-4593-8593-bbeee49a23bc.jpg'>
@@ -29,7 +27,7 @@ tags: spring
 
 我们把这个类进行了<code style='background:#ff3385;color:white;padding:5px;'>@Component</code>标记，这就告诉spring，他就是一个Bean
 
-3. 在相同的包下，我们创建了一个配置类，这个配置类表名，spring需要扫描这个配置类所在的包及所有子包里的Bean。
+3. 在相同的包下，我们创建了一个配置类，扫描这个配置类所在的包及所有子包里的Bean。
 
 <img src='spring02-Wiring-beans\2cd29d83-a440-47f9-a5c0-7e928186ccbf.jpg'>
 
