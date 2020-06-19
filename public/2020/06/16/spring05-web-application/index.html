@@ -1,0 +1,646 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>spring05- spring web 应用 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="用户请求跟踪   请求到达服务端，首先进入DispatcherServlet  前端控制器将请求转发到其他组件处理，起到拦截的作用，在这里，DispatcherServlet就是前端控制器  通过处理器映射获取下一站  处理器映射相当于门牌号，前端控制器根据请求地址信息，查询处理器映射信息，获取下一站(控制器)的地址。  控制器  控制器接受请求，获取请求信息并进行处理，处理结束后，将数据返回，并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring05- spring web 应用">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/06/16/spring05-web-application/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="用户请求跟踪   请求到达服务端，首先进入DispatcherServlet  前端控制器将请求转发到其他组件处理，起到拦截的作用，在这里，DispatcherServlet就是前端控制器  通过处理器映射获取下一站  处理器映射相当于门牌号，前端控制器根据请求地址信息，查询处理器映射信息，获取下一站(控制器)的地址。  控制器  控制器接受请求，获取请求信息并进行处理，处理结束后，将数据返回，并">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/13d61bab-e338-4080-ac29-271e29da5ff1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/b7590079-f482-45d8-985a-7262e78c0140.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/2de537b2-0a37-4f11-961d-8c1ed2f1b9d8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/2f758f8d-39c2-41f9-97e3-d7ee194d04d7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/f7abeca9-9b81-422f-ad08-f35516721a18.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/fce8de81-6548-4b22-88fc-89ac634d921f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/be40d188-e7ed-4b64-ae01-42c9d59cfc60.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/abce45cd-a3c1-464a-aeee-87a6723c3c7a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/fc8ae99e-a060-47a7-a963-564881c6fd53.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/5b4d6c14-7c83-46bd-b893-08cd7dc50d67.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/74d9329e-c623-4f7a-9ca1-bd01ed364375.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/b642bfa9-803c-4fcb-8b41-b099dcc31165.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/04e141fc-a699-488d-bac5-0505b1d22dbd.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/d42b2a05-bd7f-412d-86db-8bf1e41c4ea6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/fdbf6da8-0a59-4cc1-a617-163db6df5070.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/602df014-be62-421b-92dd-884d4a6d8788.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/4ad7f548-e6ae-4bb1-ae2e-f9b040912719.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/f6bf183f-210f-42f8-a6bb-f69f2eedf3b4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/eb4555cf-1c3c-4b97-bc61-f30820814dc3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/cea005b7-c0c6-43bd-959e-a555ebc199ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/f16583d5-66c0-45c0-848d-b07eb961a78d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/844c0671-9998-41ca-beec-4317690a335c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/90ff8eaa-c9bc-445b-af92-0d148fc31def.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/3c58b607-3471-4272-9b19-4c8983a91e12.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/5bbc9905-5bd7-49fb-a933-5c6b077ede5c.jpg">
+<meta property="article:published_time" content="2020-06-16T14:07:50.000Z">
+<meta property="article:modified_time" content="2020-06-16T15:36:39.403Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/06/16/spring05-web-application/13d61bab-e338-4080-ac29-271e29da5ff1.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/16/spring05-web-application/" title="spring05- spring web 应用" itemprop="url">spring05- spring web 应用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-16T14:07:50.000Z" itemprop="datePublished"> Published 2020-06-16</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="用户请求跟踪"><a href="#用户请求跟踪" class="headerlink" title="用户请求跟踪"></a>用户请求跟踪</h2><img src="/blog/2020/06/16/spring05-web-application/13d61bab-e338-4080-ac29-271e29da5ff1.jpg">
+
+<ol>
+<li>请求到达服务端，首先进入DispatcherServlet</li>
+</ol>
+<p>前端控制器将请求转发到其他组件处理，起到拦截的作用，在这里，DispatcherServlet就是前端控制器</p>
+<ol start="2">
+<li>通过处理器映射获取下一站</li>
+</ol>
+<p>处理器映射相当于门牌号，前端控制器根据请求地址信息，查询处理器映射信息，获取下一站(控制器)的地址。</p>
+<ol start="3">
+<li>控制器</li>
+</ol>
+<p>控制器接受请求，获取请求信息并进行处理，处理结束后，将数据返回，并选择合适的页面渲染。</p>
+<ol start="4">
+<li>模型和逻辑视图</li>
+</ol>
+<p>模型里存储的是返回的数据信息，逻辑视图就是渲染数据所使用的页面</p>
+<ol start="5">
+<li>视图解析器</li>
+</ol>
+<p>视图解析器获取数据及视图模板，将数据渲染到页面</p>
+<ol start="6">
+<li>视图</li>
+</ol>
+<p>生成的视图用于展示给用户</p>
+<h2 id="配置Spring-MVC相关"><a href="#配置Spring-MVC相关" class="headerlink" title="配置Spring MVC相关"></a>配置Spring MVC相关</h2><ol>
+<li>使用代码创建DispatcherServlet和Spring上下文</li>
+</ol>
+<p>创建配置类，继承AbstractAnnotationConfigDispatcherServletInitializer</p>
+<img src="/blog/2020/06/16/spring05-web-application/b7590079-f482-45d8-985a-7262e78c0140.jpg">
+
+<p>第一个方法是getServletMappings()：用于配置前端控制器拦截路径</p>
+<p>GetServlet-ConfigClasses()：用于配置前端控制器用到的Bean</p>
+<p>getRootConfigClasses(): 用于ContextLoaderListener用到的Bean</p>
+<ol start="2">
+<li>配置WebConfig</li>
+</ol>
+<img src="/blog/2020/06/16/spring05-web-application/2de537b2-0a37-4f11-961d-8c1ed2f1b9d8.jpg">
+
+<p>继承WebMvcConfigurerAdapter类，实现DispatcherServlet相关的配置。</p>
+<ol start="3">
+<li>配置RootConfig</li>
+</ol>
+<p>根配置不是本章节的重点，简单配置包扫描，去除对WebConfig的扫描即可</p>
+<img src="/blog/2020/06/16/spring05-web-application/2f758f8d-39c2-41f9-97e3-d7ee194d04d7.jpg">
+
+<h2 id="写个简单的控制器"><a href="#写个简单的控制器" class="headerlink" title="写个简单的控制器"></a>写个简单的控制器</h2><h3 id="测试控制器"><a href="#测试控制器" class="headerlink" title="测试控制器"></a>测试控制器</h3><ol>
+<li>创建一个简单的控制器</li>
+</ol>
+<img src="/blog/2020/06/16/spring05-web-application/f7abeca9-9b81-422f-ad08-f35516721a18.jpg">
+
+<p>采用@Controller注解表名这是一个控制器Bean</p>
+<p>@RequestMapping表示请求地址和动作方法</p>
+<p>返回的”home”是视图的名称。</p>
+<ol start="2">
+<li>JSP页面展示</li>
+</ol>
+<img src="/blog/2020/06/16/spring05-web-application/fce8de81-6548-4b22-88fc-89ac634d921f.jpg">
+
+<ol start="3">
+<li>测试</li>
+</ol>
+<img src="/blog/2020/06/16/spring05-web-application/be40d188-e7ed-4b64-ae01-42c9d59cfc60.jpg">
+
+<p>简单测试方法，直接断言：</p>
+<img src="/blog/2020/06/16/spring05-web-application/abce45cd-a3c1-464a-aeee-87a6723c3c7a.jpg">
+
+<p>使用MockMVC:</p>
+<img src="/blog/2020/06/16/spring05-web-application/fc8ae99e-a060-47a7-a963-564881c6fd53.jpg">
+
+<h3 id="RequestMapping的拆分"><a href="#RequestMapping的拆分" class="headerlink" title="RequestMapping的拆分"></a>RequestMapping的拆分</h3><img src="/blog/2020/06/16/spring05-web-application/5b4d6c14-7c83-46bd-b893-08cd7dc50d67.jpg">
+
+<p>将RequestMapping加到类上，添加类级别的限定。</p>
+<h3 id="映射多个路由"><a href="#映射多个路由" class="headerlink" title="映射多个路由"></a>映射多个路由</h3><p>RequestMapping可以对多个路由映射，也就是对多个url进行响应</p>
+<img src="/blog/2020/06/16/spring05-web-application/74d9329e-c623-4f7a-9ca1-bd01ed364375.jpg">
+
+<h3 id="返回模型数据"><a href="#返回模型数据" class="headerlink" title="返回模型数据"></a>返回模型数据</h3><img src="/blog/2020/06/16/spring05-web-application/b642bfa9-803c-4fcb-8b41-b099dcc31165.jpg">
+
+<p>使用Model作为方法参数，通过addAttribute方法添加数据，并通过spittles视图名的模板渲染：</p>
+<img src="/blog/2020/06/16/spring05-web-application/04e141fc-a699-488d-bac5-0505b1d22dbd.jpg">
+
+
+<h2 id="处理输入"><a href="#处理输入" class="headerlink" title="处理输入"></a>处理输入</h2><p>输入信息有三种：</p>
+<ul>
+<li>查询参数（Query Parameter） </li>
+<li>表单参数（Form Parameter） </li>
+<li>路径变量（Path Variable） </li>
+</ul>
+<h3 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h3><p>当请求为</p>
+<img src="/blog/2020/06/16/spring05-web-application/d42b2a05-bd7f-412d-86db-8bf1e41c4ea6.jpg">
+
+<p>此时可以通过@RequestParam获取查询参数</p>
+<img src="/blog/2020/06/16/spring05-web-application/fdbf6da8-0a59-4cc1-a617-163db6df5070.jpg">
+
+<p>如果请求中没有给出参数，需要给默认值：</p>
+<img src="/blog/2020/06/16/spring05-web-application/602df014-be62-421b-92dd-884d4a6d8788.jpg">
+
+<p>因为默认传入的是String类型，所以默认值也需要是字符串。这里存在一个常量转换：</p>
+<img src="/blog/2020/06/16/spring05-web-application/4ad7f548-e6ae-4bb1-ae2e-f9b040912719.jpg">
+
+<h3 id="路由参数"><a href="#路由参数" class="headerlink" title="路由参数"></a>路由参数</h3><p>当请求为</p>
+<img src="/blog/2020/06/16/spring05-web-application/f6bf183f-210f-42f8-a6bb-f69f2eedf3b4.jpg">
+
+<p>使用{variable}作为路径，使用PathVariable注解获取路由参数</p>
+<img src="/blog/2020/06/16/spring05-web-application/eb4555cf-1c3c-4b97-bc61-f30820814dc3.jpg">
+
+<h3 id="form参数"><a href="#form参数" class="headerlink" title="form参数"></a>form参数</h3><p>通过form提交的参数，可以通过POJO接收</p>
+<img src="/blog/2020/06/16/spring05-web-application/cea005b7-c0c6-43bd-959e-a555ebc199ee.jpg">
+
+<p>需要对输入参数进行校验</p>
+<img src="/blog/2020/06/16/spring05-web-application/f16583d5-66c0-45c0-848d-b07eb961a78d.jpg">
+
+<p>使用@Valid注解强制校验，校验结果存储到Errors对象里：</p>
+<img src="/blog/2020/06/16/spring05-web-application/844c0671-9998-41ca-beec-4317690a335c.jpg">
+
+<h3 id="常用的表单参数验证注解"><a href="#常用的表单参数验证注解" class="headerlink" title="常用的表单参数验证注解"></a>常用的表单参数验证注解</h3><img src="/blog/2020/06/16/spring05-web-application/90ff8eaa-c9bc-445b-af92-0d148fc31def.jpg">
+<img src="/blog/2020/06/16/spring05-web-application/3c58b607-3471-4272-9b19-4c8983a91e12.jpg">
+<img src="/blog/2020/06/16/spring05-web-application/5bbc9905-5bd7-49fb-a933-5c6b077ede5c.jpg">
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring/">spring</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/06/16/spring05-web-application/" data-title="spring05- spring web 应用 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/06/17/spring06-spring-web-view/" title="spring06- 视图渲染">
+  <strong>上一篇：</strong><br/>
+  <span>
+  spring06- 视图渲染</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/06/04/crazySSM05-File/"  title="crazySSM05-文件上传与下载">
+ <strong>下一篇：</strong><br/> 
+ <span>crazySSM05-文件上传与下载
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用户请求跟踪"><span class="toc-number">1.</span> <span class="toc-text">用户请求跟踪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置Spring-MVC相关"><span class="toc-number">2.</span> <span class="toc-text">配置Spring MVC相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写个简单的控制器"><span class="toc-number">3.</span> <span class="toc-text">写个简单的控制器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试控制器"><span class="toc-number">3.1.</span> <span class="toc-text">测试控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestMapping的拆分"><span class="toc-number">3.2.</span> <span class="toc-text">RequestMapping的拆分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#映射多个路由"><span class="toc-number">3.3.</span> <span class="toc-text">映射多个路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回模型数据"><span class="toc-number">3.4.</span> <span class="toc-text">返回模型数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理输入"><span class="toc-number">4.</span> <span class="toc-text">处理输入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询参数"><span class="toc-number">4.1.</span> <span class="toc-text">查询参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#路由参数"><span class="toc-number">4.2.</span> <span class="toc-text">路由参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#form参数"><span class="toc-number">4.3.</span> <span class="toc-text">form参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用的表单参数验证注解"><span class="toc-number">4.4.</span> <span class="toc-text">常用的表单参数验证注解</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

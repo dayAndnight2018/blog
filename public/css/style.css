@@ -119,10 +119,10 @@ a img {
 }
 body {
   background: #ddd;
-  font-family: "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, sans-serif;
+  font-family: '微软雅黑';
   font-size: 100%;
   color: #817c7c;
-  line-height: 1.5;
+  line-height: 2;
   min-height: 100vh;
   display: -webkit-flex;
   display: -webkit-box;
@@ -195,6 +195,47 @@ button::-moz-focus-inner {
 }
 h1 {
   font-size: 1.5em;
+}
+h2 {
+  background: #2ca6cb;
+  color: #fff !important;
+  padding: 10px;
+  text-align: center;
+}
+h3 {
+  color: #2ca6cb !important;
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 1px solid #2ca6cb;
+}
+code {
+  border-radius: 10px !important;
+  margin: 5px !important;
+  background: #ffc0cb !important;
+  color: #000 !important;
+  padding: 5px !important;
+}
+li {
+  font-weight: bold;
+  color: #1e90ff;
+}
+table {
+  width: 80%;
+  margin: 0 auto;
+}
+thead td {
+  font-weight: bold !important;
+  text-align: center;
+}
+tr td {
+  padding: 10px !important;
+  text-align: center;
+  background: #add8e6;
+}
+td a {
+  color: #f00 !important;
+  text-decoration: underline;
+  font-weight: bold;
 }
 .fa {
   display: inline-block;
@@ -453,7 +494,7 @@ body >header a {
   width: 86%;
   font-family: "covered_by_your_graceregular";
   font-size: 200%;
-  line-height: 1.5;
+  line-height: 2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -558,7 +599,7 @@ header nav ul li a:hover {
 .search input {
   -webkit-appearance: textfield;
   font-size: 0.87em;
-  line-height: 1.7;
+  line-height: 2.2;
   border: 1px solid #fff;
   color: #fff;
   background: transparent;
@@ -605,7 +646,7 @@ header nav ul li a:hover {
 }
 #main {
   margin: 1em 0 0;
-  line-height: 1.8;
+  line-height: 2.3;
 }
 @media only screen and (min-width: 1024px) {
   #main {
@@ -643,7 +684,7 @@ header nav ul li a:hover {
 }
 #main section.post a h1 {
   color: #2ca6cb;
-  line-height: 2;
+  line-height: 2.5;
 }
 #main section.post a p {
   color: #817c7c;
@@ -896,7 +937,7 @@ header nav ul li a:hover {
 article header.article-info >h1 {
   padding: 0.2em 3%;
   font-size: 170%;
-  line-height: 1.5;
+  line-height: 2;
   word-wrap: break-word;
   word-break: normal;
   -webkit-font-smoothing: antialiased;
@@ -963,7 +1004,7 @@ article .article-content .kb {
   display: inline-block;
   margin: 0 0.1em;
   text-shadow: 0 1px 0 #fff;
-  line-height: 1.5;
+  line-height: 2;
   white-space: nowrap;
 }
 article .article-content h1,
@@ -1019,7 +1060,7 @@ article .article-content blockquote {
   border-left: 0.2em solid #2ca6cb;
   margin: 0.65em 0 0.65em 1%;
   padding-left: 1%;
-  line-height: 1.5;
+  line-height: 2;
   font-size: 100%;
   color: #808080;
 }
@@ -1076,7 +1117,7 @@ article .article-content table td>code {
   border-radius: 0.25em;
 }
 article .article-content p {
-  line-height: 1.5;
+  line-height: 2;
   margin-top: 0.7em;
 }
 @media only screen and (min-width: 1024px) {
@@ -1822,7 +1863,7 @@ section.comment {
 }
 .linkslist ul a {
   font-size: 1em;
-  line-height: 1.5;
+  line-height: 2;
   display: block;
   padding: 0 3%;
 }
@@ -2106,7 +2147,7 @@ footer {
   margin: 0.5em 0;
   padding: 0.5em 2%;
   color: #4d4d4c;
-  line-height: 1.5;
+  line-height: 2;
   font-size: 0.8em;
   -webkit-border-radius: 0.35em;
   border-radius: 0.35em;
@@ -2128,7 +2169,7 @@ footer {
   .article-content .highlight .gutter pre,
   .article-content .gist .gist-file .gist-data .line-numbers {
     font-size: 0.9em;
-    line-height: 1.5;
+    line-height: 2;
   }
 }
 .article-content pre {

@@ -44,8 +44,13 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/0bf7c997-57cf-4c0f-b781-c06457138d1b.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/21f64518-e009-4e51-a043-0fcd7a880087.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/f7ed6ef4-8fc4-4470-9764-4ab537a56fe1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/0bee3cd0-7276-4c6a-8569-19fc8faa801c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/f90b717a-7bc4-4bb5-b959-d4d0693c1d5a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/1c8380d8-2ea3-4722-ac1f-84d40363f8b1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/8d2f956f-1d91-44a1-98f8-18e4581bb441.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/a05eb364-2cb7-446e-a509-5281439d5a4b.jpg">
 <meta property="article:published_time" content="2020-03-02T10:18:27.000Z">
-<meta property="article:modified_time" content="2020-03-03T02:57:12.188Z">
+<meta property="article:modified_time" content="2020-06-16T13:52:33.429Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring">
 <meta name="twitter:card" content="summary">
@@ -231,23 +236,33 @@
 <p>引用的bean(实现类):</p>
 <img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/f7ed6ef4-8fc4-4470-9764-4ab537a56fe1.jpg">
 
+<h2 id="切面注入问题"><a href="#切面注入问题" class="headerlink" title="切面注入问题"></a>切面注入问题</h2><p>在java开发中，很多功能不可能一个POJO完全实现，需要多个类的相互配合，在切面中也不例外。</p>
+<ol>
+<li><p>创建评论Bean接口CriticismEngine</p>
+</li>
+<li><p>创建一个实现类</p>
+</li>
+</ol>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/0bee3cd0-7276-4c6a-8569-19fc8faa801c.jpg">
 
+<ol start="3">
+<li>创建切面</li>
+</ol>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/f90b717a-7bc4-4bb5-b959-d4d0693c1d5a.jpg">
 
+<p>此处的切面创建方式稍有不同，使用aspect关键字替换class，同时直接使用pointcut及after-returning声明切面方法。</p>
+<p>这里通过set方法注入CriticismEngine的实例。</p>
+<ol start="4">
+<li>配置xml注入</li>
+</ol>
+<p>首先注入CriticismEngine</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/1c8380d8-2ea3-4722-ac1f-84d40363f8b1.jpg">
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/8d2f956f-1d91-44a1-98f8-18e4581bb441.jpg">
 
+<p>然后为切面注入CriticismEngine</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/a05eb364-2cb7-446e-a509-5281439d5a4b.jpg">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p>实际上，切面方法不属于spring管理，这里采用factory-method来定义其“Bean”。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -307,7 +322,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#几个定义"><span class="toc-number">1.</span> <span class="toc-text">几个定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">2.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切点的定义"><span class="toc-number">3.</span> <span class="toc-text">切点的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切面的定义"><span class="toc-number">4.</span> <span class="toc-text">切面的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环绕代码"><span class="toc-number">5.</span> <span class="toc-text">环绕代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入"><span class="toc-number">6.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用xml配置切面"><span class="toc-number">7.</span> <span class="toc-text">使用xml配置切面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#切面所涉及的标签"><span class="toc-number">7.1.</span> <span class="toc-text">切面所涉及的标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重写切面POJO类"><span class="toc-number">7.2.</span> <span class="toc-text">重写切面POJO类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml引入的实现"><span class="toc-number">7.3.</span> <span class="toc-text">xml引入的实现</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#几个定义"><span class="toc-number">1.</span> <span class="toc-text">几个定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">2.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切点的定义"><span class="toc-number">3.</span> <span class="toc-text">切点的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切面的定义"><span class="toc-number">4.</span> <span class="toc-text">切面的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环绕代码"><span class="toc-number">5.</span> <span class="toc-text">环绕代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入"><span class="toc-number">6.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用xml配置切面"><span class="toc-number">7.</span> <span class="toc-text">使用xml配置切面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#切面所涉及的标签"><span class="toc-number">7.1.</span> <span class="toc-text">切面所涉及的标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重写切面POJO类"><span class="toc-number">7.2.</span> <span class="toc-text">重写切面POJO类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml引入的实现"><span class="toc-number">7.3.</span> <span class="toc-text">xml引入的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切面注入问题"><span class="toc-number">8.</span> <span class="toc-text">切面注入问题</span></a></li></ol>
  
   </div>
 
@@ -336,15 +351,15 @@
 			
 		
 			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
 			
 		
 			
 				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/spring/" title="spring">spring<sup>4</sup></a></li>
 			
 		
 			

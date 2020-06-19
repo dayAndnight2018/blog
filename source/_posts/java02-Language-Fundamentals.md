@@ -6,7 +6,7 @@ tags: java
 
 ## 常用的java标点符号
 
-<img src='java02-Language-Fundamentals\40d04f70-a554-4201-adb0-69c912913523.jpg'>
+<img src='java02-Language-Fundamentals\fe269627-bfed-4f39-b940-bcbc82a7aed3.jpg'>
 
 ## 八大基本数据类型
 
@@ -117,7 +117,7 @@ int d = 0B100;
 
 或者某些转义字符：
 
-<img src='java02-Language-Fundamentals\54c90be3-a592-4af0-bf79-cbb9b3d495a1.jpg' >
+<img src='java02-Language-Fundamentals\b6e13caf-d4af-4375-b9e6-6d833a6dc15e.jpg'>
 
 对于键盘无法输入的特殊ASCII字符，可以使用\uxxxx方式表示：
 
@@ -301,7 +301,7 @@ java常见的操作符：
 
 1. // code
 
-2./*  code  */
+2. /*  code  */
 
 
 

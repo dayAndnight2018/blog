@@ -74,5 +74,45 @@ Java自学网站点
 W3c Java站点
 &nbsp;&nbsp;</td>
 &nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+<a href='https://www.cbedai.net/' target='_blank'>人工智能学习站点</a>
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+人工智能学习站点
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+<a href='http://springboot.fun/' target='_blank'>spring boot中文索引</a>
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+spring boot中文索引
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+<a href='http://springcloud.fun/' target='_blank'>spring cloud中文索引</a>
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+spring cloud中文索引
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+<a href='http://techblog.pub/' target='_blank'>原创博客站点集合</a>
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+原创博客站点集合
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+<a href='http://tooool.org/' target='_blank'>程序员站点导航</a>
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+程序员站点导航
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
 </table>
 
