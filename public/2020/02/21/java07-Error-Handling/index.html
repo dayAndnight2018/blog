@@ -11,13 +11,14 @@
     
 
     
-    <meta name="description" content="异常捕获可以使用try+catch+finally捕获并处理异常：   对于parseDouble方法需要使用throws标记异常:   没有catch  对于不使用catch的代码常用于释放资源，为了确保资源释放代码能够执行。 JDK7优化了这一点，使用try带上资源，表示资源释放，资源需要实现java.lang.AutoCloseable：   例如数据库连接：    捕获多个异常使用|捕获多">
+    <meta name="description" content="异常继承树  异常捕获可以使用try+catch+finally捕获并处理异常：   对于parseDouble方法需要使用throws标记异常:   没有catch  对于不使用catch的代码常用于释放资源，为了确保资源释放代码能够执行。 JDK7优化了这一点，使用try带上资源，表示资源释放，资源需要实现java.lang.AutoCloseable：   例如数据库连接：    捕获多个异">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java07 异常处理">
 <meta property="og:url" content="https://dayandnight2018.github.io/2020/02/21/java07-Error-Handling/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="异常捕获可以使用try+catch+finally捕获并处理异常：   对于parseDouble方法需要使用throws标记异常:   没有catch  对于不使用catch的代码常用于释放资源，为了确保资源释放代码能够执行。 JDK7优化了这一点，使用try带上资源，表示资源释放，资源需要实现java.lang.AutoCloseable：   例如数据库连接：    捕获多个异常使用|捕获多">
+<meta property="og:description" content="异常继承树  异常捕获可以使用try+catch+finally捕获并处理异常：   对于parseDouble方法需要使用throws标记异常:   没有catch  对于不使用catch的代码常用于释放资源，为了确保资源释放代码能够执行。 JDK7优化了这一点，使用try带上资源，表示资源释放，资源需要实现java.lang.AutoCloseable：   例如数据库连接：    捕获多个异">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java07-Error-Handling/bee2b6a1-614e-42f0-bca1-2737cfc6accb.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java07-Error-Handling/585f8f5d-7c51-4c49-a420-62a2aa8a7054.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java07-Error-Handling/4fb5b4e1-4880-4261-9435-ba03398c7fe7.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java07-Error-Handling/f65842e4-eddf-4409-92a0-9b226bc77435.jpg">
@@ -28,11 +29,11 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java07-Error-Handling/80ef8fc9-7abe-4bdd-97f5-0417bc73e4c7.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java07-Error-Handling/51f3bba5-84cf-4972-9790-c986938d59ef.jpg">
 <meta property="article:published_time" content="2020-02-21T12:07:52.000Z">
-<meta property="article:modified_time" content="2020-02-21T12:39:56.266Z">
+<meta property="article:modified_time" content="2020-06-20T07:51:44.404Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java07-Error-Handling/585f8f5d-7c51-4c49-a420-62a2aa8a7054.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/02/21/java07-Error-Handling/bee2b6a1-614e-42f0-bca1-2737cfc6accb.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -111,7 +112,9 @@
 </header>
 	<div class="article-content">
 		
-		<h2 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h2><p>可以使用try+catch+finally捕获并处理异常：</p>
+		<h2 id="异常继承树"><a href="#异常继承树" class="headerlink" title="异常继承树"></a>异常继承树</h2><img src="/blog/2020/02/21/java07-Error-Handling/bee2b6a1-614e-42f0-bca1-2737cfc6accb.jpg">
+
+<h2 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h2><p>可以使用try+catch+finally捕获并处理异常：</p>
 <img src="/blog/2020/02/21/java07-Error-Handling/585f8f5d-7c51-4c49-a420-62a2aa8a7054.jpg">
 
 <p>对于parseDouble方法需要使用throws标记异常:</p>
@@ -218,7 +221,7 @@ public void printStackTrace()
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#异常捕获"><span class="toc-number">1.</span> <span class="toc-text">异常捕获</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#没有catch"><span class="toc-number">2.</span> <span class="toc-text">没有catch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#捕获多个异常"><span class="toc-number">3.</span> <span class="toc-text">捕获多个异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-java-lang-Exception"><span class="toc-number">4.</span> <span class="toc-text">The java.lang.Exception</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法抛出异常"><span class="toc-number">5.</span> <span class="toc-text">方法抛出异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户自定义异常"><span class="toc-number">6.</span> <span class="toc-text">用户自定义异常</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#异常继承树"><span class="toc-number">1.</span> <span class="toc-text">异常继承树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常捕获"><span class="toc-number">2.</span> <span class="toc-text">异常捕获</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#没有catch"><span class="toc-number">3.</span> <span class="toc-text">没有catch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#捕获多个异常"><span class="toc-number">4.</span> <span class="toc-text">捕获多个异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-java-lang-Exception"><span class="toc-number">5.</span> <span class="toc-text">The java.lang.Exception</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法抛出异常"><span class="toc-number">6.</span> <span class="toc-text">方法抛出异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户自定义异常"><span class="toc-number">7.</span> <span class="toc-text">用户自定义异常</span></a></li></ol>
  
   </div>
 
@@ -247,7 +250,15 @@ public void printStackTrace()
 			
 		
 			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>6</sup></a></li>
 			
 		
 			
@@ -256,10 +267,6 @@ public void printStackTrace()
 		
 			
 				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>3</sup></a></li>
 			
 		
 			

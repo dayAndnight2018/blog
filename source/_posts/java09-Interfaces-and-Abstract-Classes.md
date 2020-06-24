@@ -50,6 +50,10 @@ tags: java
 
 <img src='java09-Interfaces-and-Abstract-Classes\30d23729-df67-437d-9480-5ec35c9b5b57.jpg'>
 
+### 默认方法(added JDK8)
+
+<img src='java09-Interfaces-and-Abstract-Classes\8ab4ea4a-b32f-44ad-bcdc-06dd46cafc79.jpg'>
+
 ## Base Class
 
 什么是base class?当我们定义了一个接口，这个接口定义了很多方法的时候，实现类需要实现全部方法，但是很多时候带有很多重复代码，因为没必要。因此，我们定义一个实现类实现这个接口，给出默认的实现方法。再由具体的类继承这个类去重写所需的方法，这个类就叫base class.

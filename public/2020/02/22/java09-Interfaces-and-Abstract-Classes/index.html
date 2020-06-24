@@ -26,13 +26,14 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/3d0a4988-994f-4b68-b2be-902b335b7903.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/9f6beb88-c67f-47d8-86df-60742f6b4950.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/30d23729-df67-437d-9480-5ec35c9b5b57.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/8ab4ea4a-b32f-44ad-bcdc-06dd46cafc79.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/4b55316e-3417-4b88-b97e-0759b7668159.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/51216969-671e-4f4f-969f-076dc0ad0581.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/686a391c-56cf-4053-b0ad-e4e6d4ac0415.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/fcff07e4-264a-4072-a7c9-09ef174822c0.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/3ff522fa-1c83-434b-9ed4-1035cc6c62c3.jpg">
 <meta property="article:published_time" content="2020-02-22T00:56:44.000Z">
-<meta property="article:modified_time" content="2020-02-22T01:31:31.062Z">
+<meta property="article:modified_time" content="2020-06-20T07:45:41.557Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -142,6 +143,8 @@
 <h2 id="接口的方法"><a href="#接口的方法" class="headerlink" title="接口的方法"></a>接口的方法</h2><p>接口方法默认是public / abstract的，即<code style="background:#ff3385;color:white;padding:5px;">公开抽象</code>方法，<code style="background:#ff3385;color:white;padding:5px;">没有方法体</code>。</p>
 <img src="/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/30d23729-df67-437d-9480-5ec35c9b5b57.jpg">
 
+<h3 id="默认方法-added-JDK8"><a href="#默认方法-added-JDK8" class="headerlink" title="默认方法(added JDK8)"></a>默认方法(added JDK8)</h3><img src="/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/8ab4ea4a-b32f-44ad-bcdc-06dd46cafc79.jpg">
+
 <h2 id="Base-Class"><a href="#Base-Class" class="headerlink" title="Base Class"></a>Base Class</h2><p>什么是base class?当我们定义了一个接口，这个接口定义了很多方法的时候，实现类需要实现全部方法，但是很多时候带有很多重复代码，因为没必要。因此，我们定义一个实现类实现这个接口，给出默认的实现方法。再由具体的类继承这个类去重写所需的方法，这个类就叫base class.</p>
 <p>在Servlet中，实现接口：</p>
 <img src="/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/4b55316e-3417-4b88-b97e-0759b7668159.jpg">
@@ -227,7 +230,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的概念"><span class="toc-number">1.</span> <span class="toc-text">接口的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的定义"><span class="toc-number">2.</span> <span class="toc-text">接口的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的域"><span class="toc-number">3.</span> <span class="toc-text">接口的域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的方法"><span class="toc-number">4.</span> <span class="toc-text">接口的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Base-Class"><span class="toc-number">5.</span> <span class="toc-text">Base Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类"><span class="toc-number">6.</span> <span class="toc-text">抽象类</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的概念"><span class="toc-number">1.</span> <span class="toc-text">接口的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的定义"><span class="toc-number">2.</span> <span class="toc-text">接口的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的域"><span class="toc-number">3.</span> <span class="toc-text">接口的域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的方法"><span class="toc-number">4.</span> <span class="toc-text">接口的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认方法-added-JDK8"><span class="toc-number">4.1.</span> <span class="toc-text">默认方法(added JDK8)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Base-Class"><span class="toc-number">5.</span> <span class="toc-text">Base Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类"><span class="toc-number">6.</span> <span class="toc-text">抽象类</span></a></li></ol>
  
   </div>
 
@@ -256,7 +259,15 @@
 			
 		
 			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>6</sup></a></li>
 			
 		
 			
@@ -265,10 +276,6 @@
 		
 			
 				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>3</sup></a></li>
 			
 		
 			

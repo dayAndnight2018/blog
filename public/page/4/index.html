@@ -84,42 +84,25 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/22/java12-Generics/" title="java12 泛型" itemprop="url">
+    <a href="/blog/2020/03/01/spring02-Wiring-beans/" title="spring02 绑定Bean" itemprop="url">
   
-    <h1 itemprop="name">java12 泛型</h1>
+    <h1 itemprop="name">spring02 绑定Bean</h1>
     
      
-           <p itemprop="description" >如果不使用泛型，在List中读取数据 就需要频繁的强制转化，类型不合适还会出现异常：
+           <p itemprop="description" >如何注册Bean？
+在XML中进行显式配置：通过xml配置文件注册Bean
+
+在Java中进行显式配置：通过java配置类注册Bean
+
+隐式的bean发现机制和自动装配：让spring自己去扫描（配合注解使用）
 
 
-泛型方法举例泛型列表：
+发现机制发现机制就是Bean扫描机制
 
-
-插入和获取元素方法：
-
-
-实例化：
-
-
-Map:
-
-
-插入、获取：
-
-
-泛型列表嵌套：
-
-
-使用示例：
-
-
-hashMap使用示例：
-
-
-List&amp;lt;?&amp;gt</p>
+我们先来创建一个接口，</p>
         
     
-    <time datetime="2020-02-22T03:46:56.000Z" itemprop="datePublished">2020-02-22</time>
+    <time datetime="2020-03-01T07:28:39.000Z" itemprop="datePublished">2020-03-01</time>
   </a>
 </section>
 
@@ -131,22 +114,22 @@ List&amp;lt;?&amp;gt</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/22/java11-The-Collections-Framework/" title="java11 集合" itemprop="url">
+    <a href="/blog/2020/03/01/spring01-introduction/" title="spring01 简介" itemprop="url">
   
-    <h1 itemprop="name">java11 集合</h1>
+    <h1 itemprop="name">spring01 简介</h1>
     
      
-           <p itemprop="description" >一张图认识集合的关系集合用于分组处理对象。
+           <p itemprop="description" >JavaBean在spring中，都是一个个组件，这些组件我们可以称为Bean，这些Bean由Spring来维护，你只需要提供业务功能。
 
 
-Collection的继承接口是List / Queue / Set
-Map用于存储键值对。
-ArrayList是List的非同步实现，Vector是同步实现。
-SortedMap是排序了的Map
-HashMap是一种基于哈希算法的</p>
+这样一个POJO就是一个Bean。
+依赖注入以往的代码中，我们需要主动new一个对象，用来产生类的实例：
+
+
+依赖注入避免了这样的操作，s</p>
         
     
-    <time datetime="2020-02-22T01:45:26.000Z" itemprop="datePublished">2020-02-22</time>
+    <time datetime="2020-03-01T04:12:14.000Z" itemprop="datePublished">2020-03-01</time>
   </a>
 </section>
 
@@ -158,35 +141,22 @@ HashMap是一种基于哈希算法的</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/22/java10-Enums/" title="java10 枚举" itemprop="url">
+    <a href="/blog/2020/03/01/java21-Reflection/" title="java21 反射" itemprop="url">
   
-    <h1 itemprop="name">java10 枚举</h1>
+    <h1 itemprop="name">java21 反射</h1>
     
      
-           <p itemprop="description" >枚举简介枚举主要用于限制输入范围：
+           <p itemprop="description" >java.lang.Class可以调用实例的getClass()方法获取Class对象，也可以直接使用.class:
 
 
-枚举可以作为类的域变量出现：
+相关方法：
 
 
-其初始化方法类似于静态变量：
-
-
-枚举也可以在类的内部定义：
-
-
-java.lang.Enum
-没有公共构造器，不能初始化变量
-
-默认静态
-
-可以调用方法进行迭代
-
-
-迭代枚举值可以获取枚举的values然</p>
+//反射获取
+public static Class forName(String className) throws ClassNotFou</p>
         
     
-    <time datetime="2020-02-22T01:32:02.000Z" itemprop="datePublished">2020-02-22</time>
+    <time datetime="2020-03-01T01:53:20.000Z" itemprop="datePublished">2020-03-01</time>
   </a>
 </section>
 
@@ -198,29 +168,48 @@ java.lang.Enum
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/" title="java09 接口与抽象类" itemprop="url">
+    <a href="/blog/2020/02/29/java20-Concurrency-Utilities/" title="java20 并发包" itemprop="url">
   
-    <h1 itemprop="name">java09 接口与抽象类</h1>
+    <h1 itemprop="name">java20 并发包</h1>
     
      
-           <p itemprop="description" >接口的概念接口就是定义的一组规范，例如，电脑打印机功能，提供了一组接口：
+           <p itemprop="description" >原子变量AtomicBoolean, AtomicInteger, AtomicLong，AtomicReference等都属于原子变量，提供原子操作。
+提供了很多原子操作方法：addAndGet, decrementAndGet,getAndIncrement, increme</p>
+        
+    
+    <time datetime="2020-02-29T11:42:57.000Z" itemprop="datePublished">2020-02-29</time>
+  </a>
+</section>
 
 
-不同厂家可以根据接口规范给出不同的实现：
 
 
-接口的定义接口的定义与类类似：
-访问权限符+interface+名称
 
 
-可以给接口定义域或者方法，但默认都是public的。
-接口可以被具体类实现：
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/29/java19-Threads/" title="java19 线程" itemprop="url">
+  
+    <h1 itemprop="name">java19 线程</h1>
+    
+     
+           <p itemprop="description" >创建线程
+继承Thread类
 
+
+
+
+实现Runnable接口
+
+继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。
+线程的六种状态
+new 线程还没开始start
 
 </p>
         
     
-    <time datetime="2020-02-22T00:56:44.000Z" itemprop="datePublished">2020-02-22</time>
+    <time datetime="2020-02-29T08:58:47.000Z" itemprop="datePublished">2020-02-29</time>
   </a>
 </section>
 
@@ -232,33 +221,30 @@ java.lang.Enum
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/21/java08-Numbers-and-Dates/" title="java08 数字与日期" itemprop="url">
+    <a href="/blog/2020/02/29/java18-Java-Database-Connectivity/" title="java18 数据库操作" itemprop="url">
   
-    <h1 itemprop="name">java08 数字与日期</h1>
+    <h1 itemprop="name">java18 数据库操作</h1>
     
      
-           <p itemprop="description" >数字转换可以使用包装类对字符串进行转换：
+           <p itemprop="description" >四个步骤获取数据
+加载JDBC驱动
+
+获取JDBC连接
+
+创建SQL 语句实例java.sql.Statement
+
+获取数据java.sql.ResultSet
+
+释放连接
 
 
+加载JDBC驱动
 
-
-&amp;nbsp;&amp;nbsp;
-包装类
-&amp;nbsp;&amp;nbsp;
-&amp;nbsp;&amp;nbsp;
-解析方法
-&amp;nbsp;&amp;nbsp;
-
-
-
-&amp;nbsp;&amp;nbsp;
-Byte
-&amp;nbsp;&amp;nbsp;
-&amp;nbsp;&amp;nbsp;
-parseBy</p>
+Class.forName(&#34;com.mysql.jdbc.Driver&#34;);
+</p>
         
     
-    <time datetime="2020-02-21T12:42:50.000Z" itemprop="datePublished">2020-02-21</time>
+    <time datetime="2020-02-29T08:18:35.000Z" itemprop="datePublished">2020-02-29</time>
   </a>
 </section>
 
@@ -270,24 +256,20 @@ parseBy</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/21/java07-Error-Handling/" title="java07 异常处理" itemprop="url">
+    <a href="/blog/2020/02/29/java17-Networking/" title="java17 网络" itemprop="url">
   
-    <h1 itemprop="name">java07 异常处理</h1>
+    <h1 itemprop="name">java17 网络</h1>
     
      
-           <p itemprop="description" >异常捕获可以使用try+catch+finally捕获并处理异常：
+           <p itemprop="description" >URL解析
 
+java.net.URL构造器
 
-对于parseDouble方法需要使用throws标记异常:
-
-
-没有catch
-
-对于不使用catch的代码常用于释放资源，为了确保资源释放代码能够执行。
-JDK7优化了这一点，使用try带上资源，表示资源</p>
+public URL(java.lang.String spec)
+public URL(java.lang.String protocol, java.lang.String host,java.lang.String file)</p>
         
     
-    <time datetime="2020-02-21T12:07:52.000Z" itemprop="datePublished">2020-02-21</time>
+    <time datetime="2020-02-29T06:28:36.000Z" itemprop="datePublished">2020-02-29</time>
   </a>
 </section>
 
@@ -299,33 +281,31 @@ JDK7优化了这一点，使用try带上资源，表示资源</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/21/java06-Inheritance/" title="java06 继承" itemprop="url">
+    <a href="/blog/2020/02/29/java16-Annotations/" title="java16 注解" itemprop="url">
   
-    <h1 itemprop="name">java06 继承</h1>
+    <h1 itemprop="name">java16 注解</h1>
     
      
-           <p itemprop="description" >一个类与类的继承关系
-
-一个类派生一个类，称为继承关系。原类叫父类，新类叫子类。
-extends父类与子类的关系表示：
-
-
-继承：
+           <p itemprop="description" >注解就是一种标记作用的特性。
+注解的类型注解类型是 一种模板，注解是注解模板的具体实例。
+注解类型可以包含键值对，没有键值对的叫标记注解，有单个键值对的叫单值注解。
+注解的使用不带参数：
 
 
-is-a关系
-
-子类是一种特殊的父类。
-父类：
+带参数：
 
 
-子类：
+不带参数使用示例：
 
 
-子类继承父类的字段，weight和eat方法。同时扩展了numberOfLegs</p>
+带参数使用示例：
+
+
+对于单值注解，可以省略键：
+</p>
         
     
-    <time datetime="2020-02-21T11:25:16.000Z" itemprop="datePublished">2020-02-21</time>
+    <time datetime="2020-02-29T03:35:17.000Z" itemprop="datePublished">2020-02-29</time>
   </a>
 </section>
 
@@ -337,26 +317,32 @@ is-a关系
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/21/java05-Core-Classes/" title="java05 核心类库" itemprop="url">
+    <a href="/blog/2020/02/29/java15-Polymorphism/" title="java15 多态" itemprop="url">
   
-    <h1 itemprop="name">java05 核心类库</h1>
+    <h1 itemprop="name">java15 多态</h1>
     
      
-           <p itemprop="description" >java.lang.Object这个是Java的核心类，表示对象，任何类都直接或间接地继承着这个类。
+           <p itemprop="description" >什么是多态？
 
-
-//克隆方法，重写这个方法的类可以实现对象的复制。
-protected Object clone()
-
+A a = new B();
 
 
 
+如上所示的定义方法是允许的，条件如下：
 
-//对象的相等比较方法。
-public boolean equ</p>
+B是A的子类
+
+B是A接口的具体实现
+
+
+有什么特别之处呢？
+当编译时，a的类型是A，这个时候，只允许调用在A类中定义的方法。在运行时，a变成了类型B，所以，
+
+
+a.getClass(</p>
         
     
-    <time datetime="2020-02-21T05:10:45.000Z" itemprop="datePublished">2020-02-21</time>
+    <time datetime="2020-02-29T03:01:58.000Z" itemprop="datePublished">2020-02-29</time>
   </a>
 </section>
 
@@ -368,65 +354,24 @@ public boolean equ</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/19/java04-Objects-and-Classes/" title="java04 对象与类" itemprop="url">
+    <a href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/" title="java14 内部类" itemprop="url">
   
-    <h1 itemprop="name">java04 对象与类</h1>
+    <h1 itemprop="name">java14 内部类</h1>
     
      
-           <p itemprop="description" >对象的两大属性
-特征（域）
-
-动作（方法）
+           <p itemprop="description" >内部类的定义内部类就是在其它类内部的类：
 
 
-例如，一辆车可以有以下特征：
+如果你喜欢，可以在内部类内部再定义内部类：
 
 
-有颜色，轮胎数量，方向盘数量，阀门数量等等。
-可以有以下几种动作：
-
-
-行驶和刹车
-类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对</p>
+内部类类似于域、方法，可以有四种访问修饰符：public / private / default / protected
+静态内部类和内部类区别
+静态内部类可以包含静态域，内部类不行。
+</p>
         
     
-    <time datetime="2020-02-19T05:30:35.000Z" itemprop="datePublished">2020-02-19</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/02/18/java03-Statements/" title="java03 语句" itemprop="url">
-  
-    <h1 itemprop="name">java03 语句</h1>
-    
-     
-           <p itemprop="description" >表达式和语句的区别
-一个显著的区别就是有没有“;”
-
-表达式是一个式子,语句是一个完整的操作
-
-
-if语句if是一种分支结构：
-
-
-if条件成立则执行，不成立则执行else或不执行。
-可以包含多个else if :
-
-
-对于布尔类型的表达式，不需要使用==判断，直接使用：
-
-
-w</p>
-        
-    
-    <time datetime="2020-02-18T12:09:37.000Z" itemprop="datePublished">2020-02-18</time>
+    <time datetime="2020-02-29T02:14:01.000Z" itemprop="datePublished">2020-02-29</time>
   </a>
 </section>
 
@@ -437,7 +382,7 @@ w</p>
 
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/blog/page/3/">上一页</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/5/">下一页</a>
+    <a class="extend prev" rel="prev" href="/blog/page/3/">上一页</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/blog/page/5/">5</a><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/5/">下一页</a>
   </nav>
 
 </div>
@@ -468,7 +413,15 @@ w</p>
 			
 		
 			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>6</sup></a></li>
 			
 		
 			
@@ -477,10 +430,6 @@ w</p>
 		
 			
 				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>3</sup></a></li>
 			
 		
 			

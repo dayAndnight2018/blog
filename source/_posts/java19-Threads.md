@@ -8,6 +8,8 @@ tags: java
 
 1. 继承Thread类
 
+<img src='java19-Threads\6f5112ff-489e-48a8-95b3-978f90f8950d.jpg' >
+
 2. 实现Runnable接口
 
 继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。

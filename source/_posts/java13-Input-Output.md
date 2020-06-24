@@ -257,6 +257,16 @@ OutputStream
 
 </table>
 
+### 二进制流
+
+<img src='java13-Input-Output\ef6ac255-9855-4e3a-8c98-a476d7e22e67.jpg'>
+
+### 字符流
+
+<img src='java13-Input-Output\a226164e-7872-41c1-900a-0a25c20f7c8a.jpg'>
+
+
+
 ## 读取二进制数据
 
 <img src='java13-Input-Output\11740d87-f39e-4e0e-813a-016fc199d413.jpg'>

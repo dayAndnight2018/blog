@@ -84,21 +84,29 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/18/java02-Language-Fundamentals/" title="java02 语言基础" itemprop="url">
+    <a href="/blog/2020/02/22/java13-Input-Output/" title="java13 输入输出" itemprop="url">
   
-    <h1 itemprop="name">java02 语言基础</h1>
+    <h1 itemprop="name">java13 输入输出</h1>
     
      
-           <p itemprop="description" >常用的java标点符号
+           <p itemprop="description" >File Systems and PathsFileSystem代表一个文件系统。它是一个抽象类。
+获取FileSystem对象
 
-八大基本数据类型
+获取分割符
 
-其中，byte,short, int, long, float, double表示数值，其位数和数值范围如表所示。
-以byte为例做出解释：
-占用8位，也就是2^8 = 256个数值,前128个数值为-128——-1，0占一个，剩余1</p>
+win下是\，Linux下是/
+获取根目录
+
+获取到一个Iterable
+获取一个路径
+
+后续的参数可以用于拼接
+
+
+java.nio</p>
         
     
-    <time datetime="2020-02-18T04:08:37.000Z" itemprop="datePublished">2020-02-18</time>
+    <time datetime="2020-02-22T04:35:29.000Z" itemprop="datePublished">2020-02-22</time>
   </a>
 </section>
 
@@ -110,22 +118,42 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/16/java01-preparement/" title="java01 准备工作" itemprop="url">
+    <a href="/blog/2020/02/22/java12-Generics/" title="java12 泛型" itemprop="url">
   
-    <h1 itemprop="name">java01 准备工作</h1>
+    <h1 itemprop="name">java12 泛型</h1>
     
      
-           <p itemprop="description" >一次编写代码，到处运行。java代码是跨平台的，其实现跨平台的方式通过不同的平台上的虚拟机实现的。
+           <p itemprop="description" >如果不使用泛型，在List中读取数据 就需要频繁的强制转化，类型不合适还会出现异常：
 
 
-第一行java代码
+泛型方法举例泛型列表：
 
-class MyFirstJava{
-    public static void main(String[] args){
-        System</p>
+
+插入和获取元素方法：
+
+
+实例化：
+
+
+Map:
+
+
+插入、获取：
+
+
+泛型列表嵌套：
+
+
+使用示例：
+
+
+hashMap使用示例：
+
+
+List&amp;lt;?&amp;gt</p>
         
     
-    <time datetime="2020-02-16T10:28:29.000Z" itemprop="datePublished">2020-02-16</time>
+    <time datetime="2020-02-22T03:46:56.000Z" itemprop="datePublished">2020-02-22</time>
   </a>
 </section>
 
@@ -137,22 +165,22 @@ class MyFirstJava{
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/01/05/hello-world/" title="第一篇日志" itemprop="url">
+    <a href="/blog/2020/02/22/java11-The-Collections-Framework/" title="java11 集合" itemprop="url">
   
-    <h1 itemprop="name">第一篇日志</h1>
+    <h1 itemprop="name">java11 集合</h1>
     
      
-           <p itemprop="description" >这是通过MarkBook编写的第一篇日志
-新的一年，新的开始，请珍惜时光！
-快速开始Hexo创建新的文章$ hexo new &#34;My New Post&#34;
-本地预览$ hexo server
-生成静态文件$ hexo generate
-发布$ hexo deploy
+           <p itemprop="description" >一张图认识集合的关系集合用于分组处理对象。
 
-不忘初心，砥</p>
+
+Collection的继承接口是List / Queue / Set
+Map用于存储键值对。
+ArrayList是List的非同步实现，Vector是同步实现。
+SortedMap是排序了的Map
+HashMap是一种基于哈希算法的</p>
         
     
-    <time datetime="2020-01-05T10:48:09.324Z" itemprop="datePublished">2020-01-05</time>
+    <time datetime="2020-02-22T01:45:26.000Z" itemprop="datePublished">2020-02-22</time>
   </a>
 </section>
 
@@ -164,27 +192,35 @@ class MyFirstJava{
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/01/03/springMVC02/" title="Spring MVC创建一个项目" itemprop="url">
+    <a href="/blog/2020/02/22/java10-Enums/" title="java10 枚举" itemprop="url">
   
-    <h1 itemprop="name">Spring MVC创建一个项目</h1>
+    <h1 itemprop="name">java10 枚举</h1>
     
      
-           <p itemprop="description" >在STS中创建项目
-通过File-New-Project创建一个Maven项目
+           <p itemprop="description" >枚举简介枚举主要用于限制输入范围：
 
 
+枚举可以作为类的域变量出现：
 
 
-填写相关信息，结束创建
+其初始化方法类似于静态变量：
 
 
+枚举也可以在类的内部定义：
 
-GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项目名称，因为我们想要部署到tomcat中，因此打包方式设置为war包。
 
-生成的项目</p>
+java.lang.Enum
+没有公共构造器，不能初始化变量
+
+默认静态
+
+可以调用方法进行迭代
+
+
+迭代枚举值可以获取枚举的values然</p>
         
     
-    <time datetime="2020-01-03T13:16:03.000Z" itemprop="datePublished">2020-01-03</time>
+    <time datetime="2020-02-22T01:32:02.000Z" itemprop="datePublished">2020-02-22</time>
   </a>
 </section>
 
@@ -196,39 +232,29 @@ GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项�
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/01/03/gitCommand01/" title="Git常用指令" itemprop="url">
+    <a href="/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/" title="java09 接口与抽象类" itemprop="url">
   
-    <h1 itemprop="name">Git常用指令</h1>
+    <h1 itemprop="name">java09 接口与抽象类</h1>
     
      
-           <p itemprop="description" >基础指令初始化仓库
-
-    git init
+           <p itemprop="description" >接口的概念接口就是定义的一组规范，例如，电脑打印机功能，提供了一组接口：
 
 
-
-添加文件到缓冲区
-
-    git add filename
+不同厂家可以根据接口规范给出不同的实现：
 
 
-
-添加所有文件到缓冲区
-
-    git add .
-    git add --all
+接口的定义接口的定义与类类似：
+访问权限符+interface+名称
 
 
-
-清除缓冲区
-
-    git rm -r --cached
+可以给接口定义域或者方法，但默认都是public的。
+接口可以被具体类实现：
 
 
 </p>
         
     
-    <time datetime="2020-01-03T02:46:13.000Z" itemprop="datePublished">2020-01-03</time>
+    <time datetime="2020-02-22T00:56:44.000Z" itemprop="datePublished">2020-02-22</time>
   </a>
 </section>
 
@@ -240,42 +266,167 @@ GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项�
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/01/01/springMVC01/" title="Spring MVC开发环境配置" itemprop="url">
+    <a href="/blog/2020/02/21/java08-Numbers-and-Dates/" title="java08 数字与日期" itemprop="url">
   
-    <h1 itemprop="name">Spring MVC开发环境配置</h1>
+    <h1 itemprop="name">java08 数字与日期</h1>
     
      
-           <p itemprop="description" >配置JAVA
-从JAVA开发环境下载地址下载JDK开发环境
-
-如图所示，安装JDK，在JDK中已经包含JRE
-
-
- 
-
-
-将JDK路径配置到环境变量
+           <p itemprop="description" >数字转换可以使用包装类对字符串进行转换：
 
 
 
 
-测试JDK
+&amp;nbsp;&amp;nbsp;
+包装类
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+解析方法
+&amp;nbsp;&amp;nbsp;
 
 
 
-     java -version
-
-
-
-
-
-
-
-Maven
-从Maven下载地址下载Maven安装包</p>
+&amp;nbsp;&amp;nbsp;
+Byte
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+parseBy</p>
         
     
-    <time datetime="2020-01-01T11:57:30.000Z" itemprop="datePublished">2020-01-01</time>
+    <time datetime="2020-02-21T12:42:50.000Z" itemprop="datePublished">2020-02-21</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/21/java07-Error-Handling/" title="java07 异常处理" itemprop="url">
+  
+    <h1 itemprop="name">java07 异常处理</h1>
+    
+     
+           <p itemprop="description" >异常继承树
+
+异常捕获可以使用try+catch+finally捕获并处理异常：
+
+
+对于parseDouble方法需要使用throws标记异常:
+
+
+没有catch
+
+对于不使用catch的代码常用于释放资源，为了确保资源释放代码能够执行。
+JDK7优化了这一点，使用try带上</p>
+        
+    
+    <time datetime="2020-02-21T12:07:52.000Z" itemprop="datePublished">2020-02-21</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/21/java06-Inheritance/" title="java06 继承" itemprop="url">
+  
+    <h1 itemprop="name">java06 继承</h1>
+    
+     
+           <p itemprop="description" >一个类与类的继承关系
+
+一个类派生一个类，称为继承关系。原类叫父类，新类叫子类。
+extends父类与子类的关系表示：
+
+
+继承：
+
+
+is-a关系
+
+子类是一种特殊的父类。
+父类：
+
+
+子类：
+
+
+子类继承父类的字段，weight和eat方法。同时扩展了numberOfLegs</p>
+        
+    
+    <time datetime="2020-02-21T11:25:16.000Z" itemprop="datePublished">2020-02-21</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/21/java05-Core-Classes/" title="java05 核心类库" itemprop="url">
+  
+    <h1 itemprop="name">java05 核心类库</h1>
+    
+     
+           <p itemprop="description" >java.lang.Object这个是Java的核心类，表示对象，任何类都直接或间接地继承着这个类。
+
+
+//克隆方法，重写这个方法的类可以实现对象的复制。
+protected Object clone()
+
+
+
+
+
+//对象的相等比较方法。
+public boolean equ</p>
+        
+    
+    <time datetime="2020-02-21T05:10:45.000Z" itemprop="datePublished">2020-02-21</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/02/19/java04-Objects-and-Classes/" title="java04 对象与类" itemprop="url">
+  
+    <h1 itemprop="name">java04 对象与类</h1>
+    
+     
+           <p itemprop="description" >对象的两大属性
+特征（域）
+
+动作（方法）
+
+
+例如，一辆车可以有以下特征：
+
+
+有颜色，轮胎数量，方向盘数量，阀门数量等等。
+可以有以下几种动作：
+
+
+行驶和刹车
+类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对</p>
+        
+    
+    <time datetime="2020-02-19T05:30:35.000Z" itemprop="datePublished">2020-02-19</time>
   </a>
 </section>
 
@@ -286,7 +437,7 @@ Maven
 
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/blog/page/4/">上一页</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/blog/page/4/">上一页</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/6/">下一页</a>
   </nav>
 
 </div>
@@ -317,7 +468,15 @@ Maven
 			
 		
 			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>6</sup></a></li>
 			
 		
 			
@@ -326,10 +485,6 @@ Maven
 		
 			
 				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>3</sup></a></li>
 			
 		
 			

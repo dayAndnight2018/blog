@@ -1,0 +1,659 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>JavaEE-11-Spring-Aop | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="AOP术语切面切面就是引入的代码，比如，记录日志，自动关闭JDBC连接等等 通知切面里的方法就是通知，   引入为现有的类增强方法 切点被拦截的方法就是切点 连接点用于判定切点的方法 织入生成动态代理的过程 四种实现Aop的方式  使用@AspectJ注解开发Aop选择合适的切点选定拦截谁  创建一个接口     实现这个接口    我们确定把printRole这个方法作为切点，拦截他。 创建切面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaEE-11-Spring-Aop">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-11-Spring-Aop/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="AOP术语切面切面就是引入的代码，比如，记录日志，自动关闭JDBC连接等等 通知切面里的方法就是通知，   引入为现有的类增强方法 切点被拦截的方法就是切点 连接点用于判定切点的方法 织入生成动态代理的过程 四种实现Aop的方式  使用@AspectJ注解开发Aop选择合适的切点选定拦截谁  创建一个接口     实现这个接口    我们确定把printRole这个方法作为切点，拦截他。 创建切面">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/c1a1722b-86f0-4d90-b095-bf28ec49106f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/b6337517-6b00-489b-9737-178be3c3c932.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/bd83b016-5b3f-4016-8980-d1385ad10fb7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/d16b7c49-93be-4386-bcb9-18bd2e8d1a34.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/b5b33ce9-f4e9-4821-959f-35b6a4bff413.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/11f734e9-1961-490b-b5a7-e9610a2cc2bd.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/dc13d182-1c70-4800-ab09-ad248c0c3930.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/2b63a252-ef5f-4aa5-b373-b23abbd5741b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/e7db1664-718c-4b22-b51b-78dcabe02ac6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/b3cd4872-9d0e-43e8-96b8-0e9bc47c9b1b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/c621279b-1939-4a71-b182-408912721323.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/1a0202ff-6808-41f7-a940-2144cf1b9332.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/0324ffb2-5bd2-49d8-b6ac-424ff56752f4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/e0f61ea6-e326-4ac1-9b82-41926d8aed7e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/eeaaafd9-35ee-4264-ac69-cfd68144e9a4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/fd30df5b-4aac-45b1-89a1-0776d48589bc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/d1edbf83-2c2e-4659-904e-8da5f208b97e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/1d862b1b-6241-4abd-bb44-5f557c77e431.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/377f71e0-9b09-43a0-a5f2-0b1a4e8f9849.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/4cbe6dc1-022f-4371-ba2a-f5bd2549670a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/ab61694d-cde5-44d8-8468-434884883d70.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/1c8b2103-8a95-4bc1-92f8-32c98f624326.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/73229d23-27d2-41ba-aafc-1e43d57efa81.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/86c63023-d359-49e7-8569-fc816ec72eb5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/e15e5cbd-b127-4eec-aea3-00d8546b253d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/0c23dda2-2151-458e-aba4-2eca874ec0d8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/514fc807-5600-40f1-bd2b-fc62222b4131.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/0460c1e1-966b-4186-8099-e0926ff5f398.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/dd225124-e9ad-45f6-88e1-d578cb12522f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/ce181adf-5080-4876-aac4-b107dc0dab1a.jpg">
+<meta property="article:published_time" content="2020-06-20T14:38:50.000Z">
+<meta property="article:modified_time" content="2020-06-20T15:27:45.461Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="JavaEE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-11-Spring-Aop/c1a1722b-86f0-4d90-b095-bf28ec49106f.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/20/JavaEE-11-Spring-Aop/" title="JavaEE-11-Spring-Aop" itemprop="url">JavaEE-11-Spring-Aop</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-20T14:38:50.000Z" itemprop="datePublished"> Published 2020-06-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="AOP术语"><a href="#AOP术语" class="headerlink" title="AOP术语"></a>AOP术语</h2><h3 id="切面"><a href="#切面" class="headerlink" title="切面"></a>切面</h3><p>切面就是引入的代码，比如，记录日志，自动关闭JDBC连接等等</p>
+<h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><p>切面里的方法就是通知，</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/c1a1722b-86f0-4d90-b095-bf28ec49106f.jpg">
+
+<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>为现有的类增强方法</p>
+<h3 id="切点"><a href="#切点" class="headerlink" title="切点"></a>切点</h3><p>被拦截的方法就是切点</p>
+<h3 id="连接点"><a href="#连接点" class="headerlink" title="连接点"></a>连接点</h3><p>用于判定切点的方法</p>
+<h3 id="织入"><a href="#织入" class="headerlink" title="织入"></a>织入</h3><p>生成动态代理的过程</p>
+<h2 id="四种实现Aop的方式"><a href="#四种实现Aop的方式" class="headerlink" title="四种实现Aop的方式"></a>四种实现Aop的方式</h2><img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/b6337517-6b00-489b-9737-178be3c3c932.jpg">
+
+<h2 id="使用-AspectJ注解开发Aop"><a href="#使用-AspectJ注解开发Aop" class="headerlink" title="使用@AspectJ注解开发Aop"></a>使用@AspectJ注解开发Aop</h2><h3 id="选择合适的切点"><a href="#选择合适的切点" class="headerlink" title="选择合适的切点"></a>选择合适的切点</h3><p>选定拦截谁</p>
+<ol>
+<li>创建一个接口</li>
+</ol>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/bd83b016-5b3f-4016-8980-d1385ad10fb7.jpg">
+
+<ol start="2">
+<li>实现这个接口</li>
+</ol>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/d16b7c49-93be-4386-bcb9-18bd2e8d1a34.jpg">
+
+<p>我们确定把printRole这个方法作为切点，拦截他。</p>
+<h3 id="创建切面"><a href="#创建切面" class="headerlink" title="创建切面"></a>创建切面</h3><p>怎么拦截？</p>
+<p>创建Aspect类，对切点进行拦截</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/b5b33ce9-f4e9-4821-959f-35b6a4bff413.jpg">
+
+<p>可能用到的注解：</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/11f734e9-1961-490b-b5a7-e9610a2cc2bd.jpg">
+
+<h3 id="连接点-1"><a href="#连接点-1" class="headerlink" title="连接点"></a>连接点</h3><p>确定准确的拦截位置</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/dc13d182-1c70-4800-ab09-ad248c0c3930.jpg">
+
+<p>execution表示方法执行时触发切面方法</p>
+<p>*代表任意返回类型</p>
+<p>com.ss.chapter11.aop.service.impl.RoleServiceImpl.printRole是确定的方法</p>
+<p>(..)表示任意参数</p>
+<p>其他常用的参数</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/2b63a252-ef5f-4aa5-b373-b23abbd5741b.jpg">
+
+<p>可以使用PointCut简化切面的定义</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/e7db1664-718c-4b22-b51b-78dcabe02ac6.jpg">
+
+<h3 id="测试Aop"><a href="#测试Aop" class="headerlink" title="测试Aop"></a>测试Aop</h3><p>将定义的切面注册为Bean，并在配置类上开启AspectJ，方法调用时会执行相关的切面方法</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/b3cd4872-9d0e-43e8-96b8-0e9bc47c9b1b.jpg">
+
+<p>也可以使用xml开启aop</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/c621279b-1939-4a71-b182-408912721323.jpg">
+
+<h3 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h3><img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/1a0202ff-6808-41f7-a940-2144cf1b9332.jpg">
+
+<h3 id="切面方法传参"><a href="#切面方法传参" class="headerlink" title="切面方法传参"></a>切面方法传参</h3><p>对于带参数的切点</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/0324ffb2-5bd2-49d8-b6ac-424ff56752f4.jpg">
+
+<p>可以使用args(xx,xx)指定参数</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/e0f61ea6-e326-4ac1-9b82-41926d8aed7e.jpg">
+
+<h2 id="引入-1"><a href="#引入-1" class="headerlink" title="引入"></a>引入</h2><p>通过接口方法对类增强。</p>
+<ol>
+<li>定义增强接口</li>
+</ol>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/eeaaafd9-35ee-4264-ac69-cfd68144e9a4.jpg">
+
+<ol start="2">
+<li>定义增强接口的实现</li>
+</ol>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/fd30df5b-4aac-45b1-89a1-0776d48589bc.jpg">
+
+<p>在切面中增加增强接口的实例，添加@DeclearParents注解</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/d1edbf83-2c2e-4659-904e-8da5f208b97e.jpg">
+
+<p>通过value指定被增强的接口，defaultImpl指定默认的增强接口的实现类。</p>
+<ol start="3">
+<li>测试</li>
+</ol>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/1d862b1b-6241-4abd-bb44-5f557c77e431.jpg">
+
+<h2 id="使用xml配置Aop"><a href="#使用xml配置Aop" class="headerlink" title="使用xml配置Aop"></a>使用xml配置Aop</h2><h3 id="常用的标记"><a href="#常用的标记" class="headerlink" title="常用的标记"></a>常用的标记</h3><img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/377f71e0-9b09-43a0-a5f2-0b1a4e8f9849.jpg">
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ol>
+<li>定义接口</li>
+</ol>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/4cbe6dc1-022f-4371-ba2a-f5bd2549670a.jpg">
+
+<ol start="2">
+<li>实现类</li>
+</ol>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/ab61694d-cde5-44d8-8468-434884883d70.jpg">
+
+<ol start="3">
+<li>切面类</li>
+</ol>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/1c8b2103-8a95-4bc1-92f8-32c98f624326.jpg">
+
+<ol start="4">
+<li>xml配置</li>
+</ol>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/73229d23-27d2-41ba-aafc-1e43d57efa81.jpg">
+
+<p>使用PonitCut简化</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/86c63023-d359-49e7-8569-fc816ec72eb5.jpg">
+
+<h3 id="通知传参"><a href="#通知传参" class="headerlink" title="通知传参"></a>通知传参</h3><p>带参方法：</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/e15e5cbd-b127-4eec-aea3-00d8546b253d.jpg">
+
+<p>使用args():</p>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/0c23dda2-2151-458e-aba4-2eca874ec0d8.jpg">
+
+<h3 id="引入-2"><a href="#引入-2" class="headerlink" title="引入"></a>引入</h3><ol>
+<li><p>为切面添加增强接口实例</p>
+</li>
+<li><p>配置declearParents</p>
+</li>
+</ol>
+<img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/514fc807-5600-40f1-bd2b-fc62222b4131.jpg">
+
+<p>types-maching匹配待增强接口</p>
+<p>implement-interface匹配增强接口</p>
+<p>default-impl匹配默认实现类</p>
+<h2 id="为多个切面排序"><a href="#为多个切面排序" class="headerlink" title="为多个切面排序"></a>为多个切面排序</h2><h3 id="使用-Order"><a href="#使用-Order" class="headerlink" title="使用@Order"></a>使用@Order</h3><img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/0460c1e1-966b-4186-8099-e0926ff5f398.jpg">
+
+<h3 id="实现Ordered接口"><a href="#实现Ordered接口" class="headerlink" title="实现Ordered接口"></a>实现Ordered接口</h3><img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/dd225124-e9ad-45f6-88e1-d578cb12522f.jpg">
+
+<h3 id="xml配置"><a href="#xml配置" class="headerlink" title="xml配置"></a>xml配置</h3><img src="/blog/2020/06/20/JavaEE-11-Spring-Aop/ce181adf-5080-4876-aac4-b107dc0dab1a.jpg">
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/06/20/JavaEE-11-Spring-Aop/" data-title="JavaEE-11-Spring-Aop | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/06/21/JavaEE-12-Spring-DB/" title="JavaEE-12-Spring-DB">
+  <strong>上一篇：</strong><br/>
+  <span>
+  JavaEE-12-Spring-DB</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/"  title="JavaEE-10-Spring-Bean-Load">
+ <strong>下一篇：</strong><br/> 
+ <span>JavaEE-10-Spring-Bean-Load
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP术语"><span class="toc-number">1.</span> <span class="toc-text">AOP术语</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#切面"><span class="toc-number">1.1.</span> <span class="toc-text">切面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通知"><span class="toc-number">1.2.</span> <span class="toc-text">通知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引入"><span class="toc-number">1.3.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切点"><span class="toc-number">1.4.</span> <span class="toc-text">切点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接点"><span class="toc-number">1.5.</span> <span class="toc-text">连接点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#织入"><span class="toc-number">1.6.</span> <span class="toc-text">织入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四种实现Aop的方式"><span class="toc-number">2.</span> <span class="toc-text">四种实现Aop的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-AspectJ注解开发Aop"><span class="toc-number">3.</span> <span class="toc-text">使用@AspectJ注解开发Aop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择合适的切点"><span class="toc-number">3.1.</span> <span class="toc-text">选择合适的切点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建切面"><span class="toc-number">3.2.</span> <span class="toc-text">创建切面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接点-1"><span class="toc-number">3.3.</span> <span class="toc-text">连接点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试Aop"><span class="toc-number">3.4.</span> <span class="toc-text">测试Aop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#环绕通知"><span class="toc-number">3.5.</span> <span class="toc-text">环绕通知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切面方法传参"><span class="toc-number">3.6.</span> <span class="toc-text">切面方法传参</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入-1"><span class="toc-number">4.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用xml配置Aop"><span class="toc-number">5.</span> <span class="toc-text">使用xml配置Aop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用的标记"><span class="toc-number">5.1.</span> <span class="toc-text">常用的标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-number">5.2.</span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通知传参"><span class="toc-number">5.3.</span> <span class="toc-text">通知传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引入-2"><span class="toc-number">5.4.</span> <span class="toc-text">引入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为多个切面排序"><span class="toc-number">6.</span> <span class="toc-text">为多个切面排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-Order"><span class="toc-number">6.1.</span> <span class="toc-text">使用@Order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现Ordered接口"><span class="toc-number">6.2.</span> <span class="toc-text">实现Ordered接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml配置"><span class="toc-number">6.3.</span> <span class="toc-text">xml配置</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

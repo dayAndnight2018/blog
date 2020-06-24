@@ -84,22 +84,17 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/03/01/spring01-introduction/" title="spring01 简介" itemprop="url">
+    <a href="/blog/2020/04/23/crazySSM04-data-bind/" title="crazySSM04-数据绑定" itemprop="url">
   
-    <h1 itemprop="name">spring01 简介</h1>
+    <h1 itemprop="name">crazySSM04-数据绑定</h1>
     
      
-           <p itemprop="description" >JavaBean在spring中，都是一个个组件，这些组件我们可以称为Bean，这些Bean由Spring来维护，你只需要提供业务功能。
+           <p itemprop="description" >数据绑定流程
 
-
-这样一个POJO就是一个Bean。
-依赖注入以往的代码中，我们需要主动new一个对象，用来产生类的实例：
-
-
-依赖注入避免了这样的操作，s</p>
+完成数据绑定主要任务的是DataBinder, 接收请求转为ServletRequest对象，根据反射获取数据及处理方法的参数，通过ConversionService转换数据，然后通过Validator验证数据的格式，最终将数据绑定的结果保存到BindingRes</p>
         
     
-    <time datetime="2020-03-01T04:12:14.000Z" itemprop="datePublished">2020-03-01</time>
+    <time datetime="2020-04-23T11:08:57.000Z" itemprop="datePublished">2020-04-23</time>
   </a>
 </section>
 
@@ -111,22 +106,18 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/03/01/java21-Reflection/" title="java21 反射" itemprop="url">
+    <a href="/blog/2020/04/23/crazySSM03-mvc-tags/" title="crazySSM03-Spring MVC 常用标签" itemprop="url">
   
-    <h1 itemprop="name">java21 反射</h1>
+    <h1 itemprop="name">crazySSM03-Spring MVC 常用标签</h1>
     
      
-           <p itemprop="description" >java.lang.Class可以调用实例的getClass()方法获取Class对象，也可以直接使用.class:
-
-
-相关方法：
-
-
-//反射获取
-public static Class forName(String className) throws ClassNotFou</p>
+           <p itemprop="description" >spring MVC的标签库主要用于处理使用JSP进行数据显示的工作。
+表单标签库表单标签库的实现类位与spring-webmvc.jar, 说明文档在spring-form.tld
+使用表单标签库需要添加声明：
+&amp;lt;%@ taglib prefix=”form” uri=”</p>
         
     
-    <time datetime="2020-03-01T01:53:20.000Z" itemprop="datePublished">2020-03-01</time>
+    <time datetime="2020-04-23T02:31:33.000Z" itemprop="datePublished">2020-04-23</time>
   </a>
 </section>
 
@@ -138,16 +129,29 @@ public static Class forName(String className) throws ClassNotFou</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/29/java20-Concurrency-Utilities/" title="java20 并发包" itemprop="url">
+    <a href="/blog/2020/04/19/crazySSM02-commonAnnotations/" title="crazySSM02-常见的注解" itemprop="url">
   
-    <h1 itemprop="name">java20 并发包</h1>
+    <h1 itemprop="name">crazySSM02-常见的注解</h1>
     
      
-           <p itemprop="description" >原子变量AtomicBoolean, AtomicInteger, AtomicLong，AtomicReference等都属于原子变量，提供原子操作。
-提供了很多原子操作方法：addAndGet, decrementAndGet,getAndIncrement, increme</p>
+           <p itemprop="description" >常用注解一览表
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+注解
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+含义
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+@Controller
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+表示</p>
         
     
-    <time datetime="2020-02-29T11:42:57.000Z" itemprop="datePublished">2020-02-29</time>
+    <time datetime="2020-04-19T12:47:21.000Z" itemprop="datePublished">2020-04-19</time>
   </a>
 </section>
 
@@ -159,25 +163,32 @@ public static Class forName(String className) throws ClassNotFou</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/29/java19-Threads/" title="java19 线程" itemprop="url">
+    <a href="/blog/2020/04/10/common-links/" title="常用资源及链接" itemprop="url">
   
-    <h1 itemprop="name">java19 线程</h1>
+    <h1 itemprop="name">常用资源及链接</h1>
     
      
-           <p itemprop="description" >创建线程
-继承Thread类
-
-实现Runnable接口
+           <p itemprop="description" >常用网站链接
 
 
-继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。
-线程的六种状态
-new 线程还没开始start
+&amp;nbsp;&amp;nbsp;
+链接
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+备注
+&amp;nbsp;&amp;nbsp;
 
-ru</p>
+
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+Library Genesis
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+国外电子书下载
+&amp;</p>
         
     
-    <time datetime="2020-02-29T08:58:47.000Z" itemprop="datePublished">2020-02-29</time>
+    <time datetime="2020-04-10T04:26:16.000Z" itemprop="datePublished">2020-04-10</time>
   </a>
 </section>
 
@@ -189,30 +200,18 @@ ru</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/29/java18-Java-Database-Connectivity/" title="java18 数据库操作" itemprop="url">
+    <a href="/blog/2020/04/07/crazySSM01-introduction/" title="crazySSM01-简介" itemprop="url">
   
-    <h1 itemprop="name">java18 数据库操作</h1>
+    <h1 itemprop="name">crazySSM01-简介</h1>
     
      
-           <p itemprop="description" >四个步骤获取数据
-加载JDBC驱动
-
-获取JDBC连接
-
-创建SQL 语句实例java.sql.Statement
-
-获取数据java.sql.ResultSet
-
-释放连接
-
-
-加载JDBC驱动
-
-Class.forName(&#34;com.mysql.jdbc.Driver&#34;);
-</p>
+           <p itemprop="description" >JavaEE应用分层Domain Objects: 领域对象层，由POJO组成。
+DAO: 数据操作层， 对数据库进行CURD。（JDBC、Mybatis、Hibernate）
+Service: 服务层，调用DAO层实现相关的业务逻辑。
+Controller: 控制器层，接受请求</p>
         
     
-    <time datetime="2020-02-29T08:18:35.000Z" itemprop="datePublished">2020-02-29</time>
+    <time datetime="2020-04-07T12:01:49.000Z" itemprop="datePublished">2020-04-07</time>
   </a>
 </section>
 
@@ -224,20 +223,20 @@ Class.forName(&#34;com.mysql.jdbc.Driver&#34;);
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/29/java17-Networking/" title="java17 网络" itemprop="url">
+    <a href="/blog/2020/04/04/microservice02-Spring-Cloud/" title="microservice03-Spring Cloud" itemprop="url">
   
-    <h1 itemprop="name">java17 网络</h1>
+    <h1 itemprop="name">microservice03-Spring Cloud</h1>
     
      
-           <p itemprop="description" >URL解析
+           <p itemprop="description" >Spring Boot用于开发微服务应用，而实际的微服务架构不仅仅包含应用，还有服务注册、服务发现等部分：
 
-java.net.URL构造器
 
-public URL(java.lang.String spec)
-public URL(java.lang.String protocol, java.lang.String host,java.lang.String file)</p>
+下面以Dalston SR3为例进行介绍Spring Cloud.
+服务发现服务发现介绍服务发现主要采用Spring Cloud Netflix中的Eureka。
+主要</p>
         
     
-    <time datetime="2020-02-29T06:28:36.000Z" itemprop="datePublished">2020-02-29</time>
+    <time datetime="2020-04-04T02:24:42.000Z" itemprop="datePublished">2020-04-04</time>
   </a>
 </section>
 
@@ -249,31 +248,29 @@ public URL(java.lang.String protocol, java.lang.String host,java.lang.String fil
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/29/java16-Annotations/" title="java16 注解" itemprop="url">
+    <a href="/blog/2020/04/03/microservice02-Spring-Boot/" title="microservice02-Spring Boot" itemprop="url">
   
-    <h1 itemprop="name">java16 注解</h1>
+    <h1 itemprop="name">microservice02-Spring Boot</h1>
     
      
-           <p itemprop="description" >注解就是一种标记作用的特性。
-注解的类型注解类型是 一种模板，注解是注解模板的具体实例。
-注解类型可以包含键值对，没有键值对的叫标记注解，有单个键值对的叫单值注解。
-注解的使用不带参数：
+           <p itemprop="description" >Spring Boot的优势
+构建独立运行的jar
+
+内嵌Servlet容器,可以直接运行
+
+pom.xml依赖管理
+
+简化配置，自动化Bean
 
 
-带参数：
+项目结构图
 
+创建一个测试类
 
-不带参数使用示例：
-
-
-带参数使用示例：
-
-
-对于单值注解，可以省略键：
-</p>
+RestController指明返回的是API数据而不是视图。RequestMapping指明方法</p>
         
     
-    <time datetime="2020-02-29T03:35:17.000Z" itemprop="datePublished">2020-02-29</time>
+    <time datetime="2020-04-03T12:11:13.000Z" itemprop="datePublished">2020-04-03</time>
   </a>
 </section>
 
@@ -285,32 +282,21 @@ public URL(java.lang.String protocol, java.lang.String host,java.lang.String fil
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/29/java15-Polymorphism/" title="java15 多态" itemprop="url">
+    <a href="/blog/2020/04/03/microservice01-introduction/" title="microservice01-微服务简介" itemprop="url">
   
-    <h1 itemprop="name">java15 多态</h1>
+    <h1 itemprop="name">microservice01-微服务简介</h1>
     
      
-           <p itemprop="description" >什么是多态？
-
-A a = new B();
+           <p itemprop="description" >早期的单体架构早期的单体架构采用war包，普通java类库以jar包形式存在于war包内，架构简单：
 
 
-
-如上所示的定义方法是允许的，条件如下：
-
-B是A的子类
-
-B是A接口的具体实现
+在用户量较少的时候，单个服务器即可满足需求，一旦用户数增大，可以采用水平扩展的方法（即：将war包复制部署到多个服务器，通过负载均衡转发到不同的服务器承担压力）
 
 
-有什么特别之处呢？
-当编译时，a的类型是A，这个时候，只允许调用在A类中定义的方法。在运行时，a变成了类型B，所以，
-
-
-a.getClass(</p>
+当然，数</p>
         
     
-    <time datetime="2020-02-29T03:01:58.000Z" itemprop="datePublished">2020-02-29</time>
+    <time datetime="2020-04-03T06:59:38.000Z" itemprop="datePublished">2020-04-03</time>
   </a>
 </section>
 
@@ -322,24 +308,23 @@ a.getClass(</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/29/java14-Nested-and-Inner-Classes/" title="java14 内部类" itemprop="url">
+    <a href="/blog/2020/03/02/spring04-Aspect-oriented-Spring/" title="spring04 面向切面的Spring" itemprop="url">
   
-    <h1 itemprop="name">java14 内部类</h1>
+    <h1 itemprop="name">spring04 面向切面的Spring</h1>
     
      
-           <p itemprop="description" >内部类的定义内部类就是在其它类内部的类：
+           <p itemprop="description" >几个定义切面：用于提供额外功能的中间件叫做切面。
+通知：切面执行的方法叫通知。
 
 
-如果你喜欢，可以在内部类内部再定义内部类：
-
-
-内部类类似于域、方法，可以有四种访问修饰符：public / private / default / protected
-静态内部类和内部类区别
-静态内部类可以包含静态域，内部类不行。
-</p>
+连接点：连接点就是通知切入的一些时机。
+切点：切点就是不同的织入的方法。
+切面：切面就是切点和通知的集合。
+引入：对现有类的方法或属性进行扩展。无需改动现有的类，而添加额外的功能。
+织入：切面植入</p>
         
     
-    <time datetime="2020-02-29T02:14:01.000Z" itemprop="datePublished">2020-02-29</time>
+    <time datetime="2020-03-02T10:18:27.000Z" itemprop="datePublished">2020-03-02</time>
   </a>
 </section>
 
@@ -351,29 +336,33 @@ a.getClass(</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/blog/2020/02/22/java13-Input-Output/" title="java13 输入输出" itemprop="url">
+    <a href="/blog/2020/03/01/spring03-Advanced-wiring/" title="spring03 Bean高级装配" itemprop="url">
   
-    <h1 itemprop="name">java13 输入输出</h1>
+    <h1 itemprop="name">spring03 Bean高级装配</h1>
     
      
-           <p itemprop="description" >File Systems and PathsFileSystem代表一个文件系统。它是一个抽象类。
-获取FileSystem对象
-
-获取分割符
-
-win下是\，Linux下是/
-获取根目录
-
-获取到一个Iterable
-获取一个路径
-
-后续的参数可以用于拼接
+           <p itemprop="description" >注解设置配置环境dev环境
 
 
-java.nio</p>
+prod环境
+
+
+也可以对方法进行注解：
+
+
+xml配置环境
+
+对Beans标签进行设置profile属性。
+Beans内部可以包含其他Beans：
+
+
+激活Profile在测试时，使用@ActiveProfile注解启动指定配置
+
+
+有多种方式实</p>
         
     
-    <time datetime="2020-02-22T04:35:29.000Z" itemprop="datePublished">2020-02-22</time>
+    <time datetime="2020-03-01T11:49:10.000Z" itemprop="datePublished">2020-03-01</time>
   </a>
 </section>
 
@@ -384,7 +373,7 @@ java.nio</p>
 
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/blog/page/2/">上一页</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/">上一页</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/4/">下一页</a>
   </nav>
 
 </div>
@@ -415,7 +404,15 @@ java.nio</p>
 			
 		
 			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>6</sup></a></li>
 			
 		
 			
@@ -424,10 +421,6 @@ java.nio</p>
 		
 			
 				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>3</sup></a></li>
 			
 		
 			

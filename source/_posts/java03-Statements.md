@@ -57,6 +57,18 @@ continue将停止本轮循环，进行下一轮:
 
 <img src='java03-Statements\7efcef65-fc79-485e-b76f-fd00c8dc7364.jpg' >
 
+增强foreach循环
+
+<img src='java03-Statements\db2f1d92-c008-47a7-95c7-ea30b628a380.jpg'>
+
+<code style='background:#ff3385;color:white;padding:5px;'>注意增强for内部内容只读，赋值是无效的，内容不变。</code>
+
+<img src='java03-Statements\a92b0c51-e7f4-4227-84da-52e72daf1abb.jpg'>
+
+多维数组的遍历
+
+<img src='java03-Statements\48b17671-cd52-45d6-aa96-5f55fb2941fc.jpg'>
+
 ## switch语句
 
 switch语句用于解决多个else if的繁琐问题，其条件可以是int/String/Enum类型：

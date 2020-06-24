@@ -11,13 +11,14 @@
     
 
     
-    <meta name="description" content="创建线程 继承Thread类  实现Runnable接口   继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。 线程的六种状态 new 线程还没开始start  runnable线程已经开启  blocked被阻断，等待锁  waiting等待其他线程执行  timed_waiting">
+    <meta name="description" content="创建线程 继承Thread类     实现Runnable接口  继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。 线程的六种状态 new 线程还没开始start  runnable线程已经开启  blocked被阻断，等待锁  waiting等待其他线程执行  timed_waiti">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java19 线程">
 <meta property="og:url" content="https://dayandnight2018.github.io/2020/02/29/java19-Threads/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="创建线程 继承Thread类  实现Runnable接口   继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。 线程的六种状态 new 线程还没开始start  runnable线程已经开启  blocked被阻断，等待锁  waiting等待其他线程执行  timed_waiting">
+<meta property="og:description" content="创建线程 继承Thread类     实现Runnable接口  继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。 线程的六种状态 new 线程还没开始start  runnable线程已经开启  blocked被阻断，等待锁  waiting等待其他线程执行  timed_waiti">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java19-Threads/6f5112ff-489e-48a8-95b3-978f90f8950d.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java19-Threads/61e2ebda-6fad-45af-9ea3-78d92fa93acc.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java19-Threads/3eb48243-3db1-40bc-be96-3c8e6929d6f2.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java19-Threads/f57af7b2-53bf-430f-9536-76098f49baa8.jpg">
@@ -26,11 +27,11 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java19-Threads/a8a22510-a77d-4d37-9a2b-c06e42505705.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java19-Threads/a290f1a3-39b6-497a-87fb-5f1980e29ced.jpg">
 <meta property="article:published_time" content="2020-02-29T08:58:47.000Z">
-<meta property="article:modified_time" content="2020-02-29T11:42:14.246Z">
+<meta property="article:modified_time" content="2020-06-20T08:24:54.731Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java19-Threads/61e2ebda-6fad-45af-9ea3-78d92fa93acc.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/02/29/java19-Threads/6f5112ff-489e-48a8-95b3-978f90f8950d.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -110,10 +111,12 @@
 	<div class="article-content">
 		
 		<h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><ol>
-<li><p>继承Thread类</p>
-</li>
-<li><p>实现Runnable接口</p>
-</li>
+<li>继承Thread类</li>
+</ol>
+<img src="/blog/2020/02/29/java19-Threads/6f5112ff-489e-48a8-95b3-978f90f8950d.jpg">
+
+<ol start="2">
+<li>实现Runnable接口</li>
 </ol>
 <p>继承Thread的方式需要重写run方法，然后创建Thread对象，调用start方法，线程开始执行run方法，方法执行结束或抛出异常，线程死亡被垃圾回收器回收。</p>
 <h3 id="线程的六种状态"><a href="#线程的六种状态" class="headerlink" title="线程的六种状态"></a>线程的六种状态</h3><ol>
@@ -586,7 +589,15 @@ public void cancel()
 			
 		
 			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>6</sup></a></li>
 			
 		
 			
@@ -595,10 +606,6 @@ public void cancel()
 		
 			
 				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>3</sup></a></li>
 			
 		
 			

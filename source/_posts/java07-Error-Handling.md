@@ -4,6 +4,10 @@ date: 2020-02-21 20:07:52
 tags: java
 ---
 
+## 异常继承树
+
+<img src='java07-Error-Handling\bee2b6a1-614e-42f0-bca1-2737cfc6accb.jpg'>
+
 ## 异常捕获
 
 可以使用try+catch+finally捕获并处理异常：

@@ -55,6 +55,24 @@ tags: java
 
 方法体是方法的具体内容。
 
+方法的定义：
+
+<img src='java04-Objects-and-Classes\14ecbf32-49fc-456a-b5d4-7d596a140571.jpg' >
+
+带返回值的方法：
+
+<img src='java04-Objects-and-Classes\ee9f1555-1687-4457-95af-0ba96c26958c.jpg' >
+
+带参数和返回值的方法：
+
+<img src='java04-Objects-and-Classes\6c6c9a33-8386-4906-a14c-ff58fd688cee.jpg' >
+
+不定个数参数方法：
+
+<img src='java04-Objects-and-Classes\bf62d6a1-3a74-410e-8cec-d4f9267b0d84.jpg' >
+
+使用...表示不定个数参数
+
 ### 构造器
 
 构造器是用于生产对象的方法，每个类需要包含至少一个构造器。这个方法结构：
@@ -86,6 +104,18 @@ tags: java
 有了对象，就可以调用类的方法和域了：
 
 <img src='java04-Objects-and-Classes\0cb9cebf-1044-4578-8a02-a8655e8f8537.jpg'>
+
+对象创建内部操作：
+
+<img src='java04-Objects-and-Classes\34b3c47c-bfa4-4c8c-8c2b-ddbf2d9ee4a9.jpg'>
+
+对象的引用：
+
+<img src='java04-Objects-and-Classes\38675e86-54d9-4390-95c4-e88abd797534.jpg'>
+
+多个变量引用同一个对象
+
+<img src='java04-Objects-and-Classes\33d6dd43-4164-43ba-80f2-c6bf08e8ade0.jpg'>
 
 ## Null
 
@@ -333,6 +363,17 @@ this可以调用本类的域或方法：
 ## 垃圾回收
 
 对于不再有引用的变量，或超出变量域作用范围的，将由垃圾回收机自动回收内存。
+
+## 内部类
+
+非静态内部类
+
+<img src='java04-Objects-and-Classes\694d7fdc-93ab-4731-96e5-f2eb75863209.jpg' >
+
+非静态内部类可以访问外部类的<code style='background:#ff3385;color:white;padding:5px;'>所有字段和方法</code>，而静态内部类只能直接使用<code style='background:#ff3385;color:white;padding:5px;'>静态方法和静态字段</code>，对实例字段和方法需要通过外部类的<code style='background:#ff3385;color:white;padding:5px;'>对象</code>调用。
+
+<code style='background:#ff3385;color:white;padding:5px;'>外部类不能直接访问内部类的方法和字段！</code>
+
 
 
 

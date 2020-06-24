@@ -98,5 +98,9 @@ tags: java
 
 <img src='java06-Inheritance\e27c5ced-66dd-44f0-8fd0-c19683a0efe5.jpg'>
 
+## 方法访问限定符
+
+<img src='java06-Inheritance\98c14577-9d30-4340-acde-8cf1dd76f2b7.jpg'>
+
 
 
