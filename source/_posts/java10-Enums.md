@@ -30,6 +30,12 @@ tags: java
 
 3. 可以调用方法进行迭代
 
+## 构造函数初始化
+
+<img src='java10-Enums\f98cb8ec-206e-4e32-9243-6d98b6451ed0.jpg' >
+
+使用私有构造器初始化成员
+
 ## 迭代枚举值
 
 可以获取枚举的values然后 使用foreach迭代：

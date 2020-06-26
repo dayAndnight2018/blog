@@ -69,3 +69,29 @@ hashMap使用示例：
 
 <img src='java12-Generics\af41f68d-325d-4516-a044-e2f8577f7749.jpg'>
 
+泛型类实例:
+
+<img src='java12-Generics\c639ca42-af50-437e-8ee6-2aa5116bdf2a.jpg'>
+
+调用：
+
+<img src='java12-Generics\b4252769-d21b-4795-bd54-ca3c390170f9.jpg'>
+
+## 泛型接口
+
+接口：
+
+<img src='java12-Generics\1227586d-9791-492b-b57b-944a050807ba.jpg'>
+
+实现类：
+
+<img src='java12-Generics\95c52984-08b6-42b5-9e40-bc10bdfc303d.jpg'>
+
+## 泛型方法
+
+<img src='java12-Generics\9ccb87e8-e59a-4306-9a05-3ccba6cad2f9.jpg'>
+
+对泛型方法参数进行限定：
+
+<img src='java12-Generics\822f29e0-21fc-4f1d-8357-fb1022af8efb.jpg'>
+

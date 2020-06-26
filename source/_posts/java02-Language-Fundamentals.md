@@ -303,6 +303,36 @@ java常见的操作符：
 
 2. /*  code  */
 
+### 文档注释
+
+对类进行注释：
+
+<img src='java02-Language-Fundamentals\6b066dda-a9f5-4a8f-ab80-6abbd0586704.jpg'>
+
+对方法进行注释：
+
+<img src='java02-Language-Fundamentals\f6cd50d5-68d6-4faa-ad8a-eff58fe8bc77.jpg'>
+
+常用注解：
+
+<img src='java02-Language-Fundamentals\e613fa6e-9d5e-46b5-b954-cd715ddfd7fe.jpg'>
+
+生成文档：
+
+<pre style='background:#e6e6e6;padding=10px;'>
+javadoc -d directory xxx.java
+</pre>
+
+### 地标注释
+
+// TODO 需要完善
+
+// FIXME 需要补充
+
+// XXX 建议备忘
+
+
+
 
 
 

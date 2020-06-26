@@ -438,6 +438,146 @@ public void cancel()
 
 </pre>
 
+## 并行API
+
+### Lock
+
+默认实现ReentrantLock:
+
+<img src='java19-Threads\13403420-031d-48af-b3bb-6175cb2dbe98.jpg'>
+<img src='java19-Threads\0539cd7d-d816-443f-be13-40b5484c3347.jpg'>
+<img src='java19-Threads\9817be67-971e-4857-9b00-c98c5eed4491.jpg'>
+<img src='java19-Threads\54b0d462-458f-45a5-aacf-76b627fba176.jpg'>
+
+使用lock.lock()锁定资源，使用lock.unlock()解锁。
+
+### ReadWriteLock
+
+默认实现ReentrantReadWriteLock：
+
+<pre style='background:#e6e6e6;padding=10px;'>
+ReadLock readLock()
+
+WriteLock writeLock()
+</pre>
+
+获取Lock:
+
+lock()方法
+
+若没有调用过WriteLock，可以直接获取ReadLock
+
+若没有调用过ReadLock或WriteLock，可以直接获取WriteLock
+
+使用实例：
+
+<img src='java19-Threads\d79d5320-9912-4ce0-84ca-1a0ddd3a00e8.jpg'>
+<img src='java19-Threads\3c00b018-3c7c-4a7d-9879-06beb44b5e9c.jpg'>
+<img src='java19-Threads\9b1b87dc-a27e-46f8-a67b-ff7be17713f5.jpg'>
+
+### 时间戳StampedLock
+
+读取多写入少的情况。
+
+<img src='java19-Threads\98d9abb2-4142-43a0-b27d-4b8c0ce74594.jpg'>
+<img src='java19-Threads\58cb21c8-5cb1-4366-a1eb-9760968925a5.jpg'>
+<img src='java19-Threads\e90d1166-3dfb-40d2-8f52-5c7d0e182a59.jpg'>
+<img src='java19-Threads\48f87fcc-4914-4a78-b76e-9b70f3decb4c.jpg'>
+
+### Condition
+
+<img src='java19-Threads\590951e3-d27e-4944-ab8a-8fed1dce1183.jpg'>
+<img src='java19-Threads\482da61a-0da6-4f14-b3dc-175c2eae770a.jpg'>
+<img src='java19-Threads\dd18886e-1ec6-4456-8757-1e3f2283a2fa.jpg'>
+
+## Executor
+
+### Executor接口
+
+<img src='java19-Threads\4b0af737-d8b4-4aeb-8df2-4d2aa6c2a8fb.jpg'>
+
+使用示例：
+
+<img src='java19-Threads\71cde0b6-0e66-4c61-a02e-b0a3af51f258.jpg'>
+<img src='java19-Threads\3967d8ed-8ab9-4cc2-9af0-e8cc662412bd.jpg'>
+
+对于Executor需要给定具体的实现：
+
+* DirectExecutor：
+
+<img src='java19-Threads\0017f1e5-3105-4663-a88d-f475d609ada1.jpg'>
+
+传入实现类对象，
+
+<img src='java19-Threads\179c2689-376e-4093-a8eb-c5c802f44b05.jpg'>
+
+* ThreadPerTaskExecutor
+
+<img src='java19-Threads\4c62895e-66eb-4da7-b73a-c3b8bca41e11.jpg'>
+
+传入实现类的对象：
+
+<img src='java19-Threads\947038b3-f4ba-4372-8e76-cbca6fadf2a6.jpg'>
+
+### 不同的实现
+
+<img src='java19-Threads\b46d8192-b260-4b4f-9f5b-317e977fdc98.jpg'>
+
+ExecutorService
+
+<img src='java19-Threads\9f150e95-ff51-4479-9263-72555bd8569c.jpg'>
+
+shutdown()等待所有Runnable结束后退出。
+
+shutdownNow()立即退出，返回List<Runnable>
+
+submit() 提交一个FutureTask
+
+invokeAll() 返回List<Future<T>>结果集，全部执行
+
+invokeAny() 任一执行成功即可
+
+## Future / Callable
+
+### Callable接口
+
+<img src='java19-Threads\473bdd08-5557-4448-966e-b43edc3d4946.jpg'>
+
+### 使用FutureTask实例
+
+<img src='java19-Threads\7ae141db-ea2e-4aff-908f-eaedf00438ef.jpg'>
+
+isDone()判断是否执行完毕
+
+get()获取结果
+
+### 使用ExecutorService获取FutureTask对象
+
+<img src='java19-Threads\95b5f41f-3ec7-443d-881d-5e3f3d57f0f1.jpg'>
+
+### ScheduledThreadPoolExecutor
+
+ScheduleWithFixedDelay()使用固定间隔，根据上一次运行结束时间作为标准计算下一次执行时间。
+
+ScheduleAtFixedRate()上一次任务执行周期较长耽误下一次执行，将待本次执行完毕后立即执行。否则按计划执行。
+
+使用实例：
+
+<img src='java19-Threads\f16801a9-ea77-4d89-a6b7-b67d99c0d134.jpg'>
+<img src='java19-Threads\778ce137-eba3-43b7-a99d-75f74642cdb2.jpg'>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

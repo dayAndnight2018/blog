@@ -3,6 +3,47 @@ title: java13 输入输出
 date: 2020-02-22 12:35:29
 tags: java
 ---
+
+## File
+
+### 构造函数
+
+<img src='java13-Input-Output\6e474c70-40a0-442a-8a83-c69d4c79bdf3.jpg'>
+
+当path为路径，则为文件夹，为文件，则为文件。
+
+### 获取文件名称、路径、绝对路径、父路径
+
+<img src='java13-Input-Output\c63c27b9-c26c-4ea1-aa6e-94d0e8bbf758.jpg'>
+
+### 文件存在性、文件及路径、读写权限判断
+
+<img src='java13-Input-Output\01a13b80-c274-4b41-a18b-ca86408d835e.jpg'>
+
+### 文件删除、重命名、上一次修改时间、文件大小
+
+<img src='java13-Input-Output\6337cf92-17e1-4c25-89d7-5dc520ac3ade.jpg'>
+
+### 创建目录、列出文件
+
+<img src='java13-Input-Output\1e0420cd-1c35-4e3e-bc20-db54b5175d11.jpg'>
+
+FileNameFilter对文件名称过滤：
+
+<img src='java13-Input-Output\634b5026-4b00-45a7-9694-f3f6473969c9.jpg'>
+
+FileFilter对文件过滤：
+
+<img src='java13-Input-Output\39d024e7-6d59-4209-8455-4db1d20ffcec.jpg'>
+
+### 使用案例
+
+<img src='java13-Input-Output\e292d599-5224-4e6b-95fe-0817f5b6cca8.jpg'>
+
+自定义过滤器:
+
+<img src='java13-Input-Output\3ba4e6d9-6a93-4e04-a5f5-309761717047.jpg'>
+
 ## File Systems and Paths
 
 FileSystem代表一个文件系统。它是一个抽象类。
@@ -209,6 +250,8 @@ DSYNC同步内容写入
 
 ## 输入输出流
 
+<img src='java13-Input-Output\3b9e05b0-7244-4023-a0a1-8733fa097ec4.jpg'>
+
 <table cellpadding='8' border='1' style='background:#EAF2D3;text-align:center'>
 <tr>
 &nbsp;<td>
@@ -259,6 +302,14 @@ OutputStream
 
 ### 二进制流
 
+InputStream:
+
+<img src='java13-Input-Output\76ed70e6-16c6-4881-9af1-af9df7b6bda5.jpg'>
+
+OutputStream:
+
+<img src='java13-Input-Output\6b7aa4d8-2d11-4f08-b119-268000c9638b.jpg'>
+
 <img src='java13-Input-Output\ef6ac255-9855-4e3a-8c98-a476d7e22e67.jpg'>
 
 ### 字符流
@@ -268,6 +319,24 @@ OutputStream
 
 
 ## 读取二进制数据
+
+### FileInputStream
+
+<img src='java13-Input-Output\c16c89c0-7343-4838-bf4c-171d00f5f162.jpg'>
+
+### FileOutputStream
+
+<img src='java13-Input-Output\91be83ec-a19d-432a-a44d-5e68e3fa71d2.jpg'>
+
+通过append参数判定是否追加数据
+
+### BufferedInputStream
+
+<img src='java13-Input-Output\78e52ea7-1795-4291-ba3a-a9eeb3693420.jpg'>
+
+### BufferedOutputStream
+
+<img src='java13-Input-Output\49b59bf5-9f97-42c0-85b2-6617102afeea.jpg'>
 
 <img src='java13-Input-Output\11740d87-f39e-4e0e-813a-016fc199d413.jpg'>
 
@@ -367,7 +436,17 @@ flush方法用于将数据刷新写入。
 
 数据写入示例：
 
+使用Files创建输入输出流：
+
 <img src='java13-Input-Output\072c515d-ac0d-4184-9713-09f7f080e0e4.jpg'>
+
+FileInputStream、FileOutputStream：
+
+<img src='java13-Input-Output\a45c178e-a249-4634-842a-a8f963e13b4d.jpg'>
+
+使用BufferInputStream、BufferedOutputStream:
+
+<img src='java13-Input-Output\c170c7bc-7453-48d9-8110-e5beaf909f81.jpg'>
 
 ## 写文本
 
@@ -382,6 +461,10 @@ flush方法用于将数据刷新写入。
 也可以写入字符串：
 
 <img src='java13-Input-Output\3c52b39e-36e1-4422-a1c7-3503a3c1ea01.jpg'>
+
+### FileWriter
+
+<img src='java13-Input-Output\2895d9db-f7e2-4e78-b36a-45eed77b9277.jpg'>
 
 ### OutputStreamWriter
 
@@ -444,6 +527,10 @@ PrintWriter pw = new PrintWriter(new BufferedWriter(writer));
 
 <img src='java13-Input-Output\9890dbaf-7e9c-406e-bb5d-aec4877eb4f3.jpg'>
 
+### FileReader
+
+<img src='java13-Input-Output\c8f3572f-bcaa-4063-879c-eff58e4c06ee.jpg'>
+
 ## InputStreamReader
 
 可以读取二进制流，按照指定的编码格式转换成字符。
@@ -466,6 +553,8 @@ InputStreamReader reader = new InputStreamReader(inputStream, charset);
 ## BufferedReader
 
 使用BufferedReader可以提升读取性能。
+
+<img src='java13-Input-Output\ffba17e2-88d1-4b9b-8abd-869e67071911.jpg'>
 
 在NIO中，Files提供了以下构造方法：
 
@@ -503,6 +592,20 @@ public static String getUserInput() {
 }
 
 </pre>
+
+## BufferedWriter
+
+<img src='java13-Input-Output\6c57c813-ccd4-4fce-ad37-b239c045e61d.jpg'>
+
+使用缓冲读写器可以提高读写效率。
+
+使用实例：
+
+<img src='java13-Input-Output\872e9643-2312-4717-9a0d-d9c0eb6ebd0e.jpg'>
+
+### 使用OutputStreamWriter及BufferedWriter高效读写文本
+
+<img src='java13-Input-Output\463d9f75-5767-45ab-a2d0-2c8bd564832a.jpg'>
 
 
 ## PrintStream
@@ -575,6 +678,10 @@ int read(java.nio.ByteBuffer buffer) throws java.io.IOException
 int write(java.nio.ByteBuffer buffer) throws java.io.IOException
 
 </pre>
+
+## 使用FileWriter、FileReader文本读写
+
+<img src='java13-Input-Output\fca0299a-e830-4df4-92ff-9f1cc15d16ce.jpg'>
 
 ## ByteBuffer
 
