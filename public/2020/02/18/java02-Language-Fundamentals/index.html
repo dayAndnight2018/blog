@@ -67,8 +67,11 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/59b9b2fd-3cdb-49aa-bfe7-f20b588e8107.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/bf3dd85b-e21d-48a9-a76e-b4bf406623b1.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/9eab97d0-02f1-472f-adf6-5bbc94b8c81d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/6b066dda-a9f5-4a8f-ab80-6abbd0586704.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/f6cd50d5-68d6-4faa-ad8a-eff58fe8bc77.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/18/java02-Language-Fundamentals/e613fa6e-9d5e-46b5-b954-cd715ddfd7fe.jpg">
 <meta property="article:published_time" content="2020-02-18T04:08:37.000Z">
-<meta property="article:modified_time" content="2020-06-19T01:24:32.887Z">
+<meta property="article:modified_time" content="2020-06-25T12:14:57.900Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -374,6 +377,23 @@ int d = 0B100;
 <li><p>/*  code  */</p>
 </li>
 </ol>
+<h3 id="文档注释"><a href="#文档注释" class="headerlink" title="文档注释"></a>文档注释</h3><p>对类进行注释：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/6b066dda-a9f5-4a8f-ab80-6abbd0586704.jpg">
+
+<p>对方法进行注释：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/f6cd50d5-68d6-4faa-ad8a-eff58fe8bc77.jpg">
+
+<p>常用注解：</p>
+<img src="/blog/2020/02/18/java02-Language-Fundamentals/e613fa6e-9d5e-46b5-b954-cd715ddfd7fe.jpg">
+
+<p>生成文档：</p>
+<pre style="background:#e6e6e6;padding=10px;">
+javadoc -d directory xxx.java
+</pre>
+
+<h3 id="地标注释"><a href="#地标注释" class="headerlink" title="地标注释"></a>地标注释</h3><p>// TODO 需要完善</p>
+<p>// FIXME 需要补充</p>
+<p>// XXX 建议备忘</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -433,7 +453,7 @@ int d = 0B100;
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用的java标点符号"><span class="toc-number">1.</span> <span class="toc-text">常用的java标点符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八大基本数据类型"><span class="toc-number">2.</span> <span class="toc-text">八大基本数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量的定义格式"><span class="toc-number">4.</span> <span class="toc-text">变量的定义格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常量"><span class="toc-number">5.</span> <span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Integer字面值"><span class="toc-number">6.</span> <span class="toc-text">Integer字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮点类型字面值"><span class="toc-number">7.</span> <span class="toc-text">浮点类型字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔类型字面值"><span class="toc-number">8.</span> <span class="toc-text">布尔类型字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符类型字面值"><span class="toc-number">9.</span> <span class="toc-text">字符类型字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据类型转换"><span class="toc-number">10.</span> <span class="toc-text">基本数据类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作符"><span class="toc-number">11.</span> <span class="toc-text">操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一元操作符"><span class="toc-number">11.1.</span> <span class="toc-text">一元操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算术操作符"><span class="toc-number">11.2.</span> <span class="toc-text">算术操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系运算符"><span class="toc-number">11.3.</span> <span class="toc-text">关系运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑运算符"><span class="toc-number">11.4.</span> <span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算符"><span class="toc-number">11.5.</span> <span class="toc-text">位运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值运算符"><span class="toc-number">11.6.</span> <span class="toc-text">赋值运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类型提升问题"><span class="toc-number">11.7.</span> <span class="toc-text">类型提升问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">11.8.</span> <span class="toc-text">注释</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用的java标点符号"><span class="toc-number">1.</span> <span class="toc-text">常用的java标点符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八大基本数据类型"><span class="toc-number">2.</span> <span class="toc-text">八大基本数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量的定义格式"><span class="toc-number">4.</span> <span class="toc-text">变量的定义格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常量"><span class="toc-number">5.</span> <span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Integer字面值"><span class="toc-number">6.</span> <span class="toc-text">Integer字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮点类型字面值"><span class="toc-number">7.</span> <span class="toc-text">浮点类型字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔类型字面值"><span class="toc-number">8.</span> <span class="toc-text">布尔类型字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符类型字面值"><span class="toc-number">9.</span> <span class="toc-text">字符类型字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据类型转换"><span class="toc-number">10.</span> <span class="toc-text">基本数据类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作符"><span class="toc-number">11.</span> <span class="toc-text">操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一元操作符"><span class="toc-number">11.1.</span> <span class="toc-text">一元操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算术操作符"><span class="toc-number">11.2.</span> <span class="toc-text">算术操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系运算符"><span class="toc-number">11.3.</span> <span class="toc-text">关系运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑运算符"><span class="toc-number">11.4.</span> <span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算符"><span class="toc-number">11.5.</span> <span class="toc-text">位运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值运算符"><span class="toc-number">11.6.</span> <span class="toc-text">赋值运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类型提升问题"><span class="toc-number">11.7.</span> <span class="toc-text">类型提升问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">11.8.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档注释"><span class="toc-number">11.9.</span> <span class="toc-text">文档注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地标注释"><span class="toc-number">11.10.</span> <span class="toc-text">地标注释</span></a></li></ol></li></ol>
  
   </div>
 
@@ -458,7 +478,7 @@ int d = 0B100;
 		<ul class="clearfix">
 		
 			
-				<li><a href="/blog/tags/java/" title="java">java<sup>21</sup></a></li>
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
 			
 		
 			
@@ -483,6 +503,10 @@ int d = 0B100;
 		
 			
 				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>2</sup></a></li>
 			
 		
 			

@@ -84,6 +84,236 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/blog/2020/07/06/springBoot2-02-develop-environment/" title="springBoot2-02-develop-environment" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-02-develop-environment</h1>
+    
+     
+           <p itemprop="description" >搭建Eclipse开发环境
+创建Spring项目
+
+File-new-project
+
+
+
+填写项目的基本信息
+
+
+
+
+选择所需要的模块
+
+
+
+搭建Intellij项目
+创建项目
+
+
+
+
+填写基础信息
+
+
+
+
+选择合适的模块
+
+运行主函数</p>
+        
+    
+    <time datetime="2020-07-06T10:10:09.000Z" itemprop="datePublished">2020-07-06</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/07/06/springBoot2-01-preparement/" title="springBoot2-01-Eclipse插件安装" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-01-Eclipse插件安装</h1>
+    
+     
+           <p itemprop="description" >1. help-marketplace找到popular模块，Spring Tool Suite
+
+
+2. 安装插件全选所有插件
+
+
+3. 同意协议
+
+至此，插件安装完成！</p>
+        
+    
+    <time datetime="2020-07-06T10:02:08.000Z" itemprop="datePublished">2020-07-06</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/30/java-multi-threads-03-Immutable/" title="java-multi-threads-03-Immutable" itemprop="url">
+  
+    <h1 itemprop="name">java-multi-threads-03-Immutable</h1>
+    
+     
+           <p itemprop="description" >除了构造函数，无法赋值
+
+将字段设置为final类型，字段一旦初始化就不再赋值。
+使用多线程来读取person信息：
+
+
+测试：
+
+
+由于只能读取，不能赋值，因此数据是可信的。
+使用场景
+对象创建后，基本不发生改变。
+
+对象是共享的，频繁读取，而不是赋值。
+
+
+ArrayList</p>
+        
+    
+    <time datetime="2020-06-30T11:15:36.000Z" itemprop="datePublished">2020-06-30</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/" title="java-multi-threads-02-SingleThreadExecution" itemprop="url">
+  
+    <h1 itemprop="name">java-multi-threads-02-SingleThreadExecution</h1>
+    
+     
+           <p itemprop="description" >非独木桥模式
+
+
+
+多线程情况下无法保证数据读写的原子性
+
+或者
+
+
+独木桥模式改进Gate类，使用同步方法：
+
+
+数据的写入成为原子操作：
+
+
+独木桥模式对临界资源使用同步方法进行保护，使得同步方法称为原子步骤，数据写入是一致完成的。
+
+
+独木桥模式使用情景
+单线程无需使用。
+</p>
+        
+    
+    <time datetime="2020-06-30T08:55:37.000Z" itemprop="datePublished">2020-06-30</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/30/java-multi-threads-01-introduction/" title="java-multi-threads-01-introduction" itemprop="url">
+  
+    <h1 itemprop="name">java-multi-threads-01-introduction</h1>
+    
+     
+           <p itemprop="description" >单线程程序
+
+对上图的程序，只有一个线程，循环语句依次执行。
+
+
+多线程程序
+搜索文本的同时，响应按钮操作
+
+文件及网络的IO是非常耗时的操作，使用多线程提高cpu效率
+
+服务端对多个客户端进行处理
+
+
+使用Thread实例设计一个多线程实现类，用于打印Nice
+
+
+主线程开启线</p>
+        
+    
+    <time datetime="2020-06-30T07:28:19.000Z" itemprop="datePublished">2020-06-30</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/25/java22-lambda/" title="java22-lambda表达式" itemprop="url">
+  
+    <h1 itemprop="name">java22-lambda表达式</h1>
+    
+     
+           <p itemprop="description" >一个常规问题的实现我们定义一个通用方法实现两个int值的计算：
+
+定义接口
+
+
+
+只有一个方法，输入两个值，返回结果。
+
+通过工厂模式实现
+
+根据输入操作符的不同，给出接口的不同实现：
+
+
+
+测试
+
+先构造接口对象，再调用接口方法
+
+
+改用lambda实现
+
+替换匿名内部类的方式</p>
+        
+    
+    <time datetime="2020-06-25T14:03:16.000Z" itemprop="datePublished">2020-06-25</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/blog/2020/06/24/micro-architect-04-Dubbo/" title="micro-architect-04-Dubbo" itemprop="url">
   
     <h1 itemprop="name">micro-architect-04-Dubbo</h1>
@@ -216,188 +446,9 @@ maven命令封装
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/" title="JavaEE-19-Redis-Advanced-Topics" itemprop="url">
-  
-    <h1 itemprop="name">JavaEE-19-Redis-Advanced-Topics</h1>
-    
-     
-           <p itemprop="description" >Redis事务Redis事务指令
-
-Redis的multi指令后，指令会添加到队列，直到exec，discard用于回滚。
-使用实例通过SessionCallback实现批量指令执行，同时使用execute执行SessionCallback指令
-
-
-事务回滚自动事务回滚是在指令格</p>
-        
-    
-    <time datetime="2020-06-23T01:06:48.000Z" itemprop="datePublished">2020-06-23</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/22/JavaEE-18-Redis-Data-Structure/" title="JavaEE-18-Redis-Data-Structure" itemprop="url">
-  
-    <h1 itemprop="name">JavaEE-18-Redis-Data-Structure</h1>
-    
-     
-           <p itemprop="description" >Redis常见数据结构
-
-字符串字符串采用键值对存储
-
-常用的指令
-
-使用示例
-
-redisTemplate.opsForValue().get(String key)读取值
-redisTemplate.opsForValue().set(String key, String v</p>
-        
-    
-    <time datetime="2020-06-22T13:21:12.000Z" itemprop="datePublished">2020-06-22</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/22/JavaEE-17-Redis-introduction/" title="JavaEE-17-Redis-introduction" itemprop="url">
-  
-    <h1 itemprop="name">JavaEE-17-Redis-introduction</h1>
-    
-     
-           <p itemprop="description" >Redis应用场景Redis是一种内存数据库，存储方式类似于Map结构，键值对形式。读取速度非常快，常用于高并发场景。
-
-数据缓存
-
-对一些热点数据，读到内存中，使用Redis缓存，可以避免数据库的频繁读取，Redis常用来缓存。
-
-高速读写。
-
-高并发场景下，类似于抢购、抢红包</p>
-        
-    
-    <time datetime="2020-06-22T12:06:44.000Z" itemprop="datePublished">2020-06-22</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/21/JavaEE-13-Transaction/" title="JavaEE-13-Transaction" itemprop="url">
-  
-    <h1 itemprop="name">JavaEE-13-Transaction</h1>
-    
-     
-           <p itemprop="description" >数据库事务管理器事务管理器就是管理数据库事务的工具，对于Mybatis，常用的就是DataSourceTransactionManager
-xml方式配置
-
-Java配置需要实现TransactionManagerConfigurer接口的annotationDrivenTran</p>
-        
-    
-    <time datetime="2020-06-21T14:03:07.000Z" itemprop="datePublished">2020-06-21</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/21/JavaEE-12-Spring-DB/" title="JavaEE-12-Spring-DB" itemprop="url">
-  
-    <h1 itemprop="name">JavaEE-12-Spring-DB</h1>
-    
-     
-           <p itemprop="description" >Spring 与 JDBC配置数据源
-采用SimpleDriverDataSource配置非池化数据源
-
-
-
-
-采用DBCP连接池
-
-
-
-
-JNDI数据源
-
-
-
-配置JDBCTemplate
-
-使用JDBCTemplate查询数据
-
-
-也可以使用lambda表达式简化：
-
-
-JD</p>
-        
-    
-    <time datetime="2020-06-21T01:50:24.000Z" itemprop="datePublished">2020-06-21</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/20/JavaEE-11-Spring-Aop/" title="JavaEE-11-Spring-Aop" itemprop="url">
-  
-    <h1 itemprop="name">JavaEE-11-Spring-Aop</h1>
-    
-     
-           <p itemprop="description" >AOP术语切面切面就是引入的代码，比如，记录日志，自动关闭JDBC连接等等
-通知切面里的方法就是通知，
-
-
-引入为现有的类增强方法
-切点被拦截的方法就是切点
-连接点用于判定切点的方法
-织入生成动态代理的过程
-四种实现Aop的方式
-
-使用@AspectJ注解开发Aop选择合适的切点</p>
-        
-    
-    <time datetime="2020-06-20T14:38:50.000Z" itemprop="datePublished">2020-06-20</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/7/">7</a><a class="extend next" rel="next" href="/blog/page/2/">下一页</a>
   </nav>
 
 </div>
@@ -424,7 +475,7 @@ JD</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/blog/tags/java/" title="java">java<sup>21</sup></a></li>
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
 			
 		
 			
@@ -449,6 +500,10 @@ JD</p>
 		
 			
 				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>2</sup></a></li>
 			
 		
 			

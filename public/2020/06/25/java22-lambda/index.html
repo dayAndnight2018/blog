@@ -1,0 +1,563 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>java22-lambda表达式 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="一个常规问题的实现我们定义一个通用方法实现两个int值的计算：  定义接口    只有一个方法，输入两个值，返回结果。  通过工厂模式实现  根据输入操作符的不同，给出接口的不同实现：    测试  先构造接口对象，再调用接口方法   改用lambda实现  替换匿名内部类的方式是合理的。 通过lambda表达式实现的匿名内部类的简化，要求必须是函数式接口，即：此接口只能包含一个抽象方法。 lam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java22-lambda表达式">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="一个常规问题的实现我们定义一个通用方法实现两个int值的计算：  定义接口    只有一个方法，输入两个值，返回结果。  通过工厂模式实现  根据输入操作符的不同，给出接口的不同实现：    测试  先构造接口对象，再调用接口方法   改用lambda实现  替换匿名内部类的方式是合理的。 通过lambda表达式实现的匿名内部类的简化，要求必须是函数式接口，即：此接口只能包含一个抽象方法。 lam">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/ccee4d44-bbd3-4753-8c32-5e2074271c84.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/5f11e389-7bbc-4a4d-9464-138299369723.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/9d8473f0-f436-4374-9e10-6fba0008fcea.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/c82d16f9-5de5-49a9-af93-a99699a3c90a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/ca17d4a0-32a7-4bd9-9204-48eb54b2e578.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/34bed390-25cf-4e3c-8bf7-e5603f879450.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/c4042c14-129c-45bb-bc00-f6af12812860.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/2ace4eaf-8d08-4a56-b95b-7ac09845ed04.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/f7c0b65e-8c4c-4e1a-958c-8a77ccf0dfc3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/dd850819-c2df-4273-a38e-6eb76d5a44e0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/0b9a0ca0-a730-455c-9665-266e68bb9c93.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/e3face43-b305-4106-a986-018d744e8de0.jpg">
+<meta property="article:published_time" content="2020-06-25T14:03:16.000Z">
+<meta property="article:modified_time" content="2020-06-25T14:41:16.252Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/ccee4d44-bbd3-4753-8c32-5e2074271c84.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/25/java22-lambda/" title="java22-lambda表达式" itemprop="url">java22-lambda表达式</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-25T14:03:16.000Z" itemprop="datePublished"> Published 2020-06-25</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="一个常规问题的实现"><a href="#一个常规问题的实现" class="headerlink" title="一个常规问题的实现"></a>一个常规问题的实现</h2><p>我们定义一个通用方法实现两个int值的计算：</p>
+<ol>
+<li>定义接口</li>
+</ol>
+<img src="/blog/2020/06/25/java22-lambda/ccee4d44-bbd3-4753-8c32-5e2074271c84.jpg">
+
+<p>只有一个方法，输入两个值，返回结果。</p>
+<ol start="2">
+<li>通过工厂模式实现</li>
+</ol>
+<p>根据输入操作符的不同，给出接口的不同实现：</p>
+<img src="/blog/2020/06/25/java22-lambda/5f11e389-7bbc-4a4d-9464-138299369723.jpg">
+
+<ol start="3">
+<li>测试</li>
+</ol>
+<p>先构造接口对象，再调用接口方法</p>
+<img src="/blog/2020/06/25/java22-lambda/9d8473f0-f436-4374-9e10-6fba0008fcea.jpg">
+
+<h2 id="改用lambda实现"><a href="#改用lambda实现" class="headerlink" title="改用lambda实现"></a>改用lambda实现</h2><img src="/blog/2020/06/25/java22-lambda/c82d16f9-5de5-49a9-af93-a99699a3c90a.jpg">
+
+<p>替换匿名内部类的方式是合理的。</p>
+<p>通过lambda表达式实现的匿名内部类的简化，要求必须是函数式接口，即：此接口只能包含一个抽象方法。</p>
+<h2 id="lambda的简化"><a href="#lambda的简化" class="headerlink" title="lambda的简化"></a>lambda的简化</h2><h3 id="简化参数类型"><a href="#简化参数类型" class="headerlink" title="简化参数类型"></a>简化参数类型</h3><p>缩掉参数类型：</p>
+<img src="/blog/2020/06/25/java22-lambda/ca17d4a0-32a7-4bd9-9204-48eb54b2e578.jpg">
+
+<p>只有一个参数是，可以省略小括号(不建议)：</p>
+<img src="/blog/2020/06/25/java22-lambda/34bed390-25cf-4e3c-8bf7-e5603f879450.jpg">
+
+<p>若实现只有一句话，可以省略大括号及“return”:</p>
+<img src="/blog/2020/06/25/java22-lambda/c4042c14-129c-45bb-bc00-f6af12812860.jpg">
+
+<h2 id="lambda可以作为参数传递"><a href="#lambda可以作为参数传递" class="headerlink" title="lambda可以作为参数传递"></a>lambda可以作为参数传递</h2><p>参数是函数式接口时，可以将lambda表达式作为参数传递。</p>
+<img src="/blog/2020/06/25/java22-lambda/2ace4eaf-8d08-4a56-b95b-7ac09845ed04.jpg">
+
+<h2 id="lambda可以使用并修改全局变量及全局静态变量"><a href="#lambda可以使用并修改全局变量及全局静态变量" class="headerlink" title="lambda可以使用并修改全局变量及全局静态变量"></a>lambda可以使用并修改全局变量及全局静态变量</h2><img src="/blog/2020/06/25/java22-lambda/f7c0b65e-8c4c-4e1a-958c-8a77ccf0dfc3.jpg">
+
+<h2 id="lambda可以捕获局部变量，只能读取不能修改"><a href="#lambda可以捕获局部变量，只能读取不能修改" class="headerlink" title="lambda可以捕获局部变量，只能读取不能修改"></a>lambda可以捕获局部变量，只能读取不能修改</h2><img src="/blog/2020/06/25/java22-lambda/dd850819-c2df-4273-a38e-6eb76d5a44e0.jpg">
+
+<h2 id="方法引用的使用"><a href="#方法引用的使用" class="headerlink" title="::方法引用的使用"></a>::方法引用的使用</h2><p>采用与函数式接口类似的方法参数及返回类型的方法均可以代替函数式接口参数传入：</p>
+<img src="/blog/2020/06/25/java22-lambda/0b9a0ca0-a730-455c-9665-266e68bb9c93.jpg">
+
+<p>使用方法：</p>
+<img src="/blog/2020/06/25/java22-lambda/e3face43-b305-4106-a986-018d744e8de0.jpg">
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/java/">java</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/06/25/java22-lambda/" data-title="java22-lambda表达式 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/06/30/java-multi-threads-01-introduction/" title="java-multi-threads-01-introduction">
+  <strong>上一篇：</strong><br/>
+  <span>
+  java-multi-threads-01-introduction</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/06/24/micro-architect-04-Dubbo/"  title="micro-architect-04-Dubbo">
+ <strong>下一篇：</strong><br/> 
+ <span>micro-architect-04-Dubbo
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一个常规问题的实现"><span class="toc-number">1.</span> <span class="toc-text">一个常规问题的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改用lambda实现"><span class="toc-number">2.</span> <span class="toc-text">改用lambda实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda的简化"><span class="toc-number">3.</span> <span class="toc-text">lambda的简化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简化参数类型"><span class="toc-number">3.1.</span> <span class="toc-text">简化参数类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda可以作为参数传递"><span class="toc-number">4.</span> <span class="toc-text">lambda可以作为参数传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda可以使用并修改全局变量及全局静态变量"><span class="toc-number">5.</span> <span class="toc-text">lambda可以使用并修改全局变量及全局静态变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda可以捕获局部变量，只能读取不能修改"><span class="toc-number">6.</span> <span class="toc-text">lambda可以捕获局部变量，只能读取不能修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法引用的使用"><span class="toc-number">7.</span> <span class="toc-text">::方法引用的使用</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

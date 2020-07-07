@@ -1,0 +1,585 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>java-multi-threads-02-SingleThreadExecution | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="非独木桥模式    多线程情况下无法保证数据读写的原子性  或者   独木桥模式改进Gate类，使用同步方法：   数据的写入成为原子操作：   独木桥模式对临界资源使用同步方法进行保护，使得同步方法称为原子步骤，数据写入是一致完成的。   独木桥模式使用情景 单线程无需使用。  多线程下，无共享资源，无需使用。  多线程情况下，当共享资源实例的状态固定不变时(例如只读)，无需使用。  多线程情况">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-multi-threads-02-SingleThreadExecution">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/06/30/java-multi-threads-02-SingleThreadExecution/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="非独木桥模式    多线程情况下无法保证数据读写的原子性  或者   独木桥模式改进Gate类，使用同步方法：   数据的写入成为原子操作：   独木桥模式对临界资源使用同步方法进行保护，使得同步方法称为原子步骤，数据写入是一致完成的。   独木桥模式使用情景 单线程无需使用。  多线程下，无共享资源，无需使用。  多线程情况下，当共享资源实例的状态固定不变时(例如只读)，无需使用。  多线程情况">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/2619ea40-d1b6-48e0-a5d0-93568cd7aacb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/ae265d24-1343-4378-a3f4-fbbcec2b2466.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/bc9de022-6c79-4685-9010-3697d18e2070.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/563bf6c6-7ac4-4ac9-b8f9-b1d7273b1b13.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/f06854ea-8525-4f9a-ac27-56c8639997bf.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/5152a815-bfff-4225-8eca-bafd4f97d700.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/bd246f40-e3a1-448b-bcbd-f42a485c2a59.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/63c5aa12-e48e-4523-8a8f-72b0f674aae3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/df4d53b5-f828-4a97-b2cb-be3d876712d7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/48519950-9920-4c93-8f50-796e2298f376.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/81ec581e-145e-4d9b-a8a9-9688353daf1b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/513a5a14-181f-481c-9658-c1cb092a7d4f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/1cb2f187-4014-4e1c-8a92-ad3dee2d53ca.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/3c7018a5-1011-4a39-937e-c927d789d98f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/efd50d25-536d-4535-8818-a5b015f08bf7.jpg">
+<meta property="article:published_time" content="2020-06-30T08:55:37.000Z">
+<meta property="article:modified_time" content="2020-07-01T01:59:13.185Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/2619ea40-d1b6-48e0-a5d0-93568cd7aacb.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/" title="java-multi-threads-02-SingleThreadExecution" itemprop="url">java-multi-threads-02-SingleThreadExecution</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-30T08:55:37.000Z" itemprop="datePublished"> Published 2020-06-30</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="非独木桥模式"><a href="#非独木桥模式" class="headerlink" title="非独木桥模式"></a>非独木桥模式</h2><img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/2619ea40-d1b6-48e0-a5d0-93568cd7aacb.jpg">
+
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/ae265d24-1343-4378-a3f4-fbbcec2b2466.jpg">
+
+<h3 id="多线程情况下无法保证数据读写的原子性"><a href="#多线程情况下无法保证数据读写的原子性" class="headerlink" title="多线程情况下无法保证数据读写的原子性"></a>多线程情况下无法保证数据读写的原子性</h3><img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/bc9de022-6c79-4685-9010-3697d18e2070.jpg">
+
+<p>或者</p>
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/563bf6c6-7ac4-4ac9-b8f9-b1d7273b1b13.jpg">
+
+<h2 id="独木桥模式"><a href="#独木桥模式" class="headerlink" title="独木桥模式"></a>独木桥模式</h2><p>改进Gate类，使用同步方法：</p>
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/f06854ea-8525-4f9a-ac27-56c8639997bf.jpg">
+
+<p>数据的写入成为原子操作：</p>
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/5152a815-bfff-4225-8eca-bafd4f97d700.jpg">
+
+<p>独木桥模式对临界资源使用同步方法进行保护，使得同步方法称为原子步骤，数据写入是一致完成的。</p>
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/bd246f40-e3a1-448b-bcbd-f42a485c2a59.jpg">
+
+<h2 id="独木桥模式使用情景"><a href="#独木桥模式使用情景" class="headerlink" title="独木桥模式使用情景"></a>独木桥模式使用情景</h2><ol>
+<li><p>单线程无需使用。</p>
+</li>
+<li><p>多线程下，无共享资源，无需使用。</p>
+</li>
+<li><p>多线程情况下，当共享资源实例的状态固定不变时(例如只读)，无需使用。</p>
+</li>
+<li><p>多线程情况下，需要确保实例的状态的一执性，则使用独木桥模式。</p>
+</li>
+</ol>
+<p>一些线程安全的集合：</p>
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/63c5aa12-e48e-4523-8a8f-72b0f674aae3.jpg">
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li><p>基本类型和引用类型的赋值和引用是原子操作</p>
+</li>
+<li><p>long和double的赋值和引用是非原子的</p>
+</li>
+<li><p>long、double的数据共享时，需要同步操作，或者使用volatile。</p>
+</li>
+</ol>
+<p>同时，java提供了AtomicInteger、AtomicLong、AtomicIntegerArray、AtomicLongArray用于进行原子操作。</p>
+<h3 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h3><p>使用Semaphore定义信号量，用于限定最大共享线程数。</p>
+<p>日志类：</p>
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/df4d53b5-f828-4a97-b2cb-be3d876712d7.jpg">
+
+<p>共享资源类：</p>
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/48519950-9920-4c93-8f50-796e2298f376.jpg">
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/81ec581e-145e-4d9b-a8a9-9688353daf1b.jpg">
+
+<p>多线程：</p>
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/513a5a14-181f-481c-9658-c1cb092a7d4f.jpg">
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/1cb2f187-4014-4e1c-8a92-ad3dee2d53ca.jpg">
+
+<p>使用十个线程测试：</p>
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/3c7018a5-1011-4a39-937e-c927d789d98f.jpg">
+
+<p>始终最大由三个线程处理：</p>
+<img src="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/efd50d25-536d-4535-8818-a5b015f08bf7.jpg">
+
+
+
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/java/">java</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/06/30/java-multi-threads-02-SingleThreadExecution/" data-title="java-multi-threads-02-SingleThreadExecution | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/06/30/java-multi-threads-03-Immutable/" title="java-multi-threads-03-Immutable">
+  <strong>上一篇：</strong><br/>
+  <span>
+  java-multi-threads-03-Immutable</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/06/30/java-multi-threads-01-introduction/"  title="java-multi-threads-01-introduction">
+ <strong>下一篇：</strong><br/> 
+ <span>java-multi-threads-01-introduction
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#非独木桥模式"><span class="toc-number">1.</span> <span class="toc-text">非独木桥模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程情况下无法保证数据读写的原子性"><span class="toc-number">1.1.</span> <span class="toc-text">多线程情况下无法保证数据读写的原子性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#独木桥模式"><span class="toc-number">2.</span> <span class="toc-text">独木桥模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#独木桥模式使用情景"><span class="toc-number">3.</span> <span class="toc-text">独木桥模式使用情景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#信号量"><span class="toc-number">3.2.</span> <span class="toc-text">信号量</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
