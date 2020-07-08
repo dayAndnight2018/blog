@@ -84,6 +84,260 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/blog/2020/06/22/JavaEE-17-Redis-introduction/" title="JavaEE-17-Redis-introduction" itemprop="url">
+  
+    <h1 itemprop="name">JavaEE-17-Redis-introduction</h1>
+    
+     
+           <p itemprop="description" >Redis应用场景Redis是一种内存数据库，存储方式类似于Map结构，键值对形式。读取速度非常快，常用于高并发场景。
+
+数据缓存
+
+对一些热点数据，读到内存中，使用Redis缓存，可以避免数据库的频繁读取，Redis常用来缓存。
+
+高速读写。
+
+高并发场景下，类似于抢购、抢红包</p>
+        
+    
+    <time datetime="2020-06-22T12:06:44.000Z" itemprop="datePublished">2020-06-22</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/21/JavaEE-13-Transaction/" title="JavaEE-13-Transaction" itemprop="url">
+  
+    <h1 itemprop="name">JavaEE-13-Transaction</h1>
+    
+     
+           <p itemprop="description" >数据库事务管理器事务管理器就是管理数据库事务的工具，对于Mybatis，常用的就是DataSourceTransactionManager
+xml方式配置
+
+Java配置需要实现TransactionManagerConfigurer接口的annotationDrivenTran</p>
+        
+    
+    <time datetime="2020-06-21T14:03:07.000Z" itemprop="datePublished">2020-06-21</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/21/JavaEE-12-Spring-DB/" title="JavaEE-12-Spring-DB" itemprop="url">
+  
+    <h1 itemprop="name">JavaEE-12-Spring-DB</h1>
+    
+     
+           <p itemprop="description" >Spring 与 JDBC配置数据源
+采用SimpleDriverDataSource配置非池化数据源
+
+
+
+
+采用DBCP连接池
+
+
+
+
+JNDI数据源
+
+
+
+配置JDBCTemplate
+
+使用JDBCTemplate查询数据
+
+
+也可以使用lambda表达式简化：
+
+
+JD</p>
+        
+    
+    <time datetime="2020-06-21T01:50:24.000Z" itemprop="datePublished">2020-06-21</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/20/JavaEE-11-Spring-Aop/" title="JavaEE-11-Spring-Aop" itemprop="url">
+  
+    <h1 itemprop="name">JavaEE-11-Spring-Aop</h1>
+    
+     
+           <p itemprop="description" >AOP术语切面切面就是引入的代码，比如，记录日志，自动关闭JDBC连接等等
+通知切面里的方法就是通知，
+
+
+引入为现有的类增强方法
+切点被拦截的方法就是切点
+连接点用于判定切点的方法
+织入生成动态代理的过程
+四种实现Aop的方式
+
+使用@AspectJ注解开发Aop选择合适的切点</p>
+        
+    
+    <time datetime="2020-06-20T14:38:50.000Z" itemprop="datePublished">2020-06-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/" title="JavaEE-10-Spring-Bean-Load" itemprop="url">
+  
+    <h1 itemprop="name">JavaEE-10-Spring-Bean-Load</h1>
+    
+     
+           <p itemprop="description" >依赖注入的三种方式
+构造器注入
+
+set方法注入
+
+接口注入
+
+
+构造器注入通过类的构造函数注入需要的其他数据及对象
+
+
+xml描述
+
+
+构造器注入方法简单，但是对参数较多的情况下显得很繁杂。
+set方法注入使用默认的构造器创建对象，对参数通过set方法注入
+
+
+接口注入对于外界</p>
+        
+    
+    <time datetime="2020-06-20T11:49:52.000Z" itemprop="datePublished">2020-06-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/20/JavaEE-9-Spring-Ioc/" title="JavaEE-9-Spring-Ioc" itemprop="url">
+  
+    <h1 itemprop="name">JavaEE-9-Spring-Ioc</h1>
+    
+     
+           <p itemprop="description" >主动创建对象我们假设制造果汁的过程：添加原料，使用搅拌机搅拌得到果汁。
+搅拌机
+
+果汁制作
+
+被动创建对象原料
+
+制作果汁
+
+使用xml文件描述原料：
+
+
+果汁制作：
+
+
+
+在Spring中的实现创建xml文件
+
+
+通过ApplicationContext处理Bean
+
+Spri</p>
+        
+    
+    <time datetime="2020-06-20T11:03:43.000Z" itemprop="datePublished">2020-06-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/17/spring07-advanced-spring-mvc/" title="spring07-spring-mvc 高级内容" itemprop="url">
+  
+    <h1 itemprop="name">spring07-spring-mvc 高级内容</h1>
+    
+     
+           <p itemprop="description" >xml配置DispatcherServlet
+
+context-param作为配置信息，配置了spring的主配置目录。
+Listener配置ContextLoaderListener
+Servlet标签配置了DispatcherServlet
+配置xml加载java配置Disp</p>
+        
+    
+    <time datetime="2020-06-17T13:22:47.000Z" itemprop="datePublished">2020-06-17</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/17/spring06-spring-web-view/" title="spring06- 视图渲染" itemprop="url">
+  
+    <h1 itemprop="name">spring06- 视图渲染</h1>
+    
+     
+           <p itemprop="description" >视图渲染属于视图层的任务，常用的就是Thymeleaf（JSP不建议使用）
+Thymeleaf视图解析器
+ThymeleafViewResolver视图解析器，用于将视图名称解析为视图模板。
+
+SpringTemplateEngine渲染引擎，用于渲染数据
+
+TemplateRe</p>
+        
+    
+    <time datetime="2020-06-17T06:50:05.000Z" itemprop="datePublished">2020-06-17</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/blog/2020/06/16/spring05-web-application/" title="spring05- spring web 应用" itemprop="url">
   
     <h1 itemprop="name">spring05- spring web 应用</h1>
@@ -147,285 +401,9 @@ MultipartFile常用方法：
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/05/30/spring-Boot-vue05-dataStorage/" title="spring-Boot+vue05: 数据存储" itemprop="url">
-  
-    <h1 itemprop="name">spring-Boot+vue05: 数据存储</h1>
-    
-     
-           <p itemprop="description" >Spring Boot 整合Mybatis做数据持久化
-创建项目添加依赖
-
-
-
-
-创建数据表
-
-
-
-
-创建实体类
-
-
-
-
-配置文件
-
-
-
-
-创建数据库映射层
-
-即一个个接口方法，与xml一一对应
-
-
-
-在相同目录下创建mapper映射文件
-
-
-
-
-创建服务层
-
-
-
-
-
-创建控制器</p>
-        
-    
-    <time datetime="2020-05-30T03:28:12.000Z" itemprop="datePublished">2020-05-30</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/05/29/spring-Boot-vue04-web/" title="spring-Boot+vue04: 整合web开发" itemprop="url">
-  
-    <h1 itemprop="name">spring-Boot+vue04: 整合web开发</h1>
-    
-     
-           <p itemprop="description" >返回JSON数据默认添加web模块后，自动使用jackson-databind处理：
-
-
-添加一个pojo:
-
-
-直接返回实体：
-
-
-配置Gson替换jackson-databind去除jackson-databind添加gson
-
-
-配置Date格式化及忽略字段：
-
-
-配置fa</p>
-        
-    
-    <time datetime="2020-05-29T07:20:53.000Z" itemprop="datePublished">2020-05-29</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/05/29/spring-Boot-vue03-view/" title="spring-Boot+vue03: 整合Thymeleaf" itemprop="url">
-  
-    <h1 itemprop="name">spring-Boot+vue03: 整合Thymeleaf</h1>
-    
-     
-           <p itemprop="description" >集成thymeleaf
-创建工程，添加web及thymeleaf依赖
-
-
-
-
-thymeleaf相关配置
-
-
-
-
-控制器返回ModelAndView
-
-
-
-
-在模板中使用数据</p>
-        
-    
-    <time datetime="2020-05-29T06:50:08.000Z" itemprop="datePublished">2020-05-29</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/05/29/spring-Boot-vue02-configuration/" title="spring-Boot+vue02: 基础配置" itemprop="url">
-  
-    <h1 itemprop="name">spring-Boot+vue02: 基础配置</h1>
-    
-     
-           <p itemprop="description" >替换starter-parentspring-boot-starter-parent提供了一些默认配置：
-
-
-添加java版本配置：
-
-
-添加maven-compiler-plugin插件，配置源码和生成目标版本1.8
-配置编码为utf-8:
-
-
-添加依赖管理：
-
-
-配置Tomc</p>
-        
-    
-    <time datetime="2020-05-29T05:28:05.000Z" itemprop="datePublished">2020-05-29</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/05/29/spring-Boot-vue01-introduction/" title="spring-Boot+vue01: spring boot简介" itemprop="url">
-  
-    <h1 itemprop="name">spring-Boot+vue01: spring boot简介</h1>
-    
-     
-           <p itemprop="description" >Spring Boot 简化配置spring boot极大简化了xml的配置，基于约定优于配置。可以打包为war，在tomcat中执行，也可以打包为jar在容器中执行，倾向于云原生开发。
-
-
-
-创建一个Spring boot项目
-创建maven项目
-
-
-
-
-脚手架选择
-
-
-
-
-填</p>
-        
-    
-    <time datetime="2020-05-29T04:49:12.000Z" itemprop="datePublished">2020-05-29</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/04/23/crazySSM04-data-bind/" title="crazySSM04-数据绑定" itemprop="url">
-  
-    <h1 itemprop="name">crazySSM04-数据绑定</h1>
-    
-     
-           <p itemprop="description" >数据绑定流程
-
-完成数据绑定主要任务的是DataBinder, 接收请求转为ServletRequest对象，根据反射获取数据及处理方法的参数，通过ConversionService转换数据，然后通过Validator验证数据的格式，最终将数据绑定的结果保存到BindingRes</p>
-        
-    
-    <time datetime="2020-04-23T11:08:57.000Z" itemprop="datePublished">2020-04-23</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/04/23/crazySSM03-mvc-tags/" title="crazySSM03-Spring MVC 常用标签" itemprop="url">
-  
-    <h1 itemprop="name">crazySSM03-Spring MVC 常用标签</h1>
-    
-     
-           <p itemprop="description" >spring MVC的标签库主要用于处理使用JSP进行数据显示的工作。
-表单标签库表单标签库的实现类位与spring-webmvc.jar, 说明文档在spring-form.tld
-使用表单标签库需要添加声明：
-&amp;lt;%@ taglib prefix=”form” uri=”</p>
-        
-    
-    <time datetime="2020-04-23T02:31:33.000Z" itemprop="datePublished">2020-04-23</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/04/19/crazySSM02-commonAnnotations/" title="crazySSM02-常见的注解" itemprop="url">
-  
-    <h1 itemprop="name">crazySSM02-常见的注解</h1>
-    
-     
-           <p itemprop="description" >常用注解一览表
-&amp;nbsp;
-&amp;nbsp;&amp;nbsp;
-注解
-&amp;nbsp;&amp;nbsp;
-&amp;nbsp;&amp;nbsp;
-含义
-&amp;nbsp;&amp;nbsp;
-&amp;nbsp;
-&amp;nbsp;
-&amp;nbsp;&amp;nbsp;
-@Controller
-&amp;nbsp;&amp;nbsp;
-&amp;nbsp;&amp;nbsp;
-表示</p>
-        
-    
-    <time datetime="2020-04-19T12:47:21.000Z" itemprop="datePublished">2020-04-19</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/blog/page/2/">上一页</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/7/">7</a><a class="extend next" rel="next" href="/blog/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/">上一页</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/8/">8</a><a class="extend next" rel="next" href="/blog/page/4/">下一页</a>
   </nav>
 
 </div>
@@ -456,6 +434,10 @@ thymeleaf相关配置
 			
 		
 			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>10</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
 			
 		
@@ -477,10 +459,6 @@ thymeleaf相关配置
 		
 			
 				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>2</sup></a></li>
 			
 		
 			
