@@ -1,0 +1,617 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>springBoot2-14-spring-security | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="Spring Security专门提供认证模块引入依赖  基于数据库的认证 创建角色表     创建用户表     创建用户角色映射表     创建WebSecurityConfigurerAdapter的子类，配置安全策略      添加二次加密(附加功能)  配置密钥：   替换BCryptPasswordEncoder为Pbkdf2PasswordEncoder:   用户自定义的认证方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springBoot2-14-spring-security">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/07/09/springBoot2-14-spring-security/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="Spring Security专门提供认证模块引入依赖  基于数据库的认证 创建角色表     创建用户表     创建用户角色映射表     创建WebSecurityConfigurerAdapter的子类，配置安全策略      添加二次加密(附加功能)  配置密钥：   替换BCryptPasswordEncoder为Pbkdf2PasswordEncoder:   用户自定义的认证方式">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/5a33a4c6-8024-42d0-a30a-3caf77de2615.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/a1b61cb7-8790-4482-8a5a-1b3c5993e9b4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/ec655a2b-1d95-474b-90ce-5e640a9a37f0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/bc095ccb-6459-4fbf-b56e-71791df4c955.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/0190007e-762f-4b26-a8e0-b7fd65481dbb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/db909faa-369d-4f5c-9d21-b1f837dba091.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/ea6ee27f-2999-4cd0-8571-08729e955d92.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/9ad8810d-265d-451d-a636-736735d7302f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/bafa99d5-67ab-4a4d-9071-115dfb9d984f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/6cc05b89-2733-42f8-9d7d-a5731fdd765f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/eed93d93-da48-4abb-93ec-6396ba4c66f7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/b540aa89-9d36-4994-97f2-4caaf24bb453.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/68991321-5e4c-48d4-8128-2aa60b1915a3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/235a0e61-cf1a-4d5d-ad2f-d22a0bcefc7b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/854d32d6-1bbe-4bbf-903a-330af86184a7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/4a39059d-37f4-42ae-a2c2-6d947d174778.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/2af71d9b-8f07-4db0-ae63-3ee941543077.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/74024b2c-36bc-4683-b357-c1dd0867b91d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/988e632c-0c27-46b8-8f31-b76a3607e37b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/19cfcacd-1584-4df8-a690-54dda0ae3b18.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/7b5af9ca-6887-4685-aa21-07ef58557c01.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/0a06d980-e7b9-47a4-bcea-a03fd6ec498d.jpg">
+<meta property="article:published_time" content="2020-07-09T06:19:01.000Z">
+<meta property="article:modified_time" content="2020-07-09T08:41:01.546Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="spring-boot-2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/07/09/springBoot2-14-spring-security/5a33a4c6-8024-42d0-a30a-3caf77de2615.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/07/09/springBoot2-14-spring-security/" title="springBoot2-14-spring-security" itemprop="url">springBoot2-14-spring-security</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-07-09T06:19:01.000Z" itemprop="datePublished"> Published 2020-07-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="Spring-Security专门提供认证模块"><a href="#Spring-Security专门提供认证模块" class="headerlink" title="Spring Security专门提供认证模块"></a>Spring Security专门提供认证模块</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><img src="/blog/2020/07/09/springBoot2-14-spring-security/5a33a4c6-8024-42d0-a30a-3caf77de2615.jpg">
+
+<h3 id="基于数据库的认证"><a href="#基于数据库的认证" class="headerlink" title="基于数据库的认证"></a>基于数据库的认证</h3><ol>
+<li>创建角色表</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/a1b61cb7-8790-4482-8a5a-1b3c5993e9b4.jpg">
+
+<ol start="2">
+<li>创建用户表</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/ec655a2b-1d95-474b-90ce-5e640a9a37f0.jpg">
+
+<ol start="3">
+<li>创建用户角色映射表</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/bc095ccb-6459-4fbf-b56e-71791df4c955.jpg">
+
+<ol start="4">
+<li>创建WebSecurityConfigurerAdapter的子类，配置安全策略</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/0190007e-762f-4b26-a8e0-b7fd65481dbb.jpg">
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/db909faa-369d-4f5c-9d21-b1f837dba091.jpg">
+
+<ol start="5">
+<li>添加二次加密(附加功能)</li>
+</ol>
+<p>配置密钥：</p>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/ea6ee27f-2999-4cd0-8571-08729e955d92.jpg">
+
+<p>替换BCryptPasswordEncoder为Pbkdf2PasswordEncoder:</p>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/9ad8810d-265d-451d-a636-736735d7302f.jpg">
+
+<h3 id="用户自定义的认证方式"><a href="#用户自定义的认证方式" class="headerlink" title="用户自定义的认证方式"></a>用户自定义的认证方式</h3><ol>
+<li>实现UserDetailsService接口，提供loadUserByUsername方法。</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/bafa99d5-67ab-4a4d-9071-115dfb9d984f.jpg">
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/6cc05b89-2733-42f8-9d7d-a5731fdd765f.jpg">
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/eed93d93-da48-4abb-93ec-6396ba4c66f7.jpg">
+
+<p>这里，loadUserByUsername方法，输入用户名参数，通过自定义的用户及角色管理服务获取用户的信息及角色信息，通过changeToUser方法转换为UserDetails对象。</p>
+<p>changeToUser方法提供了new User(String userName, String pwd, List<GrantedAuthority> authorities)方法创建UserDetails对象。</GrantedAuthority></p>
+<ol start="2">
+<li>将服务注册到WebSecurityConfigurerAdapter</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/b540aa89-9d36-4994-97f2-4caaf24bb453.jpg">
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/68991321-5e4c-48d4-8128-2aa60b1915a3.jpg">
+
+<p>配置AuthenticationManagerBuilder的userDetailsService()方法设定为自定义的服务。</p>
+<h2 id="Spring鉴权"><a href="#Spring鉴权" class="headerlink" title="Spring鉴权"></a>Spring鉴权</h2><ol>
+<li>configure(HttpSecurity security)方法配置权限问题</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/235a0e61-cf1a-4d5d-ad2f-d22a0bcefc7b.jpg">
+
+<p>常用配置项：</p>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/854d32d6-1bbe-4bbf-903a-330af86184a7.jpg">
+
+<ol start="2">
+<li>也可以使用正则表达式</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/4a39059d-37f4-42ae-a2c2-6d947d174778.jpg">
+
+<ol start="3">
+<li>access配合SPEL表达式</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/2af71d9b-8f07-4db0-ae63-3ee941543077.jpg">
+
+<p>常用的方法：</p>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/74024b2c-36bc-4683-b357-c1dd0867b91d.jpg">
+
+<ol start="4">
+<li>限定使用https</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/988e632c-0c27-46b8-8f31-b76a3607e37b.jpg">
+
+<p>requiresChannel().antMatchers(String express).requiresSecure()限定https</p>
+<p>requiresChannel().antMatchers(String express).requiresInsecure()限定非https</p>
+<ol start="5">
+<li>跨站请求伪造防御</li>
+</ol>
+<p>默认开启跨站请求伪造防御，使用_csrf生成的隐藏字段进行防御：</p>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/19cfcacd-1584-4df8-a690-54dda0ae3b18.jpg">
+
+<ol start="6">
+<li>自定义登录页、开启记住我功能</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/7b5af9ca-6887-4685-aa21-07ef58557c01.jpg">
+
+<p>使用rememberMe()开启记住我功能，tokenValiditySeconds(int seconds)有效时长，key()是页面上的字段名称</p>
+<p>formLogin()开启登录页，loginPage()设定登陆页面路由地址，defaultSuccessUrl()设定登陆成功页面</p>
+<ol start="7">
+<li>自定义登出界面</li>
+</ol>
+<img src="/blog/2020/07/09/springBoot2-14-spring-security/0a06d980-e7b9-47a4-bcea-a03fd6ec498d.jpg">
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring-boot-2/">spring-boot-2</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/07/09/springBoot2-14-spring-security/" data-title="springBoot2-14-spring-security | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/blog/2020/07/09/springBoot2-13-rest/"  title="springBoot2-13-rest">
+ <strong>下一篇：</strong><br/> 
+ <span>springBoot2-13-rest
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Security专门提供认证模块"><span class="toc-number">1.</span> <span class="toc-text">Spring Security专门提供认证模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入依赖"><span class="toc-number">1.1.</span> <span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于数据库的认证"><span class="toc-number">1.2.</span> <span class="toc-text">基于数据库的认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户自定义的认证方式"><span class="toc-number">1.3.</span> <span class="toc-text">用户自定义的认证方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring鉴权"><span class="toc-number">2.</span> <span class="toc-text">Spring鉴权</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
