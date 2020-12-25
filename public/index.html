@@ -185,6 +185,642 @@ Redis基础使用
 
 
 
+<<<<<<< HEAD
+=======
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/blog/">主页</a></li>
+                        
+                            <li><a href="/blog/archives/">所有文章</a></li>
+                        
+                            <li><a href="/blog/tags/">标签云</a></li>
+                        
+                            <li><a href="/blog/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/blog/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/other/" rel="tag">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring-mvc/" rel="tag">spring mvc</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/" target="_blank" rel="noopener">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">成华</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/blog/" class="profilepic">
+                <img src="/blog/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/blog/" title="回到主页">成华</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/blog/">主页</a></li>
+                
+                    <li><a href="/blog/archives/">所有文章</a></li>
+                
+                    <li><a href="/blog/tags/">标签云</a></li>
+                
+                    <li><a href="/blog/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/blog/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-alibabaPattern05" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/01/06/alibabaPattern05/" class="article-date">
+      <time datetime="2020-01-06T02:11:17.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/01/06/alibabaPattern05/">阿里巴巴开发手册05 集合处理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="集合处理"><a href="#集合处理" class="headerlink" title="集合处理"></a>集合处理</h2><ol>
+<li>hashcode与equals</li>
+</ol>
+<p>只要重写equals，<code style="background:#ff3385;color:white;padding:5px;">必须</code>重写hashcode</p>
+<p>使用set存储的类，<code style="background:#ff3385;color:white;padding:5px;">必须</code>重写hashcode和equals</p>
+<p>使用自定义对象作为Map的键，<code style="background:#ff3385;color:white;padding:5px;">必须</code>重写hashcode和equals</p>
+<ol start="2">
+<li><p>ArrayList的subList结果<code style="background:#ff3385;color:white;padding:5px;">不可以</code>强转ArrayList，原集合的元素增加删除均会对子列表的遍历、增加、删除产生异常</p>
+</li>
+<li><p>使用集合转数组，<code style="background:#ff3385;color:white;padding:5px;">必须</code>使用toArray(T[] array)，传入的是类型完全一样的数组，大小就是list.size()</p>
+</li>
+<li><p>使用工具类Arrays.asList()把数组转为集合时，<code style="background:#ff3385;color:white;padding:5px;">不能</code>使用修改集合的方法（add remove clear）</p>
+</li>
+<li><p>泛型通配符&lt;? extends T&gt;来接收的数据，不能使用add方法。使用&lt;? super T&gt;接收的数据不能使用get方法。所以，频繁读取的<code style="background:#ff3385;color:white;padding:5px;">使用</code>&lt;? extends T&gt;，频繁插入的<code style="background:#ff3385;color:white;padding:5px;">使用</code>&lt;? super T&gt;</p>
+</li>
+<li><p>在foreach中<code style="background:#ff3385;color:white;padding:5px;">禁止</code>remove和add操作，remove<code style="background:#ff3385;color:white;padding:5px;">需要</code>使用Iterator，如果并发，<code style="background:#ff3385;color:white;padding:5px;">需要</code>对Iterator加锁</p>
+</li>
+</ol>
+<img src="/blog/2020/01/06/alibabaPattern05/9c5442aa-1310-4aca-99b2-4162e735e5b9.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="7">
+<li>Comparator<code style="background:#ff3385;color:white;padding:5px;">需要</code>满足以下条件：</li>
+</ol>
+<p>x，y的比较结果与y, x的比较结果相反</p>
+<p>x &gt; y, y &gt; z，则x &gt; z</p>
+<p>x = y, 则比较x, z的结果与y, z的结果相同</p>
+<ol start="8">
+<li><code style="background:#ff3385;color:white;padding:5px;">推荐</code>在泛型集合定义时，使用diamond格式</li>
+</ol>
+<img src="/blog/2020/01/06/alibabaPattern05/b5598902-0e50-4ecd-87ac-4f3dce253de1.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="9">
+<li><p><code style="background:#ff3385;color:white;padding:5px;">建议</code>在集合初始化时，指定大小。Capacity = (存储个数/负载因子) + 1，若不明确，请设置16</p>
+</li>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">建议</code>使用EntrySet而不是KeySet对Map集合进行遍历</p>
+</li>
+<li><p>Map集合空值问题</p>
+</li>
+</ol>
+<img src="/blog/2020/01/06/alibabaPattern05/7ab63e0c-b81a-457a-a06a-e4321ade5d46.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="12">
+<li><p><code style="background:#ff3385;color:white;padding:5px;">合理利用</code>集合的有序性和稳定性</p>
+</li>
+<li><p>利用Set的唯一性可以实现快速去重，<code style="background:#ff3385;color:white;padding:5px;">避免</code>List的contains方法</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-alibabaPattern04" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/01/06/alibabaPattern04/" class="article-date">
+      <time datetime="2020-01-06T01:35:29.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/01/06/alibabaPattern04/">阿里巴巴开发手册04 OOP约定</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="OOP约定"><a href="#OOP约定" class="headerlink" title="OOP约定"></a>OOP约定</h2><ol>
+<li><p>对于静态变量，<code style="background:#ff3385;color:white;padding:5px;">要求</code>直接使用类名调用</p>
+</li>
+<li><p>方法重写<code style="background:#ff3385;color:white;padding:5px;">需要</code>添加@Override注解</p>
+</li>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">避免使用</code>可变参数和object类型参数接收</p>
+</li>
+<li><p>对于被其他地方使用的接口，<code style="background:#ff3385;color:white;padding:5px;">禁止</code>变更方法签名，如有需要，使用@Deprecated注解注释</p>
+</li>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">禁止</code>使用过时的类或方法</p>
+</li>
+<li><p>Object的equals方法容易抛出异常，<code style="background:#ff3385;color:white;padding:5px;">建议</code>使用常量的equals方法</p>
+</li>
+</ol>
+<img src="/blog/2020/01/06/alibabaPattern04/217a6cd3-af60-4ea0-88c3-e2cecf90fdca.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="7">
+<li><p><code style="background:#ff3385;color:white;padding:5px;">推荐</code>使用equals方法判断包装类对象的值</p>
+</li>
+<li><p>基本数据类型与包装类：</p>
+</li>
+</ol>
+<p>POJO类的属性，使用<code style="background:#ff3385;color:white;padding:5px;">包装类型</code></p>
+<p>RPC的方法参数与返回值使用<code style="background:#ff3385;color:white;padding:5px;">包装类型</code></p>
+<p>局部变量使用<code style="background:#ff3385;color:white;padding:5px;">基本数据类型</code></p>
+<ol start="9">
+<li><p>对于DO、DTO、VO等POJO类，其定义<code style="background:#ff3385;color:white;padding:5px;">不要设置</code>属性的默认值</p>
+</li>
+<li><p>序列号新增属性时，<code style="background:#ff3385;color:white;padding:5px;">不要修改</code>序列化ID</p>
+</li>
+<li><p>构造函数中<code style="background:#ff3385;color:white;padding:5px;">禁止</code>加入业务逻辑，如有必要，放到init方法中</p>
+</li>
+<li><p>POJO类<code style="background:#ff3385;color:white;padding:5px;">必须</code>带有toString方法</p>
+</li>
+<li><p>使用String的split方法时，<code style="background:#ff3385;color:white;padding:5px;">注意避免</code>分隔符为空的时候，划分结果的问题。</p>
+</li>
+</ol>
+<img src="/blog/2020/01/06/alibabaPattern04/44706ed7-e51f-4938-8913-1397417786cd.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="14">
+<li><p>包含多个构造函数时，<code style="background:#ff3385;color:white;padding:5px;">按顺序放置在一起</code>，便于阅读，多个同名方法也是</p>
+</li>
+<li><p>类内方法的<code style="background:#ff3385;color:white;padding:5px;">定义顺序</code>，公有方法或保护方法-&gt;私有方法-&gt;getter或setter方法</p>
+</li>
+<li><p>setter方法参数<code style="background:#ff3385;color:white;padding:5px;">建议</code>使用与成员变量相同的名称，不要添加业务逻辑</p>
+</li>
+</ol>
+<img src="/blog/2020/01/06/alibabaPattern04/df00936f-8ad5-4752-9306-5449c015ece6.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="17">
+<li><p>循环内的字符串连接，<code style="background:#ff3385;color:white;padding:5px;">要求</code>使用StringBuilder的append方法</p>
+</li>
+<li><p>final 的使用</p>
+</li>
+</ol>
+<p>不允许继承的类，使用final定义</p>
+<p>不允许修改引用的域对象，使用final定义</p>
+<p>不允许重写的方法，使用final定义</p>
+<p>不允许重新赋值的局部变量，使用final定义</p>
+<p>避免上下文重复使用一个变量，使用final可以强制重新定义一个变量</p>
+<ol start="19">
+<li><p><code style="background:#ff3385;color:white;padding:5px;">谨慎</code>使用Object类的clone方法</p>
+</li>
+<li><p>类成员与方法访问控制从严</p>
+</li>
+</ol>
+<p>如果不允许外部直接new对象，构造方法<code style="background:#ff3385;color:white;padding:5px;">需要</code>使用private</p>
+<p>工具类<code style="background:#ff3385;color:white;padding:5px;">禁止</code>出现public或default构造方法</p>
+<p>非静态方法与子类共享，<code style="background:#ff3385;color:white;padding:5px;">必须</code>是protected</p>
+<p>非静态方法本类使用，<code style="background:#ff3385;color:white;padding:5px;">必须</code>是private</p>
+<p>静态变量在本类使用，<code style="background:#ff3385;color:white;padding:5px;">必须</code>是private</p>
+<p>如果是静态变量，请<code style="background:#ff3385;color:white;padding:5px;">考虑</code>final</p>
+<p>仅供本类使用的成员方法，<code style="background:#ff3385;color:white;padding:5px;">必须</code>private</p>
+<p>与子类共享的成员方法，<code style="background:#ff3385;color:white;padding:5px;">必须</code>protected</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-alibabaPattern03" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/01/06/alibabaPattern03/" class="article-date">
+      <time datetime="2020-01-06T00:56:50.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/01/06/alibabaPattern03/">阿里巴巴开发手册03 代码格式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h2><ol>
+<li>大括号使用要求：</li>
+</ol>
+<p>左大括号左侧<code style="background:#ff3385;color:white;padding:5px;">不换行</code>，<code style="background:#ff3385;color:white;padding:5px;">需要</code>有一个空格，左大括号后<code style="background:#ff3385;color:white;padding:5px;">换行</code></p>
+<p>右大括号前<code style="background:#ff3385;color:white;padding:5px;">换行</code>，右大括号后视情况而定，若是终止符号，则换行，若后面仍有else等代码则不换行。</p>
+<ol start="2">
+<li><p>左小括号后和右小括号前<code style="background:#ff3385;color:white;padding:5px;">不空格</code>。</p>
+</li>
+<li><p>if、for、while、switch、do等保留字与小括号之间<code style="background:#ff3385;color:white;padding:5px;">必须</code>加空格</p>
+</li>
+<li><p>二目及三目运算符左右<code style="background:#ff3385;color:white;padding:5px;">需要</code>加空格</p>
+</li>
+<li><p>采用四个空格进行缩进，<code style="background:#ff3385;color:white;padding:5px;">禁止</code>tab字符</p>
+</li>
+<li><p>注释的双斜线与注释内容之间<code style="background:#ff3385;color:white;padding:5px;">有且仅有</code>一个空格</p>
+</li>
+<li><p>单行字符不超过120个字符，超出<code style="background:#ff3385;color:white;padding:5px;">需要</code>换行：</p>
+</li>
+</ol>
+<p>第二行相对第一行缩进4个空格，第三行开始不再缩进。</p>
+<p>运算符、点符号与下文一起换行</p>
+<p>方法的参数中换行，在逗号后进行</p>
+<p>括号不要换行</p>
+<img src="/blog/2020/01/06/alibabaPattern03/bce12991-ffd2-4849-aef6-4b044bd7b38d.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="8">
+<li><p>方法多个参数的逗号后加空格</p>
+</li>
+<li><p>默认使用UTF-8编码方式，换行符使用Unix格式</p>
+</li>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">建议</code>单个方法的总行数不要超过80行</p>
+</li>
+<li><p>不同逻辑、不同语义、不同业务代码之间插一个空行隔开，提升可读性。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-alibabaPattern02" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/01/05/alibabaPattern02/" class="article-date">
+      <time datetime="2020-01-05T15:35:12.000Z" itemprop="datePublished">2020-01-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/01/05/alibabaPattern02/">阿里巴巴开发手册02  常量定义</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h2><ol>
+<li><code style="background:#ff3385;color:white;padding:5px;">不允许</code>出现魔法值，直接作为常量使用</li>
+</ol>
+<img src="/blog/2020/01/05/alibabaPattern02/d3fd5dce-8233-4236-8322-610f96af15b8.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="2">
+<li><p>long类型的值定义时，<code style="background:#ff3385;color:white;padding:5px;">需要</code>使用大写L</p>
+</li>
+<li><p>对常亮<code style="background:#ff3385;color:white;padding:5px;">要求</code>使用多个常量类分别管理</p>
+</li>
+<li><p>常量的复用</p>
+</li>
+</ol>
+<p>跨应用复用：常量放置在两方的类库中</p>
+<p>应用内共享：放置在某类库中</p>
+<p>子工程内部共享：放在在子工程的constant目录下</p>
+<p>包内共享：放置在当前包的constant目录下</p>
+<p>类内共享：类内部使用private static final 定义</p>
+<ol start="5">
+<li>若变量范围较小，包含固定的几个值，如第一季度，第二季度，第三季度，第四季度，则使用枚举<img src="/blog/2020/01/05/alibabaPattern02/f45019bd-5af1-4182-85b5-5349b63e3d83.jpg" style="margin:30px;display:block" alt="title"></li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-alibabaPattern01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/01/05/alibabaPattern01/" class="article-date">
+      <time datetime="2020-01-05T14:44:31.000Z" itemprop="datePublished">2020-01-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/01/05/alibabaPattern01/">阿里巴巴开发手册01 命名风格</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h2><ol>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">禁止</code>命名以_或$开始或结束</p>
+</li>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">禁用</code>拼音、中文命名方式</p>
+</li>
+<li><p>类名<code style="background:#ff3385;color:white;padding:5px;">需要</code>首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外</p>
+</li>
+<li><p>方法名称、参数名称、成员变量、局部变量<code style="background:#ff3385;color:white;padding:5px;">需要</code>统一使用驼峰命名。</p>
+</li>
+<li><p>常量<code style="background:#ff3385;color:white;padding:5px;">需要</code>用全大写，单词之间用下划线连接</p>
+</li>
+<li><p>抽象类<code style="background:#ff3385;color:white;padding:5px;">需要</code>以Abstract开头，异常以Exception结尾，测试类以测试类名称开始，以Test结尾</p>
+</li>
+<li><p>数组符号与类型<code style="background:#ff3385;color:white;padding:5px;">需要</code>紧挨着，如：int[] array</p>
+</li>
+<li><p>POJO类中的布尔类型，<code style="background:#ff3385;color:white;padding:5px;">禁止</code>以is开头</p>
+</li>
+<li><p>包名<code style="background:#ff3385;color:white;padding:5px;">需要</code>保持小写，单数语义，类名<code style="background:#ff3385;color:white;padding:5px;">可以</code>使用复数</p>
+</li>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">禁止</code>不规范的缩写</p>
+</li>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">需要</code>使用完整的单词组合</p>
+</li>
+<li><p>模块、接口、类、方法使用设计模式，<code style="background:#ff3385;color:white;padding:5px;">需要</code>体现出设计模式：OrderFactory、LoginProxy、ResourceObserver</p>
+</li>
+<li><p>接口类方法上<code style="background:#ff3385;color:white;padding:5px;">不要</code>添加修饰，<code style="background:#ff3385;color:white;padding:5px;">避免</code>在接口中定义变量。</p>
+</li>
+<li><p>Service或DAO接口，<code style="background:#ff3385;color:white;padding:5px;">要求</code>使用xxxService、xxxServiceImpl命名接口和实现类。普通接口，以形容词为接口名称，Translatable接口或AbstractTranslator实现类</p>
+</li>
+<li><p>枚举<code style="background:#ff3385;color:white;padding:5px;">要求</code>使用Enum后缀，枚举成员用大写，下划线连接。</p>
+</li>
+<li><p>Service/DAO层命名<code style="background:#ff3385;color:white;padding:5px;">要求</code>：</p>
+</li>
+</ol>
+<p>获取单个对象用get前缀</p>
+<p>获取多个对象用list做前缀，复数形式结尾如：listObjects</p>
+<p>获取数量count做前缀</p>
+<p>插入用insert做前缀</p>
+<p>删除用delete做前缀</p>
+<p>修改用update做前缀</p>
+<ol start="17">
+<li>领域数据模型命名<code style="background:#ff3385;color:white;padding:5px;">要求</code>：</li>
+</ol>
+<p>数据对象使用DO作后缀</p>
+<p>数据传输对象以DTO做后缀</p>
+<p>视图对象以VO做后缀</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/alibaba/" rel="tag">alibaba</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-springMVC02" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2020/01/03/springMVC02/" class="article-date">
+      <time datetime="2020-01-03T13:16:03.000Z" itemprop="datePublished">2020-01-03</time>
+</a>
+>>>>>>> 9aed4e16562bdaeccb8b01b13407f7bcf6d27806
 
 
   
