@@ -84,6 +84,155 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/blog/2020/06/25/java22-lambda/" title="java22-lambda表达式" itemprop="url">
+  
+    <h1 itemprop="name">java22-lambda表达式</h1>
+    
+     
+           <p itemprop="description" >一个常规问题的实现我们定义一个通用方法实现两个int值的计算：
+
+定义接口
+
+
+
+只有一个方法，输入两个值，返回结果。
+
+通过工厂模式实现
+
+根据输入操作符的不同，给出接口的不同实现：
+
+
+
+测试
+
+先构造接口对象，再调用接口方法
+
+
+改用lambda实现
+
+替换匿名内部类的方式</p>
+        
+    
+    <time datetime="2020-06-25T14:03:16.000Z" itemprop="datePublished">2020-06-25</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/24/micro-architect-04-Dubbo/" title="micro-architect-04-Dubbo" itemprop="url">
+  
+    <h1 itemprop="name">micro-architect-04-Dubbo</h1>
+    
+     
+           <p itemprop="description" >Dubbo基本结构
+
+注册中心单个服务配置注册中心推荐使用ZooKeeper，解决分布式环境下的数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应用配置项。
+解压后进入conf文件夹，修改zoo_sample.cfg为zoo.cfg
+
+
+集群配置
+
+server:A</p>
+        
+    
+    <time datetime="2020-06-24T08:23:51.000Z" itemprop="datePublished">2020-06-24</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/23/micro-architect-03-Spring-Boot/" title="micro-architect-03-Spring-Boot" itemprop="url">
+  
+    <h1 itemprop="name">micro-architect-03-Spring-Boot</h1>
+    
+     
+           <p itemprop="description" >SpringBoot项目目录结构
+
+主要文件
+Application.java
+
+
+
+自动扫描当前包及子包下的所有Bean
+
+application.properties
+
+
+
+配置文件
+
+pom.xml
+
+依赖管理文件
+
+mvnw
+
+maven命令封装
+编辑器Eclipse
+
+</p>
+        
+    
+    <time datetime="2020-06-23T13:56:27.000Z" itemprop="datePublished">2020-06-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/23/micro-architect-02-module-break/" title="micro-architect-02-模块拆分" itemprop="url">
+  
+    <h1 itemprop="name">micro-architect-02-模块拆分</h1>
+    
+     
+           <p itemprop="description" >模块拆分考虑的因素
+系统的复杂度
+
+模块拆分越细，模块越小，数量越多，依赖关系越复杂。
+
+团队协作
+
+模块内部由单个团队负责，需要团队之间协作。
+
+代码维护难度
+
+模块提供的服务发生变动会影响其他模块的调用。
+
+资源分配
+
+模块拆分越细，越能够准确扩展需求高的模块。
+单模块模块内</p>
+        
+    
+    <time datetime="2020-06-23T12:40:38.000Z" itemprop="datePublished">2020-06-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/blog/2020/06/23/micro-architect-01-introduction/" title="micro-architect-01-微服务简介" itemprop="url">
   
     <h1 itemprop="name">micro-architect-01-微服务简介</h1>
@@ -257,140 +406,6 @@ JD</p>
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/20/JavaEE-11-Spring-Aop/" title="JavaEE-11-Spring-Aop" itemprop="url">
-  
-    <h1 itemprop="name">JavaEE-11-Spring-Aop</h1>
-    
-     
-           <p itemprop="description" >AOP术语切面切面就是引入的代码，比如，记录日志，自动关闭JDBC连接等等
-通知切面里的方法就是通知，
-
-
-引入为现有的类增强方法
-切点被拦截的方法就是切点
-连接点用于判定切点的方法
-织入生成动态代理的过程
-四种实现Aop的方式
-
-使用@AspectJ注解开发Aop选择合适的切点</p>
-        
-    
-    <time datetime="2020-06-20T14:38:50.000Z" itemprop="datePublished">2020-06-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/" title="JavaEE-10-Spring-Bean-Load" itemprop="url">
-  
-    <h1 itemprop="name">JavaEE-10-Spring-Bean-Load</h1>
-    
-     
-           <p itemprop="description" >依赖注入的三种方式
-构造器注入
-
-set方法注入
-
-接口注入
-
-
-构造器注入通过类的构造函数注入需要的其他数据及对象
-
-
-xml描述
-
-
-构造器注入方法简单，但是对参数较多的情况下显得很繁杂。
-set方法注入使用默认的构造器创建对象，对参数通过set方法注入
-
-
-接口注入对于外界</p>
-        
-    
-    <time datetime="2020-06-20T11:49:52.000Z" itemprop="datePublished">2020-06-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/20/JavaEE-9-Spring-Ioc/" title="JavaEE-9-Spring-Ioc" itemprop="url">
-  
-    <h1 itemprop="name">JavaEE-9-Spring-Ioc</h1>
-    
-     
-           <p itemprop="description" >主动创建对象我们假设制造果汁的过程：添加原料，使用搅拌机搅拌得到果汁。
-搅拌机
-
-果汁制作
-
-被动创建对象原料
-
-制作果汁
-
-使用xml文件描述原料：
-
-
-果汁制作：
-
-
-
-在Spring中的实现创建xml文件
-
-
-通过ApplicationContext处理Bean
-
-Spri</p>
-        
-    
-    <time datetime="2020-06-20T11:03:43.000Z" itemprop="datePublished">2020-06-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/17/spring07-advanced-spring-mvc/" title="spring07-spring-mvc 高级内容" itemprop="url">
-  
-    <h1 itemprop="name">spring07-spring-mvc 高级内容</h1>
-    
-     
-           <p itemprop="description" >xml配置DispatcherServlet
-
-context-param作为配置信息，配置了spring的主配置目录。
-Listener配置ContextLoaderListener
-Servlet标签配置了DispatcherServlet
-配置xml加载java配置Disp</p>
-        
-    
-    <time datetime="2020-06-17T13:22:47.000Z" itemprop="datePublished">2020-06-17</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
     <a class="extend prev" rel="prev" href="/blog/page/2/">上一页</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/8/">8</a><a class="extend next" rel="next" href="/blog/page/4/">下一页</a>
@@ -424,7 +439,7 @@ Servlet标签配置了DispatcherServlet
 			
 		
 			
-				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>13</sup></a></li>
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
 			
 		
 			

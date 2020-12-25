@@ -84,6 +84,167 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/blog/2020/07/08/springBoot2-08-Async/" title="springBoot2-08-异步线程池" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-08-异步线程池</h1>
+    
+     
+           <p itemprop="description" >异步操作对于网络或本地文件IO容易出现阻塞情况，对于web应用，卡顿情况更加明显。
+
+
+对于耗时操作，我们一般采用异步方式进行处理，采用线程池的方式实现对任务的异步操作。
+
+
+Spring实现异步任务
+配置线程池
+
+使用@EnableAsync开启异步线程池，实现AsyncCon</p>
+        
+    
+    <time datetime="2020-07-08T11:44:53.000Z" itemprop="datePublished">2020-07-08</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/07/08/springBoot2-06-database/" title="springBoot2-06-整合Mybatis" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-06-整合Mybatis</h1>
+    
+     
+           <p itemprop="description" >配置数据源
+添加依赖
+
+
+
+
+配置数据源
+
+
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8</p>
+        
+    
+    <time datetime="2020-07-08T07:13:56.000Z" itemprop="datePublished">2020-07-08</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/07/07/springBoot2-05-aop/" title="springBoot2-05-aop" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-05-aop</h1>
+    
+     
+           <p itemprop="description" >自定义AOP
+创建被监视接口
+
+
+
+
+创建实现类，并注册为服务
+
+
+
+
+创建切面
+
+
+
+
+
+将切面注册为Bean
+
+
+
+
+测试结果
+
+
+
+引入
+设计增强接口
+
+
+
+
+设计增强接口的实现类
+
+
+
+
+在切面中声明public类型的增强接口的实例
+
+
+ @DeclareParents(</p>
+        
+    
+    <time datetime="2020-07-07T05:46:56.000Z" itemprop="datePublished">2020-07-07</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/07/07/springBoot2-04-spring-others/" title="springBoot2-04-spring-others" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-04-spring-others</h1>
+    
+     
+           <p itemprop="description" >使用配置文件
+添加依赖
+
+
+
+
+添加配置
+
+默认使用application.properties
+
+
+
+使用@Value注入
+
+
+
+可以对字段，set方法进行注解
+
+使用ConfigurationProperties简化
+
+
+
+指定起始database
+配置文件分离单纯使用app</p>
+        
+    
+    <time datetime="2020-07-07T01:56:29.000Z" itemprop="datePublished">2020-07-07</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/blog/2020/07/07/springBoot2-03-dependency-management/" title="springBoot2-03-依赖管理" itemprop="url">
   
     <h1 itemprop="name">springBoot2-03-依赖管理</h1>
@@ -310,155 +471,6 @@ ArrayList</p>
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/25/java22-lambda/" title="java22-lambda表达式" itemprop="url">
-  
-    <h1 itemprop="name">java22-lambda表达式</h1>
-    
-     
-           <p itemprop="description" >一个常规问题的实现我们定义一个通用方法实现两个int值的计算：
-
-定义接口
-
-
-
-只有一个方法，输入两个值，返回结果。
-
-通过工厂模式实现
-
-根据输入操作符的不同，给出接口的不同实现：
-
-
-
-测试
-
-先构造接口对象，再调用接口方法
-
-
-改用lambda实现
-
-替换匿名内部类的方式</p>
-        
-    
-    <time datetime="2020-06-25T14:03:16.000Z" itemprop="datePublished">2020-06-25</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/24/micro-architect-04-Dubbo/" title="micro-architect-04-Dubbo" itemprop="url">
-  
-    <h1 itemprop="name">micro-architect-04-Dubbo</h1>
-    
-     
-           <p itemprop="description" >Dubbo基本结构
-
-注册中心单个服务配置注册中心推荐使用ZooKeeper，解决分布式环境下的数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应用配置项。
-解压后进入conf文件夹，修改zoo_sample.cfg为zoo.cfg
-
-
-集群配置
-
-server:A</p>
-        
-    
-    <time datetime="2020-06-24T08:23:51.000Z" itemprop="datePublished">2020-06-24</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/23/micro-architect-03-Spring-Boot/" title="micro-architect-03-Spring-Boot" itemprop="url">
-  
-    <h1 itemprop="name">micro-architect-03-Spring-Boot</h1>
-    
-     
-           <p itemprop="description" >SpringBoot项目目录结构
-
-主要文件
-Application.java
-
-
-
-自动扫描当前包及子包下的所有Bean
-
-application.properties
-
-
-
-配置文件
-
-pom.xml
-
-依赖管理文件
-
-mvnw
-
-maven命令封装
-编辑器Eclipse
-
-</p>
-        
-    
-    <time datetime="2020-06-23T13:56:27.000Z" itemprop="datePublished">2020-06-23</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/23/micro-architect-02-module-break/" title="micro-architect-02-模块拆分" itemprop="url">
-  
-    <h1 itemprop="name">micro-architect-02-模块拆分</h1>
-    
-     
-           <p itemprop="description" >模块拆分考虑的因素
-系统的复杂度
-
-模块拆分越细，模块越小，数量越多，依赖关系越复杂。
-
-团队协作
-
-模块内部由单个团队负责，需要团队之间协作。
-
-代码维护难度
-
-模块提供的服务发生变动会影响其他模块的调用。
-
-资源分配
-
-模块拆分越细，越能够准确扩展需求高的模块。
-单模块模块内</p>
-        
-    
-    <time datetime="2020-06-23T12:40:38.000Z" itemprop="datePublished">2020-06-23</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
     <a class="extend prev" rel="prev" href="/blog/">上一页</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/8/">8</a><a class="extend next" rel="next" href="/blog/page/3/">下一页</a>
@@ -492,7 +504,7 @@ maven命令封装
 			
 		
 			
-				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>13</sup></a></li>
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
 			
 		
 			
