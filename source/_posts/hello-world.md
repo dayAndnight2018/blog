@@ -1,6 +1,9 @@
 ---
+
 title: 第一篇日志
+
 tags: other
+
 ---
 
 这是通过MarkBook编写的第一篇日志
@@ -15,20 +18,19 @@ tags: other
 
 ### 创建新的文章
 
-<code style='background:#ff3385;color:white;padding:5px;'>$ hexo new "My New Post"</code>
+`$ hexo new "My New Post"`
 
 ### 本地预览
 
-<code style='background:#ff3385;color:white;padding:5px;'>$ hexo server</code>
+`$ hexo server`
 
 ### 生成静态文件
 
-<code style='background:#ff3385;color:white;padding:5px;'>$ hexo generate</code>
+`$ hexo generate`
 
 ### 发布
 
-<code style='background:#ff3385;color:white;padding:5px;'>$ hexo deploy</code>
-
+`$ hexo deploy`
 
 ***
 
