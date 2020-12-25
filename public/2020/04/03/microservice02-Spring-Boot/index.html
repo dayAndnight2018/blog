@@ -1,0 +1,621 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>microservice02-Spring Boot | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="Spring Boot的优势 构建独立运行的jar  内嵌Servlet容器,可以直接运行  pom.xml依赖管理  简化配置，自动化Bean   项目结构图  创建一个测试类  RestController指明返回的是API数据而不是视图。RequestMapping指明方法的路径   集成Mybatis准备数据库在mysql中创建microservice数据库及tb_user数据表：   添">
+<meta property="og:type" content="article">
+<meta property="og:title" content="microservice02-Spring Boot">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/04/03/microservice02-Spring-Boot/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="Spring Boot的优势 构建独立运行的jar  内嵌Servlet容器,可以直接运行  pom.xml依赖管理  简化配置，自动化Bean   项目结构图  创建一个测试类  RestController指明返回的是API数据而不是视图。RequestMapping指明方法的路径   集成Mybatis准备数据库在mysql中创建microservice数据库及tb_user数据表：   添">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/2d18439d-8523-413f-84a9-1991a5ec49eb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/333b2856-b628-4620-8726-fb402c638eb9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/a35d0e0d-1582-4269-bef8-31e2bb665931.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/a4f1b514-5fe6-4c82-98da-b2576d8a585a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/80eda36e-4d2b-4ffd-ba7a-d2d890c0b6af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/c866e517-2e97-4a46-b4ba-9f8c5e716165.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/9d089ead-e637-4bbf-be3f-cda626eba249.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/020b8191-d578-44bf-9f08-cb6a696863af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/615df9ee-fb60-4b06-ba50-a4f5f1f9c580.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/ee3ebdd1-8b33-4204-99ff-aedd7fb100c3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/00b671a4-32f4-4338-b005-db9f93eaf20d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/06fc79b7-c41f-4111-ae35-9f3d46134e53.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/04d7e7e0-f967-4659-880b-2dad442e859e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/206d13ad-fdfe-4f83-961f-ef9d817580d1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/36791540-f7e4-45aa-871c-364de7bcf432.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/6f86177f-415a-43ad-a85b-eda28a8a5523.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/d8c0beb0-fd29-4695-9b77-ccbeb5cfe077.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/8feffb88-d681-4cd5-8b9e-d63f16f88637.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/a8e9f905-7f0d-4b6b-8023-9902fba19c15.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/2908b92b-7bf2-40f0-a01a-cbe4d8929e7a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/91237d4f-c66e-4673-8dd6-fc16f5b46e9c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/02096089-bfd7-4128-8f94-0df6710488b8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/b0c15479-ee5e-44f8-aca2-15eddb5bf543.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/82b0b13e-54ac-47ca-9b8c-097caa91e4b4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/62dbbbe1-2524-4f79-ac11-bd0e4613d570.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/caa049f8-cfb2-48ee-b8a2-633cbd9dd3af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/7a94f230-ffa3-4fdc-898d-0f1aa48b4a59.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/b68b3a4d-e759-4626-a69f-cdc6e07c7da2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/ffb288b1-fb0f-4719-af72-03f51ff42633.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/cbbae934-1b67-45a2-96a7-263e73df61da.jpg">
+<meta property="article:published_time" content="2020-04-03T12:11:13.000Z">
+<meta property="article:modified_time" content="2020-04-15T11:57:13.268Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="microservice">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice02-Spring-Boot/2d18439d-8523-413f-84a9-1991a5ec49eb.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/04/03/microservice02-Spring-Boot/" title="microservice02-Spring Boot" itemprop="url">microservice02-Spring Boot</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-04-03T12:11:13.000Z" itemprop="datePublished"> Published 2020-04-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="Spring-Boot的优势"><a href="#Spring-Boot的优势" class="headerlink" title="Spring Boot的优势"></a>Spring Boot的优势</h2><ol>
+<li><p>构建独立运行的jar</p>
+</li>
+<li><p>内嵌Servlet容器,可以直接运行</p>
+</li>
+<li><p>pom.xml依赖管理</p>
+</li>
+<li><p>简化配置，自动化Bean</p>
+</li>
+</ol>
+<h2 id="项目结构图"><a href="#项目结构图" class="headerlink" title="项目结构图"></a>项目结构图</h2><img src="/blog/2020/04/03/microservice02-Spring-Boot/2d18439d-8523-413f-84a9-1991a5ec49eb.jpg" style="width:480px;height:400px">
+
+<h2 id="创建一个测试类"><a href="#创建一个测试类" class="headerlink" title="创建一个测试类"></a>创建一个测试类</h2><img src="/blog/2020/04/03/microservice02-Spring-Boot/333b2856-b628-4620-8726-fb402c638eb9.jpg" style="width:560px;height:240px">
+
+<p>RestController指明返回的是API数据而不是视图。<br>RequestMapping指明方法的路径</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/a35d0e0d-1582-4269-bef8-31e2bb665931.jpg">
+
+<h2 id="集成Mybatis"><a href="#集成Mybatis" class="headerlink" title="集成Mybatis"></a>集成Mybatis</h2><h3 id="准备数据库"><a href="#准备数据库" class="headerlink" title="准备数据库"></a>准备数据库</h3><p>在mysql中创建microservice数据库及tb_user数据表：</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/a4f1b514-5fe6-4c82-98da-b2576d8a585a.jpg" style="width:480px;height:200px;">
+
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><p>添加一个依赖Web模块的Spring Boot项目，并向pom.xml添加mybatis及mysql依赖：</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/80eda36e-4d2b-4ffd-ba7a-d2d890c0b6af.jpg" style="width:480px;height:200px;">
+
+<h3 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h3><p>追加数据库连接配置及日志配置：</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/c866e517-2e97-4a46-b4ba-9f8c5e716165.jpg" style="width:480px;height:160px;">
+
+<h3 id="创建实体类"><a href="#创建实体类" class="headerlink" title="创建实体类"></a>创建实体类</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/9d089ead-e637-4bbf-be3f-cda626eba249.jpg">
+
+<h3 id="编写Mapper"><a href="#编写Mapper" class="headerlink" title="编写Mapper"></a>编写Mapper</h3><p>通过接口及注解方法编写mapper</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/020b8191-d578-44bf-9f08-cb6a696863af.jpg">
+
+<h3 id="编写Service接口"><a href="#编写Service接口" class="headerlink" title="编写Service接口"></a>编写Service接口</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/615df9ee-fb60-4b06-ba50-a4f5f1f9c580.jpg">
+
+<h3 id="编写Service实现类"><a href="#编写Service实现类" class="headerlink" title="编写Service实现类"></a>编写Service实现类</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/ee3ebdd1-8b33-4204-99ff-aedd7fb100c3.jpg">
+
+<h3 id="编写控制器类"><a href="#编写控制器类" class="headerlink" title="编写控制器类"></a>编写控制器类</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/00b671a4-32f4-4338-b005-db9f93eaf20d.jpg">
+
+<h3 id="前端页面"><a href="#前端页面" class="headerlink" title="前端页面"></a>前端页面</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/06fc79b7-c41f-4111-ae35-9f3d46134e53.jpg">
+
+<p>显示效果：</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/04d7e7e0-f967-4659-880b-2dad442e859e.jpg">
+
+<h3 id="使用yml配置"><a href="#使用yml配置" class="headerlink" title="使用yml配置"></a>使用yml配置</h3><p>也可以使用yml配置替换properties</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/206d13ad-fdfe-4f83-961f-ef9d817580d1.jpg">
+
+<h2 id="集成Redis缓存"><a href="#集成Redis缓存" class="headerlink" title="集成Redis缓存"></a>集成Redis缓存</h2><p>Redis通常作为缓存和消息代理。</p>
+<h3 id="添加依赖-1"><a href="#添加依赖-1" class="headerlink" title="添加依赖"></a>添加依赖</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/36791540-f7e4-45aa-871c-364de7bcf432.jpg">
+
+<h3 id="开启缓存"><a href="#开启缓存" class="headerlink" title="开启缓存"></a>开启缓存</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/6f86177f-415a-43ad-a85b-eda28a8a5523.jpg">
+
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/d8c0beb0-fd29-4695-9b77-ccbeb5cfe077.jpg">
+
+<h3 id="实体类需要可序列化"><a href="#实体类需要可序列化" class="headerlink" title="实体类需要可序列化"></a>实体类需要可序列化</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/8feffb88-d681-4cd5-8b9e-d63f16f88637.jpg">
+
+<h3 id="添加缓存服务器配置"><a href="#添加缓存服务器配置" class="headerlink" title="添加缓存服务器配置"></a>添加缓存服务器配置</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/a8e9f905-7f0d-4b6b-8023-9902fba19c15.jpg">
+
+<h3 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/2908b92b-7bf2-40f0-a01a-cbe4d8929e7a.jpg">
+
+<h2 id="集成ActiveMQ"><a href="#集成ActiveMQ" class="headerlink" title="集成ActiveMQ"></a>集成ActiveMQ</h2><p>spring对消息服务具有支持。</p>
+<h3 id="添加依赖-2"><a href="#添加依赖-2" class="headerlink" title="添加依赖"></a>添加依赖</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/91237d4f-c66e-4673-8dd6-fc16f5b46e9c.jpg">
+
+<h3 id="创建消息队列Bean"><a href="#创建消息队列Bean" class="headerlink" title="创建消息队列Bean"></a>创建消息队列Bean</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/02096089-bfd7-4128-8f94-0df6710488b8.jpg">
+
+<h3 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h3><p>使用JmsMessagingTemplate发送消息。同时需要注入队列的Bean</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/b0c15479-ee5e-44f8-aca2-15eddb5bf543.jpg">
+
+<h3 id="消费消息"><a href="#消费消息" class="headerlink" title="消费消息"></a>消费消息</h3><p>JmsListener监听</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/82b0b13e-54ac-47ca-9b8c-097caa91e4b4.jpg">
+
+<h3 id="配置远程activeMQ地址"><a href="#配置远程activeMQ地址" class="headerlink" title="配置远程activeMQ地址"></a>配置远程activeMQ地址</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/62dbbbe1-2524-4f79-ac11-bd0e4613d570.jpg">
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src="/blog/2020/04/03/microservice02-Spring-Boot/caa049f8-cfb2-48ee-b8a2-633cbd9dd3af.jpg">
+
+<h2 id="Spring-Boot项目打包"><a href="#Spring-Boot项目打包" class="headerlink" title="Spring Boot项目打包"></a>Spring Boot项目打包</h2><h3 id="Jar包"><a href="#Jar包" class="headerlink" title="Jar包"></a>Jar包</h3><p>使用Maven的package命令即可打包。</p>
+<p>运行：</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/7a94f230-ffa3-4fdc-898d-0f1aa48b4a59.jpg">
+
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/b68b3a4d-e759-4626-a69f-cdc6e07c7da2.jpg">
+
+<h3 id="WAR包"><a href="#WAR包" class="headerlink" title="WAR包"></a>WAR包</h3><p>将tomcat配置provided:</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/ffb288b1-fb0f-4719-af72-03f51ff42633.jpg">
+
+<p>创建继承了SpringBootServletInitializer的子类，重写configure方法：</p>
+<img src="/blog/2020/04/03/microservice02-Spring-Boot/cbbae934-1b67-45a2-96a7-263e73df61da.jpg">
+
+<p>使用Maven的package命令即可打包。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/microservice/">microservice</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/04/03/microservice02-Spring-Boot/" data-title="microservice02-Spring Boot | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/04/04/microservice02-Spring-Cloud/" title="microservice03-Spring Cloud">
+  <strong>上一篇：</strong><br/>
+  <span>
+  microservice03-Spring Cloud</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/04/03/microservice01-introduction/"  title="microservice01-微服务简介">
+ <strong>下一篇：</strong><br/> 
+ <span>microservice01-微服务简介
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot的优势"><span class="toc-number">1.</span> <span class="toc-text">Spring Boot的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构图"><span class="toc-number">2.</span> <span class="toc-text">项目结构图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个测试类"><span class="toc-number">3.</span> <span class="toc-text">创建一个测试类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成Mybatis"><span class="toc-number">4.</span> <span class="toc-text">集成Mybatis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备数据库"><span class="toc-number">4.1.</span> <span class="toc-text">准备数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加依赖"><span class="toc-number">4.2.</span> <span class="toc-text">添加依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加配置"><span class="toc-number">4.3.</span> <span class="toc-text">添加配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建实体类"><span class="toc-number">4.4.</span> <span class="toc-text">创建实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写Mapper"><span class="toc-number">4.5.</span> <span class="toc-text">编写Mapper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写Service接口"><span class="toc-number">4.6.</span> <span class="toc-text">编写Service接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写Service实现类"><span class="toc-number">4.7.</span> <span class="toc-text">编写Service实现类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写控制器类"><span class="toc-number">4.8.</span> <span class="toc-text">编写控制器类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端页面"><span class="toc-number">4.9.</span> <span class="toc-text">前端页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用yml配置"><span class="toc-number">4.10.</span> <span class="toc-text">使用yml配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成Redis缓存"><span class="toc-number">5.</span> <span class="toc-text">集成Redis缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加依赖-1"><span class="toc-number">5.1.</span> <span class="toc-text">添加依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启缓存"><span class="toc-number">5.2.</span> <span class="toc-text">开启缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实体类需要可序列化"><span class="toc-number">5.3.</span> <span class="toc-text">实体类需要可序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加缓存服务器配置"><span class="toc-number">5.4.</span> <span class="toc-text">添加缓存服务器配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清除缓存"><span class="toc-number">5.5.</span> <span class="toc-text">清除缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成ActiveMQ"><span class="toc-number">6.</span> <span class="toc-text">集成ActiveMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加依赖-2"><span class="toc-number">6.1.</span> <span class="toc-text">添加依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建消息队列Bean"><span class="toc-number">6.2.</span> <span class="toc-text">创建消息队列Bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送消息"><span class="toc-number">6.3.</span> <span class="toc-text">发送消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消费消息"><span class="toc-number">6.4.</span> <span class="toc-text">消费消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置远程activeMQ地址"><span class="toc-number">6.5.</span> <span class="toc-text">配置远程activeMQ地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">6.6.</span> <span class="toc-text">测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot项目打包"><span class="toc-number">7.</span> <span class="toc-text">Spring Boot项目打包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Jar包"><span class="toc-number">7.1.</span> <span class="toc-text">Jar包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WAR包"><span class="toc-number">7.2.</span> <span class="toc-text">WAR包</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

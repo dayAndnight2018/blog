@@ -1,0 +1,681 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>microservice01-微服务简介 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="早期的单体架构早期的单体架构采用war包，普通java类库以jar包形式存在于war包内，架构简单：   在用户量较少的时候，单个服务器即可满足需求，一旦用户数增大，可以采用水平扩展的方法（即：将war包复制部署到多个服务器，通过负载均衡转发到不同的服务器承担压力）   当然，数据是共享的。 但是，这样的架构会带来一些问题：  维护困难，功能繁杂的单体应用难以重构二次开发。  资源浪费。水平扩展就">
+<meta property="og:type" content="article">
+<meta property="og:title" content="microservice01-微服务简介">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/04/03/microservice01-introduction/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="早期的单体架构早期的单体架构采用war包，普通java类库以jar包形式存在于war包内，架构简单：   在用户量较少的时候，单个服务器即可满足需求，一旦用户数增大，可以采用水平扩展的方法（即：将war包复制部署到多个服务器，通过负载均衡转发到不同的服务器承担压力）   当然，数据是共享的。 但是，这样的架构会带来一些问题：  维护困难，功能繁杂的单体应用难以重构二次开发。  资源浪费。水平扩展就">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/97f09461-5de2-4787-84eb-44b96339c9e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/f41696a6-e1d3-4580-9002-ccda7111e547.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/edcb4bc0-08e4-444c-b38e-c6a6c92371e4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/72f84ca2-771d-4afd-82ed-02eaabddfd08.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/af3cc9fa-177c-4b5a-aeed-0e57ecbfd15c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/c28915a5-0177-457e-a728-9953c450638e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/e72bbd8b-9c18-4374-911f-2cbfa73505c1.jpg">
+<meta property="article:published_time" content="2020-04-03T06:59:38.000Z">
+<meta property="article:modified_time" content="2020-04-03T12:10:41.557Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="microservice">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/97f09461-5de2-4787-84eb-44b96339c9e7.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/04/03/microservice01-introduction/" title="microservice01-微服务简介" itemprop="url">microservice01-微服务简介</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-04-03T06:59:38.000Z" itemprop="datePublished"> Published 2020-04-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="早期的单体架构"><a href="#早期的单体架构" class="headerlink" title="早期的单体架构"></a>早期的单体架构</h2><p>早期的单体架构采用war包，普通java类库以jar包形式存在于war包内，架构简单：</p>
+<img src="/blog/2020/04/03/microservice01-introduction/97f09461-5de2-4787-84eb-44b96339c9e7.jpg">
+
+<p>在用户量较少的时候，单个服务器即可满足需求，一旦用户数增大，可以采用水平扩展的方法（即：将war包复制部署到多个服务器，通过负载均衡转发到不同的服务器承担压力）</p>
+<img src="/blog/2020/04/03/microservice01-introduction/f41696a6-e1d3-4580-9002-ccda7111e547.jpg">
+
+<p>当然，数据是共享的。</p>
+<p>但是，这样的架构会带来一些问题：</p>
+<ol>
+<li><p>维护困难，功能繁杂的单体应用难以重构二次开发。</p>
+</li>
+<li><p>资源浪费。水平扩展就是简单的复制，对不同的服务的需求可能存在差异，对不需要扩展的服务进行扩展造成资源浪费。</p>
+</li>
+<li><p>影响开发效率。应用越来越大，开发调试困难。</p>
+</li>
+<li><p>可靠性差。单体应用是一整个war包，单个模块出现问题将影响整个war包。</p>
+</li>
+<li><p>影响技术更新。整个技术栈必须一致，更新换代很麻烦。</p>
+</li>
+</ol>
+<p>总体来说就是因为<code style="background:#ff3385;color:white;padding:5px;">所有的模块都在一个war包里</code>。</p>
+<h2 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h2><img src="/blog/2020/04/03/microservice01-introduction/edcb4bc0-08e4-444c-b38e-c6a6c92371e4.jpg">
+
+<p>SOA是一种对单体应用的改进。</p>
+<p>将大系统分成多个子模块进行开发，通过服务总线获取相关的服务提供相关的功能，进而实现简单的解耦。</p>
+<p>在部署时，类似于一个tomcat下部署多个应用。</p>
+<h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><p>微服务要求系统按照功能拆分成更细小的部分，对外提供api进行服务。</p>
+<p>将传统的单体架构拆分成多个服务，每个服务相互独立，服务可以访问数据库，服务之间也可以相互调用。</p>
+<img src="/blog/2020/04/03/microservice01-introduction/72f84ca2-771d-4afd-82ed-02eaabddfd08.jpg">
+
+<h3 id="微服务的优势"><a href="#微服务的优势" class="headerlink" title="微服务的优势"></a>微服务的优势</h3><ol>
+<li><p>复杂度可控。单个团队即可完成开发维护任务。</p>
+</li>
+<li><p>独立部署。单个服务可以独立部署，多个模块可以互不影响地维护。</p>
+</li>
+<li><p>独立扩展。进行扩展时可以有针对性的进行扩展。</p>
+</li>
+</ol>
+<h3 id="微服务的缺点"><a href="#微服务的缺点" class="headerlink" title="微服务的缺点"></a>微服务的缺点</h3><ol>
+<li><p>开发工具主要面向单体应用，缺少微服务的工具</p>
+</li>
+<li><p>开发测试困难。服务之间采用接口调用，依赖关系维护较难。</p>
+</li>
+<li><p>考虑分布式事务</p>
+</li>
+<li><p>内存消耗大。单个服务部署在单个节点，，单个节点由单个JVM管理，内存消耗较大。</p>
+</li>
+</ol>
+<h2 id="微服务与SOA对比"><a href="#微服务与SOA对比" class="headerlink" title="微服务与SOA对比"></a>微服务与SOA对比</h2><img src="/blog/2020/04/03/microservice01-introduction/af3cc9fa-177c-4b5a-aeed-0e57ecbfd15c.jpg">
+
+<h2 id="微服务拆分"><a href="#微服务拆分" class="headerlink" title="微服务拆分"></a>微服务拆分</h2><ol>
+<li><p>根据业务的功能进行分割。</p>
+</li>
+<li><p>对域进行分割。</p>
+</li>
+<li><p>使用动词设计，如完成订单的航运功能。</p>
+</li>
+<li><p>对特定实体操作的服务，如账户服务。</p>
+</li>
+</ol>
+<h2 id="微服务组件"><a href="#微服务组件" class="headerlink" title="微服务组件"></a>微服务组件</h2><ol>
+<li>服务注册中心</li>
+</ol>
+<p>服务注册中心就是注册所有服务的地方。</p>
+<ol start="2">
+<li>服务注册</li>
+</ol>
+<p>服务提供方将自己的调用地址注册到服务注册中心，以便调用方可以调用。</p>
+<ol start="3">
+<li>服务发现</li>
+</ol>
+<p>服务调用方从服务注册中心获取到服务的调用地址。</p>
+<ol start="4">
+<li>负载均衡</li>
+</ol>
+<p>服务一般横向扩展多节点提供服务，负载均衡可以实现压力分配</p>
+<ol start="5">
+<li>服务容错</li>
+</ol>
+<p>通过熔断器实现对异常服务调用时的快速响应，避免大量的同步等待。</p>
+<ol start="6">
+<li>服务网关</li>
+</ol>
+<p>即API网关，服务调用的唯一入口。可以在此实现鉴权、动态路由、灰度发布、负载限流等。</p>
+<ol start="7">
+<li>分布式配置中心</li>
+</ol>
+<p>将本地配置文件配置到配置中心，以便无差别调试。</p>
+<img src="/blog/2020/04/03/microservice01-introduction/c28915a5-0177-457e-a728-9953c450638e.jpg">
+
+<h2 id="微服务架构的技术选型"><a href="#微服务架构的技术选型" class="headerlink" title="微服务架构的技术选型"></a>微服务架构的技术选型</h2><table cellpadding="8" border="1" style="background:#EAF2D3;text-align:center">
+<tr>
+&nbsp;&nbsp;<td>
+开发
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Spring Boot、WildFly Swarm、KumuluzEE
+&nbsp;&nbsp;</td>
+</tr>
+<tr>
+&nbsp;&nbsp;<td>
+服务注册与发现
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Spring Cloud Eureka、Apache ZooKeeper、Consul、Etcd、Dubbo
+&nbsp;&nbsp;</td>
+</tr>
+<tr>
+&nbsp;&nbsp;<td>
+负载均衡
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Spring Cloud Ribbon、Dubbo
+&nbsp;&nbsp;</td>
+</tr>
+<tr>
+&nbsp;&nbsp;<td>
+服务容错
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Spring Cloud Hystrix
+&nbsp;&nbsp;</td>
+</tr>
+<tr>
+&nbsp;&nbsp;<td>
+API网关
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Spring Cloud Zuul、Spring Reactor、Netty、NodeJS
+&nbsp;&nbsp;</td>
+</tr>
+<tr>
+&nbsp;&nbsp;<td>
+分布式配置中心
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Spring Cloud Config
+&nbsp;&nbsp;</td>
+</tr>
+<tr>
+&nbsp;&nbsp;<td>
+调试
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Swagger
+&nbsp;&nbsp;</td>
+</tr>
+<tr>
+&nbsp;&nbsp;<td>
+部署
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Docker
+&nbsp;&nbsp;</td>
+</tr>
+<tr>
+&nbsp;&nbsp;<td>
+持续集成
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Jenkins
+&nbsp;&nbsp;</td>
+</tr>
+
+</table>
+
+<img src="/blog/2020/04/03/microservice01-introduction/e72bbd8b-9c18-4374-911f-2cbfa73505c1.jpg">
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/microservice/">microservice</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/04/03/microservice01-introduction/" data-title="microservice01-微服务简介 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/04/03/microservice02-Spring-Boot/" title="microservice02-Spring Boot">
+  <strong>上一篇：</strong><br/>
+  <span>
+  microservice02-Spring Boot</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/03/02/spring04-Aspect-oriented-Spring/"  title="spring04 面向切面的Spring">
+ <strong>下一篇：</strong><br/> 
+ <span>spring04 面向切面的Spring
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#早期的单体架构"><span class="toc-number">1.</span> <span class="toc-text">早期的单体架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SOA"><span class="toc-number">2.</span> <span class="toc-text">SOA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务"><span class="toc-number">3.</span> <span class="toc-text">微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#微服务的优势"><span class="toc-number">3.1.</span> <span class="toc-text">微服务的优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微服务的缺点"><span class="toc-number">3.2.</span> <span class="toc-text">微服务的缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务与SOA对比"><span class="toc-number">4.</span> <span class="toc-text">微服务与SOA对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务拆分"><span class="toc-number">5.</span> <span class="toc-text">微服务拆分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务组件"><span class="toc-number">6.</span> <span class="toc-text">微服务组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务架构的技术选型"><span class="toc-number">7.</span> <span class="toc-text">微服务架构的技术选型</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

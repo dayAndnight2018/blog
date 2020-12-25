@@ -1,0 +1,667 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>spring02 绑定Bean | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="如何注册Bean？ 在XML中进行显式配置：通过xml配置文件注册Bean  在Java中进行显式配置：通过java配置类注册Bean  隐式的bean发现机制和自动装配：让spring自己去扫描（配合注解使用）   发现机制发现机制就是Bean扫描机制  我们先来创建一个接口，表示CD:     然后给出一种实现：    我们把这个类进行了@Component标记，这就告诉spring，他就是一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring02 绑定Bean">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="如何注册Bean？ 在XML中进行显式配置：通过xml配置文件注册Bean  在Java中进行显式配置：通过java配置类注册Bean  隐式的bean发现机制和自动装配：让spring自己去扫描（配合注解使用）   发现机制发现机制就是Bean扫描机制  我们先来创建一个接口，表示CD:     然后给出一种实现：    我们把这个类进行了@Component标记，这就告诉spring，他就是一">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/e39447f3-9cca-4593-8593-bbeee49a23bc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/da0f5453-79e7-4967-a951-8dd33f04a2e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/2cd29d83-a440-47f9-a5c0-7e928186ccbf.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/33301175-60c4-4673-9428-d1580b8f879f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/ffc361e3-207b-40f8-80eb-c48dcd4c83d2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/ca29213c-8984-48e5-87c8-4e01df9a1fd6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/87401b8f-b9b1-4630-a212-1c9e86742905.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/72142139-13cf-44a2-9946-fcd4f8a2c9d7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/6e61e103-65e3-465a-a13d-330e8f4a20fe.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/427890fa-d2f8-41f2-afe5-4a8aeed89607.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/f28d709b-318d-4c74-953a-d1ec0428f10e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/f05ee1d2-650b-4a03-963b-24fdc2cd1bbc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/c599fc95-f151-4230-b187-8ea329f8c587.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/fbc1c386-9d7c-4ea6-9ad9-d888da574ff7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/6a345622-5f96-4394-b310-0577f42dc8b8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/71fb6444-e252-4147-af00-1de36cb12bc3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/6fb32f7b-768c-48a9-b2d8-e894cf70c056.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/697b11a9-e120-45c8-bbab-2b9830f388e1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/a734495d-75e5-409a-9107-846bedbba5a2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/039e9d21-58b9-40d6-a8e9-1a8bc723a469.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/99bba038-b1c6-45e5-8e3c-1b6320f196af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/e110e2a9-bf05-4a62-8288-60d87011f284.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/9a5c8931-dc73-4434-a8de-d7e37fa14886.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/fa1ca96b-1413-4d6b-a66e-e2cb8da932af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/d5a8079d-a020-461b-aa31-09edb39f49e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/81d97000-1fd0-4e40-a526-39e64884ca79.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/323bfc05-8cf1-456d-bde0-160d754cee36.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/e85bb101-f274-4d57-a575-e0228b55ee61.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/d9bc320c-6f2e-4605-9f92-3cbdbb12bc4a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/bd6e8b08-5593-4bee-b4bb-6926da59695c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/1af814d4-ea1f-4dd5-88b8-0ef7108b0cde.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/3775de2c-ed5e-41d6-8fc7-cf8f60b5f99c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/b72a97a6-a5b2-412a-838c-bf6a4567af60.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/80f6ddb2-f622-458f-9b7f-da43ca7b5fa0.jpg">
+<meta property="article:published_time" content="2020-03-01T07:28:39.000Z">
+<meta property="article:modified_time" content="2020-06-15T14:16:47.668Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/e39447f3-9cca-4593-8593-bbeee49a23bc.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/03/01/spring02-Wiring-beans/" title="spring02 绑定Bean" itemprop="url">spring02 绑定Bean</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-03-01T07:28:39.000Z" itemprop="datePublished"> Published 2020-03-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="如何注册Bean？"><a href="#如何注册Bean？" class="headerlink" title="如何注册Bean？"></a>如何注册Bean？</h2><ol>
+<li><p>在XML中进行显式配置：通过xml配置文件注册Bean</p>
+</li>
+<li><p>在Java中进行显式配置：通过java配置类注册Bean</p>
+</li>
+<li><p>隐式的bean发现机制和自动装配：让spring自己去扫描（配合注解使用）</p>
+</li>
+</ol>
+<h2 id="发现机制"><a href="#发现机制" class="headerlink" title="发现机制"></a>发现机制</h2><p>发现机制就是Bean<code style="background:#ff3385;color:white;padding:5px;">扫描机制</code></p>
+<ol>
+<li>我们先来创建一个接口，表示CD:</li>
+</ol>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/e39447f3-9cca-4593-8593-bbeee49a23bc.jpg">
+
+<ol start="2">
+<li>然后给出一种实现：</li>
+</ol>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/da0f5453-79e7-4967-a951-8dd33f04a2e7.jpg">
+
+<p>我们把这个类进行了<code style="background:#ff3385;color:white;padding:5px;">@Component</code>标记，这就告诉spring，他就是一个Bean</p>
+<ol start="3">
+<li>在相同的包下，我们创建了一个配置类，扫描这个配置类所在的包及所有子包里的Bean。</li>
+</ol>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/2cd29d83-a440-47f9-a5c0-7e928186ccbf.jpg">
+
+<p><code style="background:#ff3385;color:white;padding:5px;">@Configuration</code>表示这是一个配置类</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">@ComponentScan</code>表示开启Bean扫描机制</p>
+<ol start="4">
+<li>然后可以进行测试了：</li>
+</ol>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/33301175-60c4-4673-9428-d1580b8f879f.jpg">
+
+<p>@ContextConfiguration配置了对包扫描范围进行设定的那个配置类。</p>
+<p>@Autowired实现自动绑定。</p>
+<p>为Bean<code style="background:#ff3385;color:white;padding:5px;">设置别名</code>：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/ffc361e3-207b-40f8-80eb-c48dcd4c83d2.jpg">
+
+<p>可以设置<code style="background:#ff3385;color:white;padding:5px;">配置类</code>所在的位置：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/ca29213c-8984-48e5-87c8-4e01df9a1fd6.jpg">
+
+<h2 id="自动装配"><a href="#自动装配" class="headerlink" title="自动装配"></a>自动装配</h2><p>使用<code style="background:#ff3385;color:white;padding:5px;">@Autowired</code>可以实现自动绑定，前面绑定了域，构造器也是可以的：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/87401b8f-b9b1-4630-a212-1c9e86742905.jpg">
+
+<p>setter方法也是可以的：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/72142139-13cf-44a2-9946-fcd4f8a2c9d7.jpg">
+
+<p>但是@Autowired有个缺点，如果Bean找不到，会抛出异常，为了避免，我们可以设置：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/6e61e103-65e3-465a-a13d-330e8f4a20fe.jpg">
+
+<p>设置required=false则说明，我不是非要找到这个Bean,你找不到不用跟我说。但是会带来其他风险，那就是空指针。</p>
+<h2 id="Java-Config"><a href="#Java-Config" class="headerlink" title="Java Config"></a>Java Config</h2><h3 id="创建Bean"><a href="#创建Bean" class="headerlink" title="创建Bean"></a>创建Bean</h3><p>使用<code style="background:#ff3385;color:white;padding:5px;">@Bean</code>注解一个方法，它的返回值就可以作为Bean注册到spring</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/427890fa-d2f8-41f2-afe5-4a8aeed89607.jpg">
+
+<p>默认情况下，这个Bean的名称就是方法名称，我们可以为其重命名：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/f28d709b-318d-4c74-953a-d1ec0428f10e.jpg">
+
+<h3 id="装配Bean"><a href="#装配Bean" class="headerlink" title="装配Bean"></a>装配Bean</h3><p>可以通过<code style="background:#ff3385;color:white;padding:5px;">构造器</code>实现装配：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/f05ee1d2-650b-4a03-963b-24fdc2cd1bbc.jpg">
+
+<p>也可以通过<code style="background:#ff3385;color:white;padding:5px;">参数</code>注入：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/c599fc95-f151-4230-b187-8ea329f8c587.jpg">
+
+<p>使用<code style="background:#ff3385;color:white;padding:5px;">setter方法</code>注入：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/fbc1c386-9d7c-4ea6-9ad9-d888da574ff7.jpg">
+
+<h2 id="使用xml文件配置Bean"><a href="#使用xml文件配置Bean" class="headerlink" title="使用xml文件配置Bean"></a>使用xml文件配置Bean</h2><h3 id="Bean文件规范"><a href="#Bean文件规范" class="headerlink" title="Bean文件规范"></a>Bean文件规范</h3><img src="/blog/2020/03/01/spring02-Wiring-beans/6a345622-5f96-4394-b310-0577f42dc8b8.jpg">
+
+<h3 id="创建一个Bean"><a href="#创建一个Bean" class="headerlink" title="创建一个Bean"></a>创建一个Bean</h3><img src="/blog/2020/03/01/spring02-Wiring-beans/71fb6444-e252-4147-af00-1de36cb12bc3.jpg">
+
+<p>通过Bean标签创建一个Bean,class是Bean的<code style="background:#ff3385;color:white;padding:5px;">全限定名称</code>，用来唯一获得Bean的位置</p>
+<p>可以为Bean设置一个<code style="background:#ff3385;color:white;padding:5px;">名称</code>：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/6fb32f7b-768c-48a9-b2d8-e894cf70c056.jpg">
+
+<p>id表示Bean的名称</p>
+<h3 id="使用构造器注入"><a href="#使用构造器注入" class="headerlink" title="使用构造器注入"></a>使用构造器注入</h3><p>使用<constructor-arg>构造器注入：</constructor-arg></p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/697b11a9-e120-45c8-bbab-2b9830f388e1.jpg">
+
+<p>ref是引用的其他Bean(通过id名称)</p>
+<h3 id="使用构造器注入字面值"><a href="#使用构造器注入字面值" class="headerlink" title="使用构造器注入字面值"></a>使用构造器注入字面值</h3><p>假如存在这样的Bean,怎么注入值呢？</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/a734495d-75e5-409a-9107-846bedbba5a2.jpg">
+
+<p>使用<constructor-arg>的value字段设置字面值：</constructor-arg></p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/039e9d21-58b9-40d6-a8e9-1a8bc723a469.jpg">
+
+<h3 id="使用构造器注入集合"><a href="#使用构造器注入集合" class="headerlink" title="使用构造器注入集合"></a>使用构造器注入集合</h3><p>对于List这样的集合呢？</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/99bba038-b1c6-45e5-8e3c-1b6320f196af.jpg">
+
+<p>可以注入null</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/e110e2a9-bf05-4a62-8288-60d87011f284.jpg">
+
+<p>可以注入值：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/9a5c8931-dc73-4434-a8de-d7e37fa14886.jpg">
+
+<p>使用标签实现List集合的字面值注入</p>
+<p>如果是对象，可以引用已经存在的Bean：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/fa1ca96b-1413-4d6b-a66e-e2cb8da932af.jpg">
+
+<p>对Set来说，用法类似，但是不允许重复：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/d5a8079d-a020-461b-aa31-09edb39f49e7.jpg">
+
+<h3 id="通过setter方法注入"><a href="#通过setter方法注入" class="headerlink" title="通过setter方法注入"></a>通过setter方法注入</h3><p>通过property标签实现setter方法注入：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/81d97000-1fd0-4e40-a526-39e64884ca79.jpg">
+
+<p>name指的是域的名称，ref是引用的已存在的Bean，字面值也可以使用value</p>
+<p>注入字面值或集合的方法与构造器注入类似：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/323bfc05-8cf1-456d-bde0-160d754cee36.jpg">
+
+<h2 id="在Java-Config中加载Java-Config"><a href="#在Java-Config中加载Java-Config" class="headerlink" title="在Java Config中加载Java Config"></a>在Java Config中加载Java Config</h2><p>假设我们分离了这个配置：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/e85bb101-f274-4d57-a575-e0228b55ee61.jpg">
+
+<p>因为在另外一个Java Config类中用到了这个Bean,所以要使用@Import引入这个Bean</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/d9bc320c-6f2e-4605-9f92-3cbdbb12bc4a.jpg">
+
+<p>另外一种高级做法就是将两个配置类再另外一层高级配置类引入到一起：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/bd6e8b08-5593-4bee-b4bb-6926da59695c.jpg">
+
+<h2 id="在Java-Config中加载xml"><a href="#在Java-Config中加载xml" class="headerlink" title="在Java Config中加载xml"></a>在Java Config中加载xml</h2><img src="/blog/2020/03/01/spring02-Wiring-beans/1af814d4-ea1f-4dd5-88b8-0ef7108b0cde.jpg">
+
+<p>@ImportResource用于加载指定的xml配置文件，将Bean引入。</p>
+<h2 id="在XML配置中引用JavaConfig"><a href="#在XML配置中引用JavaConfig" class="headerlink" title="在XML配置中引用JavaConfig"></a>在XML配置中引用JavaConfig</h2><p>在xml文件中，通过Bean的方式引入javaConfig所配置的Bean</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/3775de2c-ed5e-41d6-8fc7-cf8f60b5f99c.jpg">
+
+<p>对于引用其他xml，可以通过import标签引入：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/b72a97a6-a5b2-412a-838c-bf6a4567af60.jpg">
+
+<h2 id="通过xml开启扫描"><a href="#通过xml开启扫描" class="headerlink" title="通过xml开启扫描"></a>通过xml开启扫描</h2><img src="/blog/2020/03/01/spring02-Wiring-beans/80f6ddb2-f622-458f-9b7f-da43ca7b5fa0.jpg">
+
+<p>使用component-scan开启扫描</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring/">spring</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/" data-title="spring02 绑定Bean | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/03/01/spring03-Advanced-wiring/" title="spring03 Bean高级装配">
+  <strong>上一篇：</strong><br/>
+  <span>
+  spring03 Bean高级装配</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/03/01/spring01-introduction/"  title="spring01 简介">
+ <strong>下一篇：</strong><br/> 
+ <span>spring01 简介
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何注册Bean？"><span class="toc-number">1.</span> <span class="toc-text">如何注册Bean？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发现机制"><span class="toc-number">2.</span> <span class="toc-text">发现机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动装配"><span class="toc-number">3.</span> <span class="toc-text">自动装配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-Config"><span class="toc-number">4.</span> <span class="toc-text">Java Config</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建Bean"><span class="toc-number">4.1.</span> <span class="toc-text">创建Bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#装配Bean"><span class="toc-number">4.2.</span> <span class="toc-text">装配Bean</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用xml文件配置Bean"><span class="toc-number">5.</span> <span class="toc-text">使用xml文件配置Bean</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean文件规范"><span class="toc-number">5.1.</span> <span class="toc-text">Bean文件规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个Bean"><span class="toc-number">5.2.</span> <span class="toc-text">创建一个Bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用构造器注入"><span class="toc-number">5.3.</span> <span class="toc-text">使用构造器注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用构造器注入字面值"><span class="toc-number">5.4.</span> <span class="toc-text">使用构造器注入字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用构造器注入集合"><span class="toc-number">5.5.</span> <span class="toc-text">使用构造器注入集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过setter方法注入"><span class="toc-number">5.6.</span> <span class="toc-text">通过setter方法注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Java-Config中加载Java-Config"><span class="toc-number">6.</span> <span class="toc-text">在Java Config中加载Java Config</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Java-Config中加载xml"><span class="toc-number">7.</span> <span class="toc-text">在Java Config中加载xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在XML配置中引用JavaConfig"><span class="toc-number">8.</span> <span class="toc-text">在XML配置中引用JavaConfig</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过xml开启扫描"><span class="toc-number">9.</span> <span class="toc-text">通过xml开启扫描</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

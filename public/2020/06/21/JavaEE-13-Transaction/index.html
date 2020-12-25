@@ -1,0 +1,613 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>JavaEE-13-Transaction | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="数据库事务管理器事务管理器就是管理数据库事务的工具，对于Mybatis，常用的就是DataSourceTransactionManager xml方式配置  Java配置需要实现TransactionManagerConfigurer接口的annotationDrivenTransactionManager方法，将返回的事务管理器作为项目的事务管理器。   使用@EnableTransaction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaEE-13-Transaction">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/06/21/JavaEE-13-Transaction/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="数据库事务管理器事务管理器就是管理数据库事务的工具，对于Mybatis，常用的就是DataSourceTransactionManager xml方式配置  Java配置需要实现TransactionManagerConfigurer接口的annotationDrivenTransactionManager方法，将返回的事务管理器作为项目的事务管理器。   使用@EnableTransaction">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/a0849b76-18d6-46a0-94fe-fdcaa66c7f3b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/2d6c7c6d-0730-4875-82f4-3c1a34db5fd1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/a8695828-a310-401c-b68b-e99937c65fa0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/18e583cc-b510-4472-8a32-ba32ae06f2da.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/69368772-4cf0-4245-a8a3-bab6c9ad39a1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/45cf8122-ade3-4821-8952-e123b67f5586.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/5d5892f6-1440-44c1-94fc-9901c52bdfd6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/1ab2f8b7-9c6d-42fd-9470-d937305f115c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/7a656cc0-a18f-4f7c-b7bb-e0d607542815.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/f69d4cde-b4be-4ce8-bda2-eb155a28f7aa.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/897a200f-2334-41f1-ab13-2acc0cdc3ea6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/88fd81f4-97f8-4f16-9c8e-4fa30f0ac466.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/10f7055c-fcb2-4384-afc1-502bb3ce7b4b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/956bf458-1520-478f-9305-86444ff140df.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/2c9cdf74-c8f8-4113-93fb-f16a78c9c75d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/c8b31f9d-b744-4e06-a905-5e268a430552.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/0ed66cd8-52cd-47b4-b728-2d9ee1daaade.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/bbf9489e-e3db-4587-b48c-9872429f2110.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/a8c5c8e7-4082-4d85-bc0d-41fe3e9f89da.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/94fcf187-0ba4-406a-98e7-066aa31e17a8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/a15d2b03-fd5a-470a-ac92-83ac5603aa88.jpg">
+<meta property="article:published_time" content="2020-06-21T14:03:07.000Z">
+<meta property="article:modified_time" content="2020-06-22T11:48:33.340Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="JavaEE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/06/21/JavaEE-13-Transaction/a0849b76-18d6-46a0-94fe-fdcaa66c7f3b.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/21/JavaEE-13-Transaction/" title="JavaEE-13-Transaction" itemprop="url">JavaEE-13-Transaction</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-21T14:03:07.000Z" itemprop="datePublished"> Published 2020-06-21</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="数据库事务管理器"><a href="#数据库事务管理器" class="headerlink" title="数据库事务管理器"></a>数据库事务管理器</h2><p>事务管理器就是管理数据库事务的工具，对于Mybatis，常用的就是DataSourceTransactionManager</p>
+<h3 id="xml方式配置"><a href="#xml方式配置" class="headerlink" title="xml方式配置"></a>xml方式配置</h3><img src="/blog/2020/06/21/JavaEE-13-Transaction/a0849b76-18d6-46a0-94fe-fdcaa66c7f3b.jpg">
+
+<h3 id="Java配置"><a href="#Java配置" class="headerlink" title="Java配置"></a>Java配置</h3><p>需要实现TransactionManagerConfigurer接口的annotationDrivenTransactionManager方法，将返回的事务管理器作为项目的事务管理器。</p>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/2d6c7c6d-0730-4875-82f4-3c1a34db5fd1.jpg">
+
+<p>使用@EnableTransactionManagement表示遇到@Transactional时，使用本事务管理器管理事务。</p>
+<p>重写annotationDrivenTransactionManager方法：</p>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/a8695828-a310-401c-b68b-e99937c65fa0.jpg">
+
+<h2 id="事务类型"><a href="#事务类型" class="headerlink" title="事务类型"></a>事务类型</h2><ol>
+<li><p>编程式事务</p>
+</li>
+<li><p>声明式事务</p>
+</li>
+</ol>
+<h2 id="编程式事务"><a href="#编程式事务" class="headerlink" title="编程式事务"></a>编程式事务</h2><img src="/blog/2020/06/21/JavaEE-13-Transaction/18e583cc-b510-4472-8a32-ba32ae06f2da.jpg">
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/69368772-4cf0-4245-a8a3-bab6c9ad39a1.jpg">
+
+<p>通过TransactionDefinition定义一个事务，采用transactionManager获取一个TransactionStatus状态对象，对状态进行提交或回滚。</p>
+<p>编程式事务完全靠代码手动控制提交，回滚。</p>
+<h2 id="声明式事务"><a href="#声明式事务" class="headerlink" title="声明式事务"></a>声明式事务</h2><h3 id="Transactional选项"><a href="#Transactional选项" class="headerlink" title="@Transactional选项"></a>@Transactional选项</h3><img src="/blog/2020/06/21/JavaEE-13-Transaction/45cf8122-ade3-4821-8952-e123b67f5586.jpg">
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/5d5892f6-1440-44c1-94fc-9901c52bdfd6.jpg">
+
+<h3 id="开启注解驱动"><a href="#开启注解驱动" class="headerlink" title="开启注解驱动"></a>开启注解驱动</h3><img src="/blog/2020/06/21/JavaEE-13-Transaction/1ab2f8b7-9c6d-42fd-9470-d937305f115c.jpg">
+
+<h2 id="数据库隔离级别的选择"><a href="#数据库隔离级别的选择" class="headerlink" title="数据库隔离级别的选择"></a>数据库隔离级别的选择</h2><img src="/blog/2020/06/21/JavaEE-13-Transaction/7a656cc0-a18f-4f7c-b7bb-e0d607542815.jpg">
+
+<p>对高并发场景一般采用读已提交级别，并发小的场景可采用序列化级别。</p>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/f69d4cde-b4be-4ce8-bda2-eb155a28f7aa.jpg">
+
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/897a200f-2334-41f1-ab13-2acc0cdc3ea6.jpg">
+
+<h2 id="传播行为"><a href="#传播行为" class="headerlink" title="传播行为"></a>传播行为</h2><h3 id="什么是传播行为？"><a href="#什么是传播行为？" class="headerlink" title="什么是传播行为？"></a>什么是传播行为？</h3><p>不同服务层方法调用时，事务的传递性原则称为事物的隔离级别。</p>
+<p>例如：</p>
+<p>PayBatchService批量支付服务，他需要循环调用PayService进行支付，正常来说，这个过程中，有一次支付失败，将回滚到第一个支付行为，不管前面已经支付成功。这样造成效率低的问题。我们希望：只回滚本次事务。</p>
+<p>通过设置传播行为，可以解决回滚的粒度问题。</p>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/88fd81f4-97f8-4f16-9c8e-4fa30f0ac466.jpg">
+
+<h3 id="几种传播行为"><a href="#几种传播行为" class="headerlink" title="几种传播行为"></a>几种传播行为</h3><img src="/blog/2020/06/21/JavaEE-13-Transaction/10f7055c-fcb2-4384-afc1-502bb3ce7b4b.jpg">
+
+<h2 id="在SSM中使用事务"><a href="#在SSM中使用事务" class="headerlink" title="在SSM中使用事务"></a>在SSM中使用事务</h2><ol>
+<li>开启注解驱动、开启包扫描，配置数据源</li>
+</ol>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/956bf458-1520-478f-9305-86444ff140df.jpg">
+
+<ol start="2">
+<li>配置SqlSessionBeanFactory</li>
+</ol>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/2c9cdf74-c8f8-4113-93fb-f16a78c9c75d.jpg">
+
+<ol start="3">
+<li>配置事务管理器</li>
+</ol>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/c8b31f9d-b744-4e06-a905-5e268a430552.jpg">
+
+<ol start="4">
+<li>配置注解驱动事务</li>
+</ol>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/0ed66cd8-52cd-47b4-b728-2d9ee1daaade.jpg">
+
+<ol start="5">
+<li>配置Mapper扫描机制</li>
+</ol>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/bbf9489e-e3db-4587-b48c-9872429f2110.jpg">
+
+<ol start="6">
+<li>事务使用</li>
+</ol>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/a8c5c8e7-4082-4d85-bc0d-41fe3e9f89da.jpg">
+
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/94fcf187-0ba4-406a-98e7-066aa31e17a8.jpg">
+
+<p>PayBatchService使用Requierd，PayService使用Requires_new传播</p>
+<h2 id="自调用失效问题"><a href="#自调用失效问题" class="headerlink" title="自调用失效问题"></a>自调用失效问题</h2><p>对静态、非public方法@Transactional失效</p>
+<p>刚才的例子是不同的服务之间调用，事务传播行为有效，如果PayBatchService与PayService在相同类中，就会失效。因为基于动态代理实现的，相同类不会产生新的代理对象。</p>
+<p>可以通过手动获取代理对象解决：</p>
+<img src="/blog/2020/06/21/JavaEE-13-Transaction/a15d2b03-fd5a-470a-ac92-83ac5603aa88.jpg">
+
+
+
+
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/06/21/JavaEE-13-Transaction/" data-title="JavaEE-13-Transaction | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/06/22/JavaEE-17-Redis-introduction/" title="JavaEE-17-Redis-introduction">
+  <strong>上一篇：</strong><br/>
+  <span>
+  JavaEE-17-Redis-introduction</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/06/21/JavaEE-12-Spring-DB/"  title="JavaEE-12-Spring-DB">
+ <strong>下一篇：</strong><br/> 
+ <span>JavaEE-12-Spring-DB
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库事务管理器"><span class="toc-number">1.</span> <span class="toc-text">数据库事务管理器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xml方式配置"><span class="toc-number">1.1.</span> <span class="toc-text">xml方式配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java配置"><span class="toc-number">1.2.</span> <span class="toc-text">Java配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务类型"><span class="toc-number">2.</span> <span class="toc-text">事务类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编程式事务"><span class="toc-number">3.</span> <span class="toc-text">编程式事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#声明式事务"><span class="toc-number">4.</span> <span class="toc-text">声明式事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Transactional选项"><span class="toc-number">4.1.</span> <span class="toc-text">@Transactional选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启注解驱动"><span class="toc-number">4.2.</span> <span class="toc-text">开启注解驱动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库隔离级别的选择"><span class="toc-number">5.</span> <span class="toc-text">数据库隔离级别的选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传播行为"><span class="toc-number">6.</span> <span class="toc-text">传播行为</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是传播行为？"><span class="toc-number">6.1.</span> <span class="toc-text">什么是传播行为？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种传播行为"><span class="toc-number">6.2.</span> <span class="toc-text">几种传播行为</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在SSM中使用事务"><span class="toc-number">7.</span> <span class="toc-text">在SSM中使用事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自调用失效问题"><span class="toc-number">8.</span> <span class="toc-text">自调用失效问题</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,836 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>crazySSM02-常见的注解 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="常用注解一览表 &amp;nbsp; &amp;nbsp;&amp;nbsp; 注解 &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; 含义 &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; @Controller &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; 表示一个控制器类 &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; @RequestMappi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="crazySSM02-常见的注解">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/04/19/crazySSM02-commonAnnotations/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="常用注解一览表 &amp;nbsp; &amp;nbsp;&amp;nbsp; 注解 &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; 含义 &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; @Controller &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; 表示一个控制器类 &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; @RequestMappi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/d9d2bc44-9716-4b2e-b2b7-c01a9959850d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/79f8e9d8-ca69-408a-9c27-f88007f8430c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/428017a0-ab1a-48ef-959b-e8dbabfce4bb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/540081f8-f95d-41ca-baee-39a96b273dd1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/c89d1706-b6c8-45ef-af84-8c9e1f205dbf.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/bcfda4e0-dc67-4635-a51c-1b51ef0957f3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/b7e973bd-8146-43bb-a572-6b2ea3aa4c70.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/a27b9aaf-0a54-4dc4-b66e-6d7f703e4f1b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/b01588d3-146a-4224-b484-8fd282a408ce.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/f07acd6f-85f7-4984-a2ab-89bf200ab44c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/a339adbf-6bd9-44eb-bb69-0210a572f0bd.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/5c93418c-0ef6-4f12-9155-2d8fc8cbfc22.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/06107059-8ce9-4967-90e0-ed1ca8e52b75.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/e312466e-11d6-48c6-a334-2c7f6a0ca871.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/037ec880-93e7-4199-ad98-1fd3ab64e9c1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/3198ee3e-cf0b-47a9-ac5d-d5923e44471d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/40b1bab1-8e8e-4b83-a37e-58a7fd2a8f69.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/012e01ee-df26-4101-a8ed-bf82990a068a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/903d32ef-6642-42b3-bc91-9e15105efd85.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/c94e5dc0-f58e-4a8c-ab27-42ca03145adc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/49a363cb-3d39-483a-8b95-c818d38cd275.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/b48b165a-92b2-4bf4-bbb6-45f440a035d5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/cb150eac-b5e5-4e3d-89f5-a5fd8361e995.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/7a4a06a4-0717-4047-a44b-eb95ff381609.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/e7a9749f-66cb-48f1-b91b-73ca245eeadf.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/70efc4b2-c635-4008-9e01-665ee33fcbf6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/37b69493-974b-485d-a5f4-473a33b3b397.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/b339b2bb-4163-42ab-a8a8-5d65a07d3357.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/f3853c2c-eb28-4f78-b265-d5b81d8a9bd7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/374e062f-e152-4b03-95a2-360ae1ec6962.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/86255635-65a9-4f34-ab37-fc2689fd08fb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/6c5a63ca-0e08-4d13-bc59-5e3208b8093d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/b1c61209-cc16-4fef-8b0d-f63947c25713.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/472826a1-d0be-4758-9485-9692aaea3210.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/e6cc6d4a-b070-4272-a713-5028260e1c75.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/8e6c873d-1176-4678-99cc-5fbf02466fe8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/4fd7eb09-fde2-4fe3-839e-50fa69c3f502.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/8378db7a-0e24-4c9d-8a5d-6af66785c839.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/41595368-75c9-4e1c-9a1c-59a00803ce99.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/44ac34bc-ca49-429b-bb6b-3762292e68fa.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/25b4e7b2-c1b9-4f02-88ad-2b6c3628a7b3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/b2c1ba05-1978-4763-a945-003176b07161.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/7b388e9e-ac4d-422e-a649-e051e4502279.jpg">
+<meta property="article:published_time" content="2020-04-19T12:47:21.000Z">
+<meta property="article:modified_time" content="2020-06-04T13:35:34.024Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="SSM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/04/19/crazySSM02-commonAnnotations/d9d2bc44-9716-4b2e-b2b7-c01a9959850d.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">首页</a></li>
+					
+						<li><a href="/blog/archives/">博客</a></li>
+					
+						<li><a href="/blog/tags/">标签</a></li>
+					
+						<li><a href="/blog/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/04/19/crazySSM02-commonAnnotations/" title="crazySSM02-常见的注解" itemprop="url">crazySSM02-常见的注解</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-04-19T12:47:21.000Z" itemprop="datePublished"> Published 2020-04-19</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="常用注解一览表"><a href="#常用注解一览表" class="headerlink" title="常用注解一览表"></a>常用注解一览表</h2><table cellpadding="8" border="1" style="background:#EAF2D3;text-align:center">
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+注解
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+含义
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+@Controller
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+表示一个控制器类
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+@RequestMapping
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+对动作方法的规定，包括路由、参数、动作类型、格式等
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+@RequestParam
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+用于获取请求url中的query参数
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+@PathVariable
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+请求路径对应的参数
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+@RequestHeader
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+对请求头的参数进行映射获取
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+@CookieValue
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+对请求中的cookie进行获取
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+@SessionAttributes
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+将Model中指定的数据存储到session中
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+@ModelAttribute
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+将数据优先绑定到Model，或提取Model中的数据使用
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+@RequestBody
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+将json字符串解析为pojo
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+&nbsp;<tr>
+&nbsp;&nbsp;<td>
+@ResponseBody
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+将返回值序列化为json返回
+&nbsp;&nbsp;</td>
+&nbsp;</tr>
+</table>
+
+
+
+<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><p>控制器注解表明本类是一个控制器，当开启了自动扫描时，使用该注解的类被认定为Bean。</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/d9d2bc44-9716-4b2e-b2b7-c01a9959850d.jpg">
+
+<p>使用示例：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/79f8e9d8-ca69-408a-9c27-f88007f8430c.jpg">
+
+<p>这里返回类型由ModelAndView改为String，用来表示返回的字符串即视图模板的名称。方法参数Model要求框架生成Model对象传递进来。方法返回的只是模板名称，需要在springmvc-config.xml中配置模板处理器：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/428017a0-ab1a-48ef-959b-e8dbabfce4bb.jpg">
+
+<h3 id="我的学习"><a href="#我的学习" class="headerlink" title="我的学习"></a>我的学习</h3><ol>
+<li>修改springmvc-config.xml配置文件：</li>
+</ol>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/540081f8-f95d-41ca-baee-39a96b273dd1.jpg">
+
+<ol start="2">
+<li>修改控制器源码</li>
+</ol>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/c89d1706-b6c8-45ef-af84-8c9e1f205dbf.jpg">
+
+<ol start="3">
+<li>效果</li>
+</ol>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/bcfda4e0-dc67-4635-a51c-1b51ef0957f3.jpg">
+
+<h2 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="RequestMapping"></a>RequestMapping</h2><p>可以对类进行注解，表示本类内所有的方法的前缀：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/b7e973bd-8146-43bb-a572-6b2ea3aa4c70.jpg">
+
+<p>常用的属性：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/a27b9aaf-0a54-4dc4-b66e-6d7f703e4f1b.jpg">
+
+<p><code style="background:#ff3385;color:white;padding:5px;">value</code>即路由，可指定路由地址</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/b01588d3-146a-4224-b484-8fd282a408ce.jpg">
+
+<p><code style="background:#ff3385;color:white;padding:5px;">name</code>即别名</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">method</code>表示映射的方法类型，没有则默认支持任何方法</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/f07acd6f-85f7-4984-a2ab-89bf200ab44c.jpg">
+
+<p><code style="background:#ff3385;color:white;padding:5px;">consumes</code>表示支持的数据类型</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/a339adbf-6bd9-44eb-bb69-0210a572f0bd.jpg">
+
+<p><code style="background:#ff3385;color:white;padding:5px;">produces</code>表示返回的数据类型</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/5c93418c-0ef6-4f12-9155-2d8fc8cbfc22.jpg">
+
+<p><code style="background:#ff3385;color:white;padding:5px;">params</code>含有指定参数才可以处理</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/06107059-8ce9-4967-90e0-ed1ca8e52b75.jpg">
+
+<p><code style="background:#ff3385;color:white;padding:5px;">headers</code>含有指定header才可以处理</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/e312466e-11d6-48c6-a334-2c7f6a0ca871.jpg">
+
+<h3 id="Action方法可以出现的参数类型"><a href="#Action方法可以出现的参数类型" class="headerlink" title="Action方法可以出现的参数类型"></a>Action方法可以出现的参数类型</h3><ol>
+<li>HttpServletRequest</li>
+</ol>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/037ec880-93e7-4199-ad98-1fd3ab64e9c1.jpg">
+
+<ol start="2">
+<li>HttpSession</li>
+</ol>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/3198ee3e-cf0b-47a9-ac5d-d5923e44471d.jpg">
+
+<ol start="3">
+<li>其他</li>
+</ol>
+<p>HttpServletResponse</p>
+<p>WebRequest</p>
+<p>NativeWebRequest</p>
+<p>Locale</p>
+<p>InputStream / OutputStream</p>
+<p>Reader / Writer</p>
+<p>Principal</p>
+<p>HttpEntity&lt;?&gt;</p>
+<p>Map</p>
+<p>Model</p>
+<p>ModelMap</p>
+<p>RedirectAttrbutes</p>
+<p>Errors</p>
+<p>BindingResult</p>
+<p>SessionStatus</p>
+<p>UriComponentsBuilder</p>
+<p>@PathVariable</p>
+<p>@MatrixVariable</p>
+<p>@RequestParam</p>
+<p>@RequestHeader</p>
+<p>@RequestBody</p>
+<p>@RequestPart</p>
+<h3 id="Action方法可以出现的返回值类型"><a href="#Action方法可以出现的返回值类型" class="headerlink" title="Action方法可以出现的返回值类型"></a>Action方法可以出现的返回值类型</h3><p>Model</p>
+<p>ModelAndView</p>
+<p>Map&lt;k,v&gt;</p>
+<p>View</p>
+<p>String </p>
+<p>HttpEntity / ResponseEntity</p>
+<p>Callable</p>
+<p>DeferredResult</p>
+<p>void</p>
+<h3 id="数据从控制器传递到视图的方式"><a href="#数据从控制器传递到视图的方式" class="headerlink" title="数据从控制器传递到视图的方式"></a>数据从控制器传递到视图的方式</h3><p>Model</p>
+<p>ModelMap</p>
+<p>ModelAndView</p>
+<p>@SessionAttributes</p>
+<p>@ModelAttribute</p>
+<h3 id="Model-与-ModelMap"><a href="#Model-与-ModelMap" class="headerlink" title="Model 与 ModelMap"></a>Model 与 ModelMap</h3><p>Model 与 ModelMap均可以传递数据，区别在于ModelMap实现了Map接口：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/40b1bab1-8e8e-4b83-a37e-58a7fd2a8f69.jpg">
+
+<p>使用Model:</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/012e01ee-df26-4101-a8ed-bf82990a068a.jpg">
+
+<p>使用ModelMap:</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/903d32ef-6642-42b3-bc91-9e15105efd85.jpg">
+
+<h3 id="ModelAndView"><a href="#ModelAndView" class="headerlink" title="ModelAndView"></a>ModelAndView</h3><p>可以添加数据：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/c94e5dc0-f58e-4a8c-ab27-42ca03145adc.jpg">
+
+<p>可以设置视图：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/49a363cb-3d39-483a-8b95-c818d38cd275.jpg">
+
+<p>使用示例：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/b48b165a-92b2-4bf4-bbb6-45f440a035d5.jpg">
+
+<h2 id="RequestParam"><a href="#RequestParam" class="headerlink" title="RequestParam"></a>RequestParam</h2><p>用来获取请求url中的参数：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/cb150eac-b5e5-4e3d-89f5-a5fd8361e995.jpg">
+
+<p>对应请求地址：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/7a4a06a4-0717-4047-a44b-eb95ff381609.jpg">
+
+<p>常用的属性：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/e7a9749f-66cb-48f1-b91b-73ca245eeadf.jpg">
+
+<p>name / value 对应参数名称</p>
+<p>required表示是否为可选参数</p>
+<p>defaultValue表示默认值</p>
+<p>示例：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/70efc4b2-c635-4008-9e01-665ee33fcbf6.jpg">
+
+<h2 id="PathVariable"><a href="#PathVariable" class="headerlink" title="PathVariable"></a>PathVariable</h2><img src="/blog/2020/04/19/crazySSM02-commonAnnotations/37b69493-974b-485d-a5f4-473a33b3b397.jpg">
+
+<p>对路由参数进行绑定，默认匹配同名参数：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/b339b2bb-4163-42ab-a8a8-5d65a07d3357.jpg">
+
+<p>将1绑定给userId</p>
+<h2 id="RequestHeader"><a href="#RequestHeader" class="headerlink" title="RequestHeader"></a>RequestHeader</h2><p>对请求头的参数进行绑定</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/f3853c2c-eb28-4f78-b265-d5b81d8a9bd7.jpg">
+
+<p>获取指定的请求头：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/374e062f-e152-4b03-95a2-360ae1ec6962.jpg">
+
+<h2 id="CookieValue"><a href="#CookieValue" class="headerlink" title="CookieValue"></a>CookieValue</h2><p>获取指定的cookie:</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/86255635-65a9-4f34-ab37-fc2689fd08fb.jpg">
+
+<p>获取jsessionid：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/6c5a63ca-0e08-4d13-bc59-5e3208b8093d.jpg">
+
+<h2 id="SessionAttributes"><a href="#SessionAttributes" class="headerlink" title="SessionAttributes"></a>SessionAttributes</h2><p>把Model中指定的参数传入session:</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/b1c61209-cc16-4fef-8b0d-f63947c25713.jpg">
+
+<p>只可以对类修饰。</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/472826a1-d0be-4758-9485-9692aaea3210.jpg">
+
+<p>将Model中追加的user加入到session</p>
+<p>也可以指定类型：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/e6cc6d4a-b070-4272-a713-5028260e1c75.jpg">
+
+<h2 id="ModelAttribute"><a href="#ModelAttribute" class="headerlink" title="ModelAttribute"></a>ModelAttribute</h2><ol>
+<li>将方法返回值添加到Model</li>
+</ol>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/8e6c873d-1176-4678-99cc-5fbf02466fe8.jpg">
+
+<ol start="2">
+<li>优先执行的方法，将数据注入到Model</li>
+</ol>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/4fd7eb09-fde2-4fe3-839e-50fa69c3f502.jpg">
+
+<ol start="3">
+<li>优先执行，根据返回类型确定Model的键, 值为返回值</li>
+</ol>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/8378db7a-0e24-4c9d-8a5d-6af66785c839.jpg">
+
+<ol start="4">
+<li>被RequestMapping和ModelAttribute同时给注解</li>
+</ol>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/41595368-75c9-4e1c-9a1c-59a00803ce99.jpg">
+
+<p>默认添加指定的Model参数，ModelAttribute的value为键，返回值即值。<br>Request Mapping指定的链接即视图名称，也就是/login4</p>
+<ol start="5">
+<li>使用ModelAttribute作为参数注解，会将Model中的数据注入到方法</li>
+</ol>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/44ac34bc-ca49-429b-bb6b-3762292e68fa.jpg">
+
+<h2 id="RequestBody与ResponseBody"><a href="#RequestBody与ResponseBody" class="headerlink" title="RequestBody与ResponseBody"></a>RequestBody与ResponseBody</h2><p>RequestBody用于注解参数，将json绑定到参数</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/25b4e7b2-c1b9-4f02-88ad-2b6c3628a7b3.jpg">
+
+<p>使用ObjectMapper的writeValueAsString转为字符串:</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/b2c1ba05-1978-4763-a945-003176b07161.jpg">
+
+<p>返回json使用ResponseBody注解方法即可：</p>
+<img src="/blog/2020/04/19/crazySSM02-commonAnnotations/7b388e9e-ac4d-422e-a649-e051e4502279.jpg">
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/SSM/">SSM</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/04/19/crazySSM02-commonAnnotations/" data-title="crazySSM02-常见的注解 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/04/23/crazySSM03-mvc-tags/" title="crazySSM03-Spring MVC 常用标签">
+  <strong>上一篇：</strong><br/>
+  <span>
+  crazySSM03-Spring MVC 常用标签</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/04/10/common-links/"  title="常用资源及链接">
+ <strong>下一篇：</strong><br/> 
+ <span>常用资源及链接
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用注解一览表"><span class="toc-number">1.</span> <span class="toc-text">常用注解一览表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Controller"><span class="toc-number">2.</span> <span class="toc-text">Controller</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#我的学习"><span class="toc-number">2.1.</span> <span class="toc-text">我的学习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RequestMapping"><span class="toc-number">3.</span> <span class="toc-text">RequestMapping</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Action方法可以出现的参数类型"><span class="toc-number">3.1.</span> <span class="toc-text">Action方法可以出现的参数类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Action方法可以出现的返回值类型"><span class="toc-number">3.2.</span> <span class="toc-text">Action方法可以出现的返回值类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据从控制器传递到视图的方式"><span class="toc-number">3.3.</span> <span class="toc-text">数据从控制器传递到视图的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Model-与-ModelMap"><span class="toc-number">3.4.</span> <span class="toc-text">Model 与 ModelMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ModelAndView"><span class="toc-number">3.5.</span> <span class="toc-text">ModelAndView</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RequestParam"><span class="toc-number">4.</span> <span class="toc-text">RequestParam</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PathVariable"><span class="toc-number">5.</span> <span class="toc-text">PathVariable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RequestHeader"><span class="toc-number">6.</span> <span class="toc-text">RequestHeader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CookieValue"><span class="toc-number">7.</span> <span class="toc-text">CookieValue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SessionAttributes"><span class="toc-number">8.</span> <span class="toc-text">SessionAttributes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ModelAttribute"><span class="toc-number">9.</span> <span class="toc-text">ModelAttribute</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RequestBody与ResponseBody"><span class="toc-number">10.</span> <span class="toc-text">RequestBody与ResponseBody</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="dayAndnight2018" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://blog.csdn.net/Day_and_Night_2017" target="_blank" title="我在CSDN">我在CSDN</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> The most obstacle, is yourself！ <br/>
+			Start, and Stick !</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/dayAndnight2018" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
