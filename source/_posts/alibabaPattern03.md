@@ -8,21 +8,20 @@ tags: alibaba
 
 1. 大括号使用要求：
 
-左大括号左侧<code style='background:#ff3385;color:white;padding:5px;'>不换行</code>，<code style='background:#ff3385;color:white;padding:5px;'>需要</code>有一个空格，左大括号后<code style='background:#ff3385;color:white;padding:5px;'>换行</code>
+左大括号左侧`不换行`，`需要`有一个空格，左大括号后`换行`
+右大括号前`换行`，右大括号后视情况而定，若是终止符号，则换行，若后面仍有else等代码则不换行。
 
-右大括号前<code style='background:#ff3385;color:white;padding:5px;'>换行</code>，右大括号后视情况而定，若是终止符号，则换行，若后面仍有else等代码则不换行。
+2. 左小括号后和右小括号前`不空格`。
 
-2. 左小括号后和右小括号前<code style='background:#ff3385;color:white;padding:5px;'>不空格</code>。
+3. if、for、while、switch、do等保留字与小括号之间`必须`加空格
 
-3. if、for、while、switch、do等保留字与小括号之间<code style='background:#ff3385;color:white;padding:5px;'>必须</code>加空格
+4. 二目及三目运算符左右`需要`加空格
 
-4. 二目及三目运算符左右<code style='background:#ff3385;color:white;padding:5px;'>需要</code>加空格
+5. 采用四个空格进行缩进，`禁止`tab字符
 
-5. 采用四个空格进行缩进，<code style='background:#ff3385;color:white;padding:5px;'>禁止</code>tab字符
+6. 注释的双斜线与注释内容之间`有且仅有`一个空格
 
-6. 注释的双斜线与注释内容之间<code style='background:#ff3385;color:white;padding:5px;'>有且仅有</code>一个空格
-
-7. 单行字符不超过120个字符，超出<code style='background:#ff3385;color:white;padding:5px;'>需要</code>换行：
+7. 单行字符不超过120个字符，超出`需要`换行：
 
 第二行相对第一行缩进4个空格，第三行开始不再缩进。
 
@@ -38,6 +37,6 @@ tags: alibaba
 
 9. 默认使用UTF-8编码方式，换行符使用Unix格式
 
-10. <code style='background:#ff3385;color:white;padding:5px;'>建议</code>单个方法的总行数不要超过80行
+10. `建议`单个方法的总行数不要超过80行
 
 11. 不同逻辑、不同语义、不同业务代码之间插一个空行隔开，提升可读性。

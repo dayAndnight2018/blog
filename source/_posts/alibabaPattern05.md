@@ -8,7 +8,7 @@ tags: alibaba
 
 1. hashcode与equals
 
-只要重写equals，<code style='background:#ff3385;color:white;padding:5px;'>必须</code>重写hashcode
+只要重写equals，`必须` 重写hashcode
 
 使用set存储的类，<code style='background:#ff3385;color:white;padding:5px;'>必须</code>重写hashcode和equals
 

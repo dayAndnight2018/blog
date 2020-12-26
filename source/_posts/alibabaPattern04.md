@@ -6,28 +6,26 @@ tags: alibaba
 
 ## OOP约定
 
-1. 对于静态变量，<code style='background:#ff3385;color:white;padding:5px;'>要求</code>直接使用类名调用
+1. 对于静态变量，`要求`直接使用类名调用
 
-2. 方法重写<code style='background:#ff3385;color:white;padding:5px;'>需要</code>添加@Override注解
+2. 方法重写`需要`添加@Override注解
 
-3. <code style='background:#ff3385;color:white;padding:5px;'>避免使用</code>可变参数和object类型参数接收
+3. `避免使用`可变参数和object类型参数接收
 
-4. 对于被其他地方使用的接口，<code style='background:#ff3385;color:white;padding:5px;'>禁止</code>变更方法签名，如有需要，使用@Deprecated注解注释
+4. 对于被其他地方使用的接口，`禁止`变更方法签名，如有需要，使用@Deprecated注解注释
 
-5. <code style='background:#ff3385;color:white;padding:5px;'>禁止</code>使用过时的类或方法
+5. `禁止`使用过时的类或方法
 
-6. Object的equals方法容易抛出异常，<code style='background:#ff3385;color:white;padding:5px;'>建议</code>使用常量的equals方法
+6. Object的equals方法容易抛出异常，`建议`使用常量的equals方法
 
 <img src='alibabaPattern04\217a6cd3-af60-4ea0-88c3-e2cecf90fdca.jpg' style='margin:30px;display:block' alt='title'>
 
-7. <code style='background:#ff3385;color:white;padding:5px;'>推荐</code>使用equals方法判断包装类对象的值
+7. `推荐`使用equals方法判断包装类对象的值
 
 8. 基本数据类型与包装类：
 
-POJO类的属性，使用<code style='background:#ff3385;color:white;padding:5px;'>包装类型</code>
-
-RPC的方法参数与返回值使用<code style='background:#ff3385;color:white;padding:5px;'>包装类型</code>
-
+POJO类的属性，使用`包装类型`
+RPC的方法参数与返回值使用`包装类型`
 局部变量使用<code style='background:#ff3385;color:white;padding:5px;'>基本数据类型</code>
 
 9. 对于DO、DTO、VO等POJO类，其定义<code style='background:#ff3385;color:white;padding:5px;'>不要设置</code>属性的默认值

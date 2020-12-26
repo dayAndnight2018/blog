@@ -6,13 +6,13 @@ tags: alibaba
 
 ## 常量定义
 
-1. <code style='background:#ff3385;color:white;padding:5px;'>不允许</code>出现魔法值，直接作为常量使用
+1. `不允许`出现魔法值，直接作为常量使用
 
 <img src='alibabaPattern02\d3fd5dce-8233-4236-8322-610f96af15b8.jpg' style='margin:30px;display:block' alt='title'>
 
-2. long类型的值定义时，<code style='background:#ff3385;color:white;padding:5px;'>需要</code>使用大写L
+2. long类型的值定义时，`需要`使用大写L
 
-3. 对常亮<code style='background:#ff3385;color:white;padding:5px;'>要求</code>使用多个常量类分别管理
+3. 对常亮`要求`使用多个常量类分别管理
 
 4. 常量的复用
 
