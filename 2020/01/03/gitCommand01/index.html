@@ -1,0 +1,669 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Git常用指令 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="基础指令初始化仓库      git init    添加文件到缓冲区      git add filename    添加所有文件到缓冲区      git add .     git add --all    清除缓冲区      git rm -r --cached    删除文件      git rm filename    提交备注      git comment -m &#39;备注内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git常用指令">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/01/03/gitCommand01/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="基础指令初始化仓库      git init    添加文件到缓冲区      git add filename    添加所有文件到缓冲区      git add .     git add --all    清除缓冲区      git rm -r --cached    删除文件      git rm filename    提交备注      git comment -m &#39;备注内容">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-03T02:46:13.000Z">
+<meta property="article:modified_time" content="2020-12-29T13:22:44.719Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/01/03/gitCommand01/" title="Git常用指令" itemprop="url">Git常用指令</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-01-03T02:46:13.000Z" itemprop="datePublished"> Published 2020-01-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">基础指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%93%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">初始化仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%88%B0%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.2.</span> <span class="toc-text">添加文件到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%88%B0%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.3.</span> <span class="toc-text">添加所有文件到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.4.</span> <span class="toc-text">清除缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E5%A4%87%E6%B3%A8"><span class="toc-number">1.6.</span> <span class="toc-text">提交备注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%8A%B6%E6%80%81"><span class="toc-number">1.7.</span> <span class="toc-text">查看状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%AE%E5%BC%82"><span class="toc-number">1.8.</span> <span class="toc-text">查看差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="toc-number">1.9.</span> <span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.10.</span> <span class="toc-text">日志查看</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%88%86%E6%94%AF"><span class="toc-number">2.1.</span> <span class="toc-text">查看当前分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-number">2.2.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">2.3.</span> <span class="toc-text">切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">2.4.</span> <span class="toc-text">创建并切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF"><span class="toc-number">2.5.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E6%9F%90%E5%88%86%E6%94%AF%E5%88%B0%E5%BD%93%E5%89%8D%E5%88%86%E6%94%AF"><span class="toc-number">2.6.</span> <span class="toc-text">合并某分支到当前分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">标签操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%A0%87%E7%AD%BE"><span class="toc-number">3.1.</span> <span class="toc-text">创建标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%A0%87%E7%AD%BE"><span class="toc-number">3.2.</span> <span class="toc-text">查看标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%A0%87%E7%AD%BE%E8%AF%A6%E6%83%85"><span class="toc-number">3.3.</span> <span class="toc-text">查看标签详情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E6%9F%90%E4%B8%AAtag"><span class="toc-number">3.4.</span> <span class="toc-text">推送某个tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E6%89%80%E6%9C%89tag"><span class="toc-number">3.5.</span> <span class="toc-text">推送所有tag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%AB%AF%E5%BA%93%E7%9B%B8%E5%85%B3"><span class="toc-number">4.</span> <span class="toc-text">远端库相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%AB%AF%E5%BA%93"><span class="toc-number">4.1.</span> <span class="toc-text">添加远端库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E8%BF%9C%E7%AB%AF%E5%BA%93"><span class="toc-number">4.2.</span> <span class="toc-text">移除远端库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%AB%AF"><span class="toc-number">4.3.</span> <span class="toc-text">推送到远端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%BF%9C%E7%AB%AF%E7%9A%84%E5%86%85%E5%AE%B9%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">4.4.</span> <span class="toc-text">更新远端的内容到本地</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%8F%90%E4%BA%A4%E6%8C%87%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">组合提交指令</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h2><h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git init
+
+</pre>
+
+<h3 id="添加文件到缓冲区"><a href="#添加文件到缓冲区" class="headerlink" title="添加文件到缓冲区"></a>添加文件到缓冲区</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git add filename
+
+</pre>
+
+<h3 id="添加所有文件到缓冲区"><a href="#添加所有文件到缓冲区" class="headerlink" title="添加所有文件到缓冲区"></a>添加所有文件到缓冲区</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git add .
+    git add --all
+
+</pre>
+
+<h3 id="清除缓冲区"><a href="#清除缓冲区" class="headerlink" title="清除缓冲区"></a>清除缓冲区</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git rm -r --cached
+
+</pre>
+
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git rm filename
+
+</pre>
+
+<h3 id="提交备注"><a href="#提交备注" class="headerlink" title="提交备注"></a>提交备注</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git comment -m '备注内容'
+
+</pre>
+
+<p><code style='background:#ff3385;color:white;padding:5px;'>注意：git add或git comment失败将不会提交。所以，comment必须有备注内容</code></p>
+<h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git status
+
+</pre>
+
+<h3 id="查看差异"><a href="#查看差异" class="headerlink" title="查看差异"></a>查看差异</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git diff filename
+
+</pre>
+
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git reset
+    git reset --hard HEAD^
+    git reset --hard version
+
+</pre>
+
+<h3 id="日志查看"><a href="#日志查看" class="headerlink" title="日志查看"></a>日志查看</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git log
+    git reflog
+
+</pre>
+
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git branch
+
+</pre>
+
+<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git branch branchName
+
+</pre>
+
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git checkout branchName
+
+</pre>
+
+<h3 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git checkout -b branchName
+
+</pre>
+
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git branch -d branchName
+
+</pre>
+
+<h3 id="合并某分支到当前分支"><a href="#合并某分支到当前分支" class="headerlink" title="合并某分支到当前分支"></a>合并某分支到当前分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git merge branchName
+
+</pre>
+
+<h2 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h2><h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git tag tagName version
+
+</pre>
+
+<h3 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git tag
+
+</pre>
+
+<h3 id="查看标签详情"><a href="#查看标签详情" class="headerlink" title="查看标签详情"></a>查看标签详情</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git show tagName
+
+</pre>
+
+<h3 id="推送某个tag"><a href="#推送某个tag" class="headerlink" title="推送某个tag"></a>推送某个tag</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git push origin v1.0
+
+</pre>
+
+<h3 id="推送所有tag"><a href="#推送所有tag" class="headerlink" title="推送所有tag"></a>推送所有tag</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git push origin --tags
+
+</pre>
+
+<h2 id="远端库相关"><a href="#远端库相关" class="headerlink" title="远端库相关"></a>远端库相关</h2><h3 id="添加远端库"><a href="#添加远端库" class="headerlink" title="添加远端库"></a>添加远端库</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git remote add origin git://xxx/abc.git
+
+</pre>
+
+<h3 id="移除远端库"><a href="#移除远端库" class="headerlink" title="移除远端库"></a>移除远端库</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git remote remove origin git://xxx/abc.git
+
+</pre>
+
+<h3 id="推送到远端"><a href="#推送到远端" class="headerlink" title="推送到远端"></a>推送到远端</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git push -u origin master
+
+</pre>
+
+<h3 id="更新远端的内容到本地"><a href="#更新远端的内容到本地" class="headerlink" title="更新远端的内容到本地"></a>更新远端的内容到本地</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+    git pull
+
+</pre>
+
+<h2 id="组合提交指令"><a href="#组合提交指令" class="headerlink" title="组合提交指令"></a>组合提交指令</h2><pre style='background:#e6e6e6;padding=10px;'>
+
+    git rm -r --cached
+    git add .
+    git comment -m 'update'
+    git push origin master
+
+</pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/git/">git</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/01/03/gitCommand01/" data-title="Git常用指令 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/01/03/springMVC02/" title="Spring MVC创建一个项目">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Spring MVC创建一个项目</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/01/01/springMVC01/"  title="Spring MVC开发环境配置">
+ <strong>下一篇：</strong><br/> 
+ <span>Spring MVC开发环境配置
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">基础指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%93%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">初始化仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%88%B0%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.2.</span> <span class="toc-text">添加文件到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%88%B0%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.3.</span> <span class="toc-text">添加所有文件到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.4.</span> <span class="toc-text">清除缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E5%A4%87%E6%B3%A8"><span class="toc-number">1.6.</span> <span class="toc-text">提交备注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%8A%B6%E6%80%81"><span class="toc-number">1.7.</span> <span class="toc-text">查看状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%AE%E5%BC%82"><span class="toc-number">1.8.</span> <span class="toc-text">查看差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="toc-number">1.9.</span> <span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.10.</span> <span class="toc-text">日志查看</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%88%86%E6%94%AF"><span class="toc-number">2.1.</span> <span class="toc-text">查看当前分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-number">2.2.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">2.3.</span> <span class="toc-text">切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">2.4.</span> <span class="toc-text">创建并切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF"><span class="toc-number">2.5.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E6%9F%90%E5%88%86%E6%94%AF%E5%88%B0%E5%BD%93%E5%89%8D%E5%88%86%E6%94%AF"><span class="toc-number">2.6.</span> <span class="toc-text">合并某分支到当前分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">标签操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%A0%87%E7%AD%BE"><span class="toc-number">3.1.</span> <span class="toc-text">创建标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%A0%87%E7%AD%BE"><span class="toc-number">3.2.</span> <span class="toc-text">查看标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%A0%87%E7%AD%BE%E8%AF%A6%E6%83%85"><span class="toc-number">3.3.</span> <span class="toc-text">查看标签详情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E6%9F%90%E4%B8%AAtag"><span class="toc-number">3.4.</span> <span class="toc-text">推送某个tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E6%89%80%E6%9C%89tag"><span class="toc-number">3.5.</span> <span class="toc-text">推送所有tag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%AB%AF%E5%BA%93%E7%9B%B8%E5%85%B3"><span class="toc-number">4.</span> <span class="toc-text">远端库相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%AB%AF%E5%BA%93"><span class="toc-number">4.1.</span> <span class="toc-text">添加远端库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E8%BF%9C%E7%AB%AF%E5%BA%93"><span class="toc-number">4.2.</span> <span class="toc-text">移除远端库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%AB%AF"><span class="toc-number">4.3.</span> <span class="toc-text">推送到远端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%BF%9C%E7%AB%AF%E7%9A%84%E5%86%85%E5%AE%B9%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">4.4.</span> <span class="toc-text">更新远端的内容到本地</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%8F%90%E4%BA%A4%E6%8C%87%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">组合提交指令</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

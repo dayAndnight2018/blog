@@ -1,0 +1,622 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>spring-Boot+vue05: 数据存储 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="Spring Boot 整合Mybatis做数据持久化 创建项目添加依赖     创建数据表     创建实体类     配置文件     创建数据库映射层  即一个个接口方法，与xml一一对应    在相同目录下创建mapper映射文件     创建服务层      创建控制器层     配置pom  由于maven项目默认存储在src&#x2F;main&#x2F;resources目录下, mapper文件找不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-Boot+vue05: 数据存储">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="Spring Boot 整合Mybatis做数据持久化 创建项目添加依赖     创建数据表     创建实体类     配置文件     创建数据库映射层  即一个个接口方法，与xml一一对应    在相同目录下创建mapper映射文件     创建服务层      创建控制器层     配置pom  由于maven项目默认存储在src&#x2F;main&#x2F;resources目录下, mapper文件找不">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/75b3f913-5b99-410a-baea-75d04e65ac37.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/4ff13322-95de-416f-a1cb-6aa5e199eb8f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/278987ac-44ec-4a0c-98bf-79c2be32ee45.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/a9890d67-833e-4e93-9a9c-4ce98c2cce5f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/5caf4fe4-287c-4ec2-8350-e757b0694478.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/02a148a3-579d-4ffa-a46b-569459878110.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/fa86ecc3-0645-45ce-917a-b9120d822054.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/d99f701e-8cae-466b-8f50-2b8edc37ae04.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/5cce11e8-dff6-432d-a268-73b4bb12927d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/fe77e827-9f31-4867-8bb0-9c0dfa82b284.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/2c6d0a3c-21e5-4eba-8822-c51fa3edc4ca.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/525f7701-46a0-4466-87f2-f0def97cd808.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/e54e2d4a-3363-4384-8bad-43243f329e4c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/91fa9a01-82e8-4c2b-8175-58fab91bf3a8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/49c67feb-e4ad-4c36-b792-6725e9d95840.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/14f65027-db1a-4933-84a5-8e461bdc6ae7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/8240481f-3911-45fb-992b-b5c992d9691d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/3ba6e889-bad6-46bb-a15a-063347afac76.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/10ab9768-791c-4583-9413-e02fdb7bf55c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/b09544a1-aea7-4b7c-98c9-22eecf9d4d9d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/d756b9aa-7711-4de7-856e-1983753c6d9c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/2224d21b-5422-4d37-ae7f-b53658be6b66.jpg">
+<meta property="article:published_time" content="2020-05-30T03:28:12.000Z">
+<meta property="article:modified_time" content="2020-12-29T13:22:44.885Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="spring-boot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/spring-Boot-vue05-dataStorage/75b3f913-5b99-410a-baea-75d04e65ac37.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/05/30/spring-Boot-vue05-dataStorage/" title="spring-Boot+vue05: 数据存储" itemprop="url">spring-Boot+vue05: 数据存储</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-05-30T03:28:12.000Z" itemprop="datePublished"> Published 2020-05-30</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot-%E6%95%B4%E5%90%88Mybatis%E5%81%9A%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">Spring Boot 整合Mybatis做数据持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">多数据源问题</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="Spring-Boot-整合Mybatis做数据持久化"><a href="#Spring-Boot-整合Mybatis做数据持久化" class="headerlink" title="Spring Boot 整合Mybatis做数据持久化"></a>Spring Boot 整合Mybatis做数据持久化</h2><ol>
+<li>创建项目添加依赖</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\75b3f913-5b99-410a-baea-75d04e65ac37.jpg'>
+
+<ol start="2">
+<li>创建数据表</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\4ff13322-95de-416f-a1cb-6aa5e199eb8f.jpg'>
+
+<ol start="3">
+<li>创建实体类</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\278987ac-44ec-4a0c-98bf-79c2be32ee45.jpg'>
+
+<ol start="4">
+<li>配置文件</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\a9890d67-833e-4e93-9a9c-4ce98c2cce5f.jpg'>
+
+<ol start="5">
+<li>创建数据库映射层</li>
+</ol>
+<p>即一个个接口方法，与xml一一对应</p>
+<img src='spring-Boot-vue05-dataStorage\5caf4fe4-287c-4ec2-8350-e757b0694478.jpg'>
+
+<ol start="6">
+<li>在相同目录下创建mapper映射文件</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\02a148a3-579d-4ffa-a46b-569459878110.jpg'>
+
+<ol start="7">
+<li>创建服务层</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\fa86ecc3-0645-45ce-917a-b9120d822054.jpg'>
+<img src='spring-Boot-vue05-dataStorage\d99f701e-8cae-466b-8f50-2b8edc37ae04.jpg'>
+
+<ol start="8">
+<li>创建控制器层</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\5cce11e8-dff6-432d-a268-73b4bb12927d.jpg'>
+
+<ol start="9">
+<li>配置pom</li>
+</ol>
+<p>由于maven项目默认存储在src/main/resources目录下, mapper文件找不到，需要配置一下：</p>
+<p>配置编译目录</p>
+<img src='spring-Boot-vue05-dataStorage\fe77e827-9f31-4867-8bb0-9c0dfa82b284.jpg'>
+<img src='spring-Boot-vue05-dataStorage\2c6d0a3c-21e5-4eba-8822-c51fa3edc4ca.jpg'>
+
+<h2 id="多数据源问题"><a href="#多数据源问题" class="headerlink" title="多数据源问题"></a>多数据源问题</h2><p>实际开发中不可避免地操作多个数据库，如何同时配置多个数据源呢？</p>
+<ol>
+<li>创建数据库</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\525f7701-46a0-4466-87f2-f0def97cd808.jpg'>
+
+<ol start="2">
+<li>配置连接</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\e54e2d4a-3363-4384-8bad-43243f329e4c.jpg'>
+
+<p>针对不同的数据源给定不同的前缀。</p>
+<ol start="3">
+<li>由于存在多个数据源，需要给出多个DataSource的实例</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\91fa9a01-82e8-4c2b-8175-58fab91bf3a8.jpg'>
+<img src='spring-Boot-vue05-dataStorage\49c67feb-e4ad-4c36-b792-6725e9d95840.jpg'>
+
+<ol start="4">
+<li>创建第一个数据源SqlSessionFactory</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\14f65027-db1a-4933-84a5-8e461bdc6ae7.jpg'>
+
+<ol start="5">
+<li>创建第二个数据源SqlSessionFactory</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\8240481f-3911-45fb-992b-b5c992d9691d.jpg'>
+<img src='spring-Boot-vue05-dataStorage\3ba6e889-bad6-46bb-a15a-063347afac76.jpg'>
+
+<ol start="6">
+<li>创建mapper文件及接口</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\10ab9768-791c-4583-9413-e02fdb7bf55c.jpg'>
+
+<img src='spring-Boot-vue05-dataStorage\b09544a1-aea7-4b7c-98c9-22eecf9d4d9d.jpg'>
+
+<ol start="7">
+<li>注入使用</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\d756b9aa-7711-4de7-856e-1983753c6d9c.jpg'>
+<img src='spring-Boot-vue05-dataStorage\2224d21b-5422-4d37-ae7f-b53658be6b66.jpg' >
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring-boot/">spring-boot</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/05/30/spring-Boot-vue05-dataStorage/" data-title="spring-Boot+vue05: 数据存储 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/06/04/crazySSM05-File/" title="crazySSM05-文件上传与下载">
+  <strong>上一篇：</strong><br/>
+  <span>
+  crazySSM05-文件上传与下载</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/05/29/spring-Boot-vue04-web/"  title="spring-Boot+vue04: 整合web开发">
+ <strong>下一篇：</strong><br/> 
+ <span>spring-Boot+vue04: 整合web开发
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot-%E6%95%B4%E5%90%88Mybatis%E5%81%9A%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">Spring Boot 整合Mybatis做数据持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">多数据源问题</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

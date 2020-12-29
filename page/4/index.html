@@ -1,0 +1,1886 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="不忘初心，砥砺前行。只争朝夕，不负韶华！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="成华的博客">
+<meta property="og:url" content="https://dayandnight2018.github.io/page/4/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="不忘初心，砥砺前行。只争朝夕，不负韶华！">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="成华">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/21/JavaEE-12-Spring-DB/" title="JavaEE-12-Spring-DB" itemprop="url">JavaEE-12-Spring-DB</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-21T01:50:24.000Z" itemprop="datePublished"> Published 2020-06-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Spring-与-JDBC"><a href="#Spring-与-JDBC" class="headerlink" title="Spring 与 JDBC"></a>Spring 与 JDBC</h2><h3 id="配置数据源"><a href="#配置数据源" class="headerlink" title="配置数据源"></a>配置数据源</h3><ol>
+<li>采用SimpleDriverDataSource配置非池化数据源</li>
+</ol>
+<img src='JavaEE-12-Spring-DB\83f3fb45-6092-444a-a8cf-d05fc178d53b.jpg'>
+
+<ol start="2">
+<li>采用DBCP连接池</li>
+</ol>
+<img src='JavaEE-12-Spring-DB\ee325ff4-9294-4fe2-89e8-bcd8a5c46f3c.jpg'>
+
+<ol start="3">
+<li>JNDI数据源</li>
+</ol>
+<img src='JavaEE-12-Spring-DB\ddc60546-652e-419b-b3a4-0d7977f1e347.jpg'>
+
+<h3 id="配置JDBCTemplate"><a href="#配置JDBCTemplate" class="headerlink" title="配置JDBCTemplate"></a>配置JDBCTemplate</h3><img src='JavaEE-12-Spring-DB\5a12d916-2029-467e-900e-060ea463362b.jpg'>
+
+<h3 id="使用JDBCTemplate查询数据"><a href="#使用JDBCTemplate查询数据" class="headerlink" title="使用JDBCTemplate查询数据"></a>使用JDBCTemplate查询数据</h3><img src='JavaEE-12-Spring-DB\1912d9b0-69db-47ad-a29c-bd02ee6fe9ab.jpg'>
+<img src='JavaEE-12-Spring-DB\05fe729c-6be3-48c1-b432-3792b1f6043b.jpg'>
+
+<p>也可以使用lambda表达式简化：</p>
+<img src='JavaEE-12-Spring-DB\9fc06733-9bcc-4b1f-8687-e66a04502fc3.jpg'>
+
+<h3 id="JDBCTemplate增删改查"><a href="#JDBCTemplate增删改查" class="headerlink" title="JDBCTemplate增删改查"></a>JDBCTemplate增删改查</h3><p>增：</p>
+<img src='JavaEE-12-Spring-DB\6c079d35-35e1-4fd4-b454-015c27db6a75.jpg'>
+
+<p>删：</p>
+<img src='JavaEE-12-Spring-DB\938feb54-34bc-4bf4-b13d-3bd6a2cb15c8.jpg' >
+
+<p>改：</p>
+<img src='JavaEE-12-Spring-DB\6a9dbff1-eec6-479b-8a0c-7e292f00129e.jpg'>
+
+<p>查：</p>
+<img src='JavaEE-12-Spring-DB\a6337126-ac2f-4054-bb97-ca5c594fd242.jpg'>
+<img src='JavaEE-12-Spring-DB\46f50c1b-a57f-4045-8351-2739d2588558.jpg'>
+
+<h3 id="执行多条语句"><a href="#执行多条语句" class="headerlink" title="执行多条语句"></a>执行多条语句</h3><p>使用ConnectionCallback回调：</p>
+<img src='JavaEE-12-Spring-DB\32d102eb-6ae3-403d-972a-e97cec322e79.jpg'>
+<img src='JavaEE-12-Spring-DB\86857a3c-9842-4894-9277-78fd0358a819.jpg'>
+
+<p>使用StatementCallback回调:</p>
+<img src='JavaEE-12-Spring-DB\c225b152-9b32-4cbe-9f4d-685a0ba1088b.jpg'>
+
+<h2 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h2><p>Mybatis的使用：</p>
+<ol>
+<li><p>配置数据源</p>
+</li>
+<li><p>配置SqlSessionFactory</p>
+</li>
+<li><p>配置Mapper</p>
+</li>
+</ol>
+<h3 id="配置SqlSessionFactoryBean"><a href="#配置SqlSessionFactoryBean" class="headerlink" title="配置SqlSessionFactoryBean"></a>配置SqlSessionFactoryBean</h3><p>SqlSessionFactoryBean用于产生SqlSessionFactory</p>
+<img src='JavaEE-12-Spring-DB\f4c84972-e90f-47f0-95e5-3466540cb5de.jpg' >
+
+<p>配置了dataSource数据源，配置文件位置。</p>
+<p>mybatis配置文件:</p>
+<img src='JavaEE-12-Spring-DB\e1f1f48a-a95e-4fae-b1c4-89601b94fdf1.jpg'>
+
+<p>Mapper.xml是映射的sql语句：</p>
+<img src='JavaEE-12-Spring-DB\b905d1e0-ff5e-4144-b3c9-9d16dcd9e732.jpg' >
+
+<p>Mapper接口和sql是一一对应的：</p>
+<img src='JavaEE-12-Spring-DB\5819c8e0-6242-403c-9ea4-d5461ace3bac.jpg'>
+
+
+<h3 id="Mapper接口扫描"><a href="#Mapper接口扫描" class="headerlink" title="Mapper接口扫描"></a>Mapper接口扫描</h3><ol>
+<li>使用@Repository注解注释Mapper接口，以便扫描</li>
+</ol>
+<img src='JavaEE-12-Spring-DB\d30b8807-8f0f-4008-bbaf-39965aaefb0d.jpg' >
+
+<ol start="2">
+<li>配置MapperScannerConfigurer</li>
+</ol>
+<img src='JavaEE-12-Spring-DB\ec1314c7-a60a-4875-8156-8a0d5f71a809.jpg'>
+<img src='JavaEE-12-Spring-DB\5379b5e6-85e4-4dc5-b054-c0e93bf4bbf9.jpg' >
+
+<p>basepackage用于扫描。</p>
+<p>SqlSessionFactoryBeanName用于配置SqlSessionFactory</p>
+<p>annotationClass表示指定的注解。</p>
+<ol start="3">
+<li>操作Mapper进行数据处理</li>
+</ol>
+<img src='JavaEE-12-Spring-DB\433d74f0-b221-475b-877f-07dfba932f18.jpg'>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/20/JavaEE-11-Spring-Aop/" title="JavaEE-11-Spring-Aop" itemprop="url">JavaEE-11-Spring-Aop</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-20T14:38:50.000Z" itemprop="datePublished"> Published 2020-06-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="AOP术语"><a href="#AOP术语" class="headerlink" title="AOP术语"></a>AOP术语</h2><h3 id="切面"><a href="#切面" class="headerlink" title="切面"></a>切面</h3><p>切面就是引入的代码，比如，记录日志，自动关闭JDBC连接等等</p>
+<h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><p>切面里的方法就是通知，</p>
+<img src='JavaEE-11-Spring-Aop\c1a1722b-86f0-4d90-b095-bf28ec49106f.jpg'>
+
+<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>为现有的类增强方法</p>
+<h3 id="切点"><a href="#切点" class="headerlink" title="切点"></a>切点</h3><p>被拦截的方法就是切点</p>
+<h3 id="连接点"><a href="#连接点" class="headerlink" title="连接点"></a>连接点</h3><p>用于判定切点的方法</p>
+<h3 id="织入"><a href="#织入" class="headerlink" title="织入"></a>织入</h3><p>生成动态代理的过程</p>
+<h2 id="四种实现Aop的方式"><a href="#四种实现Aop的方式" class="headerlink" title="四种实现Aop的方式"></a>四种实现Aop的方式</h2><img src='JavaEE-11-Spring-Aop\b6337517-6b00-489b-9737-178be3c3c932.jpg'>
+
+<h2 id="使用-AspectJ注解开发Aop"><a href="#使用-AspectJ注解开发Aop" class="headerlink" title="使用@AspectJ注解开发Aop"></a>使用@AspectJ注解开发Aop</h2><h3 id="选择合适的切点"><a href="#选择合适的切点" class="headerlink" title="选择合适的切点"></a>选择合适的切点</h3><p>选定拦截谁</p>
+<ol>
+<li>创建一个接口</li>
+</ol>
+<img src='JavaEE-11-Spring-Aop\bd83b016-5b3f-4016-8980-d1385ad10fb7.jpg'>
+
+<ol start="2">
+<li>实现这个接口</li>
+</ol>
+<img src='JavaEE-11-Spring-Aop\d16b7c49-93be-4386-bcb9-18bd2e8d1a34.jpg'>
+
+<p>我们确定把printRole这个方法作为切点，拦截他。</p>
+<h3 id="创建切面"><a href="#创建切面" class="headerlink" title="创建切面"></a>创建切面</h3><p>怎么拦截？</p>
+<p>创建Aspect类，对切点进行拦截</p>
+<img src='JavaEE-11-Spring-Aop\b5b33ce9-f4e9-4821-959f-35b6a4bff413.jpg'>
+
+<p>可能用到的注解：</p>
+<img src='JavaEE-11-Spring-Aop\11f734e9-1961-490b-b5a7-e9610a2cc2bd.jpg'>
+
+<h3 id="连接点-1"><a href="#连接点-1" class="headerlink" title="连接点"></a>连接点</h3><p>确定准确的拦截位置</p>
+<img src='JavaEE-11-Spring-Aop\dc13d182-1c70-4800-ab09-ad248c0c3930.jpg'>
+
+<p>execution表示方法执行时触发切面方法</p>
+<p>*代表任意返回类型</p>
+<p>com.ss.chapter11.aop.service.impl.RoleServiceImpl.printRole是确定的方法</p>
+<p>(..)表示任意参数</p>
+<p>其他常用的参数</p>
+<img src='JavaEE-11-Spring-Aop\2b63a252-ef5f-4aa5-b373-b23abbd5741b.jpg'>
+
+<p>可以使用PointCut简化切面的定义</p>
+<img src='JavaEE-11-Spring-Aop\e7db1664-718c-4b22-b51b-78dcabe02ac6.jpg'>
+
+<h3 id="测试Aop"><a href="#测试Aop" class="headerlink" title="测试Aop"></a>测试Aop</h3><p>将定义的切面注册为Bean，并在配置类上开启AspectJ，方法调用时会执行相关的切面方法</p>
+<img src='JavaEE-11-Spring-Aop\b3cd4872-9d0e-43e8-96b8-0e9bc47c9b1b.jpg'>
+
+<p>也可以使用xml开启aop</p>
+<img src='JavaEE-11-Spring-Aop\c621279b-1939-4a71-b182-408912721323.jpg'>
+
+<h3 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h3><img src='JavaEE-11-Spring-Aop\1a0202ff-6808-41f7-a940-2144cf1b9332.jpg'>
+
+<h3 id="切面方法传参"><a href="#切面方法传参" class="headerlink" title="切面方法传参"></a>切面方法传参</h3><p>对于带参数的切点</p>
+<img src='JavaEE-11-Spring-Aop\0324ffb2-5bd2-49d8-b6ac-424ff56752f4.jpg'>
+
+<p>可以使用args(xx,xx)指定参数</p>
+<img src='JavaEE-11-Spring-Aop\e0f61ea6-e326-4ac1-9b82-41926d8aed7e.jpg'>
+
+<h2 id="引入-1"><a href="#引入-1" class="headerlink" title="引入"></a>引入</h2><p>通过接口方法对类增强。</p>
+<ol>
+<li>定义增强接口</li>
+</ol>
+<img src='JavaEE-11-Spring-Aop\eeaaafd9-35ee-4264-ac69-cfd68144e9a4.jpg'>
+
+<ol start="2">
+<li>定义增强接口的实现</li>
+</ol>
+<img src='JavaEE-11-Spring-Aop\fd30df5b-4aac-45b1-89a1-0776d48589bc.jpg'>
+
+<p>在切面中增加增强接口的实例，添加@DeclearParents注解</p>
+<img src='JavaEE-11-Spring-Aop\d1edbf83-2c2e-4659-904e-8da5f208b97e.jpg'>
+
+<p>通过value指定被增强的接口，defaultImpl指定默认的增强接口的实现类。</p>
+<ol start="3">
+<li>测试</li>
+</ol>
+<img src='JavaEE-11-Spring-Aop\1d862b1b-6241-4abd-bb44-5f557c77e431.jpg'>
+
+<h2 id="使用xml配置Aop"><a href="#使用xml配置Aop" class="headerlink" title="使用xml配置Aop"></a>使用xml配置Aop</h2><h3 id="常用的标记"><a href="#常用的标记" class="headerlink" title="常用的标记"></a>常用的标记</h3><img src='JavaEE-11-Spring-Aop\377f71e0-9b09-43a0-a5f2-0b1a4e8f9849.jpg'>
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ol>
+<li>定义接口</li>
+</ol>
+<img src='JavaEE-11-Spring-Aop\4cbe6dc1-022f-4371-ba2a-f5bd2549670a.jpg'>
+
+<ol start="2">
+<li>实现类</li>
+</ol>
+<img src='JavaEE-11-Spring-Aop\ab61694d-cde5-44d8-8468-434884883d70.jpg'>
+
+<ol start="3">
+<li>切面类</li>
+</ol>
+<img src='JavaEE-11-Spring-Aop\1c8b2103-8a95-4bc1-92f8-32c98f624326.jpg'>
+
+<ol start="4">
+<li>xml配置</li>
+</ol>
+<img src='JavaEE-11-Spring-Aop\73229d23-27d2-41ba-aafc-1e43d57efa81.jpg'>
+
+<p>使用PonitCut简化</p>
+<img src='JavaEE-11-Spring-Aop\86c63023-d359-49e7-8569-fc816ec72eb5.jpg'>
+
+<h3 id="通知传参"><a href="#通知传参" class="headerlink" title="通知传参"></a>通知传参</h3><p>带参方法：</p>
+<img src='JavaEE-11-Spring-Aop\e15e5cbd-b127-4eec-aea3-00d8546b253d.jpg'>
+
+<p>使用args():</p>
+<img src='JavaEE-11-Spring-Aop\0c23dda2-2151-458e-aba4-2eca874ec0d8.jpg'>
+
+<h3 id="引入-2"><a href="#引入-2" class="headerlink" title="引入"></a>引入</h3><ol>
+<li><p>为切面添加增强接口实例</p>
+</li>
+<li><p>配置declearParents</p>
+</li>
+</ol>
+<img src='JavaEE-11-Spring-Aop\514fc807-5600-40f1-bd2b-fc62222b4131.jpg'>
+
+<p>types-maching匹配待增强接口</p>
+<p>implement-interface匹配增强接口</p>
+<p>default-impl匹配默认实现类</p>
+<h2 id="为多个切面排序"><a href="#为多个切面排序" class="headerlink" title="为多个切面排序"></a>为多个切面排序</h2><h3 id="使用-Order"><a href="#使用-Order" class="headerlink" title="使用@Order"></a>使用@Order</h3><img src='JavaEE-11-Spring-Aop\0460c1e1-966b-4186-8099-e0926ff5f398.jpg'>
+
+<h3 id="实现Ordered接口"><a href="#实现Ordered接口" class="headerlink" title="实现Ordered接口"></a>实现Ordered接口</h3><img src='JavaEE-11-Spring-Aop\dd225124-e9ad-45f6-88e1-d578cb12522f.jpg'>
+
+<h3 id="xml配置"><a href="#xml配置" class="headerlink" title="xml配置"></a>xml配置</h3><img src='JavaEE-11-Spring-Aop\ce181adf-5080-4876-aac4-b107dc0dab1a.jpg'>
+
+
+
+
+
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/" title="JavaEE-10-Spring-Bean-Load" itemprop="url">JavaEE-10-Spring-Bean-Load</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-20T11:49:52.000Z" itemprop="datePublished"> Published 2020-06-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="依赖注入的三种方式"><a href="#依赖注入的三种方式" class="headerlink" title="依赖注入的三种方式"></a>依赖注入的三种方式</h2><ol>
+<li><p>构造器注入</p>
+</li>
+<li><p>set方法注入</p>
+</li>
+<li><p>接口注入</p>
+</li>
+</ol>
+<h3 id="构造器注入"><a href="#构造器注入" class="headerlink" title="构造器注入"></a>构造器注入</h3><p>通过类的构造函数注入需要的其他数据及对象</p>
+<img src='JavaEE-10-Spring-Bean-Load\1f5925f3-fb16-4399-8492-11ad2a6eb56b.jpg'>
+
+<p>xml描述</p>
+<img src='JavaEE-10-Spring-Bean-Load\ee883871-b15e-409e-bde3-12d9379e806f.jpg'>
+
+<p>构造器注入方法简单，但是对参数较多的情况下显得很繁杂。</p>
+<h3 id="set方法注入"><a href="#set方法注入" class="headerlink" title="set方法注入"></a>set方法注入</h3><p>使用默认的构造器创建对象，对参数通过set方法注入</p>
+<img src='JavaEE-10-Spring-Bean-Load\1251f90c-9e9c-4932-838c-ff37eee8a5c6.jpg'>
+
+<h3 id="接口注入"><a href="#接口注入" class="headerlink" title="接口注入"></a>接口注入</h3><p>对于外界提供的服务，Spring在使用的时候需要接口注入。例如tomcat管理的数据库连接池资源，Spring通过JNDI获取：</p>
+<p>打开tomcat的context.xml文件</p>
+<img src='JavaEE-10-Spring-Bean-Load\13dd24c7-54b4-43e9-a8f4-c2508f8ceb52.jpg'>
+<img src='JavaEE-10-Spring-Bean-Load\62a52869-1152-4244-94e0-5d5beb123c14.jpg'>
+
+<p>Spring的配置</p>
+<img src='JavaEE-10-Spring-Bean-Load\93bd421c-e9f7-4531-9627-a5c883c55adf.jpg'>
+
+<h2 id="装配的具体实现"><a href="#装配的具体实现" class="headerlink" title="装配的具体实现"></a>装配的具体实现</h2><ol>
+<li><p>xml配置</p>
+</li>
+<li><p>JavaConfig</p>
+</li>
+<li><p>自动发现及自动装配</p>
+</li>
+</ol>
+<p>一般约定优于配置，优先使用自动装配，其次是JavaConfig，最后是xml</p>
+<h2 id="XML装配"><a href="#XML装配" class="headerlink" title="XML装配"></a>XML装配</h2><h3 id="xml配置文件头"><a href="#xml配置文件头" class="headerlink" title="xml配置文件头"></a>xml配置文件头</h3><p>一个xml配置的基本格式：</p>
+<img src='JavaEE-10-Spring-Bean-Load\a6538e72-1445-47e5-a072-0427f07dc405.jpg'>
+
+<h3 id="装配简单值"><a href="#装配简单值" class="headerlink" title="装配简单值"></a>装配简单值</h3><p>通过Set方法直接注入值</p>
+<img src='JavaEE-10-Spring-Bean-Load\2d613fbd-22fe-4193-9791-47b58ddaa007.jpg'>
+
+<p>id是Bean的名称</p>
+<p>class是Bean的全限定名称</p>
+<p>property指的是通过set方法注入</p>
+<p>name指的是域的名称</p>
+<p>value即注入的值</p>
+<h3 id="装配对象"><a href="#装配对象" class="headerlink" title="装配对象"></a>装配对象</h3><p>将一个Bean装配到另一个Bean里</p>
+<img src='JavaEE-10-Spring-Bean-Load\75df32f4-6ede-4185-9cb6-dcff8318dfa5.jpg'>
+
+<p>通过ref指定已经存在的Bean的id</p>
+<h3 id="装配集合"><a href="#装配集合" class="headerlink" title="装配集合"></a>装配集合</h3><p>对于域中存在的集合需要装配：</p>
+<img src='JavaEE-10-Spring-Bean-Load\6c6db7c6-3f9f-4724-927d-67193bc7beb3.jpg'>
+
+<p>装配List</p>
+<img src='JavaEE-10-Spring-Bean-Load\507196fd-8f11-485c-b90d-7aad38d97a58.jpg'>
+
+<p>装配map</p>
+<img src='JavaEE-10-Spring-Bean-Load\2cec3eda-7522-4780-bd81-65467e2a6a58.jpg'>
+
+<p>装配properties</p>
+<img src='JavaEE-10-Spring-Bean-Load\4c1d1f83-4118-4b6f-8f10-3931b7724ff7.jpg'>
+
+<p>装配set</p>
+<img src='JavaEE-10-Spring-Bean-Load\4b38ab87-ff77-4264-b122-745804156f2b.jpg'>
+
+<p>装配数组</p>
+<img src='JavaEE-10-Spring-Bean-Load\ff6218a0-2dc2-4c22-beab-14a3a6dddd65.jpg'>
+
+<h3 id="装配复杂对象"><a href="#装配复杂对象" class="headerlink" title="装配复杂对象"></a>装配复杂对象</h3><p>角色对象</p>
+<img src='JavaEE-10-Spring-Bean-Load\d7a5d401-47b1-45fe-8d1e-14423bee598f.jpg'>
+
+<p>用户对象</p>
+<img src='JavaEE-10-Spring-Bean-Load\927be890-9d85-4d4d-ac13-aaebd6bac409.jpg'>
+
+<p>复杂对象</p>
+<img src='JavaEE-10-Spring-Bean-Load\3fc307c2-e801-4041-bcb9-cfdcc0807026.jpg'>
+
+<p>装配</p>
+<img src='JavaEE-10-Spring-Bean-Load\08584157-2dc8-4608-85d7-992c7887d0a7.jpg'>
+<img src='JavaEE-10-Spring-Bean-Load\11078aa8-7090-40f3-8229-f72d7efa9066.jpg'>
+
+<p>使用ref标签指定已经存在的Bean对象，bean属性指向已存在的Bean的id</p>
+<h2 id="组件扫描与自动装配"><a href="#组件扫描与自动装配" class="headerlink" title="组件扫描与自动装配"></a>组件扫描与自动装配</h2><h3 id="使用-Component注解装配"><a href="#使用-Component注解装配" class="headerlink" title="使用@Component注解装配"></a>使用@Component注解装配</h3><img src='JavaEE-10-Spring-Bean-Load\42d2bb8d-f080-4eec-8cec-451dad1b0dcd.jpg'>
+
+<p>通过value指定Bean的名称。</p>
+<p>通过@Component标记为Bean</p>
+<p>通过@Value注解注入值</p>
+<p>在相同包下创建配置类，开启包扫描：</p>
+<img src='JavaEE-10-Spring-Bean-Load\1fcfeeef-3441-4c75-9fe5-abd99673e8b3.jpg'>
+
+<p>创建AnnotationConfigureApplicationContext对象管理Bean：</p>
+<img src='JavaEE-10-Spring-Bean-Load\36dead9b-a304-43a6-a6fd-5778f5b9c1f1.jpg'>
+
+<h3 id="通过basepackages指定所在包"><a href="#通过basepackages指定所在包" class="headerlink" title="通过basepackages指定所在包"></a>通过basepackages指定所在包</h3><img src='JavaEE-10-Spring-Bean-Load\9af78e5c-0a8f-495d-b4a0-df4427b3eec5.jpg'>
+
+<h3 id="使用-AutoWired自动装配"><a href="#使用-AutoWired自动装配" class="headerlink" title="使用@AutoWired自动装配"></a>使用@AutoWired自动装配</h3><p>通过@AutoWired注解的域，Spring将自动注入进来对象</p>
+<img src='JavaEE-10-Spring-Bean-Load\adb93fd1-a218-4ab5-911d-e39550901ce5.jpg'>
+
+<p>对于找不到的对象，会报错，可以通过required属性指定false解决</p>
+<img src='JavaEE-10-Spring-Bean-Load\cda54d83-e0fd-4952-87eb-676866c7939e.jpg'>
+
+<p>但此时，会容易出现空指针异常</p>
+<p>与此同时@AutoWired可以注解到set方法、构造函数上</p>
+<img src='JavaEE-10-Spring-Bean-Load\a0ffdf09-2a44-4a51-98ab-cb4a216bb27b.jpg'>
+
+<h3 id="Primary与-Qualifier"><a href="#Primary与-Qualifier" class="headerlink" title="@Primary与@Qualifier"></a>@Primary与@Qualifier</h3><p>我们看到类中引用的对象是父接口的对象，便于抽插式替换。当某个接口出现多个实现类的时候，就会出现问题。</p>
+<p>解决方式一：</p>
+<p>使用@Primary标记某个实现类，优先注入这个实现类的对象</p>
+<img src='JavaEE-10-Spring-Bean-Load\6ac4c62e-d111-4661-a95a-e7c6113264ba.jpg'>
+
+<p>解决方式二：</p>
+<p>在自动绑定的位置使用@Qualifier指定具体注入的实现类</p>
+<img src='JavaEE-10-Spring-Bean-Load\03ba9c6f-018d-48b9-88cd-258ad5ba84b9.jpg'>
+
+<h3 id="使用-AutoWired注入带参数的构造函数"><a href="#使用-AutoWired注入带参数的构造函数" class="headerlink" title="使用@AutoWired注入带参数的构造函数"></a>使用@AutoWired注入带参数的构造函数</h3><img src='JavaEE-10-Spring-Bean-Load\2160c5a3-1709-426d-9c3e-1efc202158f2.jpg' >
+
+<h3 id="通过JavaConfig方式将方法返回值注入为Bean"><a href="#通过JavaConfig方式将方法返回值注入为Bean" class="headerlink" title="通过JavaConfig方式将方法返回值注入为Bean"></a>通过JavaConfig方式将方法返回值注入为Bean</h3><img src='JavaEE-10-Spring-Bean-Load\f829838f-64f0-4bd2-a6d1-d559754656d0.jpg'>
+
+<p>@Bean可以注解方法，对于name属性指定Bean的名称，实例是方法的返回值。</p>
+<h3 id="通过-Bean注解指定创建及销毁方法"><a href="#通过-Bean注解指定创建及销毁方法" class="headerlink" title="通过@Bean注解指定创建及销毁方法"></a>通过@Bean注解指定创建及销毁方法</h3><img src='JavaEE-10-Spring-Bean-Load\38ed28da-2125-48ad-aff9-f70e188bf6ca.jpg'>
+
+<p>通过initMethod及destoryMethod指定Bean的初始化及销毁方法。</p>
+<h2 id="装配的混合使用"><a href="#装配的混合使用" class="headerlink" title="装配的混合使用"></a>装配的混合使用</h2><p>将xml配置的Bean加载到配置类中：</p>
+<img src='JavaEE-10-Spring-Bean-Load\3b317505-81ae-4c95-b622-71190c74e891.jpg'>
+
+<p>加载其他配置类：</p>
+<img src='JavaEE-10-Spring-Bean-Load\1b050dc9-1f8c-4378-a2e6-205b05cee749.jpg'>
+
+<p>xml引入其他xml</p>
+<img src='JavaEE-10-Spring-Bean-Load\71b65610-fccb-4d88-8d89-9c39da1064e5.jpg'>
+
+<p>使用xml开启注解：</p>
+<img src='JavaEE-10-Spring-Bean-Load\4127f521-a90d-492d-ae60-8e619168a81e.jpg'>
+
+<h2 id="Profile"><a href="#Profile" class="headerlink" title="Profile"></a>Profile</h2><h3 id="通过注解"><a href="#通过注解" class="headerlink" title="通过注解"></a>通过注解</h3><p>使用@Profile注解指定环境</p>
+<img src='JavaEE-10-Spring-Bean-Load\956d3136-0b29-4711-98dc-9f583801846b.jpg'>
+<img src='JavaEE-10-Spring-Bean-Load\c9fc44f6-0979-483e-8268-2efdeaee0bd4.jpg'>
+
+<h3 id="使用xml指定Profile"><a href="#使用xml指定Profile" class="headerlink" title="使用xml指定Profile"></a>使用xml指定Profile</h3><img src='JavaEE-10-Spring-Bean-Load\8cc59a0e-96fa-47db-b0b1-9dab9b8e20f7.jpg'>
+
+<p>也可以只对Beans标签指定</p>
+<img src='JavaEE-10-Spring-Bean-Load\7234bf7a-78f9-4545-9b78-3c91559ddc5a.jpg'>
+
+<h3 id="启动Profile"><a href="#启动Profile" class="headerlink" title="启动Profile"></a>启动Profile</h3><ol>
+<li>测试使用@ActiveProfiles</li>
+</ol>
+<img src='JavaEE-10-Spring-Bean-Load\7861cafc-8a8b-4026-b5b9-2ce5fe242c35.jpg'>
+
+<ol start="2">
+<li>配置虚拟机参数spring.profiles.active</li>
+</ol>
+<img src='JavaEE-10-Spring-Bean-Load\5bf5885f-7449-459e-92a0-763f52601e35.jpg'>
+
+<ol start="3">
+<li>spring mvc环境下，使用contextParam或DispatcherServlet参数设定</li>
+</ol>
+<img src='JavaEE-10-Spring-Bean-Load\b5671a9a-e653-49d7-9367-7659c65316e6.jpg'>
+
+<img src='JavaEE-10-Spring-Bean-Load\77f0ceab-d29a-439b-933c-f01695ac22e7.jpg'>
+
+<h2 id="加载配置文件"><a href="#加载配置文件" class="headerlink" title="加载配置文件"></a>加载配置文件</h2><h3 id="注解加载配置文件"><a href="#注解加载配置文件" class="headerlink" title="注解加载配置文件"></a>注解加载配置文件</h3><img src='JavaEE-10-Spring-Bean-Load\d20879c8-929e-4489-bc1f-4f774ab0498b.jpg'>
+
+<p>使用PropertySource注解导入配置</p>
+<p>通过Environment获取配置</p>
+<img src='JavaEE-10-Spring-Bean-Load\f1791c99-5594-4456-a0cc-ab8610e4c924.jpg'>
+
+<p>通过PropertySourcesPlaceHolderConfigurer开启占位符</p>
+<img src='JavaEE-10-Spring-Bean-Load\d364d96f-8df2-4c1b-90ef-1457ed61b2a0.jpg'>
+
+<p>通过@Value注入属性值</p>
+<img src='JavaEE-10-Spring-Bean-Load\b8017c77-40f0-4c11-9986-c2343156a7d0.jpg'>
+
+<h3 id="使用xml引入配置"><a href="#使用xml引入配置" class="headerlink" title="使用xml引入配置"></a>使用xml引入配置</h3><img src='JavaEE-10-Spring-Bean-Load\fb58e538-c3c8-4bb7-9b96-93fa2f9a038b.jpg' >
+
+<p>使用context:property-placeholder开启，location指定配置文件</p>
+<p>多个配置文件需要加载时，可以使用逗号分隔开，也可以：</p>
+<img src='JavaEE-10-Spring-Bean-Load\bedfacd2-4890-416d-ac83-e0e51068c8d8.jpg'>
+
+<h2 id="条件化装配"><a href="#条件化装配" class="headerlink" title="条件化装配"></a>条件化装配</h2><p>使用@Conditional注解Bean，满足条件才装配</p>
+<img src='JavaEE-10-Spring-Bean-Load\116ac573-8280-4875-b543-d56fd5b07a30.jpg'>
+
+<p>条件类实现Condition接口，重写matches方法，根据返回值判断是否装配Bean</p>
+<img src='JavaEE-10-Spring-Bean-Load\e9762ffd-0af9-4758-9f22-89c289dc7b26.jpg'>
+
+<h2 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h2><p>Spring有四种作用域：</p>
+<img src='JavaEE-10-Spring-Bean-Load\998affde-201d-4ca4-9486-2dd7f20686f3.jpg'>
+
+<p>可以使用@Scope注解配置作用域：</p>
+<img src='JavaEE-10-Spring-Bean-Load\f4e2a108-5cb2-4271-8284-bb32963b9c02.jpg'>
+
+<h2 id="SPEL"><a href="#SPEL" class="headerlink" title="SPEL"></a>SPEL</h2><h3 id="通过SPEL注入字面量"><a href="#通过SPEL注入字面量" class="headerlink" title="通过SPEL注入字面量"></a>通过SPEL注入字面量</h3><img src='JavaEE-10-Spring-Bean-Load\70a94b76-55fb-4762-9604-2e37a71a4997.jpg'>
+
+<p>使用#{}注入</p>
+<h3 id="通过名称注入Bean"><a href="#通过名称注入Bean" class="headerlink" title="通过名称注入Bean"></a>通过名称注入Bean</h3><img src='JavaEE-10-Spring-Bean-Load\9f225a98-a847-4f0b-860d-e93b64dec52a.jpg'>
+
+<h3 id="静态常量注入"><a href="#静态常量注入" class="headerlink" title="静态常量注入"></a>静态常量注入</h3><img src='JavaEE-10-Spring-Bean-Load\f3969325-6e49-4555-9bdb-3ed2bf842904.jpg'>
+
+<img src='JavaEE-10-Spring-Bean-Load\4865618a-ba01-42c6-8a6a-d39b8e02345f.jpg'>
+
+<img src='JavaEE-10-Spring-Bean-Load\9a5dd250-4c8f-4f77-8147-86ba1c204287.jpg' >
+
+<h3 id="SPEL运算"><a href="#SPEL运算" class="headerlink" title="SPEL运算"></a>SPEL运算</h3><p>数值计算</p>
+<img src='JavaEE-10-Spring-Bean-Load\0a65e598-9051-4b11-9dad-f80de9e16b7a.jpg'>
+
+<p>连接字符串</p>
+<img src='JavaEE-10-Spring-Bean-Load\6cff97c0-2e3d-4996-8130-c1d3d1e5dc0a.jpg'>
+
+<p>布尔运算</p>
+<img src='JavaEE-10-Spring-Bean-Load\8275d4f5-2369-4599-a601-5883ed1ca04c.jpg'>
+
+<p>三元运算</p>
+<img src='JavaEE-10-Spring-Bean-Load\a485647d-fb66-4f17-ad9e-61f593d57423.jpg'>
+
+
+
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/20/JavaEE-9-Spring-Ioc/" title="JavaEE-9-Spring-Ioc" itemprop="url">JavaEE-9-Spring-Ioc</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-20T11:03:43.000Z" itemprop="datePublished"> Published 2020-06-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="主动创建对象"><a href="#主动创建对象" class="headerlink" title="主动创建对象"></a>主动创建对象</h2><p>我们假设制造果汁的过程：添加原料，使用搅拌机搅拌得到果汁。</p>
+<h3 id="搅拌机"><a href="#搅拌机" class="headerlink" title="搅拌机"></a>搅拌机</h3><img src='JavaEE-9-Spring-Ioc\d93673aa-786f-470a-bc0e-d006bf0e9428.jpg' >
+
+<h3 id="果汁制作"><a href="#果汁制作" class="headerlink" title="果汁制作"></a>果汁制作</h3><img src='JavaEE-9-Spring-Ioc\9c12c902-9bbb-4587-b912-5a443fc2dfb6.jpg' >
+
+<h2 id="被动创建对象"><a href="#被动创建对象" class="headerlink" title="被动创建对象"></a>被动创建对象</h2><h3 id="原料"><a href="#原料" class="headerlink" title="原料"></a>原料</h3><img src='JavaEE-9-Spring-Ioc\3e4f2450-9a5c-4563-8b41-f721a4f17a9e.jpg'>
+
+<h3 id="制作果汁"><a href="#制作果汁" class="headerlink" title="制作果汁"></a>制作果汁</h3><img src='JavaEE-9-Spring-Ioc\eb6e36c4-4ed4-44a1-a6a9-ce2e657bf9f6.jpg'>
+
+<h3 id="使用xml文件描述"><a href="#使用xml文件描述" class="headerlink" title="使用xml文件描述"></a>使用xml文件描述</h3><p>原料：</p>
+<img src='JavaEE-9-Spring-Ioc\4687ea60-012d-4abc-ad4c-a03f302aec52.jpg'>
+
+<p>果汁制作：</p>
+<img src='JavaEE-9-Spring-Ioc\21eec3f1-73c8-487b-8d90-cd980a84656a.jpg'>
+<img src='JavaEE-9-Spring-Ioc\efe6f012-3468-4862-b226-c71f7fdf7055.jpg'>
+
+<h2 id="在Spring中的实现"><a href="#在Spring中的实现" class="headerlink" title="在Spring中的实现"></a>在Spring中的实现</h2><h3 id="创建xml文件"><a href="#创建xml文件" class="headerlink" title="创建xml文件"></a>创建xml文件</h3><img src='JavaEE-9-Spring-Ioc\6cd06f4e-390d-458d-affa-53829fe988c7.jpg'>
+<img src='JavaEE-9-Spring-Ioc\1ceae184-2dd9-49d9-834e-1ba90c0b18d9.jpg'>
+
+<h3 id="通过ApplicationContext处理Bean"><a href="#通过ApplicationContext处理Bean" class="headerlink" title="通过ApplicationContext处理Bean"></a>通过ApplicationContext处理Bean</h3><img src='JavaEE-9-Spring-Ioc\bd440462-b0ba-4894-a884-4dca4f7ae6ab.jpg'>
+
+<h2 id="Spring-Bean的生命周期"><a href="#Spring-Bean的生命周期" class="headerlink" title="Spring Bean的生命周期"></a>Spring Bean的生命周期</h2><img src='JavaEE-9-Spring-Ioc\a33f4de9-dbf6-4cfd-aef5-3b585301ceaa.jpg'>
+
+<p>对生命周期初始化和销毁方法进行配置：</p>
+<img src='JavaEE-9-Spring-Ioc\ea0710f0-248a-475e-922a-1e911ec7197d.jpg'>
+
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/17/spring07-advanced-spring-mvc/" title="spring07-spring-mvc 高级内容" itemprop="url">spring07-spring-mvc 高级内容</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-17T13:22:47.000Z" itemprop="datePublished"> Published 2020-06-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="xml配置DispatcherServlet"><a href="#xml配置DispatcherServlet" class="headerlink" title="xml配置DispatcherServlet"></a>xml配置DispatcherServlet</h2><img src='spring07-advanced-spring-mvc\d802aa3b-3875-4643-a5bb-556d718fae4a.jpg'>
+
+<p>context-param作为配置信息，配置了spring的主配置目录。</p>
+<p>Listener配置ContextLoaderListener</p>
+<p>Servlet标签配置了DispatcherServlet</p>
+<h2 id="配置xml加载java配置DispatcherServlet"><a href="#配置xml加载java配置DispatcherServlet" class="headerlink" title="配置xml加载java配置DispatcherServlet"></a>配置xml加载java配置DispatcherServlet</h2><p>配置根Spring</p>
+<img src='spring07-advanced-spring-mvc\e202217c-8a3a-467e-8c26-9590d30b4b55.jpg'>
+
+<p>配置前端控制器</p>
+<img src='spring07-advanced-spring-mvc\d11e11d0-ece2-4517-8dc0-de7a68d5f833.jpg' >
+
+<p>contextClass是配置上下文的类</p>
+<p>contextConfigLocation是读取的配置类</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring/">spring</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/17/spring06-spring-web-view/" title="spring06- 视图渲染" itemprop="url">spring06- 视图渲染</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-17T06:50:05.000Z" itemprop="datePublished"> Published 2020-06-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>视图渲染属于视图层的任务，常用的就是Thymeleaf（JSP不建议使用）</p>
+<h2 id="Thymeleaf视图解析器"><a href="#Thymeleaf视图解析器" class="headerlink" title="Thymeleaf视图解析器"></a>Thymeleaf视图解析器</h2><ol>
+<li><p>ThymeleafViewResolver视图解析器，用于将视图名称解析为视图模板。</p>
+</li>
+<li><p>SpringTemplateEngine渲染引擎，用于渲染数据</p>
+</li>
+<li><p>TemplateResolver模板处理器，用于加载模板</p>
+</li>
+</ol>
+<h3 id="使用代码配置"><a href="#使用代码配置" class="headerlink" title="使用代码配置"></a>使用代码配置</h3><img src='spring06-spring-web-view\664d3e62-ce19-4c2b-94fc-5fb1f9840781.jpg'>
+
+<p>先配置TemplateResolver，然后配置TemplateEngine，最后是ViewResolver</p>
+<h3 id="使用xml配置"><a href="#使用xml配置" class="headerlink" title="使用xml配置"></a>使用xml配置</h3><img src='spring06-spring-web-view\b0149925-3ee7-44e4-9154-5b81704ce40c.jpg'>
+
+<h2 id="Thymeleaf模板定义"><a href="#Thymeleaf模板定义" class="headerlink" title="Thymeleaf模板定义"></a>Thymeleaf模板定义</h2><h3 id="一个简单的模板"><a href="#一个简单的模板" class="headerlink" title="一个简单的模板"></a>一个简单的模板</h3><img src='spring06-spring-web-view\6652af90-41a8-4a2f-9ed2-c8e1976101a5.jpg'>
+
+<p>通过引入th前缀，对html的标签属性进行修饰，动态绑定数据。这里th修饰了href属性，用于动态绑定超链接，并使用@{}计算路由地址。</p>
+<h3 id="域绑定"><a href="#域绑定" class="headerlink" title="域绑定"></a>域绑定</h3><img src='spring06-spring-web-view\3ddfad59-b0d2-45aa-b22c-f0863a2c9042.jpg'>
+
+<p>通过th:field绑定合适的域，*{firstname}则是域对应的属性。</p>
+<p>通过th:class条件修饰input标签，用于配置不同的css类，采用spring的表达式计算，根据结果渲染。</p>
+<h3 id="绑定域模型"><a href="#绑定域模型" class="headerlink" title="绑定域模型"></a>绑定域模型</h3><p>通过th:object绑定模型</p>
+<img src='spring06-spring-web-view\5faef54e-7837-4c0a-9c65-24ff934f8613.jpg' >
+
+<h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><img src='spring06-spring-web-view\161546be-688f-4357-8357-0fd00113a588.jpg'>
+
+<p>通过th:if条件渲染</p>
+<h3 id="遍历集合渲染"><a href="#遍历集合渲染" class="headerlink" title="遍历集合渲染"></a>遍历集合渲染</h3><p>使用th:each遍历集合渲染</p>
+<img src='spring06-spring-web-view\ef3ae15e-9275-4180-85f0-b472ee740a8d.jpg'>
+
+
+
+
+
+
+
+
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring/">spring</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/16/spring05-web-application/" title="spring05- spring web 应用" itemprop="url">spring05- spring web 应用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-16T14:07:50.000Z" itemprop="datePublished"> Published 2020-06-16</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="用户请求跟踪"><a href="#用户请求跟踪" class="headerlink" title="用户请求跟踪"></a>用户请求跟踪</h2><img src='spring05-web-application\13d61bab-e338-4080-ac29-271e29da5ff1.jpg'>
+
+<ol>
+<li>请求到达服务端，首先进入DispatcherServlet</li>
+</ol>
+<p>前端控制器将请求转发到其他组件处理，起到拦截的作用，在这里，DispatcherServlet就是前端控制器</p>
+<ol start="2">
+<li>通过处理器映射获取下一站</li>
+</ol>
+<p>处理器映射相当于门牌号，前端控制器根据请求地址信息，查询处理器映射信息，获取下一站(控制器)的地址。</p>
+<ol start="3">
+<li>控制器</li>
+</ol>
+<p>控制器接受请求，获取请求信息并进行处理，处理结束后，将数据返回，并选择合适的页面渲染。</p>
+<ol start="4">
+<li>模型和逻辑视图</li>
+</ol>
+<p>模型里存储的是返回的数据信息，逻辑视图就是渲染数据所使用的页面</p>
+<ol start="5">
+<li>视图解析器</li>
+</ol>
+<p>视图解析器获取数据及视图模板，将数据渲染到页面</p>
+<ol start="6">
+<li>视图</li>
+</ol>
+<p>生成的视图用于展示给用户</p>
+<h2 id="配置Spring-MVC相关"><a href="#配置Spring-MVC相关" class="headerlink" title="配置Spring MVC相关"></a>配置Spring MVC相关</h2><ol>
+<li>使用代码创建DispatcherServlet和Spring上下文</li>
+</ol>
+<p>创建配置类，继承AbstractAnnotationConfigDispatcherServletInitializer</p>
+<img src='spring05-web-application\b7590079-f482-45d8-985a-7262e78c0140.jpg'>
+
+<p>第一个方法是getServletMappings()：用于配置前端控制器拦截路径</p>
+<p>GetServlet-ConfigClasses()：用于配置前端控制器用到的Bean</p>
+<p>getRootConfigClasses(): 用于ContextLoaderListener用到的Bean</p>
+<ol start="2">
+<li>配置WebConfig</li>
+</ol>
+<img src='spring05-web-application\2de537b2-0a37-4f11-961d-8c1ed2f1b9d8.jpg'>
+
+<p>继承WebMvcConfigurerAdapter类，实现DispatcherServlet相关的配置。</p>
+<ol start="3">
+<li>配置RootConfig</li>
+</ol>
+<p>根配置不是本章节的重点，简单配置包扫描，去除对WebConfig的扫描即可</p>
+<img src='spring05-web-application\2f758f8d-39c2-41f9-97e3-d7ee194d04d7.jpg'>
+
+<h2 id="写个简单的控制器"><a href="#写个简单的控制器" class="headerlink" title="写个简单的控制器"></a>写个简单的控制器</h2><h3 id="测试控制器"><a href="#测试控制器" class="headerlink" title="测试控制器"></a>测试控制器</h3><ol>
+<li>创建一个简单的控制器</li>
+</ol>
+<img src='spring05-web-application\f7abeca9-9b81-422f-ad08-f35516721a18.jpg'>
+
+<p>采用@Controller注解表名这是一个控制器Bean</p>
+<p>@RequestMapping表示请求地址和动作方法</p>
+<p>返回的”home”是视图的名称。</p>
+<ol start="2">
+<li>JSP页面展示</li>
+</ol>
+<img src='spring05-web-application\fce8de81-6548-4b22-88fc-89ac634d921f.jpg'>
+
+<ol start="3">
+<li>测试</li>
+</ol>
+<img src='spring05-web-application\be40d188-e7ed-4b64-ae01-42c9d59cfc60.jpg'>
+
+<p>简单测试方法，直接断言：</p>
+<img src='spring05-web-application\abce45cd-a3c1-464a-aeee-87a6723c3c7a.jpg'>
+
+<p>使用MockMVC:</p>
+<img src='spring05-web-application\fc8ae99e-a060-47a7-a963-564881c6fd53.jpg'>
+
+<h3 id="RequestMapping的拆分"><a href="#RequestMapping的拆分" class="headerlink" title="RequestMapping的拆分"></a>RequestMapping的拆分</h3><img src='spring05-web-application\5b4d6c14-7c83-46bd-b893-08cd7dc50d67.jpg'>
+
+<p>将RequestMapping加到类上，添加类级别的限定。</p>
+<h3 id="映射多个路由"><a href="#映射多个路由" class="headerlink" title="映射多个路由"></a>映射多个路由</h3><p>RequestMapping可以对多个路由映射，也就是对多个url进行响应</p>
+<img src='spring05-web-application\74d9329e-c623-4f7a-9ca1-bd01ed364375.jpg'>
+
+<h3 id="返回模型数据"><a href="#返回模型数据" class="headerlink" title="返回模型数据"></a>返回模型数据</h3><img src='spring05-web-application\b642bfa9-803c-4fcb-8b41-b099dcc31165.jpg'>
+
+<p>使用Model作为方法参数，通过addAttribute方法添加数据，并通过spittles视图名的模板渲染：</p>
+<img src='spring05-web-application\04e141fc-a699-488d-bac5-0505b1d22dbd.jpg'>
+
+
+<h2 id="处理输入"><a href="#处理输入" class="headerlink" title="处理输入"></a>处理输入</h2><p>输入信息有三种：</p>
+<ul>
+<li>查询参数（Query Parameter） </li>
+<li>表单参数（Form Parameter） </li>
+<li>路径变量（Path Variable） </li>
+</ul>
+<h3 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h3><p>当请求为</p>
+<img src='spring05-web-application\d42b2a05-bd7f-412d-86db-8bf1e41c4ea6.jpg'>
+
+<p>此时可以通过@RequestParam获取查询参数</p>
+<img src='spring05-web-application\fdbf6da8-0a59-4cc1-a617-163db6df5070.jpg'>
+
+<p>如果请求中没有给出参数，需要给默认值：</p>
+<img src='spring05-web-application\602df014-be62-421b-92dd-884d4a6d8788.jpg'>
+
+<p>因为默认传入的是String类型，所以默认值也需要是字符串。这里存在一个常量转换：</p>
+<img src='spring05-web-application\4ad7f548-e6ae-4bb1-ae2e-f9b040912719.jpg'>
+
+<h3 id="路由参数"><a href="#路由参数" class="headerlink" title="路由参数"></a>路由参数</h3><p>当请求为</p>
+<img src='spring05-web-application\f6bf183f-210f-42f8-a6bb-f69f2eedf3b4.jpg'>
+
+<p>使用{variable}作为路径，使用PathVariable注解获取路由参数</p>
+<img src='spring05-web-application\eb4555cf-1c3c-4b97-bc61-f30820814dc3.jpg'>
+
+<h3 id="form参数"><a href="#form参数" class="headerlink" title="form参数"></a>form参数</h3><p>通过form提交的参数，可以通过POJO接收</p>
+<img src='spring05-web-application\cea005b7-c0c6-43bd-959e-a555ebc199ee.jpg'>
+
+<p>需要对输入参数进行校验</p>
+<img src='spring05-web-application\f16583d5-66c0-45c0-848d-b07eb961a78d.jpg'>
+
+<p>使用@Valid注解强制校验，校验结果存储到Errors对象里：</p>
+<img src='spring05-web-application\844c0671-9998-41ca-beec-4317690a335c.jpg'>
+
+<h3 id="常用的表单参数验证注解"><a href="#常用的表单参数验证注解" class="headerlink" title="常用的表单参数验证注解"></a>常用的表单参数验证注解</h3><img src='spring05-web-application\90ff8eaa-c9bc-445b-af92-0d148fc31def.jpg'>
+<img src='spring05-web-application\3c58b607-3471-4272-9b19-4c8983a91e12.jpg' >
+<img src='spring05-web-application\5bbc9905-5bd7-49fb-a933-5c6b077ede5c.jpg'>
+
+
+
+
+
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring/">spring</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/04/crazySSM05-File/" title="crazySSM05-文件上传与下载" itemprop="url">crazySSM05-文件上传与下载</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-04T14:40:12.000Z" itemprop="datePublished"> Published 2020-06-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><ol>
+<li>配置CommonsMutipartFileResolver</li>
+</ol>
+<p>在springmvc-config.xml中配置：</p>
+<img src='crazySSM05-File\a79f9a98-b144-4f78-b255-33bf4f02beb7.jpg'>
+
+<ol start="2">
+<li>使用MutipartFile接收文件</li>
+</ol>
+<img src='crazySSM05-File\7979fbdf-da5a-4a54-874d-b3f49619968b.jpg'>
+
+<p>MultipartFile常用方法：</p>
+<img src='crazySSM05-File\dd19c720-61e3-40b9-b3e4-163b50f5147b.jpg'>
+
+<h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><p>给定链接点击下载：</p>
+<img src='crazySSM05-File\a914d515-eb89-4f7a-9e66-0da14493b565.jpg' >
+
+<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><p>主要用于实现对控制器请求过程中的拦截，以拦截登陆为例：</p>
+<ol>
+<li>登陆方法</li>
+</ol>
+<img src='crazySSM05-File\7bb13b24-e985-4aa3-850f-125b47470876.jpg'>
+
+<ol start="2">
+<li>拦截器，实现HandlerInceptor接口</li>
+</ol>
+<img src='crazySSM05-File\1760f463-6f2e-47f2-9acc-2c57e0fdf509.jpg'>
+<img src='crazySSM05-File\3c168eb0-e520-4f79-be06-e63deb60facf.jpg'>
+
+<p>在preHandle方法中，获取RequestDispatcher并进行转发。</p>
+<ol start="3">
+<li>注册拦截器</li>
+</ol>
+<img src='crazySSM05-File\718c6703-0563-413d-a0a4-587cbf5b9dd8.jpg'>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/SSM/">SSM</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/05/30/spring-Boot-vue05-dataStorage/" title="spring-Boot+vue05: 数据存储" itemprop="url">spring-Boot+vue05: 数据存储</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-05-30T03:28:12.000Z" itemprop="datePublished"> Published 2020-05-30</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Spring-Boot-整合Mybatis做数据持久化"><a href="#Spring-Boot-整合Mybatis做数据持久化" class="headerlink" title="Spring Boot 整合Mybatis做数据持久化"></a>Spring Boot 整合Mybatis做数据持久化</h2><ol>
+<li>创建项目添加依赖</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\75b3f913-5b99-410a-baea-75d04e65ac37.jpg'>
+
+<ol start="2">
+<li>创建数据表</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\4ff13322-95de-416f-a1cb-6aa5e199eb8f.jpg'>
+
+<ol start="3">
+<li>创建实体类</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\278987ac-44ec-4a0c-98bf-79c2be32ee45.jpg'>
+
+<ol start="4">
+<li>配置文件</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\a9890d67-833e-4e93-9a9c-4ce98c2cce5f.jpg'>
+
+<ol start="5">
+<li>创建数据库映射层</li>
+</ol>
+<p>即一个个接口方法，与xml一一对应</p>
+<img src='spring-Boot-vue05-dataStorage\5caf4fe4-287c-4ec2-8350-e757b0694478.jpg'>
+
+<ol start="6">
+<li>在相同目录下创建mapper映射文件</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\02a148a3-579d-4ffa-a46b-569459878110.jpg'>
+
+<ol start="7">
+<li>创建服务层</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\fa86ecc3-0645-45ce-917a-b9120d822054.jpg'>
+<img src='spring-Boot-vue05-dataStorage\d99f701e-8cae-466b-8f50-2b8edc37ae04.jpg'>
+
+<ol start="8">
+<li>创建控制器层</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\5cce11e8-dff6-432d-a268-73b4bb12927d.jpg'>
+
+<ol start="9">
+<li>配置pom</li>
+</ol>
+<p>由于maven项目默认存储在src/main/resources目录下, mapper文件找不到，需要配置一下：</p>
+<p>配置编译目录</p>
+<img src='spring-Boot-vue05-dataStorage\fe77e827-9f31-4867-8bb0-9c0dfa82b284.jpg'>
+<img src='spring-Boot-vue05-dataStorage\2c6d0a3c-21e5-4eba-8822-c51fa3edc4ca.jpg'>
+
+<h2 id="多数据源问题"><a href="#多数据源问题" class="headerlink" title="多数据源问题"></a>多数据源问题</h2><p>实际开发中不可避免地操作多个数据库，如何同时配置多个数据源呢？</p>
+<ol>
+<li>创建数据库</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\525f7701-46a0-4466-87f2-f0def97cd808.jpg'>
+
+<ol start="2">
+<li>配置连接</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\e54e2d4a-3363-4384-8bad-43243f329e4c.jpg'>
+
+<p>针对不同的数据源给定不同的前缀。</p>
+<ol start="3">
+<li>由于存在多个数据源，需要给出多个DataSource的实例</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\91fa9a01-82e8-4c2b-8175-58fab91bf3a8.jpg'>
+<img src='spring-Boot-vue05-dataStorage\49c67feb-e4ad-4c36-b792-6725e9d95840.jpg'>
+
+<ol start="4">
+<li>创建第一个数据源SqlSessionFactory</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\14f65027-db1a-4933-84a5-8e461bdc6ae7.jpg'>
+
+<ol start="5">
+<li>创建第二个数据源SqlSessionFactory</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\8240481f-3911-45fb-992b-b5c992d9691d.jpg'>
+<img src='spring-Boot-vue05-dataStorage\3ba6e889-bad6-46bb-a15a-063347afac76.jpg'>
+
+<ol start="6">
+<li>创建mapper文件及接口</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\10ab9768-791c-4583-9413-e02fdb7bf55c.jpg'>
+
+<img src='spring-Boot-vue05-dataStorage\b09544a1-aea7-4b7c-98c9-22eecf9d4d9d.jpg'>
+
+<ol start="7">
+<li>注入使用</li>
+</ol>
+<img src='spring-Boot-vue05-dataStorage\d756b9aa-7711-4de7-856e-1983753c6d9c.jpg'>
+<img src='spring-Boot-vue05-dataStorage\2224d21b-5422-4d37-ae7f-b53658be6b66.jpg' >
+
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring-boot/">spring-boot</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/05/29/spring-Boot-vue04-web/" title="spring-Boot+vue04: 整合web开发" itemprop="url">spring-Boot+vue04: 整合web开发</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-05-29T07:20:53.000Z" itemprop="datePublished"> Published 2020-05-29</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="返回JSON数据"><a href="#返回JSON数据" class="headerlink" title="返回JSON数据"></a>返回JSON数据</h2><p>默认添加web模块后，自动使用jackson-databind处理：</p>
+<img src='spring-Boot-vue04-web\28ce6150-cfdf-412f-b2f3-775322bfd220.jpg'>
+
+<p>添加一个pojo:</p>
+<img src='spring-Boot-vue04-web\f5910f79-a35d-4641-b36f-0d4e5f80eaa6.jpg'>
+
+<p>直接返回实体：</p>
+<img src='spring-Boot-vue04-web\32a2830b-286f-4328-9809-fb6519fc44b3.jpg'>
+
+<h3 id="配置Gson替换jackson-databind"><a href="#配置Gson替换jackson-databind" class="headerlink" title="配置Gson替换jackson-databind"></a>配置Gson替换jackson-databind</h3><p>去除jackson-databind添加gson</p>
+<img src='spring-Boot-vue04-web\1f295ceb-7519-4dbb-9777-11ec3a0324bd.jpg'>
+
+<p>配置Date格式化及忽略字段：</p>
+<img src='spring-Boot-vue04-web\84bfcbae-84df-4e83-a4ce-bce27bd929c3.jpg'>
+
+<h3 id="配置fastjson替换jackson-databind"><a href="#配置fastjson替换jackson-databind" class="headerlink" title="配置fastjson替换jackson-databind"></a>配置fastjson替换jackson-databind</h3><p>去除jackson-databind添加fastjson</p>
+<img src='spring-Boot-vue04-web\ff21b4fa-6201-4779-9ebf-b1c7d4c0f524.jpg'>
+
+<p>配置相关信息：</p>
+<img src='spring-Boot-vue04-web\0b534d0d-2a13-41c3-a06d-6f2d53419608.jpg'>
+
+<p>配置编码：</p>
+<img src='spring-Boot-vue04-web\f2bccf28-40e9-423a-9b29-2e3215348872.jpg'>
+
+<h2 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h2><ol>
+<li>配置静态资源路径</li>
+</ol>
+<img src='spring-Boot-vue04-web\f1a419ff-4137-4009-930f-7c5dcae5c871.jpg'>
+
+<ol start="2">
+<li>通过WebMvcConfigurer设置</li>
+</ol>
+<img src='spring-Boot-vue04-web\bfa9a14c-32f8-4d28-8bd8-2346a57e03f5.jpg'>
+
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><ol>
+<li><p>创建项目添加web依赖</p>
+</li>
+<li><p>添加上传页面</p>
+</li>
+</ol>
+<img src='spring-Boot-vue04-web\59b5fb28-61e8-4ff2-8936-48561d3377f9.jpg' style='width:480px;height:320px;margin:30px auto;display:block' alt='title'>
+
+<ol start="3">
+<li>处理文件</li>
+</ol>
+<img src='spring-Boot-vue04-web\f9dcbf9a-ec2b-44ff-ace6-a41cf76d9610.jpg'>
+
+<ol start="4">
+<li>更多配置</li>
+</ol>
+<img src='spring-Boot-vue04-web\f323f886-7435-4e69-af9d-f716a76caf93.jpg'>
+
+<ol start="5">
+<li>多文件上传</li>
+</ol>
+<p>修改上传页面</p>
+<img src='spring-Boot-vue04-web\857c3faa-eee7-4232-8a4d-3f516290195b.jpg'>
+
+<p>控制器接受MutilpartFile数组</p>
+<img src='spring-Boot-vue04-web\5b2a63c0-dada-46ab-864e-2423fa91ccb4.jpg'>
+
+<h2 id="ControllerAdvice"><a href="#ControllerAdvice" class="headerlink" title="ControllerAdvice"></a>ControllerAdvice</h2><h3 id="全局异常处理"><a href="#全局异常处理" class="headerlink" title="全局异常处理"></a>全局异常处理</h3><ol>
+<li>添加自定义异常处理类，并给ControllerAdvice注解</li>
+</ol>
+<img src='spring-Boot-vue04-web\fe65a1e8-567a-4a39-b46e-10d479b4d5ff.jpg'>
+
+<p>出现异常时，将根据ExceptionHandler注解指定的类型查找处理方法。</p>
+<p>处理方法参数可以是：</p>
+<p>HttpServletResponse、XXXException、HttpServletRequest、Model</p>
+<p>处理方法返回值可以是：</p>
+<p>Json、ModelAndView、视图名称等等</p>
+<h3 id="添加全局数据"><a href="#添加全局数据" class="headerlink" title="添加全局数据"></a>添加全局数据</h3><ol>
+<li>创建全局数据处理类，使用ModelAttribute注解</li>
+</ol>
+<img src='spring-Boot-vue04-web\102b4bc9-c4e6-4339-9870-f220467203a8.jpg'>
+
+<p>ModelAttribute注解的value就是Model中添加的键，方法返回值就是值。</p>
+<ol start="2">
+<li>在任意的控制器方法中可以获取这些数据</li>
+</ol>
+<img src='spring-Boot-vue04-web\e50607d8-b28a-4d8a-b471-661eaa0f020a.jpg'>
+
+<h3 id="数据预绑定"><a href="#数据预绑定" class="headerlink" title="数据预绑定"></a>数据预绑定</h3><ol>
+<li>假设有pojo需要接收</li>
+</ol>
+<img src='spring-Boot-vue04-web\388c6c53-e691-4d9c-a065-362584877fbe.jpg'>
+
+<ol start="2">
+<li>如果不使用注解，二者相同的参数名称会引发问题。</li>
+</ol>
+<img src='spring-Boot-vue04-web\432b1f79-cc46-4369-9890-d59fa72e87e1.jpg'>
+
+<ol start="3">
+<li>使用ModelAttribute添加标记</li>
+</ol>
+<img src='spring-Boot-vue04-web\fcf66810-7907-46ad-aef1-923572e65e3e.jpg'>
+
+<ol start="4">
+<li>在ControllerAdvice标记的类中处理</li>
+</ol>
+<img src='spring-Boot-vue04-web\e7aea350-6687-4e2e-9e85-38a0662ccfa3.jpg'>
+
+<ol start="5">
+<li>请求</li>
+</ol>
+<p>根据前缀即可绑定</p>
+<img src='spring-Boot-vue04-web\1ba8e663-6f3e-4959-864e-d8511ee86e91.jpg'>
+
+<h2 id="自定义错误页面"><a href="#自定义错误页面" class="headerlink" title="自定义错误页面"></a>自定义错误页面</h2><p>ControllerAdvice用于对控制器的增强，无法捕捉全局异常信息。</p>
+<p>对于404或500页面，spring boot有默认的页面提示：</p>
+<img src='spring-Boot-vue04-web\5a306fb5-b62f-425a-9b1c-8ba648f1a8cf.jpg'>
+
+<h3 id="配置静态错误页面"><a href="#配置静态错误页面" class="headerlink" title="配置静态错误页面"></a>配置静态错误页面</h3><p>可以在static目录下创建error文件夹，下面放置静态的错误页面：</p>
+<img src='spring-Boot-vue04-web\96ff1cee-6034-42e4-9a7e-260152d894a4.jpg'>
+
+<h3 id="配置错误详情页"><a href="#配置错误详情页" class="headerlink" title="配置错误详情页"></a>配置错误详情页</h3><p>在templates下创建error文件夹，下面放置错误页面模板：</p>
+<img src='spring-Boot-vue04-web\0e04ec6e-3243-4f0b-8c0d-8029f196c1e3.jpg'>
+
+<p>可以显示一些错误信息：</p>
+<p>timestamp、status、error、message、path</p>
+<img src='spring-Boot-vue04-web\f6233531-b2de-4e47-879d-b32f706c8ee9.jpg'>
+
+<h3 id="自定义错误信息"><a href="#自定义错误信息" class="headerlink" title="自定义错误信息"></a>自定义错误信息</h3><p>通过继承DefaultErrorAttributes自定义错误信息：</p>
+<img src='spring-Boot-vue04-web\daf17349-ed61-4ace-97c3-4a322e77c80b.jpg'>
+
+<p>效果：</p>
+<img src='spring-Boot-vue04-web\7fa48bac-8f6f-458b-8683-9ea064a96a57.jpg'>
+
+<h3 id="自定义错误视图"><a href="#自定义错误视图" class="headerlink" title="自定义错误视图"></a>自定义错误视图</h3><p>可以实现ErrorViewResolver定制错误数据和错误模板：</p>
+<img src='spring-Boot-vue04-web\2ec8df96-5cff-4eca-981f-f2eed3f3608e.jpg'>
+
+<h3 id="完全自定义"><a href="#完全自定义" class="headerlink" title="完全自定义"></a>完全自定义</h3><p>可以实现ErrorController接口，或者继承BasicErrorController</p>
+<img src='spring-Boot-vue04-web\b0a11131-b2aa-4578-923d-7b32dd6fb43e.jpg'>
+
+<h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><h3 id="细粒度注解跨域"><a href="#细粒度注解跨域" class="headerlink" title="细粒度注解跨域"></a>细粒度注解跨域</h3><img src='spring-Boot-vue04-web\1bfdf17f-ef82-4070-b5c6-ede6631543b8.jpg'>
+
+<h3 id="WebMvcConfigurer配置跨域"><a href="#WebMvcConfigurer配置跨域" class="headerlink" title="WebMvcConfigurer配置跨域"></a>WebMvcConfigurer配置跨域</h3><img src='spring-Boot-vue04-web\f5b9b58b-7cdb-4ba1-828a-b52532425cb7.jpg'>
+<img src='spring-Boot-vue04-web\80a7b56a-17be-4561-8727-d58133708f6a.jpg'>
+
+<h2 id="Java配置及xml配置"><a href="#Java配置及xml配置" class="headerlink" title="Java配置及xml配置"></a>Java配置及xml配置</h2><p>一个Bean：</p>
+<img src='spring-Boot-vue04-web\cfba4a78-a0fb-4b94-9de2-719489062051.jpg'>
+
+<p>通过xml注册：</p>
+<img src='spring-Boot-vue04-web\ee8db474-eb86-40da-b83d-c73bfec62818.jpg'>
+
+<p>在配置类可以使用ImportResource导入：</p>
+<img src='spring-Boot-vue04-web\e00eee13-d910-4674-bd8d-d4a2976254cd.jpg'>
+
+<p>使用方法不变：</p>
+<img src='spring-Boot-vue04-web\a56f9a53-8561-4559-aa2e-5f3493f7687f.jpg'>
+
+<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><p>通过实现HandlerInterceptor创建拦截器：</p>
+<img src='spring-Boot-vue04-web\9ea2c145-abc0-4399-b08b-eb7bf24a8fc5.jpg'>
+<img src='spring-Boot-vue04-web\b837cf23-f950-4205-aa1f-8a9037d257a1.jpg'>
+
+<p>提供preHandle、PostHandle、afterHandle不同节点的拦截。</p>
+<p>注册拦截器：</p>
+<img src='spring-Boot-vue04-web\04e8c7e1-7af1-47f6-9cb3-99fea5c5521c.jpg'>
+
+<h2 id="系统任务"><a href="#系统任务" class="headerlink" title="系统任务"></a>系统任务</h2><h3 id="CommandLineRunner"><a href="#CommandLineRunner" class="headerlink" title="CommandLineRunner"></a>CommandLineRunner</h3><p>实现CommandLineRunner重写run方法</p>
+<img src='spring-Boot-vue04-web\e5662a15-99c1-4839-a7ae-fd8da8be6cc7.jpg'>
+
+<p>order注解表示执行次序。</p>
+<h3 id="ApplicationRunner"><a href="#ApplicationRunner" class="headerlink" title="ApplicationRunner"></a>ApplicationRunner</h3><p>实现ApplicationRunner接口重写run方法</p>
+<img src='spring-Boot-vue04-web\10bcf7e8-6f34-43f4-a09f-f309e3a8315b.jpg'>
+
+<p>NonOptionArgs表示main方法参数，OptionValues表示项目启动参数。</p>
+<img src='spring-Boot-vue04-web\5b6fffaf-8813-4d07-889f-3f242b268fd2.jpg'>
+
+<h2 id="整合Servlet、Filter、Listener"><a href="#整合Servlet、Filter、Listener" class="headerlink" title="整合Servlet、Filter、Listener"></a>整合Servlet、Filter、Listener</h2><p>Servlet：</p>
+<img src='spring-Boot-vue04-web\c4f13e62-1319-4e28-926d-cd2a4cacde26.jpg'>
+
+<p>Filter:</p>
+<img src='spring-Boot-vue04-web\d08394a4-57eb-4967-8c35-13b71d46e141.jpg'>
+<img src='spring-Boot-vue04-web\fbc992c6-b895-4b50-8b79-6736aa9725ea.jpg'>
+
+<p>Listener:</p>
+<img src='spring-Boot-vue04-web\ebdbfe3b-3a2c-4cd1-adf8-8f22e9a52f99.jpg'>
+
+<p>也支持HttpSessionListener、ServletContextListener</p>
+<p>需要在启动类开启ServletComponentScan注解：</p>
+<img src='spring-Boot-vue04-web\f10e8d74-b065-4600-a831-d08c5ade1654.jpg'>
+
+<h2 id="路径映射"><a href="#路径映射" class="headerlink" title="路径映射"></a>路径映射</h2><p>为了提高反应速度，可以对无需数据的页面配置路由映射，实现WebMvcConfigurer接口，重写addViewControllers方法：</p>
+<img src='spring-Boot-vue04-web\4b14fe59-2c46-4b9d-bc92-895dae243e27.jpg'>
+
+<h2 id="Aop"><a href="#Aop" class="headerlink" title="Aop"></a>Aop</h2><h3 id="使用aop"><a href="#使用aop" class="headerlink" title="使用aop"></a>使用aop</h3><ol>
+<li>添加aop依赖</li>
+</ol>
+<img src='spring-Boot-vue04-web\53aecb6a-eeed-4e95-863f-34d32093e9f7.jpg'>
+
+<ol start="2">
+<li>创建被监听服务</li>
+</ol>
+<img src='spring-Boot-vue04-web\6d52f476-2487-4786-9566-d672b30f2c7a.jpg'>
+
+<ol start="3">
+<li>创建切面</li>
+</ol>
+<img src='spring-Boot-vue04-web\bf370db6-9ad2-4ee0-a8b4-99eba47e4e38.jpg'>
+
+<p>服务调用时，相关的切面方法也会执行。</p>
+<h2 id="自定义图标"><a href="#自定义图标" class="headerlink" title="自定义图标"></a>自定义图标</h2><p>将favico.ico放在static目录下即可。</p>
+<h2 id="去除默认配置"><a href="#去除默认配置" class="headerlink" title="去除默认配置"></a>去除默认配置</h2><ol>
+<li>使用EnableAutoConfiguration注解去除</li>
+</ol>
+<img src='spring-Boot-vue04-web\e1c01c85-34da-460e-8124-8a058707e2fb.jpg'>
+
+<ol start="2">
+<li>使用配置去除</li>
+</ol>
+<img src='spring-Boot-vue04-web\220f9af5-a2d1-4a97-9357-6ad2f4080ffc.jpg'>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring-boot/">spring-boot</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/blog/page/3/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/blog/page/5/">5</a><a class="page-number" href="/blog/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="extend next" rel="next" href="/blog/page/5/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>

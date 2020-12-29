@@ -1,0 +1,669 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>JavaEE-18-Redis-Data-Structure | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="Redis常见数据结构  字符串字符串采用键值对存储  常用的指令  使用示例  redisTemplate.opsForValue().get(String key)读取值 redisTemplate.opsForValue().set(String key, String value)设值 redisTemplate.opsForValue().append(String key, Strin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaEE-18-Redis-Data-Structure">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="Redis常见数据结构  字符串字符串采用键值对存储  常用的指令  使用示例  redisTemplate.opsForValue().get(String key)读取值 redisTemplate.opsForValue().set(String key, String value)设值 redisTemplate.opsForValue().append(String key, Strin">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/db516e45-cd9d-4096-b168-ae4a9fec9fb8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/e3800819-e45e-4a7f-a50a-c866395c5fde.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/8289c92a-5f13-4715-baa0-55a32a689a00.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/0cdbf955-d53d-4a3a-95db-54faf74165a6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/074c8846-8da7-4838-bb2c-3ec2c66d97a2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/669e6152-05d2-4b5e-b258-25ad0480a429.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/3641b579-aa73-4da9-8c72-19e480c7bcd2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/9512440c-6813-48b1-bd7a-f87cbe2ad930.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/00ce5ab5-53e4-47f7-94ae-327124fa7cb1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/e690e0d7-17fb-4bf2-9770-d31bd8b6b703.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/16341be0-0f36-4f44-9807-5ad59cf5ef02.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/fb3eebee-cf16-46cf-b6e6-a52dba95175c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/d3ce093f-badc-404b-b93a-ddc14e270aa5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/52c513be-3a34-4eea-be09-b01130988c68.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/3b210674-fd62-43d5-a3bb-9351b108fb99.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/f8d5d624-fd1d-4071-95d6-17a332a4f180.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/fe3db352-11c7-4076-bfd5-9b9d48eaef1f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/79ceff00-7265-4d6f-a616-a2b20a68fded.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/7f06af70-8d69-4727-8e9f-90facd611872.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/156cf2d7-5c3a-4051-94d6-da6d38e0aa24.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/8e8ff88c-0182-47d6-a793-538967d339e9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/dd775088-ce3f-41d9-8ef2-d3a5271b5c37.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/e130fba5-8a2d-4b55-87c1-995a4b7d5434.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/210f2351-e2f0-4323-a144-fa34c960bd46.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/9d3707be-0155-4665-8571-a40798caa102.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/3b0ba18a-69c9-4091-9813-a3b7e23e0038.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/cb313c6f-8e60-40d2-967d-5ac8a421f44b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/54338755-0f66-4b4c-afc3-b55144ff3f38.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/a9c1d5df-0ca8-4c65-b85d-555e980310fd.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/da39244f-5aab-44fa-8c4f-c07ae755bd9c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/f2302487-0e44-42a2-b3e7-c02910decf7b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/06e6d0ce-9ea4-4350-a1ec-c9e1af848630.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/54b7ee20-eba5-4892-9eb9-445fad7ac5c5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/e0f725a6-70e3-4383-9399-93eaf0a7e2a4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/807b14a7-749a-47a5-bf65-98e023a68870.jpg">
+<meta property="article:published_time" content="2020-06-22T13:21:12.000Z">
+<meta property="article:modified_time" content="2020-12-29T13:22:44.649Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="JavaEE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/JavaEE-18-Redis-Data-Structure/db516e45-cd9d-4096-b168-ae4a9fec9fb8.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/06/22/JavaEE-18-Redis-Data-Structure/" title="JavaEE-18-Redis-Data-Structure" itemprop="url">JavaEE-18-Redis-Data-Structure</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-22T13:21:12.000Z" itemprop="datePublished"> Published 2020-06-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">Redis常见数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%87%E7%94%A8%E9%94%AE%E5%80%BC%E5%AF%B9%E5%AD%98%E5%82%A8"><span class="toc-number">2.1.</span> <span class="toc-text">字符串采用键值对存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4"><span class="toc-number">2.2.</span> <span class="toc-text">常用的指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">使用示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">2.4.</span> <span class="toc-text">数值操作指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C"><span class="toc-number">3.</span> <span class="toc-text">哈希</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4-1"><span class="toc-number">3.2.</span> <span class="toc-text">常用的指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.3.</span> <span class="toc-text">使用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%87%E7%94%A8%E5%8F%8C%E5%90%91%E6%8C%87%E9%92%88%E7%9A%84%E9%93%BE%E8%A1%A8"><span class="toc-number">4.1.</span> <span class="toc-text">采用双向指针的链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">4.2.</span> <span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BB%E5%A1%9E%E6%8C%87%E4%BB%A4%EF%BC%88%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">阻塞指令（并发场景）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B-1"><span class="toc-number">4.4.</span> <span class="toc-text">使用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-number">5.</span> <span class="toc-text">集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4-1"><span class="toc-number">5.1.</span> <span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">5.2.</span> <span class="toc-text">使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88"><span class="toc-number">6.</span> <span class="toc-text">有序集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4-2"><span class="toc-number">6.1.</span> <span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-2"><span class="toc-number">6.2.</span> <span class="toc-text">使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text">基数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E4%BC%BC%E4%BA%8E%E6%9C%80%E5%B0%8F%E5%AE%8C%E5%85%A8%E5%AD%90%E9%9B%86"><span class="toc-number">7.1.</span> <span class="toc-text">类似于最小完全子集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B"><span class="toc-number">7.2.</span> <span class="toc-text">操作实例</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="Redis常见数据结构"><a href="#Redis常见数据结构" class="headerlink" title="Redis常见数据结构"></a>Redis常见数据结构</h2><img src='JavaEE-18-Redis-Data-Structure\db516e45-cd9d-4096-b168-ae4a9fec9fb8.jpg' >
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="字符串采用键值对存储"><a href="#字符串采用键值对存储" class="headerlink" title="字符串采用键值对存储"></a>字符串采用键值对存储</h3><img src='JavaEE-18-Redis-Data-Structure\e3800819-e45e-4a7f-a50a-c866395c5fde.jpg'>
+
+<h3 id="常用的指令"><a href="#常用的指令" class="headerlink" title="常用的指令"></a>常用的指令</h3><img src='JavaEE-18-Redis-Data-Structure\8289c92a-5f13-4715-baa0-55a32a689a00.jpg'>
+
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><img src='JavaEE-18-Redis-Data-Structure\0cdbf955-d53d-4a3a-95db-54faf74165a6.jpg'>
+
+<p>redisTemplate.opsForValue().get(String key)读取值</p>
+<p>redisTemplate.opsForValue().set(String key, String value)设值</p>
+<p>redisTemplate.opsForValue().append(String key, String value)追加值</p>
+<p>redisTemplate.opsForValue().getAndset(String key, String value)设值读旧值</p>
+<p>redisTemplate.delete(String delete)删除值</p>
+<h3 id="数值操作指令"><a href="#数值操作指令" class="headerlink" title="数值操作指令"></a>数值操作指令</h3><img src='JavaEE-18-Redis-Data-Structure\074c8846-8da7-4838-bb2c-3ec2c66d97a2.jpg'>
+
+<ul>
+<li><p>incr key / incrby key val</p>
+</li>
+<li><p>decr key / decrby key val</p>
+</li>
+<li><p>incrbyfloat key val</p>
+</li>
+</ul>
+<p>不过类似的操作常常使用java代码操作，不常用</p>
+<img src='JavaEE-18-Redis-Data-Structure\669e6152-05d2-4b5e-b258-25ad0480a429.jpg'>
+
+<h2 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h2><h3 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h3><img src='JavaEE-18-Redis-Data-Structure\3641b579-aa73-4da9-8c72-19e480c7bcd2.jpg'>
+
+<h3 id="常用的指令-1"><a href="#常用的指令-1" class="headerlink" title="常用的指令"></a>常用的指令</h3><img src='JavaEE-18-Redis-Data-Structure\9512440c-6813-48b1-bd7a-f87cbe2ad930.jpg'>
+
+<h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><img src='JavaEE-18-Redis-Data-Structure\00ce5ab5-53e4-47f7-94ae-327124fa7cb1.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\e690e0d7-17fb-4bf2-9770-d31bd8b6b703.jpg'>
+
+<p>redisTemplate.opsForHash().putAll(String key, Map&lt;String,String&gt;val)赋值</p>
+<p>redisTemplate.opsForHash().put(String key, String field, String val)赋值</p>
+<p>redisTemplate.opsForHash().hasKey(String key, String field)判断字段存在性</p>
+<p>redisTemplate.opsForHash().entries(String key)获取键值对</p>
+<p>redisTemplate.opsForHash().values(String key)获取键集合</p>
+<p>redisTemplate.opsForHash().keys(String key)获取值集合</p>
+<p>redisTemplate.opsForHash().multiGet(String key, List<String> fields)获取批量字段</p>
+<p>redisTemplate.opsForHash().putIfAbsent(String key, String field, String val)不存在就赋值</p>
+<p>redisTemplate.opsForHash().delete(String key, String … fields)批量删除字段</p>
+<img src='JavaEE-18-Redis-Data-Structure\16341be0-0f36-4f44-9807-5ad59cf5ef02.jpg' >
+
+<p>redisTemplate.opsForHash().get(String key, String field)获取</p>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="采用双向指针的链表"><a href="#采用双向指针的链表" class="headerlink" title="采用双向指针的链表"></a>采用双向指针的链表</h3><img src='JavaEE-18-Redis-Data-Structure\fb3eebee-cf16-46cf-b6e6-a52dba95175c.jpg'>
+
+<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><img src='JavaEE-18-Redis-Data-Structure\d3ce093f-badc-404b-b93a-ddc14e270aa5.jpg'>
+
+<h3 id="阻塞指令（并发场景）"><a href="#阻塞指令（并发场景）" class="headerlink" title="阻塞指令（并发场景）"></a>阻塞指令（并发场景）</h3><img src='JavaEE-18-Redis-Data-Structure\52c513be-3a34-4eea-be09-b01130988c68.jpg'>
+
+<h3 id="使用实例-1"><a href="#使用实例-1" class="headerlink" title="使用实例"></a>使用实例</h3><img src='JavaEE-18-Redis-Data-Structure\3b210674-fd62-43d5-a3bb-9351b108fb99.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\f8d5d624-fd1d-4071-95d6-17a332a4f180.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\fe3db352-11c7-4076-bfd5-9b9d48eaef1f.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\79ceff00-7265-4d6f-a616-a2b20a68fded.jpg'>
+
+<p>redisTemplate.opsForList().delete(String key)删除list</p>
+<p>redisTemplate.opsForList().leftPush(String key, String val);左插</p>
+<p>redisTemplate.opsForList().rightPush(String key, String val)右插</p>
+<p>redisTemplate.opsForList().leftPushAll(String key, List<String> val)左插集合</p>
+<p>redisTemplate.opsForList().leftPushIfPresent(String key, String val);存在则左插</p>
+<p>redisTemplate.opsForList().rightPushIfPresent(String key, String val)存在则右插</p>
+<p>redisTemplate.opsForList().leftPop(String key)左弹</p>
+<p>redisTemplate.opsForList().rightPop(String key)右弹</p>
+<p>redisTemplate.opsForList().index(String key, int index)返回指定位置元素</p>
+<p>redisTemplate.opsForList().range(String key, int start,int end)返回指定位置范围的元素</p>
+<p>redisTemplate.opsForList().size(String key)获取元素数量</p>
+<p>redisTemplate.getConnectionFactory().getConnection().lInsert(byte[] key, RedisListCommands.Position pos, byte[] refNode, byte[] newNode)指定元素前/后插入新元素</p>
+<p>redisTemplate.opsForList().remove(String key, int count, String val)移除至多count个值为val的元素</p>
+<p>redisTemplate.opsForList().set(String key, int index, String val)设置指定位置元素值</p>
+<img src='JavaEE-18-Redis-Data-Structure\7f06af70-8d69-4727-8e9f-90facd611872.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\156cf2d7-5c3a-4051-94d6-da6d38e0aa24.jpg'>
+
+<p>redisTemplate.opsForList().leftPop(String key,int timeout, TimeUnit unit)阻塞左弹</p>
+<p>redisTemplate.opsForList().rightPop(String key, int timeout,TimeUnit unit)阻塞右弹</p>
+<p>redisTemplate.opsForList().rightPopAndLeftPush(String key, String val, int timeout,TimeUnit unit)阻塞右弹左插</p>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="常用指令-1"><a href="#常用指令-1" class="headerlink" title="常用指令"></a>常用指令</h3><img src='JavaEE-18-Redis-Data-Structure\8e8ff88c-0182-47d6-a793-538967d339e9.jpg' >
+<img src='JavaEE-18-Redis-Data-Structure\dd775088-ce3f-41d9-8ef2-d3a5271b5c37.jpg'>
+
+<h3 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h3><img src='JavaEE-18-Redis-Data-Structure\e130fba5-8a2d-4b55-87c1-995a4b7d5434.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\210f2351-e2f0-4323-a144-fa34c960bd46.jpg'>
+
+<p>redisTemplate.boundSetOps(String key).add(String … vals)批量添加</p>
+<p>redisTemplate.OpsForSet().size(String key)大小</p>
+<p>redisTemplate.OpsForSet().difference(String key1, String key2)差</p>
+<p>redisTemplate.OpsForSet().intersect(String key1, String key2)交</p>
+<p>redisTemplate.OpsForSet().union(String key1, String key2)并</p>
+<p>redisTemplate.OpsForSet().differenceAndStore(String key1, String key2, String key3)key1、key2差存key3</p>
+<p>redisTemplate.OpsForSet().intersectAndStore(String key1, String key2, String key3)key1、key2交存key3</p>
+<p>redisTemplate.OpsForSet().unionAndStore(String key1, String key2, String key3)key1、key2并存key3</p>
+<p>redisTemplate.OpsForSet().isMember(String key, String val)存在判断</p>
+<p>redisTemplate.OpsForSet().members(String key)所有元素</p>
+<p>redisTemplate.OpsForSet().pop(String key)随机弹出一个元素</p>
+<p>redisTemplate.OpsForSet().randomMember(String key)随机获取一个元素</p>
+<p>redisTemplate.OpsForSet().randomMembers(String key，long n)随机获取n个元素</p>
+<p>redisTemplate.OpsForSet().remove(String key，String… vals)移除元素</p>
+<h2 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h2><h3 id="常用指令-2"><a href="#常用指令-2" class="headerlink" title="常用指令"></a>常用指令</h3><img src='JavaEE-18-Redis-Data-Structure\9d3707be-0155-4665-8571-a40798caa102.jpg' >
+<img src='JavaEE-18-Redis-Data-Structure\3b0ba18a-69c9-4091-9813-a3b7e23e0038.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\cb313c6f-8e60-40d2-967d-5ac8a421f44b.jpg'>
+
+<h3 id="使用示例-2"><a href="#使用示例-2" class="headerlink" title="使用示例"></a>使用示例</h3><img src='JavaEE-18-Redis-Data-Structure\54338755-0f66-4b4c-afc3-b55144ff3f38.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\a9c1d5df-0ca8-4c65-b85d-555e980310fd.jpg' >
+<img src='JavaEE-18-Redis-Data-Structure\da39244f-5aab-44fa-8c4f-c07ae755bd9c.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\f2302487-0e44-42a2-b3e7-c02910decf7b.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\06e6d0ce-9ea4-4350-a1ec-c9e1af848630.jpg'>
+<img src='JavaEE-18-Redis-Data-Structure\54b7ee20-eba5-4892-9eb9-445fad7ac5c5.jpg'>
+
+<p>redisTemplate.OpsForZSet().add(String key, Set<TypedTuple> set)添加集合</p>
+<p>redisTemplate.OpsForZSet().zCard(String key)集合大小</p>
+<p>redisTemplate.OpsForZSet().count(String key, int low, int high)获取score指定范围的元素</p>
+<p>redisTemplate.OpsForZSet().range(String key, int start, int count)获取指定start位置开始的count个元素</p>
+<p>redisTemplate.OpsForZSet().rangeWithScores(String key, int low, int high)按分数排序后的集合</p>
+<p>redisTemplate.OpsForZSet().intersectAndStore(String key1, String key2, String key3)key1、key2的差集存到key3</p>
+<p>redisTemplate.OpsForZSet().rangeByLex(String key, Range range, Limit limit)限制查询</p>
+<p>redisTemplate.OpsForZSet().rank(String key, String val)查询排名</p>
+<p>redisTemplate.OpsForZSet().remove(String key, String … vals)移除元素</p>
+<p>redisTemplate.OpsForZSet().removeRange(String key, int low, int high)移除排名范围元素</p>
+<p>redisTemplate.OpsForZSet().removeRangeByScore(String key, int low, int high)移除分数范围元素</p>
+<p>redisTemplate.OpsForZSet().reverseRangeWithScore(String key, int low, int high)按分数范围逆序排序</p>
+<h2 id="基数"><a href="#基数" class="headerlink" title="基数"></a>基数</h2><h3 id="类似于最小完全子集"><a href="#类似于最小完全子集" class="headerlink" title="类似于最小完全子集"></a>类似于最小完全子集</h3><img src='JavaEE-18-Redis-Data-Structure\e0f725a6-70e3-4383-9399-93eaf0a7e2a4.jpg'>
+
+<h3 id="操作实例"><a href="#操作实例" class="headerlink" title="操作实例"></a>操作实例</h3><img src='JavaEE-18-Redis-Data-Structure\807b14a7-749a-47a5-bf65-98e023a68870.jpg'>
+
+<p>redisTemplate.OpsForHyperLogLog().add(String key, String val)添加元素</p>
+<p>redisTemplate.OpsForHyperLogLog().size(String key)基数大小</p>
+<p>redisTemplate.OpsForHyperLogLog().union(String key1, String key2, String key3)key1、key2的并集存到key3</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/06/22/JavaEE-18-Redis-Data-Structure/" data-title="JavaEE-18-Redis-Data-Structure | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/" title="JavaEE-19-Redis-Advanced-Topics">
+  <strong>上一篇：</strong><br/>
+  <span>
+  JavaEE-19-Redis-Advanced-Topics</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/06/22/JavaEE-17-Redis-introduction/"  title="JavaEE-17-Redis-introduction">
+ <strong>下一篇：</strong><br/> 
+ <span>JavaEE-17-Redis-introduction
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">Redis常见数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%87%E7%94%A8%E9%94%AE%E5%80%BC%E5%AF%B9%E5%AD%98%E5%82%A8"><span class="toc-number">2.1.</span> <span class="toc-text">字符串采用键值对存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4"><span class="toc-number">2.2.</span> <span class="toc-text">常用的指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">使用示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">2.4.</span> <span class="toc-text">数值操作指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C"><span class="toc-number">3.</span> <span class="toc-text">哈希</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4-1"><span class="toc-number">3.2.</span> <span class="toc-text">常用的指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.3.</span> <span class="toc-text">使用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%87%E7%94%A8%E5%8F%8C%E5%90%91%E6%8C%87%E9%92%88%E7%9A%84%E9%93%BE%E8%A1%A8"><span class="toc-number">4.1.</span> <span class="toc-text">采用双向指针的链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">4.2.</span> <span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BB%E5%A1%9E%E6%8C%87%E4%BB%A4%EF%BC%88%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">阻塞指令（并发场景）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B-1"><span class="toc-number">4.4.</span> <span class="toc-text">使用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-number">5.</span> <span class="toc-text">集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4-1"><span class="toc-number">5.1.</span> <span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">5.2.</span> <span class="toc-text">使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88"><span class="toc-number">6.</span> <span class="toc-text">有序集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4-2"><span class="toc-number">6.1.</span> <span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-2"><span class="toc-number">6.2.</span> <span class="toc-text">使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text">基数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E4%BC%BC%E4%BA%8E%E6%9C%80%E5%B0%8F%E5%AE%8C%E5%85%A8%E5%AD%90%E9%9B%86"><span class="toc-number">7.1.</span> <span class="toc-text">类似于最小完全子集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B"><span class="toc-number">7.2.</span> <span class="toc-text">操作实例</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

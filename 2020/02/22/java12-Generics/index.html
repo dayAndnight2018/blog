@@ -1,0 +1,591 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>java12 泛型 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="如果不使用泛型，在List中读取数据 就需要频繁的强制转化，类型不合适还会出现异常：   泛型方法举例泛型列表：   插入和获取元素方法：   实例化：   Map:   插入、获取：   泛型列表嵌套：   使用示例：   hashMap使用示例：   List&lt;?&gt;类型通配在List中可以传入自身的对象或者子类对象。但是List传入List是无法编译的：   替换为List&lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java12 泛型">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="如果不使用泛型，在List中读取数据 就需要频繁的强制转化，类型不合适还会出现异常：   泛型方法举例泛型列表：   插入和获取元素方法：   实例化：   Map:   插入、获取：   泛型列表嵌套：   使用示例：   hashMap使用示例：   List&lt;?&gt;类型通配在List中可以传入自身的对象或者子类对象。但是List传入List是无法编译的：   替换为List&lt;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/5fdfbb8d-8708-4ec7-92de-fc60ebf99989.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/dc8f804a-12a9-4bc2-9d1a-56ee64026ff2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/1caed39d-ecf3-4ef6-8b53-770a2f38d863.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/458e0721-cc8c-4221-aad3-f40fb04983ff.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/e2c8dea5-3a7a-4dbb-8c32-d595f30cf43d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/d2b8a1d7-2a64-473a-908f-1c88ca35ef81.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/ecf519cf-be8d-4cfe-9790-1b94bb57f8e0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/ee20de0a-a4ef-43d5-8146-59caaf986892.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/2720dff5-de6c-494a-8986-0158b2598f45.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/ce5c869b-164a-449e-b43f-00976ab09a20.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/eaf9d52e-fcee-4196-bd70-0305a87bac8b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/8c3d32d5-cdab-44b7-9337-52c5b9007567.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/c44e6327-6c3d-4c47-9335-d46bea9dd31c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/3aa8deb3-cd86-4198-b43b-6aed1d83322a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/af41f68d-325d-4516-a044-e2f8577f7749.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/c639ca42-af50-437e-8ee6-2aa5116bdf2a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/b4252769-d21b-4795-bd54-ca3c390170f9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/1227586d-9791-492b-b57b-944a050807ba.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/95c52984-08b6-42b5-9e40-bc10bdfc303d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/9ccb87e8-e59a-4306-9a05-3ccba6cad2f9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/822f29e0-21fc-4f1d-8357-fb1022af8efb.jpg">
+<meta property="article:published_time" content="2020-02-22T03:46:56.000Z">
+<meta property="article:modified_time" content="2020-12-29T13:22:44.784Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/5fdfbb8d-8708-4ec7-92de-fc60ebf99989.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/02/22/java12-Generics/" title="java12 泛型" itemprop="url">java12 泛型</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-02-22T03:46:56.000Z" itemprop="datePublished"> Published 2020-02-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">泛型方法举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List-lt-gt-%E7%B1%BB%E5%9E%8B%E9%80%9A%E9%85%8D"><span class="toc-number">2.</span> <span class="toc-text">List&lt;?&gt;类型通配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">自定义泛型类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.</span> <span class="toc-text">泛型接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">泛型方法</span></a></li></ol>
+		
+		</div>
+		
+		<p>如果不使用泛型，在List中读取数据 就需要频繁的强制转化，类型不合适还会出现异常：</p>
+<img src='java12-Generics\5fdfbb8d-8708-4ec7-92de-fc60ebf99989.jpg' >
+
+<h2 id="泛型方法举例"><a href="#泛型方法举例" class="headerlink" title="泛型方法举例"></a>泛型方法举例</h2><p>泛型列表：</p>
+<img src='java12-Generics\dc8f804a-12a9-4bc2-9d1a-56ee64026ff2.jpg'>
+
+<p>插入和获取元素方法：</p>
+<img src='java12-Generics\1caed39d-ecf3-4ef6-8b53-770a2f38d863.jpg'>
+
+<p>实例化：</p>
+<img src='java12-Generics\458e0721-cc8c-4221-aad3-f40fb04983ff.jpg'>
+
+<p>Map:</p>
+<img src='java12-Generics\e2c8dea5-3a7a-4dbb-8c32-d595f30cf43d.jpg'>
+
+<p>插入、获取：</p>
+<img src='java12-Generics\d2b8a1d7-2a64-473a-908f-1c88ca35ef81.jpg'>
+
+<p>泛型列表嵌套：</p>
+<img src='java12-Generics\ecf519cf-be8d-4cfe-9790-1b94bb57f8e0.jpg'>
+
+<p>使用示例：</p>
+<img src='java12-Generics\ee20de0a-a4ef-43d5-8146-59caaf986892.jpg'>
+
+<p>hashMap使用示例：</p>
+<img src='java12-Generics\2720dff5-de6c-494a-8986-0158b2598f45.jpg'>
+
+<h2 id="List-lt-gt-类型通配"><a href="#List-lt-gt-类型通配" class="headerlink" title="List&lt;?&gt;类型通配"></a>List&lt;?&gt;类型通配</h2><p>在List中可以传入自身的对象或者子类对象。但是List<String>传入List<Object>是无法编译的：</p>
+<img src='java12-Generics\ce5c869b-164a-449e-b43f-00976ab09a20.jpg'>
+
+<p>替换为List&lt;?&gt;即可接受任意类型的列表：</p>
+<img src='java12-Generics\eaf9d52e-fcee-4196-bd70-0305a87bac8b.jpg'>
+
+<p>还可以限定类型属于某类型或其子类型：</p>
+<img src='java12-Generics\8c3d32d5-cdab-44b7-9337-52c5b9007567.jpg'>
+
+<p>使用List&lt;? extends Number&gt;可以限定部分类型可用：</p>
+<img src='java12-Generics\c44e6327-6c3d-4c47-9335-d46bea9dd31c.jpg'>
+
+<h2 id="自定义泛型类"><a href="#自定义泛型类" class="headerlink" title="自定义泛型类"></a>自定义泛型类</h2><img src='java12-Generics\3aa8deb3-cd86-4198-b43b-6aed1d83322a.jpg'>
+
+<p>使用T表示泛型类型。</p>
+<p>使用时需要指定泛型的具体类型：</p>
+<img src='java12-Generics\af41f68d-325d-4516-a044-e2f8577f7749.jpg'>
+
+<p>泛型类实例:</p>
+<img src='java12-Generics\c639ca42-af50-437e-8ee6-2aa5116bdf2a.jpg'>
+
+<p>调用：</p>
+<img src='java12-Generics\b4252769-d21b-4795-bd54-ca3c390170f9.jpg'>
+
+<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><p>接口：</p>
+<img src='java12-Generics\1227586d-9791-492b-b57b-944a050807ba.jpg'>
+
+<p>实现类：</p>
+<img src='java12-Generics\95c52984-08b6-42b5-9e40-bc10bdfc303d.jpg'>
+
+<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><img src='java12-Generics\9ccb87e8-e59a-4306-9a05-3ccba6cad2f9.jpg'>
+
+<p>对泛型方法参数进行限定：</p>
+<img src='java12-Generics\822f29e0-21fc-4f1d-8357-fb1022af8efb.jpg'>
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/java/">java</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/02/22/java12-Generics/" data-title="java12 泛型 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/02/22/java13-Input-Output/" title="java13 输入输出">
+  <strong>上一篇：</strong><br/>
+  <span>
+  java13 输入输出</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/02/22/java11-The-Collections-Framework/"  title="java11 集合">
+ <strong>下一篇：</strong><br/> 
+ <span>java11 集合
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">泛型方法举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List-lt-gt-%E7%B1%BB%E5%9E%8B%E9%80%9A%E9%85%8D"><span class="toc-number">2.</span> <span class="toc-text">List&lt;?&gt;类型通配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">自定义泛型类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.</span> <span class="toc-text">泛型接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">泛型方法</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

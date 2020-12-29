@@ -1,0 +1,790 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>java08 数字与日期 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="数字转换可以使用包装类对字符串进行转换：     &amp;nbsp;&amp;nbsp; 包装类 &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; 解析方法 &amp;nbsp;&amp;nbsp;    &amp;nbsp;&amp;nbsp; Byte &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; parseByte &amp;nbsp;&amp;nbsp;    &amp;nbsp;&amp;nbsp; Short &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java08 数字与日期">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="数字转换可以使用包装类对字符串进行转换：     &amp;nbsp;&amp;nbsp; 包装类 &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; 解析方法 &amp;nbsp;&amp;nbsp;    &amp;nbsp;&amp;nbsp; Byte &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; parseByte &amp;nbsp;&amp;nbsp;    &amp;nbsp;&amp;nbsp; Short &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nb">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/aff10aec-de35-46f0-a060-504240ad3abf.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/d7aa545e-7b26-4bbc-b2c1-661f4f796b94.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/5451f997-3721-4d84-9d1a-06a41ba53a5b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/974b6b1f-9243-4f81-96b4-ffd09005e93b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/48b6b6f8-91ad-4116-b666-64722415959a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/4eef6829-889c-43f8-94c8-a58957c93b23.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/c872cfbf-41c6-4d59-932e-fec3d7068b09.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/5c411482-7f34-4a58-ae14-50c070d472a7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/791fdfbd-4538-49fe-8fc7-1e79c43e98c2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/48ee1d52-7276-4849-b3c3-fa4f9892dff6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/7d364947-4adc-466a-b2f7-40b1cab712ca.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/226d1298-5ebb-4139-9185-df2532c9092a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/f4f37205-1c2f-4b52-bffd-28388a185438.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/2749668b-0cd4-4e91-a98e-13e6296eed77.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/86cb05ba-5c49-4790-9ca6-a594b84ebd5f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/78aa5456-2f3c-4c5e-a6e9-dee4b28841dc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/a6f0d9af-ba1a-405f-940d-029b63a681ea.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/0ea6aaad-b65d-4f6a-ac40-db54801ede0f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/9326dab4-e5f0-437e-bc66-c372b01ee364.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/cafcb530-cee1-4ed2-a526-85d9f7ce581b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/9942b1e7-5444-49a6-9ccf-899bc8c6de43.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/3c65e93a-3d38-416f-91ba-2cea88959ec1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/89c3af28-dce4-4e77-9238-fa62e82c9c2f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/7a378ce7-fe29-49b7-a517-8b2f094fc5a2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/1e5664c0-45cf-4f53-b04d-5c01e76cf7c8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/58ee4b7e-a8d7-431d-af74-3a8505cf02d9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/7fe2e8b2-b935-4c01-93cf-55363afb631b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/637e0369-9e50-40a0-bc7a-deddb3342374.jpg">
+<meta property="article:published_time" content="2020-02-21T12:42:50.000Z">
+<meta property="article:modified_time" content="2020-12-29T13:22:44.767Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/java08-Numbers-and-Dates/aff10aec-de35-46f0-a060-504240ad3abf.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/02/21/java08-Numbers-and-Dates/" title="java08 数字与日期" itemprop="url">java08 数字与日期</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-02-21T12:42:50.000Z" itemprop="datePublished"> Published 2020-02-21</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text">数字转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NumberFormat"><span class="toc-number">2.</span> <span class="toc-text">NumberFormat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#parse%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">parse转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-java-lang-Math"><span class="toc-number">4.</span> <span class="toc-text">The java.lang.Math</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-util-Date"><span class="toc-number">5.</span> <span class="toc-text">java.util.Date</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-util-Calendar"><span class="toc-number">6.</span> <span class="toc-text">java.util.Calendar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-number">7.</span> <span class="toc-text">日期格式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SimpleDateFormat"><span class="toc-number">8.</span> <span class="toc-text">SimpleDateFormat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LocalDate%E3%80%81LocalTime%E3%80%81LocalDateTime-Java-8"><span class="toc-number">9.</span> <span class="toc-text">LocalDate、LocalTime、LocalDateTime(Java 8)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0"><span class="toc-number">9.1.</span> <span class="toc-text">构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8F%8A%E8%A7%A3%E6%9E%90"><span class="toc-number">9.2.</span> <span class="toc-text">格式化及解析</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="数字转换"><a href="#数字转换" class="headerlink" title="数字转换"></a>数字转换</h2><p>可以使用包装类对字符串进行转换：</p>
+<img src='java08-Numbers-and-Dates\aff10aec-de35-46f0-a060-504240ad3abf.jpg'>
+
+<table cellpadding='8' border='1' style='background:#EAF2D3;text-align:center'>
+<tr>
+&nbsp;&nbsp;<td>
+包装类
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+解析方法
+&nbsp;&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;&nbsp;<td>
+Byte
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+parseByte
+&nbsp;&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;&nbsp;<td>
+Short
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+parseShort
+&nbsp;&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;&nbsp;<td>
+Integer
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+parseInteger
+&nbsp;&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;&nbsp;<td>
+Long
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+parseLong
+&nbsp;&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;&nbsp;<td>
+Float
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+parseFloat
+&nbsp;&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;&nbsp;<td>
+Double
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+parseDouble
+&nbsp;&nbsp;</td>
+</tr>
+
+</table>
+
+<h2 id="NumberFormat"><a href="#NumberFormat" class="headerlink" title="NumberFormat"></a>NumberFormat</h2><img src='java08-Numbers-and-Dates\d7aa545e-7b26-4bbc-b2c1-661f4f796b94.jpg'>
+
+<p>使用Locale指定区域：</p>
+<img src='java08-Numbers-and-Dates\5451f997-3721-4d84-9d1a-06a41ba53a5b.jpg'>
+
+<p>使用NumberFormat可以格式化：</p>
+<img src='java08-Numbers-and-Dates\974b6b1f-9243-4f81-96b4-ffd09005e93b.jpg'>
+
+<h2 id="parse转换"><a href="#parse转换" class="headerlink" title="parse转换"></a>parse转换</h2><img src='java08-Numbers-and-Dates\48b6b6f8-91ad-4116-b666-64722415959a.jpg' >
+
+<p>NumberFormat对象获取到number类型</p>
+<h2 id="The-java-lang-Math"><a href="#The-java-lang-Math" class="headerlink" title="The java.lang.Math"></a>The java.lang.Math</h2><pre style='background:#e6e6e6;padding=10px;'>
+
+//e
+Math.E
+
+//圆周率
+Math.PI
+
+//绝对值
+public static double abs(double a)
+
+//反余弦
+public static double acos(double a)
+
+//反正弦
+public static double asin(double a)
+
+//反正切
+public static double atan(double a)
+
+//余弦
+public static double cos(double a)
+
+//指数
+public static double exp(double a)
+
+//对数
+public static double log(double a)
+
+public static double log10(double a)
+
+//最大值
+public static double max(double a, double b)
+
+//最小值
+public static double min(double a, double b)
+
+</pre>
+
+<h2 id="java-util-Date"><a href="#java-util-Date" class="headerlink" title="java.util.Date"></a>java.util.Date</h2><p>构造器：</p>
+<img src='java08-Numbers-and-Dates\4eef6829-889c-43f8-94c8-a58957c93b23.jpg'>
+
+<p>比较两个时间先后：</p>
+<img src='java08-Numbers-and-Dates\c872cfbf-41c6-4d59-932e-fec3d7068b09.jpg'>
+
+<p>getDate, getMonth, getYear方法已过时</p>
+<h2 id="java-util-Calendar"><a href="#java-util-Calendar" class="headerlink" title="java.util.Calendar"></a>java.util.Calendar</h2><p>构造器：</p>
+<img src='java08-Numbers-and-Dates\5c411482-7f34-4a58-ae14-50c070d472a7.jpg'>
+
+<p>可以获取时间，是一个Date对象：</p>
+<img src='java08-Numbers-and-Dates\791fdfbd-4538-49fe-8fc7-1e79c43e98c2.jpg'>
+
+<p>对年月日的获取：</p>
+<img src='java08-Numbers-and-Dates\48ee1d52-7276-4849-b3c3-fa4f9892dff6.jpg'>
+
+<p>Calendar.YEAR</p>
+<p>Calendar.MONTH</p>
+<p>Calendar.DATE</p>
+<p>Calendar.HOUR</p>
+<p>Calendar.MINUTE</p>
+<p>Calendar.SECOND</p>
+<p>Calendar.MILLISECOND</p>
+<p>对于月份，需要特别注意，0代表1月。</p>
+<p>可以使用setTime对date进行构造：</p>
+<img src='java08-Numbers-and-Dates\7d364947-4adc-466a-b2f7-40b1cab712ca.jpg'>
+
+<p>对指定的域设置：</p>
+<img src='java08-Numbers-and-Dates\226d1298-5ebb-4139-9185-df2532c9092a.jpg'>
+
+<p>也可以使用重载函数：</p>
+<img src='java08-Numbers-and-Dates\f4f37205-1c2f-4b52-bffd-28388a185438.jpg'>
+
+<h2 id="日期格式化"><a href="#日期格式化" class="headerlink" title="日期格式化"></a>日期格式化</h2><table cellpadding='8' border='1' style='background:#EAF2D3;text-align:center'>
+<tr>
+&nbsp;&nbsp;<td>
+格式
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+结果
+&nbsp;&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;&nbsp;<td>
+DateFormat.SHORT
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+12/2/11
+&nbsp;&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;&nbsp;<td>
+DateFormat.MEDIUM
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Dec 2, 2011
+&nbsp;&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;&nbsp;<td>
+DateFormat.LONG
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+December 2, 2011
+&nbsp;&nbsp;</td>
+</tr>
+
+<tr>
+&nbsp;&nbsp;<td>
+DateFormat.FULL
+&nbsp;&nbsp;</td>
+&nbsp;&nbsp;<td>
+Friday, December 2, 2011
+&nbsp;&nbsp;</td>
+</tr>
+
+</table>
+
+<p>静态构造器：</p>
+<img src='java08-Numbers-and-Dates\2749668b-0cd4-4e91-a98e-13e6296eed77.jpg'>
+
+<p>格式化获取字符串：</p>
+<img src='java08-Numbers-and-Dates\86cb05ba-5c49-4790-9ca6-a594b84ebd5f.jpg'>
+
+<p>解析日期：</p>
+<img src='java08-Numbers-and-Dates\78aa5456-2f3c-4c5e-a6e9-dee4b28841dc.jpg'>
+
+<h2 id="SimpleDateFormat"><a href="#SimpleDateFormat" class="headerlink" title="SimpleDateFormat"></a>SimpleDateFormat</h2><p>可自定义格式进行格式化：</p>
+<img src='java08-Numbers-and-Dates\a6f0d9af-ba1a-405f-940d-029b63a681ea.jpg'>
+
+<p>使用字符串模式：</p>
+<img src='java08-Numbers-and-Dates\0ea6aaad-b65d-4f6a-ac40-db54801ede0f.jpg'>
+
+<p>例如：</p>
+<p>dd/MM/yyyy</p>
+<p>dd-MM-yyyy</p>
+<p>MM/dd/yyyy</p>
+<p>yyyy-MM-dd</p>
+<p>格式化：</p>
+<img src='java08-Numbers-and-Dates\9326dab4-e5f0-437e-bc66-c372b01ee364.jpg'>
+
+<p>解析：</p>
+<img src='java08-Numbers-and-Dates\cafcb530-cee1-4ed2-a526-85d9f7ce581b.jpg'>
+
+<h2 id="LocalDate、LocalTime、LocalDateTime-Java-8"><a href="#LocalDate、LocalTime、LocalDateTime-Java-8" class="headerlink" title="LocalDate、LocalTime、LocalDateTime(Java 8)"></a>LocalDate、LocalTime、LocalDateTime(Java 8)</h2><h3 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h3><p>三者都是不可变的：</p>
+<img src='java08-Numbers-and-Dates\9942b1e7-5444-49a6-9ccf-899bc8c6de43.jpg'>
+
+<p>采用now()构造实例</p>
+<p>也可以通过of()方法获取实例：</p>
+<img src='java08-Numbers-and-Dates\3c65e93a-3d38-416f-91ba-2cea88959ec1.jpg'>
+
+<p>参数取值范围：</p>
+<img src='java08-Numbers-and-Dates\89c3af28-dce4-4e77-9238-fa62e82c9c2f.jpg'>
+
+<p>使用示例：</p>
+<img src='java08-Numbers-and-Dates\7a378ce7-fe29-49b7-a517-8b2f094fc5a2.jpg'>
+
+<h3 id="格式化及解析"><a href="#格式化及解析" class="headerlink" title="格式化及解析"></a>格式化及解析</h3><p>使用DateTimeFormatter格式化：</p>
+<img src='java08-Numbers-and-Dates\1e5664c0-45cf-4f53-b04d-5c01e76cf7c8.jpg'>
+
+<p>解析器：</p>
+<img src='java08-Numbers-and-Dates\58ee4b7e-a8d7-431d-af74-3a8505cf02d9.jpg'>
+
+<p>使用示例：</p>
+<img src='java08-Numbers-and-Dates\7fe2e8b2-b935-4c01-93cf-55363afb631b.jpg'>
+<img src='java08-Numbers-and-Dates\637e0369-9e50-40a0-bc7a-deddb3342374.jpg'>
+
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/java/">java</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/02/21/java08-Numbers-and-Dates/" data-title="java08 数字与日期 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/02/22/java09-Interfaces-and-Abstract-Classes/" title="java09 接口与抽象类">
+  <strong>上一篇：</strong><br/>
+  <span>
+  java09 接口与抽象类</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/02/21/java07-Error-Handling/"  title="java07 异常处理">
+ <strong>下一篇：</strong><br/> 
+ <span>java07 异常处理
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text">数字转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NumberFormat"><span class="toc-number">2.</span> <span class="toc-text">NumberFormat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#parse%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">parse转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-java-lang-Math"><span class="toc-number">4.</span> <span class="toc-text">The java.lang.Math</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-util-Date"><span class="toc-number">5.</span> <span class="toc-text">java.util.Date</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-util-Calendar"><span class="toc-number">6.</span> <span class="toc-text">java.util.Calendar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-number">7.</span> <span class="toc-text">日期格式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SimpleDateFormat"><span class="toc-number">8.</span> <span class="toc-text">SimpleDateFormat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LocalDate%E3%80%81LocalTime%E3%80%81LocalDateTime-Java-8"><span class="toc-number">9.</span> <span class="toc-text">LocalDate、LocalTime、LocalDateTime(Java 8)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0"><span class="toc-number">9.1.</span> <span class="toc-text">构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8F%8A%E8%A7%A3%E6%9E%90"><span class="toc-number">9.2.</span> <span class="toc-text">格式化及解析</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
