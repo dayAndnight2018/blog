@@ -99,64 +99,57 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">基础指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%93%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">初始化仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%88%B0%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.2.</span> <span class="toc-text">添加文件到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%88%B0%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.3.</span> <span class="toc-text">添加所有文件到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.4.</span> <span class="toc-text">清除缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E5%A4%87%E6%B3%A8"><span class="toc-number">1.6.</span> <span class="toc-text">提交备注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%8A%B6%E6%80%81"><span class="toc-number">1.7.</span> <span class="toc-text">查看状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%AE%E5%BC%82"><span class="toc-number">1.8.</span> <span class="toc-text">查看差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="toc-number">1.9.</span> <span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.10.</span> <span class="toc-text">日志查看</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%88%86%E6%94%AF"><span class="toc-number">2.1.</span> <span class="toc-text">查看当前分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-number">2.2.</span> <span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">2.3.</span> <span class="toc-text">切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">2.4.</span> <span class="toc-text">创建并切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF"><span class="toc-number">2.5.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E6%9F%90%E5%88%86%E6%94%AF%E5%88%B0%E5%BD%93%E5%89%8D%E5%88%86%E6%94%AF"><span class="toc-number">2.6.</span> <span class="toc-text">合并某分支到当前分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">标签操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%A0%87%E7%AD%BE"><span class="toc-number">3.1.</span> <span class="toc-text">创建标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%A0%87%E7%AD%BE"><span class="toc-number">3.2.</span> <span class="toc-text">查看标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%A0%87%E7%AD%BE%E8%AF%A6%E6%83%85"><span class="toc-number">3.3.</span> <span class="toc-text">查看标签详情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E6%9F%90%E4%B8%AAtag"><span class="toc-number">3.4.</span> <span class="toc-text">推送某个tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E6%89%80%E6%9C%89tag"><span class="toc-number">3.5.</span> <span class="toc-text">推送所有tag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%AB%AF%E5%BA%93%E7%9B%B8%E5%85%B3"><span class="toc-number">4.</span> <span class="toc-text">远端库相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%AB%AF%E5%BA%93"><span class="toc-number">4.1.</span> <span class="toc-text">添加远端库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E8%BF%9C%E7%AB%AF%E5%BA%93"><span class="toc-number">4.2.</span> <span class="toc-text">移除远端库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%AB%AF"><span class="toc-number">4.3.</span> <span class="toc-text">推送到远端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%BF%9C%E7%AB%AF%E7%9A%84%E5%86%85%E5%AE%B9%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">4.4.</span> <span class="toc-text">更新远端的内容到本地</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%8F%90%E4%BA%A4%E6%8C%87%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">组合提交指令</span></a></li></ol>
-		
-		</div>
-		
-		<h2 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h2><h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><pre style='background:#e6e6e6;padding=10px;'>
+		<h2 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h2><h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git init
 
 </pre>
 
-<h3 id="添加文件到缓冲区"><a href="#添加文件到缓冲区" class="headerlink" title="添加文件到缓冲区"></a>添加文件到缓冲区</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="添加文件到缓冲区"><a href="#添加文件到缓冲区" class="headerlink" title="添加文件到缓冲区"></a>添加文件到缓冲区</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git add filename
 
 </pre>
 
-<h3 id="添加所有文件到缓冲区"><a href="#添加所有文件到缓冲区" class="headerlink" title="添加所有文件到缓冲区"></a>添加所有文件到缓冲区</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="添加所有文件到缓冲区"><a href="#添加所有文件到缓冲区" class="headerlink" title="添加所有文件到缓冲区"></a>添加所有文件到缓冲区</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git add .
     git add --all
 
 </pre>
 
-<h3 id="清除缓冲区"><a href="#清除缓冲区" class="headerlink" title="清除缓冲区"></a>清除缓冲区</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="清除缓冲区"><a href="#清除缓冲区" class="headerlink" title="清除缓冲区"></a>清除缓冲区</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git rm -r --cached
 
 </pre>
 
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git rm filename
 
 </pre>
 
-<h3 id="提交备注"><a href="#提交备注" class="headerlink" title="提交备注"></a>提交备注</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="提交备注"><a href="#提交备注" class="headerlink" title="提交备注"></a>提交备注</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git comment -m '备注内容'
 
 </pre>
 
-<p><code style='background:#ff3385;color:white;padding:5px;'>注意：git add或git comment失败将不会提交。所以，comment必须有备注内容</code></p>
-<h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><pre style='background:#e6e6e6;padding=10px;'>
+<p><code style="background:#ff3385;color:white;padding:5px;">注意：git add或git comment失败将不会提交。所以，comment必须有备注内容</code></p>
+<h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git status
 
 </pre>
 
-<h3 id="查看差异"><a href="#查看差异" class="headerlink" title="查看差异"></a>查看差异</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="查看差异"><a href="#查看差异" class="headerlink" title="查看差异"></a>查看差异</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git diff filename
 
 </pre>
 
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git reset
     git reset --hard HEAD^
@@ -164,104 +157,104 @@
 
 </pre>
 
-<h3 id="日志查看"><a href="#日志查看" class="headerlink" title="日志查看"></a>日志查看</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="日志查看"><a href="#日志查看" class="headerlink" title="日志查看"></a>日志查看</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git log
     git reflog
 
 </pre>
 
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git branch
 
 </pre>
 
-<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git branch branchName
 
 </pre>
 
-<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git checkout branchName
 
 </pre>
 
-<h3 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git checkout -b branchName
 
 </pre>
 
-<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git branch -d branchName
 
 </pre>
 
-<h3 id="合并某分支到当前分支"><a href="#合并某分支到当前分支" class="headerlink" title="合并某分支到当前分支"></a>合并某分支到当前分支</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="合并某分支到当前分支"><a href="#合并某分支到当前分支" class="headerlink" title="合并某分支到当前分支"></a>合并某分支到当前分支</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git merge branchName
 
 </pre>
 
-<h2 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h2><h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h2 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h2><h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git tag tagName version
 
 </pre>
 
-<h3 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git tag
 
 </pre>
 
-<h3 id="查看标签详情"><a href="#查看标签详情" class="headerlink" title="查看标签详情"></a>查看标签详情</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="查看标签详情"><a href="#查看标签详情" class="headerlink" title="查看标签详情"></a>查看标签详情</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git show tagName
 
 </pre>
 
-<h3 id="推送某个tag"><a href="#推送某个tag" class="headerlink" title="推送某个tag"></a>推送某个tag</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="推送某个tag"><a href="#推送某个tag" class="headerlink" title="推送某个tag"></a>推送某个tag</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git push origin v1.0
 
 </pre>
 
-<h3 id="推送所有tag"><a href="#推送所有tag" class="headerlink" title="推送所有tag"></a>推送所有tag</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="推送所有tag"><a href="#推送所有tag" class="headerlink" title="推送所有tag"></a>推送所有tag</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git push origin --tags
 
 </pre>
 
-<h2 id="远端库相关"><a href="#远端库相关" class="headerlink" title="远端库相关"></a>远端库相关</h2><h3 id="添加远端库"><a href="#添加远端库" class="headerlink" title="添加远端库"></a>添加远端库</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h2 id="远端库相关"><a href="#远端库相关" class="headerlink" title="远端库相关"></a>远端库相关</h2><h3 id="添加远端库"><a href="#添加远端库" class="headerlink" title="添加远端库"></a>添加远端库</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git remote add origin git://xxx/abc.git
 
 </pre>
 
-<h3 id="移除远端库"><a href="#移除远端库" class="headerlink" title="移除远端库"></a>移除远端库</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="移除远端库"><a href="#移除远端库" class="headerlink" title="移除远端库"></a>移除远端库</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git remote remove origin git://xxx/abc.git
 
 </pre>
 
-<h3 id="推送到远端"><a href="#推送到远端" class="headerlink" title="推送到远端"></a>推送到远端</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="推送到远端"><a href="#推送到远端" class="headerlink" title="推送到远端"></a>推送到远端</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git push -u origin master
 
 </pre>
 
-<h3 id="更新远端的内容到本地"><a href="#更新远端的内容到本地" class="headerlink" title="更新远端的内容到本地"></a>更新远端的内容到本地</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="更新远端的内容到本地"><a href="#更新远端的内容到本地" class="headerlink" title="更新远端的内容到本地"></a>更新远端的内容到本地</h3><pre style="background:#e6e6e6;padding=10px;">
 
     git pull
 
 </pre>
 
-<h2 id="组合提交指令"><a href="#组合提交指令" class="headerlink" title="组合提交指令"></a>组合提交指令</h2><pre style='background:#e6e6e6;padding=10px;'>
+<h2 id="组合提交指令"><a href="#组合提交指令" class="headerlink" title="组合提交指令"></a>组合提交指令</h2><pre style="background:#e6e6e6;padding=10px;">
 
     git rm -r --cached
     git add .
@@ -437,8 +430,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

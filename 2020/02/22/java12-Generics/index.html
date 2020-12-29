@@ -18,33 +18,33 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="如果不使用泛型，在List中读取数据 就需要频繁的强制转化，类型不合适还会出现异常：   泛型方法举例泛型列表：   插入和获取元素方法：   实例化：   Map:   插入、获取：   泛型列表嵌套：   使用示例：   hashMap使用示例：   List&lt;?&gt;类型通配在List中可以传入自身的对象或者子类对象。但是List传入List是无法编译的：   替换为List&lt;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/5fdfbb8d-8708-4ec7-92de-fc60ebf99989.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/dc8f804a-12a9-4bc2-9d1a-56ee64026ff2.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/1caed39d-ecf3-4ef6-8b53-770a2f38d863.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/458e0721-cc8c-4221-aad3-f40fb04983ff.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/e2c8dea5-3a7a-4dbb-8c32-d595f30cf43d.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/d2b8a1d7-2a64-473a-908f-1c88ca35ef81.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/ecf519cf-be8d-4cfe-9790-1b94bb57f8e0.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/ee20de0a-a4ef-43d5-8146-59caaf986892.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/2720dff5-de6c-494a-8986-0158b2598f45.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/ce5c869b-164a-449e-b43f-00976ab09a20.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/eaf9d52e-fcee-4196-bd70-0305a87bac8b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/8c3d32d5-cdab-44b7-9337-52c5b9007567.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/c44e6327-6c3d-4c47-9335-d46bea9dd31c.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/3aa8deb3-cd86-4198-b43b-6aed1d83322a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/af41f68d-325d-4516-a044-e2f8577f7749.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/c639ca42-af50-437e-8ee6-2aa5116bdf2a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/b4252769-d21b-4795-bd54-ca3c390170f9.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/1227586d-9791-492b-b57b-944a050807ba.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/95c52984-08b6-42b5-9e40-bc10bdfc303d.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/9ccb87e8-e59a-4306-9a05-3ccba6cad2f9.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/822f29e0-21fc-4f1d-8357-fb1022af8efb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/5fdfbb8d-8708-4ec7-92de-fc60ebf99989.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/dc8f804a-12a9-4bc2-9d1a-56ee64026ff2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/1caed39d-ecf3-4ef6-8b53-770a2f38d863.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/458e0721-cc8c-4221-aad3-f40fb04983ff.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/e2c8dea5-3a7a-4dbb-8c32-d595f30cf43d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/d2b8a1d7-2a64-473a-908f-1c88ca35ef81.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/ecf519cf-be8d-4cfe-9790-1b94bb57f8e0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/ee20de0a-a4ef-43d5-8146-59caaf986892.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/2720dff5-de6c-494a-8986-0158b2598f45.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/ce5c869b-164a-449e-b43f-00976ab09a20.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/eaf9d52e-fcee-4196-bd70-0305a87bac8b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/8c3d32d5-cdab-44b7-9337-52c5b9007567.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/c44e6327-6c3d-4c47-9335-d46bea9dd31c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/3aa8deb3-cd86-4198-b43b-6aed1d83322a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/af41f68d-325d-4516-a044-e2f8577f7749.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/c639ca42-af50-437e-8ee6-2aa5116bdf2a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/b4252769-d21b-4795-bd54-ca3c390170f9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/1227586d-9791-492b-b57b-944a050807ba.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/95c52984-08b6-42b5-9e40-bc10bdfc303d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/9ccb87e8-e59a-4306-9a05-3ccba6cad2f9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/822f29e0-21fc-4f1d-8357-fb1022af8efb.jpg">
 <meta property="article:published_time" content="2020-02-22T03:46:56.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.784Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/02/22/java12-Generics/java12-Generics/5fdfbb8d-8708-4ec7-92de-fc60ebf99989.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java12-Generics/5fdfbb8d-8708-4ec7-92de-fc60ebf99989.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -121,74 +121,67 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">泛型方法举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List-lt-gt-%E7%B1%BB%E5%9E%8B%E9%80%9A%E9%85%8D"><span class="toc-number">2.</span> <span class="toc-text">List&lt;?&gt;类型通配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">自定义泛型类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.</span> <span class="toc-text">泛型接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">泛型方法</span></a></li></ol>
-		
-		</div>
-		
 		<p>如果不使用泛型，在List中读取数据 就需要频繁的强制转化，类型不合适还会出现异常：</p>
-<img src='java12-Generics\5fdfbb8d-8708-4ec7-92de-fc60ebf99989.jpg' >
+<img src="/blog/2020/02/22/java12-Generics/5fdfbb8d-8708-4ec7-92de-fc60ebf99989.jpg">
 
 <h2 id="泛型方法举例"><a href="#泛型方法举例" class="headerlink" title="泛型方法举例"></a>泛型方法举例</h2><p>泛型列表：</p>
-<img src='java12-Generics\dc8f804a-12a9-4bc2-9d1a-56ee64026ff2.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/dc8f804a-12a9-4bc2-9d1a-56ee64026ff2.jpg">
 
 <p>插入和获取元素方法：</p>
-<img src='java12-Generics\1caed39d-ecf3-4ef6-8b53-770a2f38d863.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/1caed39d-ecf3-4ef6-8b53-770a2f38d863.jpg">
 
 <p>实例化：</p>
-<img src='java12-Generics\458e0721-cc8c-4221-aad3-f40fb04983ff.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/458e0721-cc8c-4221-aad3-f40fb04983ff.jpg">
 
 <p>Map:</p>
-<img src='java12-Generics\e2c8dea5-3a7a-4dbb-8c32-d595f30cf43d.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/e2c8dea5-3a7a-4dbb-8c32-d595f30cf43d.jpg">
 
 <p>插入、获取：</p>
-<img src='java12-Generics\d2b8a1d7-2a64-473a-908f-1c88ca35ef81.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/d2b8a1d7-2a64-473a-908f-1c88ca35ef81.jpg">
 
 <p>泛型列表嵌套：</p>
-<img src='java12-Generics\ecf519cf-be8d-4cfe-9790-1b94bb57f8e0.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/ecf519cf-be8d-4cfe-9790-1b94bb57f8e0.jpg">
 
 <p>使用示例：</p>
-<img src='java12-Generics\ee20de0a-a4ef-43d5-8146-59caaf986892.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/ee20de0a-a4ef-43d5-8146-59caaf986892.jpg">
 
 <p>hashMap使用示例：</p>
-<img src='java12-Generics\2720dff5-de6c-494a-8986-0158b2598f45.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/2720dff5-de6c-494a-8986-0158b2598f45.jpg">
 
-<h2 id="List-lt-gt-类型通配"><a href="#List-lt-gt-类型通配" class="headerlink" title="List&lt;?&gt;类型通配"></a>List&lt;?&gt;类型通配</h2><p>在List中可以传入自身的对象或者子类对象。但是List<String>传入List<Object>是无法编译的：</p>
-<img src='java12-Generics\ce5c869b-164a-449e-b43f-00976ab09a20.jpg'>
+<h2 id="List-lt-gt-类型通配"><a href="#List-lt-gt-类型通配" class="headerlink" title="List&lt;?&gt;类型通配"></a>List&lt;?&gt;类型通配</h2><p>在List中可以传入自身的对象或者子类对象。但是List<String>传入List<Object>是无法编译的：</Object></String></p>
+<img src="/blog/2020/02/22/java12-Generics/ce5c869b-164a-449e-b43f-00976ab09a20.jpg">
 
 <p>替换为List&lt;?&gt;即可接受任意类型的列表：</p>
-<img src='java12-Generics\eaf9d52e-fcee-4196-bd70-0305a87bac8b.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/eaf9d52e-fcee-4196-bd70-0305a87bac8b.jpg">
 
 <p>还可以限定类型属于某类型或其子类型：</p>
-<img src='java12-Generics\8c3d32d5-cdab-44b7-9337-52c5b9007567.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/8c3d32d5-cdab-44b7-9337-52c5b9007567.jpg">
 
 <p>使用List&lt;? extends Number&gt;可以限定部分类型可用：</p>
-<img src='java12-Generics\c44e6327-6c3d-4c47-9335-d46bea9dd31c.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/c44e6327-6c3d-4c47-9335-d46bea9dd31c.jpg">
 
-<h2 id="自定义泛型类"><a href="#自定义泛型类" class="headerlink" title="自定义泛型类"></a>自定义泛型类</h2><img src='java12-Generics\3aa8deb3-cd86-4198-b43b-6aed1d83322a.jpg'>
+<h2 id="自定义泛型类"><a href="#自定义泛型类" class="headerlink" title="自定义泛型类"></a>自定义泛型类</h2><img src="/blog/2020/02/22/java12-Generics/3aa8deb3-cd86-4198-b43b-6aed1d83322a.jpg">
 
 <p>使用T表示泛型类型。</p>
 <p>使用时需要指定泛型的具体类型：</p>
-<img src='java12-Generics\af41f68d-325d-4516-a044-e2f8577f7749.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/af41f68d-325d-4516-a044-e2f8577f7749.jpg">
 
 <p>泛型类实例:</p>
-<img src='java12-Generics\c639ca42-af50-437e-8ee6-2aa5116bdf2a.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/c639ca42-af50-437e-8ee6-2aa5116bdf2a.jpg">
 
 <p>调用：</p>
-<img src='java12-Generics\b4252769-d21b-4795-bd54-ca3c390170f9.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/b4252769-d21b-4795-bd54-ca3c390170f9.jpg">
 
 <h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><p>接口：</p>
-<img src='java12-Generics\1227586d-9791-492b-b57b-944a050807ba.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/1227586d-9791-492b-b57b-944a050807ba.jpg">
 
 <p>实现类：</p>
-<img src='java12-Generics\95c52984-08b6-42b5-9e40-bc10bdfc303d.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/95c52984-08b6-42b5-9e40-bc10bdfc303d.jpg">
 
-<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><img src='java12-Generics\9ccb87e8-e59a-4306-9a05-3ccba6cad2f9.jpg'>
+<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><img src="/blog/2020/02/22/java12-Generics/9ccb87e8-e59a-4306-9a05-3ccba6cad2f9.jpg">
 
 <p>对泛型方法参数进行限定：</p>
-<img src='java12-Generics\822f29e0-21fc-4f1d-8357-fb1022af8efb.jpg'>
+<img src="/blog/2020/02/22/java12-Generics/822f29e0-21fc-4f1d-8357-fb1022af8efb.jpg">
 
   
 	</div>
@@ -359,8 +352,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

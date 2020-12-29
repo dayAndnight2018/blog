@@ -18,24 +18,24 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="一个常规问题的实现我们定义一个通用方法实现两个int值的计算：  定义接口    只有一个方法，输入两个值，返回结果。  通过工厂模式实现  根据输入操作符的不同，给出接口的不同实现：     测试  先构造接口对象，再调用接口方法   改用lambda实现  替换匿名内部类的方式是合理的。 通过lambda表达式实现的匿名内部类的简化，要求必须是函数式接口，即：此接口只能包含一个抽象方法。 la">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/ccee4d44-bbd3-4753-8c32-5e2074271c84.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/5f11e389-7bbc-4a4d-9464-138299369723.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/9d8473f0-f436-4374-9e10-6fba0008fcea.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/c82d16f9-5de5-49a9-af93-a99699a3c90a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/ca17d4a0-32a7-4bd9-9204-48eb54b2e578.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/34bed390-25cf-4e3c-8bf7-e5603f879450.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/c4042c14-129c-45bb-bc00-f6af12812860.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/2ace4eaf-8d08-4a56-b95b-7ac09845ed04.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/f7c0b65e-8c4c-4e1a-958c-8a77ccf0dfc3.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/dd850819-c2df-4273-a38e-6eb76d5a44e0.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/0b9a0ca0-a730-455c-9665-266e68bb9c93.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/e3face43-b305-4106-a986-018d744e8de0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/ccee4d44-bbd3-4753-8c32-5e2074271c84.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/5f11e389-7bbc-4a4d-9464-138299369723.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/9d8473f0-f436-4374-9e10-6fba0008fcea.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/c82d16f9-5de5-49a9-af93-a99699a3c90a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/ca17d4a0-32a7-4bd9-9204-48eb54b2e578.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/34bed390-25cf-4e3c-8bf7-e5603f879450.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/c4042c14-129c-45bb-bc00-f6af12812860.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/2ace4eaf-8d08-4a56-b95b-7ac09845ed04.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/f7c0b65e-8c4c-4e1a-958c-8a77ccf0dfc3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/dd850819-c2df-4273-a38e-6eb76d5a44e0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/0b9a0ca0-a730-455c-9665-266e68bb9c93.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/e3face43-b305-4106-a986-018d744e8de0.jpg">
 <meta property="article:published_time" content="2020-06-25T14:03:16.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.833Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/06/25/java22-lambda/java22-lambda/ccee4d44-bbd3-4753-8c32-5e2074271c84.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/06/25/java22-lambda/ccee4d44-bbd3-4753-8c32-5e2074271c84.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -112,57 +112,50 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%B8%B8%E8%A7%84%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">一个常规问题的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E7%94%A8lambda%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">改用lambda实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda%E7%9A%84%E7%AE%80%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">lambda的简化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.1.</span> <span class="toc-text">简化参数类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda%E5%8F%AF%E4%BB%A5%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-number">4.</span> <span class="toc-text">lambda可以作为参数传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E5%B9%B6%E4%BF%AE%E6%94%B9%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%A8%E5%B1%80%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F"><span class="toc-number">5.</span> <span class="toc-text">lambda可以使用并修改全局变量及全局静态变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda%E5%8F%AF%E4%BB%A5%E6%8D%95%E8%8E%B7%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%EF%BC%8C%E5%8F%AA%E8%83%BD%E8%AF%BB%E5%8F%96%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9"><span class="toc-number">6.</span> <span class="toc-text">lambda可以捕获局部变量，只能读取不能修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">7.</span> <span class="toc-text">::方法引用的使用</span></a></li></ol>
-		
-		</div>
-		
 		<h2 id="一个常规问题的实现"><a href="#一个常规问题的实现" class="headerlink" title="一个常规问题的实现"></a>一个常规问题的实现</h2><p>我们定义一个通用方法实现两个int值的计算：</p>
 <ol>
 <li>定义接口</li>
 </ol>
-<img src='java22-lambda\ccee4d44-bbd3-4753-8c32-5e2074271c84.jpg'>
+<img src="/blog/2020/06/25/java22-lambda/ccee4d44-bbd3-4753-8c32-5e2074271c84.jpg">
 
 <p>只有一个方法，输入两个值，返回结果。</p>
 <ol start="2">
 <li>通过工厂模式实现</li>
 </ol>
 <p>根据输入操作符的不同，给出接口的不同实现：</p>
-<img src='java22-lambda\5f11e389-7bbc-4a4d-9464-138299369723.jpg'>
+<img src="/blog/2020/06/25/java22-lambda/5f11e389-7bbc-4a4d-9464-138299369723.jpg">
 
 <ol start="3">
 <li> 测试</li>
 </ol>
 <p>先构造接口对象，再调用接口方法</p>
-<img src='java22-lambda\9d8473f0-f436-4374-9e10-6fba0008fcea.jpg'>
+<img src="/blog/2020/06/25/java22-lambda/9d8473f0-f436-4374-9e10-6fba0008fcea.jpg">
 
-<h2 id="改用lambda实现"><a href="#改用lambda实现" class="headerlink" title="改用lambda实现"></a>改用lambda实现</h2><img src='java22-lambda\c82d16f9-5de5-49a9-af93-a99699a3c90a.jpg'>
+<h2 id="改用lambda实现"><a href="#改用lambda实现" class="headerlink" title="改用lambda实现"></a>改用lambda实现</h2><img src="/blog/2020/06/25/java22-lambda/c82d16f9-5de5-49a9-af93-a99699a3c90a.jpg">
 
 <p>替换匿名内部类的方式是合理的。</p>
 <p>通过lambda表达式实现的匿名内部类的简化，要求必须是函数式接口，即：此接口只能包含一个抽象方法。</p>
 <h2 id="lambda的简化"><a href="#lambda的简化" class="headerlink" title="lambda的简化"></a>lambda的简化</h2><h3 id="简化参数类型"><a href="#简化参数类型" class="headerlink" title="简化参数类型"></a>简化参数类型</h3><p>缩掉参数类型：</p>
-<img src='java22-lambda\ca17d4a0-32a7-4bd9-9204-48eb54b2e578.jpg'>
+<img src="/blog/2020/06/25/java22-lambda/ca17d4a0-32a7-4bd9-9204-48eb54b2e578.jpg">
 
 <p>只有一个参数是，可以省略小括号(不建议)：</p>
-<img src='java22-lambda\34bed390-25cf-4e3c-8bf7-e5603f879450.jpg'>
+<img src="/blog/2020/06/25/java22-lambda/34bed390-25cf-4e3c-8bf7-e5603f879450.jpg">
 
 <p>若实现只有一句话，可以省略大括号及“return”:</p>
-<img src='java22-lambda\c4042c14-129c-45bb-bc00-f6af12812860.jpg'>
+<img src="/blog/2020/06/25/java22-lambda/c4042c14-129c-45bb-bc00-f6af12812860.jpg">
 
 <h2 id="lambda可以作为参数传递"><a href="#lambda可以作为参数传递" class="headerlink" title="lambda可以作为参数传递"></a>lambda可以作为参数传递</h2><p>参数是函数式接口时，可以将lambda表达式作为参数传递。</p>
-<img src='java22-lambda\2ace4eaf-8d08-4a56-b95b-7ac09845ed04.jpg'>
+<img src="/blog/2020/06/25/java22-lambda/2ace4eaf-8d08-4a56-b95b-7ac09845ed04.jpg">
 
-<h2 id="lambda可以使用并修改全局变量及全局静态变量"><a href="#lambda可以使用并修改全局变量及全局静态变量" class="headerlink" title="lambda可以使用并修改全局变量及全局静态变量"></a>lambda可以使用并修改全局变量及全局静态变量</h2><img src='java22-lambda\f7c0b65e-8c4c-4e1a-958c-8a77ccf0dfc3.jpg'>
+<h2 id="lambda可以使用并修改全局变量及全局静态变量"><a href="#lambda可以使用并修改全局变量及全局静态变量" class="headerlink" title="lambda可以使用并修改全局变量及全局静态变量"></a>lambda可以使用并修改全局变量及全局静态变量</h2><img src="/blog/2020/06/25/java22-lambda/f7c0b65e-8c4c-4e1a-958c-8a77ccf0dfc3.jpg">
 
-<h2 id="lambda可以捕获局部变量，只能读取不能修改"><a href="#lambda可以捕获局部变量，只能读取不能修改" class="headerlink" title="lambda可以捕获局部变量，只能读取不能修改"></a>lambda可以捕获局部变量，只能读取不能修改</h2><img src='java22-lambda\dd850819-c2df-4273-a38e-6eb76d5a44e0.jpg'>
+<h2 id="lambda可以捕获局部变量，只能读取不能修改"><a href="#lambda可以捕获局部变量，只能读取不能修改" class="headerlink" title="lambda可以捕获局部变量，只能读取不能修改"></a>lambda可以捕获局部变量，只能读取不能修改</h2><img src="/blog/2020/06/25/java22-lambda/dd850819-c2df-4273-a38e-6eb76d5a44e0.jpg">
 
 <h2 id="方法引用的使用"><a href="#方法引用的使用" class="headerlink" title="::方法引用的使用"></a>::方法引用的使用</h2><p>采用与函数式接口类似的方法参数及返回类型的方法均可以代替函数式接口参数传入：</p>
-<img src='java22-lambda\0b9a0ca0-a730-455c-9665-266e68bb9c93.jpg'>
+<img src="/blog/2020/06/25/java22-lambda/0b9a0ca0-a730-455c-9665-266e68bb9c93.jpg">
 
 <p>使用方法：</p>
-<img src='java22-lambda\e3face43-b305-4106-a986-018d744e8de0.jpg'>
+<img src="/blog/2020/06/25/java22-lambda/e3face43-b305-4106-a986-018d744e8de0.jpg">
 
 
   
@@ -334,8 +327,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

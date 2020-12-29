@@ -18,50 +18,50 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="数据绑定流程  完成数据绑定主要任务的是DataBinder, 接收请求转为ServletRequest对象，根据反射获取数据及处理方法的参数，通过ConversionService转换数据，然后通过Validator验证数据的格式，最终将数据绑定的结果保存到BindingResult对象中。 spring支持的数据转换器ConversionService实现以下三种中的任意一种接口即可实现自定义">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/7cd5c153-df74-4404-9983-2339047f3fd7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/8a9fbc9c-92c6-4e50-ab6f-9a04088754ee.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/4a08d00b-a1b3-4c47-b3cc-10fc6aad60fb.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/81c7ab52-6478-4c1e-872d-e0d9c7cb76af.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/b5bb6a3e-4b5d-4be6-8fe3-ba1fd7a12f8d.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/49673d27-6f87-4b8b-bcdf-b63b514e623f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/339dbbb7-b11f-4257-8281-1cc2ae4aba2b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/8f7e5ebc-024a-4084-bb3c-1da4652148af.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/994ce6f6-28de-4580-bd3e-042d03d56bc9.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/3d652fd0-1239-47b5-a9a3-4726291bbf97.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/59d1b419-7549-447c-b112-380a905fd7c9.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/e9d0eb90-b5a9-48e0-8df2-d45bf75135b4.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/e8476241-1baf-417a-bee1-dc49e17dddbc.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/24abfc74-20d9-4c59-989f-2082bdadbe7e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/4c4788f4-9039-42f8-b732-5ca5e2201c90.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/343622d0-b991-403b-9bdf-65d6dccedc47.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/c97edcf0-9cca-46bc-ae75-c4c2c347f37e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/969a45a6-c633-4fd0-86bc-03c309592492.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/8a07f701-9445-4d20-a412-53c21a7cdc78.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/b94a1a0f-f759-459b-890c-1b08a1a3f2c7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/76760459-a24c-4be5-8606-50a996c5ebf4.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/51657190-831f-4cab-9682-c898b9037798.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/2d1ccb4a-8c87-4cf1-8e00-5ed771571097.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/f50be5b1-b24d-4d58-8f33-f3a2c5aaa0ee.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/9f7e5ada-5662-453c-92eb-43ce91ad5ec2.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/be39150e-7c75-4499-8914-bab45f79827a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/8246fbed-8ef5-45db-b885-c1f72e5909d4.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/b8155d37-07a0-40c4-b402-f6d464012643.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/c35139cc-19f2-42fa-9e9a-f75e006fbb21.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/76a9655a-9010-41b3-bbab-51aa03c1bc9b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/168e8598-d3e8-46d3-8c8f-5f5e8d0922a4.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/d630dc57-5bf3-4052-ae5e-6a429918e2e7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/19c79e1e-b748-4222-8301-a4634e381491.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/6e92aa55-4def-4610-8741-f1854d4a6720.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/739db0a0-b1af-4a23-821b-55858787d4fe.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/f17ca3bc-076c-4a3e-9ef2-da059e997c06.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/5c0eef67-3e49-40db-b8ad-fa97b7277195.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/d92e75c7-db7e-44c8-832f-f182cd779e2e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/7cd5c153-df74-4404-9983-2339047f3fd7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/8a9fbc9c-92c6-4e50-ab6f-9a04088754ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/4a08d00b-a1b3-4c47-b3cc-10fc6aad60fb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/81c7ab52-6478-4c1e-872d-e0d9c7cb76af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/b5bb6a3e-4b5d-4be6-8fe3-ba1fd7a12f8d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/49673d27-6f87-4b8b-bcdf-b63b514e623f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/339dbbb7-b11f-4257-8281-1cc2ae4aba2b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/8f7e5ebc-024a-4084-bb3c-1da4652148af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/994ce6f6-28de-4580-bd3e-042d03d56bc9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/3d652fd0-1239-47b5-a9a3-4726291bbf97.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/59d1b419-7549-447c-b112-380a905fd7c9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/e9d0eb90-b5a9-48e0-8df2-d45bf75135b4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/e8476241-1baf-417a-bee1-dc49e17dddbc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/24abfc74-20d9-4c59-989f-2082bdadbe7e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/4c4788f4-9039-42f8-b732-5ca5e2201c90.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/343622d0-b991-403b-9bdf-65d6dccedc47.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/c97edcf0-9cca-46bc-ae75-c4c2c347f37e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/969a45a6-c633-4fd0-86bc-03c309592492.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/8a07f701-9445-4d20-a412-53c21a7cdc78.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/b94a1a0f-f759-459b-890c-1b08a1a3f2c7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/76760459-a24c-4be5-8606-50a996c5ebf4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/51657190-831f-4cab-9682-c898b9037798.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/2d1ccb4a-8c87-4cf1-8e00-5ed771571097.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/f50be5b1-b24d-4d58-8f33-f3a2c5aaa0ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/9f7e5ada-5662-453c-92eb-43ce91ad5ec2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/be39150e-7c75-4499-8914-bab45f79827a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/8246fbed-8ef5-45db-b885-c1f72e5909d4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/b8155d37-07a0-40c4-b402-f6d464012643.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/c35139cc-19f2-42fa-9e9a-f75e006fbb21.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/76a9655a-9010-41b3-bbab-51aa03c1bc9b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/168e8598-d3e8-46d3-8c8f-5f5e8d0922a4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/d630dc57-5bf3-4052-ae5e-6a429918e2e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/19c79e1e-b748-4222-8301-a4634e381491.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/6e92aa55-4def-4610-8741-f1854d4a6720.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/739db0a0-b1af-4a23-821b-55858787d4fe.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/f17ca3bc-076c-4a3e-9ef2-da059e997c06.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/5c0eef67-3e49-40db-b8ad-fa97b7277195.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/d92e75c7-db7e-44c8-832f-f182cd779e2e.jpg">
 <meta property="article:published_time" content="2020-04-23T11:08:57.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.703Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="SSM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/04/23/crazySSM04-data-bind/crazySSM04-data-bind/7cd5c153-df74-4404-9983-2339047f3fd7.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/04/23/crazySSM04-data-bind/7cd5c153-df74-4404-9983-2339047f3fd7.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -138,139 +138,132 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">数据绑定流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring%E6%94%AF%E6%8C%81%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">spring支持的数据转换器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ConversionService"><span class="toc-number">2.1.</span> <span class="toc-text">ConversionService</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PropertyEditor"><span class="toc-number">2.2.</span> <span class="toc-text">PropertyEditor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">数据格式化器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">基于注解的格式化器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">数据验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Validator"><span class="toc-number">4.1.</span> <span class="toc-text">Validator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSR-303%EF%BC%88%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">JSR 303（常用）</span></a></li></ol></li></ol>
-		
-		</div>
-		
-		<h2 id="数据绑定流程"><a href="#数据绑定流程" class="headerlink" title="数据绑定流程"></a>数据绑定流程</h2><img src='crazySSM04-data-bind\7cd5c153-df74-4404-9983-2339047f3fd7.jpg'>
+		<h2 id="数据绑定流程"><a href="#数据绑定流程" class="headerlink" title="数据绑定流程"></a>数据绑定流程</h2><img src="/blog/2020/04/23/crazySSM04-data-bind/7cd5c153-df74-4404-9983-2339047f3fd7.jpg">
 
-<p>完成数据绑定主要任务的是<code style='background:#ff3385;color:white;padding:5px;'>DataBinder</code>, 接收请求转为<code style='background:#ff3385;color:white;padding:5px;'>ServletRequest</code>对象，根据反射获取数据及处理方法的参数，通过<code style='background:#ff3385;color:white;padding:5px;'>ConversionService</code>转换数据，然后通过<code style='background:#ff3385;color:white;padding:5px;'>Validator</code>验证数据的格式，最终将数据绑定的结果保存到<code style='background:#ff3385;color:white;padding:5px;'>BindingResult</code>对象中。</p>
+<p>完成数据绑定主要任务的是<code style="background:#ff3385;color:white;padding:5px;">DataBinder</code>, 接收请求转为<code style="background:#ff3385;color:white;padding:5px;">ServletRequest</code>对象，根据反射获取数据及处理方法的参数，通过<code style="background:#ff3385;color:white;padding:5px;">ConversionService</code>转换数据，然后通过<code style="background:#ff3385;color:white;padding:5px;">Validator</code>验证数据的格式，最终将数据绑定的结果保存到<code style="background:#ff3385;color:white;padding:5px;">BindingResult</code>对象中。</p>
 <h2 id="spring支持的数据转换器"><a href="#spring支持的数据转换器" class="headerlink" title="spring支持的数据转换器"></a>spring支持的数据转换器</h2><h3 id="ConversionService"><a href="#ConversionService" class="headerlink" title="ConversionService"></a>ConversionService</h3><p>实现以下三种中的任意一种接口即可实现自定义的转换逻辑:</p>
 <ol>
 <li>将S类型的数据转为T</li>
 </ol>
-<img src='crazySSM04-data-bind\8a9fbc9c-92c6-4e50-ab6f-9a04088754ee.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/8a9fbc9c-92c6-4e50-ab6f-9a04088754ee.jpg">
 
 <p>重写方法：</p>
-<img src='crazySSM04-data-bind\4a08d00b-a1b3-4c47-b3cc-10fc6aad60fb.jpg' >
+<img src="/blog/2020/04/23/crazySSM04-data-bind/4a08d00b-a1b3-4c47-b3cc-10fc6aad60fb.jpg">
 
 <ol start="2">
 <li>将S转为R的子类T</li>
 </ol>
-<img src='crazySSM04-data-bind\81c7ab52-6478-4c1e-872d-e0d9c7cb76af.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/81c7ab52-6478-4c1e-872d-e0d9c7cb76af.jpg">
 
 <p>重写方法：</p>
-<img src='crazySSM04-data-bind\b5bb6a3e-4b5d-4be6-8fe3-ba1fd7a12f8d.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/b5bb6a3e-4b5d-4be6-8fe3-ba1fd7a12f8d.jpg">
 
 <ol start="3">
 <li>基于上下文信息的转换</li>
 </ol>
-<img src='crazySSM04-data-bind\49673d27-6f87-4b8b-bcdf-b63b514e623f.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/49673d27-6f87-4b8b-bcdf-b63b514e623f.jpg">
 
 <p>重写方法：</p>
-<img src='crazySSM04-data-bind\339dbbb7-b11f-4257-8281-1cc2ae4aba2b.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/339dbbb7-b11f-4257-8281-1cc2ae4aba2b.jpg">
 
 <p>使用示例：</p>
 <p>页面中存在生日信息，格式为xxxx-xx-xx</p>
-<img src='crazySSM04-data-bind\8f7e5ebc-024a-4084-bb3c-1da4652148af.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/8f7e5ebc-024a-4084-bb3c-1da4652148af.jpg">
 
 <p>POJO格式</p>
-<img src='crazySSM04-data-bind\994ce6f6-28de-4580-bd3e-042d03d56bc9.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/994ce6f6-28de-4580-bd3e-042d03d56bc9.jpg">
 
 <p>直接绑定数据会出错。</p>
 <p>定义数据转换器：</p>
-<img src='crazySSM04-data-bind\3d652fd0-1239-47b5-a9a3-4726291bbf97.jpg'>
-<img src='crazySSM04-data-bind\59d1b419-7549-447c-b112-380a905fd7c9.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/3d652fd0-1239-47b5-a9a3-4726291bbf97.jpg">
+<img src="/blog/2020/04/23/crazySSM04-data-bind/59d1b419-7549-447c-b112-380a905fd7c9.jpg">
 
 <p>使用最简单的Converter&lt;S,T&gt;进行转换。</p>
 <p>将定义的转换器注册到conversionServiceFactoryBean</p>
-<img src='crazySSM04-data-bind\e9d0eb90-b5a9-48e0-8df2-d45bf75135b4.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/e9d0eb90-b5a9-48e0-8df2-d45bf75135b4.jpg">
 
 <h3 id="PropertyEditor"><a href="#PropertyEditor" class="headerlink" title="PropertyEditor"></a>PropertyEditor</h3><p>通过继承PropertyEditorSupport实现setAsText方法，实现数据转换。</p>
-<img src='crazySSM04-data-bind\e8476241-1baf-417a-bee1-dc49e17dddbc.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/e8476241-1baf-417a-bee1-dc49e17dddbc.jpg">
 
 <p>怎么注册到框架？</p>
 <ol>
 <li>通过InitBind注册到控制器</li>
 </ol>
-<img src='crazySSM04-data-bind\24abfc74-20d9-4c59-989f-2082bdadbe7e.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/24abfc74-20d9-4c59-989f-2082bdadbe7e.jpg">
 
 <ol start="2">
 <li>全局转换器</li>
 </ol>
-<img src='crazySSM04-data-bind\4c4788f4-9039-42f8-b732-5ca5e2201c90.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/4c4788f4-9039-42f8-b732-5ca5e2201c90.jpg">
 
 <p>实现WebBindingInitializer接口，重写initBinder方法，注册转换器</p>
 <ol start="3">
 <li>将全局转换器注册为Bean</li>
 </ol>
-<img src='crazySSM04-data-bind\343622d0-b991-403b-9bdf-65d6dccedc47.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/343622d0-b991-403b-9bdf-65d6dccedc47.jpg">
 
-<p><code style='background:#ff3385;color:white;padding:5px;'>优先级是@InitBinder > ConversionService > WebBindingInitilizer</code></p>
+<p><code style="background:#ff3385;color:white;padding:5px;">优先级是@InitBinder > ConversionService > WebBindingInitilizer</code></p>
 <h2 id="数据格式化器"><a href="#数据格式化器" class="headerlink" title="数据格式化器"></a>数据格式化器</h2><p>数据格式化其主要面向于web层的数据转化，完成的是String类型的数据与java类型数据的转换，适用范围较小，粒度小。</p>
 <p>包含以下接口：</p>
-<img src='crazySSM04-data-bind\c97edcf0-9cca-46bc-ae75-c4c2c347f37e.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/c97edcf0-9cca-46bc-ae75-c4c2c347f37e.jpg">
 
 <p>实现方法</p>
-<img src='crazySSM04-data-bind\969a45a6-c633-4fd0-86bc-03c309592492.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/969a45a6-c633-4fd0-86bc-03c309592492.jpg">
 
 <p>本接口实现的是T类型到String类型的转换。</p>
-<img src='crazySSM04-data-bind\8a07f701-9445-4d20-a412-53c21a7cdc78.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/8a07f701-9445-4d20-a412-53c21a7cdc78.jpg">
 
 <p>实现方法</p>
-<img src='crazySSM04-data-bind\b94a1a0f-f759-459b-890c-1b08a1a3f2c7.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/b94a1a0f-f759-459b-890c-1b08a1a3f2c7.jpg">
 
 <p>本接口实现的是String到T类型的转换。</p>
-<img src='crazySSM04-data-bind\76760459-a24c-4be5-8606-50a996c5ebf4.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/76760459-a24c-4be5-8606-50a996c5ebf4.jpg">
 
-<p>继承了Printer<T>及Parser<T>接口，包含完整转换。</p>
-<img src='crazySSM04-data-bind\51657190-831f-4cab-9682-c898b9037798.jpg'>
+<p>继承了Printer<T>及Parser<T>接口，包含完整转换。</T></T></p>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/51657190-831f-4cab-9682-c898b9037798.jpg">
 
 <p>用于注册格式化器。</p>
-<img src='crazySSM04-data-bind\2d1ccb4a-8c87-4cf1-8e00-5ed771571097.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/2d1ccb4a-8c87-4cf1-8e00-5ed771571097.jpg">
 
 <p>基于注解的格式化器</p>
-<img src='crazySSM04-data-bind\f50be5b1-b24d-4d58-8f33-f3a2c5aaa0ee.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/f50be5b1-b24d-4d58-8f33-f3a2c5aaa0ee.jpg">
 
 <p>使用示例：</p>
-<img src='crazySSM04-data-bind\9f7e5ada-5662-453c-92eb-43ce91ad5ec2.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/9f7e5ada-5662-453c-92eb-43ce91ad5ec2.jpg">
 
 <p>注册到Bean</p>
-<img src='crazySSM04-data-bind\be39150e-7c75-4499-8914-bab45f79827a.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/be39150e-7c75-4499-8914-bab45f79827a.jpg">
 
 <p>这个FormattingConversionServiceFactoryBean包含一个converters和一个formatters属性，可以接受转换器和格式化器。</p>
 <p>也可以通过FormatterRegister接口实现格式化器注册：</p>
-<img src='crazySSM04-data-bind\8246fbed-8ef5-45db-b885-c1f72e5909d4.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/8246fbed-8ef5-45db-b885-c1f72e5909d4.jpg">
 
 <p>注册到Bean</p>
-<img src='crazySSM04-data-bind\b8155d37-07a0-40c4-b402-f6d464012643.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/b8155d37-07a0-40c4-b402-f6d464012643.jpg">
 
-<h3 id="基于注解的格式化器"><a href="#基于注解的格式化器" class="headerlink" title="基于注解的格式化器"></a>基于注解的格式化器</h3><img src='crazySSM04-data-bind\c35139cc-19f2-42fa-9e9a-f75e006fbb21.jpg'>
+<h3 id="基于注解的格式化器"><a href="#基于注解的格式化器" class="headerlink" title="基于注解的格式化器"></a>基于注解的格式化器</h3><img src="/blog/2020/04/23/crazySSM04-data-bind/c35139cc-19f2-42fa-9e9a-f75e006fbb21.jpg">
 
 <h2 id="数据验证"><a href="#数据验证" class="headerlink" title="数据验证"></a>数据验证</h2><p>数据验证包含格式，合法性等验证。</p>
 <h3 id="Validator"><a href="#Validator" class="headerlink" title="Validator"></a>Validator</h3><p>示例：</p>
 <p>POJO</p>
-<img src='crazySSM04-data-bind\76a9655a-9010-41b3-bbab-51aa03c1bc9b.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/76a9655a-9010-41b3-bbab-51aa03c1bc9b.jpg">
 
 <p>验证器</p>
-<img src='crazySSM04-data-bind\168e8598-d3e8-46d3-8c8f-5f5e8d0922a4.jpg'>
-<img src='crazySSM04-data-bind\d630dc57-5bf3-4052-ae5e-6a429918e2e7.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/168e8598-d3e8-46d3-8c8f-5f5e8d0922a4.jpg">
+<img src="/blog/2020/04/23/crazySSM04-data-bind/d630dc57-5bf3-4052-ae5e-6a429918e2e7.jpg">
 
 <p>控制器</p>
-<img src='crazySSM04-data-bind\19c79e1e-b748-4222-8301-a4634e381491.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/19c79e1e-b748-4222-8301-a4634e381491.jpg">
 
-<h3 id="JSR-303（常用）"><a href="#JSR-303（常用）" class="headerlink" title="JSR 303（常用）"></a>JSR 303（常用）</h3><img src='crazySSM04-data-bind\6e92aa55-4def-4610-8741-f1854d4a6720.jpg'>
-<img src='crazySSM04-data-bind\739db0a0-b1af-4a23-821b-55858787d4fe.jpg'>
-<img src='crazySSM04-data-bind\f17ca3bc-076c-4a3e-9ef2-da059e997c06.jpg'>
+<h3 id="JSR-303（常用）"><a href="#JSR-303（常用）" class="headerlink" title="JSR 303（常用）"></a>JSR 303（常用）</h3><img src="/blog/2020/04/23/crazySSM04-data-bind/6e92aa55-4def-4610-8741-f1854d4a6720.jpg">
+<img src="/blog/2020/04/23/crazySSM04-data-bind/739db0a0-b1af-4a23-821b-55858787d4fe.jpg">
+<img src="/blog/2020/04/23/crazySSM04-data-bind/f17ca3bc-076c-4a3e-9ef2-da059e997c06.jpg">
 
 <p>使用示例：</p>
-<img src='crazySSM04-data-bind\5c0eef67-3e49-40db-b8ad-fa97b7277195.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/5c0eef67-3e49-40db-b8ad-fa97b7277195.jpg">
 
 <p>验证数据</p>
-<img src='crazySSM04-data-bind\d92e75c7-db7e-44c8-832f-f182cd779e2e.jpg'>
+<img src="/blog/2020/04/23/crazySSM04-data-bind/d92e75c7-db7e-44c8-832f-f182cd779e2e.jpg">
 
 
 
@@ -458,8 +451,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

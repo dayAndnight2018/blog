@@ -18,75 +18,75 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="依赖注入的三种方式 构造器注入  set方法注入  接口注入   构造器注入通过类的构造函数注入需要的其他数据及对象   xml描述   构造器注入方法简单，但是对参数较多的情况下显得很繁杂。 set方法注入使用默认的构造器创建对象，对参数通过set方法注入   接口注入对于外界提供的服务，Spring在使用的时候需要接口注入。例如tomcat管理的数据库连接池资源，Spring通过JNDI获取：">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/1f5925f3-fb16-4399-8492-11ad2a6eb56b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/ee883871-b15e-409e-bde3-12d9379e806f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/1251f90c-9e9c-4932-838c-ff37eee8a5c6.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/13dd24c7-54b4-43e9-a8f4-c2508f8ceb52.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/62a52869-1152-4244-94e0-5d5beb123c14.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/93bd421c-e9f7-4531-9627-a5c883c55adf.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/a6538e72-1445-47e5-a072-0427f07dc405.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/2d613fbd-22fe-4193-9791-47b58ddaa007.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/75df32f4-6ede-4185-9cb6-dcff8318dfa5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/6c6db7c6-3f9f-4724-927d-67193bc7beb3.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/507196fd-8f11-485c-b90d-7aad38d97a58.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/2cec3eda-7522-4780-bd81-65467e2a6a58.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/4c1d1f83-4118-4b6f-8f10-3931b7724ff7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/4b38ab87-ff77-4264-b122-745804156f2b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/ff6218a0-2dc2-4c22-beab-14a3a6dddd65.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/d7a5d401-47b1-45fe-8d1e-14423bee598f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/927be890-9d85-4d4d-ac13-aaebd6bac409.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/3fc307c2-e801-4041-bcb9-cfdcc0807026.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/08584157-2dc8-4608-85d7-992c7887d0a7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/11078aa8-7090-40f3-8229-f72d7efa9066.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/42d2bb8d-f080-4eec-8cec-451dad1b0dcd.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/1fcfeeef-3441-4c75-9fe5-abd99673e8b3.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/36dead9b-a304-43a6-a6fd-5778f5b9c1f1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/9af78e5c-0a8f-495d-b4a0-df4427b3eec5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/adb93fd1-a218-4ab5-911d-e39550901ce5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/cda54d83-e0fd-4952-87eb-676866c7939e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/a0ffdf09-2a44-4a51-98ab-cb4a216bb27b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/6ac4c62e-d111-4661-a95a-e7c6113264ba.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/03ba9c6f-018d-48b9-88cd-258ad5ba84b9.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/2160c5a3-1709-426d-9c3e-1efc202158f2.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/f829838f-64f0-4bd2-a6d1-d559754656d0.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/38ed28da-2125-48ad-aff9-f70e188bf6ca.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/3b317505-81ae-4c95-b622-71190c74e891.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/1b050dc9-1f8c-4378-a2e6-205b05cee749.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/71b65610-fccb-4d88-8d89-9c39da1064e5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/4127f521-a90d-492d-ae60-8e619168a81e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/956d3136-0b29-4711-98dc-9f583801846b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/c9fc44f6-0979-483e-8268-2efdeaee0bd4.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/8cc59a0e-96fa-47db-b0b1-9dab9b8e20f7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/7234bf7a-78f9-4545-9b78-3c91559ddc5a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/7861cafc-8a8b-4026-b5b9-2ce5fe242c35.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/5bf5885f-7449-459e-92a0-763f52601e35.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/b5671a9a-e653-49d7-9367-7659c65316e6.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/77f0ceab-d29a-439b-933c-f01695ac22e7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/d20879c8-929e-4489-bc1f-4f774ab0498b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/f1791c99-5594-4456-a0cc-ab8610e4c924.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/d364d96f-8df2-4c1b-90ef-1457ed61b2a0.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/b8017c77-40f0-4c11-9986-c2343156a7d0.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/fb58e538-c3c8-4bb7-9b96-93fa2f9a038b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/bedfacd2-4890-416d-ac83-e0e51068c8d8.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/116ac573-8280-4875-b543-d56fd5b07a30.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/e9762ffd-0af9-4758-9f22-89c289dc7b26.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/998affde-201d-4ca4-9486-2dd7f20686f3.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/f4e2a108-5cb2-4271-8284-bb32963b9c02.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/70a94b76-55fb-4762-9604-2e37a71a4997.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/9f225a98-a847-4f0b-860d-e93b64dec52a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/f3969325-6e49-4555-9bdb-3ed2bf842904.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/4865618a-ba01-42c6-8a6a-d39b8e02345f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/9a5dd250-4c8f-4f77-8147-86ba1c204287.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/0a65e598-9051-4b11-9dad-f80de9e16b7a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/6cff97c0-2e3d-4996-8130-c1d3d1e5dc0a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/8275d4f5-2369-4599-a601-5883ed1ca04c.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/a485647d-fb66-4f17-ad9e-61f593d57423.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/1f5925f3-fb16-4399-8492-11ad2a6eb56b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/ee883871-b15e-409e-bde3-12d9379e806f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/1251f90c-9e9c-4932-838c-ff37eee8a5c6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/13dd24c7-54b4-43e9-a8f4-c2508f8ceb52.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/62a52869-1152-4244-94e0-5d5beb123c14.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/93bd421c-e9f7-4531-9627-a5c883c55adf.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/a6538e72-1445-47e5-a072-0427f07dc405.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/2d613fbd-22fe-4193-9791-47b58ddaa007.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/75df32f4-6ede-4185-9cb6-dcff8318dfa5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/6c6db7c6-3f9f-4724-927d-67193bc7beb3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/507196fd-8f11-485c-b90d-7aad38d97a58.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/2cec3eda-7522-4780-bd81-65467e2a6a58.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/4c1d1f83-4118-4b6f-8f10-3931b7724ff7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/4b38ab87-ff77-4264-b122-745804156f2b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/ff6218a0-2dc2-4c22-beab-14a3a6dddd65.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/d7a5d401-47b1-45fe-8d1e-14423bee598f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/927be890-9d85-4d4d-ac13-aaebd6bac409.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/3fc307c2-e801-4041-bcb9-cfdcc0807026.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/08584157-2dc8-4608-85d7-992c7887d0a7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/11078aa8-7090-40f3-8229-f72d7efa9066.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/42d2bb8d-f080-4eec-8cec-451dad1b0dcd.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/1fcfeeef-3441-4c75-9fe5-abd99673e8b3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/36dead9b-a304-43a6-a6fd-5778f5b9c1f1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/9af78e5c-0a8f-495d-b4a0-df4427b3eec5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/adb93fd1-a218-4ab5-911d-e39550901ce5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/cda54d83-e0fd-4952-87eb-676866c7939e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/a0ffdf09-2a44-4a51-98ab-cb4a216bb27b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/6ac4c62e-d111-4661-a95a-e7c6113264ba.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/03ba9c6f-018d-48b9-88cd-258ad5ba84b9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/2160c5a3-1709-426d-9c3e-1efc202158f2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/f829838f-64f0-4bd2-a6d1-d559754656d0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/38ed28da-2125-48ad-aff9-f70e188bf6ca.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/3b317505-81ae-4c95-b622-71190c74e891.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/1b050dc9-1f8c-4378-a2e6-205b05cee749.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/71b65610-fccb-4d88-8d89-9c39da1064e5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/4127f521-a90d-492d-ae60-8e619168a81e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/956d3136-0b29-4711-98dc-9f583801846b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/c9fc44f6-0979-483e-8268-2efdeaee0bd4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/8cc59a0e-96fa-47db-b0b1-9dab9b8e20f7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/7234bf7a-78f9-4545-9b78-3c91559ddc5a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/7861cafc-8a8b-4026-b5b9-2ce5fe242c35.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/5bf5885f-7449-459e-92a0-763f52601e35.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/b5671a9a-e653-49d7-9367-7659c65316e6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/77f0ceab-d29a-439b-933c-f01695ac22e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/d20879c8-929e-4489-bc1f-4f774ab0498b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/f1791c99-5594-4456-a0cc-ab8610e4c924.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/d364d96f-8df2-4c1b-90ef-1457ed61b2a0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/b8017c77-40f0-4c11-9986-c2343156a7d0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/fb58e538-c3c8-4bb7-9b96-93fa2f9a038b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/bedfacd2-4890-416d-ac83-e0e51068c8d8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/116ac573-8280-4875-b543-d56fd5b07a30.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/e9762ffd-0af9-4758-9f22-89c289dc7b26.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/998affde-201d-4ca4-9486-2dd7f20686f3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/f4e2a108-5cb2-4271-8284-bb32963b9c02.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/70a94b76-55fb-4762-9604-2e37a71a4997.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/9f225a98-a847-4f0b-860d-e93b64dec52a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/f3969325-6e49-4555-9bdb-3ed2bf842904.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/4865618a-ba01-42c6-8a6a-d39b8e02345f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/9a5dd250-4c8f-4f77-8147-86ba1c204287.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/0a65e598-9051-4b11-9dad-f80de9e16b7a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/6cff97c0-2e3d-4996-8130-c1d3d1e5dc0a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/8275d4f5-2369-4599-a601-5883ed1ca04c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/a485647d-fb66-4f17-ad9e-61f593d57423.jpg">
 <meta property="article:published_time" content="2020-06-20T11:49:52.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.605Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="JavaEE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/06/20/JavaEE-10-Spring-Bean-Load/JavaEE-10-Spring-Bean-Load/1f5925f3-fb16-4399-8492-11ad2a6eb56b.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/1f5925f3-fb16-4399-8492-11ad2a6eb56b.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -163,13 +163,6 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">依赖注入的三种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">构造器注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set%E6%96%B9%E6%B3%95%E6%B3%A8%E5%85%A5"><span class="toc-number">1.2.</span> <span class="toc-text">set方法注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%B3%A8%E5%85%A5"><span class="toc-number">1.3.</span> <span class="toc-text">接口注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%85%8D%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">装配的具体实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XML%E8%A3%85%E9%85%8D"><span class="toc-number">3.</span> <span class="toc-text">XML装配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="toc-number">3.1.</span> <span class="toc-text">xml配置文件头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E9%85%8D%E7%AE%80%E5%8D%95%E5%80%BC"><span class="toc-number">3.2.</span> <span class="toc-text">装配简单值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E9%85%8D%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.3.</span> <span class="toc-text">装配对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E9%85%8D%E9%9B%86%E5%90%88"><span class="toc-number">3.4.</span> <span class="toc-text">装配集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E9%85%8D%E5%A4%8D%E6%9D%82%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.5.</span> <span class="toc-text">装配复杂对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E6%89%AB%E6%8F%8F%E4%B8%8E%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D"><span class="toc-number">4.</span> <span class="toc-text">组件扫描与自动装配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Component%E6%B3%A8%E8%A7%A3%E8%A3%85%E9%85%8D"><span class="toc-number">4.1.</span> <span class="toc-text">使用@Component注解装配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87basepackages%E6%8C%87%E5%AE%9A%E6%89%80%E5%9C%A8%E5%8C%85"><span class="toc-number">4.2.</span> <span class="toc-text">通过basepackages指定所在包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-AutoWired%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D"><span class="toc-number">4.3.</span> <span class="toc-text">使用@AutoWired自动装配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Primary%E4%B8%8E-Qualifier"><span class="toc-number">4.4.</span> <span class="toc-text">@Primary与@Qualifier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-AutoWired%E6%B3%A8%E5%85%A5%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">4.5.</span> <span class="toc-text">使用@AutoWired注入带参数的构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87JavaConfig%E6%96%B9%E5%BC%8F%E5%B0%86%E6%96%B9%E6%B3%95%E8%BF%94%E5%9B%9E%E5%80%BC%E6%B3%A8%E5%85%A5%E4%B8%BABean"><span class="toc-number">4.6.</span> <span class="toc-text">通过JavaConfig方式将方法返回值注入为Bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87-Bean%E6%B3%A8%E8%A7%A3%E6%8C%87%E5%AE%9A%E5%88%9B%E5%BB%BA%E5%8F%8A%E9%94%80%E6%AF%81%E6%96%B9%E6%B3%95"><span class="toc-number">4.7.</span> <span class="toc-text">通过@Bean注解指定创建及销毁方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%85%8D%E7%9A%84%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">装配的混合使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Profile"><span class="toc-number">6.</span> <span class="toc-text">Profile</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3"><span class="toc-number">6.1.</span> <span class="toc-text">通过注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8xml%E6%8C%87%E5%AE%9AProfile"><span class="toc-number">6.2.</span> <span class="toc-text">使用xml指定Profile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8Profile"><span class="toc-number">6.3.</span> <span class="toc-text">启动Profile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">加载配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">7.1.</span> <span class="toc-text">注解加载配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8xml%E5%BC%95%E5%85%A5%E9%85%8D%E7%BD%AE"><span class="toc-number">7.2.</span> <span class="toc-text">使用xml引入配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%8C%96%E8%A3%85%E9%85%8D"><span class="toc-number">8.</span> <span class="toc-text">条件化装配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">9.</span> <span class="toc-text">Bean的作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SPEL"><span class="toc-number">10.</span> <span class="toc-text">SPEL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87SPEL%E6%B3%A8%E5%85%A5%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="toc-number">10.1.</span> <span class="toc-text">通过SPEL注入字面量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%90%8D%E7%A7%B0%E6%B3%A8%E5%85%A5Bean"><span class="toc-number">10.2.</span> <span class="toc-text">通过名称注入Bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%B8%B8%E9%87%8F%E6%B3%A8%E5%85%A5"><span class="toc-number">10.3.</span> <span class="toc-text">静态常量注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SPEL%E8%BF%90%E7%AE%97"><span class="toc-number">10.4.</span> <span class="toc-text">SPEL运算</span></a></li></ol></li></ol>
-		
-		</div>
-		
 		<h2 id="依赖注入的三种方式"><a href="#依赖注入的三种方式" class="headerlink" title="依赖注入的三种方式"></a>依赖注入的三种方式</h2><ol>
 <li><p>构造器注入</p>
 </li>
@@ -179,22 +172,22 @@
 </li>
 </ol>
 <h3 id="构造器注入"><a href="#构造器注入" class="headerlink" title="构造器注入"></a>构造器注入</h3><p>通过类的构造函数注入需要的其他数据及对象</p>
-<img src='JavaEE-10-Spring-Bean-Load\1f5925f3-fb16-4399-8492-11ad2a6eb56b.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/1f5925f3-fb16-4399-8492-11ad2a6eb56b.jpg">
 
 <p>xml描述</p>
-<img src='JavaEE-10-Spring-Bean-Load\ee883871-b15e-409e-bde3-12d9379e806f.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/ee883871-b15e-409e-bde3-12d9379e806f.jpg">
 
 <p>构造器注入方法简单，但是对参数较多的情况下显得很繁杂。</p>
 <h3 id="set方法注入"><a href="#set方法注入" class="headerlink" title="set方法注入"></a>set方法注入</h3><p>使用默认的构造器创建对象，对参数通过set方法注入</p>
-<img src='JavaEE-10-Spring-Bean-Load\1251f90c-9e9c-4932-838c-ff37eee8a5c6.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/1251f90c-9e9c-4932-838c-ff37eee8a5c6.jpg">
 
 <h3 id="接口注入"><a href="#接口注入" class="headerlink" title="接口注入"></a>接口注入</h3><p>对于外界提供的服务，Spring在使用的时候需要接口注入。例如tomcat管理的数据库连接池资源，Spring通过JNDI获取：</p>
 <p>打开tomcat的context.xml文件</p>
-<img src='JavaEE-10-Spring-Bean-Load\13dd24c7-54b4-43e9-a8f4-c2508f8ceb52.jpg'>
-<img src='JavaEE-10-Spring-Bean-Load\62a52869-1152-4244-94e0-5d5beb123c14.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/13dd24c7-54b4-43e9-a8f4-c2508f8ceb52.jpg">
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/62a52869-1152-4244-94e0-5d5beb123c14.jpg">
 
 <p>Spring的配置</p>
-<img src='JavaEE-10-Spring-Bean-Load\93bd421c-e9f7-4531-9627-a5c883c55adf.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/93bd421c-e9f7-4531-9627-a5c883c55adf.jpg">
 
 <h2 id="装配的具体实现"><a href="#装配的具体实现" class="headerlink" title="装配的具体实现"></a>装配的具体实现</h2><ol>
 <li><p>xml配置</p>
@@ -206,10 +199,10 @@
 </ol>
 <p>一般约定优于配置，优先使用自动装配，其次是JavaConfig，最后是xml</p>
 <h2 id="XML装配"><a href="#XML装配" class="headerlink" title="XML装配"></a>XML装配</h2><h3 id="xml配置文件头"><a href="#xml配置文件头" class="headerlink" title="xml配置文件头"></a>xml配置文件头</h3><p>一个xml配置的基本格式：</p>
-<img src='JavaEE-10-Spring-Bean-Load\a6538e72-1445-47e5-a072-0427f07dc405.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/a6538e72-1445-47e5-a072-0427f07dc405.jpg">
 
 <h3 id="装配简单值"><a href="#装配简单值" class="headerlink" title="装配简单值"></a>装配简单值</h3><p>通过Set方法直接注入值</p>
-<img src='JavaEE-10-Spring-Bean-Load\2d613fbd-22fe-4193-9791-47b58ddaa007.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/2d613fbd-22fe-4193-9791-47b58ddaa007.jpg">
 
 <p>id是Bean的名称</p>
 <p>class是Bean的全限定名称</p>
@@ -217,171 +210,171 @@
 <p>name指的是域的名称</p>
 <p>value即注入的值</p>
 <h3 id="装配对象"><a href="#装配对象" class="headerlink" title="装配对象"></a>装配对象</h3><p>将一个Bean装配到另一个Bean里</p>
-<img src='JavaEE-10-Spring-Bean-Load\75df32f4-6ede-4185-9cb6-dcff8318dfa5.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/75df32f4-6ede-4185-9cb6-dcff8318dfa5.jpg">
 
 <p>通过ref指定已经存在的Bean的id</p>
 <h3 id="装配集合"><a href="#装配集合" class="headerlink" title="装配集合"></a>装配集合</h3><p>对于域中存在的集合需要装配：</p>
-<img src='JavaEE-10-Spring-Bean-Load\6c6db7c6-3f9f-4724-927d-67193bc7beb3.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/6c6db7c6-3f9f-4724-927d-67193bc7beb3.jpg">
 
 <p>装配List</p>
-<img src='JavaEE-10-Spring-Bean-Load\507196fd-8f11-485c-b90d-7aad38d97a58.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/507196fd-8f11-485c-b90d-7aad38d97a58.jpg">
 
 <p>装配map</p>
-<img src='JavaEE-10-Spring-Bean-Load\2cec3eda-7522-4780-bd81-65467e2a6a58.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/2cec3eda-7522-4780-bd81-65467e2a6a58.jpg">
 
 <p>装配properties</p>
-<img src='JavaEE-10-Spring-Bean-Load\4c1d1f83-4118-4b6f-8f10-3931b7724ff7.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/4c1d1f83-4118-4b6f-8f10-3931b7724ff7.jpg">
 
 <p>装配set</p>
-<img src='JavaEE-10-Spring-Bean-Load\4b38ab87-ff77-4264-b122-745804156f2b.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/4b38ab87-ff77-4264-b122-745804156f2b.jpg">
 
 <p>装配数组</p>
-<img src='JavaEE-10-Spring-Bean-Load\ff6218a0-2dc2-4c22-beab-14a3a6dddd65.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/ff6218a0-2dc2-4c22-beab-14a3a6dddd65.jpg">
 
 <h3 id="装配复杂对象"><a href="#装配复杂对象" class="headerlink" title="装配复杂对象"></a>装配复杂对象</h3><p>角色对象</p>
-<img src='JavaEE-10-Spring-Bean-Load\d7a5d401-47b1-45fe-8d1e-14423bee598f.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/d7a5d401-47b1-45fe-8d1e-14423bee598f.jpg">
 
 <p>用户对象</p>
-<img src='JavaEE-10-Spring-Bean-Load\927be890-9d85-4d4d-ac13-aaebd6bac409.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/927be890-9d85-4d4d-ac13-aaebd6bac409.jpg">
 
 <p>复杂对象</p>
-<img src='JavaEE-10-Spring-Bean-Load\3fc307c2-e801-4041-bcb9-cfdcc0807026.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/3fc307c2-e801-4041-bcb9-cfdcc0807026.jpg">
 
 <p>装配</p>
-<img src='JavaEE-10-Spring-Bean-Load\08584157-2dc8-4608-85d7-992c7887d0a7.jpg'>
-<img src='JavaEE-10-Spring-Bean-Load\11078aa8-7090-40f3-8229-f72d7efa9066.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/08584157-2dc8-4608-85d7-992c7887d0a7.jpg">
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/11078aa8-7090-40f3-8229-f72d7efa9066.jpg">
 
 <p>使用ref标签指定已经存在的Bean对象，bean属性指向已存在的Bean的id</p>
-<h2 id="组件扫描与自动装配"><a href="#组件扫描与自动装配" class="headerlink" title="组件扫描与自动装配"></a>组件扫描与自动装配</h2><h3 id="使用-Component注解装配"><a href="#使用-Component注解装配" class="headerlink" title="使用@Component注解装配"></a>使用@Component注解装配</h3><img src='JavaEE-10-Spring-Bean-Load\42d2bb8d-f080-4eec-8cec-451dad1b0dcd.jpg'>
+<h2 id="组件扫描与自动装配"><a href="#组件扫描与自动装配" class="headerlink" title="组件扫描与自动装配"></a>组件扫描与自动装配</h2><h3 id="使用-Component注解装配"><a href="#使用-Component注解装配" class="headerlink" title="使用@Component注解装配"></a>使用@Component注解装配</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/42d2bb8d-f080-4eec-8cec-451dad1b0dcd.jpg">
 
 <p>通过value指定Bean的名称。</p>
 <p>通过@Component标记为Bean</p>
 <p>通过@Value注解注入值</p>
 <p>在相同包下创建配置类，开启包扫描：</p>
-<img src='JavaEE-10-Spring-Bean-Load\1fcfeeef-3441-4c75-9fe5-abd99673e8b3.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/1fcfeeef-3441-4c75-9fe5-abd99673e8b3.jpg">
 
 <p>创建AnnotationConfigureApplicationContext对象管理Bean：</p>
-<img src='JavaEE-10-Spring-Bean-Load\36dead9b-a304-43a6-a6fd-5778f5b9c1f1.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/36dead9b-a304-43a6-a6fd-5778f5b9c1f1.jpg">
 
-<h3 id="通过basepackages指定所在包"><a href="#通过basepackages指定所在包" class="headerlink" title="通过basepackages指定所在包"></a>通过basepackages指定所在包</h3><img src='JavaEE-10-Spring-Bean-Load\9af78e5c-0a8f-495d-b4a0-df4427b3eec5.jpg'>
+<h3 id="通过basepackages指定所在包"><a href="#通过basepackages指定所在包" class="headerlink" title="通过basepackages指定所在包"></a>通过basepackages指定所在包</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/9af78e5c-0a8f-495d-b4a0-df4427b3eec5.jpg">
 
 <h3 id="使用-AutoWired自动装配"><a href="#使用-AutoWired自动装配" class="headerlink" title="使用@AutoWired自动装配"></a>使用@AutoWired自动装配</h3><p>通过@AutoWired注解的域，Spring将自动注入进来对象</p>
-<img src='JavaEE-10-Spring-Bean-Load\adb93fd1-a218-4ab5-911d-e39550901ce5.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/adb93fd1-a218-4ab5-911d-e39550901ce5.jpg">
 
 <p>对于找不到的对象，会报错，可以通过required属性指定false解决</p>
-<img src='JavaEE-10-Spring-Bean-Load\cda54d83-e0fd-4952-87eb-676866c7939e.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/cda54d83-e0fd-4952-87eb-676866c7939e.jpg">
 
 <p>但此时，会容易出现空指针异常</p>
 <p>与此同时@AutoWired可以注解到set方法、构造函数上</p>
-<img src='JavaEE-10-Spring-Bean-Load\a0ffdf09-2a44-4a51-98ab-cb4a216bb27b.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/a0ffdf09-2a44-4a51-98ab-cb4a216bb27b.jpg">
 
 <h3 id="Primary与-Qualifier"><a href="#Primary与-Qualifier" class="headerlink" title="@Primary与@Qualifier"></a>@Primary与@Qualifier</h3><p>我们看到类中引用的对象是父接口的对象，便于抽插式替换。当某个接口出现多个实现类的时候，就会出现问题。</p>
 <p>解决方式一：</p>
 <p>使用@Primary标记某个实现类，优先注入这个实现类的对象</p>
-<img src='JavaEE-10-Spring-Bean-Load\6ac4c62e-d111-4661-a95a-e7c6113264ba.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/6ac4c62e-d111-4661-a95a-e7c6113264ba.jpg">
 
 <p>解决方式二：</p>
 <p>在自动绑定的位置使用@Qualifier指定具体注入的实现类</p>
-<img src='JavaEE-10-Spring-Bean-Load\03ba9c6f-018d-48b9-88cd-258ad5ba84b9.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/03ba9c6f-018d-48b9-88cd-258ad5ba84b9.jpg">
 
-<h3 id="使用-AutoWired注入带参数的构造函数"><a href="#使用-AutoWired注入带参数的构造函数" class="headerlink" title="使用@AutoWired注入带参数的构造函数"></a>使用@AutoWired注入带参数的构造函数</h3><img src='JavaEE-10-Spring-Bean-Load\2160c5a3-1709-426d-9c3e-1efc202158f2.jpg' >
+<h3 id="使用-AutoWired注入带参数的构造函数"><a href="#使用-AutoWired注入带参数的构造函数" class="headerlink" title="使用@AutoWired注入带参数的构造函数"></a>使用@AutoWired注入带参数的构造函数</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/2160c5a3-1709-426d-9c3e-1efc202158f2.jpg">
 
-<h3 id="通过JavaConfig方式将方法返回值注入为Bean"><a href="#通过JavaConfig方式将方法返回值注入为Bean" class="headerlink" title="通过JavaConfig方式将方法返回值注入为Bean"></a>通过JavaConfig方式将方法返回值注入为Bean</h3><img src='JavaEE-10-Spring-Bean-Load\f829838f-64f0-4bd2-a6d1-d559754656d0.jpg'>
+<h3 id="通过JavaConfig方式将方法返回值注入为Bean"><a href="#通过JavaConfig方式将方法返回值注入为Bean" class="headerlink" title="通过JavaConfig方式将方法返回值注入为Bean"></a>通过JavaConfig方式将方法返回值注入为Bean</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/f829838f-64f0-4bd2-a6d1-d559754656d0.jpg">
 
 <p>@Bean可以注解方法，对于name属性指定Bean的名称，实例是方法的返回值。</p>
-<h3 id="通过-Bean注解指定创建及销毁方法"><a href="#通过-Bean注解指定创建及销毁方法" class="headerlink" title="通过@Bean注解指定创建及销毁方法"></a>通过@Bean注解指定创建及销毁方法</h3><img src='JavaEE-10-Spring-Bean-Load\38ed28da-2125-48ad-aff9-f70e188bf6ca.jpg'>
+<h3 id="通过-Bean注解指定创建及销毁方法"><a href="#通过-Bean注解指定创建及销毁方法" class="headerlink" title="通过@Bean注解指定创建及销毁方法"></a>通过@Bean注解指定创建及销毁方法</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/38ed28da-2125-48ad-aff9-f70e188bf6ca.jpg">
 
 <p>通过initMethod及destoryMethod指定Bean的初始化及销毁方法。</p>
 <h2 id="装配的混合使用"><a href="#装配的混合使用" class="headerlink" title="装配的混合使用"></a>装配的混合使用</h2><p>将xml配置的Bean加载到配置类中：</p>
-<img src='JavaEE-10-Spring-Bean-Load\3b317505-81ae-4c95-b622-71190c74e891.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/3b317505-81ae-4c95-b622-71190c74e891.jpg">
 
 <p>加载其他配置类：</p>
-<img src='JavaEE-10-Spring-Bean-Load\1b050dc9-1f8c-4378-a2e6-205b05cee749.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/1b050dc9-1f8c-4378-a2e6-205b05cee749.jpg">
 
 <p>xml引入其他xml</p>
-<img src='JavaEE-10-Spring-Bean-Load\71b65610-fccb-4d88-8d89-9c39da1064e5.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/71b65610-fccb-4d88-8d89-9c39da1064e5.jpg">
 
 <p>使用xml开启注解：</p>
-<img src='JavaEE-10-Spring-Bean-Load\4127f521-a90d-492d-ae60-8e619168a81e.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/4127f521-a90d-492d-ae60-8e619168a81e.jpg">
 
 <h2 id="Profile"><a href="#Profile" class="headerlink" title="Profile"></a>Profile</h2><h3 id="通过注解"><a href="#通过注解" class="headerlink" title="通过注解"></a>通过注解</h3><p>使用@Profile注解指定环境</p>
-<img src='JavaEE-10-Spring-Bean-Load\956d3136-0b29-4711-98dc-9f583801846b.jpg'>
-<img src='JavaEE-10-Spring-Bean-Load\c9fc44f6-0979-483e-8268-2efdeaee0bd4.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/956d3136-0b29-4711-98dc-9f583801846b.jpg">
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/c9fc44f6-0979-483e-8268-2efdeaee0bd4.jpg">
 
-<h3 id="使用xml指定Profile"><a href="#使用xml指定Profile" class="headerlink" title="使用xml指定Profile"></a>使用xml指定Profile</h3><img src='JavaEE-10-Spring-Bean-Load\8cc59a0e-96fa-47db-b0b1-9dab9b8e20f7.jpg'>
+<h3 id="使用xml指定Profile"><a href="#使用xml指定Profile" class="headerlink" title="使用xml指定Profile"></a>使用xml指定Profile</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/8cc59a0e-96fa-47db-b0b1-9dab9b8e20f7.jpg">
 
 <p>也可以只对Beans标签指定</p>
-<img src='JavaEE-10-Spring-Bean-Load\7234bf7a-78f9-4545-9b78-3c91559ddc5a.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/7234bf7a-78f9-4545-9b78-3c91559ddc5a.jpg">
 
 <h3 id="启动Profile"><a href="#启动Profile" class="headerlink" title="启动Profile"></a>启动Profile</h3><ol>
 <li>测试使用@ActiveProfiles</li>
 </ol>
-<img src='JavaEE-10-Spring-Bean-Load\7861cafc-8a8b-4026-b5b9-2ce5fe242c35.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/7861cafc-8a8b-4026-b5b9-2ce5fe242c35.jpg">
 
 <ol start="2">
 <li>配置虚拟机参数spring.profiles.active</li>
 </ol>
-<img src='JavaEE-10-Spring-Bean-Load\5bf5885f-7449-459e-92a0-763f52601e35.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/5bf5885f-7449-459e-92a0-763f52601e35.jpg">
 
 <ol start="3">
 <li>spring mvc环境下，使用contextParam或DispatcherServlet参数设定</li>
 </ol>
-<img src='JavaEE-10-Spring-Bean-Load\b5671a9a-e653-49d7-9367-7659c65316e6.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/b5671a9a-e653-49d7-9367-7659c65316e6.jpg">
 
-<img src='JavaEE-10-Spring-Bean-Load\77f0ceab-d29a-439b-933c-f01695ac22e7.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/77f0ceab-d29a-439b-933c-f01695ac22e7.jpg">
 
-<h2 id="加载配置文件"><a href="#加载配置文件" class="headerlink" title="加载配置文件"></a>加载配置文件</h2><h3 id="注解加载配置文件"><a href="#注解加载配置文件" class="headerlink" title="注解加载配置文件"></a>注解加载配置文件</h3><img src='JavaEE-10-Spring-Bean-Load\d20879c8-929e-4489-bc1f-4f774ab0498b.jpg'>
+<h2 id="加载配置文件"><a href="#加载配置文件" class="headerlink" title="加载配置文件"></a>加载配置文件</h2><h3 id="注解加载配置文件"><a href="#注解加载配置文件" class="headerlink" title="注解加载配置文件"></a>注解加载配置文件</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/d20879c8-929e-4489-bc1f-4f774ab0498b.jpg">
 
 <p>使用PropertySource注解导入配置</p>
 <p>通过Environment获取配置</p>
-<img src='JavaEE-10-Spring-Bean-Load\f1791c99-5594-4456-a0cc-ab8610e4c924.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/f1791c99-5594-4456-a0cc-ab8610e4c924.jpg">
 
 <p>通过PropertySourcesPlaceHolderConfigurer开启占位符</p>
-<img src='JavaEE-10-Spring-Bean-Load\d364d96f-8df2-4c1b-90ef-1457ed61b2a0.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/d364d96f-8df2-4c1b-90ef-1457ed61b2a0.jpg">
 
 <p>通过@Value注入属性值</p>
-<img src='JavaEE-10-Spring-Bean-Load\b8017c77-40f0-4c11-9986-c2343156a7d0.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/b8017c77-40f0-4c11-9986-c2343156a7d0.jpg">
 
-<h3 id="使用xml引入配置"><a href="#使用xml引入配置" class="headerlink" title="使用xml引入配置"></a>使用xml引入配置</h3><img src='JavaEE-10-Spring-Bean-Load\fb58e538-c3c8-4bb7-9b96-93fa2f9a038b.jpg' >
+<h3 id="使用xml引入配置"><a href="#使用xml引入配置" class="headerlink" title="使用xml引入配置"></a>使用xml引入配置</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/fb58e538-c3c8-4bb7-9b96-93fa2f9a038b.jpg">
 
 <p>使用context:property-placeholder开启，location指定配置文件</p>
 <p>多个配置文件需要加载时，可以使用逗号分隔开，也可以：</p>
-<img src='JavaEE-10-Spring-Bean-Load\bedfacd2-4890-416d-ac83-e0e51068c8d8.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/bedfacd2-4890-416d-ac83-e0e51068c8d8.jpg">
 
 <h2 id="条件化装配"><a href="#条件化装配" class="headerlink" title="条件化装配"></a>条件化装配</h2><p>使用@Conditional注解Bean，满足条件才装配</p>
-<img src='JavaEE-10-Spring-Bean-Load\116ac573-8280-4875-b543-d56fd5b07a30.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/116ac573-8280-4875-b543-d56fd5b07a30.jpg">
 
 <p>条件类实现Condition接口，重写matches方法，根据返回值判断是否装配Bean</p>
-<img src='JavaEE-10-Spring-Bean-Load\e9762ffd-0af9-4758-9f22-89c289dc7b26.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/e9762ffd-0af9-4758-9f22-89c289dc7b26.jpg">
 
 <h2 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h2><p>Spring有四种作用域：</p>
-<img src='JavaEE-10-Spring-Bean-Load\998affde-201d-4ca4-9486-2dd7f20686f3.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/998affde-201d-4ca4-9486-2dd7f20686f3.jpg">
 
 <p>可以使用@Scope注解配置作用域：</p>
-<img src='JavaEE-10-Spring-Bean-Load\f4e2a108-5cb2-4271-8284-bb32963b9c02.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/f4e2a108-5cb2-4271-8284-bb32963b9c02.jpg">
 
-<h2 id="SPEL"><a href="#SPEL" class="headerlink" title="SPEL"></a>SPEL</h2><h3 id="通过SPEL注入字面量"><a href="#通过SPEL注入字面量" class="headerlink" title="通过SPEL注入字面量"></a>通过SPEL注入字面量</h3><img src='JavaEE-10-Spring-Bean-Load\70a94b76-55fb-4762-9604-2e37a71a4997.jpg'>
+<h2 id="SPEL"><a href="#SPEL" class="headerlink" title="SPEL"></a>SPEL</h2><h3 id="通过SPEL注入字面量"><a href="#通过SPEL注入字面量" class="headerlink" title="通过SPEL注入字面量"></a>通过SPEL注入字面量</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/70a94b76-55fb-4762-9604-2e37a71a4997.jpg">
 
 <p>使用#{}注入</p>
-<h3 id="通过名称注入Bean"><a href="#通过名称注入Bean" class="headerlink" title="通过名称注入Bean"></a>通过名称注入Bean</h3><img src='JavaEE-10-Spring-Bean-Load\9f225a98-a847-4f0b-860d-e93b64dec52a.jpg'>
+<h3 id="通过名称注入Bean"><a href="#通过名称注入Bean" class="headerlink" title="通过名称注入Bean"></a>通过名称注入Bean</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/9f225a98-a847-4f0b-860d-e93b64dec52a.jpg">
 
-<h3 id="静态常量注入"><a href="#静态常量注入" class="headerlink" title="静态常量注入"></a>静态常量注入</h3><img src='JavaEE-10-Spring-Bean-Load\f3969325-6e49-4555-9bdb-3ed2bf842904.jpg'>
+<h3 id="静态常量注入"><a href="#静态常量注入" class="headerlink" title="静态常量注入"></a>静态常量注入</h3><img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/f3969325-6e49-4555-9bdb-3ed2bf842904.jpg">
 
-<img src='JavaEE-10-Spring-Bean-Load\4865618a-ba01-42c6-8a6a-d39b8e02345f.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/4865618a-ba01-42c6-8a6a-d39b8e02345f.jpg">
 
-<img src='JavaEE-10-Spring-Bean-Load\9a5dd250-4c8f-4f77-8147-86ba1c204287.jpg' >
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/9a5dd250-4c8f-4f77-8147-86ba1c204287.jpg">
 
 <h3 id="SPEL运算"><a href="#SPEL运算" class="headerlink" title="SPEL运算"></a>SPEL运算</h3><p>数值计算</p>
-<img src='JavaEE-10-Spring-Bean-Load\0a65e598-9051-4b11-9dad-f80de9e16b7a.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/0a65e598-9051-4b11-9dad-f80de9e16b7a.jpg">
 
 <p>连接字符串</p>
-<img src='JavaEE-10-Spring-Bean-Load\6cff97c0-2e3d-4996-8130-c1d3d1e5dc0a.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/6cff97c0-2e3d-4996-8130-c1d3d1e5dc0a.jpg">
 
 <p>布尔运算</p>
-<img src='JavaEE-10-Spring-Bean-Load\8275d4f5-2369-4599-a601-5883ed1ca04c.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/8275d4f5-2369-4599-a601-5883ed1ca04c.jpg">
 
 <p>三元运算</p>
-<img src='JavaEE-10-Spring-Bean-Load\a485647d-fb66-4f17-ad9e-61f593d57423.jpg'>
+<img src="/blog/2020/06/20/JavaEE-10-Spring-Bean-Load/a485647d-fb66-4f17-ad9e-61f593d57423.jpg">
 
 
 
@@ -554,8 +547,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

@@ -18,19 +18,19 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="早期的单体架构早期的单体架构采用war包，普通java类库以jar包形式存在于war包内，架构简单：   在用户量较少的时候，单个服务器即可满足需求，一旦用户数增大，可以采用水平扩展的方法（即：将war包复制部署到多个服务器，通过负载均衡转发到不同的服务器承担压力）   当然，数据是共享的。 但是，这样的架构会带来一些问题：  维护困难，功能繁杂的单体应用难以重构二次开发。  资源浪费。水平扩展就">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/03/microservice01-introduction/microservice01-introduction/97f09461-5de2-4787-84eb-44b96339c9e7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/03/microservice01-introduction/microservice01-introduction/f41696a6-e1d3-4580-9002-ccda7111e547.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/03/microservice01-introduction/microservice01-introduction/edcb4bc0-08e4-444c-b38e-c6a6c92371e4.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/03/microservice01-introduction/microservice01-introduction/72f84ca2-771d-4afd-82ed-02eaabddfd08.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/03/microservice01-introduction/microservice01-introduction/af3cc9fa-177c-4b5a-aeed-0e57ecbfd15c.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/03/microservice01-introduction/microservice01-introduction/c28915a5-0177-457e-a728-9953c450638e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/04/03/microservice01-introduction/microservice01-introduction/e72bbd8b-9c18-4374-911f-2cbfa73505c1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/97f09461-5de2-4787-84eb-44b96339c9e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/f41696a6-e1d3-4580-9002-ccda7111e547.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/edcb4bc0-08e4-444c-b38e-c6a6c92371e4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/72f84ca2-771d-4afd-82ed-02eaabddfd08.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/af3cc9fa-177c-4b5a-aeed-0e57ecbfd15c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/c28915a5-0177-457e-a728-9953c450638e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/e72bbd8b-9c18-4374-911f-2cbfa73505c1.jpg">
 <meta property="article:published_time" content="2020-04-03T06:59:38.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.845Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="microservice">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/04/03/microservice01-introduction/microservice01-introduction/97f09461-5de2-4787-84eb-44b96339c9e7.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/04/03/microservice01-introduction/97f09461-5de2-4787-84eb-44b96339c9e7.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -107,18 +107,11 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A9%E6%9C%9F%E7%9A%84%E5%8D%95%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">早期的单体架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SOA"><span class="toc-number">2.</span> <span class="toc-text">SOA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.</span> <span class="toc-text">微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">3.1.</span> <span class="toc-text">微服务的优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text">微服务的缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8ESOA%E5%AF%B9%E6%AF%94"><span class="toc-number">4.</span> <span class="toc-text">微服务与SOA对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8B%86%E5%88%86"><span class="toc-number">5.</span> <span class="toc-text">微服务拆分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BB%84%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">微服务组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%9A%84%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="toc-number">7.</span> <span class="toc-text">微服务架构的技术选型</span></a></li></ol>
-		
-		</div>
-		
 		<h2 id="早期的单体架构"><a href="#早期的单体架构" class="headerlink" title="早期的单体架构"></a>早期的单体架构</h2><p>早期的单体架构采用war包，普通java类库以jar包形式存在于war包内，架构简单：</p>
-<img src='microservice01-introduction\97f09461-5de2-4787-84eb-44b96339c9e7.jpg'>
+<img src="/blog/2020/04/03/microservice01-introduction/97f09461-5de2-4787-84eb-44b96339c9e7.jpg">
 
 <p>在用户量较少的时候，单个服务器即可满足需求，一旦用户数增大，可以采用水平扩展的方法（即：将war包复制部署到多个服务器，通过负载均衡转发到不同的服务器承担压力）</p>
-<img src='microservice01-introduction\f41696a6-e1d3-4580-9002-ccda7111e547.jpg'>
+<img src="/blog/2020/04/03/microservice01-introduction/f41696a6-e1d3-4580-9002-ccda7111e547.jpg">
 
 <p>当然，数据是共享的。</p>
 <p>但是，这样的架构会带来一些问题：</p>
@@ -134,15 +127,15 @@
 <li><p>影响技术更新。整个技术栈必须一致，更新换代很麻烦。</p>
 </li>
 </ol>
-<p>总体来说就是因为<code style='background:#ff3385;color:white;padding:5px;'>所有的模块都在一个war包里</code>。</p>
-<h2 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h2><img src='microservice01-introduction\edcb4bc0-08e4-444c-b38e-c6a6c92371e4.jpg'>
+<p>总体来说就是因为<code style="background:#ff3385;color:white;padding:5px;">所有的模块都在一个war包里</code>。</p>
+<h2 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h2><img src="/blog/2020/04/03/microservice01-introduction/edcb4bc0-08e4-444c-b38e-c6a6c92371e4.jpg">
 
 <p>SOA是一种对单体应用的改进。</p>
 <p>将大系统分成多个子模块进行开发，通过服务总线获取相关的服务提供相关的功能，进而实现简单的解耦。</p>
 <p>在部署时，类似于一个tomcat下部署多个应用。</p>
 <h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><p>微服务要求系统按照功能拆分成更细小的部分，对外提供api进行服务。</p>
 <p>将传统的单体架构拆分成多个服务，每个服务相互独立，服务可以访问数据库，服务之间也可以相互调用。</p>
-<img src='microservice01-introduction\72f84ca2-771d-4afd-82ed-02eaabddfd08.jpg'>
+<img src="/blog/2020/04/03/microservice01-introduction/72f84ca2-771d-4afd-82ed-02eaabddfd08.jpg">
 
 <h3 id="微服务的优势"><a href="#微服务的优势" class="headerlink" title="微服务的优势"></a>微服务的优势</h3><ol>
 <li><p>复杂度可控。单个团队即可完成开发维护任务。</p>
@@ -162,7 +155,7 @@
 <li><p>内存消耗大。单个服务部署在单个节点，，单个节点由单个JVM管理，内存消耗较大。</p>
 </li>
 </ol>
-<h2 id="微服务与SOA对比"><a href="#微服务与SOA对比" class="headerlink" title="微服务与SOA对比"></a>微服务与SOA对比</h2><img src='microservice01-introduction\af3cc9fa-177c-4b5a-aeed-0e57ecbfd15c.jpg'>
+<h2 id="微服务与SOA对比"><a href="#微服务与SOA对比" class="headerlink" title="微服务与SOA对比"></a>微服务与SOA对比</h2><img src="/blog/2020/04/03/microservice01-introduction/af3cc9fa-177c-4b5a-aeed-0e57ecbfd15c.jpg">
 
 <h2 id="微服务拆分"><a href="#微服务拆分" class="headerlink" title="微服务拆分"></a>微服务拆分</h2><ol>
 <li><p>根据业务的功能进行分割。</p>
@@ -202,9 +195,9 @@
 <li>分布式配置中心</li>
 </ol>
 <p>将本地配置文件配置到配置中心，以便无差别调试。</p>
-<img src='microservice01-introduction\c28915a5-0177-457e-a728-9953c450638e.jpg'>
+<img src="/blog/2020/04/03/microservice01-introduction/c28915a5-0177-457e-a728-9953c450638e.jpg">
 
-<h2 id="微服务架构的技术选型"><a href="#微服务架构的技术选型" class="headerlink" title="微服务架构的技术选型"></a>微服务架构的技术选型</h2><table cellpadding='8' border='1' style='background:#EAF2D3;text-align:center'>
+<h2 id="微服务架构的技术选型"><a href="#微服务架构的技术选型" class="headerlink" title="微服务架构的技术选型"></a>微服务架构的技术选型</h2><table cellpadding="8" border="1" style="background:#EAF2D3;text-align:center">
 <tr>
 &nbsp;&nbsp;<td>
 开发
@@ -280,7 +273,7 @@ Jenkins
 
 </table>
 
-<img src='microservice01-introduction\e72bbd8b-9c18-4374-911f-2cbfa73505c1.jpg'>
+<img src="/blog/2020/04/03/microservice01-introduction/e72bbd8b-9c18-4374-911f-2cbfa73505c1.jpg">
 
 
   
@@ -452,8 +445,8 @@ Jenkins
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

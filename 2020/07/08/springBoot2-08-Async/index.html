@@ -18,18 +18,18 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="异步操作对于网络或本地文件IO容易出现阻塞情况，对于web应用，卡顿情况更加明显。   对于耗时操作，我们一般采用异步方式进行处理，采用线程池的方式实现对任务的异步操作。   Spring实现异步任务 配置线程池  使用@EnableAsync开启异步线程池，实现AsyncConfigurer接口，重写getAsyncExecutor方法    定义异步服务接口     定义异步服务实现类  使用">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-08-Async/springBoot2-08-Async/596a55d2-e03b-4550-92d0-92e533b430c8.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-08-Async/springBoot2-08-Async/e48d196a-82ee-4588-ab47-5f3ef2ecee43.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-08-Async/springBoot2-08-Async/058fe614-bce9-4baa-903e-19ec51a52ba7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-08-Async/springBoot2-08-Async/6abae681-b57a-44d3-b6d4-7408e476c4ee.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-08-Async/springBoot2-08-Async/a9cab3ca-689b-42b0-9d02-ab1b24e04ebe.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-08-Async/springBoot2-08-Async/a85a299a-cf7c-4ff9-b7f1-2c7fe0e62005.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-08-Async/596a55d2-e03b-4550-92d0-92e533b430c8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-08-Async/e48d196a-82ee-4588-ab47-5f3ef2ecee43.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-08-Async/058fe614-bce9-4baa-903e-19ec51a52ba7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-08-Async/6abae681-b57a-44d3-b6d4-7408e476c4ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-08-Async/a9cab3ca-689b-42b0-9d02-ab1b24e04ebe.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-08-Async/a85a299a-cf7c-4ff9-b7f1-2c7fe0e62005.jpg">
 <meta property="article:published_time" content="2020-07-08T11:44:53.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.949Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring-boot-2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-08-Async/springBoot2-08-Async/596a55d2-e03b-4550-92d0-92e533b430c8.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-08-Async/596a55d2-e03b-4550-92d0-92e533b430c8.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -106,40 +106,33 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">异步操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1"><span class="toc-number">2.</span> <span class="toc-text">Spring实现异步任务</span></a></li></ol>
-		
-		</div>
-		
 		<h2 id="异步操作"><a href="#异步操作" class="headerlink" title="异步操作"></a>异步操作</h2><p>对于网络或本地文件IO容易出现阻塞情况，对于web应用，卡顿情况更加明显。</p>
-<img src='springBoot2-08-Async\596a55d2-e03b-4550-92d0-92e533b430c8.jpg'>
+<img src="/blog/2020/07/08/springBoot2-08-Async/596a55d2-e03b-4550-92d0-92e533b430c8.jpg">
 
 <p>对于耗时操作，我们一般采用异步方式进行处理，采用线程池的方式实现对任务的异步操作。</p>
-<img src='springBoot2-08-Async\e48d196a-82ee-4588-ab47-5f3ef2ecee43.jpg'>
+<img src="/blog/2020/07/08/springBoot2-08-Async/e48d196a-82ee-4588-ab47-5f3ef2ecee43.jpg">
 
 <h2 id="Spring实现异步任务"><a href="#Spring实现异步任务" class="headerlink" title="Spring实现异步任务"></a>Spring实现异步任务</h2><ol>
 <li>配置线程池</li>
 </ol>
 <p>使用@EnableAsync开启异步线程池，实现AsyncConfigurer接口，重写getAsyncExecutor方法</p>
-<img src='springBoot2-08-Async\058fe614-bce9-4baa-903e-19ec51a52ba7.jpg'>
+<img src="/blog/2020/07/08/springBoot2-08-Async/058fe614-bce9-4baa-903e-19ec51a52ba7.jpg">
 
 <ol start="2">
 <li>定义异步服务接口</li>
 </ol>
-<img src='springBoot2-08-Async\6abae681-b57a-44d3-b6d4-7408e476c4ee.jpg'>
+<img src="/blog/2020/07/08/springBoot2-08-Async/6abae681-b57a-44d3-b6d4-7408e476c4ee.jpg">
 
 <ol start="3">
 <li>定义异步服务实现类</li>
 </ol>
 <p>使用@Async注解异步方法</p>
-<img src='springBoot2-08-Async\a9cab3ca-689b-42b0-9d02-ab1b24e04ebe.jpg'>
+<img src="/blog/2020/07/08/springBoot2-08-Async/a9cab3ca-689b-42b0-9d02-ab1b24e04ebe.jpg">
 
 <ol start="4">
 <li>异步方法在调用上无异</li>
 </ol>
-<img src='springBoot2-08-Async\a85a299a-cf7c-4ff9-b7f1-2c7fe0e62005.jpg'>
+<img src="/blog/2020/07/08/springBoot2-08-Async/a85a299a-cf7c-4ff9-b7f1-2c7fe0e62005.jpg">
 
 <p>区别在于，二者不在相同的线程里执行，因而不会出现阻塞的情况。</p>
   
@@ -311,8 +304,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

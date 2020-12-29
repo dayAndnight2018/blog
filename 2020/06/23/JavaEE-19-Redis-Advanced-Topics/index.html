@@ -18,30 +18,30 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="Redis事务Redis事务指令  Redis的multi指令后，指令会添加到队列，直到exec，discard用于回滚。 使用实例通过SessionCallback实现批量指令执行，同时使用execute执行SessionCallback指令   事务回滚自动事务回滚是在指令格式出错情况下回滚，若因其他原因，如incr指令使用浮点数操作，此类不会导致回滚，前后指令正常执行。 watch监控事务使">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/b437183d-5e81-4043-9852-7ed34abe9d72.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/3c17762d-fa70-4145-9d87-f50f2ada0809.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/3fba7df4-bbf5-4f0a-8f9a-a80da27ac788.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/4822e0ef-42b9-47b9-8f66-4a0acc7acc14.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/bf3164c1-c3a0-447e-ae42-9bbea7cb889b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/b013d773-35f9-4d4d-85a0-853b685f4035.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/070e7f9a-2bbb-4681-8abf-259ad40b772f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/8c530925-68e2-4e55-83d4-cfd3472b982e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/131c81f4-e7b8-4268-bf9c-f24779798322.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/20893852-3163-47c5-8ee6-43eafeb8db6f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/8c1b94f0-0ad2-46d2-91b6-a34ad843022f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/3564b87e-9de8-414f-b85d-7a42fe2247a4.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/abe68ebf-d98f-42c2-bce3-6f634ea6c2d0.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/666bf7a7-3694-438e-a4e2-36ca6e9dbdc2.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/a96c9b3f-355e-4b16-91b8-39c9b0140e1e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/88935773-cb5f-47b9-84fd-f0056a6589e9.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/ba6a6942-a257-45de-adfb-73372c79db2b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/22a88ac0-f411-4a91-a862-bcebe33d9ce2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/b437183d-5e81-4043-9852-7ed34abe9d72.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/3c17762d-fa70-4145-9d87-f50f2ada0809.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/3fba7df4-bbf5-4f0a-8f9a-a80da27ac788.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/4822e0ef-42b9-47b9-8f66-4a0acc7acc14.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/bf3164c1-c3a0-447e-ae42-9bbea7cb889b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/b013d773-35f9-4d4d-85a0-853b685f4035.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/070e7f9a-2bbb-4681-8abf-259ad40b772f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/8c530925-68e2-4e55-83d4-cfd3472b982e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/131c81f4-e7b8-4268-bf9c-f24779798322.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/20893852-3163-47c5-8ee6-43eafeb8db6f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/8c1b94f0-0ad2-46d2-91b6-a34ad843022f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/3564b87e-9de8-414f-b85d-7a42fe2247a4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/abe68ebf-d98f-42c2-bce3-6f634ea6c2d0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/666bf7a7-3694-438e-a4e2-36ca6e9dbdc2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/a96c9b3f-355e-4b16-91b8-39c9b0140e1e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/88935773-cb5f-47b9-84fd-f0056a6589e9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/ba6a6942-a257-45de-adfb-73372c79db2b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/22a88ac0-f411-4a91-a862-bcebe33d9ce2.jpg">
 <meta property="article:published_time" content="2020-06-23T01:06:48.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.663Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="JavaEE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/06/23/JavaEE-19-Redis-Advanced-Topics/JavaEE-19-Redis-Advanced-Topics/b437183d-5e81-4043-9852-7ed34abe9d72.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/b437183d-5e81-4043-9852-7ed34abe9d72.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -118,90 +118,83 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">Redis事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E4%BA%8B%E5%8A%A1%E6%8C%87%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">Redis事务指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">使用实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%9B%9E%E6%BB%9A"><span class="toc-number">1.3.</span> <span class="toc-text">事务回滚</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#watch%E7%9B%91%E6%8E%A7%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.4.</span> <span class="toc-text">watch监控事务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="toc-number">2.</span> <span class="toc-text">流水线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85"><span class="toc-number">3.</span> <span class="toc-text">发布与订阅</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.1.</span> <span class="toc-text">java实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E8%B6%85%E6%97%B6%E6%8C%87%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">Redis超时指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lua%E8%84%9A%E6%9C%AC"><span class="toc-number">5.</span> <span class="toc-text">Lua脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">5.1.</span> <span class="toc-text">使用指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="toc-number">5.2.</span> <span class="toc-text">执行脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Spring%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="toc-number">5.3.</span> <span class="toc-text">使用Spring执行脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Spring%E6%89%A7%E8%A1%8C%E5%AF%B9%E8%B1%A1%E8%84%9A%E6%9C%AC"><span class="toc-number">5.4.</span> <span class="toc-text">使用Spring执行对象脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8Clua%E6%96%87%E4%BB%B6"><span class="toc-number">5.5.</span> <span class="toc-text">执行lua文件</span></a></li></ol></li></ol>
-		
-		</div>
-		
-		<h2 id="Redis事务"><a href="#Redis事务" class="headerlink" title="Redis事务"></a>Redis事务</h2><h3 id="Redis事务指令"><a href="#Redis事务指令" class="headerlink" title="Redis事务指令"></a>Redis事务指令</h3><img src='JavaEE-19-Redis-Advanced-Topics\b437183d-5e81-4043-9852-7ed34abe9d72.jpg'>
+		<h2 id="Redis事务"><a href="#Redis事务" class="headerlink" title="Redis事务"></a>Redis事务</h2><h3 id="Redis事务指令"><a href="#Redis事务指令" class="headerlink" title="Redis事务指令"></a>Redis事务指令</h3><img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/b437183d-5e81-4043-9852-7ed34abe9d72.jpg">
 
 <p>Redis的multi指令后，指令会添加到队列，直到exec，discard用于回滚。</p>
 <h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><p>通过SessionCallback实现批量指令执行，同时使用execute执行SessionCallback指令</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\3c17762d-fa70-4145-9d87-f50f2ada0809.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/3c17762d-fa70-4145-9d87-f50f2ada0809.jpg">
 
 <h3 id="事务回滚"><a href="#事务回滚" class="headerlink" title="事务回滚"></a>事务回滚</h3><p>自动事务回滚是在指令格式出错情况下回滚，若因其他原因，如incr指令使用浮点数操作，此类不会导致回滚，前后指令正常执行。</p>
 <h3 id="watch监控事务"><a href="#watch监控事务" class="headerlink" title="watch监控事务"></a>watch监控事务</h3><p>使用watch监视字段</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\3fba7df4-bbf5-4f0a-8f9a-a80da27ac788.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/3fba7df4-bbf5-4f0a-8f9a-a80da27ac788.jpg">
 
 <p>采用CAS的方式实现，但不存在ABA问题。</p>
 <p>若字段没有发生变化，将会提交</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\4822e0ef-42b9-47b9-8f66-4a0acc7acc14.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/4822e0ef-42b9-47b9-8f66-4a0acc7acc14.jpg">
 
 <p>若字段被修改，自动回滚</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\bf3164c1-c3a0-447e-ae42-9bbea7cb889b.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/bf3164c1-c3a0-447e-ae42-9bbea7cb889b.jpg">
 
 <h2 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h2><p>流水线采用批量执行指令的方式，提高效率。</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\b013d773-35f9-4d4d-85a0-853b685f4035.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/b013d773-35f9-4d4d-85a0-853b685f4035.jpg">
 
 <p>Spring使用RedisTemplate执行时，差异不大。</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\070e7f9a-2bbb-4681-8abf-259ad40b772f.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/070e7f9a-2bbb-4681-8abf-259ad40b772f.jpg">
 
 <h2 id="发布与订阅"><a href="#发布与订阅" class="headerlink" title="发布与订阅"></a>发布与订阅</h2><p>观察者模式的实现</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\8c530925-68e2-4e55-83d4-cfd3472b982e.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/8c530925-68e2-4e55-83d4-cfd3472b982e.jpg">
 
 <ol>
 <li>client1监听频道</li>
 </ol>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 SUBSCRIBE channel
 </pre>
 
 <ol start="2">
 <li>client2发布消息</li>
 </ol>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 publish channel message
 </pre>
 
 <h3 id="java实现"><a href="#java实现" class="headerlink" title="java实现"></a>java实现</h3><ol>
 <li>消息订阅者</li>
 </ol>
-<img src='JavaEE-19-Redis-Advanced-Topics\131c81f4-e7b8-4268-bf9c-f24779798322.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/131c81f4-e7b8-4268-bf9c-f24779798322.jpg">
 
 <ol start="2">
 <li>消息订阅容器</li>
 </ol>
-<img src='JavaEE-19-Redis-Advanced-Topics\20893852-3163-47c5-8ee6-43eafeb8db6f.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/20893852-3163-47c5-8ee6-43eafeb8db6f.jpg">
 
 <ol start="3">
 <li>消息发布测试</li>
 </ol>
-<img src='JavaEE-19-Redis-Advanced-Topics\8c1b94f0-0ad2-46d2-91b6-a34ad843022f.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/8c1b94f0-0ad2-46d2-91b6-a34ad843022f.jpg">
 
-<h2 id="Redis超时指令"><a href="#Redis超时指令" class="headerlink" title="Redis超时指令"></a>Redis超时指令</h2><img src='JavaEE-19-Redis-Advanced-Topics\3564b87e-9de8-414f-b85d-7a42fe2247a4.jpg'>
-<img src='JavaEE-19-Redis-Advanced-Topics\abe68ebf-d98f-42c2-bce3-6f634ea6c2d0.jpg'>
+<h2 id="Redis超时指令"><a href="#Redis超时指令" class="headerlink" title="Redis超时指令"></a>Redis超时指令</h2><img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/3564b87e-9de8-414f-b85d-7a42fe2247a4.jpg">
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/abe68ebf-d98f-42c2-bce3-6f634ea6c2d0.jpg">
 
 <p>expire(String key, int timeout, TimeUnit unit)指定有效时间</p>
 <p>expire(String key,Date date)指定过期时间</p>
 <p>persist(String key)永久有效</p>
 <h2 id="Lua脚本"><a href="#Lua脚本" class="headerlink" title="Lua脚本"></a>Lua脚本</h2><p>Redis支持Lua脚本，可以弥补Redis的计算性能</p>
-<h3 id="使用指令"><a href="#使用指令" class="headerlink" title="使用指令"></a>使用指令</h3><img src='JavaEE-19-Redis-Advanced-Topics\666bf7a7-3694-438e-a4e2-36ca6e9dbdc2.jpg'>
+<h3 id="使用指令"><a href="#使用指令" class="headerlink" title="使用指令"></a>使用指令</h3><img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/666bf7a7-3694-438e-a4e2-36ca6e9dbdc2.jpg">
 
 <p>如：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 eval "return 'hello Lua' " 0
 </pre>
 
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 eval "redis.call('set',KEYS[1],ARGV[1])" 1 lua-key lua-value
 </pre>
 
 <h3 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h3><ol>
 <li>加载脚本</li>
 </ol>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 script load "return 'hello lua'"
 </pre>
 
@@ -209,26 +202,26 @@ script load "return 'hello lua'"
 <ol start="2">
 <li>执行脚本</li>
 </ol>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 evalsha sha key-num [key1 key2···] [param1 param2···]
 </pre>
 
-<img src='JavaEE-19-Redis-Advanced-Topics\a96c9b3f-355e-4b16-91b8-39c9b0140e1e.jpg'>
+<img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/a96c9b3f-355e-4b16-91b8-39c9b0140e1e.jpg">
 
-<h3 id="使用Spring执行脚本"><a href="#使用Spring执行脚本" class="headerlink" title="使用Spring执行脚本"></a>使用Spring执行脚本</h3><img src='JavaEE-19-Redis-Advanced-Topics\88935773-cb5f-47b9-84fd-f0056a6589e9.jpg'>
+<h3 id="使用Spring执行脚本"><a href="#使用Spring执行脚本" class="headerlink" title="使用Spring执行脚本"></a>使用Spring执行脚本</h3><img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/88935773-cb5f-47b9-84fd-f0056a6589e9.jpg">
 
 <p>jedis.eval(String script)执行脚本</p>
 <p>jedis.eval(String script, int keyNum, String … keyParam)带参数脚本</p>
 <p>jedis.scriptLoad(String script)加载脚本</p>
 <p>jedis.evalsha(String sha, int keyNum, String … keyParam)执行</p>
-<h3 id="使用Spring执行对象脚本"><a href="#使用Spring执行对象脚本" class="headerlink" title="使用Spring执行对象脚本"></a>使用Spring执行对象脚本</h3><img src='JavaEE-19-Redis-Advanced-Topics\ba6a6942-a257-45de-adfb-73372c79db2b.jpg'>
+<h3 id="使用Spring执行对象脚本"><a href="#使用Spring执行对象脚本" class="headerlink" title="使用Spring执行对象脚本"></a>使用Spring执行对象脚本</h3><img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/ba6a6942-a257-45de-adfb-73372c79db2b.jpg">
 
 <p>使用DefaultRedisScript配置</p>
 <p>setScriptText(String script)设置脚本内容</p>
 <p>getSha1()获取签名</p>
 <p>setResultType(Class class)设置返回值类型</p>
 <p>execute(DefaultRedisScript script, RedisSerializer paramSerializer, RedisSerializer resultSerializer, List keyList, object param)执行</p>
-<h3 id="执行lua文件"><a href="#执行lua文件" class="headerlink" title="执行lua文件"></a>执行lua文件</h3><img src='JavaEE-19-Redis-Advanced-Topics\22a88ac0-f411-4a91-a862-bcebe33d9ce2.jpg'>
+<h3 id="执行lua文件"><a href="#执行lua文件" class="headerlink" title="执行lua文件"></a>执行lua文件</h3><img src="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/22a88ac0-f411-4a91-a862-bcebe33d9ce2.jpg">
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -398,8 +391,8 @@ evalsha sha key-num [key1 key2···] [param1 param2···]
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

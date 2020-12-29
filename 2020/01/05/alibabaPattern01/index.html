@@ -99,45 +99,38 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC"><span class="toc-number">1.</span> <span class="toc-text">命名风格</span></a></li></ol>
-		
-		</div>
-		
 		<h2 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h2><ol>
-<li><p><code style='background:#ff3385;color:white;padding:5px;'>禁止</code>命名以_或$开始或结束</p>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">禁止</code>命名以_或$开始或结束</p>
 </li>
-<li><p><code style='background:#ff3385;color:white;padding:5px;'>禁用</code>拼音、中文命名方式</p>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">禁用</code>拼音、中文命名方式</p>
 </li>
-<li><p>类名<code style='background:#ff3385;color:white;padding:5px;'>需要</code>首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外</p>
+<li><p>类名<code style="background:#ff3385;color:white;padding:5px;">需要</code>首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外</p>
 </li>
-<li><p>方法名称、参数名称、成员变量、局部变量<code style='background:#ff3385;color:white;padding:5px;'>需要</code>统一使用驼峰命名。</p>
+<li><p>方法名称、参数名称、成员变量、局部变量<code style="background:#ff3385;color:white;padding:5px;">需要</code>统一使用驼峰命名。</p>
 </li>
-<li><p>常量<code style='background:#ff3385;color:white;padding:5px;'>需要</code>用全大写，单词之间用下划线连接</p>
+<li><p>常量<code style="background:#ff3385;color:white;padding:5px;">需要</code>用全大写，单词之间用下划线连接</p>
 </li>
-<li><p>抽象类<code style='background:#ff3385;color:white;padding:5px;'>需要</code>以Abstract开头，异常以Exception结尾，测试类以测试类名称开始，以Test结尾</p>
+<li><p>抽象类<code style="background:#ff3385;color:white;padding:5px;">需要</code>以Abstract开头，异常以Exception结尾，测试类以测试类名称开始，以Test结尾</p>
 </li>
-<li><p>数组符号与类型<code style='background:#ff3385;color:white;padding:5px;'>需要</code>紧挨着，如：int[] array</p>
+<li><p>数组符号与类型<code style="background:#ff3385;color:white;padding:5px;">需要</code>紧挨着，如：int[] array</p>
 </li>
-<li><p>POJO类中的布尔类型，<code style='background:#ff3385;color:white;padding:5px;'>禁止</code>以is开头</p>
+<li><p>POJO类中的布尔类型，<code style="background:#ff3385;color:white;padding:5px;">禁止</code>以is开头</p>
 </li>
-<li><p>包名<code style='background:#ff3385;color:white;padding:5px;'>需要</code>保持小写，单数语义，类名<code style='background:#ff3385;color:white;padding:5px;'>可以</code>使用复数</p>
+<li><p>包名<code style="background:#ff3385;color:white;padding:5px;">需要</code>保持小写，单数语义，类名<code style="background:#ff3385;color:white;padding:5px;">可以</code>使用复数</p>
 </li>
-<li><p><code style='background:#ff3385;color:white;padding:5px;'>禁止</code>不规范的缩写</p>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">禁止</code>不规范的缩写</p>
 </li>
-<li><p><code style='background:#ff3385;color:white;padding:5px;'>需要</code>使用完整的单词组合</p>
+<li><p><code style="background:#ff3385;color:white;padding:5px;">需要</code>使用完整的单词组合</p>
 </li>
-<li><p>模块、接口、类、方法使用设计模式，<code style='background:#ff3385;color:white;padding:5px;'>需要</code>体现出设计模式：OrderFactory、LoginProxy、ResourceObserver</p>
+<li><p>模块、接口、类、方法使用设计模式，<code style="background:#ff3385;color:white;padding:5px;">需要</code>体现出设计模式：OrderFactory、LoginProxy、ResourceObserver</p>
 </li>
-<li><p>接口类方法上<code style='background:#ff3385;color:white;padding:5px;'>不要</code>添加修饰，<code style='background:#ff3385;color:white;padding:5px;'>避免</code>在接口中定义变量。</p>
+<li><p>接口类方法上<code style="background:#ff3385;color:white;padding:5px;">不要</code>添加修饰，<code style="background:#ff3385;color:white;padding:5px;">避免</code>在接口中定义变量。</p>
 </li>
-<li><p>Service或DAO接口，<code style='background:#ff3385;color:white;padding:5px;'>要求</code>使用xxxService、xxxServiceImpl命名接口和实现类。普通接口，以形容词为接口名称，Translatable接口或AbstractTranslator实现类</p>
+<li><p>Service或DAO接口，<code style="background:#ff3385;color:white;padding:5px;">要求</code>使用xxxService、xxxServiceImpl命名接口和实现类。普通接口，以形容词为接口名称，Translatable接口或AbstractTranslator实现类</p>
 </li>
-<li><p>枚举<code style='background:#ff3385;color:white;padding:5px;'>要求</code>使用Enum后缀，枚举成员用大写，下划线连接。</p>
+<li><p>枚举<code style="background:#ff3385;color:white;padding:5px;">要求</code>使用Enum后缀，枚举成员用大写，下划线连接。</p>
 </li>
-<li><p>Service/DAO层命名<code style='background:#ff3385;color:white;padding:5px;'>要求</code>：</p>
+<li><p>Service/DAO层命名<code style="background:#ff3385;color:white;padding:5px;">要求</code>：</p>
 </li>
 </ol>
 <p>获取单个对象用get前缀</p>
@@ -147,7 +140,7 @@
 <p>删除用delete做前缀</p>
 <p>修改用update做前缀</p>
 <ol start="17">
-<li>领域数据模型命名<code style='background:#ff3385;color:white;padding:5px;'>要求</code>：</li>
+<li>领域数据模型命名<code style="background:#ff3385;color:white;padding:5px;">要求</code>：</li>
 </ol>
 <p>数据对象使用DO作后缀</p>
 <p>数据传输对象以DTO做后缀</p>
@@ -321,8 +314,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

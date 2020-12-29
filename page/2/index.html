@@ -79,1059 +79,394 @@
     <div id="container">
       <div id="main">
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/07/08/springBoot2-09-Schedule/" title="springBoot2-09-定时任务" itemprop="url">springBoot2-09-定时任务</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-07-08T12:19:22.000Z" itemprop="datePublished"> Published 2020-07-08</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>定时任务是很常见的，每间隔一定时间循环执行，或固定某时间点执行等等。</p>
-<h2 id="开始定时任务"><a href="#开始定时任务" class="headerlink" title="开始定时任务"></a>开始定时任务</h2><ol>
-<li><p>使用@EnableScheduling开启定时任务（配置类或入口类）</p>
-</li>
-<li><p>使用@Scheduled标记方法，可以定时执行</p>
-</li>
-</ol>
-<img src='springBoot2-09-Schedule\eb2bce37-d884-4455-962f-01395d4a421f.jpg'>
-
-<p>@Async表示使用线程池执行</p>
-<img src='springBoot2-09-Schedule\936355af-6b57-4087-af9e-c7eea46eb110.jpg'>
-
-<h3 id="几种属性"><a href="#几种属性" class="headerlink" title="几种属性"></a>几种属性</h3><p>fixedDelay ：以上一次任务完成时刻为起点，延迟一定时间再次执行。</p>
-<p>fixedRate：以固定的时间间隔执行，不管上一次有没有完成。</p>
-<p>initialDelay ： 首次执行前的间隔时间。</p>
-<h3 id="cron表达式"><a href="#cron表达式" class="headerlink" title="cron表达式"></a>cron表达式</h3><p>秒| 分| 时| 天| 月| 星期| 年</p>
-<img src='springBoot2-09-Schedule\450e1235-9075-409b-b038-45c514698322.jpg'>
-<img src='springBoot2-09-Schedule\196ddac6-1315-4ff6-8a9f-e86ae0dfc432.jpg'>
-
-<h3 id="cron使用举例"><a href="#cron使用举例" class="headerlink" title="cron使用举例"></a>cron使用举例</h3><img src='springBoot2-09-Schedule\5dc54825-6a31-42f0-bc3c-33c78d2b97ee.jpg'>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/spring-boot-2/">spring-boot-2</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/07/08/springBoot2-08-Async/" title="springBoot2-08-异步线程池" itemprop="url">springBoot2-08-异步线程池</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-07-08T11:44:53.000Z" itemprop="datePublished"> Published 2020-07-08</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="异步操作"><a href="#异步操作" class="headerlink" title="异步操作"></a>异步操作</h2><p>对于网络或本地文件IO容易出现阻塞情况，对于web应用，卡顿情况更加明显。</p>
-<img src='springBoot2-08-Async\596a55d2-e03b-4550-92d0-92e533b430c8.jpg'>
-
-<p>对于耗时操作，我们一般采用异步方式进行处理，采用线程池的方式实现对任务的异步操作。</p>
-<img src='springBoot2-08-Async\e48d196a-82ee-4588-ab47-5f3ef2ecee43.jpg'>
-
-<h2 id="Spring实现异步任务"><a href="#Spring实现异步任务" class="headerlink" title="Spring实现异步任务"></a>Spring实现异步任务</h2><ol>
-<li>配置线程池</li>
-</ol>
-<p>使用@EnableAsync开启异步线程池，实现AsyncConfigurer接口，重写getAsyncExecutor方法</p>
-<img src='springBoot2-08-Async\058fe614-bce9-4baa-903e-19ec51a52ba7.jpg'>
-
-<ol start="2">
-<li>定义异步服务接口</li>
-</ol>
-<img src='springBoot2-08-Async\6abae681-b57a-44d3-b6d4-7408e476c4ee.jpg'>
-
-<ol start="3">
-<li>定义异步服务实现类</li>
-</ol>
-<p>使用@Async注解异步方法</p>
-<img src='springBoot2-08-Async\a9cab3ca-689b-42b0-9d02-ab1b24e04ebe.jpg'>
-
-<ol start="4">
-<li>异步方法在调用上无异</li>
-</ol>
-<img src='springBoot2-08-Async\a85a299a-cf7c-4ff9-b7f1-2c7fe0e62005.jpg'>
-
-<p>区别在于，二者不在相同的线程里执行，因而不会出现阻塞的情况。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/spring-boot-2/">spring-boot-2</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/07/08/springBoot2-06-database/" title="springBoot2-06-整合Mybatis" itemprop="url">springBoot2-06-整合Mybatis</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-07-08T07:13:56.000Z" itemprop="datePublished"> Published 2020-07-08</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="配置数据源"><a href="#配置数据源" class="headerlink" title="配置数据源"></a>配置数据源</h2><ol>
-<li>添加依赖</li>
-</ol>
-<img src='springBoot2-06-database\57a82970-1512-47cf-90fc-988c63c7ba90.jpg'>
-
-<ol start="2">
-<li>配置数据源</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
-spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
-
-spring.datasource.username =root
-spring.datasource.password=123456
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-
-
-spring.datasource.type=org.apache.commons.dbcp2.BasicDataSource
-spring.datasource.dbcp2.max-idle=10
-spring.datasource.dbcp2.max-total=50
-spring.datasource.dbcp2.max-wait-millis=10000
-spring.datasource.dbcp2.initial-size=5
-</pre>
-
-<ol start="3">
-<li>创建POJO</li>
-</ol>
-<img src='springBoot2-06-database\97d299b9-706e-4ca3-b4f7-8b580389b11b.jpg'>
-
-<p>这里存在一个枚举类型，需要转换器</p>
-<ol start="4">
-<li>定义枚举类型</li>
-</ol>
-<img src='springBoot2-06-database\7381fa58-d677-4cd9-9138-9b4bf73b4ba8.jpg'>
-
-<ol start="5">
-<li>枚举转换器</li>
-</ol>
-<img src='springBoot2-06-database\52f6f8c9-fda3-49f6-ac7f-94b16240d947.jpg'>
-<img src='springBoot2-06-database\4178b3bc-636c-4e55-b278-f3ba89c1db68.jpg'>
-
-<p>6.创建DAO接口</p>
-<img src='springBoot2-06-database\4a85918c-8827-4b1c-847f-9e30d52d2235.jpg'>
-
-<ol start="7">
-<li>创建对应的mapper文件</li>
-</ol>
-<img src='springBoot2-06-database\6cb5c6cb-6574-4634-88ab-2d97125f03c2.jpg'>
-
-<ol start="8">
-<li>创建服务层接口</li>
-</ol>
-<img src='springBoot2-06-database\7142c918-9be1-4b68-a957-da0a5ead6e83.jpg'>
-
-<ol start="9">
-<li>调用DAO层返回数据</li>
-</ol>
-<img src='springBoot2-06-database\6b5debef-9c22-472f-ba0a-341c85031f47.jpg'>
-
-<ol start="10">
-<li>控制器层注入服务层进行测试</li>
-</ol>
-<img src='springBoot2-06-database\3ab565ca-2629-4972-b143-cabc146f8851.jpg'>
-
-<p>11.添加mybatis配置信息</p>
-<pre style='background:#e6e6e6;padding=10px;'>
-mybatis.mapper-locations=classpath:mappers/*.xml
-mybatis.type-handlers-package=com.example.demo.typeHandlers
-</pre>
-
-<ol start="12">
-<li>注解启动类，发起mapper接口扫描</li>
-</ol>
-<img src='springBoot2-06-database\c2031c37-db6f-442e-a5ff-0cdb27ead7bf.jpg'>
-
-<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>如果出现serverTimeZone问题请检查数据库连接的url</p>
-<p>如果出现找不到mapper，配置pom文件的build节点，将*.xml文件包含到目标路径。</p>
-<img src='springBoot2-06-database\f671863a-193b-43e5-9aec-d097c21915e0.jpg'>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+    <a href="/blog/2020/07/08/springBoot2-09-Schedule/" title="springBoot2-09-定时任务" itemprop="url">
   
-  <span></span> <a href="/blog/tags/spring-boot-2/">spring-boot-2</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">springBoot2-09-定时任务</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >定时任务是很常见的，每间隔一定时间循环执行，或固定某时间点执行等等。
+开始定时任务
+使用@EnableScheduling开启定时任务（配置类或入口类）
+
+使用@Scheduled标记方法，可以定时执行
+
+
+
+
+@Async表示使用线程池执行
+
+
+几种属性fixedDelay ：</p>
+        
     
-      <a href="/blog/2020/07/07/springBoot2-05-aop/" title="springBoot2-05-aop" itemprop="url">springBoot2-05-aop</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-07-07T05:46:56.000Z" itemprop="datePublished"> Published 2020-07-07</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="自定义AOP"><a href="#自定义AOP" class="headerlink" title="自定义AOP"></a>自定义AOP</h2><ol>
-<li>创建被监视接口</li>
-</ol>
-<img src='springBoot2-05-aop\8b19be56-dbbd-48fe-a2f9-e52eec4c529b.jpg'>
-
-<ol start="2">
-<li>创建实现类，并注册为服务</li>
-</ol>
-<img src='springBoot2-05-aop\7515b9c9-5f52-4871-96e7-632053c97a39.jpg'>
-
-<ol start="3">
-<li>创建切面</li>
-</ol>
-<img src='springBoot2-05-aop\5c7498e7-e5d1-4228-a8f0-4aaa60853a1a.jpg'>
-<img src='springBoot2-05-aop\9535bd6a-6ea0-492f-aa07-4c66988c2dbd.jpg'>
-
-<ol start="4">
-<li>将切面注册为Bean</li>
-</ol>
-<img src='springBoot2-05-aop\dddebe2b-31b3-42a4-ba04-fab17dcb2c57.jpg'>
-
-<ol start="5">
-<li>测试结果</li>
-</ol>
-<img src='springBoot2-05-aop\da70ed1b-e382-4258-9953-ca8be89d8779.jpg'>
-
-<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><ol>
-<li>设计增强接口</li>
-</ol>
-<img src='springBoot2-05-aop\aa274e7c-5f58-4a5f-9876-d5eda076a290.jpg'>
-
-<ol start="2">
-<li>设计增强接口的实现类</li>
-</ol>
-<img src='springBoot2-05-aop\b995e87e-96bf-4149-bddd-bc094f8c1b95.jpg'>
-
-<ol start="3">
-<li>在切面中声明public类型的增强接口的实例</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
- @DeclareParents(defaultImpl = com.example.learnspring.services.Auditor.class,value = "com.example.learnspring.services.IPrinter+")
- public IAuditor auditor;
-</pre>
-
-<ol start="4">
-<li>强转为增强接口对象</li>
-</ol>
-<img src='springBoot2-05-aop\ed102ead-ce06-4d6f-be43-1fa7f3ab7899.jpg'>
-
-<h2 id="多个切面执行前后顺序"><a href="#多个切面执行前后顺序" class="headerlink" title="多个切面执行前后顺序"></a>多个切面执行前后顺序</h2><p>可以使用@Order注解标记次序，越小越靠前</p>
-<img src='springBoot2-05-aop\72b2e5b1-3780-4678-a1dd-78779d16f365.jpg'>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
+    <time datetime="2020-07-08T12:19:22.000Z" itemprop="datePublished">2020-07-08</time>
+  </a>
+</section>
 
 
-  <div class="article-tags">
+
+
+
+
   
-  <span></span> <a href="/blog/tags/spring-boot-2/">spring-boot-2</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/07/07/springBoot2-04-spring-others/" title="springBoot2-04-spring-others" itemprop="url">springBoot2-04-spring-others</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-07-07T01:56:29.000Z" itemprop="datePublished"> Published 2020-07-07</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="使用配置文件"><a href="#使用配置文件" class="headerlink" title="使用配置文件"></a>使用配置文件</h2><ol>
-<li>添加依赖</li>
-</ol>
-<img src='springBoot2-04-spring-others\82bc16ae-3989-4732-89d9-dca1ae17ae71.jpg'>
-
-<ol start="2">
-<li>添加配置</li>
-</ol>
-<p>默认使用application.properties</p>
-<img src='springBoot2-04-spring-others\cef014e8-a48e-405d-955a-ecc19d200b78.jpg'>
-
-<ol start="3">
-<li>使用@Value注入</li>
-</ol>
-<img src='springBoot2-04-spring-others\1587f209-dfe6-49f3-8fdd-040380b5919e.jpg'>
-
-<p>可以对字段，set方法进行注解</p>
-<ol start="4">
-<li>使用ConfigurationProperties简化</li>
-</ol>
-<img src='springBoot2-04-spring-others\e6e36f31-f788-406e-876f-d8a5709e5ea5.jpg'>
-
-<p>指定起始database</p>
-<h2 id="配置文件分离"><a href="#配置文件分离" class="headerlink" title="配置文件分离"></a>配置文件分离</h2><p>单纯使用application.properties很杂乱，可以将配置分离出去，使用PropertySource指定配置文件的位置</p>
-<img src='springBoot2-04-spring-others\fda12423-9300-40cd-98be-5fd6f0d81de5.jpg'>
-
-<p>引入配置文件</p>
-<img src='springBoot2-04-spring-others\73e29f75-5dd2-4aca-a6b2-eceb26a3528a.jpg'>
-
-<p>使用ConfigurationProperties简化</p>
-<img src='springBoot2-04-spring-others\fa093558-1090-4720-a710-17c78d002be8.jpg'>
-
-<p>添加依赖</p>
-<img src='springBoot2-04-spring-others\1957105e-fc30-4cac-b25e-6df7bec9e1e3.jpg'>
-
-
-<h2 id="条件装配"><a href="#条件装配" class="headerlink" title="条件装配"></a>条件装配</h2><p>满足条件则装配，不满足则不装配。</p>
-<ol>
-<li>设计条件类，实现Condition接口，重写matches方法</li>
-</ol>
-<img src='springBoot2-04-spring-others\1b392eb3-4af8-4299-b6ac-c5366c36886f.jpg'>
-
-<ol start="2">
-<li>使用@Conditional注解指定条件类</li>
-</ol>
-<img src='springBoot2-04-spring-others\c31fc6ee-1fbb-4c84-ae28-8e071c24f688.jpg'>
-
-<h2 id="Bean的作用域类型"><a href="#Bean的作用域类型" class="headerlink" title="Bean的作用域类型"></a>Bean的作用域类型</h2><img src='springBoot2-04-spring-others\6f7cfb68-b955-4a84-971d-00fb2cca0ae0.jpg'>
-
-<p>使用ConfigurableBeanFactory指定singleton或prototype类型</p>
-<img src='springBoot2-04-spring-others\18210e39-2b5e-43d6-9cae-e610951e1271.jpg'>
-
-<p>或使用WebApplicationContext指定session request或application类型</p>
-<img src='springBoot2-04-spring-others\f46903a4-6a6b-48e4-ae50-aec37f34b19b.jpg'>
-
-<h2 id="Profile–解决不同开发环境的问题"><a href="#Profile–解决不同开发环境的问题" class="headerlink" title="Profile–解决不同开发环境的问题"></a>Profile–解决不同开发环境的问题</h2><p>使用@Profile注解标记Bean的有效环境，使用spring.profiles.active激活。</p>
-<img src='springBoot2-04-spring-others\4ee2a669-f0bd-4c6e-992f-1f6c9f4cb3f8.jpg'>
-
-<h2 id="引入xml配置的Bean"><a href="#引入xml配置的Bean" class="headerlink" title="引入xml配置的Bean"></a>引入xml配置的Bean</h2><p>对于某个Bean：</p>
-<img src='springBoot2-04-spring-others\cae39590-76c8-4d4d-95ef-f21afb4601ae.jpg'>
-
-<p>使用xml注册到容器：</p>
-<img src='springBoot2-04-spring-others\ffee5a36-94a5-4a22-8818-59343381634e.jpg'>
-
-<p>配置类中使用@ImportResource加载Bean：</p>
-<img src='springBoot2-04-spring-others\698d912c-a34f-40cd-8a9c-c4418a05f00e.jpg'>
-
-<h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><ol>
-<li>读取属性用$</li>
-</ol>
-<img src='springBoot2-04-spring-others\72641c4a-ae42-4643-b7ef-a453448ced8f.jpg'>
-
-<ol start="2">
-<li>操作属性用#</li>
-</ol>
-<img src='springBoot2-04-spring-others\b93f26b2-cbfe-491a-89ee-70224b7c4892.jpg'>
-
-<ol start="3">
-<li>赋值</li>
-</ol>
-<img src='springBoot2-04-spring-others\2795c692-baac-4987-8d4b-652506d8e18a.jpg'>
-
-<ol start="4">
-<li>获取其他Bean的属性并注入</li>
-</ol>
-<img src='springBoot2-04-spring-others\7456e0ab-4877-4fdb-85b9-a339975a02a5.jpg'>
-
-<p>进一步操作：</p>
-<img src='springBoot2-04-spring-others\db0f1570-ce03-475c-ba63-782064a78750.jpg'>
-
-<ol start="5">
-<li>其他计算</li>
-</ol>
-<img src='springBoot2-04-spring-others\f8e87cd3-4d3c-4f94-bb9e-cc83f8be17d9.jpg'>
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/spring-boot-2/">spring-boot-2</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/07/07/springBoot2-03-dependency-management/" title="springBoot2-03-依赖管理" itemprop="url">springBoot2-03-依赖管理</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-07-07T00:28:41.000Z" itemprop="datePublished"> Published 2020-07-07</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="使用Java配置文件配置Bean"><a href="#使用Java配置文件配置Bean" class="headerlink" title="使用Java配置文件配置Bean"></a>使用Java配置文件配置Bean</h2><ol>
-<li>创建POJO</li>
-</ol>
-<img src='springBoot2-03-dependency-management\7ae8708f-8f18-4ab3-9a3e-fb8581484b96.jpg'>
-
-<p>这就是一个简单的类，我们接下来通过配置类将它注册到容器中用于使用。</p>
-<ol start="2">
-<li>配置类使用@Bean注册Bean</li>
-</ol>
-<img src='springBoot2-03-dependency-management\bdf1a5bd-514d-42d7-aec3-5ee72fcb739b.jpg'>
-
-<ol start="3">
-<li>使用Bean</li>
-</ol>
-<img src='springBoot2-03-dependency-management\71b3ede5-df8c-4164-a598-0d0754707f17.jpg'>
-
-<p>通过Autowired注入Bean，并打印姓名。</p>
-<p>输出窗口显示了姓名：张三</p>
-<img src='springBoot2-03-dependency-management\ecf2dd48-34c0-4cbb-a754-1df8081f7209.jpg'>
-
-<h2 id="通过Component扫描注册Bean"><a href="#通过Component扫描注册Bean" class="headerlink" title="通过Component扫描注册Bean"></a>通过Component扫描注册Bean</h2><ol>
-<li>创建组件类</li>
-</ol>
-<img src='springBoot2-03-dependency-management\4c8023fd-c7c9-47f1-a05a-17cfefc8f3c9.jpg'>
-
-<p>这里采用注解注入值，使用@Component标记本类，这样可以通过扫描直接注册到容器</p>
-<ol start="2">
-<li>配置扫描</li>
-</ol>
-<img src='springBoot2-03-dependency-management\4c4f1483-c0a1-4f5e-9d3f-6405cf7975c1.jpg'>
-
-<p>在配置类上添加注解，设置扫描的范围。</p>
-<p><code style='background:#ff3385;color:white;padding:5px;'>注意</code>当不想扫描某些组件时，可以使用excludeFilters：</p>
-<img src='springBoot2-03-dependency-management\23ba4112-a1d2-4a83-8101-095786afa407.jpg'>
-
-<ol start="3">
-<li>注入使用</li>
-</ol>
-<img src='springBoot2-03-dependency-management\1577e67a-a342-4cb3-b969-43a181277cb6.jpg'>
-
-<h2 id="二者有何区别？何时使用Component-何时使用配置类？"><a href="#二者有何区别？何时使用Component-何时使用配置类？" class="headerlink" title="二者有何区别？何时使用Component,何时使用配置类？"></a>二者有何区别？何时使用Component,何时使用配置类？</h2><p>一般来说，对于自己设计的Bean，自己有源码的，使用@Component更简单，对于第三方提供的，没有源码，只能通过配置类注册Bean了。</p>
-<h2 id="依赖注入冲突"><a href="#依赖注入冲突" class="headerlink" title="依赖注入冲突"></a>依赖注入冲突</h2><p>当我们采用接口-实现类方式时，存在多个实现类时，自动绑定找不到Bean.（默认基于类型注入）</p>
-<p>此时，我们只需要在注入的位置使用@Qualifier注解标记就可以了</p>
-<img src='springBoot2-03-dependency-management\60ee5ca3-e7d0-4bfa-920e-37808025b370.jpg'>
-
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ol>
-<li>接口</li>
-</ol>
-<img src='springBoot2-03-dependency-management\76fc8a75-f0e0-4dc8-a2a5-1170b0b82eef.jpg'>
-
-<ol start="2">
-<li>Dog实现类，注册为Bean</li>
-</ol>
-<img src='springBoot2-03-dependency-management\52832a7f-aee9-46aa-bda5-fb810b36f0c0.jpg'>
-
-<ol start="3">
-<li>Cat实现类，注册为Bean</li>
-</ol>
-<img src='springBoot2-03-dependency-management\70ef0ff4-b745-4e06-ac45-48026faf9c3f.jpg'>
-
-<ol start="4">
-<li>注入使用</li>
-</ol>
-<img src='springBoot2-03-dependency-management\b5387e0f-328b-4aad-bf9d-6287a638323c.jpg'>
-
-<ol start="5">
-<li>输出</li>
-</ol>
-<img src='springBoot2-03-dependency-management\113b95cd-bcd9-4a1b-888d-3351f88b5330.jpg'>
-
-<h2 id="三种注入方式"><a href="#三种注入方式" class="headerlink" title="三种注入方式"></a>三种注入方式</h2><ol>
-<li><p>字段注入（上面已经用到了）</p>
-</li>
-<li><p>构造器注入</p>
-</li>
-</ol>
-<p>对于没有无参构造函数的Bean，采用构造器注入</p>
-<img src='springBoot2-03-dependency-management\8f1dd3d7-9cb5-40e7-8cad-f7ee52858ab7.jpg'>
-
-<p>使用方法类似：</p>
-<img src='springBoot2-03-dependency-management\3676da43-c6ba-421d-af10-309265960778.jpg'>
-
-<p>输出</p>
-<img src='springBoot2-03-dependency-management\e968fb82-0a48-4084-bb04-ebaeae6e4a68.jpg'>
-
-<ol start="3">
-<li>set方法注入</li>
-</ol>
-<p>对于有无参构造函数，字段没有注入，可以使用set方法注入</p>
-<img src='springBoot2-03-dependency-management\c3f00aae-b259-4969-b89c-46abc2f298a2.jpg'>
-
-<p>输出</p>
-<img src='springBoot2-03-dependency-management\70205619-096d-46fd-be19-7c244162f249.jpg'>
-
-
-<h2 id="生命周期介入"><a href="#生命周期介入" class="headerlink" title="生命周期介入"></a>生命周期介入</h2><p>对构造后，销毁前进行介入</p>
-<img src='springBoot2-03-dependency-management\77003eba-6fe9-494c-990f-ac92759c32fd.jpg'>
-
-<p>使用@PostConstruct @PreDestory注解方法，可以对Bean注册销毁流程介入</p>
-<p>可以使用initMethod destoryMethod指定Bean的初始化及销毁方法</p>
-<img src='springBoot2-03-dependency-management\9bf63a32-f1a0-48f5-b01d-28e40e3317d6.jpg'>
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+    <a href="/blog/2020/07/08/springBoot2-08-Async/" title="springBoot2-08-异步线程池" itemprop="url">
   
-  <span></span> <a href="/blog/tags/spring-boot-2/">spring-boot-2</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">springBoot2-08-异步线程池</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >异步操作对于网络或本地文件IO容易出现阻塞情况，对于web应用，卡顿情况更加明显。
+
+
+对于耗时操作，我们一般采用异步方式进行处理，采用线程池的方式实现对任务的异步操作。
+
+
+Spring实现异步任务
+配置线程池
+
+使用@EnableAsync开启异步线程池，实现AsyncCon</p>
+        
     
-      <a href="/blog/2020/07/06/springBoot2-02-develop-environment/" title="springBoot2-02-develop-environment" itemprop="url">springBoot2-02-develop-environment</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-07-06T10:10:09.000Z" itemprop="datePublished"> Published 2020-07-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="搭建Eclipse开发环境"><a href="#搭建Eclipse开发环境" class="headerlink" title="搭建Eclipse开发环境"></a>搭建Eclipse开发环境</h2><ol>
-<li>创建Spring项目</li>
-</ol>
-<p>File-new-project</p>
-<img src='springBoot2-02-develop-environment\347eb8d8-a808-4d5b-9862-9dcc373c6e87.jpg'>
-
-<ol start="2">
-<li>填写项目的基本信息</li>
-</ol>
-<img src='springBoot2-02-develop-environment\2a737c2f-db87-4b42-be2a-f4c04ae12d93.jpg'>
-
-<ol start="3">
-<li>选择所需要的模块</li>
-</ol>
-<img src='springBoot2-02-develop-environment\00c1b994-4a5b-456c-bd28-74a9ca300b28.jpg'>
-
-<h2 id="搭建Intellij项目"><a href="#搭建Intellij项目" class="headerlink" title="搭建Intellij项目"></a>搭建Intellij项目</h2><ol>
-<li>创建项目</li>
-</ol>
-<img src='springBoot2-02-develop-environment\15eca248-7c10-4281-ba27-651d3b210411.jpg'>
-
-<ol start="2">
-<li>填写基础信息</li>
-</ol>
-<img src='springBoot2-02-develop-environment\2d873a26-60eb-4458-8fce-4ccf5b551ca4.jpg'>
-
-<ol start="3">
-<li><p>选择合适的模块</p>
-</li>
-<li><p>运行主函数</p>
-</li>
-</ol>
-<img src='springBoot2-02-develop-environment\ad774e6c-d795-4ca2-87a7-ae61b29d15e9.jpg'>
+    <time datetime="2020-07-08T11:44:53.000Z" itemprop="datePublished">2020-07-08</time>
+  </a>
+</section>
 
 
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
 
 
-  <div class="article-tags">
+
+
   
-  <span></span> <a href="/blog/tags/spring-boot-2/">spring-boot-2</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/07/06/springBoot2-01-preparement/" title="springBoot2-01-Eclipse插件安装" itemprop="url">springBoot2-01-Eclipse插件安装</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-07-06T10:02:08.000Z" itemprop="datePublished"> Published 2020-07-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="1-help-marketplace"><a href="#1-help-marketplace" class="headerlink" title="1. help-marketplace"></a>1. help-marketplace</h3><p>找到popular模块，Spring Tool Suite</p>
-<img src='springBoot2-01-preparement\6cc3522c-f277-4a15-a67e-f6e9a58b6222.jpg'>
-
-<h3 id="2-安装插件"><a href="#2-安装插件" class="headerlink" title="2. 安装插件"></a>2. 安装插件</h3><p>全选所有插件</p>
-<img src='springBoot2-01-preparement\52beec45-a256-47a1-b46c-f3d0943b77cb.jpg'>
-
-<h3 id="3-同意协议"><a href="#3-同意协议" class="headerlink" title="3. 同意协议"></a>3. 同意协议</h3><img src='springBoot2-01-preparement\ffcedaf2-3a32-49b5-94f5-23045e709b23.jpg'>
-
-<p>至此，插件安装完成！</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/spring-boot-2/">spring-boot-2</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/06/30/java-multi-threads-03-Immutable/" title="java-multi-threads-03-Immutable" itemprop="url">java-multi-threads-03-Immutable</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-30T11:15:36.000Z" itemprop="datePublished"> Published 2020-06-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="除了构造函数，无法赋值"><a href="#除了构造函数，无法赋值" class="headerlink" title="除了构造函数，无法赋值"></a>除了构造函数，无法赋值</h2><img src='java-multi-threads-03-Immutable\733c61c9-27f5-4cca-8417-a1f28a11956e.jpg'>
-
-<p>将字段设置为final类型，字段一旦初始化就不再赋值。</p>
-<p>使用多线程来读取person信息：</p>
-<img src='java-multi-threads-03-Immutable\57be253c-2e6d-490d-89fb-de6fe39db027.jpg'>
-
-<p>测试：</p>
-<img src='java-multi-threads-03-Immutable\aafa54ab-e1d1-417b-aa8d-b3e319b3197a.jpg'>
-
-<p>由于只能读取，不能赋值，因此数据是可信的。</p>
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
-<li><p>对象创建后，基本不发生改变。</p>
-</li>
-<li><p>对象是共享的，频繁读取，而不是赋值。</p>
-</li>
-</ol>
-<h2 id="ArrayList的并发读写问题"><a href="#ArrayList的并发读写问题" class="headerlink" title="ArrayList的并发读写问题"></a>ArrayList的并发读写问题</h2><p>在ArrayList多线程情况下，并发读写会引发异常信息。</p>
-<img src='java-multi-threads-02-SingleThreadExecution\c321f193-7a5e-48e2-a811-a30932a402f5.jpg'>
-
-<img src='java-multi-threads-02-SingleThreadExecution\2fe06788-5660-4f74-b2b1-ba807817697b.jpg'>
-
-<p>当同时读取和写入会引发异常ConcurrentModifyException。</p>
-<h3 id="使用synchronizedList"><a href="#使用synchronizedList" class="headerlink" title="使用synchronizedList"></a>使用synchronizedList</h3><img src='java-multi-threads-02-SingleThreadExecution\75efc6cc-99c0-4de0-8544-58d13817a02b.jpg'>
-
-<p>将其同步即可实现并发读写。</p>
-<h3 id="使用CopyOnWrite"><a href="#使用CopyOnWrite" class="headerlink" title="使用CopyOnWrite"></a>使用CopyOnWrite</h3><img src='java-multi-threads-02-SingleThreadExecution\61f59bff-80b1-4e9a-a3f0-53e0d4015a2d.jpg'>
-
-<p>在有写入时，对数组完成复制再进行写入，读取的是副本。每次写入时，都需要复制，对于频繁写入的情景不适用。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+    <a href="/blog/2020/07/08/springBoot2-06-database/" title="springBoot2-06-整合Mybatis" itemprop="url">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">springBoot2-06-整合Mybatis</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >配置数据源
+添加依赖
+
+
+
+
+配置数据源
+
+
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8</p>
+        
     
-      <a href="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/" title="java-multi-threads-02-SingleThreadExecution" itemprop="url">java-multi-threads-02-SingleThreadExecution</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-30T08:55:37.000Z" itemprop="datePublished"> Published 2020-06-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="非独木桥模式"><a href="#非独木桥模式" class="headerlink" title="非独木桥模式"></a>非独木桥模式</h2><img src='java-multi-threads-02-SingleThreadExecution\2619ea40-d1b6-48e0-a5d0-93568cd7aacb.jpg'>
-
-<img src='java-multi-threads-02-SingleThreadExecution\ae265d24-1343-4378-a3f4-fbbcec2b2466.jpg'>
-
-<h3 id="多线程情况下无法保证数据读写的原子性"><a href="#多线程情况下无法保证数据读写的原子性" class="headerlink" title="多线程情况下无法保证数据读写的原子性"></a>多线程情况下无法保证数据读写的原子性</h3><img src='java-multi-threads-02-SingleThreadExecution\bc9de022-6c79-4685-9010-3697d18e2070.jpg'>
-
-<p>或者</p>
-<img src='java-multi-threads-02-SingleThreadExecution\563bf6c6-7ac4-4ac9-b8f9-b1d7273b1b13.jpg'>
-
-<h2 id="独木桥模式"><a href="#独木桥模式" class="headerlink" title="独木桥模式"></a>独木桥模式</h2><p>改进Gate类，使用同步方法：</p>
-<img src='java-multi-threads-02-SingleThreadExecution\f06854ea-8525-4f9a-ac27-56c8639997bf.jpg'>
-
-<p>数据的写入成为原子操作：</p>
-<img src='java-multi-threads-02-SingleThreadExecution\5152a815-bfff-4225-8eca-bafd4f97d700.jpg'>
-
-<p>独木桥模式对临界资源使用同步方法进行保护，使得同步方法称为原子步骤，数据写入是一致完成的。</p>
-<img src='java-multi-threads-02-SingleThreadExecution\bd246f40-e3a1-448b-bcbd-f42a485c2a59.jpg'>
-
-<h2 id="独木桥模式使用情景"><a href="#独木桥模式使用情景" class="headerlink" title="独木桥模式使用情景"></a>独木桥模式使用情景</h2><ol>
-<li><p>单线程无需使用。</p>
-</li>
-<li><p>多线程下，无共享资源，无需使用。</p>
-</li>
-<li><p>多线程情况下，当共享资源实例的状态固定不变时(例如只读)，无需使用。</p>
-</li>
-<li><p>多线程情况下，需要确保实例的状态的一执性，则使用独木桥模式。</p>
-</li>
-</ol>
-<p>一些线程安全的集合：</p>
-<img src='java-multi-threads-02-SingleThreadExecution\63c5aa12-e48e-4523-8a8f-72b0f674aae3.jpg'>
-
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
-<li><p>基本类型和引用类型的赋值和引用是原子操作</p>
-</li>
-<li><p>long和double的赋值和引用是非原子的</p>
-</li>
-<li><p>long、double的数据共享时，需要同步操作，或者使用volatile。</p>
-</li>
-</ol>
-<p>同时，java提供了AtomicInteger、AtomicLong、AtomicIntegerArray、AtomicLongArray用于进行原子操作。</p>
-<h3 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h3><p>使用Semaphore定义信号量，用于限定最大共享线程数。</p>
-<p>日志类：</p>
-<img src='java-multi-threads-02-SingleThreadExecution\df4d53b5-f828-4a97-b2cb-be3d876712d7.jpg'>
-
-<p>共享资源类：</p>
-<img src='java-multi-threads-02-SingleThreadExecution\48519950-9920-4c93-8f50-796e2298f376.jpg'>
-<img src='java-multi-threads-02-SingleThreadExecution\81ec581e-145e-4d9b-a8a9-9688353daf1b.jpg'>
-
-<p>多线程：</p>
-<img src='java-multi-threads-02-SingleThreadExecution\513a5a14-181f-481c-9658-c1cb092a7d4f.jpg'>
-<img src='java-multi-threads-02-SingleThreadExecution\1cb2f187-4014-4e1c-8a92-ad3dee2d53ca.jpg'>
-
-<p>使用十个线程测试：</p>
-<img src='java-multi-threads-02-SingleThreadExecution\3c7018a5-1011-4a39-937e-c927d789d98f.jpg'>
-
-<p>始终最大由三个线程处理：</p>
-<img src='java-multi-threads-02-SingleThreadExecution\efd50d25-536d-4535-8818-a5b015f08bf7.jpg'>
+    <time datetime="2020-07-08T07:13:56.000Z" itemprop="datePublished">2020-07-08</time>
+  </a>
+</section>
 
 
 
 
 
 
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/07/07/springBoot2-05-aop/" title="springBoot2-05-aop" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-05-aop</h1>
+    
+     
+           <p itemprop="description" >自定义AOP
+创建被监视接口
 
 
 
 
+创建实现类，并注册为服务
 
 
 
-  <nav id="page-nav" class="clearfix">
+
+创建切面
+
+
+
+
+
+将切面注册为Bean
+
+
+
+
+测试结果
+
+
+
+引入
+设计增强接口
+
+
+
+
+设计增强接口的实现类
+
+
+
+
+在切面中声明public类型的增强接口的实例
+
+
+ @DeclareParents(</p>
+        
+    
+    <time datetime="2020-07-07T05:46:56.000Z" itemprop="datePublished">2020-07-07</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/07/07/springBoot2-04-spring-others/" title="springBoot2-04-spring-others" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-04-spring-others</h1>
+    
+     
+           <p itemprop="description" >使用配置文件
+添加依赖
+
+
+
+
+添加配置
+
+默认使用application.properties
+
+
+
+使用@Value注入
+
+
+
+可以对字段，set方法进行注解
+
+使用ConfigurationProperties简化
+
+
+
+指定起始database
+配置文件分离单纯使用app</p>
+        
+    
+    <time datetime="2020-07-07T01:56:29.000Z" itemprop="datePublished">2020-07-07</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/07/07/springBoot2-03-dependency-management/" title="springBoot2-03-依赖管理" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-03-依赖管理</h1>
+    
+     
+           <p itemprop="description" >使用Java配置文件配置Bean
+创建POJO
+
+
+
+这就是一个简单的类，我们接下来通过配置类将它注册到容器中用于使用。
+
+配置类使用@Bean注册Bean
+
+
+
+
+使用Bean
+
+
+
+通过Autowired注入Bean，并打印姓名。
+输出窗口显示了姓名：张三
+
+
+通过Compo</p>
+        
+    
+    <time datetime="2020-07-07T00:28:41.000Z" itemprop="datePublished">2020-07-07</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/07/06/springBoot2-02-develop-environment/" title="springBoot2-02-develop-environment" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-02-develop-environment</h1>
+    
+     
+           <p itemprop="description" >搭建Eclipse开发环境
+创建Spring项目
+
+File-new-project
+
+
+
+填写项目的基本信息
+
+
+
+
+选择所需要的模块
+
+
+
+搭建Intellij项目
+创建项目
+
+
+
+
+填写基础信息
+
+
+
+
+选择合适的模块
+
+运行主函数</p>
+        
+    
+    <time datetime="2020-07-06T10:10:09.000Z" itemprop="datePublished">2020-07-06</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/07/06/springBoot2-01-preparement/" title="springBoot2-01-Eclipse插件安装" itemprop="url">
+  
+    <h1 itemprop="name">springBoot2-01-Eclipse插件安装</h1>
+    
+     
+           <p itemprop="description" >1. help-marketplace找到popular模块，Spring Tool Suite
+
+
+2. 安装插件全选所有插件
+
+
+3. 同意协议
+
+至此，插件安装完成！</p>
+        
+    
+    <time datetime="2020-07-06T10:02:08.000Z" itemprop="datePublished">2020-07-06</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/30/java-multi-threads-03-Immutable/" title="java-multi-threads-03-Immutable" itemprop="url">
+  
+    <h1 itemprop="name">java-multi-threads-03-Immutable</h1>
+    
+     
+           <p itemprop="description" >除了构造函数，无法赋值
+
+将字段设置为final类型，字段一旦初始化就不再赋值。
+使用多线程来读取person信息：
+
+
+测试：
+
+
+由于只能读取，不能赋值，因此数据是可信的。
+使用场景
+对象创建后，基本不发生改变。
+
+对象是共享的，频繁读取，而不是赋值。
+
+
+ArrayList</p>
+        
+    
+    <time datetime="2020-06-30T11:15:36.000Z" itemprop="datePublished">2020-06-30</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/" title="java-multi-threads-02-SingleThreadExecution" itemprop="url">
+  
+    <h1 itemprop="name">java-multi-threads-02-SingleThreadExecution</h1>
+    
+     
+           <p itemprop="description" >非独木桥模式
+
+
+
+多线程情况下无法保证数据读写的原子性
+
+或者
+
+
+独木桥模式改进Gate类，使用同步方法：
+
+
+数据的写入成为原子操作：
+
+
+独木桥模式对临界资源使用同步方法进行保护，使得同步方法称为原子步骤，数据写入是一致完成的。
+
+
+独木桥模式使用情景
+单线程无需使用。
+</p>
+        
+    
+    <time datetime="2020-06-30T08:55:37.000Z" itemprop="datePublished">2020-06-30</time>
+  </a>
+</section>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix unexpand">
     <a class="extend prev" rel="prev" href="/blog/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="extend next" rel="next" href="/blog/page/3/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
@@ -1244,8 +579,8 @@ mybatis.type-handlers-package=com.example.demo.typeHandlers
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

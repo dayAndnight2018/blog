@@ -18,20 +18,20 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="异步消息点对点：当前系统将消息发送到指定的消息系统。 发布-订阅：实现一对多的消息发布，订阅方获取消息后可以自由处理。 ActiveMQ的下载安装 点击此处下载  linux执行.sh文件，win执行bat文件  登陆http:&#x2F;&#x2F;localhost:8161&#x2F;admin   账户admin，密码admin spring整合ActiveMQ 添加依赖    2.application.proper">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/springBoot2-10-ActiveMQ/181253f1-1b65-461c-9965-a0a5791afe9f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/springBoot2-10-ActiveMQ/0226d06b-f5c6-4c99-a741-074a8178d048.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/springBoot2-10-ActiveMQ/32cbe12e-8f82-4b33-a88f-8ad9b2e27f45.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/springBoot2-10-ActiveMQ/2c988013-463e-4195-be6b-e7e4c8197dd5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/springBoot2-10-ActiveMQ/1332872a-f03d-4ce9-ad78-4878c2560f00.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/springBoot2-10-ActiveMQ/ddc86846-62d2-4592-803b-cadfb8bea0ca.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/springBoot2-10-ActiveMQ/5ba03acd-3c59-4d6f-b048-b6ce9fe7edf3.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/springBoot2-10-ActiveMQ/a7b42fdc-364c-41f2-adc2-5909f4eeca2f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/181253f1-1b65-461c-9965-a0a5791afe9f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/0226d06b-f5c6-4c99-a741-074a8178d048.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/32cbe12e-8f82-4b33-a88f-8ad9b2e27f45.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/2c988013-463e-4195-be6b-e7e4c8197dd5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/1332872a-f03d-4ce9-ad78-4878c2560f00.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/ddc86846-62d2-4592-803b-cadfb8bea0ca.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/5ba03acd-3c59-4d6f-b048-b6ce9fe7edf3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/a7b42fdc-364c-41f2-adc2-5909f4eeca2f.jpg">
 <meta property="article:published_time" content="2020-07-08T12:45:20.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.952Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring-boot-2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/springBoot2-10-ActiveMQ/181253f1-1b65-461c-9965-a0a5791afe9f.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/181253f1-1b65-461c-9965-a0a5791afe9f.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -108,13 +108,6 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">异步消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ActiveMQ%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">ActiveMQ的下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring%E6%95%B4%E5%90%88ActiveMQ"><span class="toc-number">3.</span> <span class="toc-text">spring整合ActiveMQ</span></a></li></ol>
-		
-		</div>
-		
 		<h2 id="异步消息"><a href="#异步消息" class="headerlink" title="异步消息"></a>异步消息</h2><p>点对点：当前系统将消息发送到指定的消息系统。</p>
 <p>发布-订阅：实现一对多的消息发布，订阅方获取消息后可以自由处理。</p>
 <h2 id="ActiveMQ的下载安装"><a href="#ActiveMQ的下载安装" class="headerlink" title="ActiveMQ的下载安装"></a>ActiveMQ的下载安装</h2><ol>
@@ -129,34 +122,34 @@
 <h2 id="spring整合ActiveMQ"><a href="#spring整合ActiveMQ" class="headerlink" title="spring整合ActiveMQ"></a>spring整合ActiveMQ</h2><ol>
 <li>添加依赖</li>
 </ol>
-<img src='springBoot2-10-ActiveMQ\181253f1-1b65-461c-9965-a0a5791afe9f.jpg'>
+<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/181253f1-1b65-461c-9965-a0a5791afe9f.jpg">
 
 <p>2.application.properties</p>
-<img src='springBoot2-10-ActiveMQ\0226d06b-f5c6-4c99-a741-074a8178d048.jpg'>
+<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/0226d06b-f5c6-4c99-a741-074a8178d048.jpg">
 
 <ol start="3">
 <li>定义消息服务接口</li>
 </ol>
-<img src='springBoot2-10-ActiveMQ\32cbe12e-8f82-4b33-a88f-8ad9b2e27f45.jpg'>
+<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/32cbe12e-8f82-4b33-a88f-8ad9b2e27f45.jpg">
 
 <ol start="4">
 <li>定义消息服务实现类</li>
 </ol>
-<img src='springBoot2-10-ActiveMQ\2c988013-463e-4195-be6b-e7e4c8197dd5.jpg'>
-<img src='springBoot2-10-ActiveMQ\1332872a-f03d-4ce9-ad78-4878c2560f00.jpg'>
+<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/2c988013-463e-4195-be6b-e7e4c8197dd5.jpg">
+<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/1332872a-f03d-4ce9-ad78-4878c2560f00.jpg">
 
 <p>使用@JmsListener注解标记消息来源</p>
 <ol start="5">
 <li>发送POJO</li>
 </ol>
 <p>定义POJO</p>
-<img src='springBoot2-10-ActiveMQ\ddc86846-62d2-4592-803b-cadfb8bea0ca.jpg'>
+<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/ddc86846-62d2-4592-803b-cadfb8bea0ca.jpg">
 
 <p>添加服务方法</p>
-<img src='springBoot2-10-ActiveMQ\5ba03acd-3c59-4d6f-b048-b6ce9fe7edf3.jpg'>
+<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/5ba03acd-3c59-4d6f-b048-b6ce9fe7edf3.jpg">
 
 <p>配置信任的包</p>
-<img src='springBoot2-10-ActiveMQ\a7b42fdc-364c-41f2-adc2-5909f4eeca2f.jpg'>
+<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/a7b42fdc-364c-41f2-adc2-5909f4eeca2f.jpg">
 
 
   
@@ -328,8 +321,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

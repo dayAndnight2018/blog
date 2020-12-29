@@ -79,1499 +79,318 @@
     <div id="container">
       <div id="main">
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/06/30/java-multi-threads-01-introduction/" title="java-multi-threads-01-introduction" itemprop="url">java-multi-threads-01-introduction</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-30T07:28:19.000Z" itemprop="datePublished"> Published 2020-06-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="单线程程序"><a href="#单线程程序" class="headerlink" title="单线程程序"></a>单线程程序</h2><img src='java-multi-threads-01-introduction\a54678ce-50ba-4f2d-b610-bd2e7e8d238c.jpg'>
-
-<p>对上图的程序，只有一个线程，循环语句依次执行。</p>
-<img src='java-multi-threads-01-introduction\f57a09b6-2fe1-45a1-a133-2682e2c6ac6f.jpg'>
-
-<h2 id="多线程程序"><a href="#多线程程序" class="headerlink" title="多线程程序"></a>多线程程序</h2><ol>
-<li><p>搜索文本的同时，响应按钮操作</p>
-</li>
-<li><p>文件及网络的IO是非常耗时的操作，使用多线程提高cpu效率</p>
-</li>
-<li><p>服务端对多个客户端进行处理</p>
-</li>
-</ol>
-<h3 id="使用Thread实例"><a href="#使用Thread实例" class="headerlink" title="使用Thread实例"></a>使用Thread实例</h3><p>设计一个多线程实现类，用于打印Nice</p>
-<img src='java-multi-threads-01-introduction\f2f3a6bc-bd46-4f28-bae4-9d944e02bd8d.jpg'>
-
-<p>主线程开启线程打印Nice，并自己打印Good</p>
-<img src='java-multi-threads-01-introduction\39a3599b-8d71-4f35-85bf-c7d3d2ff3a1e.jpg'>
-
-<p>通过thread.start()方法启动线程。</p>
-<h3 id="使用Runnable实例"><a href="#使用Runnable实例" class="headerlink" title="使用Runnable实例"></a>使用Runnable实例</h3><img src='java-multi-threads-01-introduction\d37edae9-1a59-4ec3-99a4-903dfe1fa24a.jpg'>
-<img src='java-multi-threads-01-introduction\abf3c38f-4126-4518-a314-09dd62d37016.jpg'>
-
-<p>使用新的Thread实例包装Runnable接口的实现类，使用start()启动。</p>
-<h3 id="使用Executor的defaultThreadFactory创建多线程实例"><a href="#使用Executor的defaultThreadFactory创建多线程实例" class="headerlink" title="使用Executor的defaultThreadFactory创建多线程实例"></a>使用Executor的defaultThreadFactory创建多线程实例</h3><img src='java-multi-threads-01-introduction\c27abf3e-9cfe-485b-a43e-6a1077791018.jpg'>
-
-<h2 id="线程睡眠"><a href="#线程睡眠" class="headerlink" title="线程睡眠"></a>线程睡眠</h2><p>线程让渡cpu进行休眠Thread.sleep的方式：</p>
-<img src='java-multi-threads-01-introduction\74556cba-9ea3-4533-923d-0240691fa137.jpg'>
-
-<p>此种方法需要捕获InterrupException</p>
-<p>主线程间隔1秒打印good</p>
-<h2 id="线程互斥"><a href="#线程互斥" class="headerlink" title="线程互斥"></a>线程互斥</h2><p>在银行取款逻辑中，需要先确定账户的余额大于0：</p>
-<img src='java-multi-threads-01-introduction\6bdd3f18-2a2d-466e-a737-7be9e93b43c3.jpg'>
-
-<p>但是，在多线程情况下，两个线程同时执行这段代码，可能出现余额为负数的情况。</p>
-<p>因为多线程情况下，各线程执行代码的情况无法控制，若存在以下情况，则会出现余额小于0的情况：</p>
-<img src='java-multi-threads-01-introduction\d2a8c5bc-4144-4d3d-b9f2-a3e254b2c2f3.jpg'>
-
-<p>为了解决多个线程执行混乱的问题，使用互斥解决以上问题。</p>
-<h3 id="使用synchronized"><a href="#使用synchronized" class="headerlink" title="使用synchronized"></a>使用synchronized</h3><p>使用该标记的方法默认为同步方法（单个时刻只能由一个线程执行）</p>
-<img src='java-multi-threads-01-introduction\a0bea4e0-f940-4b4b-9b0e-b6897be7a196.jpg'>
-
-<p>不同类型的方法的访问示意图：</p>
-<img src='java-multi-threads-01-introduction\0557c90d-fc2f-49ea-9795-f2fecab058f1.jpg'>
-
-<h3 id="使用同步代码块"><a href="#使用同步代码块" class="headerlink" title="使用同步代码块"></a>使用同步代码块</h3><p>通过同步代码块实现：</p>
-<img src='java-multi-threads-01-introduction\dcb445eb-528e-4e50-bbea-715aaf70b1df.jpg'>
-
-<p>对于实例方法，相当于锁定当前的对象：</p>
-<img src='java-multi-threads-01-introduction\526c6605-73d9-4885-a81b-8814511df56e.jpg'>
-
-<p>对于静态方法，相当于锁定Class：</p>
-<img src='java-multi-threads-01-introduction\3fb686a7-d746-4e90-9a3d-f1b237aaf8ae.jpg'>
-
-<h2 id="线程协作"><a href="#线程协作" class="headerlink" title="线程协作"></a>线程协作</h2><p>我们要解决一个存取快递的问题。快递员取快递，用户存快递。快递柜只有一个，用户存了快递就不能再存，通知快递员取快递。快递员取了快递就不能再取，除非用户重新放入了快递。</p>
-<p>线程执行wait方法后进入等待队列：</p>
-<img src='java-multi-threads-01-introduction\c4b8a759-66cc-4ba5-9785-31780538b24e.jpg'>
-
-<p>此时，其他线程可以访问同步方法：</p>
-<img src='java-multi-threads-01-introduction\e73cab0d-8a16-475e-a66e-ef348091fd43.jpg'>
-
-<p>当其他线程处理结束，条件允许后，可以通知其他线程：</p>
-<img src='java-multi-threads-01-introduction\6921a74a-524d-404a-8535-6d8bc3058b2b.jpg'>
-
-<p>线程B退出后，就可以继续执行A线程了。</p>
-<img src='java-multi-threads-01-introduction\bf230c76-8235-4d2e-acfb-ef8bf1215dc9.jpg'>
-
-
-
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/06/25/java22-lambda/" title="java22-lambda表达式" itemprop="url">java22-lambda表达式</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-25T14:03:16.000Z" itemprop="datePublished"> Published 2020-06-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="一个常规问题的实现"><a href="#一个常规问题的实现" class="headerlink" title="一个常规问题的实现"></a>一个常规问题的实现</h2><p>我们定义一个通用方法实现两个int值的计算：</p>
-<ol>
-<li>定义接口</li>
-</ol>
-<img src='java22-lambda\ccee4d44-bbd3-4753-8c32-5e2074271c84.jpg'>
-
-<p>只有一个方法，输入两个值，返回结果。</p>
-<ol start="2">
-<li>通过工厂模式实现</li>
-</ol>
-<p>根据输入操作符的不同，给出接口的不同实现：</p>
-<img src='java22-lambda\5f11e389-7bbc-4a4d-9464-138299369723.jpg'>
-
-<ol start="3">
-<li> 测试</li>
-</ol>
-<p>先构造接口对象，再调用接口方法</p>
-<img src='java22-lambda\9d8473f0-f436-4374-9e10-6fba0008fcea.jpg'>
-
-<h2 id="改用lambda实现"><a href="#改用lambda实现" class="headerlink" title="改用lambda实现"></a>改用lambda实现</h2><img src='java22-lambda\c82d16f9-5de5-49a9-af93-a99699a3c90a.jpg'>
-
-<p>替换匿名内部类的方式是合理的。</p>
-<p>通过lambda表达式实现的匿名内部类的简化，要求必须是函数式接口，即：此接口只能包含一个抽象方法。</p>
-<h2 id="lambda的简化"><a href="#lambda的简化" class="headerlink" title="lambda的简化"></a>lambda的简化</h2><h3 id="简化参数类型"><a href="#简化参数类型" class="headerlink" title="简化参数类型"></a>简化参数类型</h3><p>缩掉参数类型：</p>
-<img src='java22-lambda\ca17d4a0-32a7-4bd9-9204-48eb54b2e578.jpg'>
-
-<p>只有一个参数是，可以省略小括号(不建议)：</p>
-<img src='java22-lambda\34bed390-25cf-4e3c-8bf7-e5603f879450.jpg'>
-
-<p>若实现只有一句话，可以省略大括号及“return”:</p>
-<img src='java22-lambda\c4042c14-129c-45bb-bc00-f6af12812860.jpg'>
-
-<h2 id="lambda可以作为参数传递"><a href="#lambda可以作为参数传递" class="headerlink" title="lambda可以作为参数传递"></a>lambda可以作为参数传递</h2><p>参数是函数式接口时，可以将lambda表达式作为参数传递。</p>
-<img src='java22-lambda\2ace4eaf-8d08-4a56-b95b-7ac09845ed04.jpg'>
-
-<h2 id="lambda可以使用并修改全局变量及全局静态变量"><a href="#lambda可以使用并修改全局变量及全局静态变量" class="headerlink" title="lambda可以使用并修改全局变量及全局静态变量"></a>lambda可以使用并修改全局变量及全局静态变量</h2><img src='java22-lambda\f7c0b65e-8c4c-4e1a-958c-8a77ccf0dfc3.jpg'>
-
-<h2 id="lambda可以捕获局部变量，只能读取不能修改"><a href="#lambda可以捕获局部变量，只能读取不能修改" class="headerlink" title="lambda可以捕获局部变量，只能读取不能修改"></a>lambda可以捕获局部变量，只能读取不能修改</h2><img src='java22-lambda\dd850819-c2df-4273-a38e-6eb76d5a44e0.jpg'>
-
-<h2 id="方法引用的使用"><a href="#方法引用的使用" class="headerlink" title="::方法引用的使用"></a>::方法引用的使用</h2><p>采用与函数式接口类似的方法参数及返回类型的方法均可以代替函数式接口参数传入：</p>
-<img src='java22-lambda\0b9a0ca0-a730-455c-9665-266e68bb9c93.jpg'>
-
-<p>使用方法：</p>
-<img src='java22-lambda\e3face43-b305-4106-a986-018d744e8de0.jpg'>
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/java/">java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/06/24/micro-architect-04-Dubbo/" title="micro-architect-04-Dubbo" itemprop="url">micro-architect-04-Dubbo</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-24T08:23:51.000Z" itemprop="datePublished"> Published 2020-06-24</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Dubbo基本结构"><a href="#Dubbo基本结构" class="headerlink" title="Dubbo基本结构"></a>Dubbo基本结构</h2><img src='micro-architect-04-Dubbo\81a93761-6add-47ee-a368-bdcec4d9d6bf.jpg'>
-
-<h2 id="注册中心"><a href="#注册中心" class="headerlink" title="注册中心"></a>注册中心</h2><h3 id="单个服务配置"><a href="#单个服务配置" class="headerlink" title="单个服务配置"></a>单个服务配置</h3><p>注册中心推荐使用ZooKeeper，解决分布式环境下的数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应用配置项。</p>
-<p>解压后进入conf文件夹，修改zoo_sample.cfg为zoo.cfg</p>
-<img src='micro-architect-04-Dubbo\ac05ccdd-bad5-4d4e-ac47-892a17d7a1f7.jpg'>
-
-<h3 id="集群配置"><a href="#集群配置" class="headerlink" title="集群配置"></a>集群配置</h3><img src='micro-architect-04-Dubbo\19f7e6a5-d034-4a3c-83e6-736db81ec7ba.jpg'>
-
-<p>server:A:B:C:D</p>
-<p>A为名称，B为Ip，C和D分别为仲裁与Leader的端口号。</p>
-<h3 id="启动Zookeeper"><a href="#启动Zookeeper" class="headerlink" title="启动Zookeeper"></a>启动Zookeeper</h3><img src='micro-architect-04-Dubbo\8c54295c-3600-4dd3-9ef8-52c2fdee8c1d.jpg'>
-
-<h2 id="接口工程"><a href="#接口工程" class="headerlink" title="接口工程"></a>接口工程</h2><p>Dubbo是基于接口进行约定的，因此，创建接口工程，为服务端和消费端提供约定。</p>
-<img src='micro-architect-04-Dubbo\95ae7f46-a387-457c-9b71-7bf8bbaec989.jpg'>
-
-<h2 id="服务端项目"><a href="#服务端项目" class="headerlink" title="服务端项目"></a>服务端项目</h2><ol>
-<li>创建Spring Boot项目</li>
-</ol>
-<img src='micro-architect-04-Dubbo\be48446e-d278-4eab-871b-2735352279e8.jpg'>
-
-<ol start="2">
-<li>添加依赖（Dubbo、接口项目）</li>
-</ol>
-<img src='micro-architect-04-Dubbo\27c33106-9653-4574-9d0f-f120d42298b6.jpg'>
-
-<ol start="3">
-<li>编写接口的实现类</li>
-</ol>
-<img src='micro-architect-04-Dubbo\385a5693-f4d5-491a-a737-0732613201c2.jpg'>
-
-<p>@Service用于标志为Dubbo服务。可配置属性：</p>
-<table cellpadding='8' border='1' style='background:#EAF2D3;text-align:center'>
-<thead>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-参数
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-含义
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-</thead>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-version
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-服务版本
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-group
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-服务分组，当接口存在多种实现时，使用group划分
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-cache
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-缓存策略：lru(最近最少使用) threadlocal（当前线程缓存）
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-async
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-非阻塞调用
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-delay
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-服务延迟暴露时间
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-timeout
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-服务超时时间
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-retries
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-重试次数
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-token
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-令牌验证
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-dynamic
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-服务动态注册
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-register
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-是否注册到中心
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-deprecated
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-是否过时
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-accesslog
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-是否输出日志
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-executes
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-服务端并发执行
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-actives
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-客户端并发执行
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-loadbalance
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-负载均衡策略：random / roundrobin / leastactive
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-connections
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-限制连接数
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-protocol
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-使用协议：Dubbo、Hessian、RMI、HTTP、WebService、Thrif
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-mock
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-使用接口名+mork作为类名，服务调用后调用，local在服务调用前调用。
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-</table>
-
-
-
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+    <a href="/blog/2020/06/30/java-multi-threads-01-introduction/" title="java-multi-threads-01-introduction" itemprop="url">
   
-  <span></span> <a href="/blog/tags/microservice/">microservice</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">java-multi-threads-01-introduction</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >单线程程序
+
+对上图的程序，只有一个线程，循环语句依次执行。
+
+
+多线程程序
+搜索文本的同时，响应按钮操作
+
+文件及网络的IO是非常耗时的操作，使用多线程提高cpu效率
+
+服务端对多个客户端进行处理
+
+
+使用Thread实例设计一个多线程实现类，用于打印Nice
+
+
+主线程开启线</p>
+        
     
-      <a href="/blog/2020/06/23/micro-architect-03-Spring-Boot/" title="micro-architect-03-Spring-Boot" itemprop="url">micro-architect-03-Spring-Boot</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-23T13:56:27.000Z" itemprop="datePublished"> Published 2020-06-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="SpringBoot项目目录结构"><a href="#SpringBoot项目目录结构" class="headerlink" title="SpringBoot项目目录结构"></a>SpringBoot项目目录结构</h2><img src='micro-architect-03-Spring-Boot\ba6b8488-41bd-47ea-9f80-864ebfe6a3a7.jpg'>
-
-<h2 id="主要文件"><a href="#主要文件" class="headerlink" title="主要文件"></a>主要文件</h2><ol>
-<li>Application.java</li>
-</ol>
-<img src='micro-architect-03-Spring-Boot\7ce27cef-1990-45ee-a7a1-4ac647da0340.jpg'>
-
-<p>自动扫描当前包及子包下的所有Bean</p>
-<ol start="2">
-<li>application.properties</li>
-</ol>
-<img src='micro-architect-03-Spring-Boot\16f5f4b0-3ae7-4244-bd15-4755a6acd752.jpg'>
-
-<p>配置文件</p>
-<ol start="3">
-<li>pom.xml</li>
-</ol>
-<p>依赖管理文件</p>
-<ol start="4">
-<li>mvnw</li>
-</ol>
-<p>maven命令封装</p>
-<h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><p>Eclipse</p>
-<img src='micro-architect-03-Spring-Boot\52361d23-fa39-4adb-a311-66705ef56ac0.jpg'>
-
-<p>Intellij IDEA</p>
-<img src='micro-architect-03-Spring-Boot\bbda5fde-fed2-45d8-83d3-5997ed3c21aa.jpg'>
+    <time datetime="2020-06-30T07:28:19.000Z" itemprop="datePublished">2020-06-30</time>
+  </a>
+</section>
 
 
 
 
 
 
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/microservice/">microservice</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/06/23/micro-architect-02-module-break/" title="micro-architect-02-模块拆分" itemprop="url">micro-architect-02-模块拆分</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-23T12:40:38.000Z" itemprop="datePublished"> Published 2020-06-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="模块拆分考虑的因素"><a href="#模块拆分考虑的因素" class="headerlink" title="模块拆分考虑的因素"></a>模块拆分考虑的因素</h2><ol>
-<li>系统的复杂度</li>
-</ol>
-<p>模块拆分越细，模块越小，数量越多，依赖关系越复杂。</p>
-<ol start="2">
-<li>团队协作</li>
-</ol>
-<p>模块内部由单个团队负责，需要团队之间协作。</p>
-<ol start="3">
-<li>代码维护难度</li>
-</ol>
-<p>模块提供的服务发生变动会影响其他模块的调用。</p>
-<ol start="4">
-<li>资源分配</li>
-</ol>
-<p>模块拆分越细，越能够准确扩展需求高的模块。</p>
-<h2 id="单模块"><a href="#单模块" class="headerlink" title="单模块"></a>单模块</h2><p>模块内部高度内聚，具有独立的内存、数据库、单元测试、业务逻辑等。</p>
-<img src='micro-architect-02-module-break\e61cbb64-25a6-4eca-b7e2-19b6fe415c74.jpg'>
-
-<p>大部分请求是同步的，若调用时间过长，可采用消息队列实现异步。消费方将请求发送至服务方消息队列，服务方处理结束后调用发送方的回调地址通知即可。</p>
-<h2 id="基础模块"><a href="#基础模块" class="headerlink" title="基础模块"></a>基础模块</h2><p>对模块进行梳理</p>
-<img src='micro-architect-02-module-break\8e9026b4-dd56-4899-bd78-d77ab74743ea.jpg'>
-
-<p>各个模块提供的服务具有原子性，将依赖较少的模块作为基础模块，为复杂的模块服务。</p>
-<h2 id="复杂模块"><a href="#复杂模块" class="headerlink" title="复杂模块"></a>复杂模块</h2><p>当对基础模块进行聚合实现复杂逻辑时，各个基础模块的事务管理较为简单，但多模块之间的二阶事务管理较为复杂。对于无法避免的分布式事务，采用TCC补偿性事务管理方案进行管理。</p>
-<p>服务模块尽可能做到无状态，session由redis进行维护。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/microservice/">microservice</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <a href="/blog/2020/06/25/java22-lambda/" title="java22-lambda表达式" itemprop="url">
+  
+    <h1 itemprop="name">java22-lambda表达式</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/06/23/micro-architect-01-introduction/" title="micro-architect-01-微服务简介" itemprop="url">micro-architect-01-微服务简介</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-23T11:25:44.000Z" itemprop="datePublished"> Published 2020-06-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
+     
+           <p itemprop="description" >一个常规问题的实现我们定义一个通用方法实现两个int值的计算：
+
+定义接口
+
+
+
+只有一个方法，输入两个值，返回结果。
+
+通过工厂模式实现
+
+根据输入操作符的不同，给出接口的不同实现：
+
+
+
+ 测试
+
+先构造接口对象，再调用接口方法
+
+
+改用lambda实现
+
+替换匿名内部类的方</p>
         
-        <h2 id="什么是微服务"><a href="#什么是微服务" class="headerlink" title="什么是微服务"></a>什么是微服务</h2><p><code style='background:#ff3385;color:white;padding:5px;'>微服务</code>就是将功能模块进行拆分，各部分独立编译、部署，作为独立的功能模块对外提供服务，各部分之间 相互配合共同构成系统的整体。</p>
-<p>微服务各模块之间采用RPC或HTTP进行通信。</p>
-<h2 id="微服务与垂直架构的对比"><a href="#微服务与垂直架构的对比" class="headerlink" title="微服务与垂直架构的对比"></a>微服务与垂直架构的对比</h2><table cellpadding='8' border='1' style='background:#EAF2D3;text-align:center'>
-<thead>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
+    
+    <time datetime="2020-06-25T14:03:16.000Z" itemprop="datePublished">2020-06-25</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/24/micro-architect-04-Dubbo/" title="micro-architect-04-Dubbo" itemprop="url">
+  
+    <h1 itemprop="name">micro-architect-04-Dubbo</h1>
+    
+     
+           <p itemprop="description" >Dubbo基本结构
+
+注册中心单个服务配置注册中心推荐使用ZooKeeper，解决分布式环境下的数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应用配置项。
+解压后进入conf文件夹，修改zoo_sample.cfg为zoo.cfg
+
+
+集群配置
+
+server:A</p>
+        
+    
+    <time datetime="2020-06-24T08:23:51.000Z" itemprop="datePublished">2020-06-24</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/23/micro-architect-03-Spring-Boot/" title="micro-architect-03-Spring-Boot" itemprop="url">
+  
+    <h1 itemprop="name">micro-architect-03-Spring-Boot</h1>
+    
+     
+           <p itemprop="description" >SpringBoot项目目录结构
+
+主要文件
+Application.java
+
+
+
+自动扫描当前包及子包下的所有Bean
+
+application.properties
+
+
+
+配置文件
+
+pom.xml
+
+依赖管理文件
+
+mvnw
+
+maven命令封装
+编辑器Eclipse
+
+</p>
+        
+    
+    <time datetime="2020-06-23T13:56:27.000Z" itemprop="datePublished">2020-06-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/23/micro-architect-02-module-break/" title="micro-architect-02-模块拆分" itemprop="url">
+  
+    <h1 itemprop="name">micro-architect-02-模块拆分</h1>
+    
+     
+           <p itemprop="description" >模块拆分考虑的因素
+系统的复杂度
+
+模块拆分越细，模块越小，数量越多，依赖关系越复杂。
+
+团队协作
+
+模块内部由单个团队负责，需要团队之间协作。
+
+代码维护难度
+
+模块提供的服务发生变动会影响其他模块的调用。
+
+资源分配
+
+模块拆分越细，越能够准确扩展需求高的模块。
+单模块模块内</p>
+        
+    
+    <time datetime="2020-06-23T12:40:38.000Z" itemprop="datePublished">2020-06-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/23/micro-architect-01-introduction/" title="micro-architect-01-微服务简介" itemprop="url">
+  
+    <h1 itemprop="name">micro-architect-01-微服务简介</h1>
+    
+     
+           <p itemprop="description" >什么是微服务微服务就是将功能模块进行拆分，各部分独立编译、部署，作为独立的功能模块对外提供服务，各部分之间 相互配合共同构成系统的整体。
+微服务各模块之间采用RPC或HTTP进行通信。
+微服务与垂直架构的对比
+
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
 层面/架构
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-单体垂直结构
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-微服务
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-</thead>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-代码维护
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-代码集中，维护不便
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-分模块开发，维护方便
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-部署
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-整体编译、部署
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-分模块编译部署，模块之间互不影响
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-资源控制
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-采用横向扩展，部署集群，反向代理进行负载均衡
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-仅对需求高的模块进行扩展即可
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-稳定性
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-单个模块出现问题，整个应用会受影响
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-一般单个模块不会影响整个应用的运行。
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-</table>
-
-<h2 id="一个简单的微服务框架"><a href="#一个简单的微服务框架" class="headerlink" title="一个简单的微服务框架"></a>一个简单的微服务框架</h2><img src='micro-architect-01-introduction\d16e22fd-1c3f-4bbc-ad2a-b245a043cfd2.jpg'>
-
-<p>客户端发起请求，将请求内容<code style='background:#ff3385;color:white;padding:5px;'>序列化</code>后经网络发送至服务端，服务端接收请求后<code style='background:#ff3385;color:white;padding:5px;'>反序列化</code>并执行相关的服务调用，将结果<code style='background:#ff3385;color:white;padding:5px;'>序列化</code>后经网络返回客户端。</p>
-<h3 id="1-基于接口约定服务端与客户端之间的接口调用"><a href="#1-基于接口约定服务端与客户端之间的接口调用" class="headerlink" title="1. 基于接口约定服务端与客户端之间的接口调用"></a>1. 基于接口约定服务端与客户端之间的接口调用</h3><p>这里使用Maven技术构建jar包：</p>
-<img src='micro-architect-01-introduction\b59e8cd3-fe8d-416a-95fa-e9e4cddc2547.jpg'>
-
-<p>通过接口约定服务方法：</p>
-<img src='micro-architect-01-introduction\62700d0f-683b-49ce-a8ed-1e8bd2afbf5d.jpg'>
-
-<h3 id="2-服务端设计"><a href="#2-服务端设计" class="headerlink" title="2. 服务端设计"></a>2. 服务端设计</h3><p>通过Maven构建服务端：</p>
-<img src='micro-architect-01-introduction\42b0446b-3fd6-421e-87a6-3af7e09ed005.jpg'>
-
-<p>引入刚才约定的服务接口项目jar包：</p>
-<img src='micro-architect-01-introduction\4373b5fa-a3cf-4617-aa52-7baccdca7265.jpg'>
-
-<p>实现约定的服务接口：</p>
-<img src='micro-architect-01-introduction\52347422-a865-4df1-bf8e-878f9925611f.jpg'>
-
-<p>服务管理类：</p>
-<img src='micro-architect-01-introduction\d082814a-d249-4165-a578-7b07c3726fb6.jpg'>
-<img src='micro-architect-01-introduction\df894cae-7c43-4a8c-b34e-2e74eca1c463.jpg'>
-<img src='micro-architect-01-introduction\6b0c5191-aa4f-4a61-bfb2-0431b5c12a17.jpg' >
-
-<p>基本流程如下：</p>
-<ol>
-<li><p>提供register方法便于注册服务。</p>
-</li>
-<li><p>通过start方法开启服务端Socket, 等待客户端连接，接收连接后，获取服务调用的接口名、方法名、参数类型、参数列表</p>
-</li>
-<li><p>通过服务映射表获取服务实现类</p>
-</li>
-<li><p>通过反射获取指定方法名、指定参数类型的方法</p>
-</li>
-<li><p>调用方法，获取结果</p>
-</li>
-<li><p>将结果序列化后返回Socket</p>
-</li>
-</ol>
-<p>注册服务，启动服务端：</p>
-<img src='micro-architect-01-introduction\867bab5a-8759-43c6-a24e-4a145e5e7059.jpg'>
-
-<h3 id="3-客户端设计"><a href="#3-客户端设计" class="headerlink" title="3. 客户端设计"></a>3. 客户端设计</h3><p>创建Maven项目：</p>
-<img src='micro-architect-01-introduction\0eae3730-a2cb-4718-9d3f-b722a4965339.jpg'>
-
-<p>引入接口jar包：</p>
-<img src='micro-architect-01-introduction\164f5409-67a0-4bb4-86ef-2d71d2fcb9c9.jpg'>
-
-<p>创建服务调用类：</p>
-<img src='micro-architect-01-introduction\c4aa479c-93d9-4da1-970c-0606483da0f9.jpg'>
-<img src='micro-architect-01-introduction\c3880f5d-eb80-4e75-ba7c-8bcc58d3d8cd.jpg'>
-<img src='micro-architect-01-introduction\40c8ce28-1e50-4385-9adb-836fbcb00296.jpg'>
-
-<p>基本流程如下：</p>
-<ol>
-<li><p>基于给定的接口和远程服务Socket地址，构建反向代理</p>
-</li>
-<li><p>创建客户端接口连接服务端，将接口名称、方法名称、参数类型、参数序列化后发送给服务端，并接收服务端返回的结果。</p>
-</li>
-<li><p>返回结果。</p>
-</li>
-</ol>
-<p>调用测试：</p>
-<img src='micro-architect-01-introduction\dbc80ab4-729e-4c91-ade8-a81457c9f79c.jpg'>
-
-<h2 id="服务框架介绍"><a href="#服务框架介绍" class="headerlink" title="服务框架介绍"></a>服务框架介绍</h2><h3 id="Dubbo-RPC"><a href="#Dubbo-RPC" class="headerlink" title="Dubbo(RPC)"></a>Dubbo(RPC)</h3><img src='micro-architect-01-introduction\f7c5f813-8893-4f0a-b9c6-cf104ae2a95e.jpg'>
-
-<img src='micro-architect-01-introduction\51ba9d14-9386-46c2-b204-a01ffeb14272.jpg'>
-
-<h3 id="Spring-Cloud-HTTP"><a href="#Spring-Cloud-HTTP" class="headerlink" title="Spring Cloud(HTTP)"></a>Spring Cloud(HTTP)</h3><img src='micro-architect-01-introduction\35a5057c-63ae-4928-8de3-9cd6500756dd.jpg'>
-
-<p>Eureka：提供服务注册与发现，负载均衡功能。</p>
-<p>Hystrix：提供服务熔断机制，服务不可用时及时响应。</p>
-<p>Zuul：提供动态路由、监控、弹性服务。</p>
-<p>Config Server：配置文件管理</p>
-<p>Spring Boot：便捷式开发</p>
-
+&amp;nbsp;&amp;n</p>
         
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
+    
+    <time datetime="2020-06-23T11:25:44.000Z" itemprop="datePublished">2020-06-23</time>
+  </a>
+</section>
 
 
-  <div class="article-tags">
+
+
+
+
   
-  <span></span> <a href="/blog/tags/microservice/">microservice</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/" title="JavaEE-19-Redis-Advanced-Topics" itemprop="url">JavaEE-19-Redis-Advanced-Topics</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-23T01:06:48.000Z" itemprop="datePublished"> Published 2020-06-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Redis事务"><a href="#Redis事务" class="headerlink" title="Redis事务"></a>Redis事务</h2><h3 id="Redis事务指令"><a href="#Redis事务指令" class="headerlink" title="Redis事务指令"></a>Redis事务指令</h3><img src='JavaEE-19-Redis-Advanced-Topics\b437183d-5e81-4043-9852-7ed34abe9d72.jpg'>
-
-<p>Redis的multi指令后，指令会添加到队列，直到exec，discard用于回滚。</p>
-<h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><p>通过SessionCallback实现批量指令执行，同时使用execute执行SessionCallback指令</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\3c17762d-fa70-4145-9d87-f50f2ada0809.jpg'>
-
-<h3 id="事务回滚"><a href="#事务回滚" class="headerlink" title="事务回滚"></a>事务回滚</h3><p>自动事务回滚是在指令格式出错情况下回滚，若因其他原因，如incr指令使用浮点数操作，此类不会导致回滚，前后指令正常执行。</p>
-<h3 id="watch监控事务"><a href="#watch监控事务" class="headerlink" title="watch监控事务"></a>watch监控事务</h3><p>使用watch监视字段</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\3fba7df4-bbf5-4f0a-8f9a-a80da27ac788.jpg'>
-
-<p>采用CAS的方式实现，但不存在ABA问题。</p>
-<p>若字段没有发生变化，将会提交</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\4822e0ef-42b9-47b9-8f66-4a0acc7acc14.jpg'>
-
-<p>若字段被修改，自动回滚</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\bf3164c1-c3a0-447e-ae42-9bbea7cb889b.jpg'>
-
-<h2 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h2><p>流水线采用批量执行指令的方式，提高效率。</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\b013d773-35f9-4d4d-85a0-853b685f4035.jpg'>
-
-<p>Spring使用RedisTemplate执行时，差异不大。</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\070e7f9a-2bbb-4681-8abf-259ad40b772f.jpg'>
-
-<h2 id="发布与订阅"><a href="#发布与订阅" class="headerlink" title="发布与订阅"></a>发布与订阅</h2><p>观察者模式的实现</p>
-<img src='JavaEE-19-Redis-Advanced-Topics\8c530925-68e2-4e55-83d4-cfd3472b982e.jpg'>
-
-<ol>
-<li>client1监听频道</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
-SUBSCRIBE channel
-</pre>
-
-<ol start="2">
-<li>client2发布消息</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
-publish channel message
-</pre>
-
-<h3 id="java实现"><a href="#java实现" class="headerlink" title="java实现"></a>java实现</h3><ol>
-<li>消息订阅者</li>
-</ol>
-<img src='JavaEE-19-Redis-Advanced-Topics\131c81f4-e7b8-4268-bf9c-f24779798322.jpg'>
-
-<ol start="2">
-<li>消息订阅容器</li>
-</ol>
-<img src='JavaEE-19-Redis-Advanced-Topics\20893852-3163-47c5-8ee6-43eafeb8db6f.jpg'>
-
-<ol start="3">
-<li>消息发布测试</li>
-</ol>
-<img src='JavaEE-19-Redis-Advanced-Topics\8c1b94f0-0ad2-46d2-91b6-a34ad843022f.jpg'>
-
-<h2 id="Redis超时指令"><a href="#Redis超时指令" class="headerlink" title="Redis超时指令"></a>Redis超时指令</h2><img src='JavaEE-19-Redis-Advanced-Topics\3564b87e-9de8-414f-b85d-7a42fe2247a4.jpg'>
-<img src='JavaEE-19-Redis-Advanced-Topics\abe68ebf-d98f-42c2-bce3-6f634ea6c2d0.jpg'>
-
-<p>expire(String key, int timeout, TimeUnit unit)指定有效时间</p>
-<p>expire(String key,Date date)指定过期时间</p>
-<p>persist(String key)永久有效</p>
-<h2 id="Lua脚本"><a href="#Lua脚本" class="headerlink" title="Lua脚本"></a>Lua脚本</h2><p>Redis支持Lua脚本，可以弥补Redis的计算性能</p>
-<h3 id="使用指令"><a href="#使用指令" class="headerlink" title="使用指令"></a>使用指令</h3><img src='JavaEE-19-Redis-Advanced-Topics\666bf7a7-3694-438e-a4e2-36ca6e9dbdc2.jpg'>
-
-<p>如：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
-eval "return 'hello Lua' " 0
-</pre>
-
-<pre style='background:#e6e6e6;padding=10px;'>
-eval "redis.call('set',KEYS[1],ARGV[1])" 1 lua-key lua-value
-</pre>
-
-<h3 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h3><ol>
-<li>加载脚本</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
-script load "return 'hello lua'"
-</pre>
-
-<p>返回脚本的sha值</p>
-<ol start="2">
-<li>执行脚本</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
-evalsha sha key-num [key1 key2···] [param1 param2···]
-</pre>
-
-<img src='JavaEE-19-Redis-Advanced-Topics\a96c9b3f-355e-4b16-91b8-39c9b0140e1e.jpg'>
-
-<h3 id="使用Spring执行脚本"><a href="#使用Spring执行脚本" class="headerlink" title="使用Spring执行脚本"></a>使用Spring执行脚本</h3><img src='JavaEE-19-Redis-Advanced-Topics\88935773-cb5f-47b9-84fd-f0056a6589e9.jpg'>
-
-<p>jedis.eval(String script)执行脚本</p>
-<p>jedis.eval(String script, int keyNum, String … keyParam)带参数脚本</p>
-<p>jedis.scriptLoad(String script)加载脚本</p>
-<p>jedis.evalsha(String sha, int keyNum, String … keyParam)执行</p>
-<h3 id="使用Spring执行对象脚本"><a href="#使用Spring执行对象脚本" class="headerlink" title="使用Spring执行对象脚本"></a>使用Spring执行对象脚本</h3><img src='JavaEE-19-Redis-Advanced-Topics\ba6a6942-a257-45de-adfb-73372c79db2b.jpg'>
-
-<p>使用DefaultRedisScript配置</p>
-<p>setScriptText(String script)设置脚本内容</p>
-<p>getSha1()获取签名</p>
-<p>setResultType(Class class)设置返回值类型</p>
-<p>execute(DefaultRedisScript script, RedisSerializer paramSerializer, RedisSerializer resultSerializer, List keyList, object param)执行</p>
-<h3 id="执行lua文件"><a href="#执行lua文件" class="headerlink" title="执行lua文件"></a>执行lua文件</h3><img src='JavaEE-19-Redis-Advanced-Topics\22a88ac0-f411-4a91-a862-bcebe33d9ce2.jpg'>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/06/22/JavaEE-18-Redis-Data-Structure/" title="JavaEE-18-Redis-Data-Structure" itemprop="url">JavaEE-18-Redis-Data-Structure</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-22T13:21:12.000Z" itemprop="datePublished"> Published 2020-06-22</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Redis常见数据结构"><a href="#Redis常见数据结构" class="headerlink" title="Redis常见数据结构"></a>Redis常见数据结构</h2><img src='JavaEE-18-Redis-Data-Structure\db516e45-cd9d-4096-b168-ae4a9fec9fb8.jpg' >
-
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="字符串采用键值对存储"><a href="#字符串采用键值对存储" class="headerlink" title="字符串采用键值对存储"></a>字符串采用键值对存储</h3><img src='JavaEE-18-Redis-Data-Structure\e3800819-e45e-4a7f-a50a-c866395c5fde.jpg'>
-
-<h3 id="常用的指令"><a href="#常用的指令" class="headerlink" title="常用的指令"></a>常用的指令</h3><img src='JavaEE-18-Redis-Data-Structure\8289c92a-5f13-4715-baa0-55a32a689a00.jpg'>
-
-<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><img src='JavaEE-18-Redis-Data-Structure\0cdbf955-d53d-4a3a-95db-54faf74165a6.jpg'>
-
-<p>redisTemplate.opsForValue().get(String key)读取值</p>
-<p>redisTemplate.opsForValue().set(String key, String value)设值</p>
-<p>redisTemplate.opsForValue().append(String key, String value)追加值</p>
-<p>redisTemplate.opsForValue().getAndset(String key, String value)设值读旧值</p>
-<p>redisTemplate.delete(String delete)删除值</p>
-<h3 id="数值操作指令"><a href="#数值操作指令" class="headerlink" title="数值操作指令"></a>数值操作指令</h3><img src='JavaEE-18-Redis-Data-Structure\074c8846-8da7-4838-bb2c-3ec2c66d97a2.jpg'>
-
-<ul>
-<li><p>incr key / incrby key val</p>
-</li>
-<li><p>decr key / decrby key val</p>
-</li>
-<li><p>incrbyfloat key val</p>
-</li>
-</ul>
-<p>不过类似的操作常常使用java代码操作，不常用</p>
-<img src='JavaEE-18-Redis-Data-Structure\669e6152-05d2-4b5e-b258-25ad0480a429.jpg'>
-
-<h2 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h2><h3 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h3><img src='JavaEE-18-Redis-Data-Structure\3641b579-aa73-4da9-8c72-19e480c7bcd2.jpg'>
-
-<h3 id="常用的指令-1"><a href="#常用的指令-1" class="headerlink" title="常用的指令"></a>常用的指令</h3><img src='JavaEE-18-Redis-Data-Structure\9512440c-6813-48b1-bd7a-f87cbe2ad930.jpg'>
-
-<h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><img src='JavaEE-18-Redis-Data-Structure\00ce5ab5-53e4-47f7-94ae-327124fa7cb1.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\e690e0d7-17fb-4bf2-9770-d31bd8b6b703.jpg'>
-
-<p>redisTemplate.opsForHash().putAll(String key, Map&lt;String,String&gt;val)赋值</p>
-<p>redisTemplate.opsForHash().put(String key, String field, String val)赋值</p>
-<p>redisTemplate.opsForHash().hasKey(String key, String field)判断字段存在性</p>
-<p>redisTemplate.opsForHash().entries(String key)获取键值对</p>
-<p>redisTemplate.opsForHash().values(String key)获取键集合</p>
-<p>redisTemplate.opsForHash().keys(String key)获取值集合</p>
-<p>redisTemplate.opsForHash().multiGet(String key, List<String> fields)获取批量字段</p>
-<p>redisTemplate.opsForHash().putIfAbsent(String key, String field, String val)不存在就赋值</p>
-<p>redisTemplate.opsForHash().delete(String key, String … fields)批量删除字段</p>
-<img src='JavaEE-18-Redis-Data-Structure\16341be0-0f36-4f44-9807-5ad59cf5ef02.jpg' >
-
-<p>redisTemplate.opsForHash().get(String key, String field)获取</p>
-<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="采用双向指针的链表"><a href="#采用双向指针的链表" class="headerlink" title="采用双向指针的链表"></a>采用双向指针的链表</h3><img src='JavaEE-18-Redis-Data-Structure\fb3eebee-cf16-46cf-b6e6-a52dba95175c.jpg'>
-
-<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><img src='JavaEE-18-Redis-Data-Structure\d3ce093f-badc-404b-b93a-ddc14e270aa5.jpg'>
-
-<h3 id="阻塞指令（并发场景）"><a href="#阻塞指令（并发场景）" class="headerlink" title="阻塞指令（并发场景）"></a>阻塞指令（并发场景）</h3><img src='JavaEE-18-Redis-Data-Structure\52c513be-3a34-4eea-be09-b01130988c68.jpg'>
-
-<h3 id="使用实例-1"><a href="#使用实例-1" class="headerlink" title="使用实例"></a>使用实例</h3><img src='JavaEE-18-Redis-Data-Structure\3b210674-fd62-43d5-a3bb-9351b108fb99.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\f8d5d624-fd1d-4071-95d6-17a332a4f180.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\fe3db352-11c7-4076-bfd5-9b9d48eaef1f.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\79ceff00-7265-4d6f-a616-a2b20a68fded.jpg'>
-
-<p>redisTemplate.opsForList().delete(String key)删除list</p>
-<p>redisTemplate.opsForList().leftPush(String key, String val);左插</p>
-<p>redisTemplate.opsForList().rightPush(String key, String val)右插</p>
-<p>redisTemplate.opsForList().leftPushAll(String key, List<String> val)左插集合</p>
-<p>redisTemplate.opsForList().leftPushIfPresent(String key, String val);存在则左插</p>
-<p>redisTemplate.opsForList().rightPushIfPresent(String key, String val)存在则右插</p>
-<p>redisTemplate.opsForList().leftPop(String key)左弹</p>
-<p>redisTemplate.opsForList().rightPop(String key)右弹</p>
-<p>redisTemplate.opsForList().index(String key, int index)返回指定位置元素</p>
-<p>redisTemplate.opsForList().range(String key, int start,int end)返回指定位置范围的元素</p>
-<p>redisTemplate.opsForList().size(String key)获取元素数量</p>
-<p>redisTemplate.getConnectionFactory().getConnection().lInsert(byte[] key, RedisListCommands.Position pos, byte[] refNode, byte[] newNode)指定元素前/后插入新元素</p>
-<p>redisTemplate.opsForList().remove(String key, int count, String val)移除至多count个值为val的元素</p>
-<p>redisTemplate.opsForList().set(String key, int index, String val)设置指定位置元素值</p>
-<img src='JavaEE-18-Redis-Data-Structure\7f06af70-8d69-4727-8e9f-90facd611872.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\156cf2d7-5c3a-4051-94d6-da6d38e0aa24.jpg'>
-
-<p>redisTemplate.opsForList().leftPop(String key,int timeout, TimeUnit unit)阻塞左弹</p>
-<p>redisTemplate.opsForList().rightPop(String key, int timeout,TimeUnit unit)阻塞右弹</p>
-<p>redisTemplate.opsForList().rightPopAndLeftPush(String key, String val, int timeout,TimeUnit unit)阻塞右弹左插</p>
-<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="常用指令-1"><a href="#常用指令-1" class="headerlink" title="常用指令"></a>常用指令</h3><img src='JavaEE-18-Redis-Data-Structure\8e8ff88c-0182-47d6-a793-538967d339e9.jpg' >
-<img src='JavaEE-18-Redis-Data-Structure\dd775088-ce3f-41d9-8ef2-d3a5271b5c37.jpg'>
-
-<h3 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h3><img src='JavaEE-18-Redis-Data-Structure\e130fba5-8a2d-4b55-87c1-995a4b7d5434.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\210f2351-e2f0-4323-a144-fa34c960bd46.jpg'>
-
-<p>redisTemplate.boundSetOps(String key).add(String … vals)批量添加</p>
-<p>redisTemplate.OpsForSet().size(String key)大小</p>
-<p>redisTemplate.OpsForSet().difference(String key1, String key2)差</p>
-<p>redisTemplate.OpsForSet().intersect(String key1, String key2)交</p>
-<p>redisTemplate.OpsForSet().union(String key1, String key2)并</p>
-<p>redisTemplate.OpsForSet().differenceAndStore(String key1, String key2, String key3)key1、key2差存key3</p>
-<p>redisTemplate.OpsForSet().intersectAndStore(String key1, String key2, String key3)key1、key2交存key3</p>
-<p>redisTemplate.OpsForSet().unionAndStore(String key1, String key2, String key3)key1、key2并存key3</p>
-<p>redisTemplate.OpsForSet().isMember(String key, String val)存在判断</p>
-<p>redisTemplate.OpsForSet().members(String key)所有元素</p>
-<p>redisTemplate.OpsForSet().pop(String key)随机弹出一个元素</p>
-<p>redisTemplate.OpsForSet().randomMember(String key)随机获取一个元素</p>
-<p>redisTemplate.OpsForSet().randomMembers(String key，long n)随机获取n个元素</p>
-<p>redisTemplate.OpsForSet().remove(String key，String… vals)移除元素</p>
-<h2 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h2><h3 id="常用指令-2"><a href="#常用指令-2" class="headerlink" title="常用指令"></a>常用指令</h3><img src='JavaEE-18-Redis-Data-Structure\9d3707be-0155-4665-8571-a40798caa102.jpg' >
-<img src='JavaEE-18-Redis-Data-Structure\3b0ba18a-69c9-4091-9813-a3b7e23e0038.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\cb313c6f-8e60-40d2-967d-5ac8a421f44b.jpg'>
-
-<h3 id="使用示例-2"><a href="#使用示例-2" class="headerlink" title="使用示例"></a>使用示例</h3><img src='JavaEE-18-Redis-Data-Structure\54338755-0f66-4b4c-afc3-b55144ff3f38.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\a9c1d5df-0ca8-4c65-b85d-555e980310fd.jpg' >
-<img src='JavaEE-18-Redis-Data-Structure\da39244f-5aab-44fa-8c4f-c07ae755bd9c.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\f2302487-0e44-42a2-b3e7-c02910decf7b.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\06e6d0ce-9ea4-4350-a1ec-c9e1af848630.jpg'>
-<img src='JavaEE-18-Redis-Data-Structure\54b7ee20-eba5-4892-9eb9-445fad7ac5c5.jpg'>
-
-<p>redisTemplate.OpsForZSet().add(String key, Set<TypedTuple> set)添加集合</p>
-<p>redisTemplate.OpsForZSet().zCard(String key)集合大小</p>
-<p>redisTemplate.OpsForZSet().count(String key, int low, int high)获取score指定范围的元素</p>
-<p>redisTemplate.OpsForZSet().range(String key, int start, int count)获取指定start位置开始的count个元素</p>
-<p>redisTemplate.OpsForZSet().rangeWithScores(String key, int low, int high)按分数排序后的集合</p>
-<p>redisTemplate.OpsForZSet().intersectAndStore(String key1, String key2, String key3)key1、key2的差集存到key3</p>
-<p>redisTemplate.OpsForZSet().rangeByLex(String key, Range range, Limit limit)限制查询</p>
-<p>redisTemplate.OpsForZSet().rank(String key, String val)查询排名</p>
-<p>redisTemplate.OpsForZSet().remove(String key, String … vals)移除元素</p>
-<p>redisTemplate.OpsForZSet().removeRange(String key, int low, int high)移除排名范围元素</p>
-<p>redisTemplate.OpsForZSet().removeRangeByScore(String key, int low, int high)移除分数范围元素</p>
-<p>redisTemplate.OpsForZSet().reverseRangeWithScore(String key, int low, int high)按分数范围逆序排序</p>
-<h2 id="基数"><a href="#基数" class="headerlink" title="基数"></a>基数</h2><h3 id="类似于最小完全子集"><a href="#类似于最小完全子集" class="headerlink" title="类似于最小完全子集"></a>类似于最小完全子集</h3><img src='JavaEE-18-Redis-Data-Structure\e0f725a6-70e3-4383-9399-93eaf0a7e2a4.jpg'>
-
-<h3 id="操作实例"><a href="#操作实例" class="headerlink" title="操作实例"></a>操作实例</h3><img src='JavaEE-18-Redis-Data-Structure\807b14a7-749a-47a5-bf65-98e023a68870.jpg'>
-
-<p>redisTemplate.OpsForHyperLogLog().add(String key, String val)添加元素</p>
-<p>redisTemplate.OpsForHyperLogLog().size(String key)基数大小</p>
-<p>redisTemplate.OpsForHyperLogLog().union(String key1, String key2, String key3)key1、key2的并集存到key3</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+    <a href="/blog/2020/06/23/JavaEE-19-Redis-Advanced-Topics/" title="JavaEE-19-Redis-Advanced-Topics" itemprop="url">
   
-  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">JavaEE-19-Redis-Advanced-Topics</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >Redis事务Redis事务指令
+
+Redis的multi指令后，指令会添加到队列，直到exec，discard用于回滚。
+使用实例通过SessionCallback实现批量指令执行，同时使用execute执行SessionCallback指令
+
+
+事务回滚自动事务回滚是在指令格</p>
+        
     
-      <a href="/blog/2020/06/22/JavaEE-17-Redis-introduction/" title="JavaEE-17-Redis-introduction" itemprop="url">JavaEE-17-Redis-introduction</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-22T12:06:44.000Z" itemprop="datePublished"> Published 2020-06-22</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Redis应用场景"><a href="#Redis应用场景" class="headerlink" title="Redis应用场景"></a>Redis应用场景</h2><p>Redis是一种内存数据库，存储方式类似于Map结构，键值对形式。读取速度非常快，常用于高并发场景。</p>
-<ol>
-<li>数据缓存</li>
-</ol>
-<p>对一些热点数据，读到内存中，使用Redis缓存，可以避免数据库的频繁读取，Redis常用来缓存。</p>
-<ol start="2">
-<li>高速读写。</li>
-</ol>
-<p>高并发场景下，类似于抢购、抢红包场景，数据读写速度要求高，因此使用数据库难以支撑。数据库读写数据的速度较慢，是对硬盘的直接读写，速度受限。当大量用户并发访问需要大量数据库连接进行读写时，系统会崩掉。借助于Redis的快速读写的特性（数据存于内存）</p>
-<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><h3 id="内存大小有限，我们不能什么都存Redis"><a href="#内存大小有限，我们不能什么都存Redis" class="headerlink" title="内存大小有限，我们不能什么都存Redis"></a>内存大小有限，我们不能什么都存Redis</h3><ol>
-<li>热点数据</li>
-</ol>
-<p>对读取频率非常高的数据进行缓存</p>
-<ol start="2">
-<li><p>数据读取多还是写入多？频繁写入的数据不适合缓存。</p>
-</li>
-<li><p>数据大小如何？Redis不适合存数据较大的东西。</p>
-</li>
-</ol>
-<h3 id="Redis缓存后数据读取的流程"><a href="#Redis缓存后数据读取的流程" class="headerlink" title="Redis缓存后数据读取的流程"></a>Redis缓存后数据读取的流程</h3><img src='JavaEE-17-Redis-introduction\a2133681-bb42-4444-a6a0-7c5eae675076.jpg'>
-
-<h3 id="Redis缓存时数据写入流程"><a href="#Redis缓存时数据写入流程" class="headerlink" title="Redis缓存时数据写入流程"></a>Redis缓存时数据写入流程</h3><img src='JavaEE-17-Redis-introduction\bf48ccae-4a29-485a-aa32-067c32e651b5.jpg'>
-
-<h2 id="高速读写场合"><a href="#高速读写场合" class="headerlink" title="高速读写场合"></a>高速读写场合</h2><p>对于商品抢购，抢红包类似的活动，用户并发访问的数量很大，如果单纯地使用数据库，很快就会宕机。</p>
-<p>常采用的方式是，对数据库进行异步写入，用户的操作数据先存到Redis，等到合适的时机（如抢购活动结束），批量将数据写入数据库。在这里，Redis承担临时数据库的角色。</p>
-<img src='JavaEE-17-Redis-introduction\695fe0a5-0390-443a-b761-b86335f88209.jpg'>
-
-<p>每次请求过来，发起抢购操作，所有的数据都是对Redis操作，读写速度很快，因而响应速度快，解决并发访问量的问题。同时，每次抢购后都要判断是否操作结束，如商品数量剩余0，此时将批量写入数据库。</p>
-<h2 id="Redis在win操作系统下的安装使用"><a href="#Redis在win操作系统下的安装使用" class="headerlink" title="Redis在win操作系统下的安装使用"></a>Redis在win操作系统下的安装使用</h2><ol>
-<li>下载Redis</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://github.com/ServiceStack/redis-windows/tree/master/downloads">点击此处下载Redis</a></p>
-<ol start="2">
-<li>启动命令行</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
-redis-server redis.windows.conf
-</pre>
-
-<ol start="3">
-<li>打开客户端工具</li>
-</ol>
-<p>redis-cli.exe</p>
-<h2 id="Redis在Linux下的安装使用"><a href="#Redis在Linux下的安装使用" class="headerlink" title="Redis在Linux下的安装使用"></a>Redis在Linux下的安装使用</h2><ol>
-<li>下载解压</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
-cd /usr/
-mkdir redis
-cd redis
-wget http://download.redis.io/releases/redis-3.2.4.tar.gz
-tar xzf redis-3.2.4.tar.gz
-cd redis-3.2.4
-make
-</pre>
-
-<ol start="2">
-<li>运行服务端</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
-src/redis-server
-</pre>
-
-<ol start="3">
-<li>运行客户端</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
-cd /usr/redis/redis-3.2.4
-src/redis-cli
-</pre>
-
-<h2 id="使用Java操作Redis"><a href="#使用Java操作Redis" class="headerlink" title="使用Java操作Redis"></a>使用Java操作Redis</h2><ol>
-<li>下载Jedis.jar</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="http://mvnrepository.com/artifact/redis.clients/jedis">点击此处下载Jedis</a></p>
-<ol start="2">
-<li>使用Jedis操作</li>
-</ol>
-<img src='JavaEE-17-Redis-introduction\4de741c1-0c09-46a6-8505-6f5966ec1980.jpg'>
-
-<p>Jedis(String url, int port)构造Jedis客户端</p>
-<p>auth(String password)用于输入密码</p>
-<p>set(String key, String value)写入键值对</p>
-<p>close()关闭连接</p>
-<ol start="3">
-<li>使用连接池</li>
-</ol>
-<img src='JavaEE-17-Redis-introduction\ed889d86-f16a-4427-9f2a-823790f4105f.jpg'>
-
-<p>使用JedisPoolConfig创建连接池配置，使用配置创建JedisPool连接池，通过getResource()方法获取Jedis连接。其他方法与上面类似。</p>
-<h2 id="Spring中使用Redis"><a href="#Spring中使用Redis" class="headerlink" title="Spring中使用Redis"></a>Spring中使用Redis</h2><ol>
-<li>下载spring-data-redis</li>
-</ol>
-<p>spring对Jedis的操作封装在spring-data-redis下的RedisTemplate中</p>
-<p><a target="_blank" rel="noopener" href="http://mvnrepository.com/artifact/org.springframework.data/spring-data-redis">点击此处下载spring-data-redis</a></p>
-<ol start="2">
-<li>配置Jedis连接池配置类</li>
-</ol>
-<img src='JavaEE-17-Redis-introduction\5dd774f9-02b4-4065-8cfd-d3e39c91fabf.jpg'>
-
-<ol start="3">
-<li>配置Jedis工厂</li>
-</ol>
-<img src='JavaEE-17-Redis-introduction\69509692-f685-403a-a618-4a6e56e1f797.jpg'>
-
-<ol start="4">
-<li>配置键序列化器、值序列化器、RedisTemplate</li>
-</ol>
-<img src='JavaEE-17-Redis-introduction\2836667e-a4af-45b8-ab7b-69163889f3c2.jpg'>
-
-<p>键使用StringRedisSerializer，值使用JdkSerializationRedisSerializer</p>
-<ol start="5">
-<li>测试</li>
-</ol>
-<p>对象需要实现Serializable接口(使用JDK序列化器)</p>
-<img src='JavaEE-17-Redis-introduction\c8ec944a-a590-4735-be3d-850998c6824d.jpg'>
-
-<p>读写操作：</p>
-<img src='JavaEE-17-Redis-introduction\aeabd851-8577-4c9f-9b55-f0cb8af7196c.jpg'>
-
-<p>redisTemplate.opsForValue().set(String key, object value)写入</p>
-<p>redisTemplate.opsForValue().get(String key)读取</p>
-<p>使用SessionCallback保证相同的Redis连接下操作：</p>
-<img src='JavaEE-17-Redis-introduction\5e68b1a2-300b-4ee1-ba26-9efe4fb8d037.jpg'>
-
-<p>redisOperations.boundValueOps(String key).set(object value)写入</p>
-<p>redisOperations.boundValueOps(String key).get()读取</p>
-<h2 id="Redis的六种数据类型"><a href="#Redis的六种数据类型" class="headerlink" title="Redis的六种数据类型"></a>Redis的六种数据类型</h2><img src='JavaEE-17-Redis-introduction\347ca6ac-597d-40a7-872f-a3f0ad5d1375.jpg'>
+    <time datetime="2020-06-23T01:06:48.000Z" itemprop="datePublished">2020-06-23</time>
+  </a>
+</section>
 
 
 
 
 
 
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/06/21/JavaEE-13-Transaction/" title="JavaEE-13-Transaction" itemprop="url">JavaEE-13-Transaction</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-21T14:03:07.000Z" itemprop="datePublished"> Published 2020-06-21</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="数据库事务管理器"><a href="#数据库事务管理器" class="headerlink" title="数据库事务管理器"></a>数据库事务管理器</h2><p>事务管理器就是管理数据库事务的工具，对于Mybatis，常用的就是DataSourceTransactionManager</p>
-<h3 id="xml方式配置"><a href="#xml方式配置" class="headerlink" title="xml方式配置"></a>xml方式配置</h3><img src='JavaEE-13-Transaction\a0849b76-18d6-46a0-94fe-fdcaa66c7f3b.jpg'>
-
-<h3 id="Java配置"><a href="#Java配置" class="headerlink" title="Java配置"></a>Java配置</h3><p>需要实现TransactionManagerConfigurer接口的annotationDrivenTransactionManager方法，将返回的事务管理器作为项目的事务管理器。</p>
-<img src='JavaEE-13-Transaction\2d6c7c6d-0730-4875-82f4-3c1a34db5fd1.jpg'>
-
-<p>使用@EnableTransactionManagement表示遇到@Transactional时，使用本事务管理器管理事务。</p>
-<p>重写annotationDrivenTransactionManager方法：</p>
-<img src='JavaEE-13-Transaction\a8695828-a310-401c-b68b-e99937c65fa0.jpg' >
-
-<h2 id="事务类型"><a href="#事务类型" class="headerlink" title="事务类型"></a>事务类型</h2><ol>
-<li><p>编程式事务</p>
-</li>
-<li><p>声明式事务</p>
-</li>
-</ol>
-<h2 id="编程式事务"><a href="#编程式事务" class="headerlink" title="编程式事务"></a>编程式事务</h2><img src='JavaEE-13-Transaction\18e583cc-b510-4472-8a32-ba32ae06f2da.jpg'>
-<img src='JavaEE-13-Transaction\69368772-4cf0-4245-a8a3-bab6c9ad39a1.jpg'>
-
-<p>通过TransactionDefinition定义一个事务，采用transactionManager获取一个TransactionStatus状态对象，对状态进行提交或回滚。</p>
-<p>编程式事务完全靠代码手动控制提交，回滚。</p>
-<h2 id="声明式事务"><a href="#声明式事务" class="headerlink" title="声明式事务"></a>声明式事务</h2><h3 id="Transactional选项"><a href="#Transactional选项" class="headerlink" title="@Transactional选项"></a>@Transactional选项</h3><img src='JavaEE-13-Transaction\45cf8122-ade3-4821-8952-e123b67f5586.jpg' >
-<img src='JavaEE-13-Transaction\5d5892f6-1440-44c1-94fc-9901c52bdfd6.jpg'>
-
-<h3 id="开启注解驱动"><a href="#开启注解驱动" class="headerlink" title="开启注解驱动"></a>开启注解驱动</h3><img src='JavaEE-13-Transaction\1ab2f8b7-9c6d-42fd-9470-d937305f115c.jpg'>
-
-<h2 id="数据库隔离级别的选择"><a href="#数据库隔离级别的选择" class="headerlink" title="数据库隔离级别的选择"></a>数据库隔离级别的选择</h2><img src='JavaEE-13-Transaction\7a656cc0-a18f-4f7c-b7bb-e0d607542815.jpg' >
-
-<p>对高并发场景一般采用读已提交级别，并发小的场景可采用序列化级别。</p>
-<img src='JavaEE-13-Transaction\f69d4cde-b4be-4ce8-bda2-eb155a28f7aa.jpg' >
-
-<img src='JavaEE-13-Transaction\897a200f-2334-41f1-ab13-2acc0cdc3ea6.jpg' >
-
-<h2 id="传播行为"><a href="#传播行为" class="headerlink" title="传播行为"></a>传播行为</h2><h3 id="什么是传播行为？"><a href="#什么是传播行为？" class="headerlink" title="什么是传播行为？"></a>什么是传播行为？</h3><p>不同服务层方法调用时，事务的传递性原则称为事物的隔离级别。</p>
-<p>例如：</p>
-<p>PayBatchService批量支付服务，他需要循环调用PayService进行支付，正常来说，这个过程中，有一次支付失败，将回滚到第一个支付行为，不管前面已经支付成功。这样造成效率低的问题。我们希望：只回滚本次事务。</p>
-<p>通过设置传播行为，可以解决回滚的粒度问题。</p>
-<img src='JavaEE-13-Transaction\88fd81f4-97f8-4f16-9c8e-4fa30f0ac466.jpg' >
-
-<h3 id="几种传播行为"><a href="#几种传播行为" class="headerlink" title="几种传播行为"></a>几种传播行为</h3><img src='JavaEE-13-Transaction\10f7055c-fcb2-4384-afc1-502bb3ce7b4b.jpg'>
-
-<h2 id="在SSM中使用事务"><a href="#在SSM中使用事务" class="headerlink" title="在SSM中使用事务"></a>在SSM中使用事务</h2><ol>
-<li>开启注解驱动、开启包扫描，配置数据源</li>
-</ol>
-<img src='JavaEE-13-Transaction\956bf458-1520-478f-9305-86444ff140df.jpg' >
-
-<ol start="2">
-<li>配置SqlSessionBeanFactory</li>
-</ol>
-<img src='JavaEE-13-Transaction\2c9cdf74-c8f8-4113-93fb-f16a78c9c75d.jpg'>
-
-<ol start="3">
-<li>配置事务管理器</li>
-</ol>
-<img src='JavaEE-13-Transaction\c8b31f9d-b744-4e06-a905-5e268a430552.jpg' >
-
-<ol start="4">
-<li>配置注解驱动事务</li>
-</ol>
-<img src='JavaEE-13-Transaction\0ed66cd8-52cd-47b4-b728-2d9ee1daaade.jpg' >
-
-<ol start="5">
-<li>配置Mapper扫描机制</li>
-</ol>
-<img src='JavaEE-13-Transaction\bbf9489e-e3db-4587-b48c-9872429f2110.jpg' >
-
-<ol start="6">
-<li>事务使用</li>
-</ol>
-<img src='JavaEE-13-Transaction\a8c5c8e7-4082-4d85-bc0d-41fe3e9f89da.jpg' >
-
-<img src='JavaEE-13-Transaction\94fcf187-0ba4-406a-98e7-066aa31e17a8.jpg' >
-
-<p>PayBatchService使用Requierd，PayService使用Requires_new传播</p>
-<h2 id="自调用失效问题"><a href="#自调用失效问题" class="headerlink" title="自调用失效问题"></a>自调用失效问题</h2><p>对静态、非public方法@Transactional失效</p>
-<p>刚才的例子是不同的服务之间调用，事务传播行为有效，如果PayBatchService与PayService在相同类中，就会失效。因为基于动态代理实现的，相同类不会产生新的代理对象。</p>
-<p>可以通过手动获取代理对象解决：</p>
-<img src='JavaEE-13-Transaction\a15d2b03-fd5a-470a-ac92-83ac5603aa88.jpg'>
-
-
-
-
-
-
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/JavaEE/">JavaEE</a>
-  </div>
+    <a href="/blog/2020/06/22/JavaEE-18-Redis-Data-Structure/" title="JavaEE-18-Redis-Data-Structure" itemprop="url">
+  
+    <h1 itemprop="name">JavaEE-18-Redis-Data-Structure</h1>
+    
+     
+           <p itemprop="description" >Redis常见数据结构
 
-</div>
+字符串字符串采用键值对存储
+
+常用的指令
+
+使用示例
+
+redisTemplate.opsForValue().get(String key)读取值
+redisTemplate.opsForValue().set(String key, String v</p>
+        
+    
+    <time datetime="2020-06-22T13:21:12.000Z" itemprop="datePublished">2020-06-22</time>
+  </a>
+</section>
 
 
 
 
-<div class="comments-count">
-	
-</div>
-
-</footer>
 
 
-    </article>
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/22/JavaEE-17-Redis-introduction/" title="JavaEE-17-Redis-introduction" itemprop="url">
+  
+    <h1 itemprop="name">JavaEE-17-Redis-introduction</h1>
+    
+     
+           <p itemprop="description" >Redis应用场景Redis是一种内存数据库，存储方式类似于Map结构，键值对形式。读取速度非常快，常用于高并发场景。
+
+数据缓存
+
+对一些热点数据，读到内存中，使用Redis缓存，可以避免数据库的频繁读取，Redis常用来缓存。
+
+高速读写。
+
+高并发场景下，类似于抢购、抢红包</p>
+        
+    
+    <time datetime="2020-06-22T12:06:44.000Z" itemprop="datePublished">2020-06-22</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/06/21/JavaEE-13-Transaction/" title="JavaEE-13-Transaction" itemprop="url">
+  
+    <h1 itemprop="name">JavaEE-13-Transaction</h1>
+    
+     
+           <p itemprop="description" >数据库事务管理器事务管理器就是管理数据库事务的工具，对于Mybatis，常用的就是DataSourceTransactionManager
+xml方式配置
+
+Java配置需要实现TransactionManagerConfigurer接口的annotationDrivenTran</p>
+        
+    
+    <time datetime="2020-06-21T14:03:07.000Z" itemprop="datePublished">2020-06-21</time>
+  </a>
+</section>
 
 
 
@@ -1579,7 +398,7 @@ src/redis-cli
 
 
 
-  <nav id="page-nav" class="clearfix">
+  <nav id="page-nav" class="clearfix unexpand">
     <a class="extend prev" rel="prev" href="/blog/page/2/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="extend next" rel="next" href="/blog/page/4/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
@@ -1692,8 +511,8 @@ src/redis-cli
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

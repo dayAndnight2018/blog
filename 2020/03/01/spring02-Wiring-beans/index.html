@@ -18,46 +18,46 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="如何注册Bean？ 在XML中进行显式配置：通过xml配置文件注册Bean  在Java中进行显式配置：通过java配置类注册Bean  隐式的bean发现机制和自动装配：让spring自己去扫描（配合注解使用）   发现机制发现机制就是Bean扫描机制  我们先来创建一个接口，表示CD:     然后给出一种实现：    我们把这个类进行了@Component标记，这就告诉spring，他就是一">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/e39447f3-9cca-4593-8593-bbeee49a23bc.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/da0f5453-79e7-4967-a951-8dd33f04a2e7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/2cd29d83-a440-47f9-a5c0-7e928186ccbf.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/33301175-60c4-4673-9428-d1580b8f879f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/ffc361e3-207b-40f8-80eb-c48dcd4c83d2.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/ca29213c-8984-48e5-87c8-4e01df9a1fd6.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/87401b8f-b9b1-4630-a212-1c9e86742905.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/72142139-13cf-44a2-9946-fcd4f8a2c9d7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/6e61e103-65e3-465a-a13d-330e8f4a20fe.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/427890fa-d2f8-41f2-afe5-4a8aeed89607.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/f28d709b-318d-4c74-953a-d1ec0428f10e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/f05ee1d2-650b-4a03-963b-24fdc2cd1bbc.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/c599fc95-f151-4230-b187-8ea329f8c587.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/fbc1c386-9d7c-4ea6-9ad9-d888da574ff7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/6a345622-5f96-4394-b310-0577f42dc8b8.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/71fb6444-e252-4147-af00-1de36cb12bc3.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/6fb32f7b-768c-48a9-b2d8-e894cf70c056.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/697b11a9-e120-45c8-bbab-2b9830f388e1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/a734495d-75e5-409a-9107-846bedbba5a2.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/039e9d21-58b9-40d6-a8e9-1a8bc723a469.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/99bba038-b1c6-45e5-8e3c-1b6320f196af.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/e110e2a9-bf05-4a62-8288-60d87011f284.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/9a5c8931-dc73-4434-a8de-d7e37fa14886.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/fa1ca96b-1413-4d6b-a66e-e2cb8da932af.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/d5a8079d-a020-461b-aa31-09edb39f49e7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/81d97000-1fd0-4e40-a526-39e64884ca79.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/323bfc05-8cf1-456d-bde0-160d754cee36.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/e85bb101-f274-4d57-a575-e0228b55ee61.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/d9bc320c-6f2e-4605-9f92-3cbdbb12bc4a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/bd6e8b08-5593-4bee-b4bb-6926da59695c.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/1af814d4-ea1f-4dd5-88b8-0ef7108b0cde.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/3775de2c-ed5e-41d6-8fc7-cf8f60b5f99c.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/b72a97a6-a5b2-412a-838c-bf6a4567af60.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/80f6ddb2-f622-458f-9b7f-da43ca7b5fa0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/e39447f3-9cca-4593-8593-bbeee49a23bc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/da0f5453-79e7-4967-a951-8dd33f04a2e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/2cd29d83-a440-47f9-a5c0-7e928186ccbf.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/33301175-60c4-4673-9428-d1580b8f879f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/ffc361e3-207b-40f8-80eb-c48dcd4c83d2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/ca29213c-8984-48e5-87c8-4e01df9a1fd6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/87401b8f-b9b1-4630-a212-1c9e86742905.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/72142139-13cf-44a2-9946-fcd4f8a2c9d7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/6e61e103-65e3-465a-a13d-330e8f4a20fe.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/427890fa-d2f8-41f2-afe5-4a8aeed89607.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/f28d709b-318d-4c74-953a-d1ec0428f10e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/f05ee1d2-650b-4a03-963b-24fdc2cd1bbc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/c599fc95-f151-4230-b187-8ea329f8c587.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/fbc1c386-9d7c-4ea6-9ad9-d888da574ff7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/6a345622-5f96-4394-b310-0577f42dc8b8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/71fb6444-e252-4147-af00-1de36cb12bc3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/6fb32f7b-768c-48a9-b2d8-e894cf70c056.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/697b11a9-e120-45c8-bbab-2b9830f388e1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/a734495d-75e5-409a-9107-846bedbba5a2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/039e9d21-58b9-40d6-a8e9-1a8bc723a469.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/99bba038-b1c6-45e5-8e3c-1b6320f196af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/e110e2a9-bf05-4a62-8288-60d87011f284.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/9a5c8931-dc73-4434-a8de-d7e37fa14886.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/fa1ca96b-1413-4d6b-a66e-e2cb8da932af.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/d5a8079d-a020-461b-aa31-09edb39f49e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/81d97000-1fd0-4e40-a526-39e64884ca79.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/323bfc05-8cf1-456d-bde0-160d754cee36.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/e85bb101-f274-4d57-a575-e0228b55ee61.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/d9bc320c-6f2e-4605-9f92-3cbdbb12bc4a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/bd6e8b08-5593-4bee-b4bb-6926da59695c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/1af814d4-ea1f-4dd5-88b8-0ef7108b0cde.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/3775de2c-ed5e-41d6-8fc7-cf8f60b5f99c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/b72a97a6-a5b2-412a-838c-bf6a4567af60.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/80f6ddb2-f622-458f-9b7f-da43ca7b5fa0.jpg">
 <meta property="article:published_time" content="2020-03-01T07:28:39.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.894Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/03/01/spring02-Wiring-beans/spring02-Wiring-beans/e39447f3-9cca-4593-8593-bbeee49a23bc.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring02-Wiring-beans/e39447f3-9cca-4593-8593-bbeee49a23bc.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -134,13 +134,6 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%B3%A8%E5%86%8CBean%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">如何注册Bean？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">发现机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D"><span class="toc-number">3.</span> <span class="toc-text">自动装配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-Config"><span class="toc-number">4.</span> <span class="toc-text">Java Config</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BABean"><span class="toc-number">4.1.</span> <span class="toc-text">创建Bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E9%85%8DBean"><span class="toc-number">4.2.</span> <span class="toc-text">装配Bean</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8xml%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AEBean"><span class="toc-number">5.</span> <span class="toc-text">使用xml文件配置Bean</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean%E6%96%87%E4%BB%B6%E8%A7%84%E8%8C%83"><span class="toc-number">5.1.</span> <span class="toc-text">Bean文件规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AABean"><span class="toc-number">5.2.</span> <span class="toc-text">创建一个Bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5"><span class="toc-number">5.3.</span> <span class="toc-text">使用构造器注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-number">5.4.</span> <span class="toc-text">使用构造器注入字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5%E9%9B%86%E5%90%88"><span class="toc-number">5.5.</span> <span class="toc-text">使用构造器注入集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87setter%E6%96%B9%E6%B3%95%E6%B3%A8%E5%85%A5"><span class="toc-number">5.6.</span> <span class="toc-text">通过setter方法注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Java-Config%E4%B8%AD%E5%8A%A0%E8%BD%BDJava-Config"><span class="toc-number">6.</span> <span class="toc-text">在Java Config中加载Java Config</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Java-Config%E4%B8%AD%E5%8A%A0%E8%BD%BDxml"><span class="toc-number">7.</span> <span class="toc-text">在Java Config中加载xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8XML%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BC%95%E7%94%A8JavaConfig"><span class="toc-number">8.</span> <span class="toc-text">在XML配置中引用JavaConfig</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87xml%E5%BC%80%E5%90%AF%E6%89%AB%E6%8F%8F"><span class="toc-number">9.</span> <span class="toc-text">通过xml开启扫描</span></a></li></ol>
-		
-		</div>
-		
 		<h2 id="如何注册Bean？"><a href="#如何注册Bean？" class="headerlink" title="如何注册Bean？"></a>如何注册Bean？</h2><ol>
 <li><p>在XML中进行显式配置：通过xml配置文件注册Bean</p>
 </li>
@@ -149,124 +142,124 @@
 <li><p>隐式的bean发现机制和自动装配：让spring自己去扫描（配合注解使用）</p>
 </li>
 </ol>
-<h2 id="发现机制"><a href="#发现机制" class="headerlink" title="发现机制"></a>发现机制</h2><p>发现机制就是Bean<code style='background:#ff3385;color:white;padding:5px;'>扫描机制</code></p>
+<h2 id="发现机制"><a href="#发现机制" class="headerlink" title="发现机制"></a>发现机制</h2><p>发现机制就是Bean<code style="background:#ff3385;color:white;padding:5px;">扫描机制</code></p>
 <ol>
 <li>我们先来创建一个接口，表示CD:</li>
 </ol>
-<img src='spring02-Wiring-beans\e39447f3-9cca-4593-8593-bbeee49a23bc.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/e39447f3-9cca-4593-8593-bbeee49a23bc.jpg">
 
 <ol start="2">
 <li>然后给出一种实现：</li>
 </ol>
-<img src='spring02-Wiring-beans\da0f5453-79e7-4967-a951-8dd33f04a2e7.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/da0f5453-79e7-4967-a951-8dd33f04a2e7.jpg">
 
-<p>我们把这个类进行了<code style='background:#ff3385;color:white;padding:5px;'>@Component</code>标记，这就告诉spring，他就是一个Bean</p>
+<p>我们把这个类进行了<code style="background:#ff3385;color:white;padding:5px;">@Component</code>标记，这就告诉spring，他就是一个Bean</p>
 <ol start="3">
 <li>在相同的包下，我们创建了一个配置类，扫描这个配置类所在的包及所有子包里的Bean。</li>
 </ol>
-<img src='spring02-Wiring-beans\2cd29d83-a440-47f9-a5c0-7e928186ccbf.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/2cd29d83-a440-47f9-a5c0-7e928186ccbf.jpg">
 
-<p><code style='background:#ff3385;color:white;padding:5px;'>@Configuration</code>表示这是一个配置类</p>
-<p><code style='background:#ff3385;color:white;padding:5px;'>@ComponentScan</code>表示开启Bean扫描机制</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">@Configuration</code>表示这是一个配置类</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">@ComponentScan</code>表示开启Bean扫描机制</p>
 <ol start="4">
 <li>然后可以进行测试了：</li>
 </ol>
-<img src='spring02-Wiring-beans\33301175-60c4-4673-9428-d1580b8f879f.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/33301175-60c4-4673-9428-d1580b8f879f.jpg">
 
 <p>@ContextConfiguration配置了对包扫描范围进行设定的那个配置类。</p>
 <p>@Autowired实现自动绑定。</p>
-<p>为Bean<code style='background:#ff3385;color:white;padding:5px;'>设置别名</code>：</p>
-<img src='spring02-Wiring-beans\ffc361e3-207b-40f8-80eb-c48dcd4c83d2.jpg'>
+<p>为Bean<code style="background:#ff3385;color:white;padding:5px;">设置别名</code>：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/ffc361e3-207b-40f8-80eb-c48dcd4c83d2.jpg">
 
-<p>可以设置<code style='background:#ff3385;color:white;padding:5px;'>配置类</code>所在的位置：</p>
-<img src='spring02-Wiring-beans\ca29213c-8984-48e5-87c8-4e01df9a1fd6.jpg'>
+<p>可以设置<code style="background:#ff3385;color:white;padding:5px;">配置类</code>所在的位置：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/ca29213c-8984-48e5-87c8-4e01df9a1fd6.jpg">
 
-<h2 id="自动装配"><a href="#自动装配" class="headerlink" title="自动装配"></a>自动装配</h2><p>使用<code style='background:#ff3385;color:white;padding:5px;'>@Autowired</code>可以实现自动绑定，前面绑定了域，构造器也是可以的：</p>
-<img src='spring02-Wiring-beans\87401b8f-b9b1-4630-a212-1c9e86742905.jpg'>
+<h2 id="自动装配"><a href="#自动装配" class="headerlink" title="自动装配"></a>自动装配</h2><p>使用<code style="background:#ff3385;color:white;padding:5px;">@Autowired</code>可以实现自动绑定，前面绑定了域，构造器也是可以的：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/87401b8f-b9b1-4630-a212-1c9e86742905.jpg">
 
 <p>setter方法也是可以的：</p>
-<img src='spring02-Wiring-beans\72142139-13cf-44a2-9946-fcd4f8a2c9d7.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/72142139-13cf-44a2-9946-fcd4f8a2c9d7.jpg">
 
 <p>但是@Autowired有个缺点，如果Bean找不到，会抛出异常，为了避免，我们可以设置：</p>
-<img src='spring02-Wiring-beans\6e61e103-65e3-465a-a13d-330e8f4a20fe.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/6e61e103-65e3-465a-a13d-330e8f4a20fe.jpg">
 
 <p>设置required=false则说明，我不是非要找到这个Bean,你找不到不用跟我说。但是会带来其他风险，那就是空指针。</p>
-<h2 id="Java-Config"><a href="#Java-Config" class="headerlink" title="Java Config"></a>Java Config</h2><h3 id="创建Bean"><a href="#创建Bean" class="headerlink" title="创建Bean"></a>创建Bean</h3><p>使用<code style='background:#ff3385;color:white;padding:5px;'>@Bean</code>注解一个方法，它的返回值就可以作为Bean注册到spring</p>
-<img src='spring02-Wiring-beans\427890fa-d2f8-41f2-afe5-4a8aeed89607.jpg'>
+<h2 id="Java-Config"><a href="#Java-Config" class="headerlink" title="Java Config"></a>Java Config</h2><h3 id="创建Bean"><a href="#创建Bean" class="headerlink" title="创建Bean"></a>创建Bean</h3><p>使用<code style="background:#ff3385;color:white;padding:5px;">@Bean</code>注解一个方法，它的返回值就可以作为Bean注册到spring</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/427890fa-d2f8-41f2-afe5-4a8aeed89607.jpg">
 
 <p>默认情况下，这个Bean的名称就是方法名称，我们可以为其重命名：</p>
-<img src='spring02-Wiring-beans\f28d709b-318d-4c74-953a-d1ec0428f10e.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/f28d709b-318d-4c74-953a-d1ec0428f10e.jpg">
 
-<h3 id="装配Bean"><a href="#装配Bean" class="headerlink" title="装配Bean"></a>装配Bean</h3><p>可以通过<code style='background:#ff3385;color:white;padding:5px;'>构造器</code>实现装配：</p>
-<img src='spring02-Wiring-beans\f05ee1d2-650b-4a03-963b-24fdc2cd1bbc.jpg'>
+<h3 id="装配Bean"><a href="#装配Bean" class="headerlink" title="装配Bean"></a>装配Bean</h3><p>可以通过<code style="background:#ff3385;color:white;padding:5px;">构造器</code>实现装配：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/f05ee1d2-650b-4a03-963b-24fdc2cd1bbc.jpg">
 
-<p>也可以通过<code style='background:#ff3385;color:white;padding:5px;'>参数</code>注入：</p>
-<img src='spring02-Wiring-beans\c599fc95-f151-4230-b187-8ea329f8c587.jpg'>
+<p>也可以通过<code style="background:#ff3385;color:white;padding:5px;">参数</code>注入：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/c599fc95-f151-4230-b187-8ea329f8c587.jpg">
 
-<p>使用<code style='background:#ff3385;color:white;padding:5px;'>setter方法</code>注入：</p>
-<img src='spring02-Wiring-beans\fbc1c386-9d7c-4ea6-9ad9-d888da574ff7.jpg'>
+<p>使用<code style="background:#ff3385;color:white;padding:5px;">setter方法</code>注入：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/fbc1c386-9d7c-4ea6-9ad9-d888da574ff7.jpg">
 
-<h2 id="使用xml文件配置Bean"><a href="#使用xml文件配置Bean" class="headerlink" title="使用xml文件配置Bean"></a>使用xml文件配置Bean</h2><h3 id="Bean文件规范"><a href="#Bean文件规范" class="headerlink" title="Bean文件规范"></a>Bean文件规范</h3><img src='spring02-Wiring-beans\6a345622-5f96-4394-b310-0577f42dc8b8.jpg'>
+<h2 id="使用xml文件配置Bean"><a href="#使用xml文件配置Bean" class="headerlink" title="使用xml文件配置Bean"></a>使用xml文件配置Bean</h2><h3 id="Bean文件规范"><a href="#Bean文件规范" class="headerlink" title="Bean文件规范"></a>Bean文件规范</h3><img src="/blog/2020/03/01/spring02-Wiring-beans/6a345622-5f96-4394-b310-0577f42dc8b8.jpg">
 
-<h3 id="创建一个Bean"><a href="#创建一个Bean" class="headerlink" title="创建一个Bean"></a>创建一个Bean</h3><img src='spring02-Wiring-beans\71fb6444-e252-4147-af00-1de36cb12bc3.jpg'>
+<h3 id="创建一个Bean"><a href="#创建一个Bean" class="headerlink" title="创建一个Bean"></a>创建一个Bean</h3><img src="/blog/2020/03/01/spring02-Wiring-beans/71fb6444-e252-4147-af00-1de36cb12bc3.jpg">
 
-<p>通过Bean标签创建一个Bean,class是Bean的<code style='background:#ff3385;color:white;padding:5px;'>全限定名称</code>，用来唯一获得Bean的位置</p>
-<p>可以为Bean设置一个<code style='background:#ff3385;color:white;padding:5px;'>名称</code>：</p>
-<img src='spring02-Wiring-beans\6fb32f7b-768c-48a9-b2d8-e894cf70c056.jpg'>
+<p>通过Bean标签创建一个Bean,class是Bean的<code style="background:#ff3385;color:white;padding:5px;">全限定名称</code>，用来唯一获得Bean的位置</p>
+<p>可以为Bean设置一个<code style="background:#ff3385;color:white;padding:5px;">名称</code>：</p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/6fb32f7b-768c-48a9-b2d8-e894cf70c056.jpg">
 
 <p>id表示Bean的名称</p>
-<h3 id="使用构造器注入"><a href="#使用构造器注入" class="headerlink" title="使用构造器注入"></a>使用构造器注入</h3><p>使用<constructor-arg />构造器注入：</p>
-<img src='spring02-Wiring-beans\697b11a9-e120-45c8-bbab-2b9830f388e1.jpg'>
+<h3 id="使用构造器注入"><a href="#使用构造器注入" class="headerlink" title="使用构造器注入"></a>使用构造器注入</h3><p>使用<constructor-arg>构造器注入：</constructor-arg></p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/697b11a9-e120-45c8-bbab-2b9830f388e1.jpg">
 
 <p>ref是引用的其他Bean(通过id名称)</p>
 <h3 id="使用构造器注入字面值"><a href="#使用构造器注入字面值" class="headerlink" title="使用构造器注入字面值"></a>使用构造器注入字面值</h3><p>假如存在这样的Bean,怎么注入值呢？</p>
-<img src='spring02-Wiring-beans\a734495d-75e5-409a-9107-846bedbba5a2.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/a734495d-75e5-409a-9107-846bedbba5a2.jpg">
 
-<p>使用<constructor-arg />的value字段设置字面值：</p>
-<img src='spring02-Wiring-beans\039e9d21-58b9-40d6-a8e9-1a8bc723a469.jpg'>
+<p>使用<constructor-arg>的value字段设置字面值：</constructor-arg></p>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/039e9d21-58b9-40d6-a8e9-1a8bc723a469.jpg">
 
 <h3 id="使用构造器注入集合"><a href="#使用构造器注入集合" class="headerlink" title="使用构造器注入集合"></a>使用构造器注入集合</h3><p>对于List这样的集合呢？</p>
-<img src='spring02-Wiring-beans\99bba038-b1c6-45e5-8e3c-1b6320f196af.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/99bba038-b1c6-45e5-8e3c-1b6320f196af.jpg">
 
 <p>可以注入null</p>
-<img src='spring02-Wiring-beans\e110e2a9-bf05-4a62-8288-60d87011f284.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/e110e2a9-bf05-4a62-8288-60d87011f284.jpg">
 
 <p>可以注入值：</p>
-<img src='spring02-Wiring-beans\9a5c8931-dc73-4434-a8de-d7e37fa14886.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/9a5c8931-dc73-4434-a8de-d7e37fa14886.jpg">
 
 <p>使用标签实现List集合的字面值注入</p>
 <p>如果是对象，可以引用已经存在的Bean：</p>
-<img src='spring02-Wiring-beans\fa1ca96b-1413-4d6b-a66e-e2cb8da932af.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/fa1ca96b-1413-4d6b-a66e-e2cb8da932af.jpg">
 
 <p>对Set来说，用法类似，但是不允许重复：</p>
-<img src='spring02-Wiring-beans\d5a8079d-a020-461b-aa31-09edb39f49e7.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/d5a8079d-a020-461b-aa31-09edb39f49e7.jpg">
 
 <h3 id="通过setter方法注入"><a href="#通过setter方法注入" class="headerlink" title="通过setter方法注入"></a>通过setter方法注入</h3><p>通过property标签实现setter方法注入：</p>
-<img src='spring02-Wiring-beans\81d97000-1fd0-4e40-a526-39e64884ca79.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/81d97000-1fd0-4e40-a526-39e64884ca79.jpg">
 
 <p>name指的是域的名称，ref是引用的已存在的Bean，字面值也可以使用value</p>
 <p>注入字面值或集合的方法与构造器注入类似：</p>
-<img src='spring02-Wiring-beans\323bfc05-8cf1-456d-bde0-160d754cee36.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/323bfc05-8cf1-456d-bde0-160d754cee36.jpg">
 
 <h2 id="在Java-Config中加载Java-Config"><a href="#在Java-Config中加载Java-Config" class="headerlink" title="在Java Config中加载Java Config"></a>在Java Config中加载Java Config</h2><p>假设我们分离了这个配置：</p>
-<img src='spring02-Wiring-beans\e85bb101-f274-4d57-a575-e0228b55ee61.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/e85bb101-f274-4d57-a575-e0228b55ee61.jpg">
 
 <p>因为在另外一个Java Config类中用到了这个Bean,所以要使用@Import引入这个Bean</p>
-<img src='spring02-Wiring-beans\d9bc320c-6f2e-4605-9f92-3cbdbb12bc4a.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/d9bc320c-6f2e-4605-9f92-3cbdbb12bc4a.jpg">
 
 <p>另外一种高级做法就是将两个配置类再另外一层高级配置类引入到一起：</p>
-<img src='spring02-Wiring-beans\bd6e8b08-5593-4bee-b4bb-6926da59695c.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/bd6e8b08-5593-4bee-b4bb-6926da59695c.jpg">
 
-<h2 id="在Java-Config中加载xml"><a href="#在Java-Config中加载xml" class="headerlink" title="在Java Config中加载xml"></a>在Java Config中加载xml</h2><img src='spring02-Wiring-beans\1af814d4-ea1f-4dd5-88b8-0ef7108b0cde.jpg'>
+<h2 id="在Java-Config中加载xml"><a href="#在Java-Config中加载xml" class="headerlink" title="在Java Config中加载xml"></a>在Java Config中加载xml</h2><img src="/blog/2020/03/01/spring02-Wiring-beans/1af814d4-ea1f-4dd5-88b8-0ef7108b0cde.jpg">
 
 <p>@ImportResource用于加载指定的xml配置文件，将Bean引入。</p>
 <h2 id="在XML配置中引用JavaConfig"><a href="#在XML配置中引用JavaConfig" class="headerlink" title="在XML配置中引用JavaConfig"></a>在XML配置中引用JavaConfig</h2><p>在xml文件中，通过Bean的方式引入javaConfig所配置的Bean</p>
-<img src='spring02-Wiring-beans\3775de2c-ed5e-41d6-8fc7-cf8f60b5f99c.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/3775de2c-ed5e-41d6-8fc7-cf8f60b5f99c.jpg">
 
 <p>对于引用其他xml，可以通过import标签引入：</p>
-<img src='spring02-Wiring-beans\b72a97a6-a5b2-412a-838c-bf6a4567af60.jpg'>
+<img src="/blog/2020/03/01/spring02-Wiring-beans/b72a97a6-a5b2-412a-838c-bf6a4567af60.jpg">
 
-<h2 id="通过xml开启扫描"><a href="#通过xml开启扫描" class="headerlink" title="通过xml开启扫描"></a>通过xml开启扫描</h2><img src='spring02-Wiring-beans\80f6ddb2-f622-458f-9b7f-da43ca7b5fa0.jpg'>
+<h2 id="通过xml开启扫描"><a href="#通过xml开启扫描" class="headerlink" title="通过xml开启扫描"></a>通过xml开启扫描</h2><img src="/blog/2020/03/01/spring02-Wiring-beans/80f6ddb2-f622-458f-9b7f-da43ca7b5fa0.jpg">
 
 <p>使用component-scan开启扫描</p>
   
@@ -438,8 +431,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

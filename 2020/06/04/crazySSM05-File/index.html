@@ -18,20 +18,20 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="文件上传 配置CommonsMutipartFileResolver  在springmvc-config.xml中配置：    使用MutipartFile接收文件    MultipartFile常用方法：   文件下载给定链接点击下载：   拦截器主要用于实现对控制器请求过程中的拦截，以拦截登陆为例：  登陆方法     拦截器，实现HandlerInceptor接口     在preHan">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/04/crazySSM05-File/crazySSM05-File/a79f9a98-b144-4f78-b255-33bf4f02beb7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/04/crazySSM05-File/crazySSM05-File/7979fbdf-da5a-4a54-874d-b3f49619968b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/04/crazySSM05-File/crazySSM05-File/dd19c720-61e3-40b9-b3e4-163b50f5147b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/04/crazySSM05-File/crazySSM05-File/a914d515-eb89-4f7a-9e66-0da14493b565.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/04/crazySSM05-File/crazySSM05-File/7bb13b24-e985-4aa3-850f-125b47470876.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/04/crazySSM05-File/crazySSM05-File/1760f463-6f2e-47f2-9acc-2c57e0fdf509.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/04/crazySSM05-File/crazySSM05-File/3c168eb0-e520-4f79-be06-e63deb60facf.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/06/04/crazySSM05-File/crazySSM05-File/718c6703-0563-413d-a0a4-587cbf5b9dd8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/04/crazySSM05-File/a79f9a98-b144-4f78-b255-33bf4f02beb7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/04/crazySSM05-File/7979fbdf-da5a-4a54-874d-b3f49619968b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/04/crazySSM05-File/dd19c720-61e3-40b9-b3e4-163b50f5147b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/04/crazySSM05-File/a914d515-eb89-4f7a-9e66-0da14493b565.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/04/crazySSM05-File/7bb13b24-e985-4aa3-850f-125b47470876.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/04/crazySSM05-File/1760f463-6f2e-47f2-9acc-2c57e0fdf509.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/04/crazySSM05-File/3c168eb0-e520-4f79-be06-e63deb60facf.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/06/04/crazySSM05-File/718c6703-0563-413d-a0a4-587cbf5b9dd8.jpg">
 <meta property="article:published_time" content="2020-06-04T14:40:12.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.716Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="SSM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/06/04/crazySSM05-File/crazySSM05-File/a79f9a98-b144-4f78-b255-33bf4f02beb7.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/06/04/crazySSM05-File/a79f9a98-b144-4f78-b255-33bf4f02beb7.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -108,47 +108,40 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.</span> <span class="toc-text">文件上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">文件下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">拦截器</span></a></li></ol>
-		
-		</div>
-		
 		<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><ol>
 <li>配置CommonsMutipartFileResolver</li>
 </ol>
 <p>在springmvc-config.xml中配置：</p>
-<img src='crazySSM05-File\a79f9a98-b144-4f78-b255-33bf4f02beb7.jpg'>
+<img src="/blog/2020/06/04/crazySSM05-File/a79f9a98-b144-4f78-b255-33bf4f02beb7.jpg">
 
 <ol start="2">
 <li>使用MutipartFile接收文件</li>
 </ol>
-<img src='crazySSM05-File\7979fbdf-da5a-4a54-874d-b3f49619968b.jpg'>
+<img src="/blog/2020/06/04/crazySSM05-File/7979fbdf-da5a-4a54-874d-b3f49619968b.jpg">
 
 <p>MultipartFile常用方法：</p>
-<img src='crazySSM05-File\dd19c720-61e3-40b9-b3e4-163b50f5147b.jpg'>
+<img src="/blog/2020/06/04/crazySSM05-File/dd19c720-61e3-40b9-b3e4-163b50f5147b.jpg">
 
 <h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><p>给定链接点击下载：</p>
-<img src='crazySSM05-File\a914d515-eb89-4f7a-9e66-0da14493b565.jpg' >
+<img src="/blog/2020/06/04/crazySSM05-File/a914d515-eb89-4f7a-9e66-0da14493b565.jpg">
 
 <h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><p>主要用于实现对控制器请求过程中的拦截，以拦截登陆为例：</p>
 <ol>
 <li>登陆方法</li>
 </ol>
-<img src='crazySSM05-File\7bb13b24-e985-4aa3-850f-125b47470876.jpg'>
+<img src="/blog/2020/06/04/crazySSM05-File/7bb13b24-e985-4aa3-850f-125b47470876.jpg">
 
 <ol start="2">
 <li>拦截器，实现HandlerInceptor接口</li>
 </ol>
-<img src='crazySSM05-File\1760f463-6f2e-47f2-9acc-2c57e0fdf509.jpg'>
-<img src='crazySSM05-File\3c168eb0-e520-4f79-be06-e63deb60facf.jpg'>
+<img src="/blog/2020/06/04/crazySSM05-File/1760f463-6f2e-47f2-9acc-2c57e0fdf509.jpg">
+<img src="/blog/2020/06/04/crazySSM05-File/3c168eb0-e520-4f79-be06-e63deb60facf.jpg">
 
 <p>在preHandle方法中，获取RequestDispatcher并进行转发。</p>
 <ol start="3">
 <li>注册拦截器</li>
 </ol>
-<img src='crazySSM05-File\718c6703-0563-413d-a0a4-587cbf5b9dd8.jpg'>  
+<img src="/blog/2020/06/04/crazySSM05-File/718c6703-0563-413d-a0a4-587cbf5b9dd8.jpg">  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -317,8 +310,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

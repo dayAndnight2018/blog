@@ -18,17 +18,17 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="定时任务是很常见的，每间隔一定时间循环执行，或固定某时间点执行等等。 开始定时任务 使用@EnableScheduling开启定时任务（配置类或入口类）  使用@Scheduled标记方法，可以定时执行     @Async表示使用线程池执行   几种属性fixedDelay ：以上一次任务完成时刻为起点，延迟一定时间再次执行。 fixedRate：以固定的时间间隔执行，不管上一次有没有完成。 i">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-09-Schedule/springBoot2-09-Schedule/eb2bce37-d884-4455-962f-01395d4a421f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-09-Schedule/springBoot2-09-Schedule/936355af-6b57-4087-af9e-c7eea46eb110.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-09-Schedule/springBoot2-09-Schedule/450e1235-9075-409b-b038-45c514698322.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-09-Schedule/springBoot2-09-Schedule/196ddac6-1315-4ff6-8a9f-e86ae0dfc432.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-09-Schedule/springBoot2-09-Schedule/5dc54825-6a31-42f0-bc3c-33c78d2b97ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-09-Schedule/eb2bce37-d884-4455-962f-01395d4a421f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-09-Schedule/936355af-6b57-4087-af9e-c7eea46eb110.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-09-Schedule/450e1235-9075-409b-b038-45c514698322.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-09-Schedule/196ddac6-1315-4ff6-8a9f-e86ae0dfc432.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-09-Schedule/5dc54825-6a31-42f0-bc3c-33c78d2b97ee.jpg">
 <meta property="article:published_time" content="2020-07-08T12:19:22.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.950Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring-boot-2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-09-Schedule/springBoot2-09-Schedule/eb2bce37-d884-4455-962f-01395d4a421f.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-09-Schedule/eb2bce37-d884-4455-962f-01395d4a421f.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -105,13 +105,6 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">开始定时任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">几种属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cron%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">cron表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cron%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">cron使用举例</span></a></li></ol></li></ol>
-		
-		</div>
-		
 		<p>定时任务是很常见的，每间隔一定时间循环执行，或固定某时间点执行等等。</p>
 <h2 id="开始定时任务"><a href="#开始定时任务" class="headerlink" title="开始定时任务"></a>开始定时任务</h2><ol>
 <li><p>使用@EnableScheduling开启定时任务（配置类或入口类）</p>
@@ -119,19 +112,19 @@
 <li><p>使用@Scheduled标记方法，可以定时执行</p>
 </li>
 </ol>
-<img src='springBoot2-09-Schedule\eb2bce37-d884-4455-962f-01395d4a421f.jpg'>
+<img src="/blog/2020/07/08/springBoot2-09-Schedule/eb2bce37-d884-4455-962f-01395d4a421f.jpg">
 
 <p>@Async表示使用线程池执行</p>
-<img src='springBoot2-09-Schedule\936355af-6b57-4087-af9e-c7eea46eb110.jpg'>
+<img src="/blog/2020/07/08/springBoot2-09-Schedule/936355af-6b57-4087-af9e-c7eea46eb110.jpg">
 
 <h3 id="几种属性"><a href="#几种属性" class="headerlink" title="几种属性"></a>几种属性</h3><p>fixedDelay ：以上一次任务完成时刻为起点，延迟一定时间再次执行。</p>
 <p>fixedRate：以固定的时间间隔执行，不管上一次有没有完成。</p>
 <p>initialDelay ： 首次执行前的间隔时间。</p>
 <h3 id="cron表达式"><a href="#cron表达式" class="headerlink" title="cron表达式"></a>cron表达式</h3><p>秒| 分| 时| 天| 月| 星期| 年</p>
-<img src='springBoot2-09-Schedule\450e1235-9075-409b-b038-45c514698322.jpg'>
-<img src='springBoot2-09-Schedule\196ddac6-1315-4ff6-8a9f-e86ae0dfc432.jpg'>
+<img src="/blog/2020/07/08/springBoot2-09-Schedule/450e1235-9075-409b-b038-45c514698322.jpg">
+<img src="/blog/2020/07/08/springBoot2-09-Schedule/196ddac6-1315-4ff6-8a9f-e86ae0dfc432.jpg">
 
-<h3 id="cron使用举例"><a href="#cron使用举例" class="headerlink" title="cron使用举例"></a>cron使用举例</h3><img src='springBoot2-09-Schedule\5dc54825-6a31-42f0-bc3c-33c78d2b97ee.jpg'>
+<h3 id="cron使用举例"><a href="#cron使用举例" class="headerlink" title="cron使用举例"></a>cron使用举例</h3><img src="/blog/2020/07/08/springBoot2-09-Schedule/5dc54825-6a31-42f0-bc3c-33c78d2b97ee.jpg">
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -301,8 +294,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

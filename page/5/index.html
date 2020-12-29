@@ -79,1699 +79,310 @@
     <div id="container">
       <div id="main">
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/05/29/spring-Boot-vue03-view/" title="spring-Boot+vue03: 整合Thymeleaf" itemprop="url">spring-Boot+vue03: 整合Thymeleaf</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-05-29T06:50:08.000Z" itemprop="datePublished"> Published 2020-05-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="集成thymeleaf"><a href="#集成thymeleaf" class="headerlink" title="集成thymeleaf"></a>集成thymeleaf</h2><ol>
-<li>创建工程，添加web及thymeleaf依赖</li>
-</ol>
-<img src='spring-Boot-vue03-view\3223a835-cd20-4d53-825d-c788ca99d2b4.jpg'>
-
-<ol start="2">
-<li>thymeleaf相关配置</li>
-</ol>
-<img src='spring-Boot-vue03-view\186f97ff-1096-41c9-8c20-1e363339f54b.jpg'>
-
-<ol start="3">
-<li>控制器返回ModelAndView</li>
-</ol>
-<img src='spring-Boot-vue03-view\5b32781f-477b-4b81-9449-adb253d9aafd.jpg'>
-
-<ol start="4">
-<li>在模板中使用数据</li>
-</ol>
-<img src='spring-Boot-vue03-view\7ea86bd3-739b-405a-b452-dbffdd645771.jpg' style='width:480px;height:320px;margin:30px auto;display:block' alt='title'>
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/spring-boot/">spring-boot</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/05/29/spring-Boot-vue02-configuration/" title="spring-Boot+vue02: 基础配置" itemprop="url">spring-Boot+vue02: 基础配置</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-05-29T05:28:05.000Z" itemprop="datePublished"> Published 2020-05-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="替换starter-parent"><a href="#替换starter-parent" class="headerlink" title="替换starter-parent"></a>替换starter-parent</h2><p>spring-boot-starter-parent提供了一些默认配置：</p>
-<img src='spring-Boot-vue02-configuration\fbb66fb2-134d-4e07-b054-75acb3e127f3.jpg'>
-
-<p>添加java版本配置：</p>
-<img src='spring-Boot-vue02-configuration\70d271db-0358-408d-88a4-02a61c07a47d.jpg'>
-
-<p>添加maven-compiler-plugin插件，配置源码和生成目标版本1.8</p>
-<p>配置编码为utf-8:</p>
-<img src='spring-Boot-vue02-configuration\70788151-655a-48cf-b9e8-2f05e88d1e58.jpg'>
-
-<p>添加依赖管理：</p>
-<img src='spring-Boot-vue02-configuration\0ac09445-220c-49ed-89b6-fb31f21b14ee.jpg'>
-
-<h2 id="配置Tomcat"><a href="#配置Tomcat" class="headerlink" title="配置Tomcat"></a>配置Tomcat</h2><p>默认使用tomcat，给出进一步配置：</p>
-<img src='spring-Boot-vue02-configuration\8b24bc04-2461-4e6e-a1b0-28e3194cc35b.jpg'>
-
-<p>配置https:</p>
-<img src='spring-Boot-vue02-configuration\15b3d92c-cffd-4d41-b0f6-2c61110fbdac.jpg'>
-
-<p>配置http到https的自动转发：</p>
-<img src='spring-Boot-vue02-configuration\3cecdc0e-4cff-49db-91a5-70f364566ac2.jpg'>
-<img src='spring-Boot-vue02-configuration\195c643a-181c-4ca5-b001-874dabe43f81.jpg'>
-
-<h2 id="配置Jetty"><a href="#配置Jetty" class="headerlink" title="配置Jetty"></a>配置Jetty</h2><img src='spring-Boot-vue02-configuration\f4436b07-b9e3-48ac-9ea6-18401bccaf96.jpg'>
-
-<p>在spring-boot-starter-parent中排除tomcat，添加jetty</p>
-<h2 id="配置undertow"><a href="#配置undertow" class="headerlink" title="配置undertow"></a>配置undertow</h2><img src='spring-Boot-vue02-configuration\a38cfb58-4852-4bea-b092-7069473a3925.jpg'>
-
-<p>在spring-boot-starter-parent中排除tomcat，添加undertow</p>
-<h2 id="yaml配置"><a href="#yaml配置" class="headerlink" title="yaml配置"></a>yaml配置</h2><p>采用缩进表示层级关系，支持集合：</p>
-<img src='spring-Boot-vue02-configuration\c81b43a9-6dc1-4cbf-9658-a0f96e2c3fec.jpg'>
-
-<p>以上等价于：</p>
-<img src='spring-Boot-vue02-configuration\dba29287-7c09-4d96-9f90-518bf9c284ef.jpg'>
-
-<p>支持集合：</p>
-<img src='spring-Boot-vue02-configuration\cf90c393-b14f-47be-b3d4-93eb4079913a.jpg'>
-
-<h2 id="不同环境的配置"><a href="#不同环境的配置" class="headerlink" title="不同环境的配置"></a>不同环境的配置</h2><p>※使用application.propries配置：</p>
-<img src='spring-Boot-vue02-configuration\dca47b2f-6be2-4875-ad65-051066347e15.jpg'>
-
-<p>表示加载application-dev.propries作为配置</p>
-<p>※使用代码在启动类中配置：</p>
-<img src='spring-Boot-vue02-configuration\5174d0da-bf14-422a-800f-d90a6b24f041.jpg'>
-
-<p>※可以在启动时配置：</p>
-<img src='spring-Boot-vue02-configuration\5e50d2af-659d-4f09-bc2d-c6d33d285014.jpg'>
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/spring-boot/">spring-boot</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/05/29/spring-Boot-vue01-introduction/" title="spring-Boot+vue01: spring boot简介" itemprop="url">spring-Boot+vue01: spring boot简介</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-05-29T04:49:12.000Z" itemprop="datePublished"> Published 2020-05-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Spring-Boot-简化配置"><a href="#Spring-Boot-简化配置" class="headerlink" title="Spring Boot 简化配置"></a>Spring Boot 简化配置</h2><p>spring boot极大简化了xml的配置，基于约定优于配置。可以打包为war，在tomcat中执行，也可以打包为jar在容器中执行，倾向于云原生开发。</p>
-<img src='spring-Boot-vue01-introduction\a1239d7d-1b8c-4571-b915-e246dcfbb846.jpg'>
-<img src='spring-Boot-vue01-introduction\59de2b05-cc04-4889-9299-c05aea636539.jpg'>
-
-<h2 id="创建一个Spring-boot项目"><a href="#创建一个Spring-boot项目" class="headerlink" title="创建一个Spring boot项目"></a>创建一个Spring boot项目</h2><ol>
-<li>创建maven项目</li>
-</ol>
-<img src='spring-Boot-vue01-introduction\4caeef5e-745c-4ea3-a82f-20a5711a8dc2.jpg'>
-
-<ol start="2">
-<li>脚手架选择</li>
-</ol>
-<img src='spring-Boot-vue01-introduction\cfe4540a-73d3-4935-922d-eab20a9c69a4.jpg'>
-
-<ol start="3">
-<li>填写项目信息，完成创建</li>
-</ol>
-<img src='spring-Boot-vue01-introduction\2edd6e64-7beb-4e8f-9595-dab6d11a8512.jpg'>
-
-<h2 id="依赖添加"><a href="#依赖添加" class="headerlink" title="依赖添加"></a>依赖添加</h2><ol>
-<li>pom.xml中添加parent节点配置</li>
-</ol>
-<img src='spring-Boot-vue01-introduction\303c49bc-4551-4f2f-a95b-7b0b1d331a1d.jpg'>
-<img src='spring-Boot-vue01-introduction\e41304bc-eed2-4a67-bb1d-df5250bc8369.jpg'>
-
-<p>parent节点提供了很多starter基础配置服务。</p>
-<ol start="2">
-<li>添加web依赖</li>
-</ol>
-<img src='spring-Boot-vue01-introduction\6196e5d4-6f22-4df3-ac83-bc31371c393b.jpg'>
-
-<p>dependencies是依赖包集合。</p>
-<ol start="3">
-<li>创建启动类</li>
-</ol>
-<img src='spring-Boot-vue01-introduction\bab238ed-9ef6-4fb8-b289-8ba666cf20a6.jpg'>
-
-<p>EnableAutoConfiguration注解开启了spring及spring mvc的自动配置。</p>
-<ol start="4">
-<li>创建测试控制器</li>
-</ol>
-<img src='spring-Boot-vue01-introduction\fcf5fb9e-86b5-4e3e-b042-e0b64315971a.jpg'>
-
-<ol start="5">
-<li>为启动类添加自动扫描注解</li>
-</ol>
-<img src='spring-Boot-vue01-introduction\4659abe6-e705-4336-b01e-060865af657a.jpg'>
-
-<p>EnableAutoConfiguration和ComponentScan注解可以合并为SpringBootApplication注解。</p>
-<img src='spring-Boot-vue01-introduction\a83426b9-8fc6-4f5c-a7f6-fa4bffd70485.jpg'>
-
-<h2 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h2><ol>
-<li>maven指令</li>
-</ol>
-<p><code style='background:#ff3385;color:white;padding:5px;'>mvn spring-boot:run</code></p>
-<ol start="2">
-<li>运行启动类</li>
-</ol>
-<p>启动类包含入口方法main函数，直接运行。</p>
-<ol start="3">
-<li>jar包启动</li>
-</ol>
-<p>添加打包插件：</p>
-<img src='spring-Boot-vue01-introduction\75ad27c7-2deb-4f89-8591-11163927d882.jpg'>
-
-<p>使用maven指令打包：</p>
-<p><code style='background:#ff3385;color:white;padding:5px;'>mvn package</code></p>
-<p>使用java指令运行：</p>
-<p><code style='background:#ff3385;color:white;padding:5px;'>java -jar xxx.jar</code></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+    <a href="/blog/2020/05/29/spring-Boot-vue03-view/" title="spring-Boot+vue03: 整合Thymeleaf" itemprop="url">
   
-  <span></span> <a href="/blog/tags/spring-boot/">spring-boot</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">spring-Boot+vue03: 整合Thymeleaf</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >集成thymeleaf
+创建工程，添加web及thymeleaf依赖
+
+
+
+
+thymeleaf相关配置
+
+
+
+
+控制器返回ModelAndView
+
+
+
+
+在模板中使用数据</p>
+        
     
-      <a href="/blog/2020/04/23/crazySSM04-data-bind/" title="crazySSM04-数据绑定" itemprop="url">crazySSM04-数据绑定</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-04-23T11:08:57.000Z" itemprop="datePublished"> Published 2020-04-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="数据绑定流程"><a href="#数据绑定流程" class="headerlink" title="数据绑定流程"></a>数据绑定流程</h2><img src='crazySSM04-data-bind\7cd5c153-df74-4404-9983-2339047f3fd7.jpg'>
-
-<p>完成数据绑定主要任务的是<code style='background:#ff3385;color:white;padding:5px;'>DataBinder</code>, 接收请求转为<code style='background:#ff3385;color:white;padding:5px;'>ServletRequest</code>对象，根据反射获取数据及处理方法的参数，通过<code style='background:#ff3385;color:white;padding:5px;'>ConversionService</code>转换数据，然后通过<code style='background:#ff3385;color:white;padding:5px;'>Validator</code>验证数据的格式，最终将数据绑定的结果保存到<code style='background:#ff3385;color:white;padding:5px;'>BindingResult</code>对象中。</p>
-<h2 id="spring支持的数据转换器"><a href="#spring支持的数据转换器" class="headerlink" title="spring支持的数据转换器"></a>spring支持的数据转换器</h2><h3 id="ConversionService"><a href="#ConversionService" class="headerlink" title="ConversionService"></a>ConversionService</h3><p>实现以下三种中的任意一种接口即可实现自定义的转换逻辑:</p>
-<ol>
-<li>将S类型的数据转为T</li>
-</ol>
-<img src='crazySSM04-data-bind\8a9fbc9c-92c6-4e50-ab6f-9a04088754ee.jpg'>
-
-<p>重写方法：</p>
-<img src='crazySSM04-data-bind\4a08d00b-a1b3-4c47-b3cc-10fc6aad60fb.jpg' >
-
-<ol start="2">
-<li>将S转为R的子类T</li>
-</ol>
-<img src='crazySSM04-data-bind\81c7ab52-6478-4c1e-872d-e0d9c7cb76af.jpg'>
-
-<p>重写方法：</p>
-<img src='crazySSM04-data-bind\b5bb6a3e-4b5d-4be6-8fe3-ba1fd7a12f8d.jpg'>
-
-<ol start="3">
-<li>基于上下文信息的转换</li>
-</ol>
-<img src='crazySSM04-data-bind\49673d27-6f87-4b8b-bcdf-b63b514e623f.jpg'>
-
-<p>重写方法：</p>
-<img src='crazySSM04-data-bind\339dbbb7-b11f-4257-8281-1cc2ae4aba2b.jpg'>
-
-<p>使用示例：</p>
-<p>页面中存在生日信息，格式为xxxx-xx-xx</p>
-<img src='crazySSM04-data-bind\8f7e5ebc-024a-4084-bb3c-1da4652148af.jpg'>
-
-<p>POJO格式</p>
-<img src='crazySSM04-data-bind\994ce6f6-28de-4580-bd3e-042d03d56bc9.jpg'>
-
-<p>直接绑定数据会出错。</p>
-<p>定义数据转换器：</p>
-<img src='crazySSM04-data-bind\3d652fd0-1239-47b5-a9a3-4726291bbf97.jpg'>
-<img src='crazySSM04-data-bind\59d1b419-7549-447c-b112-380a905fd7c9.jpg'>
-
-<p>使用最简单的Converter&lt;S,T&gt;进行转换。</p>
-<p>将定义的转换器注册到conversionServiceFactoryBean</p>
-<img src='crazySSM04-data-bind\e9d0eb90-b5a9-48e0-8df2-d45bf75135b4.jpg'>
-
-<h3 id="PropertyEditor"><a href="#PropertyEditor" class="headerlink" title="PropertyEditor"></a>PropertyEditor</h3><p>通过继承PropertyEditorSupport实现setAsText方法，实现数据转换。</p>
-<img src='crazySSM04-data-bind\e8476241-1baf-417a-bee1-dc49e17dddbc.jpg'>
-
-<p>怎么注册到框架？</p>
-<ol>
-<li>通过InitBind注册到控制器</li>
-</ol>
-<img src='crazySSM04-data-bind\24abfc74-20d9-4c59-989f-2082bdadbe7e.jpg'>
-
-<ol start="2">
-<li>全局转换器</li>
-</ol>
-<img src='crazySSM04-data-bind\4c4788f4-9039-42f8-b732-5ca5e2201c90.jpg'>
-
-<p>实现WebBindingInitializer接口，重写initBinder方法，注册转换器</p>
-<ol start="3">
-<li>将全局转换器注册为Bean</li>
-</ol>
-<img src='crazySSM04-data-bind\343622d0-b991-403b-9bdf-65d6dccedc47.jpg'>
-
-<p><code style='background:#ff3385;color:white;padding:5px;'>优先级是@InitBinder > ConversionService > WebBindingInitilizer</code></p>
-<h2 id="数据格式化器"><a href="#数据格式化器" class="headerlink" title="数据格式化器"></a>数据格式化器</h2><p>数据格式化其主要面向于web层的数据转化，完成的是String类型的数据与java类型数据的转换，适用范围较小，粒度小。</p>
-<p>包含以下接口：</p>
-<img src='crazySSM04-data-bind\c97edcf0-9cca-46bc-ae75-c4c2c347f37e.jpg'>
-
-<p>实现方法</p>
-<img src='crazySSM04-data-bind\969a45a6-c633-4fd0-86bc-03c309592492.jpg'>
-
-<p>本接口实现的是T类型到String类型的转换。</p>
-<img src='crazySSM04-data-bind\8a07f701-9445-4d20-a412-53c21a7cdc78.jpg'>
-
-<p>实现方法</p>
-<img src='crazySSM04-data-bind\b94a1a0f-f759-459b-890c-1b08a1a3f2c7.jpg'>
-
-<p>本接口实现的是String到T类型的转换。</p>
-<img src='crazySSM04-data-bind\76760459-a24c-4be5-8606-50a996c5ebf4.jpg'>
-
-<p>继承了Printer<T>及Parser<T>接口，包含完整转换。</p>
-<img src='crazySSM04-data-bind\51657190-831f-4cab-9682-c898b9037798.jpg'>
-
-<p>用于注册格式化器。</p>
-<img src='crazySSM04-data-bind\2d1ccb4a-8c87-4cf1-8e00-5ed771571097.jpg'>
-
-<p>基于注解的格式化器</p>
-<img src='crazySSM04-data-bind\f50be5b1-b24d-4d58-8f33-f3a2c5aaa0ee.jpg'>
-
-<p>使用示例：</p>
-<img src='crazySSM04-data-bind\9f7e5ada-5662-453c-92eb-43ce91ad5ec2.jpg'>
-
-<p>注册到Bean</p>
-<img src='crazySSM04-data-bind\be39150e-7c75-4499-8914-bab45f79827a.jpg'>
-
-<p>这个FormattingConversionServiceFactoryBean包含一个converters和一个formatters属性，可以接受转换器和格式化器。</p>
-<p>也可以通过FormatterRegister接口实现格式化器注册：</p>
-<img src='crazySSM04-data-bind\8246fbed-8ef5-45db-b885-c1f72e5909d4.jpg'>
-
-<p>注册到Bean</p>
-<img src='crazySSM04-data-bind\b8155d37-07a0-40c4-b402-f6d464012643.jpg'>
-
-<h3 id="基于注解的格式化器"><a href="#基于注解的格式化器" class="headerlink" title="基于注解的格式化器"></a>基于注解的格式化器</h3><img src='crazySSM04-data-bind\c35139cc-19f2-42fa-9e9a-f75e006fbb21.jpg'>
-
-<h2 id="数据验证"><a href="#数据验证" class="headerlink" title="数据验证"></a>数据验证</h2><p>数据验证包含格式，合法性等验证。</p>
-<h3 id="Validator"><a href="#Validator" class="headerlink" title="Validator"></a>Validator</h3><p>示例：</p>
-<p>POJO</p>
-<img src='crazySSM04-data-bind\76a9655a-9010-41b3-bbab-51aa03c1bc9b.jpg'>
-
-<p>验证器</p>
-<img src='crazySSM04-data-bind\168e8598-d3e8-46d3-8c8f-5f5e8d0922a4.jpg'>
-<img src='crazySSM04-data-bind\d630dc57-5bf3-4052-ae5e-6a429918e2e7.jpg'>
-
-<p>控制器</p>
-<img src='crazySSM04-data-bind\19c79e1e-b748-4222-8301-a4634e381491.jpg'>
-
-<h3 id="JSR-303（常用）"><a href="#JSR-303（常用）" class="headerlink" title="JSR 303（常用）"></a>JSR 303（常用）</h3><img src='crazySSM04-data-bind\6e92aa55-4def-4610-8741-f1854d4a6720.jpg'>
-<img src='crazySSM04-data-bind\739db0a0-b1af-4a23-821b-55858787d4fe.jpg'>
-<img src='crazySSM04-data-bind\f17ca3bc-076c-4a3e-9ef2-da059e997c06.jpg'>
-
-<p>使用示例：</p>
-<img src='crazySSM04-data-bind\5c0eef67-3e49-40db-b8ad-fa97b7277195.jpg'>
-
-<p>验证数据</p>
-<img src='crazySSM04-data-bind\d92e75c7-db7e-44c8-832f-f182cd779e2e.jpg'>
+    <time datetime="2020-05-29T06:50:08.000Z" itemprop="datePublished">2020-05-29</time>
+  </a>
+</section>
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/SSM/">SSM</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/04/23/crazySSM03-mvc-tags/" title="crazySSM03-Spring MVC 常用标签" itemprop="url">crazySSM03-Spring MVC 常用标签</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-04-23T02:31:33.000Z" itemprop="datePublished"> Published 2020-04-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>spring MVC的标签库主要用于处理使用JSP进行数据显示的工作。</p>
-<h2 id="表单标签库"><a href="#表单标签库" class="headerlink" title="表单标签库"></a>表单标签库</h2><p>表单标签库的实现类位与spring-webmvc.jar, 说明文档在spring-form.tld</p>
-<p>使用表单标签库需要添加声明：</p>
-<p>&lt;%@ taglib prefix=”form” uri=”<a target="_blank" rel="noopener" href="http://www.springframework.org/tags/form&quot;">http://www.springframework.org/tags/form&quot;</a> %&gt;</p>
-<p>表单标签库支持的标签：</p>
-<img src='crazySSM03-mvc-tags\c0fc464b-1f50-40be-bcd2-5df3ef0d8e25.jpg' >
-
-<h3 id="form标签"><a href="#form标签" class="headerlink" title="form标签"></a>form标签</h3><p>form标签用于绑定JavaBean，同时支持除get、post以外的请求方法。commandName用于指定JavaBean的名称，默认为command</p>
-<img src='crazySSM03-mvc-tags\e1e7577e-469c-4fd8-b89e-83903150e02f.jpg'>
-
-<h3 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a>input标签</h3><p>用于渲染一个输入框，用于数据绑定。通过path属性绑定JavaBean的某个属性值</p>
-<img src='crazySSM03-mvc-tags\08129ed7-d5dc-4dd1-8873-754e4035541a.jpg'>
-
-<p>使用示例：</p>
-<img src='crazySSM03-mvc-tags\64171e24-890c-4815-bbbf-113883b91ecf.jpg'>
-
-<p>默认获取JavaBean的command属性，绑定username、sex、age三个字段。</p>
-<img src='crazySSM03-mvc-tags\5255f975-1bbf-4ee2-b61a-0998e576ad5d.jpg'>
-
-<img src='crazySSM03-mvc-tags\928781e1-cdf5-4aa9-ae35-f8f8b5de3207.jpg'>
-
-<p>也可以使用ModelAttribute或commandName指定绑定javaBean的名称：</p>
-<img src='crazySSM03-mvc-tags\c084021f-32cd-4e82-9cac-a94f2b364daa.jpg'>
-
-<h3 id="password标签"><a href="#password标签" class="headerlink" title="password标签"></a>password标签</h3><p>生成一个password标签：</p>
-<img src='crazySSM03-mvc-tags\ca066583-cd3a-460a-b1e8-7f26f078386b.jpg'>
-
-<p>示例：</p>
-<img src='crazySSM03-mvc-tags\288a9db3-b12b-4123-83f7-52f7bf53894d.jpg'>
-
-<h3 id="hidden标签"><a href="#hidden标签" class="headerlink" title="hidden标签"></a>hidden标签</h3><p>生成一个隐藏域：</p>
-<img src='crazySSM03-mvc-tags\82ab39c5-78fb-42c3-aa08-6ee7c17dd9b0.jpg'>
-
-<p>示例：</p>
-<img src='crazySSM03-mvc-tags\0f1f05fe-bb88-42a3-8123-fcb305fc0f07.jpg'>
-
-<h3 id="textarea"><a href="#textarea" class="headerlink" title="textarea"></a>textarea</h3><p>生成多行输入域：</p>
-<img src='crazySSM03-mvc-tags\4f583f36-7bba-496a-9bc7-3366236f56e0.jpg'>
-
-<p>示例:</p>
-<img src='crazySSM03-mvc-tags\adc3af63-9e69-4b19-98f8-561aa200b146.jpg'>
-
-<h3 id="checkbox标签"><a href="#checkbox标签" class="headerlink" title="checkbox标签"></a>checkbox标签</h3><p>生成checkbox标签：</p>
-<img src='crazySSM03-mvc-tags\3f146d81-7c7d-44fa-9713-12387c8b7e49.jpg'>
-
-<p>可以绑定Boolean或数组、list、set类型数据，当value与数据一致，则选中，否则非选中，同时label表示要显示的提示文字：</p>
-<img src='crazySSM03-mvc-tags\fa0d98a6-1713-4d94-8ebf-d8e8eb2c0465.jpg'>
-
-<p>控制器存储数据：</p>
-<img src='crazySSM03-mvc-tags\6acb52cc-b90d-4a2b-a953-881ddc826a5a.jpg'>
-
-<p>效果：</p>
-<img src='crazySSM03-mvc-tags\df49bf39-ba0f-4993-8102-3954e5b0e474.jpg'>
-
-<h3 id="checkboxes标签"><a href="#checkboxes标签" class="headerlink" title="checkboxes标签"></a>checkboxes标签</h3><p>用于渲染多个checkbox</p>
-<img src='crazySSM03-mvc-tags\2a253d80-b0ba-4564-941c-d3e40cabbdee.jpg'>
-
-<p>path是选中的那些选项，items是所有可选项。</p>
-<p>示例：</p>
-<p>学生选课</p>
-<img src='crazySSM03-mvc-tags\1af2553f-9ac1-4cc0-9b4c-bd7169f5220a.jpg'>
-
-<p>控制器</p>
-<img src='crazySSM03-mvc-tags\27ec2930-586f-44e8-8608-cc7e07ebb6bb.jpg'>
-
-<p>jsp</p>
-<img src='crazySSM03-mvc-tags\c8dca2ba-b55c-422e-a372-68a544ed222e.jpg'>
-
-<p>显示效果</p>
-<img src='crazySSM03-mvc-tags\16265276-0af3-4bb3-adb2-dc76661deef5.jpg'>
-
-<p>为了不同的标签的value与label个性化，可以使用Map绑定items，其key是value，value是label,也可以通过对象的itemLabel与itemValue设置对应的属性。</p>
-<h3 id="radiobutton标签"><a href="#radiobutton标签" class="headerlink" title="radiobutton标签"></a>radiobutton标签</h3><p>用于渲染单选按钮</p>
-<img src='crazySSM03-mvc-tags\6550c306-c84d-4887-8d4b-3f631568e156.jpg'>
-
-<p>示例：</p>
-<img src='crazySSM03-mvc-tags\4dcffd6c-0c63-46a5-9165-b0bf7ade55db.jpg'>
-
-<p>绑定string类型的sex属性</p>
-<img src='crazySSM03-mvc-tags\4e5ae4d0-35ef-4cd8-aa48-9cf73c2593fc.jpg'>
-
-<p>path指定绑定的属性，value与之一致则选中。</p>
-<h3 id="radiobuttons"><a href="#radiobuttons" class="headerlink" title="radiobuttons"></a>radiobuttons</h3><p>生成一组radiobutton</p>
-<img src='crazySSM03-mvc-tags\b88731a2-03c6-44ee-a0a0-a85cea4b1104.jpg'>
-
-<p>示例：</p>
-<img src='crazySSM03-mvc-tags\1dd99174-0e7b-4b6d-bf7f-a88bda49fa7f.jpg'>
-
-<p>path是选中的项目，items是可选项：</p>
-<img src='crazySSM03-mvc-tags\ec8c1473-c584-4f0a-bf01-159c3320b5e8.jpg'>
-
-<h3 id="select标签"><a href="#select标签" class="headerlink" title="select标签"></a>select标签</h3><p>生成select标签</p>
-<img src='crazySSM03-mvc-tags\75958d55-8aa4-4bcb-b3a5-1c9d8cd78e2b.jpg'>
-
-<h3 id="option标签"><a href="#option标签" class="headerlink" title="option标签"></a>option标签</h3><p>生成select的一个选项</p>
-<img src='crazySSM03-mvc-tags\5bd633a6-0be1-42e9-b0eb-97aa68578545.jpg'>
-
-<h3 id="options标签"><a href="#options标签" class="headerlink" title="options标签"></a>options标签</h3><p>生成多个option标签</p>
-<img src='crazySSM03-mvc-tags\5bf6cf64-28e6-46be-bd24-10782d1a85e2.jpg'>
-
-<p>使用option示例：</p>
-<p>给定int值</p>
-<img src='crazySSM03-mvc-tags\97ad845c-f35c-4730-a56a-cf3dfbfad7ed.jpg'>
-
-<p>手动挨个渲染option</p>
-<img src='crazySSM03-mvc-tags\8644e45e-b8a3-4150-91f7-9c3c6ad46f2d.jpg'>
-
-<p>绑定的path的值与option的value一致的被选中。</p>
-<p>使用items示例：</p>
-<p>输入绑定的items为Map类型，显示所有选项：</p>
-<img src='crazySSM03-mvc-tags\9da5fef4-ee1c-4045-aec7-c87dcbdd10e6.jpg'>
-
-<p>select的被选项是path, 所有待选项在items</p>
-<img src='crazySSM03-mvc-tags\841afef5-499f-4fa7-b72a-9d07f58bff7e.jpg'>
-
-<p>也可以使用options的items选项渲染</p>
-<img src='crazySSM03-mvc-tags\380e9b16-15c4-48b9-8a71-ea403ed43917.jpg'>
-
-<p>使用itemLabel及itemValue示例：</p>
-<p>JavaBean</p>
-<img src='crazySSM03-mvc-tags\6d18df89-44af-4536-a9fb-0c62732897df.jpg'>
-
-<p>控制器</p>
-<img src='crazySSM03-mvc-tags\ef9326e1-581e-429a-8e25-bb6ac90a3e83.jpg'>
-
-<p>渲染</p>
-<img src='crazySSM03-mvc-tags\d168eed6-e6a1-4399-8c21-ba5f2e17881c.jpg'>
-
-<h3 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h3><p>渲染错误信息</p>
-<img src='crazySSM03-mvc-tags\9f00265b-d470-416a-aeac-817d53593885.jpg'>
-
-<p>path是渲染的错误属性</p>
-<img src='crazySSM03-mvc-tags\ed414a52-34e5-4ee2-95c3-9a8b641180b2.jpg'>
-
-<p>验证器：</p>
-<img src='crazySSM03-mvc-tags\672b21a8-249f-4d74-b84e-9a4afadf4c3f.jpg'>
-<img src='crazySSM03-mvc-tags\51011f41-2509-4dd0-b75c-42a9d498dd46.jpg'>
-
-<p>控制器：</p>
-<img src='crazySSM03-mvc-tags\64da165a-e344-409a-8fd3-04b5aee1836b.jpg'>
-
-<p>渲染：</p>
-<img src='crazySSM03-mvc-tags\655f56dd-6012-466c-ac7b-110769029849.jpg'>
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/SSM/">SSM</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <a href="/blog/2020/05/29/spring-Boot-vue02-configuration/" title="spring-Boot+vue02: 基础配置" itemprop="url">
+  
+    <h1 itemprop="name">spring-Boot+vue02: 基础配置</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/04/19/crazySSM02-commonAnnotations/" title="crazySSM02-常见的注解" itemprop="url">crazySSM02-常见的注解</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-04-19T12:47:21.000Z" itemprop="datePublished"> Published 2020-04-19</time>
-    
-  </p>
-</header>
-    <div class="article-content">
+     
+           <p itemprop="description" >替换starter-parentspring-boot-starter-parent提供了一些默认配置：
+
+
+添加java版本配置：
+
+
+添加maven-compiler-plugin插件，配置源码和生成目标版本1.8
+配置编码为utf-8:
+
+
+添加依赖管理：
+
+
+配置Tomc</p>
         
-        <h2 id="常用注解一览表"><a href="#常用注解一览表" class="headerlink" title="常用注解一览表"></a>常用注解一览表</h2><table cellpadding='8' border='1' style='background:#EAF2D3;text-align:center'>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
+    
+    <time datetime="2020-05-29T05:28:05.000Z" itemprop="datePublished">2020-05-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/05/29/spring-Boot-vue01-introduction/" title="spring-Boot+vue01: spring boot简介" itemprop="url">
+  
+    <h1 itemprop="name">spring-Boot+vue01: spring boot简介</h1>
+    
+     
+           <p itemprop="description" >Spring Boot 简化配置spring boot极大简化了xml的配置，基于约定优于配置。可以打包为war，在tomcat中执行，也可以打包为jar在容器中执行，倾向于云原生开发。
+
+
+
+创建一个Spring boot项目
+创建maven项目
+
+
+
+
+脚手架选择
+
+
+
+
+填</p>
+        
+    
+    <time datetime="2020-05-29T04:49:12.000Z" itemprop="datePublished">2020-05-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/04/23/crazySSM04-data-bind/" title="crazySSM04-数据绑定" itemprop="url">
+  
+    <h1 itemprop="name">crazySSM04-数据绑定</h1>
+    
+     
+           <p itemprop="description" >数据绑定流程
+
+完成数据绑定主要任务的是DataBinder, 接收请求转为ServletRequest对象，根据反射获取数据及处理方法的参数，通过ConversionService转换数据，然后通过Validator验证数据的格式，最终将数据绑定的结果保存到BindingRes</p>
+        
+    
+    <time datetime="2020-04-23T11:08:57.000Z" itemprop="datePublished">2020-04-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/04/23/crazySSM03-mvc-tags/" title="crazySSM03-Spring MVC 常用标签" itemprop="url">
+  
+    <h1 itemprop="name">crazySSM03-Spring MVC 常用标签</h1>
+    
+     
+           <p itemprop="description" >spring MVC的标签库主要用于处理使用JSP进行数据显示的工作。
+表单标签库表单标签库的实现类位与spring-webmvc.jar, 说明文档在spring-form.tld
+使用表单标签库需要添加声明：
+&amp;lt;%@ taglib prefix=”form” uri=”</p>
+        
+    
+    <time datetime="2020-04-23T02:31:33.000Z" itemprop="datePublished">2020-04-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/04/19/crazySSM02-commonAnnotations/" title="crazySSM02-常见的注解" itemprop="url">
+  
+    <h1 itemprop="name">crazySSM02-常见的注解</h1>
+    
+     
+           <p itemprop="description" >常用注解一览表
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
 注解
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
 含义
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
 @Controller
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-表示一个控制器类
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-@RequestMapping
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-对动作方法的规定，包括路由、参数、动作类型、格式等
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-@RequestParam
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-用于获取请求url中的query参数
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-@PathVariable
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-请求路径对应的参数
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-@RequestHeader
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-对请求头的参数进行映射获取
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-@CookieValue
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-对请求中的cookie进行获取
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-@SessionAttributes
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-将Model中指定的数据存储到session中
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-@ModelAttribute
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-将数据优先绑定到Model，或提取Model中的数据使用
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-@RequestBody
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-将json字符串解析为pojo
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-@ResponseBody
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-将返回值序列化为json返回
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-</table>
-
-
-
-<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><p>控制器注解表明本类是一个控制器，当开启了自动扫描时，使用该注解的类被认定为Bean。</p>
-<img src='crazySSM02-commonAnnotations\d9d2bc44-9716-4b2e-b2b7-c01a9959850d.jpg'>
-
-<p>使用示例：</p>
-<img src='crazySSM02-commonAnnotations\79f8e9d8-ca69-408a-9c27-f88007f8430c.jpg' >
-
-<p>这里返回类型由ModelAndView改为String，用来表示返回的字符串即视图模板的名称。方法参数Model要求框架生成Model对象传递进来。方法返回的只是模板名称，需要在springmvc-config.xml中配置模板处理器：</p>
-<img src='crazySSM02-commonAnnotations\428017a0-ab1a-48ef-959b-e8dbabfce4bb.jpg' >
-
-<h3 id="我的学习"><a href="#我的学习" class="headerlink" title="我的学习"></a>我的学习</h3><ol>
-<li>修改springmvc-config.xml配置文件：</li>
-</ol>
-<img src='crazySSM02-commonAnnotations\540081f8-f95d-41ca-baee-39a96b273dd1.jpg'>
-
-<ol start="2">
-<li>修改控制器源码</li>
-</ol>
-<img src='crazySSM02-commonAnnotations\c89d1706-b6c8-45ef-af84-8c9e1f205dbf.jpg'>
-
-<ol start="3">
-<li>效果</li>
-</ol>
-<img src='crazySSM02-commonAnnotations\bcfda4e0-dc67-4635-a51c-1b51ef0957f3.jpg'>
-
-<h2 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="RequestMapping"></a>RequestMapping</h2><p>可以对类进行注解，表示本类内所有的方法的前缀：</p>
-<img src='crazySSM02-commonAnnotations\b7e973bd-8146-43bb-a572-6b2ea3aa4c70.jpg'>
-
-<p>常用的属性：</p>
-<img src='crazySSM02-commonAnnotations\a27b9aaf-0a54-4dc4-b66e-6d7f703e4f1b.jpg'>
-
-<p><code style='background:#ff3385;color:white;padding:5px;'>value</code>即路由，可指定路由地址</p>
-<img src='crazySSM02-commonAnnotations\b01588d3-146a-4224-b484-8fd282a408ce.jpg'>
-
-<p><code style='background:#ff3385;color:white;padding:5px;'>name</code>即别名</p>
-<p><code style='background:#ff3385;color:white;padding:5px;'>method</code>表示映射的方法类型，没有则默认支持任何方法</p>
-<img src='crazySSM02-commonAnnotations\f07acd6f-85f7-4984-a2ab-89bf200ab44c.jpg'>
-
-<p><code style='background:#ff3385;color:white;padding:5px;'>consumes</code>表示支持的数据类型</p>
-<img src='crazySSM02-commonAnnotations\a339adbf-6bd9-44eb-bb69-0210a572f0bd.jpg'>
-
-<p><code style='background:#ff3385;color:white;padding:5px;'>produces</code>表示返回的数据类型</p>
-<img src='crazySSM02-commonAnnotations\5c93418c-0ef6-4f12-9155-2d8fc8cbfc22.jpg'>
-
-<p><code style='background:#ff3385;color:white;padding:5px;'>params</code>含有指定参数才可以处理</p>
-<img src='crazySSM02-commonAnnotations\06107059-8ce9-4967-90e0-ed1ca8e52b75.jpg'>
-
-<p><code style='background:#ff3385;color:white;padding:5px;'>headers</code>含有指定header才可以处理</p>
-<img src='crazySSM02-commonAnnotations\e312466e-11d6-48c6-a334-2c7f6a0ca871.jpg'>
-
-<h3 id="Action方法可以出现的参数类型"><a href="#Action方法可以出现的参数类型" class="headerlink" title="Action方法可以出现的参数类型"></a>Action方法可以出现的参数类型</h3><ol>
-<li>HttpServletRequest</li>
-</ol>
-<img src='crazySSM02-commonAnnotations\037ec880-93e7-4199-ad98-1fd3ab64e9c1.jpg'>
-
-<ol start="2">
-<li>HttpSession</li>
-</ol>
-<img src='crazySSM02-commonAnnotations\3198ee3e-cf0b-47a9-ac5d-d5923e44471d.jpg'>
-
-<ol start="3">
-<li>其他</li>
-</ol>
-<p>HttpServletResponse</p>
-<p>WebRequest</p>
-<p>NativeWebRequest</p>
-<p>Locale</p>
-<p>InputStream / OutputStream</p>
-<p>Reader / Writer</p>
-<p>Principal</p>
-<p>HttpEntity&lt;?&gt;</p>
-<p>Map</p>
-<p>Model</p>
-<p>ModelMap</p>
-<p>RedirectAttrbutes</p>
-<p>Errors</p>
-<p>BindingResult</p>
-<p>SessionStatus</p>
-<p>UriComponentsBuilder</p>
-<p>@PathVariable</p>
-<p>@MatrixVariable</p>
-<p>@RequestParam</p>
-<p>@RequestHeader</p>
-<p>@RequestBody</p>
-<p>@RequestPart</p>
-<h3 id="Action方法可以出现的返回值类型"><a href="#Action方法可以出现的返回值类型" class="headerlink" title="Action方法可以出现的返回值类型"></a>Action方法可以出现的返回值类型</h3><p>Model</p>
-<p>ModelAndView</p>
-<p>Map&lt;k,v&gt;</p>
-<p>View</p>
-<p>String </p>
-<p>HttpEntity / ResponseEntity</p>
-<p>Callable</p>
-<p>DeferredResult</p>
-<p>void</p>
-<h3 id="数据从控制器传递到视图的方式"><a href="#数据从控制器传递到视图的方式" class="headerlink" title="数据从控制器传递到视图的方式"></a>数据从控制器传递到视图的方式</h3><p>Model</p>
-<p>ModelMap</p>
-<p>ModelAndView</p>
-<p>@SessionAttributes</p>
-<p>@ModelAttribute</p>
-<h3 id="Model-与-ModelMap"><a href="#Model-与-ModelMap" class="headerlink" title="Model 与 ModelMap"></a>Model 与 ModelMap</h3><p>Model 与 ModelMap均可以传递数据，区别在于ModelMap实现了Map接口：</p>
-<img src='crazySSM02-commonAnnotations\40b1bab1-8e8e-4b83-a37e-58a7fd2a8f69.jpg'>
-
-<p>使用Model:</p>
-<img src='crazySSM02-commonAnnotations\012e01ee-df26-4101-a8ed-bf82990a068a.jpg'>
-
-<p>使用ModelMap:</p>
-<img src='crazySSM02-commonAnnotations\903d32ef-6642-42b3-bc91-9e15105efd85.jpg'>
-
-<h3 id="ModelAndView"><a href="#ModelAndView" class="headerlink" title="ModelAndView"></a>ModelAndView</h3><p>可以添加数据：</p>
-<img src='crazySSM02-commonAnnotations\c94e5dc0-f58e-4a8c-ab27-42ca03145adc.jpg'>
-
-<p>可以设置视图：</p>
-<img src='crazySSM02-commonAnnotations\49a363cb-3d39-483a-8b95-c818d38cd275.jpg'>
-
-<p>使用示例：</p>
-<img src='crazySSM02-commonAnnotations\b48b165a-92b2-4bf4-bbb6-45f440a035d5.jpg'>
-
-<h2 id="RequestParam"><a href="#RequestParam" class="headerlink" title="RequestParam"></a>RequestParam</h2><p>用来获取请求url中的参数：</p>
-<img src='crazySSM02-commonAnnotations\cb150eac-b5e5-4e3d-89f5-a5fd8361e995.jpg'>
-
-<p>对应请求地址：</p>
-<img src='crazySSM02-commonAnnotations\7a4a06a4-0717-4047-a44b-eb95ff381609.jpg'>
-
-<p>常用的属性：</p>
-<img src='crazySSM02-commonAnnotations\e7a9749f-66cb-48f1-b91b-73ca245eeadf.jpg'>
-
-<p>name / value 对应参数名称</p>
-<p>required表示是否为可选参数</p>
-<p>defaultValue表示默认值</p>
-<p>示例：</p>
-<img src='crazySSM02-commonAnnotations\70efc4b2-c635-4008-9e01-665ee33fcbf6.jpg'>
-
-<h2 id="PathVariable"><a href="#PathVariable" class="headerlink" title="PathVariable"></a>PathVariable</h2><img src='crazySSM02-commonAnnotations\37b69493-974b-485d-a5f4-473a33b3b397.jpg'>
-
-<p>对路由参数进行绑定，默认匹配同名参数：</p>
-<img src='crazySSM02-commonAnnotations\b339b2bb-4163-42ab-a8a8-5d65a07d3357.jpg'>
-
-<p>将1绑定给userId</p>
-<h2 id="RequestHeader"><a href="#RequestHeader" class="headerlink" title="RequestHeader"></a>RequestHeader</h2><p>对请求头的参数进行绑定</p>
-<img src='crazySSM02-commonAnnotations\f3853c2c-eb28-4f78-b265-d5b81d8a9bd7.jpg'>
-
-<p>获取指定的请求头：</p>
-<img src='crazySSM02-commonAnnotations\374e062f-e152-4b03-95a2-360ae1ec6962.jpg'>
-
-<h2 id="CookieValue"><a href="#CookieValue" class="headerlink" title="CookieValue"></a>CookieValue</h2><p>获取指定的cookie:</p>
-<img src='crazySSM02-commonAnnotations\86255635-65a9-4f34-ab37-fc2689fd08fb.jpg'>
-
-<p>获取jsessionid：</p>
-<img src='crazySSM02-commonAnnotations\6c5a63ca-0e08-4d13-bc59-5e3208b8093d.jpg'>
-
-<h2 id="SessionAttributes"><a href="#SessionAttributes" class="headerlink" title="SessionAttributes"></a>SessionAttributes</h2><p>把Model中指定的参数传入session:</p>
-<img src='crazySSM02-commonAnnotations\b1c61209-cc16-4fef-8b0d-f63947c25713.jpg'>
-
-<p>只可以对类修饰。</p>
-<img src='crazySSM02-commonAnnotations\472826a1-d0be-4758-9485-9692aaea3210.jpg'>
-
-<p>将Model中追加的user加入到session</p>
-<p>也可以指定类型：</p>
-<img src='crazySSM02-commonAnnotations\e6cc6d4a-b070-4272-a713-5028260e1c75.jpg'>
-
-<h2 id="ModelAttribute"><a href="#ModelAttribute" class="headerlink" title="ModelAttribute"></a>ModelAttribute</h2><ol>
-<li>将方法返回值添加到Model</li>
-</ol>
-<img src='crazySSM02-commonAnnotations\8e6c873d-1176-4678-99cc-5fbf02466fe8.jpg'>
-
-<ol start="2">
-<li>优先执行的方法，将数据注入到Model</li>
-</ol>
-<img src='crazySSM02-commonAnnotations\4fd7eb09-fde2-4fe3-839e-50fa69c3f502.jpg'>
-
-<ol start="3">
-<li>优先执行，根据返回类型确定Model的键, 值为返回值</li>
-</ol>
-<img src='crazySSM02-commonAnnotations\8378db7a-0e24-4c9d-8a5d-6af66785c839.jpg'>
-
-<ol start="4">
-<li>被RequestMapping和ModelAttribute同时给注解</li>
-</ol>
-<img src='crazySSM02-commonAnnotations\41595368-75c9-4e1c-9a1c-59a00803ce99.jpg'>
-
-<p>默认添加指定的Model参数，ModelAttribute的value为键，返回值即值。<br>Request Mapping指定的链接即视图名称，也就是/login4</p>
-<ol start="5">
-<li>使用ModelAttribute作为参数注解，会将Model中的数据注入到方法</li>
-</ol>
-<img src='crazySSM02-commonAnnotations\44ac34bc-ca49-429b-bb6b-3762292e68fa.jpg'>
-
-<h2 id="RequestBody与ResponseBody"><a href="#RequestBody与ResponseBody" class="headerlink" title="RequestBody与ResponseBody"></a>RequestBody与ResponseBody</h2><p>RequestBody用于注解参数，将json绑定到参数</p>
-<img src='crazySSM02-commonAnnotations\25b4e7b2-c1b9-4f02-88ad-2b6c3628a7b3.jpg'>
-
-<p>使用ObjectMapper的writeValueAsString转为字符串:</p>
-<img src='crazySSM02-commonAnnotations\b2c1ba05-1978-4763-a945-003176b07161.jpg'>
-
-<p>返回json使用ResponseBody注解方法即可：</p>
-<img src='crazySSM02-commonAnnotations\7b388e9e-ac4d-422e-a649-e051e4502279.jpg'>
-
-
-
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+表示</p>
         
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
+    
+    <time datetime="2020-04-19T12:47:21.000Z" itemprop="datePublished">2020-04-19</time>
+  </a>
+</section>
 
 
-  <div class="article-tags">
+
+
+
+
   
-  <span></span> <a href="/blog/tags/SSM/">SSM</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/04/10/common-links/" title="常用资源及链接" itemprop="url">
+  
+    <h1 itemprop="name">常用资源及链接</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/04/10/common-links/" title="常用资源及链接" itemprop="url">常用资源及链接</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-04-10T04:26:16.000Z" itemprop="datePublished"> Published 2020-04-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="常用网站链接"><a href="#常用网站链接" class="headerlink" title="常用网站链接"></a>常用网站链接</h2><table cellpadding='8' border='1' style='background:#EAF2D3;text-align:center'>
-<thead>
-<tr>
-&nbsp;&nbsp;<td>
+     
+           <p itemprop="description" >常用网站链接
+
+
+&amp;nbsp;&amp;nbsp;
 链接
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
 备注
-&nbsp;&nbsp;</td>
-</tr>
-</thead>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='http://gen.lib.rus.ec' target='_blank'>Library Genesis</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
+&amp;nbsp;&amp;nbsp;
+
+
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
+Library Genesis
+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;
 国外电子书下载
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='http://www.allitebooks.com' target='_blank'>AllItebooks</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-国外电子书下载
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='http://www.java1234.com/' target='_blank'>Java1234</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-Java资源网站
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='https://www.jb51.net/' target='_blank'>脚本之家</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-脚本之家站点
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='https://www.yabook.org/' target='_blank'>雅书</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-雅书电子书站点
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='http://www.javazx.com/' target='_blank'>Java自学网</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-Java自学网站点
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='http://www.w3cjava.com/' target='_blank'>W3c Java</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-W3c Java站点
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='https://www.cbedai.net/' target='_blank'>人工智能学习站点</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-人工智能学习站点
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='http://springboot.fun/' target='_blank'>spring boot中文索引</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-spring boot中文索引
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='http://springcloud.fun/' target='_blank'>spring cloud中文索引</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-spring cloud中文索引
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='http://techblog.pub/' target='_blank'>原创博客站点集合</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-原创博客站点集合
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-&nbsp;<tr>
-&nbsp;&nbsp;<td>
-<a href='http://tooool.org/' target='_blank'>程序员站点导航</a>
-&nbsp;&nbsp;</td>
-&nbsp;&nbsp;<td>
-程序员站点导航
-&nbsp;&nbsp;</td>
-&nbsp;</tr>
-</table>
-
-
+&amp;</p>
         
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
+    
+    <time datetime="2020-04-10T04:26:16.000Z" itemprop="datePublished">2020-04-10</time>
+  </a>
+</section>
 
 
-  <div class="article-tags">
+
+
+
+
   
-  <span></span> <a href="/blog/tags/other/">other</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/04/07/crazySSM01-introduction/" title="crazySSM01-简介" itemprop="url">crazySSM01-简介</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-04-07T12:01:49.000Z" itemprop="datePublished"> Published 2020-04-07</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="JavaEE应用分层"><a href="#JavaEE应用分层" class="headerlink" title="JavaEE应用分层"></a>JavaEE应用分层</h2><p>Domain Objects: 领域对象层，由POJO组成。</p>
-<p>DAO: 数据操作层， 对数据库进行CURD。（JDBC、Mybatis、Hibernate）</p>
-<p>Service: 服务层，调用DAO层实现相关的业务逻辑。</p>
-<p>Controller: 控制器层，接受请求，调用服务层处理并返回视图层。（Spring MVC）</p>
-<p>View: 视图层，用于数据显示。（JSP、Velocity、FreeMaker、Thymeleaf）</p>
-<img src='crazySSM01-introduction\8f7fea39-3a82-43e6-bfe5-84c780b7da33.jpg' style="width: 480px;height: 360px;">
-
-
-<h2 id="安装及准备"><a href="#安装及准备" class="headerlink" title="安装及准备"></a>安装及准备</h2><p>1.下载安装spring</p>
-<p><a target="_blank" rel="noopener" href="http://repo.springsource.org/libs-release-local/">spring下载链接</a>  下载spring压缩包。</p>
-<p>解压后，获得四个部分：</p>
-<ul>
-<li>docs: 相关文档</li>
-<li>libs: 类库</li>
-<li>schemas: 配置文件头</li>
-<li>readme、notice、license等文档</li>
-</ul>
-<p>将class文件复制到项目，并添加到类加载路径。</p>
-<p>2.下载安装common-logging</p>
-<p><a target="_blank" rel="noopener" href="http://commons.apache.org/">common-logging下载地址</a></p>
-<p>下载解压后得到common-logging的jar包，复制到项目并添加到类加载路径</p>
-<img src='crazySSM01-introduction\fa981f70-fd7e-420b-b30f-13c23d1e2f29.jpg'>
-
-<ol start="3">
-<li>配置前端控制器</li>
-</ol>
-<p>在WEB-INF下的web.xml文件中，配置前端控制器。</p>
-<img src='crazySSM01-introduction\3345209b-222b-4642-a0c0-80ef42ef8327.jpg'>
-
-<p>这里加载的配置文件，为了生成ApplicationContext，对Bean进行管理，对于web项目会自动加载并生成，java项目需要手动读取配置文件生成ApplicationContext实例。</p>
-<ol start="4">
-<li>配置文件springmvc-config.xml</li>
-</ol>
-<img src='crazySSM01-introduction\234f5337-0af6-49b8-876f-255141bbbe53.jpg'>
-
-<ol start="5">
-<li>添加测试</li>
-</ol>
-<p>使用@Controller注解</p>
-<img src='crazySSM01-introduction\e6d076d2-f971-4dc9-b702-7211087bc11b.jpg'>
-
-<ol start="6">
-<li>测试结果</li>
-</ol>
-<img src='crazySSM01-introduction\ff5b1062-4a4f-47c0-b8cc-05678d674e84.jpg'>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/SSM/">SSM</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/04/04/microservice02-Spring-Cloud/" title="microservice03-Spring Cloud" itemprop="url">microservice03-Spring Cloud</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-04-04T02:24:42.000Z" itemprop="datePublished"> Published 2020-04-04</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Spring Boot用于开发微服务应用，而实际的微服务架构不仅仅包含应用，还有服务注册、服务发现等部分：</p>
-<img src='microservice02-Spring-Cloud\30350f6f-9169-4e7d-815f-8d9a719fb85f.jpg'>
-
-<p>下面以Dalston SR3为例进行介绍Spring Cloud.</p>
-<h2 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h2><h3 id="服务发现介绍"><a href="#服务发现介绍" class="headerlink" title="服务发现介绍"></a>服务发现介绍</h3><p>服务发现主要采用Spring Cloud Netflix中的Eureka。</p>
-<p>主要包括Eureka Server（服务端发现组件）和Eureka Client（客户端发现组件）两个部分。</p>
-<img src='microservice02-Spring-Cloud\92197523-a6f0-43b9-8a78-279ec85e2107.jpg'>
-
-<p>Eureka Server定时检测服务的可用性。</p>
-<p>Eureka Client将服务注册到服务管理中心。</p>
-<p>服务发现中，服务消费者、服务管理中心，服务提供者的关系：</p>
-<img src='microservice02-Spring-Cloud\83a0a45d-172a-4225-a13a-8895fcfa362c.jpg'>
-
-<p>服务消费者与服务管理中心维持心跳，更新最新调用地址。</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ol>
-<li>新建Maven项目，添加Spring Cloud的依赖</li>
-</ol>
-<img src='microservice02-Spring-Cloud\4c0ea19c-621c-4b7c-babc-3ec315f570d1.jpg'>
-
-<ol start="2">
-<li>创建服务端工程子模块</li>
-</ol>
-<p>a. 创建Server子工程，添加eureka server依赖：</p>
-<img src='microservice02-Spring-Cloud\60bdd203-2d65-4201-aea4-a8984868a618.jpg'>
-
-<p>b. 为eureka server添加配置文件：</p>
-<img src='microservice02-Spring-Cloud\9bdd2f1d-0d10-4d95-aa26-adef46bd4522.jpg'>
-
-<p>配置文件中配置了项目的端口号8761，实例名称为localhost, register-with-eukera与fetch-registry都是服务发现客户端需要做的，配置为false，并设置服务发现服务端地址。</p>
-<p>c. 为启动类添加EnableEukeraServer注解</p>
-<img src='microservice02-Spring-Cloud\a1d32b50-4763-4dad-b89e-38d572398a22.jpg'>
-
-<p>d. 测试</p>
-<img src='microservice02-Spring-Cloud\f698027b-10db-4d97-870a-6cf4dfcacc8d.jpg'>
-
-<ol start="3">
-<li>创建客户端工程子模块</li>
-</ol>
-<p>a. 创建客户端子项目，添加依赖</p>
-<img src='microservice02-Spring-Cloud\c349af84-4c38-4913-bca3-3d3538e7bdf3.jpg'>
-
-<p>b. 添加配置信息</p>
-<img src='microservice02-Spring-Cloud\344a56cc-91c9-466f-b937-ca7f52bb86ed.jpg'>
-
-<p>配置客户端端口，显示主机ip,配置服务端地址，配置客户端应用名称。</p>
-<p>c. 为启动类添加EnableEukeraClient注解</p>
-<img src='microservice02-Spring-Cloud\ea09111b-7337-4e37-b904-8bc8dc25c0d8.jpg' >
-
-<p>d. 测试</p>
-<img src='microservice02-Spring-Cloud\20267eb7-bc0e-42df-94f2-db74737b5d6f.jpg'>
-
-<h3 id="服务间调用"><a href="#服务间调用" class="headerlink" title="服务间调用"></a>服务间调用</h3><p>测试订单与用户服务之间的调用。</p>
-<ol>
-<li>添加订单服务项目：</li>
-</ol>
-<p>a. 添加依赖</p>
-<img src='microservice02-Spring-Cloud\1e13f4a5-1cb1-4d72-bf75-a5293f6e2248.jpg'>
-
-<p>b. 添加配置</p>
-<img src='microservice02-Spring-Cloud\d20d33b7-a221-404d-8793-d2ce30206092.jpg'>
-
-<p>c. 添加POJO</p>
-<pre style='background:#e6e6e6;padding=10px;'>
-public class Order{
-    private String id;
-    private Double price;
-    private String receiverName;
-    private String receiverAddress;
-    private String receiverPhone;
-    /**getters and setters**/
-}
-</pre>
-
-<p>d. 添加控制器类</p>
-<img src='microservice02-Spring-Cloud\042af9fc-15c5-42d1-8817-c075d61a02d6.jpg'>
-
-<p>e. 在引导类上添加EnableEukeraClient注解</p>
-<ol start="2">
-<li>为用户服务添加RestTemplate的Bean</li>
-</ol>
-<img src='microservice02-Spring-Cloud\04ca9d88-89d3-4ec1-bd7c-d3d880d524c2.jpg'>
-
-<ol start="3">
-<li>添加控制器类</li>
-</ol>
-<img src='microservice02-Spring-Cloud\4f00d874-e74f-48b2-b228-a7a7bfed4f31.jpg'>
-<img src='microservice02-Spring-Cloud\78ece87b-60d3-4651-a71d-2b6e28a64267.jpg'>
-
-<p>restTemplate将完成远程调用，获取订单信息。</p>
-<ol start="4">
-<li>测试</li>
-</ol>
-<img src='microservice02-Spring-Cloud\16854ff4-b648-4b02-a092-2b0466c84f08.jpg'>
-
-<h2 id="客户端负载均衡"><a href="#客户端负载均衡" class="headerlink" title="客户端负载均衡"></a>客户端负载均衡</h2><p>客户端负载均衡采用Ribbon实现。</p>
-<p>在Eukera中内置了Ribbon，只需要在配置RestTemplate时添加LoadBalanced注解：</p>
-<img src='microservice02-Spring-Cloud\98e1ad20-1488-4676-a647-b93f722e9c97.jpg'>
-
-<p>在调用服务时，取消主机+端口调用，而直接使用服务的实例名称：</p>
-<img src='microservice02-Spring-Cloud\0a8c2ffa-4279-4d8e-b83e-5037d2a9aa18.jpg'>
-
-<h2 id="服务容错"><a href="#服务容错" class="headerlink" title="服务容错"></a>服务容错</h2><p>多个服务层之间调用关系会存在级联的关系：</p>
-<img src='microservice02-Spring-Cloud\10a0eedb-4d1f-4a7c-9f80-a8c7c9ef02a2.jpg'>
-
-<p>一旦某个服务出现故障，将会出现故障传递。</p>
-<h3 id="熔断器的三种状态"><a href="#熔断器的三种状态" class="headerlink" title="熔断器的三种状态"></a>熔断器的三种状态</h3><p>关闭、打开、半开：</p>
-<img src='microservice02-Spring-Cloud\0b2567a3-8504-4f58-9d94-26ed2c1fab75.jpg'>
-
-<p>服务健康状况 = (请求失败数 / 请求总数) 和 设定阈值（默认10秒内20次失败）</p>
-<p>健康值高于域值熔断器关闭，否则熔断器打开，阻止请求。打开后一定的时间窗内，将恢复半开。半开状态只允许一个请求，若请求成功则关闭，否则继续回到打开状态。</p>
-<p>服务调用失败时，若有fallback方法，将执行fallback：</p>
-<img src='microservice02-Spring-Cloud\b7715133-2ef6-485c-8716-05c84edd2a7c.jpg' >
-
-<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><p>原有的父项目及订单服务可以复用，新建熔断user项目：</p>
-<ol>
-<li>添加依赖</li>
-</ol>
-<img src='microservice02-Spring-Cloud\89319af8-3612-4106-a28d-eb73372d978d.jpg'>
-
-<p>除了eukera还需要hystrix.</p>
-<ol start="2">
-<li>配置信息与上面类似</li>
-</ol>
-<img src='microservice02-Spring-Cloud\6acddc2f-811f-4588-9962-c6f91dfce09d.jpg'>
-
-<ol start="3">
-<li>配置启动类</li>
-</ol>
-<p>添加EnableCircuitBreaker及EnableEukeraClient注解</p>
-<img src='microservice02-Spring-Cloud\c4b6f6dc-31da-4685-a9b2-20a3c83fc71c.jpg'>
-
-<ol start="4">
-<li>新建控制器</li>
-</ol>
-<img src='microservice02-Spring-Cloud\a98442b4-4b47-4f70-9cef-3ca41ab1ad8c.jpg'>
-
-<p>为动作方法添加HystrixCommand注解，指定调用失败的方法，二者参数列表应当一致。</p>
-<img src='microservice02-Spring-Cloud\d22c1367-1e90-483a-ac96-41a3ef998cbe.jpg'>
-
-<ol start="5">
-<li>测试</li>
-</ol>
-<p>使用ribbon进行负载均衡时，会对订单服务进行轮询，将其中一个服务停掉，再次轮询到时会进入fallback方法：</p>
-<img src='microservice02-Spring-Cloud\ec161863-0240-42cc-8510-47741de9a100.jpg'>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+    <a href="/blog/2020/04/07/crazySSM01-introduction/" title="crazySSM01-简介" itemprop="url">
   
-  <span></span> <a href="/blog/tags/microservice/">microservice</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">crazySSM01-简介</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >JavaEE应用分层Domain Objects: 领域对象层，由POJO组成。
+DAO: 数据操作层， 对数据库进行CURD。（JDBC、Mybatis、Hibernate）
+Service: 服务层，调用DAO层实现相关的业务逻辑。
+Controller: 控制器层，接受请求</p>
+        
     
-      <a href="/blog/2020/04/03/microservice02-Spring-Boot/" title="microservice02-Spring Boot" itemprop="url">microservice02-Spring Boot</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-04-03T12:11:13.000Z" itemprop="datePublished"> Published 2020-04-03</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Spring-Boot的优势"><a href="#Spring-Boot的优势" class="headerlink" title="Spring Boot的优势"></a>Spring Boot的优势</h2><ol>
-<li><p>构建独立运行的jar</p>
-</li>
-<li><p>内嵌Servlet容器,可以直接运行</p>
-</li>
-<li><p>pom.xml依赖管理</p>
-</li>
-<li><p>简化配置，自动化Bean</p>
-</li>
-</ol>
-<h2 id="项目结构图"><a href="#项目结构图" class="headerlink" title="项目结构图"></a>项目结构图</h2><img src='microservice02-Spring-Boot\2d18439d-8523-413f-84a9-1991a5ec49eb.jpg' style="width:480px;height:400px">
-
-<h2 id="创建一个测试类"><a href="#创建一个测试类" class="headerlink" title="创建一个测试类"></a>创建一个测试类</h2><img src='microservice02-Spring-Boot\333b2856-b628-4620-8726-fb402c638eb9.jpg' style="width:560px;height:240px">
-
-<p>RestController指明返回的是API数据而不是视图。<br>RequestMapping指明方法的路径</p>
-<img src='microservice02-Spring-Boot\a35d0e0d-1582-4269-bef8-31e2bb665931.jpg' >
-
-<h2 id="集成Mybatis"><a href="#集成Mybatis" class="headerlink" title="集成Mybatis"></a>集成Mybatis</h2><h3 id="准备数据库"><a href="#准备数据库" class="headerlink" title="准备数据库"></a>准备数据库</h3><p>在mysql中创建microservice数据库及tb_user数据表：</p>
-<img src='microservice02-Spring-Boot\a4f1b514-5fe6-4c82-98da-b2576d8a585a.jpg' style='width:480px;height:200px;'>
-
-<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><p>添加一个依赖Web模块的Spring Boot项目，并向pom.xml添加mybatis及mysql依赖：</p>
-<img src='microservice02-Spring-Boot\80eda36e-4d2b-4ffd-ba7a-d2d890c0b6af.jpg' style='width:480px;height:200px;'>
-
-<h3 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h3><p>追加数据库连接配置及日志配置：</p>
-<img src='microservice02-Spring-Boot\c866e517-2e97-4a46-b4ba-9f8c5e716165.jpg' style='width:480px;height:160px;'>
-
-<h3 id="创建实体类"><a href="#创建实体类" class="headerlink" title="创建实体类"></a>创建实体类</h3><img src='microservice02-Spring-Boot\9d089ead-e637-4bbf-be3f-cda626eba249.jpg'>
-
-<h3 id="编写Mapper"><a href="#编写Mapper" class="headerlink" title="编写Mapper"></a>编写Mapper</h3><p>通过接口及注解方法编写mapper</p>
-<img src='microservice02-Spring-Boot\020b8191-d578-44bf-9f08-cb6a696863af.jpg'>
-
-<h3 id="编写Service接口"><a href="#编写Service接口" class="headerlink" title="编写Service接口"></a>编写Service接口</h3><img src='microservice02-Spring-Boot\615df9ee-fb60-4b06-ba50-a4f5f1f9c580.jpg'>
-
-<h3 id="编写Service实现类"><a href="#编写Service实现类" class="headerlink" title="编写Service实现类"></a>编写Service实现类</h3><img src='microservice02-Spring-Boot\ee3ebdd1-8b33-4204-99ff-aedd7fb100c3.jpg'>
-
-<h3 id="编写控制器类"><a href="#编写控制器类" class="headerlink" title="编写控制器类"></a>编写控制器类</h3><img src='microservice02-Spring-Boot\00b671a4-32f4-4338-b005-db9f93eaf20d.jpg'>
-
-<h3 id="前端页面"><a href="#前端页面" class="headerlink" title="前端页面"></a>前端页面</h3><img src='microservice02-Spring-Boot\06fc79b7-c41f-4111-ae35-9f3d46134e53.jpg'>
-
-<p>显示效果：</p>
-<img src='microservice02-Spring-Boot\04d7e7e0-f967-4659-880b-2dad442e859e.jpg'>
-
-<h3 id="使用yml配置"><a href="#使用yml配置" class="headerlink" title="使用yml配置"></a>使用yml配置</h3><p>也可以使用yml配置替换properties</p>
-<img src='microservice02-Spring-Boot\206d13ad-fdfe-4f83-961f-ef9d817580d1.jpg'>
-
-<h2 id="集成Redis缓存"><a href="#集成Redis缓存" class="headerlink" title="集成Redis缓存"></a>集成Redis缓存</h2><p>Redis通常作为缓存和消息代理。</p>
-<h3 id="添加依赖-1"><a href="#添加依赖-1" class="headerlink" title="添加依赖"></a>添加依赖</h3><img src='microservice02-Spring-Boot\36791540-f7e4-45aa-871c-364de7bcf432.jpg' >
-
-<h3 id="开启缓存"><a href="#开启缓存" class="headerlink" title="开启缓存"></a>开启缓存</h3><img src='microservice02-Spring-Boot\6f86177f-415a-43ad-a85b-eda28a8a5523.jpg'>
-
-<img src='microservice02-Spring-Boot\d8c0beb0-fd29-4695-9b77-ccbeb5cfe077.jpg'>
-
-<h3 id="实体类需要可序列化"><a href="#实体类需要可序列化" class="headerlink" title="实体类需要可序列化"></a>实体类需要可序列化</h3><img src='microservice02-Spring-Boot\8feffb88-d681-4cd5-8b9e-d63f16f88637.jpg'>
-
-<h3 id="添加缓存服务器配置"><a href="#添加缓存服务器配置" class="headerlink" title="添加缓存服务器配置"></a>添加缓存服务器配置</h3><img src='microservice02-Spring-Boot\a8e9f905-7f0d-4b6b-8023-9902fba19c15.jpg'>
-
-<h3 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h3><img src='microservice02-Spring-Boot\2908b92b-7bf2-40f0-a01a-cbe4d8929e7a.jpg'>
-
-<h2 id="集成ActiveMQ"><a href="#集成ActiveMQ" class="headerlink" title="集成ActiveMQ"></a>集成ActiveMQ</h2><p>spring对消息服务具有支持。</p>
-<h3 id="添加依赖-2"><a href="#添加依赖-2" class="headerlink" title="添加依赖"></a>添加依赖</h3><img src='microservice02-Spring-Boot\91237d4f-c66e-4673-8dd6-fc16f5b46e9c.jpg'>
-
-<h3 id="创建消息队列Bean"><a href="#创建消息队列Bean" class="headerlink" title="创建消息队列Bean"></a>创建消息队列Bean</h3><img src='microservice02-Spring-Boot\02096089-bfd7-4128-8f94-0df6710488b8.jpg'>
-
-<h3 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h3><p>使用JmsMessagingTemplate发送消息。同时需要注入队列的Bean</p>
-<img src='microservice02-Spring-Boot\b0c15479-ee5e-44f8-aca2-15eddb5bf543.jpg'>
-
-<h3 id="消费消息"><a href="#消费消息" class="headerlink" title="消费消息"></a>消费消息</h3><p>JmsListener监听</p>
-<img src='microservice02-Spring-Boot\82b0b13e-54ac-47ca-9b8c-097caa91e4b4.jpg'>
-
-<h3 id="配置远程activeMQ地址"><a href="#配置远程activeMQ地址" class="headerlink" title="配置远程activeMQ地址"></a>配置远程activeMQ地址</h3><img src='microservice02-Spring-Boot\62dbbbe1-2524-4f79-ac11-bd0e4613d570.jpg'>
-
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src='microservice02-Spring-Boot\caa049f8-cfb2-48ee-b8a2-633cbd9dd3af.jpg'>
-
-<h2 id="Spring-Boot项目打包"><a href="#Spring-Boot项目打包" class="headerlink" title="Spring Boot项目打包"></a>Spring Boot项目打包</h2><h3 id="Jar包"><a href="#Jar包" class="headerlink" title="Jar包"></a>Jar包</h3><p>使用Maven的package命令即可打包。</p>
-<p>运行：</p>
-<img src='microservice02-Spring-Boot\7a94f230-ffa3-4fdc-898d-0f1aa48b4a59.jpg'>
-
-<img src='microservice02-Spring-Boot\b68b3a4d-e759-4626-a69f-cdc6e07c7da2.jpg'>
-
-<h3 id="WAR包"><a href="#WAR包" class="headerlink" title="WAR包"></a>WAR包</h3><p>将tomcat配置provided:</p>
-<img src='microservice02-Spring-Boot\ffb288b1-fb0f-4719-af72-03f51ff42633.jpg'>
-
-<p>创建继承了SpringBootServletInitializer的子类，重写configure方法：</p>
-<img src='microservice02-Spring-Boot\cbbae934-1b67-45a2-96a7-263e73df61da.jpg'>
-
-<p>使用Maven的package命令即可打包。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
+    <time datetime="2020-04-07T12:01:49.000Z" itemprop="datePublished">2020-04-07</time>
+  </a>
+</section>
 
 
-  <div class="article-tags">
+
+
+
+
   
-  <span></span> <a href="/blog/tags/microservice/">microservice</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/04/04/microservice02-Spring-Cloud/" title="microservice03-Spring Cloud" itemprop="url">
+  
+    <h1 itemprop="name">microservice03-Spring Cloud</h1>
+    
+     
+           <p itemprop="description" >Spring Boot用于开发微服务应用，而实际的微服务架构不仅仅包含应用，还有服务注册、服务发现等部分：
 
 
-    </article>
-
-
-
-
+下面以Dalston SR3为例进行介绍Spring Cloud.
+服务发现服务发现介绍服务发现主要采用Spring Cloud Netflix中的Eureka。
+主要</p>
+        
+    
+    <time datetime="2020-04-04T02:24:42.000Z" itemprop="datePublished">2020-04-04</time>
+  </a>
+</section>
 
 
 
-  <nav id="page-nav" class="clearfix">
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/04/03/microservice02-Spring-Boot/" title="microservice02-Spring Boot" itemprop="url">
+  
+    <h1 itemprop="name">microservice02-Spring Boot</h1>
+    
+     
+           <p itemprop="description" >Spring Boot的优势
+构建独立运行的jar
+
+内嵌Servlet容器,可以直接运行
+
+pom.xml依赖管理
+
+简化配置，自动化Bean
+
+
+项目结构图
+
+创建一个测试类
+
+RestController指明返回的是API数据而不是视图。RequestMapping指明方法</p>
+        
+    
+    <time datetime="2020-04-03T12:11:13.000Z" itemprop="datePublished">2020-04-03</time>
+  </a>
+</section>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix unexpand">
     <a class="extend prev" rel="prev" href="/blog/page/4/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/blog/page/6/">6</a><a class="page-number" href="/blog/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="extend next" rel="next" href="/blog/page/6/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
@@ -1884,8 +495,8 @@ public class Order{
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

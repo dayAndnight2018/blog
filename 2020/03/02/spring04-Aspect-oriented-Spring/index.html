@@ -18,43 +18,43 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="几个定义切面：用于提供额外功能的中间件叫做切面。 通知：切面执行的方法叫通知。   连接点：连接点就是通知切入的一些时机。 切点：切点就是不同的织入的方法。 切面：切面就是切点和通知的集合。 引入：对现有类的方法或属性进行扩展。无需改动现有的类，而添加额外的功能。 织入：切面植入到切点生成代理的过程。 注意Spring AOP是基于动态代理实现的，只适用于方法而不是字段和构造器。若使用字段和构造器">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/c64b7c74-85e6-42d4-97f8-e7b6a5cd8b65.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/7385c942-3ba5-43fd-ba75-6e4e545a63c1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/f926f52e-8ddd-41a0-9cbc-c83bfde15f28.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/d4678178-4bed-44a5-83cc-1e53fc2c76ae.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/56011dbe-8bdc-4a03-97a4-041f8aa1f89a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/887ef2e3-11b3-4a2a-b1c3-8a4681f45b81.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/1b322723-f1d8-419e-a23a-6e2fe2e31087.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/cbed781f-3322-4b51-8543-2f91dc69cd98.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/bc95ae3b-6e8e-4ebd-9bea-d7ba365bc4c2.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/e3ff83ab-2ea0-431d-8fbf-f9aaf68463f6.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/7d19c545-4d73-4e5a-a784-9e4f308443df.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/88360916-71af-4e63-8e08-103d49e06832.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/8680967a-1c74-425c-9f72-ba14e0534cd1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/7c1466a4-1c94-49a4-adb8-8d73b9e78686.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/9f93f4ae-7070-4666-bece-ad4550c6e42b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/56c7f07e-7e22-4443-8476-10a454496ba0.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/beb218e8-3c8d-4f54-8b1e-2bb11cd672fd.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/d939a402-47fa-4fd0-91e1-fb7400f0b1e7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/e21999cb-2e6b-420f-8bb8-dfd824502c00.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/a9cbc369-23f6-4daa-9779-d8a4520cc8e9.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/fe6c3d7f-e5ca-4236-9cb1-a32a7c2e868f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/c9b9c3d0-97b5-4fc3-af71-0975aa34ad70.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/7ca5de4b-6e04-462c-bec0-7aa8e6f8173d.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/0bf7c997-57cf-4c0f-b781-c06457138d1b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/21f64518-e009-4e51-a043-0fcd7a880087.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/f7ed6ef4-8fc4-4470-9764-4ab537a56fe1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/0bee3cd0-7276-4c6a-8569-19fc8faa801c.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/f90b717a-7bc4-4bb5-b959-d4d0693c1d5a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/1c8380d8-2ea3-4722-ac1f-84d40363f8b1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/8d2f956f-1d91-44a1-98f8-18e4581bb441.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/a05eb364-2cb7-446e-a509-5281439d5a4b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/c64b7c74-85e6-42d4-97f8-e7b6a5cd8b65.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/7385c942-3ba5-43fd-ba75-6e4e545a63c1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/f926f52e-8ddd-41a0-9cbc-c83bfde15f28.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/d4678178-4bed-44a5-83cc-1e53fc2c76ae.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/56011dbe-8bdc-4a03-97a4-041f8aa1f89a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/887ef2e3-11b3-4a2a-b1c3-8a4681f45b81.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/1b322723-f1d8-419e-a23a-6e2fe2e31087.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/cbed781f-3322-4b51-8543-2f91dc69cd98.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/bc95ae3b-6e8e-4ebd-9bea-d7ba365bc4c2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/e3ff83ab-2ea0-431d-8fbf-f9aaf68463f6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/7d19c545-4d73-4e5a-a784-9e4f308443df.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/88360916-71af-4e63-8e08-103d49e06832.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/8680967a-1c74-425c-9f72-ba14e0534cd1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/7c1466a4-1c94-49a4-adb8-8d73b9e78686.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/9f93f4ae-7070-4666-bece-ad4550c6e42b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/56c7f07e-7e22-4443-8476-10a454496ba0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/beb218e8-3c8d-4f54-8b1e-2bb11cd672fd.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/d939a402-47fa-4fd0-91e1-fb7400f0b1e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/e21999cb-2e6b-420f-8bb8-dfd824502c00.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/a9cbc369-23f6-4daa-9779-d8a4520cc8e9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/fe6c3d7f-e5ca-4236-9cb1-a32a7c2e868f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/c9b9c3d0-97b5-4fc3-af71-0975aa34ad70.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/7ca5de4b-6e04-462c-bec0-7aa8e6f8173d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/0bf7c997-57cf-4c0f-b781-c06457138d1b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/21f64518-e009-4e51-a043-0fcd7a880087.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/f7ed6ef4-8fc4-4470-9764-4ab537a56fe1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/0bee3cd0-7276-4c6a-8569-19fc8faa801c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/f90b717a-7bc4-4bb5-b959-d4d0693c1d5a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/1c8380d8-2ea3-4722-ac1f-84d40363f8b1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/8d2f956f-1d91-44a1-98f8-18e4581bb441.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/a05eb364-2cb7-446e-a509-5281439d5a4b.jpg">
 <meta property="article:published_time" content="2020-03-02T10:18:27.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.910Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/03/02/spring04-Aspect-oriented-Spring/spring04-Aspect-oriented-Spring/c64b7c74-85e6-42d4-97f8-e7b6a5cd8b65.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/03/02/spring04-Aspect-oriented-Spring/c64b7c74-85e6-42d4-97f8-e7b6a5cd8b65.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -131,62 +131,55 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">几个定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">2.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E7%82%B9%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">3.</span> <span class="toc-text">切点的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E9%9D%A2%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">4.</span> <span class="toc-text">切面的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E7%BB%95%E4%BB%A3%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">环绕代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">6.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8xml%E9%85%8D%E7%BD%AE%E5%88%87%E9%9D%A2"><span class="toc-number">7.</span> <span class="toc-text">使用xml配置切面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E9%9D%A2%E6%89%80%E6%B6%89%E5%8F%8A%E7%9A%84%E6%A0%87%E7%AD%BE"><span class="toc-number">7.1.</span> <span class="toc-text">切面所涉及的标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%86%99%E5%88%87%E9%9D%A2POJO%E7%B1%BB"><span class="toc-number">7.2.</span> <span class="toc-text">重写切面POJO类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml%E5%BC%95%E5%85%A5%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.3.</span> <span class="toc-text">xml引入的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E9%9D%A2%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98"><span class="toc-number">8.</span> <span class="toc-text">切面注入问题</span></a></li></ol>
-		
-		</div>
-		
-		<h2 id="几个定义"><a href="#几个定义" class="headerlink" title="几个定义"></a>几个定义</h2><p><code style='background:#ff3385;color:white;padding:5px;'>切面</code>：用于提供额外功能的中间件叫做切面。</p>
-<p><code style='background:#ff3385;color:white;padding:5px;'>通知</code>：切面执行的方法叫通知。</p>
-<img src='spring04-Aspect-oriented-Spring\c64b7c74-85e6-42d4-97f8-e7b6a5cd8b65.jpg'>
+		<h2 id="几个定义"><a href="#几个定义" class="headerlink" title="几个定义"></a>几个定义</h2><p><code style="background:#ff3385;color:white;padding:5px;">切面</code>：用于提供额外功能的中间件叫做切面。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">通知</code>：切面执行的方法叫通知。</p>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/c64b7c74-85e6-42d4-97f8-e7b6a5cd8b65.jpg">
 
-<p><code style='background:#ff3385;color:white;padding:5px;'>连接点</code>：连接点就是通知切入的一些时机。</p>
-<p><code style='background:#ff3385;color:white;padding:5px;'>切点</code>：切点就是不同的织入的方法。</p>
-<p><code style='background:#ff3385;color:white;padding:5px;'>切面</code>：切面就是切点和通知的集合。</p>
-<p><code style='background:#ff3385;color:white;padding:5px;'>引入</code>：对现有类的方法或属性进行扩展。无需改动现有的类，而添加额外的功能。</p>
-<p><code style='background:#ff3385;color:white;padding:5px;'>织入</code>：切面植入到切点生成代理的过程。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">连接点</code>：连接点就是通知切入的一些时机。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">切点</code>：切点就是不同的织入的方法。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">切面</code>：切面就是切点和通知的集合。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">引入</code>：对现有类的方法或属性进行扩展。无需改动现有的类，而添加额外的功能。</p>
+<p><code style="background:#ff3385;color:white;padding:5px;">织入</code>：切面植入到切点生成代理的过程。</p>
 <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>Spring AOP是基于动态代理实现的，只适用于方法而不是字段和构造器。若使用字段和构造器切入，可以使用AspectJ</p>
 <h2 id="切点的定义"><a href="#切点的定义" class="headerlink" title="切点的定义"></a>切点的定义</h2><p>Spring Aop借助于AspectJ的注解创建切点：</p>
-<img src='spring04-Aspect-oriented-Spring\7385c942-3ba5-43fd-ba75-6e4e545a63c1.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/7385c942-3ba5-43fd-ba75-6e4e545a63c1.jpg">
 
 <p>定义一个业务功能点接口</p>
-<img src='spring04-Aspect-oriented-Spring\f926f52e-8ddd-41a0-9cbc-c83bfde15f28.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/f926f52e-8ddd-41a0-9cbc-c83bfde15f28.jpg">
 
 <p>构建注解匹配方法：</p>
-<img src='spring04-Aspect-oriented-Spring\d4678178-4bed-44a5-83cc-1e53fc2c76ae.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/d4678178-4bed-44a5-83cc-1e53fc2c76ae.jpg">
 
 <p>如果需要限定包名：</p>
-<img src='spring04-Aspect-oriented-Spring\56011dbe-8bdc-4a03-97a4-041f8aa1f89a.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/56011dbe-8bdc-4a03-97a4-041f8aa1f89a.jpg">
 
 <p>如果限定Bean的名称：</p>
-<img src='spring04-Aspect-oriented-Spring\887ef2e3-11b3-4a2a-b1c3-8a4681f45b81.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/887ef2e3-11b3-4a2a-b1c3-8a4681f45b81.jpg">
 
 <p>排除法：</p>
-<img src='spring04-Aspect-oriented-Spring\1b322723-f1d8-419e-a23a-6e2fe2e31087.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/1b322723-f1d8-419e-a23a-6e2fe2e31087.jpg">
 
 <h2 id="切面的定义"><a href="#切面的定义" class="headerlink" title="切面的定义"></a>切面的定义</h2><p>使用AspectJ的一些标记进行切面的定义，所谓切面就是监听到切点方法执行的时候，所执行的嵌入的代码。</p>
-<img src='spring04-Aspect-oriented-Spring\cbed781f-3322-4b51-8543-2f91dc69cd98.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/cbed781f-3322-4b51-8543-2f91dc69cd98.jpg">
 
 <p>首先使用@Aspect标记了切面类，然后分别使用不同的注解表名不同方法执行的时机。</p>
-<img src='spring04-Aspect-oriented-Spring\bc95ae3b-6e8e-4ebd-9bea-d7ba365bc4c2.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/bc95ae3b-6e8e-4ebd-9bea-d7ba365bc4c2.jpg">
 
 <p>可以使用Pointcut进行切点引用，并实现切点的复用：</p>
-<img src='spring04-Aspect-oriented-Spring\e3ff83ab-2ea0-431d-8fbf-f9aaf68463f6.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/e3ff83ab-2ea0-431d-8fbf-f9aaf68463f6.jpg">
 
 <p>将切面配置为Bean，并设置开启AspectJ自动代理：</p>
-<img src='spring04-Aspect-oriented-Spring\7d19c545-4d73-4e5a-a784-9e4f308443df.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/7d19c545-4d73-4e5a-a784-9e4f308443df.jpg">
 
 <p>也可以使用xml配置aop:aspectj-autoproxy开启：</p>
-<img src='spring04-Aspect-oriented-Spring\88360916-71af-4e63-8e08-103d49e06832.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/88360916-71af-4e63-8e08-103d49e06832.jpg">
 
-<h2 id="环绕代码"><a href="#环绕代码" class="headerlink" title="环绕代码"></a>环绕代码</h2><img src='spring04-Aspect-oriented-Spring\8680967a-1c74-425c-9f72-ba14e0534cd1.jpg'>
+<h2 id="环绕代码"><a href="#环绕代码" class="headerlink" title="环绕代码"></a>环绕代码</h2><img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/8680967a-1c74-425c-9f72-ba14e0534cd1.jpg">
 
 <p>需要一个PRoceedingJoinPoint参数，用来调用方法proceed方法执行切点方法。</p>
 <p>传参数：</p>
 <p>当方法有参数时候，怎么截取参数传递到切面呢？</p>
-<img src='spring04-Aspect-oriented-Spring\7c1466a4-1c94-49a4-adb8-8d73b9e78686.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/7c1466a4-1c94-49a4-adb8-8d73b9e78686.jpg">
 
 <p>此处出现两个变动：</p>
 <ol>
@@ -195,29 +188,29 @@
 <li><p>使用args()拦截参数</p>
 </li>
 </ol>
-<img src='spring04-Aspect-oriented-Spring\9f93f4ae-7070-4666-bece-ad4550c6e42b.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/9f93f4ae-7070-4666-bece-ad4550c6e42b.jpg">
 
 <p>切入点定义时，设置的参数名称要与切面方法参数保持一致。</p>
 <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>我们想在Performance的基础上实现另外的接口方法：</p>
-<img src='spring04-Aspect-oriented-Spring\56c7f07e-7e22-4443-8476-10a454496ba0.jpg' >
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/56c7f07e-7e22-4443-8476-10a454496ba0.jpg">
 
 <p>但是源码我们没法修改，怎么引入这个新的接口方法呢？</p>
 <p>创建新的切面</p>
-<img src='spring04-Aspect-oriented-Spring\beb218e8-3c8d-4f54-8b1e-2bb11cd672fd.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/beb218e8-3c8d-4f54-8b1e-2bb11cd672fd.jpg">
 
 <p>在内部声明一个静态的接口变量引用。并使用DeclareParents注解进行标记。</p>
-<p>value属性指定了哪种类型的<code style='background:#ff3385;color:white;padding:5px;'>bean要引入</code>该接口。在本例中，也就是所有实现Performance的类型。（标记符后面的加号表示是Performance的所有<code style='background:#ff3385;color:white;padding:5px;'>子类型</code>，而不是Performance本身。）</p>
-<p>defaultImpl属性指定了为引入功能<code style='background:#ff3385;color:white;padding:5px;'>提供实现的类</code>。在这里，我们指定的是DefaultEncoreable提供实现。</p>
-<p>@DeclareParents注解所标注的静态属性指明了<code style='background:#ff3385;color:white;padding:5px;'>要引入了接口</code>。在这里，我们所引入的是Encoreable接口。</p>
+<p>value属性指定了哪种类型的<code style="background:#ff3385;color:white;padding:5px;">bean要引入</code>该接口。在本例中，也就是所有实现Performance的类型。（标记符后面的加号表示是Performance的所有<code style="background:#ff3385;color:white;padding:5px;">子类型</code>，而不是Performance本身。）</p>
+<p>defaultImpl属性指定了为引入功能<code style="background:#ff3385;color:white;padding:5px;">提供实现的类</code>。在这里，我们指定的是DefaultEncoreable提供实现。</p>
+<p>@DeclareParents注解所标注的静态属性指明了<code style="background:#ff3385;color:white;padding:5px;">要引入了接口</code>。在这里，我们所引入的是Encoreable接口。</p>
 <p>这样，所以实现了Performance接口的子类，都多出来了Encoreable接口的方法。</p>
-<h2 id="使用xml配置切面"><a href="#使用xml配置切面" class="headerlink" title="使用xml配置切面"></a>使用xml配置切面</h2><h3 id="切面所涉及的标签"><a href="#切面所涉及的标签" class="headerlink" title="切面所涉及的标签"></a>切面所涉及的标签</h3><img src='spring04-Aspect-oriented-Spring\d939a402-47fa-4fd0-91e1-fb7400f0b1e7.jpg'>
+<h2 id="使用xml配置切面"><a href="#使用xml配置切面" class="headerlink" title="使用xml配置切面"></a>使用xml配置切面</h2><h3 id="切面所涉及的标签"><a href="#切面所涉及的标签" class="headerlink" title="切面所涉及的标签"></a>切面所涉及的标签</h3><img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/d939a402-47fa-4fd0-91e1-fb7400f0b1e7.jpg">
 
 <p>接上文：</p>
-<img src='spring04-Aspect-oriented-Spring\e21999cb-2e6b-420f-8bb8-dfd824502c00.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/e21999cb-2e6b-420f-8bb8-dfd824502c00.jpg">
 
-<h3 id="重写切面POJO类"><a href="#重写切面POJO类" class="headerlink" title="重写切面POJO类"></a>重写切面POJO类</h3><img src='spring04-Aspect-oriented-Spring\a9cbc369-23f6-4daa-9779-d8a4520cc8e9.jpg'>
+<h3 id="重写切面POJO类"><a href="#重写切面POJO类" class="headerlink" title="重写切面POJO类"></a>重写切面POJO类</h3><img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/a9cbc369-23f6-4daa-9779-d8a4520cc8e9.jpg">
 
-<img src='spring04-Aspect-oriented-Spring\fe6c3d7f-e5ca-4236-9cb1-a32a7c2e868f.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/fe6c3d7f-e5ca-4236-9cb1-a32a7c2e868f.jpg">
 
 <p>aop:config代表一个切面配置</p>
 <p>aop:aspect表示切面</p>
@@ -225,21 +218,21 @@
 <p>aop:after-returning成功执行</p>
 <p>aop:after-throwing抛出异常执行</p>
 <p>同样，我们可以使用aop:pointcut复用连接点方法：</p>
-<img src='spring04-Aspect-oriented-Spring\c9b9c3d0-97b5-4fc3-af71-0975aa34ad70.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/c9b9c3d0-97b5-4fc3-af71-0975aa34ad70.jpg">
 
 <p>在xml中配置参数传递是一样的：</p>
-<img src='spring04-Aspect-oriented-Spring\7ca5de4b-6e04-462c-bec0-7aa8e6f8173d.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/7ca5de4b-6e04-462c-bec0-7aa8e6f8173d.jpg">
 
-<h3 id="xml引入的实现"><a href="#xml引入的实现" class="headerlink" title="xml引入的实现"></a>xml引入的实现</h3><img src='spring04-Aspect-oriented-Spring\0bf7c997-57cf-4c0f-b781-c06457138d1b.jpg'>
+<h3 id="xml引入的实现"><a href="#xml引入的实现" class="headerlink" title="xml引入的实现"></a>xml引入的实现</h3><img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/0bf7c997-57cf-4c0f-b781-c06457138d1b.jpg">
 
-<p>types-matching指明<code style='background:#ff3385;color:white;padding:5px;'>连接点方法</code></p>
-<p>implement-interface指明<code style='background:#ff3385;color:white;padding:5px;'>扩展接口</code></p>
-<p>default-impl指明<code style='background:#ff3385;color:white;padding:5px;'>默认实现类</code></p>
+<p>types-matching指明<code style="background:#ff3385;color:white;padding:5px;">连接点方法</code></p>
+<p>implement-interface指明<code style="background:#ff3385;color:white;padding:5px;">扩展接口</code></p>
+<p>default-impl指明<code style="background:#ff3385;color:white;padding:5px;">默认实现类</code></p>
 <p>也可以使用delegate-ref指明默认实现的bean</p>
-<img src='spring04-Aspect-oriented-Spring\21f64518-e009-4e51-a043-0fcd7a880087.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/21f64518-e009-4e51-a043-0fcd7a880087.jpg">
 
 <p>引用的bean(实现类):</p>
-<img src='spring04-Aspect-oriented-Spring\f7ed6ef4-8fc4-4470-9764-4ab537a56fe1.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/f7ed6ef4-8fc4-4470-9764-4ab537a56fe1.jpg">
 
 <h2 id="切面注入问题"><a href="#切面注入问题" class="headerlink" title="切面注入问题"></a>切面注入问题</h2><p>在java开发中，很多功能不可能一个POJO完全实现，需要多个类的相互配合，在切面中也不例外。</p>
 <ol>
@@ -248,12 +241,12 @@
 <li><p>创建一个实现类</p>
 </li>
 </ol>
-<img src='spring04-Aspect-oriented-Spring\0bee3cd0-7276-4c6a-8569-19fc8faa801c.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/0bee3cd0-7276-4c6a-8569-19fc8faa801c.jpg">
 
 <ol start="3">
 <li>创建切面</li>
 </ol>
-<img src='spring04-Aspect-oriented-Spring\f90b717a-7bc4-4bb5-b959-d4d0693c1d5a.jpg' >
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/f90b717a-7bc4-4bb5-b959-d4d0693c1d5a.jpg">
 
 <p>此处的切面创建方式稍有不同，使用aspect关键字替换class，同时直接使用pointcut及after-returning声明切面方法。</p>
 <p>这里通过set方法注入CriticismEngine的实例。</p>
@@ -261,11 +254,11 @@
 <li>配置xml注入</li>
 </ol>
 <p>首先注入CriticismEngine</p>
-<img src='spring04-Aspect-oriented-Spring\1c8380d8-2ea3-4722-ac1f-84d40363f8b1.jpg'>
-<img src='spring04-Aspect-oriented-Spring\8d2f956f-1d91-44a1-98f8-18e4581bb441.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/1c8380d8-2ea3-4722-ac1f-84d40363f8b1.jpg">
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/8d2f956f-1d91-44a1-98f8-18e4581bb441.jpg">
 
 <p>然后为切面注入CriticismEngine</p>
-<img src='spring04-Aspect-oriented-Spring\a05eb364-2cb7-446e-a509-5281439d5a4b.jpg'>
+<img src="/blog/2020/03/02/spring04-Aspect-oriented-Spring/a05eb364-2cb7-446e-a509-5281439d5a4b.jpg">
 
 <p>实际上，切面方法不属于spring管理，这里采用factory-method来定义其“Bean”。</p>
   
@@ -437,8 +430,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

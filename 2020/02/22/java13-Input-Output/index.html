@@ -18,87 +18,87 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="File构造函数  当path为路径，则为文件夹，为文件，则为文件。 获取文件名称、路径、绝对路径、父路径  文件存在性、文件及路径、读写权限判断  文件删除、重命名、上一次修改时间、文件大小  创建目录、列出文件  FileNameFilter对文件名称过滤：   FileFilter对文件过滤：   使用案例  自定义过滤器:   File Systems and PathsFileSyste">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/6e474c70-40a0-442a-8a83-c69d4c79bdf3.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/c63c27b9-c26c-4ea1-aa6e-94d0e8bbf758.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/01a13b80-c274-4b41-a18b-ca86408d835e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/6337cf92-17e1-4c25-89d7-5dc520ac3ade.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/1e0420cd-1c35-4e3e-bc20-db54b5175d11.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/634b5026-4b00-45a7-9694-f3f6473969c9.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/39d024e7-6d59-4209-8455-4db1d20ffcec.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/e292d599-5224-4e6b-95fe-0817f5b6cca8.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/3ba4e6d9-6a93-4e04-a5f5-309761717047.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/2b912a34-df1d-41d1-a1aa-e522dd575f4f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/ae620946-4f88-4327-94ef-5cb232cca4ee.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/6c777170-1972-4c5c-bfe4-98f0d1ef2abf.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/de2eb829-01c9-43a4-9c2a-7d574a879b2c.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/cc37d25e-0add-4e45-9bd0-1c48242cbf92.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/acbba703-b077-4b47-bd49-5d5939b7c05f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/45740644-0457-4b80-a7e0-e385448a3343.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/c5579496-a47a-456a-b246-a889d3c64d77.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/4138a502-0afb-454d-bb08-9c7de77517d8.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/1a302b1c-bc59-4d1b-898f-0fa774117f13.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/c31932b7-052d-4677-a187-60cd99cb4689.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/2e3fdbef-974e-4e02-ab5d-10d2a6ed1162.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/9341c8e5-24bf-4fea-a2b4-03b8d14c069f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/4e138aef-9edf-4e05-b947-284f5451cbbb.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/e220392e-3c3e-43eb-a79e-cdf41b7db454.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/3b9e05b0-7244-4023-a0a1-8733fa097ec4.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/76ed70e6-16c6-4881-9af1-af9df7b6bda5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/6b7aa4d8-2d11-4f08-b119-268000c9638b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/ef6ac255-9855-4e3a-8c98-a476d7e22e67.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/a226164e-7872-41c1-900a-0a25c20f7c8a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/c16c89c0-7343-4838-bf4c-171d00f5f162.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/91be83ec-a19d-432a-a44d-5e68e3fa71d2.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/78e52ea7-1795-4291-ba3a-a9eeb3693420.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/49b59bf5-9f97-42c0-85b2-6617102afeea.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/11740d87-f39e-4e0e-813a-016fc199d413.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/9d766191-db65-498b-9989-a1bbca527a91.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/b9a52e27-41ad-4839-bdcb-4b6ed85e83b4.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/8ef3fdca-8683-4667-b354-4bef867b081f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/e2d061c2-e47e-4d26-a60f-b7887650b9a2.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/02fd782e-ede8-4972-8feb-2fe62f6dedd7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/5950ae67-ccbd-4aa1-9cf2-90d16b7f8659.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/c04ec6cd-888b-4186-9e8c-89f5b5ef9053.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/11f79073-169c-4005-a6f2-b3e8143ee5e1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/1f99320b-e33b-4607-a396-0d39b70f94cb.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/800a89fd-2c2d-437d-bbd4-08e34bf6146d.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/7790c7f6-7eec-4472-a942-f58c66b7f292.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/072c515d-ac0d-4184-9713-09f7f080e0e4.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/a45c178e-a249-4634-842a-a8f963e13b4d.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/c170c7bc-7453-48d9-8110-e5beaf909f81.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/629ef8df-1105-457f-ade2-ad223636ddb0.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/291d4940-4cbb-4970-a2bd-b240667aec9f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/3c52b39e-36e1-4422-a1c7-3503a3c1ea01.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/2895d9db-f7e2-4e78-b36a-45eed77b9277.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/a6443ff0-3374-48bf-af0e-f7b3f1449244.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/c457a25f-a193-41b6-b2a3-6729737c5b03.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/442af3ce-b0f4-40d4-911d-ba258babea27.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/fe3ed325-c039-4c8d-b19e-3d388181d86d.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/271d3878-73b2-4735-bfff-a178a3050fbc.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/c0e9ba62-9190-461e-a8a4-7be61b8e9e0c.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/c753ffc8-f23c-4ac5-9180-941e891c2163.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/43cebc83-18d2-4a27-aa14-e6411a72e75d.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/9890dbaf-7e9c-406e-bb5d-aec4877eb4f3.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/c8f3572f-bcaa-4063-879c-eff58e4c06ee.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/b3d3ee62-7c53-4887-ad79-a46fb6c9c6e7.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/ffba17e2-88d1-4b9b-8abd-869e67071911.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/6c57c813-ccd4-4fce-ad37-b239c045e61d.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/872e9643-2312-4717-9a0d-d9c0eb6ebd0e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/463d9f75-5767-45ab-a2d0-2c8bd564832a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/6eb26a88-d7cc-41bc-b27c-e7be21f73b74.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/fca0299a-e830-4df4-92ff-9f1cc15d16ce.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/503b5f71-6570-40de-8d51-b5cd1f91bced.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/b446df6a-bc89-4c42-bbf4-b0cafc16e565.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/12aecef2-9d59-48ac-92b5-e9ed03fc2036.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/b05dbf43-b103-4db5-8310-0b8462b4ba3d.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/82b2ad15-e3ea-4a99-a10b-b23c2badf47f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/d6aa4170-5154-4ee6-90b0-cc0ca64a4a1c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/6e474c70-40a0-442a-8a83-c69d4c79bdf3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c63c27b9-c26c-4ea1-aa6e-94d0e8bbf758.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/01a13b80-c274-4b41-a18b-ca86408d835e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/6337cf92-17e1-4c25-89d7-5dc520ac3ade.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/1e0420cd-1c35-4e3e-bc20-db54b5175d11.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/634b5026-4b00-45a7-9694-f3f6473969c9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/39d024e7-6d59-4209-8455-4db1d20ffcec.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/e292d599-5224-4e6b-95fe-0817f5b6cca8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/3ba4e6d9-6a93-4e04-a5f5-309761717047.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/2b912a34-df1d-41d1-a1aa-e522dd575f4f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/ae620946-4f88-4327-94ef-5cb232cca4ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/6c777170-1972-4c5c-bfe4-98f0d1ef2abf.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/de2eb829-01c9-43a4-9c2a-7d574a879b2c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/cc37d25e-0add-4e45-9bd0-1c48242cbf92.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/acbba703-b077-4b47-bd49-5d5939b7c05f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/45740644-0457-4b80-a7e0-e385448a3343.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c5579496-a47a-456a-b246-a889d3c64d77.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/4138a502-0afb-454d-bb08-9c7de77517d8.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/1a302b1c-bc59-4d1b-898f-0fa774117f13.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c31932b7-052d-4677-a187-60cd99cb4689.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/2e3fdbef-974e-4e02-ab5d-10d2a6ed1162.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/9341c8e5-24bf-4fea-a2b4-03b8d14c069f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/4e138aef-9edf-4e05-b947-284f5451cbbb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/e220392e-3c3e-43eb-a79e-cdf41b7db454.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/3b9e05b0-7244-4023-a0a1-8733fa097ec4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/76ed70e6-16c6-4881-9af1-af9df7b6bda5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/6b7aa4d8-2d11-4f08-b119-268000c9638b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/ef6ac255-9855-4e3a-8c98-a476d7e22e67.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/a226164e-7872-41c1-900a-0a25c20f7c8a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c16c89c0-7343-4838-bf4c-171d00f5f162.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/91be83ec-a19d-432a-a44d-5e68e3fa71d2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/78e52ea7-1795-4291-ba3a-a9eeb3693420.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/49b59bf5-9f97-42c0-85b2-6617102afeea.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/11740d87-f39e-4e0e-813a-016fc199d413.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/9d766191-db65-498b-9989-a1bbca527a91.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/b9a52e27-41ad-4839-bdcb-4b6ed85e83b4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/8ef3fdca-8683-4667-b354-4bef867b081f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/e2d061c2-e47e-4d26-a60f-b7887650b9a2.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/02fd782e-ede8-4972-8feb-2fe62f6dedd7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/5950ae67-ccbd-4aa1-9cf2-90d16b7f8659.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c04ec6cd-888b-4186-9e8c-89f5b5ef9053.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/11f79073-169c-4005-a6f2-b3e8143ee5e1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/1f99320b-e33b-4607-a396-0d39b70f94cb.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/800a89fd-2c2d-437d-bbd4-08e34bf6146d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/7790c7f6-7eec-4472-a942-f58c66b7f292.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/072c515d-ac0d-4184-9713-09f7f080e0e4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/a45c178e-a249-4634-842a-a8f963e13b4d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c170c7bc-7453-48d9-8110-e5beaf909f81.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/629ef8df-1105-457f-ade2-ad223636ddb0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/291d4940-4cbb-4970-a2bd-b240667aec9f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/3c52b39e-36e1-4422-a1c7-3503a3c1ea01.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/2895d9db-f7e2-4e78-b36a-45eed77b9277.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/a6443ff0-3374-48bf-af0e-f7b3f1449244.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c457a25f-a193-41b6-b2a3-6729737c5b03.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/442af3ce-b0f4-40d4-911d-ba258babea27.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/fe3ed325-c039-4c8d-b19e-3d388181d86d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/271d3878-73b2-4735-bfff-a178a3050fbc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c0e9ba62-9190-461e-a8a4-7be61b8e9e0c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c753ffc8-f23c-4ac5-9180-941e891c2163.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/43cebc83-18d2-4a27-aa14-e6411a72e75d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/9890dbaf-7e9c-406e-bb5d-aec4877eb4f3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/c8f3572f-bcaa-4063-879c-eff58e4c06ee.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/b3d3ee62-7c53-4887-ad79-a46fb6c9c6e7.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/ffba17e2-88d1-4b9b-8abd-869e67071911.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/6c57c813-ccd4-4fce-ad37-b239c045e61d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/872e9643-2312-4717-9a0d-d9c0eb6ebd0e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/463d9f75-5767-45ab-a2d0-2c8bd564832a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/6eb26a88-d7cc-41bc-b27c-e7be21f73b74.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/fca0299a-e830-4df4-92ff-9f1cc15d16ce.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/503b5f71-6570-40de-8d51-b5cd1f91bced.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/b446df6a-bc89-4c42-bbf4-b0cafc16e565.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/12aecef2-9d59-48ac-92b5-e9ed03fc2036.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/b05dbf43-b103-4db5-8310-0b8462b4ba3d.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/82b2ad15-e3ea-4a99-a10b-b23c2badf47f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/d6aa4170-5154-4ee6-90b0-cc0ca64a4a1c.jpg">
 <meta property="article:published_time" content="2020-02-22T04:35:29.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.788Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/02/22/java13-Input-Output/java13-Input-Output/6e474c70-40a0-442a-8a83-c69d4c79bdf3.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java13-Input-Output/6e474c70-40a0-442a-8a83-c69d4c79bdf3.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -175,53 +175,46 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#File"><span class="toc-number">1.</span> <span class="toc-text">File</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0%E3%80%81%E8%B7%AF%E5%BE%84%E3%80%81%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E3%80%81%E7%88%B6%E8%B7%AF%E5%BE%84"><span class="toc-number">1.2.</span> <span class="toc-text">获取文件名称、路径、绝对路径、父路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%9C%A8%E6%80%A7%E3%80%81%E6%96%87%E4%BB%B6%E5%8F%8A%E8%B7%AF%E5%BE%84%E3%80%81%E8%AF%BB%E5%86%99%E6%9D%83%E9%99%90%E5%88%A4%E6%96%AD"><span class="toc-number">1.3.</span> <span class="toc-text">文件存在性、文件及路径、读写权限判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%88%A0%E9%99%A4%E3%80%81%E9%87%8D%E5%91%BD%E5%90%8D%E3%80%81%E4%B8%8A%E4%B8%80%E6%AC%A1%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F"><span class="toc-number">1.4.</span> <span class="toc-text">文件删除、重命名、上一次修改时间、文件大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95%E3%80%81%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.</span> <span class="toc-text">创建目录、列出文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.6.</span> <span class="toc-text">使用案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File-Systems-and-Paths"><span class="toc-number">2.</span> <span class="toc-text">File Systems and Paths</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96FileSystem%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.1.</span> <span class="toc-text">获取FileSystem对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%88%86%E5%89%B2%E7%AC%A6"><span class="toc-number">2.2.</span> <span class="toc-text">获取分割符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%A0%B9%E7%9B%AE%E5%BD%95"><span class="toc-number">2.3.</span> <span class="toc-text">获取根目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%80%E4%B8%AA%E8%B7%AF%E5%BE%84"><span class="toc-number">2.4.</span> <span class="toc-text">获取一个路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">文件目录操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">创建文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%B7%AF%E5%BE%84"><span class="toc-number">3.2.</span> <span class="toc-text">创建路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E3%80%81%E8%B7%AF%E5%BE%84%E3%80%81%E9%93%BE%E6%8E%A5"><span class="toc-number">3.3.</span> <span class="toc-text">删除文件、路径、链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="toc-number">3.4.</span> <span class="toc-text">操作目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6"><span class="toc-number">3.5.</span> <span class="toc-text">文件复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8"><span class="toc-number">3.6.</span> <span class="toc-text">文件移动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">读写文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96"><span class="toc-number">4.1.</span> <span class="toc-text">读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5"><span class="toc-number">4.2.</span> <span class="toc-text">写入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-number">5.</span> <span class="toc-text">输入输出流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B5%81"><span class="toc-number">5.1.</span> <span class="toc-text">二进制流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="toc-number">5.2.</span> <span class="toc-text">字符流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE"><span class="toc-number">6.</span> <span class="toc-text">读取二进制数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FileInputStream"><span class="toc-number">6.1.</span> <span class="toc-text">FileInputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FileOutputStream"><span class="toc-number">6.2.</span> <span class="toc-text">FileOutputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BufferedInputStream"><span class="toc-number">6.3.</span> <span class="toc-text">BufferedInputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BufferedOutputStream"><span class="toc-number">6.4.</span> <span class="toc-text">BufferedOutputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-number">6.5.</span> <span class="toc-text">读取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%AF%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%A4%A7%E5%B0%8F"><span class="toc-number">6.6.</span> <span class="toc-text">获取可读取数据大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%BF%87%E6%8C%87%E5%AE%9A%E4%B8%AA%E6%95%B0%E5%AD%97%E8%8A%82"><span class="toc-number">6.7.</span> <span class="toc-text">跳过指定个数字节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E4%BD%8D%E7%BD%AE"><span class="toc-number">6.8.</span> <span class="toc-text">标记位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E6%A0%87%E8%AE%B0%E5%A4%84"><span class="toc-number">6.9.</span> <span class="toc-text">返回标记处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E6%B5%81"><span class="toc-number">6.10.</span> <span class="toc-text">关闭流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE"><span class="toc-number">7.</span> <span class="toc-text">写入二进制数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">7.1.</span> <span class="toc-text">写入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E6%B5%81%E3%80%81%E5%88%B7%E6%96%B0%E6%B5%81"><span class="toc-number">7.2.</span> <span class="toc-text">关闭流、刷新流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E6%96%87%E6%9C%AC"><span class="toc-number">8.</span> <span class="toc-text">写文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Writer"><span class="toc-number">9.</span> <span class="toc-text">Writer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E6%9C%AC"><span class="toc-number">9.1.</span> <span class="toc-text">写入文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FileWriter"><span class="toc-number">9.2.</span> <span class="toc-text">FileWriter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OutputStreamWriter"><span class="toc-number">9.3.</span> <span class="toc-text">OutputStreamWriter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PrintWriter"><span class="toc-number">9.4.</span> <span class="toc-text">PrintWriter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E6%9C%AC"><span class="toc-number">10.</span> <span class="toc-text">读取文本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE"><span class="toc-number">10.1.</span> <span class="toc-text">读取文本数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FileReader"><span class="toc-number">10.2.</span> <span class="toc-text">FileReader</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InputStreamReader"><span class="toc-number">11.</span> <span class="toc-text">InputStreamReader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BufferedReader"><span class="toc-number">12.</span> <span class="toc-text">BufferedReader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BufferedWriter"><span class="toc-number">13.</span> <span class="toc-text">BufferedWriter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8OutputStreamWriter%E5%8F%8ABufferedWriter%E9%AB%98%E6%95%88%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC"><span class="toc-number">13.1.</span> <span class="toc-text">使用OutputStreamWriter及BufferedWriter高效读写文本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrintStream"><span class="toc-number">14.</span> <span class="toc-text">PrintStream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Random-Access-Files"><span class="toc-number">15.</span> <span class="toc-text">Random Access Files</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8FileWriter%E3%80%81FileReader%E6%96%87%E6%9C%AC%E8%AF%BB%E5%86%99"><span class="toc-number">16.</span> <span class="toc-text">使用FileWriter、FileReader文本读写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ByteBuffer"><span class="toc-number">17.</span> <span class="toc-text">ByteBuffer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">18.</span> <span class="toc-text">对象的序列化</span></a></li></ol>
-		
-		</div>
-		
-		<h2 id="File"><a href="#File" class="headerlink" title="File"></a>File</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><img src='java13-Input-Output\6e474c70-40a0-442a-8a83-c69d4c79bdf3.jpg'>
+		<h2 id="File"><a href="#File" class="headerlink" title="File"></a>File</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><img src="/blog/2020/02/22/java13-Input-Output/6e474c70-40a0-442a-8a83-c69d4c79bdf3.jpg">
 
 <p>当path为路径，则为文件夹，为文件，则为文件。</p>
-<h3 id="获取文件名称、路径、绝对路径、父路径"><a href="#获取文件名称、路径、绝对路径、父路径" class="headerlink" title="获取文件名称、路径、绝对路径、父路径"></a>获取文件名称、路径、绝对路径、父路径</h3><img src='java13-Input-Output\c63c27b9-c26c-4ea1-aa6e-94d0e8bbf758.jpg'>
+<h3 id="获取文件名称、路径、绝对路径、父路径"><a href="#获取文件名称、路径、绝对路径、父路径" class="headerlink" title="获取文件名称、路径、绝对路径、父路径"></a>获取文件名称、路径、绝对路径、父路径</h3><img src="/blog/2020/02/22/java13-Input-Output/c63c27b9-c26c-4ea1-aa6e-94d0e8bbf758.jpg">
 
-<h3 id="文件存在性、文件及路径、读写权限判断"><a href="#文件存在性、文件及路径、读写权限判断" class="headerlink" title="文件存在性、文件及路径、读写权限判断"></a>文件存在性、文件及路径、读写权限判断</h3><img src='java13-Input-Output\01a13b80-c274-4b41-a18b-ca86408d835e.jpg'>
+<h3 id="文件存在性、文件及路径、读写权限判断"><a href="#文件存在性、文件及路径、读写权限判断" class="headerlink" title="文件存在性、文件及路径、读写权限判断"></a>文件存在性、文件及路径、读写权限判断</h3><img src="/blog/2020/02/22/java13-Input-Output/01a13b80-c274-4b41-a18b-ca86408d835e.jpg">
 
-<h3 id="文件删除、重命名、上一次修改时间、文件大小"><a href="#文件删除、重命名、上一次修改时间、文件大小" class="headerlink" title="文件删除、重命名、上一次修改时间、文件大小"></a>文件删除、重命名、上一次修改时间、文件大小</h3><img src='java13-Input-Output\6337cf92-17e1-4c25-89d7-5dc520ac3ade.jpg'>
+<h3 id="文件删除、重命名、上一次修改时间、文件大小"><a href="#文件删除、重命名、上一次修改时间、文件大小" class="headerlink" title="文件删除、重命名、上一次修改时间、文件大小"></a>文件删除、重命名、上一次修改时间、文件大小</h3><img src="/blog/2020/02/22/java13-Input-Output/6337cf92-17e1-4c25-89d7-5dc520ac3ade.jpg">
 
-<h3 id="创建目录、列出文件"><a href="#创建目录、列出文件" class="headerlink" title="创建目录、列出文件"></a>创建目录、列出文件</h3><img src='java13-Input-Output\1e0420cd-1c35-4e3e-bc20-db54b5175d11.jpg'>
+<h3 id="创建目录、列出文件"><a href="#创建目录、列出文件" class="headerlink" title="创建目录、列出文件"></a>创建目录、列出文件</h3><img src="/blog/2020/02/22/java13-Input-Output/1e0420cd-1c35-4e3e-bc20-db54b5175d11.jpg">
 
 <p>FileNameFilter对文件名称过滤：</p>
-<img src='java13-Input-Output\634b5026-4b00-45a7-9694-f3f6473969c9.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/634b5026-4b00-45a7-9694-f3f6473969c9.jpg">
 
 <p>FileFilter对文件过滤：</p>
-<img src='java13-Input-Output\39d024e7-6d59-4209-8455-4db1d20ffcec.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/39d024e7-6d59-4209-8455-4db1d20ffcec.jpg">
 
-<h3 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h3><img src='java13-Input-Output\e292d599-5224-4e6b-95fe-0817f5b6cca8.jpg'>
+<h3 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h3><img src="/blog/2020/02/22/java13-Input-Output/e292d599-5224-4e6b-95fe-0817f5b6cca8.jpg">
 
 <p>自定义过滤器:</p>
-<img src='java13-Input-Output\3ba4e6d9-6a93-4e04-a5f5-309761717047.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/3ba4e6d9-6a93-4e04-a5f5-309761717047.jpg">
 
 <h2 id="File-Systems-and-Paths"><a href="#File-Systems-and-Paths" class="headerlink" title="File Systems and Paths"></a>File Systems and Paths</h2><p>FileSystem代表一个文件系统。它是一个抽象类。</p>
-<h3 id="获取FileSystem对象"><a href="#获取FileSystem对象" class="headerlink" title="获取FileSystem对象"></a>获取FileSystem对象</h3><img src='java13-Input-Output\2b912a34-df1d-41d1-a1aa-e522dd575f4f.jpg' >
+<h3 id="获取FileSystem对象"><a href="#获取FileSystem对象" class="headerlink" title="获取FileSystem对象"></a>获取FileSystem对象</h3><img src="/blog/2020/02/22/java13-Input-Output/2b912a34-df1d-41d1-a1aa-e522dd575f4f.jpg">
 
-<h3 id="获取分割符"><a href="#获取分割符" class="headerlink" title="获取分割符"></a>获取分割符</h3><img src='java13-Input-Output\ae620946-4f88-4327-94ef-5cb232cca4ee.jpg'>
+<h3 id="获取分割符"><a href="#获取分割符" class="headerlink" title="获取分割符"></a>获取分割符</h3><img src="/blog/2020/02/22/java13-Input-Output/ae620946-4f88-4327-94ef-5cb232cca4ee.jpg">
 
 <p>win下是\，Linux下是/</p>
-<h3 id="获取根目录"><a href="#获取根目录" class="headerlink" title="获取根目录"></a>获取根目录</h3><img src='java13-Input-Output\6c777170-1972-4c5c-bfe4-98f0d1ef2abf.jpg' >
+<h3 id="获取根目录"><a href="#获取根目录" class="headerlink" title="获取根目录"></a>获取根目录</h3><img src="/blog/2020/02/22/java13-Input-Output/6c777170-1972-4c5c-bfe4-98f0d1ef2abf.jpg">
 
-<p>获取到一个Iterable<Path></p>
-<h3 id="获取一个路径"><a href="#获取一个路径" class="headerlink" title="获取一个路径"></a>获取一个路径</h3><img src='java13-Input-Output\de2eb829-01c9-43a4-9c2a-7d574a879b2c.jpg'>
+<p>获取到一个Iterable<Path></Path></p>
+<h3 id="获取一个路径"><a href="#获取一个路径" class="headerlink" title="获取一个路径"></a>获取一个路径</h3><img src="/blog/2020/02/22/java13-Input-Output/de2eb829-01c9-43a4-9c2a-7d574a879b2c.jpg">
 
 <p>后续的参数可以用于拼接</p>
-<img src='java13-Input-Output\cc37d25e-0add-4e45-9bd0-1c48242cbf92.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/cc37d25e-0add-4e45-9bd0-1c48242cbf92.jpg">
 
 <p>java.nio.file.Paths也提供了类似的方法：</p>
-<img src='java13-Input-Output\acbba703-b077-4b47-bd49-5d5939b7c05f.jpg' >
+<img src="/blog/2020/02/22/java13-Input-Output/acbba703-b077-4b47-bd49-5d5939b7c05f.jpg">
 
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 //获取名称
 Path getName(int index)
@@ -234,7 +227,7 @@ System.out.println(path.getName(2)); // prints images
 
 </pre>
 
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 //获取文件名
 Path getFileName()
@@ -247,20 +240,20 @@ Path getRoot()
 
 </pre>
 
-<h2 id="文件目录操作"><a href="#文件目录操作" class="headerlink" title="文件目录操作"></a>文件目录操作</h2><p><code style='background:#ff3385;color:white;padding:5px;'>Files</code>类的方法：</p>
-<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><img src='java13-Input-Output\45740644-0457-4b80-a7e0-e385448a3343.jpg'>
+<h2 id="文件目录操作"><a href="#文件目录操作" class="headerlink" title="文件目录操作"></a>文件目录操作</h2><p><code style="background:#ff3385;color:white;padding:5px;">Files</code>类的方法：</p>
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><img src="/blog/2020/02/22/java13-Input-Output/45740644-0457-4b80-a7e0-e385448a3343.jpg">
 
-<h3 id="创建路径"><a href="#创建路径" class="headerlink" title="创建路径"></a>创建路径</h3><img src='java13-Input-Output\c5579496-a47a-456a-b246-a889d3c64d77.jpg'>
+<h3 id="创建路径"><a href="#创建路径" class="headerlink" title="创建路径"></a>创建路径</h3><img src="/blog/2020/02/22/java13-Input-Output/c5579496-a47a-456a-b246-a889d3c64d77.jpg">
 
-<h3 id="删除文件、路径、链接"><a href="#删除文件、路径、链接" class="headerlink" title="删除文件、路径、链接"></a>删除文件、路径、链接</h3><img src='java13-Input-Output\4138a502-0afb-454d-bb08-9c7de77517d8.jpg'>
+<h3 id="删除文件、路径、链接"><a href="#删除文件、路径、链接" class="headerlink" title="删除文件、路径、链接"></a>删除文件、路径、链接</h3><img src="/blog/2020/02/22/java13-Input-Output/4138a502-0afb-454d-bb08-9c7de77517d8.jpg">
 
 <p>如果路径不存在将抛出异常，为此，可以使用以下方法：</p>
-<img src='java13-Input-Output\1a302b1c-bc59-4d1b-898f-0fa774117f13.jpg' >
+<img src="/blog/2020/02/22/java13-Input-Output/1a302b1c-bc59-4d1b-898f-0fa774117f13.jpg">
 
-<h3 id="操作目录"><a href="#操作目录" class="headerlink" title="操作目录"></a>操作目录</h3><img src='java13-Input-Output\c31932b7-052d-4677-a187-60cd99cb4689.jpg'>
+<h3 id="操作目录"><a href="#操作目录" class="headerlink" title="操作目录"></a>操作目录</h3><img src="/blog/2020/02/22/java13-Input-Output/c31932b7-052d-4677-a187-60cd99cb4689.jpg">
 
-<p>使用<code style='background:#ff3385;color:white;padding:5px;'>DirectoryStream</code>对目录进行遍历(注意资源释放)：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<p>使用<code style="background:#ff3385;color:white;padding:5px;">DirectoryStream</code>对目录进行遍历(注意资源释放)：</p>
+<pre style="background:#e6e6e6;padding=10px;">
 
 Path parent = ...
 try (DirectoryStream<Path> children =
@@ -272,9 +265,9 @@ try (DirectoryStream<Path> children =
 &nbsp;&nbsp;e.printStackTrace();
 }
 
-</pre>
+</Path></pre>
 
-<h3 id="文件复制"><a href="#文件复制" class="headerlink" title="文件复制"></a>文件复制</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="文件复制"><a href="#文件复制" class="headerlink" title="文件复制"></a>文件复制</h3><pre style="background:#e6e6e6;padding=10px;">
 
 public static Path copy(Path source, Path target,CopyOption... options)
 
@@ -285,44 +278,44 @@ public static Path copy(Path source, Path target,CopyOption... options)
 <p>COPY_ATTRIBUTES（复制文件属性）</p>
 <p>REPLACE_EXISTING（覆盖已有文件）</p>
 <p>示例代码：</p>
-<img src='java13-Input-Output\2e3fdbef-974e-4e02-ab5d-10d2a6ed1162.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/2e3fdbef-974e-4e02-ab5d-10d2a6ed1162.jpg">
 
-<h3 id="文件移动"><a href="#文件移动" class="headerlink" title="文件移动"></a>文件移动</h3><pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="文件移动"><a href="#文件移动" class="headerlink" title="文件移动"></a>文件移动</h3><pre style="background:#e6e6e6;padding=10px;">
 
 public static Path move(Path source, Path target,CopyOption... options) throws java.io.IOException
 
 </pre>
 
 <p>示例代码：</p>
-<img src='java13-Input-Output\9341c8e5-24bf-4fea-a2b4-03b8d14c069f.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/9341c8e5-24bf-4fea-a2b4-03b8d14c069f.jpg">
 
 <h2 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h2><p>Files类可以读写小型文本或二进制文件。</p>
-<h3 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h3><p>读取<code style='background:#ff3385;color:white;padding:5px;'>二进制</code>文件：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h3><p>读取<code style="background:#ff3385;color:white;padding:5px;">二进制</code>文件：</p>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public static byte[] readAllBytes(Path path)
          throws java.io.IOException
 
 </pre>
 
-<p>读取<code style='background:#ff3385;color:white;padding:5px;'>字符串</code>文本：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<p>读取<code style="background:#ff3385;color:white;padding:5px;">字符串</code>文本：</p>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public static List<String> readAllLines(Path path,java.nio.charset.Charset charset)   
          throws java.io.IOException
 
-</pre>
+</String></pre>
 
-<h3 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h3><p>写入<code style='background:#ff3385;color:white;padding:5px;'>二进制</code>：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<h3 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h3><p>写入<code style="background:#ff3385;color:white;padding:5px;">二进制</code>：</p>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public static Path write(Path path, byte[] bytes,OpenOption... options) 
           throws java.io.IOException
 
 </pre>
 
-<p>写入<code style='background:#ff3385;color:white;padding:5px;'>文本</code>：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<p>写入<code style="background:#ff3385;color:white;padding:5px;">文本</code>：</p>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public static Path write(Path path, java.lang.Iterable<? extends CharSequence> lines, java.nio.charset.Charset charset,OpenOption... options)
            throws java.io.IOException
@@ -341,14 +334,14 @@ public static Path write(Path path, java.lang.Iterable<? extends CharSequence> l
 <p>SYNC同步内容和元数据写入</p>
 <p>DSYNC同步内容写入</p>
 <p>编码方法：</p>
-<img src='java13-Input-Output\4e138aef-9edf-4e05-b947-284f5451cbbb.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/4e138aef-9edf-4e05-b947-284f5451cbbb.jpg">
 
 <p>读写示例：</p>
-<img src='java13-Input-Output\e220392e-3c3e-43eb-a79e-cdf41b7db454.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/e220392e-3c3e-43eb-a79e-cdf41b7db454.jpg">
 
-<h2 id="输入输出流"><a href="#输入输出流" class="headerlink" title="输入输出流"></a>输入输出流</h2><img src='java13-Input-Output\3b9e05b0-7244-4023-a0a1-8733fa097ec4.jpg'>
+<h2 id="输入输出流"><a href="#输入输出流" class="headerlink" title="输入输出流"></a>输入输出流</h2><img src="/blog/2020/02/22/java13-Input-Output/3b9e05b0-7244-4023-a0a1-8733fa097ec4.jpg">
 
-<table cellpadding='8' border='1' style='background:#EAF2D3;text-align:center'>
+<table cellpadding="8" border="1" style="background:#EAF2D3;text-align:center">
 <tr>
 &nbsp;<td>
 类型
@@ -397,33 +390,33 @@ OutputStream
 </table>
 
 <h3 id="二进制流"><a href="#二进制流" class="headerlink" title="二进制流"></a>二进制流</h3><p>InputStream:</p>
-<img src='java13-Input-Output\76ed70e6-16c6-4881-9af1-af9df7b6bda5.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/76ed70e6-16c6-4881-9af1-af9df7b6bda5.jpg">
 
 <p>OutputStream:</p>
-<img src='java13-Input-Output\6b7aa4d8-2d11-4f08-b119-268000c9638b.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/6b7aa4d8-2d11-4f08-b119-268000c9638b.jpg">
 
-<img src='java13-Input-Output\ef6ac255-9855-4e3a-8c98-a476d7e22e67.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/ef6ac255-9855-4e3a-8c98-a476d7e22e67.jpg">
 
-<h3 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h3><img src='java13-Input-Output\a226164e-7872-41c1-900a-0a25c20f7c8a.jpg'>
+<h3 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h3><img src="/blog/2020/02/22/java13-Input-Output/a226164e-7872-41c1-900a-0a25c20f7c8a.jpg">
 
 
 
-<h2 id="读取二进制数据"><a href="#读取二进制数据" class="headerlink" title="读取二进制数据"></a>读取二进制数据</h2><h3 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="FileInputStream"></a>FileInputStream</h3><img src='java13-Input-Output\c16c89c0-7343-4838-bf4c-171d00f5f162.jpg'>
+<h2 id="读取二进制数据"><a href="#读取二进制数据" class="headerlink" title="读取二进制数据"></a>读取二进制数据</h2><h3 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="FileInputStream"></a>FileInputStream</h3><img src="/blog/2020/02/22/java13-Input-Output/c16c89c0-7343-4838-bf4c-171d00f5f162.jpg">
 
-<h3 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a>FileOutputStream</h3><img src='java13-Input-Output\91be83ec-a19d-432a-a44d-5e68e3fa71d2.jpg'>
+<h3 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a>FileOutputStream</h3><img src="/blog/2020/02/22/java13-Input-Output/91be83ec-a19d-432a-a44d-5e68e3fa71d2.jpg">
 
 <p>通过append参数判定是否追加数据</p>
-<h3 id="BufferedInputStream"><a href="#BufferedInputStream" class="headerlink" title="BufferedInputStream"></a>BufferedInputStream</h3><img src='java13-Input-Output\78e52ea7-1795-4291-ba3a-a9eeb3693420.jpg'>
+<h3 id="BufferedInputStream"><a href="#BufferedInputStream" class="headerlink" title="BufferedInputStream"></a>BufferedInputStream</h3><img src="/blog/2020/02/22/java13-Input-Output/78e52ea7-1795-4291-ba3a-a9eeb3693420.jpg">
 
-<h3 id="BufferedOutputStream"><a href="#BufferedOutputStream" class="headerlink" title="BufferedOutputStream"></a>BufferedOutputStream</h3><img src='java13-Input-Output\49b59bf5-9f97-42c0-85b2-6617102afeea.jpg'>
+<h3 id="BufferedOutputStream"><a href="#BufferedOutputStream" class="headerlink" title="BufferedOutputStream"></a>BufferedOutputStream</h3><img src="/blog/2020/02/22/java13-Input-Output/49b59bf5-9f97-42c0-85b2-6617102afeea.jpg">
 
-<img src='java13-Input-Output\11740d87-f39e-4e0e-813a-016fc199d413.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/11740d87-f39e-4e0e-813a-016fc199d413.jpg">
 
 <p>java7之前可以new一个FileInputStream，现在也可以使用Files类创建：</p>
-<img src='java13-Input-Output\9d766191-db65-498b-9989-a1bbca527a91.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/9d766191-db65-498b-9989-a1bbca527a91.jpg">
 
 <p>示例代码：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 Path path = ...
 try (InputStream inputStream = Files.newInputStream(path,
@@ -436,7 +429,7 @@ try (InputStream inputStream = Files.newInputStream(path,
 </pre>
 
 <p>为了提升效率，使用BufferedInputStream:</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 Path path = ...
 try (InputStream inputStream = Files.newInputStream(path,StandardOpenOption.READ);
@@ -448,26 +441,26 @@ try (InputStream inputStream = Files.newInputStream(path,StandardOpenOption.READ
 
 </pre>
 
-<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><img src='java13-Input-Output\b9a52e27-41ad-4839-bdcb-4b6ed85e83b4.jpg'>
+<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><img src="/blog/2020/02/22/java13-Input-Output/b9a52e27-41ad-4839-bdcb-4b6ed85e83b4.jpg">
 
 <p>到达流的末尾时，返回-1</p>
-<h3 id="获取可读取数据大小"><a href="#获取可读取数据大小" class="headerlink" title="获取可读取数据大小"></a>获取可读取数据大小</h3><img src='java13-Input-Output\8ef3fdca-8683-4667-b354-4bef867b081f.jpg'>
+<h3 id="获取可读取数据大小"><a href="#获取可读取数据大小" class="headerlink" title="获取可读取数据大小"></a>获取可读取数据大小</h3><img src="/blog/2020/02/22/java13-Input-Output/8ef3fdca-8683-4667-b354-4bef867b081f.jpg">
 
-<h3 id="跳过指定个数字节"><a href="#跳过指定个数字节" class="headerlink" title="跳过指定个数字节"></a>跳过指定个数字节</h3><img src='java13-Input-Output\e2d061c2-e47e-4d26-a60f-b7887650b9a2.jpg'>
+<h3 id="跳过指定个数字节"><a href="#跳过指定个数字节" class="headerlink" title="跳过指定个数字节"></a>跳过指定个数字节</h3><img src="/blog/2020/02/22/java13-Input-Output/e2d061c2-e47e-4d26-a60f-b7887650b9a2.jpg">
 
-<h3 id="标记位置"><a href="#标记位置" class="headerlink" title="标记位置"></a>标记位置</h3><img src='java13-Input-Output\02fd782e-ede8-4972-8feb-2fe62f6dedd7.jpg'>
+<h3 id="标记位置"><a href="#标记位置" class="headerlink" title="标记位置"></a>标记位置</h3><img src="/blog/2020/02/22/java13-Input-Output/02fd782e-ede8-4972-8feb-2fe62f6dedd7.jpg">
 
-<h3 id="返回标记处"><a href="#返回标记处" class="headerlink" title="返回标记处"></a>返回标记处</h3><img src='java13-Input-Output\5950ae67-ccbd-4aa1-9cf2-90d16b7f8659.jpg'>
+<h3 id="返回标记处"><a href="#返回标记处" class="headerlink" title="返回标记处"></a>返回标记处</h3><img src="/blog/2020/02/22/java13-Input-Output/5950ae67-ccbd-4aa1-9cf2-90d16b7f8659.jpg">
 
-<h3 id="关闭流"><a href="#关闭流" class="headerlink" title="关闭流"></a>关闭流</h3><img src='java13-Input-Output\c04ec6cd-888b-4186-9e8c-89f5b5ef9053.jpg'>
+<h3 id="关闭流"><a href="#关闭流" class="headerlink" title="关闭流"></a>关闭流</h3><img src="/blog/2020/02/22/java13-Input-Output/c04ec6cd-888b-4186-9e8c-89f5b5ef9053.jpg">
 
-<h2 id="写入二进制数据"><a href="#写入二进制数据" class="headerlink" title="写入二进制数据"></a>写入二进制数据</h2><img src='java13-Input-Output\11f79073-169c-4005-a6f2-b3e8143ee5e1.jpg'>
+<h2 id="写入二进制数据"><a href="#写入二进制数据" class="headerlink" title="写入二进制数据"></a>写入二进制数据</h2><img src="/blog/2020/02/22/java13-Input-Output/11f79073-169c-4005-a6f2-b3e8143ee5e1.jpg">
 
 <p>java7之前可以new一个FileOutputStream，现在也可以使用Files类创建：</p>
-<img src='java13-Input-Output\1f99320b-e33b-4607-a396-0d39b70f94cb.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/1f99320b-e33b-4607-a396-0d39b70f94cb.jpg">
 
 <p>示例代码：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 Path path = ...
 try (OutputStream outputStream = Files.newOutputStream(path,
@@ -480,36 +473,36 @@ StandardOpenOption.CREATE, StandardOpenOption.APPEND) {
 </pre>
 
 <p>为了提高效率，使用缓冲流：</p>
-<img src='java13-Input-Output\800a89fd-2c2d-437d-bbd4-08e34bf6146d.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/800a89fd-2c2d-437d-bbd4-08e34bf6146d.jpg">
 
-<h3 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h3><img src='java13-Input-Output\7790c7f6-7eec-4472-a942-f58c66b7f292.jpg'>
+<h3 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h3><img src="/blog/2020/02/22/java13-Input-Output/7790c7f6-7eec-4472-a942-f58c66b7f292.jpg">
 
 <h3 id="关闭流、刷新流"><a href="#关闭流、刷新流" class="headerlink" title="关闭流、刷新流"></a>关闭流、刷新流</h3><p>close用于关闭，一般使用try结构即可。</p>
 <p>flush方法用于将数据刷新写入。</p>
 <p>数据写入示例：</p>
 <p>使用Files创建输入输出流：</p>
-<img src='java13-Input-Output\072c515d-ac0d-4184-9713-09f7f080e0e4.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/072c515d-ac0d-4184-9713-09f7f080e0e4.jpg">
 
 <p>FileInputStream、FileOutputStream：</p>
-<img src='java13-Input-Output\a45c178e-a249-4634-842a-a8f963e13b4d.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/a45c178e-a249-4634-842a-a8f963e13b4d.jpg">
 
 <p>使用BufferInputStream、BufferedOutputStream:</p>
-<img src='java13-Input-Output\c170c7bc-7453-48d9-8110-e5beaf909f81.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/c170c7bc-7453-48d9-8110-e5beaf909f81.jpg">
 
-<h2 id="写文本"><a href="#写文本" class="headerlink" title="写文本"></a>写文本</h2><img src='java13-Input-Output\629ef8df-1105-457f-ade2-ad223636ddb0.jpg'>
+<h2 id="写文本"><a href="#写文本" class="headerlink" title="写文本"></a>写文本</h2><img src="/blog/2020/02/22/java13-Input-Output/629ef8df-1105-457f-ade2-ad223636ddb0.jpg">
 
-<h2 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h2><h3 id="写入文本"><a href="#写入文本" class="headerlink" title="写入文本"></a>写入文本</h3><img src='java13-Input-Output\291d4940-4cbb-4970-a2bd-b240667aec9f.jpg'>
+<h2 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h2><h3 id="写入文本"><a href="#写入文本" class="headerlink" title="写入文本"></a>写入文本</h3><img src="/blog/2020/02/22/java13-Input-Output/291d4940-4cbb-4970-a2bd-b240667aec9f.jpg">
 
 <p>也可以写入字符串：</p>
-<img src='java13-Input-Output\3c52b39e-36e1-4422-a1c7-3503a3c1ea01.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/3c52b39e-36e1-4422-a1c7-3503a3c1ea01.jpg">
 
-<h3 id="FileWriter"><a href="#FileWriter" class="headerlink" title="FileWriter"></a>FileWriter</h3><img src='java13-Input-Output\2895d9db-f7e2-4e78-b36a-45eed77b9277.jpg'>
+<h3 id="FileWriter"><a href="#FileWriter" class="headerlink" title="FileWriter"></a>FileWriter</h3><img src="/blog/2020/02/22/java13-Input-Output/2895d9db-f7e2-4e78-b36a-45eed77b9277.jpg">
 
-<h3 id="OutputStreamWriter"><a href="#OutputStreamWriter" class="headerlink" title="OutputStreamWriter"></a>OutputStreamWriter</h3><img src='java13-Input-Output\a6443ff0-3374-48bf-af0e-f7b3f1449244.jpg'>
+<h3 id="OutputStreamWriter"><a href="#OutputStreamWriter" class="headerlink" title="OutputStreamWriter"></a>OutputStreamWriter</h3><img src="/blog/2020/02/22/java13-Input-Output/a6443ff0-3374-48bf-af0e-f7b3f1449244.jpg">
 
 <p>按照指定的编码方式进行写入。</p>
 <p>写入文件时，可以使用OutputStream和OutputStreamWriter包装：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 OutputStream os = Files.newOutputStream(path, openOption);
 OutputStreamWriter writer = new OutputStreamWriter(os, charset);
@@ -517,43 +510,43 @@ OutputStreamWriter writer = new OutputStreamWriter(os, charset);
 </pre>
 
 <p>使用示例：</p>
-<img src='java13-Input-Output\c457a25f-a193-41b6-b2a3-6729737c5b03.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/c457a25f-a193-41b6-b2a3-6729737c5b03.jpg">
 
 <h3 id="PrintWriter"><a href="#PrintWriter" class="headerlink" title="PrintWriter"></a>PrintWriter</h3><p>相比来说，PrinterWriter更好用：</p>
-<img src='java13-Input-Output\442af3ce-b0f4-40d4-911d-ba258babea27.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/442af3ce-b0f4-40d4-911d-ba258babea27.jpg">
 
 <p>它的print方法支持大量类型：</p>
-<img src='java13-Input-Output\fe3ed325-c039-4c8d-b19e-3d388181d86d.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/fe3ed325-c039-4c8d-b19e-3d388181d86d.jpg">
 
 <p>同样，它也包含大量println方法，自动换行。</p>
 <p>为了提升性能，包装一层缓冲流：</p>
-<img src='java13-Input-Output\271d3878-73b2-4735-bfff-a178a3050fbc.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/271d3878-73b2-4735-bfff-a178a3050fbc.jpg">
 
 <p>使用示例：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 PrintWriter pw = new PrintWriter(new BufferedWriter(writer));
 
 </pre>
 
 <p>完整示例：</p>
-<img src='java13-Input-Output\c0e9ba62-9190-461e-a8a4-7be61b8e9e0c.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/c0e9ba62-9190-461e-a8a4-7be61b8e9e0c.jpg">
 
-<h2 id="读取文本"><a href="#读取文本" class="headerlink" title="读取文本"></a>读取文本</h2><img src='java13-Input-Output\c753ffc8-f23c-4ac5-9180-941e891c2163.jpg'>
+<h2 id="读取文本"><a href="#读取文本" class="headerlink" title="读取文本"></a>读取文本</h2><img src="/blog/2020/02/22/java13-Input-Output/c753ffc8-f23c-4ac5-9180-941e891c2163.jpg">
 
-<h3 id="读取文本数据"><a href="#读取文本数据" class="headerlink" title="读取文本数据"></a>读取文本数据</h3><img src='java13-Input-Output\43cebc83-18d2-4a27-aa14-e6411a72e75d.jpg'>
+<h3 id="读取文本数据"><a href="#读取文本数据" class="headerlink" title="读取文本数据"></a>读取文本数据</h3><img src="/blog/2020/02/22/java13-Input-Output/43cebc83-18d2-4a27-aa14-e6411a72e75d.jpg">
 
 <p>直接读取char[]数组数据。</p>
 <p>也可以将数据读入NIO的CharBuffer:</p>
-<img src='java13-Input-Output\9890dbaf-7e9c-406e-bb5d-aec4877eb4f3.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/9890dbaf-7e9c-406e-bb5d-aec4877eb4f3.jpg">
 
-<h3 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h3><img src='java13-Input-Output\c8f3572f-bcaa-4063-879c-eff58e4c06ee.jpg'>
+<h3 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h3><img src="/blog/2020/02/22/java13-Input-Output/c8f3572f-bcaa-4063-879c-eff58e4c06ee.jpg">
 
 <h2 id="InputStreamReader"><a href="#InputStreamReader" class="headerlink" title="InputStreamReader"></a>InputStreamReader</h2><p>可以读取二进制流，按照指定的编码格式转换成字符。</p>
-<img src='java13-Input-Output\b3d3ee62-7c53-4887-ad79-a46fb6c9c6e7.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/b3d3ee62-7c53-4887-ad79-a46fb6c9c6e7.jpg">
 
 <p>使用示例：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 Path path = ...
 Charset charset = ...
@@ -565,17 +558,17 @@ InputStreamReader reader = new InputStreamReader(inputStream, charset);
 </pre>
 
 <h2 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a>BufferedReader</h2><p>使用BufferedReader可以提升读取性能。</p>
-<img src='java13-Input-Output\ffba17e2-88d1-4b9b-8abd-869e67071911.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/ffba17e2-88d1-4b9b-8abd-869e67071911.jpg">
 
 <p>在NIO中，Files提供了以下构造方法：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public static java.io.BufferedReader newBufferedReader(Path path,java.nio.charset.Charset charset)
 
 </pre>
 
 <p>使用示例：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 Path path = ...
 BufferedReader br = Files.newBufferedReader(path, charset);
@@ -588,7 +581,7 @@ while (line != null) {
 </pre>
 
 <p>也可以包装InputStreamReader:</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public static String getUserInput() {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -601,17 +594,17 @@ public static String getUserInput() {
 
 </pre>
 
-<h2 id="BufferedWriter"><a href="#BufferedWriter" class="headerlink" title="BufferedWriter"></a>BufferedWriter</h2><img src='java13-Input-Output\6c57c813-ccd4-4fce-ad37-b239c045e61d.jpg'>
+<h2 id="BufferedWriter"><a href="#BufferedWriter" class="headerlink" title="BufferedWriter"></a>BufferedWriter</h2><img src="/blog/2020/02/22/java13-Input-Output/6c57c813-ccd4-4fce-ad37-b239c045e61d.jpg">
 
 <p>使用缓冲读写器可以提高读写效率。</p>
 <p>使用实例：</p>
-<img src='java13-Input-Output\872e9643-2312-4717-9a0d-d9c0eb6ebd0e.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/872e9643-2312-4717-9a0d-d9c0eb6ebd0e.jpg">
 
-<h3 id="使用OutputStreamWriter及BufferedWriter高效读写文本"><a href="#使用OutputStreamWriter及BufferedWriter高效读写文本" class="headerlink" title="使用OutputStreamWriter及BufferedWriter高效读写文本"></a>使用OutputStreamWriter及BufferedWriter高效读写文本</h3><img src='java13-Input-Output\463d9f75-5767-45ab-a2d0-2c8bd564832a.jpg'>
+<h3 id="使用OutputStreamWriter及BufferedWriter高效读写文本"><a href="#使用OutputStreamWriter及BufferedWriter高效读写文本" class="headerlink" title="使用OutputStreamWriter及BufferedWriter高效读写文本"></a>使用OutputStreamWriter及BufferedWriter高效读写文本</h3><img src="/blog/2020/02/22/java13-Input-Output/463d9f75-5767-45ab-a2d0-2c8bd564832a.jpg">
 
 
 <h2 id="PrintStream"><a href="#PrintStream" class="headerlink" title="PrintStream"></a>PrintStream</h2><p>PrintStream是一种输出流，类似于PrintWriter,构造函数如下：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public PrintStream(OutputStream out)
 public PrintStream(OutputStream out, boolean autoFlush)
@@ -619,9 +612,9 @@ public PrintStream(OutputStream out, boolean autoFlush,String encoding)
 
 </pre>
 
-<img src='java13-Input-Output\6eb26a88-d7cc-41bc-b27c-e7be21f73b74.jpg' >
+<img src="/blog/2020/02/22/java13-Input-Output/6eb26a88-d7cc-41bc-b27c-e7be21f73b74.jpg">
 
-<p>建立<code style='background:#ff3385;color:white;padding:5px;'>OutputStream</code>，操作文件。使用<code style='background:#ff3385;color:white;padding:5px;'>Print Stream</code>包装一层。将System的<code style='background:#ff3385;color:white;padding:5px;'>标准输出</code>设置为PrintStream。</p>
+<p>建立<code style="background:#ff3385;color:white;padding:5px;">OutputStream</code>，操作文件。使用<code style="background:#ff3385;color:white;padding:5px;">Print Stream</code>包装一层。将System的<code style="background:#ff3385;color:white;padding:5px;">标准输出</code>设置为PrintStream。</p>
 <h2 id="Random-Access-Files"><a href="#Random-Access-Files" class="headerlink" title="Random Access Files"></a>Random Access Files</h2><p>随机读取文件的需求如下：</p>
 <p>对文件的随机读取是对文件的指定位置的随机访问而不是从头到尾依次读取，类似于List和LinkedList的区别。<br>实现文件的随机访问有两种方式：</p>
 <ol>
@@ -630,7 +623,7 @@ public PrintStream(OutputStream out, boolean autoFlush,String encoding)
 <li><p>SeekableByteChannel</p>
 </li>
 </ol>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 SeekableByteChannel sbc = Files.newByteChannel(Path path, OpenOption... options);
 
@@ -641,28 +634,28 @@ SeekableByteChannel writableByteChannel = Files.newByteChannel(path2, EnumSet.of
 </pre>
 
 <p>获取当前指针的位置：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 long position() throws java.io.IOException
 
 </pre>
 
 <p>切换位置：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 SeekableByteChannel position(long newPosition) throws java.io.IOException
 
 </pre>
 
 <p>获取文件大小：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 long size() throws java.io.IOException
 
 </pre>
 
 <p>读取写入：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 int read(java.nio.ByteBuffer buffer) throws java.io.IOException
 
@@ -670,24 +663,24 @@ int write(java.nio.ByteBuffer buffer) throws java.io.IOException
 
 </pre>
 
-<h2 id="使用FileWriter、FileReader文本读写"><a href="#使用FileWriter、FileReader文本读写" class="headerlink" title="使用FileWriter、FileReader文本读写"></a>使用FileWriter、FileReader文本读写</h2><img src='java13-Input-Output\fca0299a-e830-4df4-92ff-9f1cc15d16ce.jpg'>
+<h2 id="使用FileWriter、FileReader文本读写"><a href="#使用FileWriter、FileReader文本读写" class="headerlink" title="使用FileWriter、FileReader文本读写"></a>使用FileWriter、FileReader文本读写</h2><img src="/blog/2020/02/22/java13-Input-Output/fca0299a-e830-4df4-92ff-9f1cc15d16ce.jpg">
 
 <h2 id="ByteBuffer"><a href="#ByteBuffer" class="headerlink" title="ByteBuffer"></a>ByteBuffer</h2><p>ByteBuffer是Buffer的一种实现，还有CharBuffer, DoubleBuffer, FloatBuffer, IntBuffer, LongBuffer, ShortBuffer</p>
 <p>ByteBuffer的一种简单的构造方法：</p>
-<img src='java13-Input-Output\503b5f71-6570-40de-8d51-b5cd1f91bced.jpg' >
+<img src="/blog/2020/02/22/java13-Input-Output/503b5f71-6570-40de-8d51-b5cd1f91bced.jpg">
 
 <p>示例：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 ByteBuffer byteBuffer = ByteBuffer.allocate(100);
 
 </pre>
 
 <p>在ByteBuffer内部维护了一个Byte Array，可以通过以下方法获得：</p>
-<img src='java13-Input-Output\b446df6a-bc89-4c42-bbf4-b0cafc16e565.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/b446df6a-bc89-4c42-bbf4-b0cafc16e565.jpg">
 
 <p>ByteBuffer的几种读写方法：</p>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 //直接添加
 public abstract ByteBuffer put(byte b)
@@ -714,19 +707,19 @@ public abstract float getFloat(int index)
 <ol>
 <li>创建ByteBuffer并添加数据</li>
 </ol>
-<img src='java13-Input-Output\12aecef2-9d59-48ac-92b5-e9ed03fc2036.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/12aecef2-9d59-48ac-92b5-e9ed03fc2036.jpg">
 
 <ol start="2">
 <li>创建SeekableByteChannel，写入数据</li>
 </ol>
-<img src='java13-Input-Output\b05dbf43-b103-4db5-8310-0b8462b4ba3d.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/b05dbf43-b103-4db5-8310-0b8462b4ba3d.jpg">
 
 
 <h2 id="对象的序列化"><a href="#对象的序列化" class="headerlink" title="对象的序列化"></a>对象的序列化</h2><p>对对象进行序列化可以用于存储对象状态，通过网络进行传输。再进行反序列化即可还原。对象进行序列化，需要实现Serializable接口。</p>
 <ol>
 <li>构造ObjectOutputStream</li>
 </ol>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public ObjectOutputStream(OutputStream out)
 
@@ -735,7 +728,7 @@ public ObjectOutputStream(OutputStream out)
 <ol start="2">
 <li>添加数据</li>
 </ol>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public void writeBoolean(boolean value)
 public void writeByte(int value)
@@ -755,7 +748,7 @@ public void writeObject(java.lang.Object value)
 <ol>
 <li>构造ObjectInputStream</li>
 </ol>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public ObjectInputStream(InputStream in)
 
@@ -764,7 +757,7 @@ public ObjectInputStream(InputStream in)
 <ol start="2">
 <li>读取数据</li>
 </ol>
-<pre style='background:#e6e6e6;padding=10px;'>
+<pre style="background:#e6e6e6;padding=10px;">
 
 public boolean readBoolean()
 public byte readByte()
@@ -780,10 +773,10 @@ public java.lang.Object readObject()
 
 <p>完整示例：</p>
 <p>序列化：</p>
-<img src='java13-Input-Output\82b2ad15-e3ea-4a99-a10b-b23c2badf47f.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/82b2ad15-e3ea-4a99-a10b-b23c2badf47f.jpg">
 
 <p>反序列化：</p>
-<img src='java13-Input-Output\d6aa4170-5154-4ee6-90b0-cc0ca64a4a1c.jpg'>
+<img src="/blog/2020/02/22/java13-Input-Output/d6aa4170-5154-4ee6-90b0-cc0ca64a4a1c.jpg">
 
 
 
@@ -962,8 +955,8 @@ public java.lang.Object readObject()
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

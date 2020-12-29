@@ -18,25 +18,25 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="Redis是一种高性能内存数据库，支持硬盘持久化数据。具有高读写速度，常用于高并发及缓存。 Redis基础使用 添加依赖     配置RedisConnectionFactory     配置RedisTemplate  配置了序列化器及连接池管理    对不同类型的封装方法     获取不同类型的操作     绑定不同类型的操作     使用同一条连接操作  SessionCallback及Re">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/dd684114-8c3e-4b7e-954a-409a690cad3e.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/0d5cbc3a-58ae-48cf-9c86-75d2e68a2006.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/bc473038-847e-4561-943a-0ce186a95f95.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/49cd4336-9f9e-4a60-98e3-dfac4c2a928a.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/293bd4c1-730d-480f-beec-930ed56d1b24.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/b9c22eb0-cece-4c39-b482-5e0baf1b65c1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/401559f1-5a47-4a67-9aea-2acdc10c2266.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/9cb2e2ce-f2de-4180-9166-67a95d46bbfc.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/16c651a4-27d6-4f19-9955-4f0b8e48e15b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/50259d1c-90a2-43dd-b81e-6d5a08f7a8a0.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/63106093-3b8d-4cf4-b8cf-77d888d10d4f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/158722b9-fb8b-41c9-98dc-eec800086613.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/2f1b1d62-cf05-4066-ad74-2965dd47a966.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/dd684114-8c3e-4b7e-954a-409a690cad3e.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/0d5cbc3a-58ae-48cf-9c86-75d2e68a2006.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/bc473038-847e-4561-943a-0ce186a95f95.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/49cd4336-9f9e-4a60-98e3-dfac4c2a928a.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/293bd4c1-730d-480f-beec-930ed56d1b24.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/b9c22eb0-cece-4c39-b482-5e0baf1b65c1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/401559f1-5a47-4a67-9aea-2acdc10c2266.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/9cb2e2ce-f2de-4180-9166-67a95d46bbfc.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/16c651a4-27d6-4f19-9955-4f0b8e48e15b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/50259d1c-90a2-43dd-b81e-6d5a08f7a8a0.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/63106093-3b8d-4cf4-b8cf-77d888d10d4f.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/158722b9-fb8b-41c9-98dc-eec800086613.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/2f1b1d62-cf05-4066-ad74-2965dd47a966.jpg">
 <meta property="article:published_time" content="2020-07-10T01:47:57.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.972Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring-boot-2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/07/10/springBoot2-15-redis01/springBoot2-15-redis01/dd684114-8c3e-4b7e-954a-409a690cad3e.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/07/10/springBoot2-15-redis01/dd684114-8c3e-4b7e-954a-409a690cad3e.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -113,74 +113,67 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">Redis基础使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Spring-boot%E4%B8%AD%E4%BD%BF%E7%94%A8Redis"><span class="toc-number">2.</span> <span class="toc-text">在Spring boot中使用Redis</span></a></li></ol>
-		
-		</div>
-		
 		<p>Redis是一种高性能内存数据库，支持硬盘持久化数据。具有高读写速度，常用于高并发及缓存。</p>
 <h2 id="Redis基础使用"><a href="#Redis基础使用" class="headerlink" title="Redis基础使用"></a>Redis基础使用</h2><ol>
 <li>添加依赖</li>
 </ol>
-<img src='springBoot2-15-redis01\dd684114-8c3e-4b7e-954a-409a690cad3e.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/dd684114-8c3e-4b7e-954a-409a690cad3e.jpg">
 
 <ol start="2">
 <li>配置RedisConnectionFactory</li>
 </ol>
-<img src='springBoot2-15-redis01\0d5cbc3a-58ae-48cf-9c86-75d2e68a2006.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/0d5cbc3a-58ae-48cf-9c86-75d2e68a2006.jpg">
 
 <ol start="3">
 <li>配置RedisTemplate</li>
 </ol>
 <p>配置了序列化器及连接池管理</p>
-<img src='springBoot2-15-redis01\bc473038-847e-4561-943a-0ce186a95f95.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/bc473038-847e-4561-943a-0ce186a95f95.jpg">
 
 <ol start="4">
 <li>对不同类型的封装方法</li>
 </ol>
-<img src='springBoot2-15-redis01\49cd4336-9f9e-4a60-98e3-dfac4c2a928a.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/49cd4336-9f9e-4a60-98e3-dfac4c2a928a.jpg">
 
 <ol start="5">
 <li>获取不同类型的操作</li>
 </ol>
-<img src='springBoot2-15-redis01\293bd4c1-730d-480f-beec-930ed56d1b24.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/293bd4c1-730d-480f-beec-930ed56d1b24.jpg">
 
 <ol start="6">
 <li>绑定不同类型的操作</li>
 </ol>
-<img src='springBoot2-15-redis01\b9c22eb0-cece-4c39-b482-5e0baf1b65c1.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/b9c22eb0-cece-4c39-b482-5e0baf1b65c1.jpg">
 
 <ol start="7">
 <li>使用同一条连接操作</li>
 </ol>
 <p>SessionCallback及RedisCallback均可以实现多条语句在一条连接里执行。</p>
-<img src='springBoot2-15-redis01\401559f1-5a47-4a67-9aea-2acdc10c2266.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/401559f1-5a47-4a67-9aea-2acdc10c2266.jpg">
 
 <h2 id="在Spring-boot中使用Redis"><a href="#在Spring-boot中使用Redis" class="headerlink" title="在Spring boot中使用Redis"></a>在Spring boot中使用Redis</h2><ol>
 <li>配置连接池及连接信息</li>
 </ol>
-<img src='springBoot2-15-redis01\9cb2e2ce-f2de-4180-9166-67a95d46bbfc.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/9cb2e2ce-f2de-4180-9166-67a95d46bbfc.jpg">
 
 <ol start="2">
 <li>在启动类上配置序列化器</li>
 </ol>
-<img src='springBoot2-15-redis01\16c651a4-27d6-4f19-9955-4f0b8e48e15b.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/16c651a4-27d6-4f19-9955-4f0b8e48e15b.jpg">
 
 <ol start="3">
 <li>常用的操作</li>
 </ol>
-<img src='springBoot2-15-redis01\50259d1c-90a2-43dd-b81e-6d5a08f7a8a0.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/50259d1c-90a2-43dd-b81e-6d5a08f7a8a0.jpg">
 
 <p>List</p>
-<img src='springBoot2-15-redis01\63106093-3b8d-4cf4-b8cf-77d888d10d4f.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/63106093-3b8d-4cf4-b8cf-77d888d10d4f.jpg">
 
 <p>Set</p>
-<img src='springBoot2-15-redis01\158722b9-fb8b-41c9-98dc-eec800086613.jpg'>
+<img src="/blog/2020/07/10/springBoot2-15-redis01/158722b9-fb8b-41c9-98dc-eec800086613.jpg">
 
 <p>ZSet</p>
-<img src='springBoot2-15-redis01\2f1b1d62-cf05-4066-ad74-2965dd47a966.jpg'>  
+<img src="/blog/2020/07/10/springBoot2-15-redis01/2f1b1d62-cf05-4066-ad74-2965dd47a966.jpg">  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -349,8 +342,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

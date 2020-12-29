@@ -18,21 +18,21 @@
 <meta property="og:site_name" content="成华的博客">
 <meta property="og:description" content="RabbitMQ基于RMQP服务进行消息传递，对客户端及开发语言屏蔽。 RabbitMQ使用 添加依赖     配置application.properties      将两个队列注册为Bean     消息发送接口     消息发送实现类       消息订阅者">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-11-RabbitMQ/springBoot2-11-RabbitMQ/e187c167-35c5-49f1-870e-4f9bac5144c1.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-11-RabbitMQ/springBoot2-11-RabbitMQ/cd7ed0a8-aafe-4fda-b839-7c7d58070629.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-11-RabbitMQ/springBoot2-11-RabbitMQ/e06d202f-91ff-4b77-9c20-12d327c084a9.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-11-RabbitMQ/springBoot2-11-RabbitMQ/c2602b2b-6de4-4ed1-98ea-1945cb9aa55b.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-11-RabbitMQ/springBoot2-11-RabbitMQ/a9556313-d6cd-477a-9f55-aa7a932221e5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-11-RabbitMQ/springBoot2-11-RabbitMQ/6f4a7b20-1ffa-4af0-8ffb-df1559445e60.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-11-RabbitMQ/springBoot2-11-RabbitMQ/7f06d2e9-a9de-4f04-b0e8-9d63a98e0339.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-11-RabbitMQ/springBoot2-11-RabbitMQ/718a40ab-4a3d-476d-aaa3-72e328842c0c.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-11-RabbitMQ/springBoot2-11-RabbitMQ/070dd276-d6c9-4d26-8795-6525c28dba86.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-11-RabbitMQ/e187c167-35c5-49f1-870e-4f9bac5144c1.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-11-RabbitMQ/cd7ed0a8-aafe-4fda-b839-7c7d58070629.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-11-RabbitMQ/e06d202f-91ff-4b77-9c20-12d327c084a9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-11-RabbitMQ/c2602b2b-6de4-4ed1-98ea-1945cb9aa55b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-11-RabbitMQ/a9556313-d6cd-477a-9f55-aa7a932221e5.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-11-RabbitMQ/6f4a7b20-1ffa-4af0-8ffb-df1559445e60.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-11-RabbitMQ/7f06d2e9-a9de-4f04-b0e8-9d63a98e0339.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-11-RabbitMQ/718a40ab-4a3d-476d-aaa3-72e328842c0c.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-11-RabbitMQ/070dd276-d6c9-4d26-8795-6525c28dba86.jpg">
 <meta property="article:published_time" content="2020-07-08T13:09:32.000Z">
 <meta property="article:modified_time" content="2020-12-29T13:22:44.956Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring-boot-2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-11-RabbitMQ/springBoot2-11-RabbitMQ/e187c167-35c5-49f1-870e-4f9bac5144c1.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-11-RabbitMQ/e187c167-35c5-49f1-870e-4f9bac5144c1.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -109,46 +109,39 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">RabbitMQ使用</span></a></li></ol>
-		
-		</div>
-		
 		<p>RabbitMQ基于RMQP服务进行消息传递，对客户端及开发语言屏蔽。</p>
 <h2 id="RabbitMQ使用"><a href="#RabbitMQ使用" class="headerlink" title="RabbitMQ使用"></a>RabbitMQ使用</h2><ol>
 <li>添加依赖</li>
 </ol>
-<img src='springBoot2-11-RabbitMQ\e187c167-35c5-49f1-870e-4f9bac5144c1.jpg'>
+<img src="/blog/2020/07/08/springBoot2-11-RabbitMQ/e187c167-35c5-49f1-870e-4f9bac5144c1.jpg">
 
 <ol start="2">
 <li>配置application.properties</li>
 </ol>
-<img src='springBoot2-11-RabbitMQ\cd7ed0a8-aafe-4fda-b839-7c7d58070629.jpg'>
-<img src='springBoot2-11-RabbitMQ\e06d202f-91ff-4b77-9c20-12d327c084a9.jpg'>
+<img src="/blog/2020/07/08/springBoot2-11-RabbitMQ/cd7ed0a8-aafe-4fda-b839-7c7d58070629.jpg">
+<img src="/blog/2020/07/08/springBoot2-11-RabbitMQ/e06d202f-91ff-4b77-9c20-12d327c084a9.jpg">
 
 <ol start="3">
 <li>将两个队列注册为Bean</li>
 </ol>
-<img src='springBoot2-11-RabbitMQ\c2602b2b-6de4-4ed1-98ea-1945cb9aa55b.jpg'>
+<img src="/blog/2020/07/08/springBoot2-11-RabbitMQ/c2602b2b-6de4-4ed1-98ea-1945cb9aa55b.jpg">
 
 <ol start="4">
 <li>消息发送接口</li>
 </ol>
-<img src='springBoot2-11-RabbitMQ\a9556313-d6cd-477a-9f55-aa7a932221e5.jpg'>
+<img src="/blog/2020/07/08/springBoot2-11-RabbitMQ/a9556313-d6cd-477a-9f55-aa7a932221e5.jpg">
 
 <ol start="5">
 <li>消息发送实现类</li>
 </ol>
-<img src='springBoot2-11-RabbitMQ\6f4a7b20-1ffa-4af0-8ffb-df1559445e60.jpg'>
-<img src='springBoot2-11-RabbitMQ\7f06d2e9-a9de-4f04-b0e8-9d63a98e0339.jpg'>
-<img src='springBoot2-11-RabbitMQ\718a40ab-4a3d-476d-aaa3-72e328842c0c.jpg'>
+<img src="/blog/2020/07/08/springBoot2-11-RabbitMQ/6f4a7b20-1ffa-4af0-8ffb-df1559445e60.jpg">
+<img src="/blog/2020/07/08/springBoot2-11-RabbitMQ/7f06d2e9-a9de-4f04-b0e8-9d63a98e0339.jpg">
+<img src="/blog/2020/07/08/springBoot2-11-RabbitMQ/718a40ab-4a3d-476d-aaa3-72e328842c0c.jpg">
 
 <ol start="6">
 <li>消息订阅者</li>
 </ol>
-<img src='springBoot2-11-RabbitMQ\070dd276-d6c9-4d26-8795-6525c28dba86.jpg'>
+<img src="/blog/2020/07/08/springBoot2-11-RabbitMQ/070dd276-d6c9-4d26-8795-6525c28dba86.jpg">
 
   
 	</div>
@@ -319,8 +312,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

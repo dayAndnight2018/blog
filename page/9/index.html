@@ -79,659 +79,190 @@
     <div id="container">
       <div id="main">
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/01/05/alibabaPattern02/" title="阿里巴巴开发手册02  常量定义" itemprop="url">阿里巴巴开发手册02  常量定义</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-01-05T15:35:12.000Z" itemprop="datePublished"> Published 2020-01-05</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h2><ol>
-<li><code>不允许</code>出现魔法值，直接作为常量使用</li>
-</ol>
-<img src='alibabaPattern02\d3fd5dce-8233-4236-8322-610f96af15b8.jpg' style='margin:30px;display:block' alt='title'>
-
-<ol start="2">
-<li><p>long类型的值定义时，<code>需要</code>使用大写L</p>
-</li>
-<li><p>对常亮<code>要求</code>使用多个常量类分别管理</p>
-</li>
-<li><p>常量的复用</p>
-</li>
-</ol>
-<p>跨应用复用：常量放置在两方的类库中</p>
-<p>应用内共享：放置在某类库中</p>
-<p>子工程内部共享：放在在子工程的constant目录下</p>
-<p>包内共享：放置在当前包的constant目录下</p>
-<p>类内共享：类内部使用private static final 定义</p>
-<ol start="5">
-<li>若变量范围较小，包含固定的几个值，如第一季度，第二季度，第三季度，第四季度，则使用枚举<img src='alibabaPattern02\f45019bd-5af1-4182-85b5-5349b63e3d83.jpg' style='margin:30px;display:block' alt='title'></li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/alibaba/">alibaba</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/01/05/alibabaPattern01/" title="阿里巴巴开发手册01 命名风格" itemprop="url">阿里巴巴开发手册01 命名风格</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-01-05T14:44:31.000Z" itemprop="datePublished"> Published 2020-01-05</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h2><ol>
-<li><p><code style='background:#ff3385;color:white;padding:5px;'>禁止</code>命名以_或$开始或结束</p>
-</li>
-<li><p><code style='background:#ff3385;color:white;padding:5px;'>禁用</code>拼音、中文命名方式</p>
-</li>
-<li><p>类名<code style='background:#ff3385;color:white;padding:5px;'>需要</code>首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外</p>
-</li>
-<li><p>方法名称、参数名称、成员变量、局部变量<code style='background:#ff3385;color:white;padding:5px;'>需要</code>统一使用驼峰命名。</p>
-</li>
-<li><p>常量<code style='background:#ff3385;color:white;padding:5px;'>需要</code>用全大写，单词之间用下划线连接</p>
-</li>
-<li><p>抽象类<code style='background:#ff3385;color:white;padding:5px;'>需要</code>以Abstract开头，异常以Exception结尾，测试类以测试类名称开始，以Test结尾</p>
-</li>
-<li><p>数组符号与类型<code style='background:#ff3385;color:white;padding:5px;'>需要</code>紧挨着，如：int[] array</p>
-</li>
-<li><p>POJO类中的布尔类型，<code style='background:#ff3385;color:white;padding:5px;'>禁止</code>以is开头</p>
-</li>
-<li><p>包名<code style='background:#ff3385;color:white;padding:5px;'>需要</code>保持小写，单数语义，类名<code style='background:#ff3385;color:white;padding:5px;'>可以</code>使用复数</p>
-</li>
-<li><p><code style='background:#ff3385;color:white;padding:5px;'>禁止</code>不规范的缩写</p>
-</li>
-<li><p><code style='background:#ff3385;color:white;padding:5px;'>需要</code>使用完整的单词组合</p>
-</li>
-<li><p>模块、接口、类、方法使用设计模式，<code style='background:#ff3385;color:white;padding:5px;'>需要</code>体现出设计模式：OrderFactory、LoginProxy、ResourceObserver</p>
-</li>
-<li><p>接口类方法上<code style='background:#ff3385;color:white;padding:5px;'>不要</code>添加修饰，<code style='background:#ff3385;color:white;padding:5px;'>避免</code>在接口中定义变量。</p>
-</li>
-<li><p>Service或DAO接口，<code style='background:#ff3385;color:white;padding:5px;'>要求</code>使用xxxService、xxxServiceImpl命名接口和实现类。普通接口，以形容词为接口名称，Translatable接口或AbstractTranslator实现类</p>
-</li>
-<li><p>枚举<code style='background:#ff3385;color:white;padding:5px;'>要求</code>使用Enum后缀，枚举成员用大写，下划线连接。</p>
-</li>
-<li><p>Service/DAO层命名<code style='background:#ff3385;color:white;padding:5px;'>要求</code>：</p>
-</li>
-</ol>
-<p>获取单个对象用get前缀</p>
-<p>获取多个对象用list做前缀，复数形式结尾如：listObjects</p>
-<p>获取数量count做前缀</p>
-<p>插入用insert做前缀</p>
-<p>删除用delete做前缀</p>
-<p>修改用update做前缀</p>
-<ol start="17">
-<li>领域数据模型命名<code style='background:#ff3385;color:white;padding:5px;'>要求</code>：</li>
-</ol>
-<p>数据对象使用DO作后缀</p>
-<p>数据传输对象以DTO做后缀</p>
-<p>视图对象以VO做后缀</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/blog/tags/alibaba/">alibaba</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/01/03/springMVC02/" title="Spring MVC创建一个项目" itemprop="url">Spring MVC创建一个项目</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-01-03T13:16:03.000Z" itemprop="datePublished"> Published 2020-01-03</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="在STS中创建项目"><a href="#在STS中创建项目" class="headerlink" title="在STS中创建项目"></a>在STS中创建项目</h2><ol>
-<li>通过File-New-Project创建一个Maven项目</li>
-</ol>
-<img src='springMVC02\41d6b37a-2ffe-4532-85b3-8d9e2e646e52.jpg' style='margin:30px;display:block' alt='title'>
-
-<ol start="2">
-<li>填写相关信息，结束创建</li>
-</ol>
-<img src='springMVC02\b70b4f0c-020b-42ae-8cf2-01e5b3654a84.jpg' style='margin:30px;display:block' alt='title'>
-
-<p>GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项目名称，因为我们想要部署到tomcat中，因此打包方式设置为war包。</p>
-<ol start="3">
-<li>生成的项目结构如图所示</li>
-</ol>
-<img src='springMVC02\b087dbe1-46b4-4d22-8411-bdc8bec172e6.jpg' style='margin:30px;display:block' alt='title'>
-
-<h2 id="添加Spring依赖"><a href="#添加Spring依赖" class="headerlink" title="添加Spring依赖"></a>添加Spring依赖</h2><ol>
-<li>打开pom.xml文件，并添加依赖，输入Spring MVC的相关信息</li>
-</ol>
-<img src='springMVC02\f1e6eea8-2f58-4720-b995-5da786b2fb55.jpg' style='margin:30px;display:block' alt='title'>
-
-<p>groupID 为<code style='background:#ff3385;color:white;padding:5px;'>org.springframework</code>，ArtifactID为<code style='background:#ff3385;color:white;padding:5px;'>spring-webmvc</code>，版本为<code style='background:#ff3385;color:white;padding:5px;'>4.0.3.RELEASE</code>,范围选择<code style='background:#ff3385;color:white;padding:5px;'>编译</code>。</p>
-<ol start="2">
-<li>同样的，为了显示页面，需要添加JSTL依赖</li>
-</ol>
-<p>groupID 为<code style='background:#ff3385;color:white;padding:5px;'>javax.servlet</code>，ArtifactID为<code style='background:#ff3385;color:white;padding:5px;'>jstl</code>，版本为<code style='background:#ff3385;color:white;padding:5px;'>1.2</code>,范围选择<code style='background:#ff3385;color:white;padding:5px;'>编译</code>。</p>
-<ol start="3">
-<li>添加Servlet-api依赖</li>
-</ol>
-<p>groupID 为<code style='background:#ff3385;color:white;padding:5px;'>javax.servlet</code>，ArtifactID为<code style='background:#ff3385;color:white;padding:5px;'>javax.servlet-api</code>，版本为<code style='background:#ff3385;color:white;padding:5px;'>3.1.0</code>,范围选择<code style='background:#ff3385;color:white;padding:5px;'>Provided</code>。</p>
-<ol start="4">
-<li>依赖添加完毕</li>
-</ol>
-<img src='springMVC02\83a94160-538d-400e-b64e-5cea5156fe1b.jpg' style='margin:30px;display:block' alt='title'>
-
-<p>在此对依赖添加作出解释：Maven是一种包管理机制，会解决包之间的依赖关系和版本问题。我们制定组名、包名、版本即可告诉Maven我们想要什么包，它自动完成下载和相关依赖包的下载。<br>编译期间需要打入包内的是编译包，不需要打入的是提供包，因为tomcat里面有servlet-api，所以无需打包。</p>
-<h2 id="JAVA小配置"><a href="#JAVA小配置" class="headerlink" title="JAVA小配置"></a>JAVA小配置</h2><p>打开pom.xml文件，在底部找到overView视图，找到properties并添加属性：maven.compiler.source=1.7</p>
-<img src='springMVC02\17f8b5f1-24bf-4ed2-af8d-7cb75a51e973.jpg' style='margin:30px;display:block' alt='title'>
-
-<p>同时，设置目标版本maven.compiler.target=1.7</p>
-<h2 id="创建一个欢迎界面"><a href="#创建一个欢迎界面" class="headerlink" title="创建一个欢迎界面"></a>创建一个欢迎界面</h2><ol>
-<li>在src/main/webapp下面创建WEB-INF/jsp路径，并创建welcome.jsp文件</li>
-</ol>
-<img src='springMVC02\54109039-f24e-4cc4-bf74-2554c652b1c3.jpg' style='width:600px;height:400px;margin:30px;display:block' alt='title'>
-
-<p>页面很简单，就是显示一个greeting和一个tagline字段</p>
-<ol start="2">
-<li>在src/main/java路径下创建一个com.packt.webstore.controller包，并在本包下创建HomeController.java文件</li>
-</ol>
-<img src='springMVC02\4335d3b6-81aa-4fa4-855f-a10641331ea6.jpg' style='margin:30px;display:block' alt='title'>
-
-<p>在jsp文件中，有两个jstl标签，用于显示两个变量的值：</p>
-<img src='springMVC02\d1245300-444a-4015-a538-7a3ab3e74936.jpg' style='margin:30px;display:block' alt='title'>
-
-<p>这两个值来自于控制器存储到model中的数据</p>
-<img src='springMVC02\59fc7aa2-0133-4147-8db2-10251b26448b.jpg' style='margin:30px;display:block' alt='title'>
-
-<ol start="3">
-<li>配置DispatcherServlet</li>
-</ol>
-<p>没有这个是无法访问的，DispatcherServlet将会拦截用户的请求，根据实际请求地址映射到相关的controller，甚至具体的action。在src/main/webapp/WEB-INF/路径下创建web.xml配置文件：</p>
-<img src='springMVC02\fab7cdf7-eb8b-4cba-aac5-b42a9d8d1fec.jpg' style='margin:30px;display:block' alt='title'>
-
-<p>创建servlet用于拦截前端请求，servlet-mapping用于配置映射路径，一般拦截全部请求，所以url-pattern是/，表示所有路径</p>
-<ol start="4">
-<li>在src/main/webapp/WEB-INF/路径下，创建另外一个配置文件DefaultServlet-servlet.xml</li>
-</ol>
-<img src='springMVC02\9da14ede-34bc-4b83-9479-5e1b6f6dd5f4.jpg' style='margin:30px;display:block' alt='title'>
-
-<p>这个配置文件配置了注解扫描、组件扫描的包路径，并配置了前端页面的存储位置，在/WEB-INF/jsp文件夹下，并且以.jsp结尾</p>
-<ol start="5">
-<li>通过run as 即可选择tomcat部署运行</li>
-</ol>
-<img src='springMVC02\12a0d456-f3da-49f0-9ca8-326ddd297de9.jpg' style='margin:30px;display:block' alt='title'>
-
-<p>我们可以打开浏览器访问了</p>
-<img src='springMVC02\2a261bff-3bb2-404d-9fbd-bfbaa600846d.jpg' style='margin:30px;display:block' alt='title'>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
+    <a href="/blog/2020/01/05/alibabaPattern02/" title="阿里巴巴开发手册02  常量定义" itemprop="url">
   
-  <span></span> <a href="/blog/tags/spring-mvc/">spring mvc</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">阿里巴巴开发手册02  常量定义</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/01/03/gitCommand01/" title="Git常用指令" itemprop="url">Git常用指令</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-01-03T02:46:13.000Z" itemprop="datePublished"> Published 2020-01-03</time>
-    
-  </p>
-</header>
-    <div class="article-content">
+     
+           <p itemprop="description" >常量定义
+不允许出现魔法值，直接作为常量使用
+
+
+
+
+long类型的值定义时，需要使用大写L
+
+对常亮要求使用多个常量类分别管理
+
+常量的复用
+
+
+跨应用复用：常量放置在两方的类库中
+应用内共享：放置在某类库中
+子工程内部共享：放在在子工程的constant目录下
+包内共享：放置</p>
         
-        <h2 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h2><h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><pre style='background:#e6e6e6;padding=10px;'>
+    
+    <time datetime="2020-01-05T15:35:12.000Z" itemprop="datePublished">2020-01-05</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/01/05/alibabaPattern01/" title="阿里巴巴开发手册01 命名风格" itemprop="url">
+  
+    <h1 itemprop="name">阿里巴巴开发手册01 命名风格</h1>
+    
+     
+           <p itemprop="description" >命名风格
+禁止命名以_或$开始或结束
+
+禁用拼音、中文命名方式
+
+类名需要首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外
+
+方法名称、参数名称、成员变量、局部变量需要统一使用驼峰命名。
+
+常量需要用全大写，单词之间用下划线连接
+
+抽象类需要以Abstra</p>
+        
+    
+    <time datetime="2020-01-05T14:44:31.000Z" itemprop="datePublished">2020-01-05</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/01/03/springMVC02/" title="Spring MVC创建一个项目" itemprop="url">
+  
+    <h1 itemprop="name">Spring MVC创建一个项目</h1>
+    
+     
+           <p itemprop="description" >在STS中创建项目
+通过File-New-Project创建一个Maven项目
+
+
+
+
+填写相关信息，结束创建
+
+
+
+GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项目名称，因为我们想要部署到tomcat中，因此打包方式设置为war包。
+
+生成的项目</p>
+        
+    
+    <time datetime="2020-01-03T13:16:03.000Z" itemprop="datePublished">2020-01-03</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/01/03/gitCommand01/" title="Git常用指令" itemprop="url">
+  
+    <h1 itemprop="name">Git常用指令</h1>
+    
+     
+           <p itemprop="description" >基础指令初始化仓库
 
     git init
 
-</pre>
 
-<h3 id="添加文件到缓冲区"><a href="#添加文件到缓冲区" class="headerlink" title="添加文件到缓冲区"></a>添加文件到缓冲区</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+添加文件到缓冲区
 
     git add filename
 
-</pre>
 
-<h3 id="添加所有文件到缓冲区"><a href="#添加所有文件到缓冲区" class="headerlink" title="添加所有文件到缓冲区"></a>添加所有文件到缓冲区</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+添加所有文件到缓冲区
 
     git add .
     git add --all
 
-</pre>
 
-<h3 id="清除缓冲区"><a href="#清除缓冲区" class="headerlink" title="清除缓冲区"></a>清除缓冲区</h3><pre style='background:#e6e6e6;padding=10px;'>
+
+清除缓冲区
 
     git rm -r --cached
 
-</pre>
 
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git rm filename
-
-</pre>
-
-<h3 id="提交备注"><a href="#提交备注" class="headerlink" title="提交备注"></a>提交备注</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git comment -m '备注内容'
-
-</pre>
-
-<p><code style='background:#ff3385;color:white;padding:5px;'>注意：git add或git comment失败将不会提交。所以，comment必须有备注内容</code></p>
-<h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git status
-
-</pre>
-
-<h3 id="查看差异"><a href="#查看差异" class="headerlink" title="查看差异"></a>查看差异</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git diff filename
-
-</pre>
-
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git reset
-    git reset --hard HEAD^
-    git reset --hard version
-
-</pre>
-
-<h3 id="日志查看"><a href="#日志查看" class="headerlink" title="日志查看"></a>日志查看</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git log
-    git reflog
-
-</pre>
-
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git branch
-
-</pre>
-
-<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git branch branchName
-
-</pre>
-
-<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git checkout branchName
-
-</pre>
-
-<h3 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git checkout -b branchName
-
-</pre>
-
-<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git branch -d branchName
-
-</pre>
-
-<h3 id="合并某分支到当前分支"><a href="#合并某分支到当前分支" class="headerlink" title="合并某分支到当前分支"></a>合并某分支到当前分支</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git merge branchName
-
-</pre>
-
-<h2 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h2><h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git tag tagName version
-
-</pre>
-
-<h3 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git tag
-
-</pre>
-
-<h3 id="查看标签详情"><a href="#查看标签详情" class="headerlink" title="查看标签详情"></a>查看标签详情</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git show tagName
-
-</pre>
-
-<h3 id="推送某个tag"><a href="#推送某个tag" class="headerlink" title="推送某个tag"></a>推送某个tag</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git push origin v1.0
-
-</pre>
-
-<h3 id="推送所有tag"><a href="#推送所有tag" class="headerlink" title="推送所有tag"></a>推送所有tag</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git push origin --tags
-
-</pre>
-
-<h2 id="远端库相关"><a href="#远端库相关" class="headerlink" title="远端库相关"></a>远端库相关</h2><h3 id="添加远端库"><a href="#添加远端库" class="headerlink" title="添加远端库"></a>添加远端库</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git remote add origin git://xxx/abc.git
-
-</pre>
-
-<h3 id="移除远端库"><a href="#移除远端库" class="headerlink" title="移除远端库"></a>移除远端库</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git remote remove origin git://xxx/abc.git
-
-</pre>
-
-<h3 id="推送到远端"><a href="#推送到远端" class="headerlink" title="推送到远端"></a>推送到远端</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git push -u origin master
-
-</pre>
-
-<h3 id="更新远端的内容到本地"><a href="#更新远端的内容到本地" class="headerlink" title="更新远端的内容到本地"></a>更新远端的内容到本地</h3><pre style='background:#e6e6e6;padding=10px;'>
-
-    git pull
-
-</pre>
-
-<h2 id="组合提交指令"><a href="#组合提交指令" class="headerlink" title="组合提交指令"></a>组合提交指令</h2><pre style='background:#e6e6e6;padding=10px;'>
-
-    git rm -r --cached
-    git add .
-    git comment -m 'update'
-    git push origin master
-
-</pre>
+</p>
         
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
+    
+    <time datetime="2020-01-03T02:46:13.000Z" itemprop="datePublished">2020-01-03</time>
+  </a>
+</section>
 
 
-  <div class="article-tags">
+
+
+
+
   
-  <span></span> <a href="/blog/tags/git/">git</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/blog/2020/01/01/springMVC01/" title="Spring MVC开发环境配置" itemprop="url">
+  
+    <h1 itemprop="name">Spring MVC开发环境配置</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/blog/2020/01/01/springMVC01/" title="Spring MVC开发环境配置" itemprop="url">Spring MVC开发环境配置</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
-		
-  <p class="article-time">
-    <time datetime="2020-01-01T11:57:30.000Z" itemprop="datePublished"> Published 2020-01-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="配置JAVA"><a href="#配置JAVA" class="headerlink" title="配置JAVA"></a>配置JAVA</h2><ol>
-<li><p>从<a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JAVA开发环境下载地址</a>下载JDK开发环境</p>
-</li>
-<li><p>如图所示，安装JDK，在JDK中已经包含JRE</p>
-</li>
-</ol>
-<img src='springMVC01\8cf53021-eff0-4987-992e-fab6acb0ca80.jpg' style='margin:30px;display:block' alt='title'> 
+     
+           <p itemprop="description" >配置JAVA
+从JAVA开发环境下载地址下载JDK开发环境
 
-<ol start="3">
-<li>将JDK路径配置到环境变量</li>
-</ol>
-<img src='springMVC01\263d9a58-e2a4-407e-a77c-5c1b0a7bf9f1.jpg' style='margin:30px;display:block' alt='title'>
+如图所示，安装JDK，在JDK中已经包含JRE
 
-<ol start="4">
-<li>测试JDK</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
+
+ 
+
+
+将JDK路径配置到环境变量
+
+
+
+
+测试JDK
+
+
 
      java -version
 
-</pre>
-
-<img src='springMVC01\e7965238-9843-4ff9-b3d5-2d24cb125cd8.jpg' style='margin:30px;display:block' alt='title'>
-
-
-<hr>
-<h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><ol>
-<li><p>从<a target="_blank" rel="noopener" href="http://maven.apache.org/download.cgi">Maven下载地址</a>下载Maven安装包</p>
-</li>
-<li><p>解压后，添加环境变量</p>
-</li>
-</ol>
-<img src='springMVC01\9753ca75-5f7a-4495-a95a-1e1294c877f1.jpg' style='margin:30px;display:block' alt='title'>
-
-<ol start="3">
-<li>测试Maven</li>
-</ol>
-<pre style='background:#e6e6e6;padding=10px;'>
-
-     mvn -version
-
-</pre>
-
-<img src='springMVC01\1baafde0-0eae-430e-9404-bebfb1980253.jpg' style='margin:30px;display:block' alt='title'>
-
-
-<hr>
-<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><ol>
-<li><p>从<a target="_blank" rel="noopener" href="http://tomcat.apache.org/">此处</a>下载安装包</p>
-</li>
-<li><p>一直下一步，安装即可。</p>
-</li>
-</ol>
-<img src='springMVC01\0589c8d1-7aa8-41ca-8e1f-9fac1b24a840.jpg' style='margin:30px;display:block' alt='title'>
-
-
-<hr>
-<h2 id="STS"><a href="#STS" class="headerlink" title="STS"></a>STS</h2><ol>
-<li><p>由<a target="_blank" rel="noopener" href="http://spring.io/tools/sts/all">此处</a>下载STS安装包</p>
-</li>
-<li><p>一直next安装即可。在某个步骤需要配置JDK路径。</p>
-</li>
-</ol>
-<img src='springMVC01\f8522a20-4d79-4604-8a4e-73dcfa566bac.jpg' style='margin:30px;display:block' alt='title'>
-
-<ol start="3">
-<li>打开STS，找到<code style='background:#ff3385;color:white;padding:5px;'>window</code>-<code style='background:#ff3385;color:white;padding:5px;'>preferences</code>-<code style='background:#ff3385;color:white;padding:5px;'>Server</code>-<code style='background:#ff3385;color:white;padding:5px;'>Runtime Environment</code> 添加tomcat服务器</li>
-</ol>
-<img src='springMVC01\3f41ff6f-5fab-436a-8af1-3d280485e8d8.jpg' style='margin:30px;display:block' alt='title'>
-
-<ol start="4">
-<li>选择合适的版本，并将tomcat的安装路径配置好</li>
-</ol>
-<img src='springMVC01\d04bf7a4-b479-498b-a16e-69a4c04070c5.jpg' style='margin:30px;display:block' alt='title'>
-
-<ol start="5">
-<li>打开STS，找到<code style='background:#ff3385;color:white;padding:5px;'>window</code>-<code style='background:#ff3385;color:white;padding:5px;'>preferences</code>-<code style='background:#ff3385;color:white;padding:5px;'>Maven</code>-<code style='background:#ff3385;color:white;padding:5px;'>Installations</code>添加Maven的安装路径到STS</li>
-</ol>
-<img src='springMVC01\e7bb906e-4b94-48fc-8f06-233144dd2a55.jpg' style='margin:30px;display:block' alt='title'>
 
 
 
-<hr>
-<p>至此，Spring MVC开发环境配置完毕。</p>
 
+
+
+Maven
+从Maven下载地址下载Maven安装包</p>
         
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/blog/tags/spring-mvc/">spring mvc</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
+    
+    <time datetime="2020-01-01T11:57:30.000Z" itemprop="datePublished">2020-01-01</time>
+  </a>
+</section>
 
 
 
@@ -739,7 +270,7 @@
 
 
 
-  <nav id="page-nav" class="clearfix">
+  <nav id="page-nav" class="clearfix unexpand">
     <a class="extend prev" rel="prev" href="/blog/page/8/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/7/">7</a><a class="page-number" href="/blog/page/8/">8</a><span class="page-number current">9</span>
   </nav>
 
@@ -852,8 +383,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
