@@ -11,12 +11,12 @@
     
 
     
-    <meta name="description" content="对象的两大属性 特征（域）  动作（方法）   例如，一辆车可以有以下特征：   有颜色，轮胎数量，方向盘数量，阀门数量等等。 可以有以下几种动作：   行驶和刹车 类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对象就有什么域和方法，不多不少。 类的组成类由三部分组成：类名、域、方法。 类的基本结构  域域就是一些变量，这些变量 可">
+    <meta name="description" content="对象的两大属性 特征（域）  动作（方法） 例如，一辆车可以有以下特征：  有颜色，轮胎数量，方向盘数量，阀门数量等等。 可以有以下几种动作：  行驶和刹车   类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对象就有什么域和方法，不多不少。 类的组成类由三部分组成：类名、域、方法。 类的基本结构 域域就是一些变量，这些变量 可以是基">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java04 对象与类">
 <meta property="og:url" content="https://dayandnight2018.github.io/2020/02/19/java04-Objects-and-Classes/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="对象的两大属性 特征（域）  动作（方法）   例如，一辆车可以有以下特征：   有颜色，轮胎数量，方向盘数量，阀门数量等等。 可以有以下几种动作：   行驶和刹车 类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对象就有什么域和方法，不多不少。 类的组成类由三部分组成：类名、域、方法。 类的基本结构  域域就是一些变量，这些变量 可">
+<meta property="og:description" content="对象的两大属性 特征（域）  动作（方法） 例如，一辆车可以有以下特征：  有颜色，轮胎数量，方向盘数量，阀门数量等等。 可以有以下几种动作：  行驶和刹车   类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对象就有什么域和方法，不多不少。 类的组成类由三部分组成：类名、域、方法。 类的基本结构 域域就是一些变量，这些变量 可以是基">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/d9d0ce1e-32a9-4ef8-8d31-18c6998c3d33.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/51f3d56c-b59e-4b89-8c42-8f551c74caa6.jpg">
@@ -46,8 +46,6 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/c2859d8a-7719-4ead-8fb8-2652329e14e9.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/472a9d71-a64e-49e4-83ee-2d75b97b7ffb.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/ebed479d-b71d-4fed-b8ee-f064443c54c0.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/668e1694-bacc-46e7-9488-e2e3be810bd5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/68ad9684-bf54-41a8-80d6-a9d4077bdd78.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/421ae2b5-568b-4f27-8668-839786dbf9cd.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/77027f1e-192c-4482-b664-f0ca1236f26d.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/b4ba3980-9e69-4988-be0d-c12664d0453a.jpg">
@@ -72,7 +70,7 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/0f991961-68d3-41b7-9137-e380a7e04e83.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/694d7fdc-93ab-4731-96e5-f2eb75863209.jpg">
 <meta property="article:published_time" content="2020-02-19T05:30:35.000Z">
-<meta property="article:modified_time" content="2020-12-29T13:22:44.742Z">
+<meta property="article:modified_time" content="2020-12-30T13:46:48.274Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -157,191 +155,135 @@
 <li><p>特征（域）</p>
 </li>
 <li><p>动作（方法）</p>
-</li>
-</ol>
 <p>例如，一辆车可以有以下特征：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/d9d0ce1e-32a9-4ef8-8d31-18c6998c3d33.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/d9d0ce1e-32a9-4ef8-8d31-18c6998c3d33.jpg" alt="image"></p>
 <p>有颜色，轮胎数量，方向盘数量，阀门数量等等。</p>
 <p>可以有以下几种动作：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/51f3d56c-b59e-4b89-8c42-8f551c74caa6.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/51f3d56c-b59e-4b89-8c42-8f551c74caa6.jpg" alt="image"></p>
 <p>行驶和刹车</p>
+</li>
+</ol>
 <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对象就有什么域和方法，不多不少。</p>
-<h3 id="类的组成"><a href="#类的组成" class="headerlink" title="类的组成"></a>类的组成</h3><p>类由三部分组成：<code style="background:#ff3385;color:white;padding:5px;">类名</code>、<code style="background:#ff3385;color:white;padding:5px;">域</code>、<code style="background:#ff3385;color:white;padding:5px;">方法</code>。</p>
-<h3 id="类的基本结构"><a href="#类的基本结构" class="headerlink" title="类的基本结构"></a>类的基本结构</h3><img src="/blog/2020/02/19/java04-Objects-and-Classes/242bd98a-05c9-4c1f-8ccf-4190e539835e.jpg">
-
-<h3 id="域"><a href="#域" class="headerlink" title="域"></a>域</h3><p>域就是一些变量，这些变量 可以是基本数据类型，也可以是引用类型。域的名称一般采用<code style="background:#ff3385;color:white;padding:5px;">驼峰命名</code>方式。</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/ae4bbba1-c01d-47f1-8547-15cbba6f75b4.jpg">
-
+<h3 id="类的组成"><a href="#类的组成" class="headerlink" title="类的组成"></a>类的组成</h3><p>类由三部分组成：<code>类名</code>、<code>域</code>、<code>方法</code>。</p>
+<h3 id="类的基本结构"><a href="#类的基本结构" class="headerlink" title="类的基本结构"></a>类的基本结构</h3><p><img src="/blog/2020/02/19/java04-Objects-and-Classes/242bd98a-05c9-4c1f-8ccf-4190e539835e.jpg" alt="image"></p>
+<h3 id="域"><a href="#域" class="headerlink" title="域"></a>域</h3><p>域就是一些变量，这些变量 可以是基本数据类型，也可以是引用类型。域的名称一般采用<code>驼峰命名</code>方式。</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/ae4bbba1-c01d-47f1-8547-15cbba6f75b4.jpg" alt="image"></p>
 <p>引用Address</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/cc4f1db4-e2a8-4a06-b939-f64be78bd99f.jpg">
-
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>方法包括<code style="background:#ff3385;color:white;padding:5px;">方法声明</code>和<code style="background:#ff3385;color:white;padding:5px;">方法体</code>两部分。</p>
-<p>方法声明包括，<code style="background:#ff3385;color:white;padding:5px;">返回值类型</code>，<code style="background:#ff3385;color:white;padding:5px;">方法名</code>，<code style="background:#ff3385;color:white;padding:5px;">参数列表</code>。</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/3a5fb204-87a8-4d44-bf85-cfa81961ac47.jpg">
-
-<p>方法的返回值可以是<code style="background:#ff3385;color:white;padding:5px;">基本数据类型</code>、<code style="background:#ff3385;color:white;padding:5px;">引用类型</code>或<code style="background:#ff3385;color:white;padding:5px;">void</code>.</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/cc4f1db4-e2a8-4a06-b939-f64be78bd99f.jpg" alt="image"></p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>方法包括<code>方法声明</code>和<code>方法体</code>两部分。</p>
+<p>方法声明包括，<code>返回值类型</code>，<code>方法名</code>，<code>参数列表</code>。</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/3a5fb204-87a8-4d44-bf85-cfa81961ac47.jpg" alt="image"><br>方法的返回值可以是<code>基本数据类型</code>、<code>引用类型</code>或<code>void</code>.</p>
 <p>方法体是方法的具体内容。</p>
 <p>方法的定义：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/14ecbf32-49fc-456a-b5d4-7d596a140571.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/14ecbf32-49fc-456a-b5d4-7d596a140571.jpg" alt="image"></p>
 <p>带返回值的方法：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/ee9f1555-1687-4457-95af-0ba96c26958c.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/ee9f1555-1687-4457-95af-0ba96c26958c.jpg" alt="image"></p>
 <p>带参数和返回值的方法：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/6c6c9a33-8386-4906-a14c-ff58fd688cee.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/6c6c9a33-8386-4906-a14c-ff58fd688cee.jpg" alt="image"></p>
 <p>不定个数参数方法：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/bf62d6a1-3a74-410e-8cec-d4f9267b0d84.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/bf62d6a1-3a74-410e-8cec-d4f9267b0d84.jpg" alt="image"></p>
 <p>使用…表示不定个数参数</p>
 <h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><p>构造器是用于生产对象的方法，每个类需要包含至少一个构造器。这个方法结构：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/60bb4f16-bf5a-4088-ba5f-20ed4f6e568b.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/60bb4f16-bf5a-4088-ba5f-20ed4f6e568b.jpg" alt="image"></p>
 <p>构造器的参数可以 有多个，也可以一个没有。构造器的参数用于初始化对象的域。</p>
 <p>有参构造函数存在时，编译器不会自动添加无参构造函数，若没有构造函数，则默认添加一个无参构造函数。</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/06e97cea-1022-4498-8d9d-2b39c22298dc.jpg">
-
-<h3 id="类的UML表示方法"><a href="#类的UML表示方法" class="headerlink" title="类的UML表示方法"></a>类的UML表示方法</h3><img src="/blog/2020/02/19/java04-Objects-and-Classes/8770f04d-752f-4459-bd42-b5b58b195031.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/06e97cea-1022-4498-8d9d-2b39c22298dc.jpg" alt="image"></p>
+<h3 id="类的UML表示方法"><a href="#类的UML表示方法" class="headerlink" title="类的UML表示方法"></a>类的UML表示方法</h3><p><img src="/blog/2020/02/19/java04-Objects-and-Classes/8770f04d-752f-4459-bd42-b5b58b195031.jpg" alt="image"></p>
 <p>域采用名称+类型的方式表示，方法采用名称和参数列表+返回值类型的方式表示。</p>
 <h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>如何创建对象？有了模板，就可以根据模板创建对象了：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/32824e0c-ee26-46a9-bcc3-0abd2bdc4af7.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/32824e0c-ee26-46a9-bcc3-0abd2bdc4af7.jpg" alt="image"></p>
 <p>我们可以使用一个变量来引用这个对象（类型要一致）：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/f9a03d8c-0de4-465c-94d0-8bd74ddc1b96.jpg">
-
-<p>有了对象，就可以调用类的方法和域了：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/0cb9cebf-1044-4578-8a02-a8655e8f8537.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/f9a03d8c-0de4-465c-94d0-8bd74ddc1b96.jpg" alt="image"><br>有了对象，就可以调用类的方法和域了：</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/0cb9cebf-1044-4578-8a02-a8655e8f8537.jpg" alt="image"></p>
 <p>对象创建内部操作：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/34b3c47c-bfa4-4c8c-8c2b-ddbf2d9ee4a9.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/34b3c47c-bfa4-4c8c-8c2b-ddbf2d9ee4a9.jpg" alt="image"></p>
 <p>对象的引用：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/38675e86-54d9-4390-95c4-e88abd797534.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/38675e86-54d9-4390-95c4-e88abd797534.jpg" alt="image"></p>
 <p>多个变量引用同一个对象</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/33d6dd43-4164-43ba-80f2-c6bf08e8ade0.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/33d6dd43-4164-43ba-80f2-c6bf08e8ade0.jpg" alt="image"></p>
 <h2 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h2><p>创建一个全局的对象的变量，而没有赋值初始化的时候，他默认是null:</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/85720cf3-24da-4e54-ba0d-beee37f81426.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/85720cf3-24da-4e54-ba0d-beee37f81426.jpg" alt="image"></p>
 <p>局部变量需要手动赋初值，否则出现编译错误：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/b53a0c70-e610-4a81-bff2-687262933e8b.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/b53a0c70-e610-4a81-bff2-687262933e8b.jpg" alt="image"></p>
 <p>对于空对象，你是无法访问它的域或者方法的：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/7c189b5c-ff57-46e4-a6d9-eba3e353a116.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/7c189b5c-ff57-46e4-a6d9-eba3e353a116.jpg" alt="image"></p>
 <p>需要在调用前做好判断：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/42c8f66f-0355-44bf-86ac-fdf82b912374.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/42c8f66f-0355-44bf-86ac-fdf82b912374.jpg" alt="image"></p>
 <h2 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h2><p>程序运行时，分为两个部分存储：栈和堆。</p>
-<p><code style="background:#ff3385;color:white;padding:5px;">基本数据类型</code>的变量空间分配在<code style="background:#ff3385;color:white;padding:5px;">栈</code>空间上，<code style="background:#ff3385;color:white;padding:5px;">引用类型</code>变量空间分配在<code style="background:#ff3385;color:white;padding:5px;">堆</code>内存。</p>
-<p>定义一个引用变量，对象的<code style="background:#ff3385;color:white;padding:5px;">数据</code>存储在<code style="background:#ff3385;color:white;padding:5px;">堆</code>空间，对象的<code style="background:#ff3385;color:white;padding:5px;">引用地址</code>存储在<code style="background:#ff3385;color:white;padding:5px;">栈</code>空间上。</p>
-<p>同一个对象，可以被<code style="background:#ff3385;color:white;padding:5px;">多个变量引用</code>：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/ba03a72c-eb55-4f6e-b333-17b314dd6e26.jpg">
-
+<p><code>基本数据类型</code>的变量空间分配在<code>栈</code>空间上，<code>引用类型</code>变量空间分配在<code>堆</code>内存。</p>
+<p>定义一个引用变量，对象的<code>数据</code>存储在<code>堆</code>空间，对象的<code>引用地址</code>存储在<code>栈</code>空间上。</p>
+<p>同一个对象，可以被<code>多个变量引用</code>：</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/ba03a72c-eb55-4f6e-b333-17b314dd6e26.jpg" alt="image"></p>
 <p>这个时候，两个变量引用的是同一个对象：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/61298a7d-cb08-465d-9d35-122640928129.jpg">
-
-<p>若分别创建对象，则引用的是不同的对象：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/c2859d8a-7719-4ead-8fb8-2652329e14e9.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/61298a7d-cb08-465d-9d35-122640928129.jpg" alt="image"><br>若分别创建对象，则引用的是不同的对象：</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/c2859d8a-7719-4ead-8fb8-2652329e14e9.jpg" alt="image"></p>
 <p>现在存在两个对象：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/472a9d71-a64e-49e4-83ee-2d75b97b7ffb.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/472a9d71-a64e-49e4-83ee-2d75b97b7ffb.jpg" alt="image"></p>
 <h2 id="Java包"><a href="#Java包" class="headerlink" title="Java包"></a>Java包</h2><p>Java的包主要用于将功能模块进行划分，便于区别和管理。同时，不同的包的类名不会发生冲突。</p>
 <p>包的定义：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/ebed479d-b71d-4fed-b8ee-f064443c54c0.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/ebed479d-b71d-4fed-b8ee-f064443c54c0.jpg" alt="image"></p>
 <p>使用package+包名将类包含在指定的包内。包名通常以域名倒置开始。</p>
 <p>类的全限定名称：</p>
 <p>包名 + 类名</p>
 <p>com.brainysoftware.common.MathUtil</p>
 <p>在包含在包内的类的编译、运行，需要使用全限定名称：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/668e1694-bacc-46e7-9488-e2e3be810bd5.jpg">
-
+<p>![image](java04-Objects-and-Classes/668e1694-bacc-46e7-9488-e2e3be810bd5.jpg`</p>
 <p>运行</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/68ad9684-bf54-41a8-80d6-a9d4077bdd78.jpg">
-
-<h2 id="类的访问修饰符"><a href="#类的访问修饰符" class="headerlink" title="类的访问修饰符"></a>类的访问修饰符</h2><p>类的访问修饰符：<code style="background:#ff3385;color:white;padding:5px;">public</code>和<code style="background:#ff3385;color:white;padding:5px;">default</code></p>
-<p>public类在<code style="background:#ff3385;color:white;padding:5px;">任何位置</code>都可以访问：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/421ae2b5-568b-4f27-8668-839786dbf9cd.jpg">
-
+<p>![image](java04-Objects-and-Classes/68ad9684-bf54-41a8-80d6-a9d4077bdd78.jpg`</p>
+<h2 id="类的访问修饰符"><a href="#类的访问修饰符" class="headerlink" title="类的访问修饰符"></a>类的访问修饰符</h2><p>类的访问修饰符：<code>public</code>和<code>default</code></p>
+<p>public类在<code>任何位置</code>都可以访问：</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/421ae2b5-568b-4f27-8668-839786dbf9cd.jpg" alt="image"></p>
 <p>没有访问修饰符就是default：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/77027f1e-192c-4482-b664-f0ca1236f26d.jpg">
-
-<p>只有在<code style="background:#ff3385;color:white;padding:5px;">相同的包内</code>才可以访问。</p>
-<h2 id="类成员访问修饰符"><a href="#类成员访问修饰符" class="headerlink" title="类成员访问修饰符"></a>类成员访问修饰符</h2><p>类成员修饰符，指的是对<code style="background:#ff3385;color:white;padding:5px;">域</code>、<code style="background:#ff3385;color:white;padding:5px;">方法</code>、<code style="background:#ff3385;color:white;padding:5px;">构造器</code>的修饰符，包括<code style="background:#ff3385;color:white;padding:5px;">public</code>、<code style="background:#ff3385;color:white;padding:5px;">private</code>、<code style="background:#ff3385;color:white;padding:5px;">protected</code>、<code style="background:#ff3385;color:white;padding:5px;">default</code>四种。</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/b4ba3980-9e69-4988-be0d-c12664d0453a.jpg">
-
-<p>public在<code style="background:#ff3385;color:white;padding:5px;">任意</code>位置都可以访问</p>
-<p>private<code style="background:#ff3385;color:white;padding:5px;">只有类内</code>可以访问</p>
-<p>default可以在<code style="background:#ff3385;color:white;padding:5px;">包内</code>，<code style="background:#ff3385;color:white;padding:5px;">类内</code>访问</p>
-<p>protected可以在<code style="background:#ff3385;color:white;padding:5px;">包内</code>，<code style="background:#ff3385;color:white;padding:5px;">类内</code>，<code style="background:#ff3385;color:white;padding:5px;">子类</code>访问</p>
-<h2 id="UML的表示方法"><a href="#UML的表示方法" class="headerlink" title="UML的表示方法"></a>UML的表示方法</h2><img src="/blog/2020/02/19/java04-Objects-and-Classes/1bc05e3c-4be1-404c-8aa5-7dcbb9b8b313.jpg">
-
-<p>public使用+</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/77027f1e-192c-4482-b664-f0ca1236f26d.jpg" alt="image"></p>
+<p>只有在<code>相同的包内</code>才可以访问。</p>
+<h2 id="类成员访问修饰符"><a href="#类成员访问修饰符" class="headerlink" title="类成员访问修饰符"></a>类成员访问修饰符</h2><p>类成员修饰符，指的是对<code>域</code>、<code>方法</code>、<code>构造器</code>的修饰符，包括<code>public</code>、<code>private</code>、<code>protected</code>、<code>default</code>四种。</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/b4ba3980-9e69-4988-be0d-c12664d0453a.jpg" alt="image"></p>
+<p>public在<code>任意</code>位置都可以访问</p>
+<p>private<code>只有类内</code>可以访问</p>
+<p>default可以在<code>包内</code>，<code>类内</code>访问</p>
+<p>protected可以在<code>包内</code>，<code>类内</code>，<code>子类</code>访问</p>
+<h2 id="UML的表示方法"><a href="#UML的表示方法" class="headerlink" title="UML的表示方法"></a>UML的表示方法</h2><p><img src="/blog/2020/02/19/java04-Objects-and-Classes/1bc05e3c-4be1-404c-8aa5-7dcbb9b8b313.jpg" alt="image"><br>public使用+</p>
 <p>private使用-</p>
 <p>protected使用#</p>
 <p>default没有标记</p>
 <h2 id="this关键词"><a href="#this关键词" class="headerlink" title="this关键词"></a>this关键词</h2><p>this可以调用本类的域或方法：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/a7328294-7ce7-4bdb-898d-ee868535e4e9.jpg">
-
-<p>使用this可以明确是域还是参数，避免混淆。</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/a7328294-7ce7-4bdb-898d-ee868535e4e9.jpg" alt="image"><br>使用this可以明确是域还是参数，避免混淆。</p>
 <h2 id="使用其他类"><a href="#使用其他类" class="headerlink" title="使用其他类"></a>使用其他类</h2><p>使用其他类，如果是相同的包内，可以直接使用，不同的包的时候需要导包：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/e5e78ec8-1853-4595-8d67-1d6893ab45b0.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/e5e78ec8-1853-4595-8d67-1d6893ab45b0.jpg" alt="image"></p>
 <p>导包语句需要在类声明之前，在package之后。</p>
-<p>一次性导入同一个包下的多个类时，使用<code style="background:#ff3385;color:white;padding:5px;">*</code>:</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/ae3d288f-cbf8-4454-9aff-12719f540bd0.jpg">
-
-<p>不导包，可以使用<code style="background:#ff3385;color:white;padding:5px;">全限定名称</code>代替:</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/a775c481-37b4-4a5e-9e36-0ab58a9a8101.jpg">
-
-<p>当出现引用不同的包<code style="background:#ff3385;color:white;padding:5px;">出现类名冲突</code>时，需要使用全限定名称。</p>
+<p>一次性导入同一个包下的多个类时，使用<code>*</code>:</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/ae3d288f-cbf8-4454-9aff-12719f540bd0.jpg" alt="image"></p>
+<p>不导包，可以使用<code>全限定名称</code>代替:</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/a775c481-37b4-4a5e-9e36-0ab58a9a8101.jpg" alt="image"></p>
+<p>当出现引用不同的包<code>出现类名冲突</code>时，需要使用全限定名称。</p>
 <h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>常量使用final定义，可以是局部常量也可以是全局常量：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/582f4685-a032-4819-829d-45eb89c110f5.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/582f4685-a032-4819-829d-45eb89c110f5.jpg" alt="image"></p>
 <p>一旦赋值，将不可再赋值，否则会编译失败。</p>
-<h2 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h2><p>类似于System.out，类的静态成员可以在<code style="background:#ff3385;color:white;padding:5px;">不创建实例</code>的情况下直接通过<code style="background:#ff3385;color:white;padding:5px;">类名</code>调用。那么，入口函数，main方法就是在未创建任何实例之前，直接执行的方法。</p>
+<h2 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h2><p>类似于System.out，类的静态成员可以在<code>不创建实例</code>的情况下直接通过<code>类名</code>调用。那么，入口函数，main方法就是在未创建任何实例之前，直接执行的方法。</p>
 <p>静态成员的定义使用static关键字，与访问修饰符顺序可变：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/00cdcd9a-6070-472e-860b-11191c002b2d.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/00cdcd9a-6070-472e-860b-11191c002b2d.jpg" alt="image"></p>
 <p>也可以定义一个静态方法：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/d5e1c3e9-3ece-4312-8ef0-c404f60a7dcf.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/d5e1c3e9-3ece-4312-8ef0-c404f60a7dcf.jpg" alt="image"></p>
 <p>调用时，直接使用类名调用：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/1700c2ea-445b-48d0-b12b-79f4aa6a459b.jpg">
-
-<p>在静态方法中，只能调用<code style="background:#ff3385;color:white;padding:5px;">静态方法</code>和<code style="background:#ff3385;color:white;padding:5px;">静态域</code>，不可以调用<code style="background:#ff3385;color:white;padding:5px;">实例方法</code>和<code style="background:#ff3385;color:white;padding:5px;">实例域</code>。</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/1700c2ea-445b-48d0-b12b-79f4aa6a459b.jpg" alt="image"></p>
+<p>在静态方法中，只能调用<code>静态方法</code>和<code>静态域</code>，不可以调用<code>实例方法</code>和<code>实例域</code>。</p>
 <p>静态对象可以创建，一般用于共享同一个对象。</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/c91ff6f1-96c8-4660-97d5-c59023519b09.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/c91ff6f1-96c8-4660-97d5-c59023519b09.jpg" alt="image"></p>
 <h3 id="UML表示法"><a href="#UML表示法" class="headerlink" title="UML表示法"></a>UML表示法</h3><p>在uml中，使用下划线表示静态方法：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/30bb1244-a4a0-4e28-88b8-346d353ffeaf.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/30bb1244-a4a0-4e28-88b8-346d353ffeaf.jpg" alt="image"></p>
 <h2 id="静态常量"><a href="#静态常量" class="headerlink" title="静态常量"></a>静态常量</h2><p>静态常量常用于存储数据，一般可以用枚举代替</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/b8bb72a1-1edd-45f2-a055-b8bfda819119.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/b8bb72a1-1edd-45f2-a055-b8bfda819119.jpg" alt="image"></p>
 <p>静态常引用：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/7350eb2e-6118-4b12-bc09-272a8cc763a4.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/7350eb2e-6118-4b12-bc09-272a8cc763a4.jpg" alt="image"></p>
 <p>它的引用地址不能再发生变化，它的域值可以改变。</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/17cb9cd0-1ab7-4d91-acc1-518b6d868100.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/17cb9cd0-1ab7-4d91-acc1-518b6d868100.jpg" alt="image"></p>
 <p>值可以变：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/523b78f0-a567-4e33-b1ec-23ab664ba3d2.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/523b78f0-a567-4e33-b1ec-23ab664ba3d2.jpg" alt="image"></p>
 <h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><p>两个方法功能类似，方法名称相同，参数列表不同，可以构成重载：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/a7b9eafc-c14f-4d1e-b863-85bdd15e0ead.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/a7b9eafc-c14f-4d1e-b863-85bdd15e0ead.jpg" alt="image"></p>
 <p>如果仅返回值不同，不构成重载：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/8934a757-eec8-4aa0-a3a6-d3f800a96a56.jpg">
-
-
-<h2 id="值引用-amp-地址引用"><a href="#值引用-amp-地址引用" class="headerlink" title="值引用&amp;地址引用"></a>值引用&amp;地址引用</h2><p>基本类型的变量和引用类型变量均可以传递给方法作为参数使用，区别是基本类型的变量传递给函数时，jvm会<code style="background:#ff3385;color:white;padding:5px;">拷贝</code>一份给函数，而不是变量本身。引用类型传递的是<code style="background:#ff3385;color:white;padding:5px;">地址</code>，函数操作了引用变量的域后，原来变量也会随之改变。</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/8934a757-eec8-4aa0-a3a6-d3f800a96a56.jpg" alt="image"></p>
+<h2 id="值引用-amp-地址引用"><a href="#值引用-amp-地址引用" class="headerlink" title="值引用&amp;地址引用"></a>值引用&amp;地址引用</h2><p>基本类型的变量和引用类型变量均可以传递给方法作为参数使用，区别是基本类型的变量传递给函数时，jvm会<code>拷贝</code>一份给函数，而不是变量本身。引用类型传递的是<code>地址</code>，函数操作了引用变量的域后，原来变量也会随之改变。</p>
 <h2 id="类的加载、链接、初始化"><a href="#类的加载、链接、初始化" class="headerlink" title="类的加载、链接、初始化"></a>类的加载、链接、初始化</h2><p><strong>加载</strong>：</p>
 <p>当你使用命令运行程序时，jvm首先加载class文件到内存中，并进行缓存。若找不到class，将抛出异常。</p>
 <p><strong>链接</strong>：</p>
@@ -351,11 +293,9 @@
 <p>处理阶段主要对运行类文件所需的其他类或接口进行查找和处理。</p>
 <p><strong>初始化</strong>：</p>
 <p>类的初始化优先初始化父类，对静态变量进行赋值，没有赋值语句的赋默认值。</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/eaee83c9-0b5f-4fef-875c-fa0dafd524b8.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/eaee83c9-0b5f-4fef-875c-fa0dafd524b8.jpg" alt="image"></p>
 <p>静态代码块也会依次执行：</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/0f991961-68d3-41b7-9137-e380a7e04e83.jpg">
-
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/0f991961-68d3-41b7-9137-e380a7e04e83.jpg" alt="image"></p>
 <h2 id="类的初始化"><a href="#类的初始化" class="headerlink" title="类的初始化"></a>类的初始化</h2><ol>
 <li><p>为对象分配内存，包含自身的域和父类的域。</p>
 </li>
@@ -368,13 +308,12 @@
 <li><p>返回实例的引用。</p>
 </li>
 </ol>
-<h2 id="实例的比较"><a href="#实例的比较" class="headerlink" title="实例的比较"></a>实例的比较</h2><p>两个实例使用==比较，对于引用类型比较的是<code style="background:#ff3385;color:white;padding:5px;">地址</code>，对于基本数据类型比较的是<code style="background:#ff3385;color:white;padding:5px;">值</code>，这个需要注意区分。如果想改变默认的比较方式，需要重写<code style="background:#ff3385;color:white;padding:5px;">equals</code>方法和<code style="background:#ff3385;color:white;padding:5px;">hashCode</code>方法。</p>
+<h2 id="实例的比较"><a href="#实例的比较" class="headerlink" title="实例的比较"></a>实例的比较</h2><p>两个实例使用==比较，对于引用类型比较的是<code>地址</code>，对于基本数据类型比较的是<code>值</code>，这个需要注意区分。如果想改变默认的比较方式，需要重写<code>equals</code>方法和<code>hashCode</code>方法。</p>
 <h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>对于不再有引用的变量，或超出变量域作用范围的，将由垃圾回收机自动回收内存。</p>
 <h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><p>非静态内部类</p>
-<img src="/blog/2020/02/19/java04-Objects-and-Classes/694d7fdc-93ab-4731-96e5-f2eb75863209.jpg">
-
-<p>非静态内部类可以访问外部类的<code style="background:#ff3385;color:white;padding:5px;">所有字段和方法</code>，而静态内部类只能直接使用<code style="background:#ff3385;color:white;padding:5px;">静态方法和静态字段</code>，对实例字段和方法需要通过外部类的<code style="background:#ff3385;color:white;padding:5px;">对象</code>调用。</p>
-<p><code style="background:#ff3385;color:white;padding:5px;">外部类不能直接访问内部类的方法和字段！</code></p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/694d7fdc-93ab-4731-96e5-f2eb75863209.jpg" alt="image"></p>
+<p>非静态内部类可以访问外部类的<code>所有字段和方法</code>，而静态内部类只能直接使用<code>静态方法和静态字段</code>，对实例字段和方法需要通过外部类的<code>对象</code>调用。</p>
+<p><code>外部类不能直接访问内部类的方法和字段！</code></p>
   
 	</div>
 		<footer class="article-footer clearfix">

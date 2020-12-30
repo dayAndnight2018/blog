@@ -11,12 +11,12 @@
     
 
     
-    <meta name="description" content="JavaBean在spring中，都是一个个组件，这些组件我们可以称为Bean，这些Bean由Spring来维护，你只需要提供业务功能。   这样一个POJO就是一个Bean。 依赖注入以往的代码中，我们需要主动new一个对象，用来产生类的实例：   依赖注入避免了这样的操作，spring负责为你管理，为你new对象，你要做的只是告诉他，我需要xxx   这样，所有的依赖对象，都可以交给sprin">
+    <meta name="description" content="JavaBean在spring中，都是一个个组件，这些组件我们可以称为Bean，这些Bean由Spring来维护，你只需要提供业务功能。  这样一个POJO就是一个Bean。 依赖注入以往的代码中，我们需要主动new一个对象，用来产生类的实例：  依赖注入避免了这样的操作，spring负责为你管理，为你new对象，你要做的只是告诉他，我需要xxx  这样，所有的依赖对象，都可以交给spring去n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring01 简介">
 <meta property="og:url" content="https://dayandnight2018.github.io/2020/03/01/spring01-introduction/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="JavaBean在spring中，都是一个个组件，这些组件我们可以称为Bean，这些Bean由Spring来维护，你只需要提供业务功能。   这样一个POJO就是一个Bean。 依赖注入以往的代码中，我们需要主动new一个对象，用来产生类的实例：   依赖注入避免了这样的操作，spring负责为你管理，为你new对象，你要做的只是告诉他，我需要xxx   这样，所有的依赖对象，都可以交给sprin">
+<meta property="og:description" content="JavaBean在spring中，都是一个个组件，这些组件我们可以称为Bean，这些Bean由Spring来维护，你只需要提供业务功能。  这样一个POJO就是一个Bean。 依赖注入以往的代码中，我们需要主动new一个对象，用来产生类的实例：  依赖注入避免了这样的操作，spring负责为你管理，为你new对象，你要做的只是告诉他，我需要xxx  这样，所有的依赖对象，都可以交给spring去n">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring01-introduction/9572c008-6497-483a-8ef9-19252bcdaa3d.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring01-introduction/755e218b-fdf8-48b6-9fc6-4b3b57b8bf7a.jpg">
@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring01-introduction/f2cf5d4b-7bcf-4b3e-ac3c-2a143b70ef86.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/03/01/spring01-introduction/4acb1a26-3aa3-43ef-8b60-3bf5d88fb4c3.jpg">
 <meta property="article:published_time" content="2020-03-01T04:12:14.000Z">
-<meta property="article:modified_time" content="2020-12-29T13:22:44.890Z">
+<meta property="article:modified_time" content="2020-12-30T14:21:16.505Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring">
 <meta name="twitter:card" content="summary">
@@ -117,66 +117,52 @@
 </header>
 	<div class="article-content">
 		
-		<h2 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h2><p>在spring中，都是一个个组件，这些组件我们可以称为<code style="background:#ff3385;color:white;padding:5px;">Bean</code>，这些Bean由Spring来维护，你只需要提供业务功能。</p>
-<img src="/blog/2020/03/01/spring01-introduction/9572c008-6497-483a-8ef9-19252bcdaa3d.jpg">
-
-<p>这样一个<code style="background:#ff3385;color:white;padding:5px;">POJO</code>就是一个Bean。</p>
-<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>以往的代码中，我们需要<code style="background:#ff3385;color:white;padding:5px;">主动</code>new一个对象，用来产生类的实例：</p>
-<img src="/blog/2020/03/01/spring01-introduction/755e218b-fdf8-48b6-9fc6-4b3b57b8bf7a.jpg">
-
-<p>依赖注入避免了这样的操作，spring负责为你管理，为你new对象，你要做的只是告诉他，<code style="background:#ff3385;color:white;padding:5px;">我需要xxx</code></p>
-<img src="/blog/2020/03/01/spring01-introduction/6ffc1bc2-1fa6-4e66-b9bf-487b5090930e.jpg">
-
+		<h2 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h2><p>在spring中，都是一个个组件，这些组件我们可以称为<code>Bean</code>，这些Bean由Spring来维护，你只需要提供业务功能。</p>
+<p><img src="/blog/2020/03/01/spring01-introduction/9572c008-6497-483a-8ef9-19252bcdaa3d.jpg" alt="img"></p>
+<p>这样一个<code>POJO</code>就是一个Bean。</p>
+<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>以往的代码中，我们需要<code>主动</code>new一个对象，用来产生类的实例：</p>
+<p><img src="/blog/2020/03/01/spring01-introduction/755e218b-fdf8-48b6-9fc6-4b3b57b8bf7a.jpg" alt="img"></p>
+<p>依赖注入避免了这样的操作，spring负责为你管理，为你new对象，你要做的只是告诉他，<code>我需要xxx</code></p>
+<p><img src="/blog/2020/03/01/spring01-introduction/6ffc1bc2-1fa6-4e66-b9bf-487b5090930e.jpg" alt="img"></p>
 <p>这样，所有的依赖对象，都可以交给spring去new,如果设定为接口，可以实现抽插式<code>替换</code>。</p>
-<img src="/blog/2020/03/01/spring01-introduction/d5a98ccf-5a4d-476a-a1a3-3f797a76c768.jpg">
-
+<p><img src="/blog/2020/03/01/spring01-introduction/d5a98ccf-5a4d-476a-a1a3-3f797a76c768.jpg" alt="img"></p>
 <h2 id="怎么告诉spring，你需要什么？"><a href="#怎么告诉spring，你需要什么？" class="headerlink" title="怎么告诉spring，你需要什么？"></a>怎么告诉spring，你需要什么？</h2><ol>
 <li>xml配置</li>
 </ol>
 <p>通过xml配置文件，将一个个Bean注册给spring，Spring知道都有哪些Bean，与此同时，也要试图告诉spring，谁需要什么：</p>
-<img src="/blog/2020/03/01/spring01-introduction/638d6418-d4e8-4d9b-b900-419fb1a2d6c4.jpg">
-
+<p><img src="/blog/2020/03/01/spring01-introduction/638d6418-d4e8-4d9b-b900-419fb1a2d6c4.jpg" alt="img"></p>
 <ol start="2">
 <li>java Config</li>
 </ol>
-<img src="/blog/2020/03/01/spring01-introduction/68bc637f-9a6a-4d46-b4a0-be22621adc6f.jpg">
-
+<p><img src="/blog/2020/03/01/spring01-introduction/68bc637f-9a6a-4d46-b4a0-be22621adc6f.jpg" alt="img"></p>
 <p>通过注解，告诉spring，这个是一个配置类，里面的Bean你都要注册。</p>
-<h2 id="怎么获取我想要用的Bean？"><a href="#怎么获取我想要用的Bean？" class="headerlink" title="怎么获取我想要用的Bean？"></a>怎么获取我想要用的Bean？</h2><img src="/blog/2020/03/01/spring01-introduction/94005c3b-7b17-45dd-81a4-2d991f33997d.jpg">
-
+<h2 id="怎么获取我想要用的Bean？"><a href="#怎么获取我想要用的Bean？" class="headerlink" title="怎么获取我想要用的Bean？"></a>怎么获取我想要用的Bean？</h2><p><img src="/blog/2020/03/01/spring01-introduction/94005c3b-7b17-45dd-81a4-2d991f33997d.jpg" alt="img"></p>
 <p>创建Application Context的对象，通过它获取Bean的实例。</p>
 <p>通过Class&lt;?&gt; getBean(Class class)获取相关的Bean对象。</p>
 <p>然后就可以对实例进行任何操作了。</p>
-<h2 id="什么是AOP"><a href="#什么是AOP" class="headerlink" title="什么是AOP?"></a>什么是AOP?</h2><p>为了彻底让<code style="background:#ff3385;color:white;padding:5px;">业务和组件分离</code>，让业务无需关注组件的额外操作，AOP出现了。</p>
+<h2 id="什么是AOP"><a href="#什么是AOP" class="headerlink" title="什么是AOP?"></a>什么是AOP?</h2><p>为了彻底让<code>业务和组件分离</code>，让业务无需关注组件的额外操作，AOP出现了。</p>
 <p>例如我们想要在某个方法执行前，打印一下，在他执行后，打印一下。</p>
-<img src="/blog/2020/03/01/spring01-introduction/e20a5887-3322-42d6-b07d-a6f719b2645f.jpg">
-
-<p>一种，我们可以<code style="background:#ff3385;color:white;padding:5px;">显式地</code>在调用方法<code style="background:#ff3385;color:white;padding:5px;">前后</code>分别打印：</p>
-<img src="/blog/2020/03/01/spring01-introduction/428a29b9-4dfa-43a2-a7fa-1d8b58e6bf6a.jpg">
-
+<p><img src="/blog/2020/03/01/spring01-introduction/e20a5887-3322-42d6-b07d-a6f719b2645f.jpg" alt="img"><br>一种，我们可以<code>显式地</code>在调用方法<code>前后</code>分别打印：</p>
+<p><img src="/blog/2020/03/01/spring01-introduction/428a29b9-4dfa-43a2-a7fa-1d8b58e6bf6a.jpg" alt="img"></p>
 <p>这样的化，业务需要关注很多不必要的东西，比如打印这件事。避免业务代码显式地调用这样的功能组件，我们可以采取另外的思路（以xml配置为例）：</p>
 <ol>
 <li>我们先把打印组件注册到spring</li>
 </ol>
-<img src="/blog/2020/03/01/spring01-introduction/a51f5a74-ecb5-48d5-a6c4-c8ecb48a804e.jpg">
-
+<p><img src="/blog/2020/03/01/spring01-introduction/a51f5a74-ecb5-48d5-a6c4-c8ecb48a804e.jpg" alt="img"></p>
 <ol start="2">
 <li>有了打印功能，我们创建切面</li>
 </ol>
-<img src="/blog/2020/03/01/spring01-introduction/b15b18e9-891d-4364-b602-194bebc9cf6c.jpg">
-
-<p>切面就是<code style="background:#ff3385;color:white;padding:5px;">组件功能</code>。</p>
-<p>切点就是被<code style="background:#ff3385;color:white;padding:5px;">监视</code>的那个方法。</p>
-<p>在方法执行前，执行<code style="background:#ff3385;color:white;padding:5px;">before</code>代码</p>
-<p>在方法执行后，执行<code style="background:#ff3385;color:white;padding:5px;">after</code>代码</p>
+<p><img src="/blog/2020/03/01/spring01-introduction/b15b18e9-891d-4364-b602-194bebc9cf6c.jpg" alt="img"></p>
+<p>切面就是<code>组件功能</code>。</p>
+<p>切点就是被<code>监视</code>的那个方法。</p>
+<p>在方法执行前，执行<code>before</code>代码</p>
+<p>在方法执行后，执行<code>after</code>代码</p>
 <p>这样，业务并不需要知道组件的存在，而组件的功能也得以实现。</p>
 <h2 id="消除样板代码"><a href="#消除样板代码" class="headerlink" title="消除样板代码"></a>消除样板代码</h2><p>我们先来看一部分JDBC使用的代码：</p>
-<img src="/blog/2020/03/01/spring01-introduction/1926b27d-4ed3-4f26-9380-ee63d8b405a4.jpg">
-
+<p><img src="/blog/2020/03/01/spring01-introduction/1926b27d-4ed3-4f26-9380-ee63d8b405a4.jpg" alt="img"></p>
 <p>眼花缭乱不是吗？真正有用的代码有多少？很少。</p>
 <p>JDBCTemplate为我们简化了这些代码：</p>
-<img src="/blog/2020/03/01/spring01-introduction/52fa307d-d699-4252-b32f-b62cb470830c.jpg">
-
+<p><img src="/blog/2020/03/01/spring01-introduction/52fa307d-d699-4252-b32f-b62cb470830c.jpg" alt="img"></p>
 <p>我们只需要关心如何处理表和对象的映射。</p>
 <h2 id="Application-Context的几种实现"><a href="#Application-Context的几种实现" class="headerlink" title="Application Context的几种实现"></a>Application Context的几种实现</h2><p>AnnotationConfigApplicationContext：从一个或多个基于Java的配置类中加载Spring应用上下文</p>
 <p>AnnotationConfigWebApplicationContext：从一个或多个基于Java的配置类中加载Spring Web应用上下文</p>
@@ -185,20 +171,12 @@
 <p>XmlWebApplicationContext：从Web应用下的一个或多个XML配置文件中加载上下文定义。</p>
 <p>使用示例：</p>
 <p>从文件系统的某个xml文件中注册Bean:</p>
-<img src="/blog/2020/03/01/spring01-introduction/65c6c9fc-c146-48e1-b0bd-24a6cc080a65.jpg">
-
+<p><img src="/blog/2020/03/01/spring01-introduction/65c6c9fc-c146-48e1-b0bd-24a6cc080a65.jpg" alt="img"></p>
 <p>从ClassPath读取xml注册Bean：</p>
-<img src="/blog/2020/03/01/spring01-introduction/3e0952b6-f552-49a4-ae42-03dddab31f7a.jpg">
-
+<p><img src="/blog/2020/03/01/spring01-introduction/3e0952b6-f552-49a4-ae42-03dddab31f7a.jpg" alt="img"></p>
 <p>JavaBeanconfig文件中注册Bean：</p>
-<img src="/blog/2020/03/01/spring01-introduction/f2cf5d4b-7bcf-4b3e-ac3c-2a143b70ef86.jpg">
-
-<h2 id="Spring组成部分"><a href="#Spring组成部分" class="headerlink" title="Spring组成部分"></a>Spring组成部分</h2><img src="/blog/2020/03/01/spring01-introduction/4acb1a26-3aa3-43ef-8b60-3bf5d88fb4c3.jpg">
-
-
-
-
-
+<p><img src="/blog/2020/03/01/spring01-introduction/f2cf5d4b-7bcf-4b3e-ac3c-2a143b70ef86.jpg" alt="img"></p>
+<h2 id="Spring组成部分"><a href="#Spring组成部分" class="headerlink" title="Spring组成部分"></a>Spring组成部分</h2><p><img src="/blog/2020/03/01/spring01-introduction/4acb1a26-3aa3-43ef-8b60-3bf5d88fb4c3.jpg" alt="img"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
