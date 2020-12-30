@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="集合处理 hashcode与equals  i. 只要重写equals，必须 重写hashcode ii. 使用set存储的类，必须重写hashcode和equals iii. 使用自定义对象作为Map的键，必须重写hashcode和equals  ArrayList的subList结果不可以强转ArrayList，原集合的元素增加删除均会对子列表的遍历、增加、删除产生异常  使用集合转数组，必须">
+    <meta name="description" content="集合处理 hashcode与equals i. 只要重写equals，必须 重写hashcode ii. 使用set存储的类，必须重写hashcode和equals iii. 使用自定义对象作为Map的键，必须重写hashcode和equals  ArrayList的subList结果不可以强转ArrayList，原集合的元素增加删除均会对子列表的遍历、增加、删除产生异常  使用集合转数组，必须使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里巴巴开发手册05 集合处理">
 <meta property="og:url" content="https://dayandnight2018.github.io/2020/01/06/alibabaPattern05/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="集合处理 hashcode与equals  i. 只要重写equals，必须 重写hashcode ii. 使用set存储的类，必须重写hashcode和equals iii. 使用自定义对象作为Map的键，必须重写hashcode和equals  ArrayList的subList结果不可以强转ArrayList，原集合的元素增加删除均会对子列表的遍历、增加、删除产生异常  使用集合转数组，必须">
+<meta property="og:description" content="集合处理 hashcode与equals i. 只要重写equals，必须 重写hashcode ii. 使用set存储的类，必须重写hashcode和equals iii. 使用自定义对象作为Map的键，必须重写hashcode和equals  ArrayList的subList结果不可以强转ArrayList，原集合的元素增加删除均会对子列表的遍历、增加、删除产生异常  使用集合转数组，必须使">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/06/alibabaPattern05/9c5442aa-1310-4aca-99b2-4162e735e5b9.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/06/alibabaPattern05/b5598902-0e50-4ecd-87ac-4f3dce253de1.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/06/alibabaPattern05/7ab63e0c-b81a-457a-a06a-e4321ade5d46.jpg">
 <meta property="article:published_time" content="2020-01-06T02:11:17.000Z">
-<meta property="article:modified_time" content="2020-12-29T15:19:20.115Z">
+<meta property="article:modified_time" content="2020-12-30T04:30:11.840Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="alibaba">
 <meta name="twitter:card" content="summary">
@@ -104,12 +104,11 @@
 	<div class="article-content">
 		
 		<h2 id="集合处理"><a href="#集合处理" class="headerlink" title="集合处理"></a>集合处理</h2><ol>
-<li>hashcode与equals</li>
-</ol>
+<li><p>hashcode与equals</p>
 <p>i. 只要重写equals，<code>必须</code> 重写hashcode</p>
 <p>ii. 使用set存储的类，<code>必须</code>重写hashcode和equals</p>
 <p>iii. 使用自定义对象作为Map的键，<code>必须</code>重写hashcode和equals</p>
-<ol start="2">
+</li>
 <li><p>ArrayList的subList结果<code>不可以</code>强转ArrayList，原集合的元素增加删除均会对子列表的遍历、增加、删除产生异常</p>
 </li>
 <li><p>使用集合转数组，<code>必须</code>使用toArray(T[] array)，传入的是类型完全一样的数组，大小就是list.size()</p>
@@ -119,32 +118,23 @@
 <li><p>泛型通配符&lt;? extends T&gt;来接收的数据，不能使用add方法。使用&lt;? super T&gt;接收的数据不能使用get方法。所以，频繁读取的<code>使用</code>&lt;? extends T&gt;，频繁插入的<code>使用</code>&lt;? super T&gt;</p>
 </li>
 <li><p>在foreach中<code>禁止</code>remove和add操作，remove<code>需要</code>使用Iterator，如果并发，<code>需要</code>对Iterator加锁</p>
+<p><img src="/blog/2020/01/06/alibabaPattern05/9c5442aa-1310-4aca-99b2-4162e735e5b9.jpg" alt="image"> </p>
 </li>
-</ol>
-<img src="/blog/2020/01/06/alibabaPattern05/9c5442aa-1310-4aca-99b2-4162e735e5b9.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="7">
-<li>Comparator<code>需要</code>满足以下条件：</li>
-</ol>
+<li><p>Comparator<code>需要</code>满足以下条件：</p>
 <p>x，y的比较结果与y, x的比较结果相反</p>
 <p>x &gt; y, y &gt; z，则x &gt; z</p>
 <p>x = y, 则比较x, z的结果与y, z的结果相同</p>
-<ol start="8">
-<li><code>推荐</code>在泛型集合定义时，使用diamond格式</li>
-</ol>
-<img src="/blog/2020/01/06/alibabaPattern05/b5598902-0e50-4ecd-87ac-4f3dce253de1.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="9">
+</li>
+<li><p><code>推荐</code>在泛型集合定义时，使用diamond格式</p>
+<p><img src="/blog/2020/01/06/alibabaPattern05/b5598902-0e50-4ecd-87ac-4f3dce253de1.jpg" alt="image"> </p>
+</li>
 <li><p><code>建议</code>在集合初始化时，指定大小。Capacity = (存储个数/负载因子) + 1，若不明确，请设置16</p>
 </li>
 <li><p><code>建议</code>使用EntrySet而不是KeySet对Map集合进行遍历</p>
 </li>
 <li><p>Map集合空值问题</p>
+<p><img src="/blog/2020/01/06/alibabaPattern05/7ab63e0c-b81a-457a-a06a-e4321ade5d46.jpg" alt="image"></p>
 </li>
-</ol>
-<img src="/blog/2020/01/06/alibabaPattern05/7ab63e0c-b81a-457a-a06a-e4321ade5d46.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="12">
 <li><p><code>合理利用</code>集合的有序性和稳定性</p>
 </li>
 <li><p>利用Set的唯一性可以实现快速去重，<code>避免</code>List的contains方法</p>

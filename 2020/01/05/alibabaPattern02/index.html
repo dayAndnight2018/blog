@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="常量定义 不允许出现魔法值，直接作为常量使用     long类型的值定义时，需要使用大写L  对常亮要求使用多个常量类分别管理  常量的复用   跨应用复用：常量放置在两方的类库中 应用内共享：放置在某类库中 子工程内部共享：放在在子工程的constant目录下 包内共享：放置在当前包的constant目录下 类内共享：类内部使用private static final 定义  若变量范围较小，">
+    <meta name="description" content="常量定义 不允许出现魔法值，直接作为常量使用    long类型的值定义时，需要使用大写L  对常亮要求使用多个常量类分别管理  常量的复用 跨应用复用：常量放置在两方的类库中 应用内共享：放置在某类库中 子工程内部共享：放在在子工程的constant目录下 包内共享：放置在当前包的constant目录下 类内共享：类内部使用private static final 定义  若变量范围较小，包含固">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里巴巴开发手册02  常量定义">
 <meta property="og:url" content="https://dayandnight2018.github.io/2020/01/05/alibabaPattern02/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="常量定义 不允许出现魔法值，直接作为常量使用     long类型的值定义时，需要使用大写L  对常亮要求使用多个常量类分别管理  常量的复用   跨应用复用：常量放置在两方的类库中 应用内共享：放置在某类库中 子工程内部共享：放在在子工程的constant目录下 包内共享：放置在当前包的constant目录下 类内共享：类内部使用private static final 定义  若变量范围较小，">
+<meta property="og:description" content="常量定义 不允许出现魔法值，直接作为常量使用    long类型的值定义时，需要使用大写L  对常亮要求使用多个常量类分别管理  常量的复用 跨应用复用：常量放置在两方的类库中 应用内共享：放置在某类库中 子工程内部共享：放在在子工程的constant目录下 包内共享：放置在当前包的constant目录下 类内共享：类内部使用private static final 定义  若变量范围较小，包含固">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/05/alibabaPattern02/d3fd5dce-8233-4236-8322-610f96af15b8.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/05/alibabaPattern02/f45019bd-5af1-4182-85b5-5349b63e3d83.jpg">
 <meta property="article:published_time" content="2020-01-05T15:35:12.000Z">
-<meta property="article:modified_time" content="2020-12-29T13:22:44.673Z">
+<meta property="article:modified_time" content="2020-12-30T04:25:42.086Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="alibaba">
 <meta name="twitter:card" content="summary">
@@ -103,25 +103,22 @@
 	<div class="article-content">
 		
 		<h2 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h2><ol>
-<li><code>不允许</code>出现魔法值，直接作为常量使用</li>
-</ol>
-<img src="/blog/2020/01/05/alibabaPattern02/d3fd5dce-8233-4236-8322-610f96af15b8.jpg" style="margin:30px;display:block" alt="title">
-
-<ol start="2">
+<li><p><code>不允许</code>出现魔法值，直接作为常量使用</p>
+<p><img src="/blog/2020/01/05/alibabaPattern02/d3fd5dce-8233-4236-8322-610f96af15b8.jpg" alt="image"> </p>
+</li>
 <li><p>long类型的值定义时，<code>需要</code>使用大写L</p>
 </li>
 <li><p>对常亮<code>要求</code>使用多个常量类分别管理</p>
 </li>
 <li><p>常量的复用</p>
-</li>
-</ol>
 <p>跨应用复用：常量放置在两方的类库中</p>
 <p>应用内共享：放置在某类库中</p>
 <p>子工程内部共享：放在在子工程的constant目录下</p>
 <p>包内共享：放置在当前包的constant目录下</p>
 <p>类内共享：类内部使用private static final 定义</p>
-<ol start="5">
-<li>若变量范围较小，包含固定的几个值，如第一季度，第二季度，第三季度，第四季度，则使用枚举<img src="/blog/2020/01/05/alibabaPattern02/f45019bd-5af1-4182-85b5-5349b63e3d83.jpg" style="margin:30px;display:block" alt="title"></li>
+</li>
+<li><p>若变量范围较小，包含固定的几个值，如第一季度，第二季度，第三季度，第四季度，则使用枚举<br><img src="/blog/2020/01/05/alibabaPattern02/f45019bd-5af1-4182-85b5-5349b63e3d83.jpg" alt="image"> </p>
+</li>
 </ol>
   
 	</div>
