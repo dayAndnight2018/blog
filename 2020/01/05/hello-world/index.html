@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>第一篇日志 | 成华的博客</title>
+    <title>阿里巴巴开发手册01 命名风格 | 成华的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="成华">
     
 
     
-    <meta name="description" content="快速开始Hexo创建新的文章 $ hexo new “My New Post”  本地预览 $ hexo server  生成静态文件 $ hexo generate  发布 $ hexo deploy   不忘初心，砥砺前行。只争朝夕，不负韶华！">
+    <meta name="description" content="命名风格 禁止命名以_或$开始或结束  禁用拼音、中文命名方式  类名需要首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外  方法名称、参数名称、成员变量、局部变量需要统一使用驼峰命名。  常量需要用全大写，单词之间用下划线连接  抽象类需要以Abstract开头，异常以Exception结尾，测试类以测试类名称开始，以Test结尾  数组符号与类型需要紧挨着，如：int[">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一篇日志">
-<meta property="og:url" content="https://dayandnight2018.github.io/2020/12/29/hello-world/index.html">
+<meta property="og:title" content="阿里巴巴开发手册01 命名风格">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/01/05/hello-world/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="快速开始Hexo创建新的文章 $ hexo new “My New Post”  本地预览 $ hexo server  生成静态文件 $ hexo generate  发布 $ hexo deploy   不忘初心，砥砺前行。只争朝夕，不负韶华！">
+<meta property="og:description" content="命名风格 禁止命名以_或$开始或结束  禁用拼音、中文命名方式  类名需要首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外  方法名称、参数名称、成员变量、局部变量需要统一使用驼峰命名。  常量需要用全大写，单词之间用下划线连接  抽象类需要以Abstract开头，异常以Exception结尾，测试类以测试类名称开始，以Test结尾  数组符号与类型需要紧挨着，如：int[">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-12-29T13:22:44.719Z">
-<meta property="article:modified_time" content="2021-01-01T12:54:48.626Z">
+<meta property="article:published_time" content="2020-01-05T14:44:31.000Z">
+<meta property="article:modified_time" content="2021-01-01T14:28:20.685Z">
 <meta property="article:author" content="成华">
-<meta property="article:tag" content="other">
+<meta property="article:tag" content="alibaba">
 <meta name="twitter:card" content="summary">
 
     
@@ -36,6 +36,8 @@
     
     
 <link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
 
 <meta name="generator" content="Hexo 5.3.0"></head>
 
@@ -84,33 +86,65 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/blog/2020/12/29/hello-world/" title="第一篇日志" itemprop="url">第一篇日志</a>
+      <a href="/blog/2020/01/05/hello-world/" title="阿里巴巴开发手册01 命名风格" itemprop="url">阿里巴巴开发手册01 命名风格</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
 		
   <p class="article-time">
-    <time datetime="2020-12-29T13:22:44.719Z" itemprop="datePublished"> Published 2020-12-29</time>
+    <time datetime="2020-01-05T14:44:31.000Z" itemprop="datePublished"> Published 2020-01-05</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h2 id="快速开始Hexo"><a href="#快速开始Hexo" class="headerlink" title="快速开始Hexo"></a>快速开始Hexo</h2><h3 id="创建新的文章"><a href="#创建新的文章" class="headerlink" title="创建新的文章"></a>创建新的文章</h3><blockquote>
-<p>$ hexo new “My New Post”</p>
-</blockquote>
-<h3 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h3><blockquote>
-<p>$ hexo server</p>
-</blockquote>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><blockquote>
-<p>$ hexo generate</p>
-</blockquote>
-<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><blockquote>
-<p>$ hexo deploy</p>
-</blockquote>
-<hr>
-<h2 id="不忘初心，砥砺前行。只争朝夕，不负韶华！"><a href="#不忘初心，砥砺前行。只争朝夕，不负韶华！" class="headerlink" title="不忘初心，砥砺前行。只争朝夕，不负韶华！"></a><strong><em>不忘初心，砥砺前行。只争朝夕，不负韶华！</em></strong></h2>  
+		<h2 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h2><ol>
+<li><p><code>禁止</code>命名以_或$开始或结束</p>
+</li>
+<li><p><code>禁用</code>拼音、中文命名方式</p>
+</li>
+<li><p>类名<code>需要</code>首字母大写，驼峰命名。除DO、BO、DTO、VO、AO、PO、UID之外</p>
+</li>
+<li><p>方法名称、参数名称、成员变量、局部变量<code>需要</code>统一使用驼峰命名。</p>
+</li>
+<li><p>常量<code>需要</code>用全大写，单词之间用下划线连接</p>
+</li>
+<li><p>抽象类<code>需要</code>以Abstract开头，异常以Exception结尾，测试类以测试类名称开始，以Test结尾</p>
+</li>
+<li><p>数组符号与类型<code>需要</code>紧挨着，如：int[] array</p>
+</li>
+<li><p>POJO类中的布尔类型，<code>禁止</code>以is开头</p>
+</li>
+<li><p>包名<code>需要</code>保持小写，单数语义，类名<code>可以</code>使用复数</p>
+</li>
+<li><p><code>禁止</code>不规范的缩写</p>
+</li>
+<li><p><code>需要</code>使用完整的单词组合</p>
+</li>
+<li><p>模块、接口、类、方法使用设计模式，<code>需要</code>体现出设计模式：OrderFactory、LoginProxy、ResourceObserver</p>
+</li>
+<li><p>接口类方法上<code>不要</code>添加修饰，<code>避免</code>在接口中定义变量。</p>
+</li>
+<li><p>Service或DAO接口，<code>要求</code>使用xxxService、xxxServiceImpl命名接口和实现类。普通接口，以形容词为接口名称，Translatable接口或AbstractTranslator实现类</p>
+</li>
+<li><p>枚举<code>要求</code>使用Enum后缀，枚举成员用大写，下划线连接。</p>
+</li>
+<li><p>Service/DAO层命名<code>要求</code>：</p>
+<p>获取单个对象用get前缀</p>
+<p>获取多个对象用list做前缀，复数形式结尾如：listObjects</p>
+<p>获取数量count做前缀</p>
+<p>插入用insert做前缀</p>
+<p>删除用delete做前缀</p>
+<p>修改用update做前缀</p>
+</li>
+<li><p>领域数据模型命名<code>要求</code>：</p>
+<p>数据对象使用DO作后缀</p>
+<p>数据传输对象以DTO做后缀</p>
+<p>视图对象以VO做后缀</p>
+</li>
+</ol>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -118,7 +152,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/other/">other</a>
+  <span></span> <a href="/blog/tags/alibaba/">alibaba</a>
   </div>
 
 </div>
@@ -127,7 +161,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://dayandnight2018.github.io/2020/12/29/hello-world/" data-title="第一篇日志 | 成华的博客" data-tsina="" class="share clearfix">
+	  <div data-url="https://dayandnight2018.github.io/2020/01/05/hello-world/" data-title="阿里巴巴开发手册01 命名风格 | 成华的博客" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -140,11 +174,19 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/blog/2020/01/05/alibabaPattern01/" title="阿里巴巴开发手册01 命名风格">
+  <strong>上一篇：</strong><br/>
+  <span>
+  阿里巴巴开发手册01 命名风格</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/blog/2020/07/10/springBoot2-17-redis03/"  title="springBoot2-17-redis03">
+<a href="/blog/2020/01/03/springMVC02/"  title="Spring MVC创建一个项目">
  <strong>下一篇：</strong><br/> 
- <span>springBoot2-17-redis03
+ <span>Spring MVC创建一个项目
 </span>
 </a>
 </div>
@@ -161,7 +203,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8BHexo"><span class="toc-number">1.</span> <span class="toc-text">快速开始Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E6%96%87%E7%AB%A0"><span class="toc-number">1.1.</span> <span class="toc-text">创建新的文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="toc-number">1.2.</span> <span class="toc-text">本地预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">生成静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83"><span class="toc-number">1.4.</span> <span class="toc-text">发布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%BF%98%E5%88%9D%E5%BF%83%EF%BC%8C%E7%A0%A5%E7%A0%BA%E5%89%8D%E8%A1%8C%E3%80%82%E5%8F%AA%E4%BA%89%E6%9C%9D%E5%A4%95%EF%BC%8C%E4%B8%8D%E8%B4%9F%E9%9F%B6%E5%8D%8E%EF%BC%81"><span class="toc-number">2.</span> <span class="toc-text">不忘初心，砥砺前行。只争朝夕，不负韶华！</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC"><span class="toc-number">1.</span> <span class="toc-text">命名风格</span></a></li></ol>
  
   </div>
 
@@ -200,7 +242,7 @@
 			
 		
 			
-				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>6</sup></a></li>
 			
 		
 			
@@ -216,11 +258,15 @@
 			
 		
 			
-				<li><a href="/blog/tags/other/" title="other">other<sup>2</sup></a></li>
+				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/blog/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/API-Security/" title="API-Security">API-Security<sup>1</sup></a></li>
 			
 		
 		</ul>
