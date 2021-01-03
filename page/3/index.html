@@ -82,6 +82,42 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/blog/2020/06/30/java-multi-threads-03-Immutable/" title="java-multi-threads-03-Immutable" itemprop="url">
+  
+    <h1 itemprop="name">java-multi-threads-03-Immutable</h1>
+    
+     
+           <p itemprop="description" >除了构造函数，无法赋值
+
+将字段设置为final类型，字段一旦初始化就不再赋值。
+使用多线程来读取person信息：
+
+
+测试：
+
+
+由于只能读取，不能赋值，因此数据是可信的。
+使用场景
+对象创建后，基本不发生改变。
+
+对象是共享的，频繁读取，而不是赋值。
+
+
+ArrayList</p>
+        
+    
+    <time datetime="2020-06-30T11:15:36.000Z" itemprop="datePublished">2020-06-30</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/blog/2020/06/30/java-multi-threads-02-SingleThreadExecution/" title="java-multi-threads-02-SingleThreadExecution" itemprop="url">
   
     <h1 itemprop="name">java-multi-threads-02-SingleThreadExecution</h1>
@@ -386,34 +422,6 @@ redisTemplate.opsForValue().set(String key, String v</p>
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/blog/2020/06/22/JavaEE-17-Redis-introduction/" title="JavaEE-17-Redis-introduction" itemprop="url">
-  
-    <h1 itemprop="name">JavaEE-17-Redis-introduction</h1>
-    
-     
-           <p itemprop="description" >Redis应用场景Redis是一种内存数据库，存储方式类似于Map结构，键值对形式。读取速度非常快，常用于高并发场景。
-
-数据缓存
-
-对一些热点数据，读到内存中，使用Redis缓存，可以避免数据库的频繁读取，Redis常用来缓存。
-
-高速读写。
-
-高并发场景下，类似于抢购、抢红包</p>
-        
-    
-    <time datetime="2020-06-22T12:06:44.000Z" itemprop="datePublished">2020-06-22</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
     <a class="extend prev" rel="prev" href="/blog/page/2/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="extend next" rel="next" href="/blog/page/4/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
@@ -478,6 +486,10 @@ redisTemplate.opsForValue().set(String key, String v</p>
 		
 			
 				<li><a href="/blog/tags/poem/" title="poem">poem<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/personal/" title="personal">personal<sup>1</sup></a></li>
 			
 		
 			
