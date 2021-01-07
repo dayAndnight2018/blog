@@ -11,12 +11,12 @@
     
 
     
-    <meta name="description" content="Lambda我们看一个比较器的实现示例: a. 匿名内部类的实现   b. lambda表达式   一个明显的差异是，lambda表达式代码更简洁，表意更清晰。 Lambda表达式的格式  一个lambda表达式主要包含三个部分：  参数列表  箭头  表达式体   单个表达式和多条语句的实现如果是单个表达式就能完成的lambda表达式，可以使用以下格式:   如果需要多条语句才能实现:   何时">
+    <meta name="description" content="Lambda我们看一个比较器的实现示例: a. 匿名内部类的实现  b. lambda表达式   一个明显的差异是，lambda表达式代码更简洁，表意更清晰。 Lambda表达式的格式  一个lambda表达式主要包含三个部分：  参数列表  箭头  表达式体   单个表达式和多条语句的实现如果是单个表达式就能完成的lambda表达式，可以使用以下格式:   如果需要多条语句才能实现:   何时何">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java8新增功能一览">
 <meta property="og:url" content="https://dayandnight2018.github.io/2021/01/07/java-8-character/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="Lambda我们看一个比较器的实现示例: a. 匿名内部类的实现   b. lambda表达式   一个明显的差异是，lambda表达式代码更简洁，表意更清晰。 Lambda表达式的格式  一个lambda表达式主要包含三个部分：  参数列表  箭头  表达式体   单个表达式和多条语句的实现如果是单个表达式就能完成的lambda表达式，可以使用以下格式:   如果需要多条语句才能实现:   何时">
+<meta property="og:description" content="Lambda我们看一个比较器的实现示例: a. 匿名内部类的实现  b. lambda表达式   一个明显的差异是，lambda表达式代码更简洁，表意更清晰。 Lambda表达式的格式  一个lambda表达式主要包含三个部分：  参数列表  箭头  表达式体   单个表达式和多条语句的实现如果是单个表达式就能完成的lambda表达式，可以使用以下格式:   如果需要多条语句才能实现:   何时何">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/07/java-8-character/8b3b99a8-7643-404b-80d8-ffb6ac3cabd2.png">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/07/java-8-character/6d5b6c7d-2f82-4dad-9f5e-7a90ef5f8f38.png">
@@ -25,8 +25,9 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/07/java-8-character/aecfbe9a-2094-4dff-b561-783dbba82a1d.png">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/07/java-8-character/9e204564-30c4-46ee-9dbe-8877e4e0b134.png">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/07/java-8-character/a6d86f8b-b150-4abc-b303-dc9e3d700fbe.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/07/java-8-character/46171450-1507-4658-b6ff-465f67e887f4.png">
 <meta property="article:published_time" content="2021-01-07T06:28:02.000Z">
-<meta property="article:modified_time" content="2021-01-07T08:14:25.411Z">
+<meta property="article:modified_time" content="2021-01-07T11:38:22.023Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -108,8 +109,7 @@
 	<div class="article-content">
 		
 		<h2 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h2><p>我们看一个比较器的实现示例:</p>
-<p>a. 匿名内部类的实现</p>
-<p> <img src="/blog/2021/01/07/java-8-character/8b3b99a8-7643-404b-80d8-ffb6ac3cabd2.png" alt="image"></p>
+<p>a. 匿名内部类的实现<br> <img src="/blog/2021/01/07/java-8-character/8b3b99a8-7643-404b-80d8-ffb6ac3cabd2.png" alt="image"></p>
 <p>b. lambda表达式</p>
 <p> <img src="/blog/2021/01/07/java-8-character/6d5b6c7d-2f82-4dad-9f5e-7a90ef5f8f38.png" alt="image"></p>
 <p>一个明显的差异是，lambda表达式代码更简洁，表意更清晰。</p>
@@ -150,6 +150,34 @@
 <li><p>使用lambda表达式传递具体实现给函数式接口</p>
 </li>
 </ol>
+<h4 id="Predicate（预言"><a href="#Predicate（预言" class="headerlink" title="Predicate（预言)"></a>Predicate（预言)</h4><p>接受一个泛型入参，返回Boolean</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface Predicate&lt;T&gt;&#123;</span><br><span class="line">        boolean test(T t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们借助于Predicate接口来实现一个静态方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T&gt; List&lt;T&gt; filter(List&lt;T&gt; list, Predicate&lt;T&gt; p) &#123;</span><br><span class="line">        List&lt;T&gt; results &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">        for(T s: list)&#123;</span><br><span class="line">                if(p.test(s))&#123; </span><br><span class="line">                        results.add(s);</span><br><span class="line">                &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        return results;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>现在，我们可以调用filter方法了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Predicate&lt;String&gt; nonEmptyStringPredicate &#x3D; (String s) -&gt; !s.isEmpty(); </span><br><span class="line"></span><br><span class="line">List&lt;String&gt; nonEmpty &#x3D; filter(listOfStrings, nonEmptyStringPredicate);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Consumer-消费者"><a href="#Consumer-消费者" class="headerlink" title="Consumer (消费者)"></a>Consumer (消费者)</h4><p>接受一个泛型类型的参数，返回值为void</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface Consumer&lt;T&gt;&#123;</span><br><span class="line">        void accept(T t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们借助于Consumer接口实现一个静态方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T&gt; void forEach(List&lt;T&gt; list, Consumer&lt;T&gt; c)&#123;</span><br><span class="line">        for(T i: list)&#123;                c.accept(i); </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们可以调用forEach方法了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">forEach(</span><br><span class="line">        Arrays.asList(1,2,3,4,5),  (Integer i) -&gt; System.out.println(i)</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="Function（委托）"><a href="#Function（委托）" class="headerlink" title="Function（委托）"></a>Function（委托）</h4><p>接受一个泛型参数，返回一个泛型返回值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface Function&lt;T, R&gt;&#123;</span><br><span class="line">        R apply(T t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们可以借助于Function接口定义静态方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T, R&gt; List&lt;R&gt; map(List&lt;T&gt; list, Function&lt;T, R&gt; f) &#123;</span><br><span class="line">        List&lt;R&gt; result &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">        for(T s: list)&#123;</span><br><span class="line">                result.add(f.apply(s)); </span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们可以调用map方法了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; l &#x3D; map(</span><br><span class="line">        Arrays.asList(&quot;lambdas&quot;,&quot;in&quot;,&quot;action&quot;), (String s) -&gt; s.length()                </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4 id="基础类型函数式接口"><a href="#基础类型函数式接口" class="headerlink" title="基础类型函数式接口"></a>基础类型函数式接口</h4><p>基础类型函数式接口可以防止装箱、拆箱带来的性能损失。</p>
+<p>例如IntPredicate接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface IntPredicate&#123;</span><br><span class="line">        boolean test(int t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了达到int类型的值判断是否偶数的目的，可以分别使用IntPredicate和Predicate<Integer>来实现：</Integer></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IntPredicate evenNumbers &#x3D; (int i) -&gt; i % 2 &#x3D;&#x3D; 0; </span><br><span class="line"></span><br><span class="line">evenNumbers.test(1000);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Predicate&lt;Integer&gt; oddNumbers &#x3D; (Integer i) -&gt; i % 2 &#x3D;&#x3D; 1; </span><br><span class="line"></span><br><span class="line">oddNumbers.test(1000);</span><br></pre></td></tr></table></figure>
+<p>两种方法都能达到效果，但是Predicate<Integer>接口会有装箱、拆箱的性能损失，占用更大的内存空间。</Integer></p>
+<h4 id="JDK8提供的几种函数式接口"><a href="#JDK8提供的几种函数式接口" class="headerlink" title="JDK8提供的几种函数式接口"></a>JDK8提供的几种函数式接口</h4><p> <img src="/blog/2021/01/07/java-8-character/46171450-1507-4658-b6ff-465f67e887f4.png" alt="image"></p>
+<h4 id="lambda表达式使用外部变量"><a href="#lambda表达式使用外部变量" class="headerlink" title="lambda表达式使用外部变量"></a>lambda表达式使用外部变量</h4><p>对于成员变量和静态变量没有任何限制，对局部变量，需要是final类型的。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -201,7 +229,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambda"><span class="toc-number">1.</span> <span class="toc-text">Lambda</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.0.1.</span> <span class="toc-text">Lambda表达式的格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%B8%AA%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E5%A4%9A%E6%9D%A1%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.2.</span> <span class="toc-text">单个表达式和多条语句的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E4%BD%95%E5%A4%84%E4%BD%BF%E7%94%A8lambda%EF%BC%9F"><span class="toc-number">1.0.3.</span> <span class="toc-text">何时何处使用lambda？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E4%B8%AA%E6%AD%A5%E9%AA%A4%E8%AE%BE%E8%AE%A1%E5%B9%B6%E4%BD%BF%E7%94%A8lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.0.4.</span> <span class="toc-text">四个步骤设计并使用lambda表达式</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambda"><span class="toc-number">1.</span> <span class="toc-text">Lambda</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.0.1.</span> <span class="toc-text">Lambda表达式的格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%B8%AA%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E5%A4%9A%E6%9D%A1%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.2.</span> <span class="toc-text">单个表达式和多条语句的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E4%BD%95%E5%A4%84%E4%BD%BF%E7%94%A8lambda%EF%BC%9F"><span class="toc-number">1.0.3.</span> <span class="toc-text">何时何处使用lambda？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E4%B8%AA%E6%AD%A5%E9%AA%A4%E8%AE%BE%E8%AE%A1%E5%B9%B6%E4%BD%BF%E7%94%A8lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.0.4.</span> <span class="toc-text">四个步骤设计并使用lambda表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Predicate%EF%BC%88%E9%A2%84%E8%A8%80"><span class="toc-number">1.0.5.</span> <span class="toc-text">Predicate（预言)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Consumer-%E6%B6%88%E8%B4%B9%E8%80%85"><span class="toc-number">1.0.6.</span> <span class="toc-text">Consumer (消费者)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Function%EF%BC%88%E5%A7%94%E6%89%98%EF%BC%89"><span class="toc-number">1.0.7.</span> <span class="toc-text">Function（委托）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.0.8.</span> <span class="toc-text">基础类型函数式接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JDK8%E6%8F%90%E4%BE%9B%E7%9A%84%E5%87%A0%E7%A7%8D%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.0.9.</span> <span class="toc-text">JDK8提供的几种函数式接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.10.</span> <span class="toc-text">lambda表达式使用外部变量</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
