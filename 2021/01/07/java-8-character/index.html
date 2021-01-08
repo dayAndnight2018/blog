@@ -29,8 +29,9 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/07/java-8-character/1482ac3d-59b0-4d8f-8019-3e10cda18bc9.png">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/07/java-8-character/a1f8590f-0dda-41c1-a41f-a8de37aadee8.png">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/07/java-8-character/2f06d08f-8025-41cf-9936-5b674fe12f97.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/07/java-8-character/022217f7-fda5-4b99-9fe1-444a5b9729c3.png">
 <meta property="article:published_time" content="2021-01-07T06:28:02.000Z">
-<meta property="article:modified_time" content="2021-01-07T12:42:29.668Z">
+<meta property="article:modified_time" content="2021-01-08T02:21:38.750Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -221,8 +222,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Predicate&lt;Apple&gt; redAndHeavyAppleOrGreen &#x3D; </span><br><span class="line">                redApple.and(a -&gt; a.getWeight() &gt; 150)</span><br><span class="line">                             .or(a -&gt; &quot;green&quot;.equals(a.getColor()));</span><br></pre></td></tr></table></figure>
 <p>此处，and 和 or并没有优先级之分，谁在前谁优先，例如</p>
 <p><code>a.or(b).and(c)</code> 等价于 <code>(a || b) &amp;&amp; c</code></p>
-<h4 id="复合委托"><a href="#复合委托" class="headerlink" title="复合委托"></a>复合委托</h4><p>串起来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 加1</span><br><span class="line">Function&lt;Integer, Integer&gt; f &#x3D; x -&gt; x + 1;</span><br><span class="line">&#x2F;&#x2F; 乘2</span><br><span class="line">Function&lt;Integer, Integer&gt; g &#x3D; x -&gt; x * 2;</span><br><span class="line">&#x2F;&#x2F; 复合</span><br><span class="line">Function&lt;Integer, Integer&gt; h &#x3D; f.andThen(g);</span><br><span class="line">&#x2F;&#x2F; 使用</span><br><span class="line">int result &#x3D; h.apply(1);</span><br><span class="line"></span><br></pre></td></tr></table></figure>  
+<h4 id="复合委托"><a href="#复合委托" class="headerlink" title="复合委托"></a>复合委托</h4><p>串起来(andThen)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 加1</span><br><span class="line">Function&lt;Integer, Integer&gt; f &#x3D; x -&gt; x + 1;</span><br><span class="line">&#x2F;&#x2F; 乘2</span><br><span class="line">Function&lt;Integer, Integer&gt; g &#x3D; x -&gt; x * 2;</span><br><span class="line">&#x2F;&#x2F; 复合 先加后乘</span><br><span class="line">Function&lt;Integer, Integer&gt; h &#x3D; f.andThen(g);</span><br><span class="line">&#x2F;&#x2F; 使用</span><br><span class="line">int result &#x3D; h.apply(1);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>复合函数(compose)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 加1</span><br><span class="line">Function&lt;Integer, Integer&gt; f &#x3D; x -&gt; x + 1;</span><br><span class="line">&#x2F;&#x2F; 乘2</span><br><span class="line">Function&lt;Integer, Integer&gt; g &#x3D; x -&gt; x * 2;</span><br><span class="line">&#x2F;&#x2F; 复合 先乘后加</span><br><span class="line">Function&lt;Integer, Integer&gt; h &#x3D; f.compose(g);</span><br><span class="line">&#x2F;&#x2F; 使用</span><br><span class="line">int result &#x3D; h.apply(1);</span><br></pre></td></tr></table></figure>
+<p>二者的区别：</p>
+<p> <img src="/blog/2021/01/07/java-8-character/022217f7-fda5-4b99-9fe1-444a5b9729c3.png" alt="image"></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
