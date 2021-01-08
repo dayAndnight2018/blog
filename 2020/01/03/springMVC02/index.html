@@ -1,0 +1,603 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Spring MVC创建一个项目 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="在STS中创建项目 通过File-New-Project创建一个Maven项目     填写相关信息，结束创建    GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项目名称，因为我们想要部署到tomcat中，因此打包方式设置为war包。  生成的项目结构如图所示    添加Spring依赖 打开pom.xml文件，并添加依赖，输入Spring MVC的相关信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring MVC创建一个项目">
+<meta property="og:url" content="https://dayandnight2018.github.io/2020/01/03/springMVC02/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="在STS中创建项目 通过File-New-Project创建一个Maven项目     填写相关信息，结束创建    GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项目名称，因为我们想要部署到tomcat中，因此打包方式设置为war包。  生成的项目结构如图所示    添加Spring依赖 打开pom.xml文件，并添加依赖，输入Spring MVC的相关信息">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/41d6b37a-2ffe-4532-85b3-8d9e2e646e52.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/b70b4f0c-020b-42ae-8cf2-01e5b3654a84.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/b087dbe1-46b4-4d22-8411-bdc8bec172e6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/f1e6eea8-2f58-4720-b995-5da786b2fb55.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/83a94160-538d-400e-b64e-5cea5156fe1b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/17f8b5f1-24bf-4ed2-af8d-7cb75a51e973.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/54109039-f24e-4cc4-bf74-2554c652b1c3.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/4335d3b6-81aa-4fa4-855f-a10641331ea6.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/d1245300-444a-4015-a538-7a3ab3e74936.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/59fc7aa2-0133-4147-8db2-10251b26448b.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/fab7cdf7-eb8b-4cba-aac5-b42a9d8d1fec.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/9da14ede-34bc-4b83-9479-5e1b6f6dd5f4.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/12a0d456-f3da-49f0-9ca8-326ddd297de9.jpg">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/2a261bff-3bb2-404d-9fbd-bfbaa600846d.jpg">
+<meta property="article:published_time" content="2020-01-03T13:16:03.000Z">
+<meta property="article:modified_time" content="2020-12-29T13:22:44.986Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="spring mvc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/01/03/springMVC02/41d6b37a-2ffe-4532-85b3-8d9e2e646e52.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2020/01/03/springMVC02/" title="Spring MVC创建一个项目" itemprop="url">Spring MVC创建一个项目</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2020-01-03T13:16:03.000Z" itemprop="datePublished"> Published 2020-01-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="在STS中创建项目"><a href="#在STS中创建项目" class="headerlink" title="在STS中创建项目"></a>在STS中创建项目</h2><ol>
+<li>通过File-New-Project创建一个Maven项目</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/41d6b37a-2ffe-4532-85b3-8d9e2e646e52.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="2">
+<li>填写相关信息，结束创建</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/b70b4f0c-020b-42ae-8cf2-01e5b3654a84.jpg" style="margin:30px;display:block" alt="title">
+
+<p>GroupID即组织ID，一般以公司域名倒置填写，ArtifactID一般用项目名称，因为我们想要部署到tomcat中，因此打包方式设置为war包。</p>
+<ol start="3">
+<li>生成的项目结构如图所示</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/b087dbe1-46b4-4d22-8411-bdc8bec172e6.jpg" style="margin:30px;display:block" alt="title">
+
+<h2 id="添加Spring依赖"><a href="#添加Spring依赖" class="headerlink" title="添加Spring依赖"></a>添加Spring依赖</h2><ol>
+<li>打开pom.xml文件，并添加依赖，输入Spring MVC的相关信息</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/f1e6eea8-2f58-4720-b995-5da786b2fb55.jpg" style="margin:30px;display:block" alt="title">
+
+<p>groupID 为<code style="background:#ff3385;color:white;padding:5px;">org.springframework</code>，ArtifactID为<code style="background:#ff3385;color:white;padding:5px;">spring-webmvc</code>，版本为<code style="background:#ff3385;color:white;padding:5px;">4.0.3.RELEASE</code>,范围选择<code style="background:#ff3385;color:white;padding:5px;">编译</code>。</p>
+<ol start="2">
+<li>同样的，为了显示页面，需要添加JSTL依赖</li>
+</ol>
+<p>groupID 为<code style="background:#ff3385;color:white;padding:5px;">javax.servlet</code>，ArtifactID为<code style="background:#ff3385;color:white;padding:5px;">jstl</code>，版本为<code style="background:#ff3385;color:white;padding:5px;">1.2</code>,范围选择<code style="background:#ff3385;color:white;padding:5px;">编译</code>。</p>
+<ol start="3">
+<li>添加Servlet-api依赖</li>
+</ol>
+<p>groupID 为<code style="background:#ff3385;color:white;padding:5px;">javax.servlet</code>，ArtifactID为<code style="background:#ff3385;color:white;padding:5px;">javax.servlet-api</code>，版本为<code style="background:#ff3385;color:white;padding:5px;">3.1.0</code>,范围选择<code style="background:#ff3385;color:white;padding:5px;">Provided</code>。</p>
+<ol start="4">
+<li>依赖添加完毕</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/83a94160-538d-400e-b64e-5cea5156fe1b.jpg" style="margin:30px;display:block" alt="title">
+
+<p>在此对依赖添加作出解释：Maven是一种包管理机制，会解决包之间的依赖关系和版本问题。我们制定组名、包名、版本即可告诉Maven我们想要什么包，它自动完成下载和相关依赖包的下载。<br>编译期间需要打入包内的是编译包，不需要打入的是提供包，因为tomcat里面有servlet-api，所以无需打包。</p>
+<h2 id="JAVA小配置"><a href="#JAVA小配置" class="headerlink" title="JAVA小配置"></a>JAVA小配置</h2><p>打开pom.xml文件，在底部找到overView视图，找到properties并添加属性：maven.compiler.source=1.7</p>
+<img src="/blog/2020/01/03/springMVC02/17f8b5f1-24bf-4ed2-af8d-7cb75a51e973.jpg" style="margin:30px;display:block" alt="title">
+
+<p>同时，设置目标版本maven.compiler.target=1.7</p>
+<h2 id="创建一个欢迎界面"><a href="#创建一个欢迎界面" class="headerlink" title="创建一个欢迎界面"></a>创建一个欢迎界面</h2><ol>
+<li>在src/main/webapp下面创建WEB-INF/jsp路径，并创建welcome.jsp文件</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/54109039-f24e-4cc4-bf74-2554c652b1c3.jpg" style="width:600px;height:400px;margin:30px;display:block" alt="title">
+
+<p>页面很简单，就是显示一个greeting和一个tagline字段</p>
+<ol start="2">
+<li>在src/main/java路径下创建一个com.packt.webstore.controller包，并在本包下创建HomeController.java文件</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/4335d3b6-81aa-4fa4-855f-a10641331ea6.jpg" style="margin:30px;display:block" alt="title">
+
+<p>在jsp文件中，有两个jstl标签，用于显示两个变量的值：</p>
+<img src="/blog/2020/01/03/springMVC02/d1245300-444a-4015-a538-7a3ab3e74936.jpg" style="margin:30px;display:block" alt="title">
+
+<p>这两个值来自于控制器存储到model中的数据</p>
+<img src="/blog/2020/01/03/springMVC02/59fc7aa2-0133-4147-8db2-10251b26448b.jpg" style="margin:30px;display:block" alt="title">
+
+<ol start="3">
+<li>配置DispatcherServlet</li>
+</ol>
+<p>没有这个是无法访问的，DispatcherServlet将会拦截用户的请求，根据实际请求地址映射到相关的controller，甚至具体的action。在src/main/webapp/WEB-INF/路径下创建web.xml配置文件：</p>
+<img src="/blog/2020/01/03/springMVC02/fab7cdf7-eb8b-4cba-aac5-b42a9d8d1fec.jpg" style="margin:30px;display:block" alt="title">
+
+<p>创建servlet用于拦截前端请求，servlet-mapping用于配置映射路径，一般拦截全部请求，所以url-pattern是/，表示所有路径</p>
+<ol start="4">
+<li>在src/main/webapp/WEB-INF/路径下，创建另外一个配置文件DefaultServlet-servlet.xml</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/9da14ede-34bc-4b83-9479-5e1b6f6dd5f4.jpg" style="margin:30px;display:block" alt="title">
+
+<p>这个配置文件配置了注解扫描、组件扫描的包路径，并配置了前端页面的存储位置，在/WEB-INF/jsp文件夹下，并且以.jsp结尾</p>
+<ol start="5">
+<li>通过run as 即可选择tomcat部署运行</li>
+</ol>
+<img src="/blog/2020/01/03/springMVC02/12a0d456-f3da-49f0-9ca8-326ddd297de9.jpg" style="margin:30px;display:block" alt="title">
+
+<p>我们可以打开浏览器访问了</p>
+<img src="/blog/2020/01/03/springMVC02/2a261bff-3bb2-404d-9fbd-bfbaa600846d.jpg" style="margin:30px;display:block" alt="title">  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/spring-mvc/">spring mvc</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2020/01/03/springMVC02/" data-title="Spring MVC创建一个项目 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2020/01/05/alibabaPattern01/" title="阿里巴巴开发手册01 命名风格">
+  <strong>上一篇：</strong><br/>
+  <span>
+  阿里巴巴开发手册01 命名风格</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2020/01/03/crazySSM01-introduction/"  title="Git常用指令">
+ <strong>下一篇：</strong><br/> 
+ <span>Git常用指令
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8STS%E4%B8%AD%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">在STS中创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0Spring%E4%BE%9D%E8%B5%96"><span class="toc-number">2.</span> <span class="toc-text">添加Spring依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA%E5%B0%8F%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">JAVA小配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%AC%A2%E8%BF%8E%E7%95%8C%E9%9D%A2"><span class="toc-number">4.</span> <span class="toc-text">创建一个欢迎界面</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>26</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/poem/" title="poem">poem<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/personal/" title="personal">personal<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/vim/" title="vim">vim<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
