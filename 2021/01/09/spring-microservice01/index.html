@@ -1,0 +1,573 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>微服务基础概念 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="本章的意义在于，提供基础的概念，以防后续存在不懂的概念需要查阅资料。 Spring基于Spring的项目可以得到快速高效地构建，其提供了很多功能，如命名、依赖注入、数据访问、验证、国际化、切面编程等等。  Spring Data提供了关系型和非关系型数据库的访问。  Spring Batch提供了大数据量的处理支持。  Spring Security提供了开箱即用的安全认证。  Spring Cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微服务基础概念">
+<meta property="og:url" content="https://dayandnight2018.github.io/2021/01/09/spring-microservice01/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="本章的意义在于，提供基础的概念，以防后续存在不懂的概念需要查阅资料。 Spring基于Spring的项目可以得到快速高效地构建，其提供了很多功能，如命名、依赖注入、数据访问、验证、国际化、切面编程等等。  Spring Data提供了关系型和非关系型数据库的访问。  Spring Batch提供了大数据量的处理支持。  Spring Security提供了开箱即用的安全认证。  Spring Cl">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/09/spring-microservice01/e4a7fb49-878a-4b3e-94e1-ee0c28dbe3e9.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/09/spring-microservice01/6effabe4-4139-49d0-abe4-ac7e65ca1eda.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/09/spring-microservice01/ecbb60e4-73cb-4e8f-862e-4c6abf1a85bb.png">
+<meta property="article:published_time" content="2021-01-09T07:09:38.000Z">
+<meta property="article:modified_time" content="2021-01-09T11:04:09.020Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="micro-service">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2021/01/09/spring-microservice01/e4a7fb49-878a-4b3e-94e1-ee0c28dbe3e9.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2021/01/09/spring-microservice01/" title="微服务基础概念" itemprop="url">微服务基础概念</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2021-01-09T07:09:38.000Z" itemprop="datePublished"> Published 2021-01-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>本章的意义在于，提供基础的概念，以防后续存在不懂的概念需要查阅资料。</p>
+<h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><p>基于Spring的项目可以得到快速高效地构建，其提供了很多功能，如命名、依赖注入、数据访问、验证、国际化、切面编程等等。</p>
+<ol>
+<li><p>Spring Data提供了关系型和非关系型数据库的访问。</p>
+</li>
+<li><p>Spring Batch提供了大数据量的处理支持。</p>
+</li>
+<li><p>Spring Security提供了开箱即用的安全认证。</p>
+</li>
+<li><p>Spring Cloud提供了分布式系统创建的功能。</p>
+</li>
+<li><p>Spring Integration提供了不同模块之间交互的功能。</p>
+</li>
+</ol>
+<h2 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h2><p>Spring Boot提供了Spring项目的快速开发支持。</p>
+<ol>
+<li><p>自动化配置。</p>
+</li>
+<li><p>开箱即用的starters。</p>
+</li>
+<li><p>不同环境切换的profile支持，支持不同环境下的配置切换。</p>
+</li>
+</ol>
+<h2 id="Lombook"><a href="#Lombook" class="headerlink" title="Lombook"></a>Lombook</h2><p>我们来看一下一个POJO有多么复杂</p>
+<p> <img src="/blog/2021/01/09/spring-microservice01/e4a7fb49-878a-4b3e-94e1-ee0c28dbe3e9.png" alt="image"><br> <img src="/blog/2021/01/09/spring-microservice01/6effabe4-4139-49d0-abe4-ac7e65ca1eda.png" alt="image"></p>
+<p>我们可以看到，构造器、getters、setters、equals、hashCode、toString这些代码都是冗余的，完全可以被生成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import lombok.Value;</span><br><span class="line"></span><br><span class="line">@Value</span><br><span class="line">public class Challenge &#123;</span><br><span class="line">        &#x2F;&#x2F; Both factors</span><br><span class="line">        int factorA;</span><br><span class="line">        int factorB;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">注解</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@AllArgsConstructor</td>
+<td align="center">生成包含所有字段的构造器</td>
+</tr>
+<tr>
+<td align="center">@FieldDefaults</td>
+<td align="center">让我们的字段成为private和final的</td>
+</tr>
+<tr>
+<td align="center">@Getter</td>
+<td align="center">生成getter方法</td>
+</tr>
+<tr>
+<td align="center">@ToString</td>
+<td align="center">生成toString方法</td>
+</tr>
+<tr>
+<td align="center">@EqualsAndHashCode</td>
+<td align="center">生成hashCode和equals方法</td>
+</tr>
+</tbody></table>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h4 id="单元测试开发（TDD）"><a href="#单元测试开发（TDD）" class="headerlink" title="单元测试开发（TDD）"></a>单元测试开发（TDD）</h4><p>单元测试开发让你关注于<code>你需要什么</code>、<code>你期望什么</code>,考虑测试案例，哪些是符合预期的，哪些是不符合期望的。</p>
+<h4 id="行为驱动测试（BDD）"><a href="#行为驱动测试（BDD）" class="headerlink" title="行为驱动测试（BDD）"></a>行为驱动测试（BDD）</h4><p>BDD采用的是Given-When-Then的模式进行测试，即假设、条件、预期结果：<br> <img src="/blog/2021/01/09/spring-microservice01/ecbb60e4-73cb-4e8f-862e-4c6abf1a85bb.png" alt="image"></p>
+<h4 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h4><p>使用@BeforeEach和@AfterEach来标注在单元测试执行前和执行后必定要执行的代码，常用于资源的准备和释放操作。</p>
+<p>使用@Test来标记方法为单元测试的方法。</p>
+<p>使用@ExtendsWith添加JUnit5扩展插件</p>
+<p>扩展插件</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/micro-service/">micro-service</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2021/01/09/spring-microservice01/" data-title="微服务基础概念 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/blog/2021/01/07/java-8-character/"  title="Java8新增功能一览">
+ <strong>下一篇：</strong><br/> 
+ <span>Java8新增功能一览
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring"><span class="toc-number">1.</span> <span class="toc-text">Spring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot"><span class="toc-number">2.</span> <span class="toc-text">Spring Boot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lombook"><span class="toc-number">3.</span> <span class="toc-text">Lombook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">4.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91%EF%BC%88TDD%EF%BC%89"><span class="toc-number">4.0.1.</span> <span class="toc-text">单元测试开发（TDD）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E9%A9%B1%E5%8A%A8%E6%B5%8B%E8%AF%95%EF%BC%88BDD%EF%BC%89"><span class="toc-number">4.0.2.</span> <span class="toc-text">行为驱动测试（BDD）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JUnit"><span class="toc-number">4.0.3.</span> <span class="toc-text">JUnit</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>26</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/poem/" title="poem">poem<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/personal/" title="personal">personal<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/micro-service/" title="micro-service">micro-service<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/vim/" title="vim">vim<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
