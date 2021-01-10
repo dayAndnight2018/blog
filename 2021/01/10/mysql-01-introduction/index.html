@@ -1,0 +1,624 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>数据库设计概述 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="通过DBMS实现数据操作数据库的所有操作最终落到对文件的操作上，我们无法直接操作这些文件，必须通过DBMS的帮助实现相关操作。   关系型数据库数据库管理系统通常会选择某种“数学模型”存储、组织、管理数据 库中的数据，常用的数学模型包括层次模型、网状模型、关系模 型以及面向对象模型等。 通过关系模型设计的数据库称为关系型数据库。  关系型数据库使用二维表表示事物之间的关系。一行是一条记录，一列表示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库设计概述">
+<meta property="og:url" content="https://dayandnight2018.github.io/2021/01/10/mysql-01-introduction/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="通过DBMS实现数据操作数据库的所有操作最终落到对文件的操作上，我们无法直接操作这些文件，必须通过DBMS的帮助实现相关操作。   关系型数据库数据库管理系统通常会选择某种“数学模型”存储、组织、管理数据 库中的数据，常用的数学模型包括层次模型、网状模型、关系模 型以及面向对象模型等。 通过关系模型设计的数据库称为关系型数据库。  关系型数据库使用二维表表示事物之间的关系。一行是一条记录，一列表示">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/0109bbff-5b7d-407f-850d-407966049012.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/11907a6b-e7be-45c5-a39a-762d6d251a9f.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/34c4066c-6f0f-4911-992e-ab9ffcb7f4ae.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/b61a626a-7d04-4ca1-8f31-98b4a0e4f71b.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/e0f10fbf-36d8-4231-839e-3ff9e65a6e53.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/3d606d0f-1853-4e11-b57a-5b57b1c90520.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/c3bc6c51-2e5c-4f8b-b081-bc1761f2823b.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/86f7e769-06b0-41fc-9436-08b095f6ce7a.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/470ae53c-abae-4ed9-a50b-e8c14a3c4449.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/ad2bde89-40ea-4eec-a004-00fcf8564384.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/f817c975-32c1-4b4f-b5a4-d40ca6a88596.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/81b6aa4d-8eb3-42bf-a2ef-b3ad4c10ebc2.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/6b9e1ba7-e3b6-45c9-ae7e-8da26440f4a1.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/1873b99e-2099-45bb-b0aa-fad3ce1bebf1.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/f30b7e90-5876-45d4-a87e-adc47c3523ba.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/c2667abb-adea-484d-8c83-4133dbdaed11.png">
+<meta property="article:published_time" content="2021-01-10T11:35:05.000Z">
+<meta property="article:modified_time" content="2021-01-10T13:01:48.042Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-01-introduction/0109bbff-5b7d-407f-850d-407966049012.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2021/01/10/mysql-01-introduction/" title="数据库设计概述" itemprop="url">数据库设计概述</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2021-01-10T11:35:05.000Z" itemprop="datePublished"> Published 2021-01-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="通过DBMS实现数据操作"><a href="#通过DBMS实现数据操作" class="headerlink" title="通过DBMS实现数据操作"></a>通过DBMS实现数据操作</h2><p>数据库的所有操作最终落到对文件的操作上，我们无法直接操作这些文件，必须通过DBMS的帮助实现相关操作。  <img src="/blog/2021/01/10/mysql-01-introduction/0109bbff-5b7d-407f-850d-407966049012.png" alt="image"></p>
+<h2 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h2><p>数据库管理系统通常会选择某种“数学模型”存储、组织、管理数据 库中的数据，常用的数学模型包括<code>层次模型</code>、<code>网状模型</code>、<code>关系模 型</code>以及<code>面向对象模型</code>等。</p>
+<p>通过关系模型设计的数据库称为关系型数据库。 <img src="/blog/2021/01/10/mysql-01-introduction/11907a6b-e7be-45c5-a39a-762d6d251a9f.png" alt="image"></p>
+<p>关系型数据库使用二维表表示事物之间的关系。一行是一条<code>记录</code>，一列表示一个<code>字段</code>。</p>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ol>
+<li><p>使用驼峰命名法。如studentNo、studentName</p>
+</li>
+<li><p>使用下划线命名法。如student_no、 student_name<br>函数名使用<code>_fun</code>后缀;存储过程名使用<code>_proc</code>后缀;视图名使用<code>_view</code>后缀;触发器名使用<code>_trig</code>后缀;索引名使用<code>_index</code>后缀;外键约束名 使用<code>_fk</code>后缀</p>
+</li>
+<li><p>注释。单行注释以“#”开始，或者以用两个短划线和一个空格 (“–”)开始。多行注释以“/<em>”开始，以“</em>/”结束。</p>
+</li>
+</ol>
+<h2 id="ER图"><a href="#ER图" class="headerlink" title="ER图"></a>ER图</h2><p>又叫实体-关系图，其中E表示实体，R表示关系。E-R图由实体、属性和关系3个要素构成。</p>
+<p>实体对应表，属性对应列（字段）。 <img src="/blog/2021/01/10/mysql-01-introduction/34c4066c-6f0f-4911-992e-ab9ffcb7f4ae.png" alt="image"></p>
+<h4 id="强制关系与可选关系"><a href="#强制关系与可选关系" class="headerlink" title="强制关系与可选关系"></a>强制关系与可选关系</h4><p>当基数的最小值为1时，表示一种强制关系。例如，选修课程必须由一名教师申报后才存在，言外之意“对于选修课程而言，任课教师必须存在”</p>
+<p>当基数的 最小值为0时，表示一种可选关系。例如，一名教师只能申 报一门课程，言外之意，“对教师而言，无需必须申报课程”<br><img src="/blog/2021/01/10/mysql-01-introduction/b61a626a-7d04-4ca1-8f31-98b4a0e4f71b.png" alt="image"></p>
+<h4 id="一对一、一对多、多对多"><a href="#一对一、一对多、多对多" class="headerlink" title="一对一、一对多、多对多"></a>一对一、一对多、多对多</h4><p>从基数的角度可以将关系分为一对一(1∶1)、一对多(1∶m)、多对多(m∶n)关系。</p>
+<ol>
+<li><p>在“选课系统”中，一名教师只能申报一门课程，而一门课程必须由一名教师申报（1:1）</p>
+</li>
+<li><p> 一个班级包含若干名学生(基数为m)，而一名学生只能属于一个班级（1:m）</p>
+</li>
+<li><p>一名学生可以选修两门课程，一门课程可以被多名学生选修(m:n)</p>
+</li>
+</ol>
+<h4 id="一元关系与多元关系"><a href="#一元关系与多元关系" class="headerlink" title="一元关系与多元关系"></a>一元关系与多元关系</h4><p>人与人之间结为夫妻，是人这个实体与自己的关联。<br><img src="/blog/2021/01/10/mysql-01-introduction/e0f10fbf-36d8-4231-839e-3ff9e65a6e53.png" alt="image"></p>
+<p>当线段无法完全描述关联信息的时候，如人与人之间结为夫妻，其结为夫妻的时间，需要使用关联关系表示。<br><img src="/blog/2021/01/10/mysql-01-introduction/3d606d0f-1853-4e11-b57a-5b57b1c90520.png" alt="image"></p>
+<p>关联可以表示多元关系<br><img src="/blog/2021/01/10/mysql-01-introduction/c3bc6c51-2e5c-4f8b-b081-bc1761f2823b.png" alt="image"></p>
+<h4 id="ER图设计原则"><a href="#ER图设计原则" class="headerlink" title="ER图设计原则"></a>ER图设计原则</h4><ol>
+<li><p>为E-R图中的每个实体建立一张表。</p>
+</li>
+<li><p>为每张表定义一个主键(如果需要，可以向表添加一个没有 实际意义的字段作为该表的主键)</p>
+<p>a. 表的主键可以是一个字段，也可以是多个字段的组合(这种 情况称为复合主键)</p>
+<p>b. 表中主键的值具有唯一性且不能取空值(NULL)。当表中的 主键由多个字段构成时，每个字段的值都不能取NULL。</p>
+</li>
+<li><p>增加外键表示一对多关系</p>
+</li>
+<li><p>建立新表表示多对多关系</p>
+</li>
+<li><p>为字段选择合适的数据类型</p>
+</li>
+<li><p>定义约束条件(如果需要)</p>
+</li>
+</ol>
+<h4 id="主键使用技巧"><a href="#主键使用技巧" class="headerlink" title="主键使用技巧"></a>主键使用技巧</h4><ol>
+<li><p>推荐取值简单的关键字为主键。如果身份证和学号都非空，不重复，则优先选用学号，因为它更简单。</p>
+</li>
+<li><p>在设计数据库表时，复合主键会给表的维护带来不便，因 此不建议使用复合主键。</p>
+</li>
+<li><p> 如果不能从已有的字段(或者字段组合)中选择一个主键，那么可以向数据库表中添加一个没有实际意义的字段 作为该表的主键。</p>
+</li>
+<li><p>如果向数据库表中添加一个没有实际意义的字段作为该表的主键，建议该主键的值由数据库管理系统或者应用程序自动生成，避免人工录入时人为操作产生的错误。</p>
+</li>
+</ol>
+<h4 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h4><p>如果表A中的一个字段a对应于表B的主键b，则字段a称为表A的外 键(foreign key)，此时存储在表A中字段a的值，要么是NULL，要么 是来自于表B主键b的值。通过外键可以表示实体间的关系。</p>
+<p>外键设计技巧：</p>
+<ol>
+<li><p>如果实体间的关系为一对多关系，则需要将“一”端实体的 主键放到“多”端实体中，然后作为“多”端实体的外键，通过该外键即可表示实体间的一对多关系。</p>
+<p>以班级实体和学生实体之间的一对多关系为 例，需要将班级classes表的主键class_no放到学生student表中，作为学生 表的外键(灰色底纹的字段为外键)。<br><img src="/blog/2021/01/10/mysql-01-introduction/86f7e769-06b0-41fc-9436-08b095f6ce7a.png" alt="image"></p>
+</li>
+<li><p>实体间的一对一关系可以看成一种特殊的一对多关系。将“一”端实体的主键放到另“一”端的实体中，并作为另“一”端实体的外键，然后将外键定义为唯一性约束(unique constraint)</p>
+<p>a. 方案一:将教师teacher表的主键teacher_no放入到课程course表中作为课程course表的外键，然后将课程course表的teacher_no外键定义为唯 一性约束。<br><img src="/blog/2021/01/10/mysql-01-introduction/470ae53c-abae-4ed9-a50b-e8c14a3c4449.png" alt="image"></p>
+<p>b. 方案二:将课程course表的主键course_no放入到教师teacher表中，作为教师teacher表的外键，然后将教师teacher表的course_no外键定义为 唯一性约束。<br><img src="/blog/2021/01/10/mysql-01-introduction/ad2bde89-40ea-4eec-a004-00fcf8564384.png" alt="image"></p>
+</li>
+<li><p>如果两个实体间的关系为多对多关系，则需要添加新表表示该多对多关系，然后将该关系涉及的实体的“主键”分别放入到新表中(作为新表的外键)，并将关系自身的属性放入到新表中作为新表的字段。</p>
+</li>
+</ol>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>常用的约束条 件有6种:<code>主键(primary key)约束</code>、<code>外键(foreign key)约束</code>、<code>唯一性 (unique)约束</code>、<code>默认值(default)约束</code>、<code>非空(not NULL)约束</code>以及 <code>检查(check)约束</code>。</p>
+<ol>
+<li><p>主键约束:所有的数据库表都定义一个主键，用于保证数据库表中记录的唯一性。一张表中只允许设置一个主键，当然这个主键可以是一个字段，也可以是一个字段组合(不建议使用复合主键)。任何主键字段的值不允许为NULL。</p>
+</li>
+<li><p>外键约束:用于保证外键字段值与主键字段值的一致性，外键字段值要么是NULL，要么是主键字段值的“复制”。外键字段所在的表称为子表，主键字段所在的表称为父表。</p>
+<p>创建表时，建议先创建父表，然后再创建子表，并且建议子表的外键字段与父表的主键字段的数据类型相同。如果子表的记录“参照”了父表的某条记录，那么父表这一条记录的删除(delete)或修改(update)操作可能以失败告终。如果试图直接插入(insert)或者修改(update)子表的“外键值”，子表中的“外键值”必须是NULL或父表中的“主键值”。</p>
+</li>
+<li><p>唯一性约束:如果希望表中的某个字段值不重复，可以考虑为该字段添加唯一性约束。一张表中可以存在多个唯一性约束，并且满足唯一性约束的字段可以取NULL值。</p>
+</li>
+<li><p>非空约束:如果希望表中的字段值不能取NULL值，可以考虑为该字段添加非空约束。</p>
+</li>
+<li><p> 检查约束:检查约束用于检查字段的输入值是否满足指定的条件。输入(或者修改)数据时，若字段值不符合检查约束指定的条件，则数据不能写入该字段。</p>
+</li>
+<li><p>默认值约束:默认值约束用于指定一个字段的默认值。如果没有在该字段填写数据，则该字段将自动填入这个默认值。</p>
+</li>
+</ol>
+<h2 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h2><p>函数依赖:在一张表内，两个字段值之间的一一对应关系称为函数依赖。通俗点儿讲，在一个数据库表内，如果字段A的值能够唯一确定字段B的值，那么字段B函数依赖于字段A。</p>
+<h2 id="三级范式"><a href="#三级范式" class="headerlink" title="三级范式"></a>三级范式</h2><h4 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h4><p>如果一张表内同类字段不重复出现，则该表就满足第一范式的要求。<br> <img src="/blog/2021/01/10/mysql-01-introduction/f817c975-32c1-4b4f-b5a4-d40ca6a88596.png" alt="image"></p>
+<p>上图所示，不符合第一范式。不满足第一范式的数据库表将出现诸如插入异常、删除异常、修改复杂等数据冗余“并发症”。</p>
+<p>去除重复字段，满足第一范式。<br> <img src="/blog/2021/01/10/mysql-01-introduction/81b6aa4d-8eb3-42bf-a2ef-b3ad4c10ebc2.png" alt="image"></p>
+<h4 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h4><p>一张表在满足第一范式的基础上，如果每个“非关键 字”字段仅仅函数依赖于主键，那么该表满足第二范式的要求。<br> <img src="/blog/2021/01/10/mysql-01-introduction/6b9e1ba7-e3b6-45c9-ae7e-8da26440f4a1.png" alt="image"></p>
+<p>上图所示，不符合第二范式。不满足第二范式的数据库表将出现诸如插入异常、删除异常、修改复杂等数据冗余“并发症”。</p>
+<p>课程名仅仅与课程号相关，姓名仅与学号相关。因此不满足第二范式，修改为三个表后，满足需要。<br><img src="/blog/2021/01/10/mysql-01-introduction/1873b99e-2099-45bb-b0aa-fad3ce1bebf1.png" alt="image"></p>
+<p>根本原因在于，某些字段并不是完全靠联合主键来确定，也许只需要某一个或某几个字段就可以确定，这种就不满足第二范式。</p>
+<h4 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h4><p>如果一张表满足第二范式的要求，并且不存在“非关键字”字段函数依赖于任何其他“非关键字”字段，那么该表满足第三范式 的要求。<br> <img src="/blog/2021/01/10/mysql-01-introduction/f30b7e90-5876-45d4-a87e-adc47c3523ba.png" alt="image"></p>
+<p>上图所示，不符合第三范式。不满足第三范式的数据库表将会出现诸如插入异常、删除异 常、修改复杂等数据冗余“并发症”。</p>
+<p>邮编和主键学号没有直接关系，而是取决于居住地。即，邮编传递函数依赖于学号。因此不满足第三范式，修改后满足需要。<br> <img src="/blog/2021/01/10/mysql-01-introduction/c2667abb-adea-484d-8c83-4133dbdaed11.png" alt="image"></p>
+<p>根本原因在于，某些字段并不是直接靠主键来确定，需要间接地通过中间某个字段来确定。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/mysql/">mysql</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2021/01/10/mysql-01-introduction/" data-title="数据库设计概述 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/blog/2021/01/09/spring-microservice02/"  title="一个基本的Spring Boot项目">
+ <strong>下一篇：</strong><br/> 
+ <span>一个基本的Spring Boot项目
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87DBMS%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">通过DBMS实现数据操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">关系型数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-number">3.</span> <span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ER%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">ER图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8F%AF%E9%80%89%E5%85%B3%E7%B3%BB"><span class="toc-number">4.0.1.</span> <span class="toc-text">强制关系与可选关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E5%AF%B9%E4%B8%80%E3%80%81%E4%B8%80%E5%AF%B9%E5%A4%9A%E3%80%81%E5%A4%9A%E5%AF%B9%E5%A4%9A"><span class="toc-number">4.0.2.</span> <span class="toc-text">一对一、一对多、多对多</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E5%85%83%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%A4%9A%E5%85%83%E5%85%B3%E7%B3%BB"><span class="toc-number">4.0.3.</span> <span class="toc-text">一元关系与多元关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ER%E5%9B%BE%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">4.0.4.</span> <span class="toc-text">ER图设计原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-number">4.0.5.</span> <span class="toc-text">主键使用技巧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%96%E9%94%AE"><span class="toc-number">4.0.6.</span> <span class="toc-text">外键</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A6%E6%9D%9F"><span class="toc-number">5.</span> <span class="toc-text">约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="toc-number">6.</span> <span class="toc-text">函数依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E8%8C%83%E5%BC%8F"><span class="toc-number">7.</span> <span class="toc-text">三级范式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F"><span class="toc-number">7.0.1.</span> <span class="toc-text">第一范式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F"><span class="toc-number">7.0.2.</span> <span class="toc-text">第二范式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F"><span class="toc-number">7.0.3.</span> <span class="toc-text">第三范式</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>26</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/poem/" title="poem">poem<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/micro-service/" title="micro-service">micro-service<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/personal/" title="personal">personal<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/vim/" title="vim">vim<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
