@@ -1,0 +1,567 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>一文了解Mysql事务和锁 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="事务事务就是将多条数据库指令合并为一个小组，要么全部执行，要么全不执行。  保存点保存点提供了一个回滚的历史记录，可以实现部分提交，部分回滚。当然，也可以全部回滚。  锁粒度服务器级别：  flush tables with read lock;  加了服务器级别的锁后，加锁的会话不能执行任何写操作，否则会报错。其他会话执行写操作会被阻塞。 表级锁：锁整个表。 行级锁：锁行，指定记录。  小结:服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一文了解Mysql事务和锁">
+<meta property="og:url" content="https://dayandnight2018.github.io/2021/01/10/mysql-03-transaction-lock/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="事务事务就是将多条数据库指令合并为一个小组，要么全部执行，要么全不执行。  保存点保存点提供了一个回滚的历史记录，可以实现部分提交，部分回滚。当然，也可以全部回滚。  锁粒度服务器级别：  flush tables with read lock;  加了服务器级别的锁后，加锁的会话不能执行任何写操作，否则会报错。其他会话执行写操作会被阻塞。 表级锁：锁整个表。 行级锁：锁行，指定记录。  小结:服">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/a750ba29-005e-40e9-b360-9e09fa703969.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/3fbda1b1-4304-41ca-8d32-c809c2034d1f.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/0229e455-47be-4719-b244-ead50ccdf32a.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/79d20157-7135-4cea-a646-3610938457fe.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/78c2141b-6474-4a01-9775-cf6425e913b7.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/f8edbf69-b028-4650-bc81-e5980e2c6f09.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/6e87de61-6ea9-43ec-a501-d5c604284585.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/c0fe0e3d-0715-4d87-86c3-aca3fa17f9ee.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/393d1a2a-df4f-4511-8051-043976d8a8e9.png">
+<meta property="article:published_time" content="2021-01-10T15:20:56.000Z">
+<meta property="article:modified_time" content="2021-01-10T16:23:13.068Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/a750ba29-005e-40e9-b360-9e09fa703969.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2021/01/10/mysql-03-transaction-lock/" title="一文了解Mysql事务和锁" itemprop="url">一文了解Mysql事务和锁</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2021-01-10T15:20:56.000Z" itemprop="datePublished"> Published 2021-01-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>事务就是将多条数据库指令合并为一个小组，要么全部执行，要么全不执行。<br> <img src="/blog/2021/01/10/mysql-03-transaction-lock/a750ba29-005e-40e9-b360-9e09fa703969.png" alt="image"></p>
+<h4 id="保存点"><a href="#保存点" class="headerlink" title="保存点"></a>保存点</h4><p>保存点提供了一个回滚的历史记录，可以实现部分提交，部分回滚。当然，也可以全部回滚。<br> <img src="/blog/2021/01/10/mysql-03-transaction-lock/3fbda1b1-4304-41ca-8d32-c809c2034d1f.png" alt="image"></p>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><h4 id="粒度"><a href="#粒度" class="headerlink" title="粒度"></a>粒度</h4><p>服务器级别：</p>
+<blockquote>
+<p>flush tables with read lock;</p>
+</blockquote>
+<p>加了服务器级别的锁后，加锁的会话不能执行任何写操作，否则会<code>报错</code>。其他会话执行写操作会被<code>阻塞</code>。</p>
+<p>表级锁：锁整个表。</p>
+<p>行级锁：锁行，指定记录。</p>
+<blockquote>
+<p>小结:服务器级锁的粒度最大，表级锁的粒度次之，行级锁的粒度最小。锁粒度越小，并发访问性能就越高，越适合做并发更新操作(InnoDB表更适合做并发更新操作);锁粒度越大，并发访问性能就越低，越适合做并发查询操作(MyISAM表更适合做并发查询操作)。另外，锁粒度越小，完成某个功能时所需要的加锁、解锁的次数就会越多，反而会消耗较多的服务器资源，甚至会出现资源的恶性竞争，甚至发生死锁问题。</p>
+</blockquote>
+<h4 id="隐式锁和显式锁"><a href="#隐式锁和显式锁" class="headerlink" title="隐式锁和显式锁"></a>隐式锁和显式锁</h4><p>隐式锁是针对InnoDB引擎中的insert、delete、update操作自动加锁。</p>
+<p>显式锁针对查询语句显示加锁。</p>
+<h4 id="读锁和写锁"><a href="#读锁和写锁" class="headerlink" title="读锁和写锁"></a>读锁和写锁</h4><p>读锁也称为共享锁，写锁也称为排他锁或者独占锁。</p>
+<p>读锁<code>允许</code>其他MySQL客户机对数据同时<code>“读”</code>，但<code>不允许</code>其他MySQL客户机对数据任何<code>“写”</code>。如果“数据”是表，则该读锁是表级读锁;如果“数据”是记录，则该读锁是行级读锁。<br><img src="/blog/2021/01/10/mysql-03-transaction-lock/0229e455-47be-4719-b244-ead50ccdf32a.png" alt="image"></p>
+<p>写锁<code>不允许</code>其他MySQL客户机对数据同时<code>“读”</code>，也<code>不允许</code>其他MySQL客户机对数据同时<code>“写”</code>。如果“数据”是表，则该写锁是表级写锁;如果“数据”是记录，则该写锁是行级写锁。<br><img src="/blog/2021/01/10/mysql-03-transaction-lock/79d20157-7135-4cea-a646-3610938457fe.png" alt="image"></p>
+<h4 id="锁的生命周期"><a href="#锁的生命周期" class="headerlink" title="锁的生命周期"></a>锁的生命周期</h4><p>锁的生命周期是指在同一个MySQL会话内，对数据加锁到解锁之间的时间间隔。锁的生命周期越长，并发访问性能就越低;锁的生命周期越短，并发访问性能就越高。另外，锁是数据库管理系统重要的数据库资源，需要耗费一定的服务器内存，锁的生命周期越长，该锁占用服 务器内存的时间间隔就越长;锁的生命周期越短，该锁占用服务器内存 的时间间隔就越短。因此为了节省服务器资源，数据库开发人员必须尽 可能的缩短锁的生命周期，尽可能早地释放锁资源。</p>
+<h2 id="表级锁"><a href="#表级锁" class="headerlink" title="表级锁"></a>表级锁</h2><p>MyISAM自动在select是加隐式读锁，在update、delete、insert时自动加隐式写锁。</p>
+<h4 id="显式加锁"><a href="#显式加锁" class="headerlink" title="显式加锁"></a>显式加锁</h4><p><img src="/blog/2021/01/10/mysql-03-transaction-lock/78c2141b-6474-4a01-9775-cf6425e913b7.png" alt="image"></p>
+<p>当A加了<code>读锁</code>，A可以<code>继续读</code>，但是继续<code>写会报错</code>。B可以<code>继续读</code>，但是<code>不能写</code>，写操作会<code>阻塞</code>。</p>
+<p>当A加了<code>写锁</code>，A的<code>读写</code>可以<code>继续</code>，B的<code>读写</code>会被<code>阻塞</code>。</p>
+<p><img src="/blog/2021/01/10/mysql-03-transaction-lock/f8edbf69-b028-4650-bc81-e5980e2c6f09.png" alt="image"></p>
+<p>使用lock tables命令时，不能操作没有锁定的表，否则会报错。</p>
+<h4 id="read和read-local"><a href="#read和read-local" class="headerlink" title="read和read local"></a>read和read local</h4><p>针对MyISAM引擎，A加read锁后A和B均不能插入数据。</p>
+<p>但A加read-local锁后，A虽然不能插入数据，B可以在数据表的末尾插入新的数据。</p>
+<p>InnoDB引擎中，read和read local没有区别</p>
+<h4 id="同时加读锁和写锁"><a href="#同时加读锁和写锁" class="headerlink" title="同时加读锁和写锁"></a>同时加读锁和写锁</h4><p>同时加表级写锁和表级读锁，写锁将优先，这样会导致读锁饿死，因此可以使用low_priority来指定低优先级写锁，不至于读锁被饿死。</p>
+<h2 id="行级锁"><a href="#行级锁" class="headerlink" title="行级锁"></a>行级锁</h2><p>在更新操作时，行级写锁自动添加。</p>
+<p>在读操作时，可以使用以下语句分别添加读锁和写锁。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 读锁</span><br><span class="line">select * from 表 where 条件语句 lock in share mode;</span><br><span class="line"></span><br><span class="line"># 写锁</span><br><span class="line">select * from 表 where 条件语句 for update;</span><br></pre></td></tr></table></figure>
+<p>A加读锁后，可以继续读写所有数据，B可以读取所有数据，更新不符合条件的数据，对符合条件的数据可以加读锁，不可以加写锁。</p>
+<p>A加写锁后，可以继续读写所有数据，B可以读取所有数据，更新不符合条件的数据。不可加任何类型的锁到符合条件的数据。</p>
+<p><img src="/blog/2021/01/10/mysql-03-transaction-lock/6e87de61-6ea9-43ec-a501-d5c604284585.png" alt="image"></p>
+<h4 id="意向锁"><a href="#意向锁" class="headerlink" title="意向锁"></a>意向锁</h4><p>意向共享锁(IS):向 InnoDB 表的某些记录施加行级共享锁时，InnoDB 存储引擎会自动地向该表施加意向共享锁(IS)。</p>
+<p>意向排他锁(IX):向InnoDB表的某些记录施加行级排他锁时，InnoDB存储引擎会自动地向该表施加意向排他锁(IX)。</p>
+<p><img src="/blog/2021/01/10/mysql-03-transaction-lock/c0fe0e3d-0715-4d87-86c3-aca3fa17f9ee.png" alt="image"></p>
+<p>InnoDB引擎针对索引加行级锁，如果不命中索引，将会加表级锁。</p>
+<h4 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h4><p>当检索条件为某个区间范围时，对该区间范围施加共享锁或排他锁后，满足该区间范围的记录存在共享锁或排他锁;满足该区间范围，但表中不存在的记录也会存在共享锁或排他锁，这种锁机制就是所谓的间隙锁。</p>
+<p>当事务的隔离级别设置为<code>可重复读</code>，此时施加行级锁，默认情况下使用<code>间隙锁</code>。当事务的隔离级别设置为<code>读未提交或者读已提交</code>，此时使用<code>记录锁</code>，仅为满足该查询范围的记录施加共享锁或排他锁。</p>
+<h4 id="间隙锁导致的死锁"><a href="#间隙锁导致的死锁" class="headerlink" title="间隙锁导致的死锁"></a>间隙锁导致的死锁</h4><p>MySQL默认的事务隔离级别是可重复读，此时如果A与B针对“符合查询条件但不存在记录”施加了共享锁或者排他锁，那么都会加锁成功。加锁期间，如果A与B都试图添加一条“符合查询条件的记录”，此时会进入死锁状态。</p>
+<h4 id="行级锁导致的死锁"><a href="#行级锁导致的死锁" class="headerlink" title="行级锁导致的死锁"></a>行级锁导致的死锁</h4><p><img src="/blog/2021/01/10/mysql-03-transaction-lock/393d1a2a-df4f-4511-8051-043976d8a8e9.png" alt="image"></p>
+<p>A客户机先获取写锁1，等待写锁2.</p>
+<p>B客户机先获取写锁2，等待写锁1.</p>
+<p>双方等待的资源在对方手中，产生环路。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/mysql/">mysql</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2021/01/10/mysql-03-transaction-lock/" data-title="一文了解Mysql事务和锁 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/blog/2021/01/10/mysql-02-basic/"  title="Mysql基础">
+ <strong>下一篇：</strong><br/> 
+ <span>Mysql基础
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E7%82%B9"><span class="toc-number">1.0.1.</span> <span class="toc-text">保存点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%81"><span class="toc-number">2.</span> <span class="toc-text">锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%92%E5%BA%A6"><span class="toc-number">2.0.1.</span> <span class="toc-text">粒度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E9%94%81%E5%92%8C%E6%98%BE%E5%BC%8F%E9%94%81"><span class="toc-number">2.0.2.</span> <span class="toc-text">隐式锁和显式锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E9%94%81%E5%92%8C%E5%86%99%E9%94%81"><span class="toc-number">2.0.3.</span> <span class="toc-text">读锁和写锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%81%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">2.0.4.</span> <span class="toc-text">锁的生命周期</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E7%BA%A7%E9%94%81"><span class="toc-number">3.</span> <span class="toc-text">表级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E5%8A%A0%E9%94%81"><span class="toc-number">3.0.1.</span> <span class="toc-text">显式加锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#read%E5%92%8Cread-local"><span class="toc-number">3.0.2.</span> <span class="toc-text">read和read local</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%97%B6%E5%8A%A0%E8%AF%BB%E9%94%81%E5%92%8C%E5%86%99%E9%94%81"><span class="toc-number">3.0.3.</span> <span class="toc-text">同时加读锁和写锁</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E7%BA%A7%E9%94%81"><span class="toc-number">4.</span> <span class="toc-text">行级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%84%8F%E5%90%91%E9%94%81"><span class="toc-number">4.0.1.</span> <span class="toc-text">意向锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%B4%E9%9A%99%E9%94%81"><span class="toc-number">4.0.2.</span> <span class="toc-text">间隙锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%B4%E9%9A%99%E9%94%81%E5%AF%BC%E8%87%B4%E7%9A%84%E6%AD%BB%E9%94%81"><span class="toc-number">4.0.3.</span> <span class="toc-text">间隙锁导致的死锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E7%BA%A7%E9%94%81%E5%AF%BC%E8%87%B4%E7%9A%84%E6%AD%BB%E9%94%81"><span class="toc-number">4.0.4.</span> <span class="toc-text">行级锁导致的死锁</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>26</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/mysql/" title="mysql">mysql<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/poem/" title="poem">poem<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/micro-service/" title="micro-service">micro-service<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/personal/" title="personal">personal<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/vim/" title="vim">vim<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
