@@ -4,34 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>springBoot2-10-ActiveMQ | 成华的博客</title>
+    <title>Mysql基础 | 成华的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="成华">
     
 
     
-    <meta name="description" content="异步消息点对点：当前系统将消息发送到指定的消息系统。 发布-订阅：实现一对多的消息发布，订阅方获取消息后可以自由处理。 ActiveMQ的下载安装 点击此处下载  linux执行.sh文件，win执行bat文件  登陆http:&#x2F;&#x2F;localhost:8161&#x2F;admin   账户admin，密码admin spring整合ActiveMQ 添加依赖    2.application.proper">
+    <meta name="description" content="字符集MySQL字符序命名规则是:以字符序对应的字符集名称开头，以国家 名居中(或以general居中)，以ci、cs或bin结尾。以ci结尾的字符序表 示大小写不敏感，以cs结尾的字符序表示大小写敏感，以bin结尾的字符 序表示按二进制编码值比较。 不同的字符集支持不同地区的字符，例如latin1支持西欧字符、希腊字符等，gbk支持中文简体字符，big5支持中文繁体字符，utf8几乎支持世界上所">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springBoot2-10-ActiveMQ">
-<meta property="og:url" content="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/index.html">
+<meta property="og:title" content="Mysql基础">
+<meta property="og:url" content="https://dayandnight2018.github.io/2021/01/10/mysql-02-basic/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="异步消息点对点：当前系统将消息发送到指定的消息系统。 发布-订阅：实现一对多的消息发布，订阅方获取消息后可以自由处理。 ActiveMQ的下载安装 点击此处下载  linux执行.sh文件，win执行bat文件  登陆http:&#x2F;&#x2F;localhost:8161&#x2F;admin   账户admin，密码admin spring整合ActiveMQ 添加依赖    2.application.proper">
+<meta property="og:description" content="字符集MySQL字符序命名规则是:以字符序对应的字符集名称开头，以国家 名居中(或以general居中)，以ci、cs或bin结尾。以ci结尾的字符序表 示大小写不敏感，以cs结尾的字符序表示大小写敏感，以bin结尾的字符 序表示按二进制编码值比较。 不同的字符集支持不同地区的字符，例如latin1支持西欧字符、希腊字符等，gbk支持中文简体字符，big5支持中文繁体字符，utf8几乎支持世界上所">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/181253f1-1b65-461c-9965-a0a5791afe9f.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/0226d06b-f5c6-4c99-a741-074a8178d048.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/32cbe12e-8f82-4b33-a88f-8ad9b2e27f45.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/2c988013-463e-4195-be6b-e7e4c8197dd5.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/1332872a-f03d-4ce9-ad78-4878c2560f00.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/ddc86846-62d2-4592-803b-cadfb8bea0ca.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/5ba03acd-3c59-4d6f-b048-b6ce9fe7edf3.jpg">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/a7b42fdc-364c-41f2-adc2-5909f4eeca2f.jpg">
-<meta property="article:published_time" content="2020-07-08T12:45:20.000Z">
-<meta property="article:modified_time" content="2020-12-29T13:22:44.952Z">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-02-basic/b56b3e3a-8b63-4cb8-bfe3-7e4db8c3116b.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-02-basic/e0908fe1-68c9-48f6-805e-7534fa238b78.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-02-basic/a1383398-1087-4f4f-bebf-3101fc8a0f3f.png">
+<meta property="article:published_time" content="2021-01-10T13:18:13.000Z">
+<meta property="article:modified_time" content="2021-01-10T13:44:04.229Z">
 <meta property="article:author" content="成华">
-<meta property="article:tag" content="spring-boot-2">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2020/07/08/springBoot2-10-ActiveMQ/181253f1-1b65-461c-9965-a0a5791afe9f.jpg">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-02-basic/b56b3e3a-8b63-4cb8-bfe3-7e4db8c3116b.png">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -95,63 +90,99 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/blog/2020/07/08/springBoot2-10-ActiveMQ/" title="springBoot2-10-ActiveMQ" itemprop="url">springBoot2-10-ActiveMQ</a>
+      <a href="/blog/2021/01/10/mysql-02-basic/" title="Mysql基础" itemprop="url">Mysql基础</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
 		
   <p class="article-time">
-    <time datetime="2020-07-08T12:45:20.000Z" itemprop="datePublished"> Published 2020-07-08</time>
+    <time datetime="2021-01-10T13:18:13.000Z" itemprop="datePublished"> Published 2021-01-10</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h2 id="异步消息"><a href="#异步消息" class="headerlink" title="异步消息"></a>异步消息</h2><p>点对点：当前系统将消息发送到指定的消息系统。</p>
-<p>发布-订阅：实现一对多的消息发布，订阅方获取消息后可以自由处理。</p>
-<h2 id="ActiveMQ的下载安装"><a href="#ActiveMQ的下载安装" class="headerlink" title="ActiveMQ的下载安装"></a>ActiveMQ的下载安装</h2><ol>
-<li><p><a target="_blank" rel="noopener" href="http://activemq.apache.org/download">点击此处下载</a></p>
+		<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><p>MySQL字符序命名规则是:以字符序对应的字符集名称开头，以国家 名居中(或以general居中)，以ci、cs或bin结尾。以ci结尾的字符序表 示大小写不敏感，以cs结尾的字符序表示大小写敏感，以bin结尾的字符 序表示按二进制编码值比较。</p>
+<p>不同的字符集支持不同地区的字符，例如latin1支持西欧字符、希腊字符等，gbk支持中文简体字符，big5支持中文繁体字符，utf8几乎支持世界上所有国家的字符。由于希腊字符数较少，占用一个字节(8位)的存储空间即可表示所有的latin1字符;中文简体字符较多，占用两个字节(16位)的存储空间才可以表示所有的gbk字符;utf8字符数最多，通常需要占用三个字节(24位)的存储空间才可以表示世界上所有国家的所有字符(例如中文简体、中文繁体、阿拉伯文、俄文等)。</p>
+<p>MySQL为了节省存储空间，在默认情况下，一个gbk英文字符通常仅占用一个字节(8位)的存储空间;一个utf8英文字符仅占用一个字节(8位)的存储空间。</p>
+<h4 id="查看字符集"><a href="#查看字符集" class="headerlink" title="查看字符集"></a>查看字符集</h4><blockquote>
+<p>show character set;</p>
+</blockquote>
+<h4 id="查看会话级别的字符集"><a href="#查看会话级别的字符集" class="headerlink" title="查看会话级别的字符集"></a>查看会话级别的字符集</h4><blockquote>
+<p>show variables like ‘character%’;<br> <img src="/blog/2021/01/10/mysql-02-basic/b56b3e3a-8b63-4cb8-bfe3-7e4db8c3116b.png" alt="image"></p>
+</blockquote>
+<ol>
+<li><p>character_set_client:MySQL客户机的字符集，默认为latin1</p>
 </li>
-<li><p>linux执行.sh文件，win执行bat文件</p>
+<li><p>character_set_connection:数据通信链路的字符集，当MySQL客<br>户机向服务器发送请求时，请求数据以该字符集进行编码。默认为latin1。</p>
 </li>
-<li><p>登陆<a target="_blank" rel="noopener" href="http://localhost:8161/admin">http://localhost:8161/admin</a></p>
+<li><p>character_set_database:数据库字符集，默认为latin1。</p>
+</li>
+<li><p>character_set_filesystem:MySQL服务器文件系统的字符集，该值 是固定的binary。</p>
+</li>
+<li><p>character_set_results:结果集的字符集，MySQL服务器向MySQL 客户机返回执行结果时，执行结果以该字符集进行编码。默认为latin1。</p>
+</li>
+<li><p>character_set_server:MySQL服务实例字符集，默认为latin1。</p>
+</li>
+<li><p>character_set_system:元数据(字段名、表名、数据库名等)的 字符集，默认值为utf8。</p>
 </li>
 </ol>
-<p>账户admin，密码admin</p>
-<h2 id="spring整合ActiveMQ"><a href="#spring整合ActiveMQ" class="headerlink" title="spring整合ActiveMQ"></a>spring整合ActiveMQ</h2><ol>
-<li>添加依赖</li>
+<h4 id="设置字符集"><a href="#设置字符集" class="headerlink" title="设置字符集"></a>设置字符集</h4><ol>
+<li><p>修改my.ini配置文件，可修改MySQL默认的字符集。</p>
+<p>若将[mysql]选项组中的 default-character-set参数值修改为 gbk，则character_set_client、character_set_connection以及character_set_results参数的的默认值修改为gbk，保存修改后的my.ini配置文件，这些字符集将在新的MySQL会话中生效。</p>
+<p>若将[mysqld]选项组中的character_set_server参数值修改为gbk，则character_set_database以及character_set_server参数的默认值修改为gbk，保存修改后的my.ini配置文件，重启MySQL服务，这些字符集将在新的 MySQL服务实例中生效。</p>
+</li>
+<li><p>使用sql语句设置(仅对当前的MySQL会话有效)</p>
+<blockquote>
+<p>set character_set_client = gbk;</p>
+</blockquote>
+<blockquote>
+<p>set character_set_connection = gbk;</p>
+</blockquote>
+<blockquote>
+<p>set character_set_database = gbk;</p>
+</blockquote>
+<blockquote>
+<p>set character_set_results = gbk;</p>
+</blockquote>
+<blockquote>
+<p>set character_set_server = gbk;</p>
+</blockquote>
+<blockquote>
+<p>set collation_connection = gbk_chinese_ci ;</p>
+</blockquote>
+<blockquote>
+<p>set collation_database = gbk_chinese_ci ;</p>
+</blockquote>
+<blockquote>
+<p>set collation_server = gbk_chinese_ci ;</p>
+</blockquote>
+</li>
+<li><p>连接MySQL服务器时指定字符集。</p>
+</li>
 </ol>
-<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/181253f1-1b65-461c-9965-a0a5791afe9f.jpg">
-
-<p>2.application.properties</p>
-<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/0226d06b-f5c6-4c99-a741-074a8178d048.jpg">
-
-<ol start="3">
-<li>定义消息服务接口</li>
-</ol>
-<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/32cbe12e-8f82-4b33-a88f-8ad9b2e27f45.jpg">
-
-<ol start="4">
-<li>定义消息服务实现类</li>
-</ol>
-<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/2c988013-463e-4195-be6b-e7e4c8197dd5.jpg">
-<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/1332872a-f03d-4ce9-ad78-4878c2560f00.jpg">
-
-<p>使用@JmsListener注解标记消息来源</p>
-<ol start="5">
-<li>发送POJO</li>
-</ol>
-<p>定义POJO</p>
-<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/ddc86846-62d2-4592-803b-cadfb8bea0ca.jpg">
-
-<p>添加服务方法</p>
-<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/5ba03acd-3c59-4d6f-b048-b6ce9fe7edf3.jpg">
-
-<p>配置信任的包</p>
-<img src="/blog/2020/07/08/springBoot2-10-ActiveMQ/a7b42fdc-364c-41f2-adc2-5909f4eeca2f.jpg">
-
-
+<blockquote>
+<p>mysql –default-character-set= gbk -h 127.0.0.1 -u root - proot</p>
+</blockquote>
+<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><blockquote>
+<p>create database database_name;</p>
+</blockquote>
+<p>在opt文件中存储着编码格式和字符集。<br> <img src="/blog/2021/01/10/mysql-02-basic/e0908fe1-68c9-48f6-805e-7534fa238b78.png" alt="image"></p>
+<p>可以修改字符集:</p>
+<blockquote>
+<p>alter database choose character set gbk;</p>
+</blockquote>
+<p>查看数据目录</p>
+<blockquote>
+<p>show variables like ‘datadir%’;</p>
+</blockquote>
+<h4 id="查看已有数据库"><a href="#查看已有数据库" class="headerlink" title="查看已有数据库"></a>查看已有数据库</h4><blockquote>
+<p>show databases;<br> <img src="/blog/2021/01/10/mysql-02-basic/a1383398-1087-4f4f-bebf-3101fc8a0f3f.png" alt="image"></p>
+</blockquote>
+<p>mysql系统数据库记录了MySQL的账户信息以及MySQL账户的访问权限。</p>
+<p>performance_schema系统数据库用于收集MySQL服务器的性能参数。</p>
+<p>information_schema系统数据库定义了所有数据库对象的元数据信 息，例如所有数据库、表、字段、索引、约束、权限、存储引擎、字符 集和触发器等信息都存储在information_schema数据库中。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -160,7 +191,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/blog/tags/spring-boot-2/">spring-boot-2</a>
+  <span></span> <a href="/blog/tags/mysql/">mysql</a>
   </div>
 
 </div>
@@ -169,7 +200,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://dayandnight2018.github.io/2020/07/08/springBoot2-10-ActiveMQ/" data-title="springBoot2-10-ActiveMQ | 成华的博客" data-tsina="" class="share clearfix">
+	  <div data-url="https://dayandnight2018.github.io/2021/01/10/mysql-02-basic/" data-title="Mysql基础 | 成华的博客" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -182,19 +213,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/blog/2020/07/08/springBoot2-11-RabbitMQ/" title="springBoot2-11-RabbitMQ">
-  <strong>上一篇：</strong><br/>
-  <span>
-  springBoot2-11-RabbitMQ</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/blog/2020/07/08/springBoot2-09-Schedule/"  title="springBoot2-09-定时任务">
+<a href="/blog/2021/01/10/mysql-01-introduction/"  title="数据库设计概述">
  <strong>下一篇：</strong><br/> 
- <span>springBoot2-09-定时任务
+ <span>数据库设计概述
 </span>
 </a>
 </div>
@@ -211,7 +234,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">异步消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ActiveMQ%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">ActiveMQ的下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring%E6%95%B4%E5%90%88ActiveMQ"><span class="toc-number">3.</span> <span class="toc-text">spring整合ActiveMQ</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">字符集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">1.0.1.</span> <span class="toc-text">查看字符集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BC%9A%E8%AF%9D%E7%BA%A7%E5%88%AB%E7%9A%84%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">1.0.2.</span> <span class="toc-text">查看会话级别的字符集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">1.0.3.</span> <span class="toc-text">设置字符集</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">数据库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.0.1.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.0.2.</span> <span class="toc-text">查看已有数据库</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
