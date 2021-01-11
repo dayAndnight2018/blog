@@ -27,8 +27,22 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/6e87de61-6ea9-43ec-a501-d5c604284585.png">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/c0fe0e3d-0715-4d87-86c3-aca3fa17f9ee.png">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/393d1a2a-df4f-4511-8051-043976d8a8e9.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/63bbd0a2-a93d-49b5-a5e2-d55d4a563803.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/afbab4dd-e51d-491c-9934-2cb298e4fe68.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/fa06ba9f-0170-4e8f-8fc6-40b2a5a8ca93.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/3ca49822-af39-489c-b1d5-9d6a4d59553f.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/fc321e6a-ed91-44d7-8d79-30ee4ef09c33.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/9fd6bbec-f669-4b66-b79e-ce20558632ed.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/ce5382bb-6b5d-4633-ba84-0ed7d4455836.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/be68bc6f-4b54-4928-97f2-e633a35afd3d.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/9f94f3de-6fc0-42c6-9bd3-c870b27e6c06.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/64613861-0f3c-42dc-81e9-9069a6237f67.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/9909a8e2-d285-4c5e-933a-23e61defe15f.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/7bcc9a43-06cf-4066-a580-1d9aa1d7b5bf.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/9909a8e2-d285-4c5e-933a-23e61defe15f.png">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/10/mysql-03-transaction-lock/dcb93132-d827-4eba-ab9e-3fa65e721e8a.png">
 <meta property="article:published_time" content="2021-01-10T15:20:56.000Z">
-<meta property="article:modified_time" content="2021-01-10T16:23:13.068Z">
+<meta property="article:modified_time" content="2021-01-11T06:06:01.973Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
@@ -154,6 +168,148 @@
 <p>A客户机先获取写锁1，等待写锁2.</p>
 <p>B客户机先获取写锁2，等待写锁1.</p>
 <p>双方等待的资源在对方手中，产生环路。</p>
+<h2 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h2><h4 id="四种隔离级别"><a href="#四种隔离级别" class="headerlink" title="四种隔离级别"></a>四种隔离级别</h4><ol>
+<li><p>read uncommitted:所有事务都可以看到其他未提交事务的执行结果。</p>
+</li>
+<li><p>read committed:一个事务只能看见已提交事务所做的改变。</p>
+</li>
+<li><p>repeatable read:确保在同一事务内相同的查询语句的执行结果一致。</p>
+</li>
+<li><p>serializable:它通过强制事务排序，使之不可能相互冲突。<br><img src="/blog/2021/01/10/mysql-03-transaction-lock/63bbd0a2-a93d-49b5-a5e2-d55d4a563803.png" alt="image">是</p>
+</li>
+</ol>
+<h4 id="脏读、不可重复读、幻读"><a href="#脏读、不可重复读、幻读" class="headerlink" title="脏读、不可重复读、幻读"></a>脏读、不可重复读、幻读</h4><p>脏读：A事务读取到B事务尚未提交的数据，违背了事务的隔离性原则。</p>
+<p>隔离级别为读未提交下的脏读问题：</p>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">select * from account;</td>
+<td align="center"></td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/afbab4dd-e51d-491c-9934-2cb298e4fe68.png" alt="image"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">update account set balance=balance+1000 where account_no=1;</td>
+<td align="center">B更新了数据，但还没有提交</td>
+</tr>
+<tr>
+<td align="center">select * from account;</td>
+<td align="center"></td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/fa06ba9f-0170-4e8f-8fc6-40b2a5a8ca93.png" alt="image"></td>
+</tr>
+</tbody></table>
+<p>不可重复读：同一个事务内，两条相同的查询语句的查询结果不一致。</p>
+<p>隔离级别为读已提交下的不可重复读问题：</p>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">select * from account;</td>
+<td align="center"></td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/3ca49822-af39-489c-b1d5-9d6a4d59553f.png" alt="image"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">update account set balance=balance+1000 where account_no=1; commit;</td>
+<td align="center">B更新了数据并提交</td>
+</tr>
+<tr>
+<td align="center">select * from account;</td>
+<td align="center"></td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/fc321e6a-ed91-44d7-8d79-30ee4ef09c33.png" alt="image"></td>
+</tr>
+</tbody></table>
+<p>幻读：同一个事务内，两条相同的查询语句的查询结果应该相同。但是，如果另一个事务同时提交了新数据，当本事务再更新时，就会“惊奇地”发现这些新数据，貌似之前读到的数据是“鬼影”一样的幻觉。</p>
+<p>隔离级别为可重复读下的幻读问题：</p>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">select * from account where account_no=100;</td>
+<td align="center"></td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/9fd6bbec-f669-4b66-b79e-ce20558632ed.png" alt="image"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">start transaction; insert into account values(100,’己’,5000); commit;</td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/ce5382bb-6b5d-4633-ba84-0ed7d4455836.png" alt="image"></td>
+</tr>
+<tr>
+<td align="center">select * from account where account_no=100;</td>
+<td align="center"></td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/be68bc6f-4b54-4928-97f2-e633a35afd3d.png" alt="image"></td>
+</tr>
+<tr>
+<td align="center">insert into account values(100,’庚’,5000);</td>
+<td align="center"></td>
+<td align="center">A并没有查到数据(可以重复读)，插入数据，但失败</td>
+</tr>
+</tbody></table>
+<h4 id="序列化级别解决幻读问题"><a href="#序列化级别解决幻读问题" class="headerlink" title="序列化级别解决幻读问题"></a>序列化级别解决幻读问题</h4><table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">select * from account where account_no=200;</td>
+<td align="center"></td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/9f94f3de-6fc0-42c6-9bd3-c870b27e6c06.png" alt="image"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">insert into account values(200,’庚’,5000);</td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/64613861-0f3c-42dc-81e9-9069a6237f67.png" alt="image"></td>
+</tr>
+</tbody></table>
+<p>在A读取数据，数据不存在时，A事务提交之前，B事务无法插入数据。虽然解决了幻读的问题，但是并发性能下降了。</p>
+<h4 id="使用间隙锁解决幻读"><a href="#使用间隙锁解决幻读" class="headerlink" title="使用间隙锁解决幻读"></a>使用间隙锁解决幻读</h4><table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">select * from account where account_no=200 lock in share mode;</td>
+<td align="center"></td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/9909a8e2-d285-4c5e-933a-23e61defe15f.png" alt="image"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">insert into account values(200,’庚’,5000);</td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/7bcc9a43-06cf-4066-a580-1d9aa1d7b5bf.png" alt="image"></td>
+</tr>
+<tr>
+<td align="center">select * from account where account_no=200 lock in share mode;</td>
+<td align="center"></td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/9909a8e2-d285-4c5e-933a-23e61defe15f.png" alt="image"></td>
+</tr>
+<tr>
+<td align="center">insert into account values(200,’庚’,5000);</td>
+<td align="center"></td>
+<td align="center"><img src="/blog/2021/01/10/mysql-03-transaction-lock/dcb93132-d827-4eba-ab9e-3fa65e721e8a.png" alt="image"></td>
+</tr>
+</tbody></table>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -205,7 +361,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E7%82%B9"><span class="toc-number">1.0.1.</span> <span class="toc-text">保存点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%81"><span class="toc-number">2.</span> <span class="toc-text">锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%92%E5%BA%A6"><span class="toc-number">2.0.1.</span> <span class="toc-text">粒度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E9%94%81%E5%92%8C%E6%98%BE%E5%BC%8F%E9%94%81"><span class="toc-number">2.0.2.</span> <span class="toc-text">隐式锁和显式锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E9%94%81%E5%92%8C%E5%86%99%E9%94%81"><span class="toc-number">2.0.3.</span> <span class="toc-text">读锁和写锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%81%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">2.0.4.</span> <span class="toc-text">锁的生命周期</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E7%BA%A7%E9%94%81"><span class="toc-number">3.</span> <span class="toc-text">表级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E5%8A%A0%E9%94%81"><span class="toc-number">3.0.1.</span> <span class="toc-text">显式加锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#read%E5%92%8Cread-local"><span class="toc-number">3.0.2.</span> <span class="toc-text">read和read local</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%97%B6%E5%8A%A0%E8%AF%BB%E9%94%81%E5%92%8C%E5%86%99%E9%94%81"><span class="toc-number">3.0.3.</span> <span class="toc-text">同时加读锁和写锁</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E7%BA%A7%E9%94%81"><span class="toc-number">4.</span> <span class="toc-text">行级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%84%8F%E5%90%91%E9%94%81"><span class="toc-number">4.0.1.</span> <span class="toc-text">意向锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%B4%E9%9A%99%E9%94%81"><span class="toc-number">4.0.2.</span> <span class="toc-text">间隙锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%B4%E9%9A%99%E9%94%81%E5%AF%BC%E8%87%B4%E7%9A%84%E6%AD%BB%E9%94%81"><span class="toc-number">4.0.3.</span> <span class="toc-text">间隙锁导致的死锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E7%BA%A7%E9%94%81%E5%AF%BC%E8%87%B4%E7%9A%84%E6%AD%BB%E9%94%81"><span class="toc-number">4.0.4.</span> <span class="toc-text">行级锁导致的死锁</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E7%82%B9"><span class="toc-number">1.0.1.</span> <span class="toc-text">保存点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%81"><span class="toc-number">2.</span> <span class="toc-text">锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%92%E5%BA%A6"><span class="toc-number">2.0.1.</span> <span class="toc-text">粒度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E9%94%81%E5%92%8C%E6%98%BE%E5%BC%8F%E9%94%81"><span class="toc-number">2.0.2.</span> <span class="toc-text">隐式锁和显式锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E9%94%81%E5%92%8C%E5%86%99%E9%94%81"><span class="toc-number">2.0.3.</span> <span class="toc-text">读锁和写锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%81%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">2.0.4.</span> <span class="toc-text">锁的生命周期</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E7%BA%A7%E9%94%81"><span class="toc-number">3.</span> <span class="toc-text">表级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E5%8A%A0%E9%94%81"><span class="toc-number">3.0.1.</span> <span class="toc-text">显式加锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#read%E5%92%8Cread-local"><span class="toc-number">3.0.2.</span> <span class="toc-text">read和read local</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%97%B6%E5%8A%A0%E8%AF%BB%E9%94%81%E5%92%8C%E5%86%99%E9%94%81"><span class="toc-number">3.0.3.</span> <span class="toc-text">同时加读锁和写锁</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E7%BA%A7%E9%94%81"><span class="toc-number">4.</span> <span class="toc-text">行级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%84%8F%E5%90%91%E9%94%81"><span class="toc-number">4.0.1.</span> <span class="toc-text">意向锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%B4%E9%9A%99%E9%94%81"><span class="toc-number">4.0.2.</span> <span class="toc-text">间隙锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%B4%E9%9A%99%E9%94%81%E5%AF%BC%E8%87%B4%E7%9A%84%E6%AD%BB%E9%94%81"><span class="toc-number">4.0.3.</span> <span class="toc-text">间隙锁导致的死锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E7%BA%A7%E9%94%81%E5%AF%BC%E8%87%B4%E7%9A%84%E6%AD%BB%E9%94%81"><span class="toc-number">4.0.4.</span> <span class="toc-text">行级锁导致的死锁</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">5.</span> <span class="toc-text">事务的隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E7%A7%8D%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">5.0.1.</span> <span class="toc-text">四种隔离级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%84%8F%E8%AF%BB%E3%80%81%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E3%80%81%E5%B9%BB%E8%AF%BB"><span class="toc-number">5.0.2.</span> <span class="toc-text">脏读、不可重复读、幻读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E7%BA%A7%E5%88%AB%E8%A7%A3%E5%86%B3%E5%B9%BB%E8%AF%BB%E9%97%AE%E9%A2%98"><span class="toc-number">5.0.3.</span> <span class="toc-text">序列化级别解决幻读问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%97%B4%E9%9A%99%E9%94%81%E8%A7%A3%E5%86%B3%E5%B9%BB%E8%AF%BB"><span class="toc-number">5.0.4.</span> <span class="toc-text">使用间隙锁解决幻读</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
