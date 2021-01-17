@@ -11,12 +11,12 @@
     
 
     
-    <meta name="description" content="对象的两大属性 特征（域）  动作（方法） 例如，一辆车可以有以下特征：  有颜色，轮胎数量，方向盘数量，阀门数量等等。 可以有以下几种动作：  行驶和刹车   类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对象就有什么域和方法，不多不少。 类的组成类由三部分组成：类名、域、方法。 类的基本结构 域域就是一些变量，这些变量 可以是基">
+    <meta name="description" content="对象的两大属性 特征（域）  动作（方法）   例如，一辆车可以有以下特征：  可以有以下几种动作：  类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对象就有什么域和方法，不多不少。 类的组成类由三部分组成：类名、域、方法。 类的基本结构 域域就是一些变量，这些变量可以是基本数据类型，也可以是引用类型。域的名称一般采用驼峰命名方式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java04 对象与类">
 <meta property="og:url" content="https://dayandnight2018.github.io/2020/02/19/java04-Objects-and-Classes/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="对象的两大属性 特征（域）  动作（方法） 例如，一辆车可以有以下特征：  有颜色，轮胎数量，方向盘数量，阀门数量等等。 可以有以下几种动作：  行驶和刹车   类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对象就有什么域和方法，不多不少。 类的组成类由三部分组成：类名、域、方法。 类的基本结构 域域就是一些变量，这些变量 可以是基">
+<meta property="og:description" content="对象的两大属性 特征（域）  动作（方法）   例如，一辆车可以有以下特征：  可以有以下几种动作：  类如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对象就有什么域和方法，不多不少。 类的组成类由三部分组成：类名、域、方法。 类的基本结构 域域就是一些变量，这些变量可以是基本数据类型，也可以是引用类型。域的名称一般采用驼峰命名方式。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/d9d0ce1e-32a9-4ef8-8d31-18c6998c3d33.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/51f3d56c-b59e-4b89-8c42-8f551c74caa6.jpg">
@@ -70,7 +70,7 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/0f991961-68d3-41b7-9137-e380a7e04e83.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/19/java04-Objects-and-Classes/694d7fdc-93ab-4731-96e5-f2eb75863209.jpg">
 <meta property="article:published_time" content="2020-02-19T05:30:35.000Z">
-<meta property="article:modified_time" content="2020-12-30T13:46:48.274Z">
+<meta property="article:modified_time" content="2021-01-17T13:54:25.406Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -155,24 +155,23 @@
 <li><p>特征（域）</p>
 </li>
 <li><p>动作（方法）</p>
-<p>例如，一辆车可以有以下特征：</p>
-<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/d9d0ce1e-32a9-4ef8-8d31-18c6998c3d33.jpg" alt="image"></p>
-<p>有颜色，轮胎数量，方向盘数量，阀门数量等等。</p>
-<p>可以有以下几种动作：</p>
-<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/51f3d56c-b59e-4b89-8c42-8f551c74caa6.jpg" alt="image"></p>
-<p>行驶和刹车</p>
 </li>
 </ol>
+<p>例如，一辆车可以有以下特征：</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/d9d0ce1e-32a9-4ef8-8d31-18c6998c3d33.jpg" alt="image"></p>
+<p>可以有以下几种动作：</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/51f3d56c-b59e-4b89-8c42-8f551c74caa6.jpg" alt="image"></p>
 <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>如何创建对象？需要模板，这个模板就是类。如果你有Car类，就可以创建数个Car对象。一个类有什么域和方法，他的对象就有什么域和方法，不多不少。</p>
 <h3 id="类的组成"><a href="#类的组成" class="headerlink" title="类的组成"></a>类的组成</h3><p>类由三部分组成：<code>类名</code>、<code>域</code>、<code>方法</code>。</p>
 <h3 id="类的基本结构"><a href="#类的基本结构" class="headerlink" title="类的基本结构"></a>类的基本结构</h3><p><img src="/blog/2020/02/19/java04-Objects-and-Classes/242bd98a-05c9-4c1f-8ccf-4190e539835e.jpg" alt="image"></p>
-<h3 id="域"><a href="#域" class="headerlink" title="域"></a>域</h3><p>域就是一些变量，这些变量 可以是基本数据类型，也可以是引用类型。域的名称一般采用<code>驼峰命名</code>方式。</p>
+<h3 id="域"><a href="#域" class="headerlink" title="域"></a>域</h3><p>域就是一些变量，这些变量可以是基本数据类型，也可以是引用类型。域的名称一般采用<code>驼峰命名</code>方式。</p>
 <p><img src="/blog/2020/02/19/java04-Objects-and-Classes/ae4bbba1-c01d-47f1-8547-15cbba6f75b4.jpg" alt="image"></p>
-<p>引用Address</p>
+<p>引用类型的域:</p>
 <p><img src="/blog/2020/02/19/java04-Objects-and-Classes/cc4f1db4-e2a8-4a06-b939-f64be78bd99f.jpg" alt="image"></p>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>方法包括<code>方法声明</code>和<code>方法体</code>两部分。</p>
 <p>方法声明包括，<code>返回值类型</code>，<code>方法名</code>，<code>参数列表</code>。</p>
-<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/3a5fb204-87a8-4d44-bf85-cfa81961ac47.jpg" alt="image"><br>方法的返回值可以是<code>基本数据类型</code>、<code>引用类型</code>或<code>void</code>.</p>
+<p><img src="/blog/2020/02/19/java04-Objects-and-Classes/3a5fb204-87a8-4d44-bf85-cfa81961ac47.jpg" alt="image"></p>
+<p>方法的返回值可以是<code>基本数据类型</code>、<code>引用类型</code>或<code>void</code>.</p>
 <p>方法体是方法的具体内容。</p>
 <p>方法的定义：</p>
 <p><img src="/blog/2020/02/19/java04-Objects-and-Classes/14ecbf32-49fc-456a-b5d4-7d596a140571.jpg" alt="image"></p>
@@ -180,9 +179,8 @@
 <p><img src="/blog/2020/02/19/java04-Objects-and-Classes/ee9f1555-1687-4457-95af-0ba96c26958c.jpg" alt="image"></p>
 <p>带参数和返回值的方法：</p>
 <p><img src="/blog/2020/02/19/java04-Objects-and-Classes/6c6c9a33-8386-4906-a14c-ff58fd688cee.jpg" alt="image"></p>
-<p>不定个数参数方法：</p>
+<p>不定个数参数方法(使用…表示不定个数参数)：</p>
 <p><img src="/blog/2020/02/19/java04-Objects-and-Classes/bf62d6a1-3a74-410e-8cec-d4f9267b0d84.jpg" alt="image"></p>
-<p>使用…表示不定个数参数</p>
 <h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><p>构造器是用于生产对象的方法，每个类需要包含至少一个构造器。这个方法结构：</p>
 <p><img src="/blog/2020/02/19/java04-Objects-and-Classes/60bb4f16-bf5a-4088-ba5f-20ed4f6e568b.jpg" alt="image"></p>
 <p>构造器的参数可以 有多个，也可以一个没有。构造器的参数用于初始化对象的域。</p>
@@ -392,7 +390,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/blog/tags/java/" title="java">java<sup>26</sup></a></li>
+				<li><a href="/blog/tags/java/" title="java">java<sup>27</sup></a></li>
 			
 		
 			
