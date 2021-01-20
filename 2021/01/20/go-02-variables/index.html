@@ -4,27 +4,25 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>快速开始Go | 成华的博客</title>
+    <title>Go变量及常量 | 成华的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="成华">
     
 
     
-    <meta name="description" content="Hello, Go1234567package mainimport &quot;fmt&quot;func main() &amp;#123;        fmt.Println(&quot;Hello, Go!&quot;)&amp;#125;         像传统的C++代码一样，包含包名，引包，主入口代码三个部分。 注意：在代码中没有用到的包不能引入，否则编译失败 函数定义格式Go的函数的定义一般采用">
+    <meta name="description" content="变量的声明在go中声明变量的习惯和约束与java中类似，附加一条声明的变量必须使用到。  类型推断法  var name &#x3D; “xxx”   指定类型法  var name string &#x3D; “xxx”   多个变量一起声明  var name1, name2 string   局部变量声明并赋值  name :&#x3D; “yyy”    常量常量是不可变的量。定义常量，必须初始化： 1const na">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速开始Go">
-<meta property="og:url" content="https://dayandnight2018.github.io/2021/01/15/go-01-quickstart/index.html">
+<meta property="og:title" content="Go变量及常量">
+<meta property="og:url" content="https://dayandnight2018.github.io/2021/01/20/go-02-variables/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="Hello, Go1234567package mainimport &quot;fmt&quot;func main() &amp;#123;        fmt.Println(&quot;Hello, Go!&quot;)&amp;#125;         像传统的C++代码一样，包含包名，引包，主入口代码三个部分。 注意：在代码中没有用到的包不能引入，否则编译失败 函数定义格式Go的函数的定义一般采用">
+<meta property="og:description" content="变量的声明在go中声明变量的习惯和约束与java中类似，附加一条声明的变量必须使用到。  类型推断法  var name &#x3D; “xxx”   指定类型法  var name string &#x3D; “xxx”   多个变量一起声明  var name1, name2 string   局部变量声明并赋值  name :&#x3D; “yyy”    常量常量是不可变的量。定义常量，必须初始化： 1const na">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/15/go-01-quickstart/7ce4b0db-308b-4ef8-bac8-8e02f8894dcc.png">
-<meta property="article:published_time" content="2021-01-15T08:39:11.000Z">
-<meta property="article:modified_time" content="2021-01-15T09:34:55.676Z">
+<meta property="article:published_time" content="2021-01-20T08:09:51.000Z">
+<meta property="article:modified_time" content="2021-01-20T11:01:13.312Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2021/01/15/go-01-quickstart/7ce4b0db-308b-4ef8-bac8-8e02f8894dcc.png">
 
     
     <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
@@ -88,61 +86,46 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/blog/2021/01/15/go-01-quickstart/" title="快速开始Go" itemprop="url">快速开始Go</a>
+      <a href="/blog/2021/01/20/go-02-variables/" title="Go变量及常量" itemprop="url">Go变量及常量</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
 		
   <p class="article-time">
-    <time datetime="2021-01-15T08:39:11.000Z" itemprop="datePublished"> Published 2021-01-15</time>
+    <time datetime="2021-01-20T08:09:51.000Z" itemprop="datePublished"> Published 2021-01-20</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h2 id="Hello-Go"><a href="#Hello-Go" class="headerlink" title="Hello, Go"></a>Hello, Go</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">        fmt.Println(&quot;Hello, Go!&quot;)</span><br><span class="line">&#125;        </span><br></pre></td></tr></table></figure>
-<p>像传统的C++代码一样，包含包名，引包，主入口代码三个部分。</p>
-<p><code>注意：在代码中没有用到的包不能引入，否则编译失败</code></p>
-<h2 id="函数定义格式"><a href="#函数定义格式" class="headerlink" title="函数定义格式"></a>函数定义格式</h2><p>Go的函数的定义一般采用以下格式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func 函数名 (参数列表) (返回值列表) &#123;</span><br><span class="line">        &#x2F;&#x2F;函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>示例如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func Compute (val1 int, val2 float64) (result float64, err error) &#123;</span><br><span class="line">        &#x2F;&#x2F;function body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>没有显式赋值的返回值，会被设置成默认值。</p>
-<h2 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h2><ol>
-<li><p>单行注释<code>//</code></p>
-</li>
-<li><p>多行注释<code>/* */</code></p>
-</li>
-</ol>
-<h2 id="编译环境下载"><a href="#编译环境下载" class="headerlink" title="编译环境下载"></a>编译环境下载</h2><p><a target="_blank" rel="noopener" href="http://code.google.com/p/go/downloads/list">编译环境下载地址</a></p>
-<p>可以通过以下命令验证安装是否成功:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go version</span><br></pre></td></tr></table></figure>
-<p>如果找不到指令，需要手动将二进制路径(/usr/local/go/bin)加载到环境变量。</p>
-<h2 id="程序编译"><a href="#程序编译" class="headerlink" title="程序编译"></a>程序编译</h2><p>进入目录，执行以下命令直接编译执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd xxx</span><br><span class="line"></span><br><span class="line">go run hello.go</span><br></pre></td></tr></table></figure>
-<p>我们也可以先编译，再执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd xxx</span><br><span class="line"></span><br><span class="line"># this command will generate a &quot;hello&quot; file</span><br><span class="line">go build hello.go   </span><br><span class="line"></span><br><span class="line">.&#x2F;hello</span><br></pre></td></tr></table></figure>
-
-<h2 id="项目级编译"><a href="#项目级编译" class="headerlink" title="项目级编译"></a>项目级编译</h2><p> <img src="/blog/2021/01/15/go-01-quickstart/7ce4b0db-308b-4ef8-bac8-8e02f8894dcc.png" alt="image"></p>
+		<h2 id="变量的声明"><a href="#变量的声明" class="headerlink" title="变量的声明"></a>变量的声明</h2><p>在go中声明变量的习惯和约束与java中类似，附加一条<code>声明的变量必须使用到</code>。</p>
 <ol>
-<li><p>编辑~/.bashrc, 添加环境变量(goyard是源码目录，calcproj是项目名称)</p>
+<li><p>类型推断法</p>
 <blockquote>
-<p>export GOPATH=~/goyard/calcproj</p>
+<p>var name = “xxx”</p>
 </blockquote>
 </li>
-<li><p>执行环境变量</p>
+<li><p>指定类型法</p>
 <blockquote>
-<p>source ./bashrc</p>
+<p>var name string = “xxx”</p>
 </blockquote>
 </li>
-<li><p>将源码编译结果放到指定的目录，如bin</p>
+<li><p>多个变量一起声明</p>
+<blockquote>
+<p>var name1, name2 string</p>
+</blockquote>
+</li>
+<li><p>局部变量声明并赋值</p>
+<blockquote>
+<p>name := “yyy”</p>
+</blockquote>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#x2F;goyard&#x2F;calcproj</span><br><span class="line"></span><br><span class="line">mkdir bin</span><br><span class="line"></span><br><span class="line">cd bin</span><br><span class="line"></span><br><span class="line">go build calc</span><br></pre></td></tr></table></figure>
-
-<h2 id="常规日志打印"><a href="#常规日志打印" class="headerlink" title="常规日志打印"></a>常规日志打印</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fval :&#x3D; 110.48</span><br><span class="line">ival :&#x3D; 200</span><br><span class="line">sval :&#x3D; &quot;This is a string. &quot;</span><br><span class="line"></span><br><span class="line">fmt.Println(&quot;The value of fval is&quot;, fval) </span><br><span class="line">fmt.Printf(&quot;fval&#x3D;%f, ival&#x3D;%d, sval&#x3D;%s\n&quot;, fval, ival, sval) </span><br><span class="line">fmt.Printf(&quot;fval&#x3D;%v, ival&#x3D;%v, sval&#x3D;%v\n&quot;, fval, ival, sval)</span><br></pre></td></tr></table></figure>
-  
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>常量是不可变的量。定义常量，必须初始化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const name string &#x3D; &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
+<p>也可以一次性定义多个常量，</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const(</span><br><span class="line">        A &#x3D; &quot;A&quot;</span><br><span class="line">        B &#x3D; &quot;B&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -159,7 +142,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://dayandnight2018.github.io/2021/01/15/go-01-quickstart/" data-title="快速开始Go | 成华的博客" data-tsina="" class="share clearfix">
+	  <div data-url="https://dayandnight2018.github.io/2021/01/20/go-02-variables/" data-title="Go变量及常量 | 成华的博客" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -172,19 +155,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/blog/2021/01/17/java-equals/" title="Java的&#34;Equals&#34;与&#34;==&#34;">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Java的&#34;Equals&#34;与&#34;==&#34;</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/blog/2021/01/13/mysql-04-cluster/"  title="mysql 集群">
+<a href="/blog/2021/01/20/go-01-quickstart/"  title="Go快速开始">
  <strong>下一篇：</strong><br/> 
- <span>mysql 集群
+ <span>Go快速开始
 </span>
 </a>
 </div>
@@ -201,7 +176,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-Go"><span class="toc-number">1.</span> <span class="toc-text">Hello, Go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">函数定义格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A"><span class="toc-number">3.</span> <span class="toc-text">代码注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BD%BD"><span class="toc-number">4.</span> <span class="toc-text">编译环境下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%AF%91"><span class="toc-number">5.</span> <span class="toc-text">程序编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BA%A7%E7%BC%96%E8%AF%91"><span class="toc-number">6.</span> <span class="toc-text">项目级编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0"><span class="toc-number">7.</span> <span class="toc-text">常规日志打印</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">变量的声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">常量</span></a></li></ol>
  
   </div>
 
@@ -264,6 +239,10 @@
 			
 		
 			
+				<li><a href="/blog/tags/go/" title="go">go<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/poem/" title="poem">poem<sup>2</sup></a></li>
 			
 		
@@ -277,10 +256,6 @@
 		
 			
 				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/go/" title="go">go<sup>1</sup></a></li>
 			
 		
 			
