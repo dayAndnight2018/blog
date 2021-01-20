@@ -1,0 +1,589 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Go基本数据类型 | 成华的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="成华">
+    
+
+    
+    <meta name="description" content="Go的基本数据类型基本数据类型包含：整型、浮点型、布尔型、字符串。 整型 整型主要包含四种基本数据类型，包括int8(byte), int16(short), int32(int), int64(long) 还包括其对应的无符号数据类型，uint8, uint16, uint32, uint64 整型的字面量使用0B, 0O, 0X表示二进制、八进制、十六进制字面量： 123v :&#x3D; 0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go基本数据类型">
+<meta property="og:url" content="https://dayandnight2018.github.io/2021/01/20/go-03-basic-data-type/index.html">
+<meta property="og:site_name" content="成华的博客">
+<meta property="og:description" content="Go的基本数据类型基本数据类型包含：整型、浮点型、布尔型、字符串。 整型 整型主要包含四种基本数据类型，包括int8(byte), int16(short), int32(int), int64(long) 还包括其对应的无符号数据类型，uint8, uint16, uint32, uint64 整型的字面量使用0B, 0O, 0X表示二进制、八进制、十六进制字面量： 123v :&#x3D; 0">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/20/go-03-basic-data-type/e38d54a4-a2b7-489f-8d9a-7d8f2a1903d3.png">
+<meta property="article:published_time" content="2021-01-20T11:08:17.000Z">
+<meta property="article:modified_time" content="2021-01-20T11:50:17.504Z">
+<meta property="article:author" content="成华">
+<meta property="article:tag" content="go">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dayandnight2018.github.io/blog/2021/01/20/go-03-basic-data-type/e38d54a4-a2b7-489f-8d9a-7d8f2a1903d3.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="成华的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/blog/%02.css">
+<link rel="stylesheet" href="/blog/.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="成华的博客" title="成华的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="成华的博客">成华的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:dayandnight2018.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2021/01/20/go-03-basic-data-type/" title="Go基本数据类型" itemprop="url">Go基本数据类型</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="成华" target="_blank" itemprop="author">成华</a>
+		
+  <p class="article-time">
+    <time datetime="2021-01-20T11:08:17.000Z" itemprop="datePublished"> Published 2021-01-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="Go的基本数据类型"><a href="#Go的基本数据类型" class="headerlink" title="Go的基本数据类型"></a>Go的基本数据类型</h2><p>基本数据类型包含：<code>整型</code>、<code>浮点型</code>、<code>布尔型</code>、<code>字符串</code>。</p>
+<h2 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h2><p><img src="/blog/2021/01/20/go-03-basic-data-type/e38d54a4-a2b7-489f-8d9a-7d8f2a1903d3.png" alt="image"></p>
+<p>整型主要包含四种基本数据类型，包括int8(byte), int16(short), int32(int), int64(long)</p>
+<p>还包括其对应的无符号数据类型，uint8, uint16, uint32, uint64</p>
+<h2 id="整型的字面量"><a href="#整型的字面量" class="headerlink" title="整型的字面量"></a>整型的字面量</h2><p>使用0B, 0O, 0X表示二进制、八进制、十六进制字面量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v :&#x3D; 0B00101101  &#x2F;&#x2F; 代表二进制的101101</span><br><span class="line">v :&#x3D; 0O377       &#x2F;&#x2F; 代表八进制的377</span><br><span class="line">v :&#x3D; 0X377       &#x2F;&#x2F; 代表十六进制的377</span><br></pre></td></tr></table></figure>
+<h2 id="不同进制类型数据的输出"><a href="#不同进制类型数据的输出" class="headerlink" title="不同进制类型数据的输出"></a>不同进制类型数据的输出</h2><p>分别使用<code>%d</code>, <code>%b</code>, <code>%o</code>, <code>%x</code>表示十进制、二进制、八进制、十六进制的输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var number &#x3D; 17</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 原样输出</span><br><span class="line">fmt.Printf(&quot;%v\n&quot;, number)</span><br><span class="line">&#x2F;&#x2F; 十进制输出</span><br><span class="line">fmt.Printf(&quot;%d\n&quot;, number)</span><br><span class="line">&#x2F;&#x2F; 以八进制输出</span><br><span class="line">fmt.Printf(&quot;%o\n&quot;, number)</span><br><span class="line">&#x2F;&#x2F; 以二进制输出</span><br><span class="line">fmt.Printf(&quot;%b\n&quot;, number)</span><br><span class="line">&#x2F;&#x2F; 以十六进制输出</span><br><span class="line">fmt.Printf(&quot;%x\n&quot;, number)</span><br></pre></td></tr></table></figure>
+<h2 id="整型的类型转换"><a href="#整型的类型转换" class="headerlink" title="整型的类型转换"></a>整型的类型转换</h2><p>均采用newType(oldType)格式类型转换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a1 int16 &#x3D; 10</span><br><span class="line">var a2 int32 &#x3D; 12</span><br><span class="line">var a3 &#x3D; int32(a1) + a2</span><br><span class="line">fmt.Println(a3)</span><br></pre></td></tr></table></figure>
+
+<h2 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h2><p>浮点类型包含float32， float64两种。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var floatMax &#x3D; math.MaxFloat32</span><br><span class="line">var doubleMax &#x3D; math.MaxFloat64</span><br><span class="line">var pi &#x3D; math.Pi</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 打印浮点类型，默认小数点6位</span><br><span class="line">fmt.Printf(&quot;%f\n&quot;, pi)</span><br><span class="line">&#x2F;&#x2F; 打印浮点类型，打印小数点后2位</span><br><span class="line">fmt.Printf(&quot;%.2f\n&quot;, pi)</span><br></pre></td></tr></table></figure>
+
+<h2 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var fl &#x3D; false</span><br><span class="line"></span><br><span class="line">if f1 &#123;</span><br><span class="line">    fmt.Println(&quot;true&quot;)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    fmt.Println(&quot;false&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>默认采用Utf-8格式进行编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var name &#x3D; &quot;我是小明&quot;</span><br></pre></td></tr></table></figure>
+<p>常用方法</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">len(str)</td>
+<td align="center">求长度</td>
+</tr>
+<tr>
+<td align="center">+或fmt.Sprintf</td>
+<td align="center">拼接字符串</td>
+</tr>
+<tr>
+<td align="center">strings.Split</td>
+<td align="center">分割</td>
+</tr>
+<tr>
+<td align="center">strings.contains</td>
+<td align="center">判断是否包含</td>
+</tr>
+<tr>
+<td align="center">strings.HasPrefix\nstrings.HasSuffix</td>
+<td align="center">前缀/后缀判断</td>
+</tr>
+<tr>
+<td align="center">strings.Index()\nstrings.LastIndex()</td>
+<td align="center">子串出现的位置</td>
+</tr>
+<tr>
+<td align="center">strings.Join()</td>
+<td align="center">join操作</td>
+</tr>
+<tr>
+<td align="center">strings.Index()</td>
+<td align="center">判断在字符串中的位置</td>
+</tr>
+</tbody></table>
+<h2 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h2><p>字符分uint8和rune两种。uint8仅支持ASCII范围，而rune指的是utf-8字符，go中，单个汉字占3个字符，英文占1个字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    var a byte &#x3D; &#39;a&#39;</span><br><span class="line">    &#x2F;&#x2F;输出的是ASCII码值，也就是说当我们直接输出byte（字符）的时候，输出的是这个字符对应的码值</span><br><span class="line">    fmt.Println(a)</span><br><span class="line">    &#x2F;&#x2F; 输出的是字符</span><br><span class="line">    fmt.Printf(&quot;%c&quot;, a)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; for循环打印字符串里面的字符</span><br><span class="line">    &#x2F;&#x2F; 通过len来循环的，相当于打印的是ASCII码</span><br><span class="line">    s :&#x3D; &quot;你好 golang&quot;</span><br><span class="line">    for i :&#x3D; 0; i &lt; len(s); i++ &#123;</span><br><span class="line">        fmt.Printf(&quot;%v(%c)\t&quot;, s[i], s[i])</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 通过rune打印的是 utf-8字符</span><br><span class="line">    for index, v :&#x3D; range s &#123;</span><br><span class="line">        fmt.Println(index, v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串的修改"><a href="#字符串的修改" class="headerlink" title="字符串的修改"></a>字符串的修改</h2><p>字符串的修改需要通过byte[]或rune[]进行，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 字符串转换</span><br><span class="line">s1 :&#x3D; &quot;big&quot;</span><br><span class="line"></span><br><span class="line">byteS1 :&#x3D; []byte(s1)</span><br><span class="line">byteS1[0] &#x3D; &#39;p&#39;</span><br><span class="line">fmt.Println(string(byteS1))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; rune类型</span><br><span class="line">s2 :&#x3D; &quot;你好golang&quot;</span><br><span class="line"></span><br><span class="line">byteS2 :&#x3D; []rune(s2)</span><br><span class="line">byteS2[0] &#x3D; &#39;我&#39;</span><br><span class="line">fmt.Println(string(byteS2))</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他类型转字符串"><a href="#其他类型转字符串" class="headerlink" title="其他类型转字符串"></a>其他类型转字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 字符串类型转换</span><br><span class="line">var i int &#x3D; 20</span><br><span class="line">var f float64 &#x3D; 12.456</span><br><span class="line">var t bool &#x3D; true</span><br><span class="line">var b byte &#x3D; &#39;a&#39;</span><br><span class="line">str1 :&#x3D; fmt.Sprintf(&quot;%d&quot;, i)</span><br><span class="line">fmt.Printf(&quot;类型：%v-%T \n&quot;, str1, str1)</span><br><span class="line"></span><br><span class="line">str2 :&#x3D; fmt.Sprintf(&quot;%f&quot;, f)</span><br><span class="line">fmt.Printf(&quot;类型：%v-%T \n&quot;, str2, str2)</span><br><span class="line"></span><br><span class="line">str3 :&#x3D; fmt.Sprintf(&quot;%t&quot;, t)</span><br><span class="line">fmt.Printf(&quot;类型：%v-%T \n&quot;, str3, str3)</span><br><span class="line"></span><br><span class="line">str4 :&#x3D; fmt.Sprintf(&quot;%c&quot;, b)</span><br><span class="line">fmt.Printf(&quot;类型：%v-%T \n&quot;, str4, str4)</span><br></pre></td></tr></table></figure>
+<p>也可以使用strconv</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; int类型转换str类型</span><br><span class="line">var num1 int64 &#x3D; 20</span><br><span class="line">s1 :&#x3D; strconv.FormatInt(num1, 10)</span><br><span class="line">fmt.Printf(&quot;转换：%v - %T&quot;, s1, s1)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; float类型转换成string类型</span><br><span class="line">var num2 float64 &#x3D; 3.1415926</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">        参数1：要转换的值</span><br><span class="line">        参数2：格式化类型 &#39;f&#39;表示float，&#39;b&#39;表示二进制，‘e’表示 十进制</span><br><span class="line">        参数3：表示保留的小数点，-1表示不对小数点格式化</span><br><span class="line">        参数4：格式化的类型，传入64位 或者 32位</span><br><span class="line">     *&#x2F;</span><br><span class="line">s2 :&#x3D; strconv.FormatFloat(num2, &#39;f&#39;, -1, 64)</span><br><span class="line">fmt.Printf(&quot;转换：%v-%T&quot;, s2, s2)</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串转数字"><a href="#字符串转数字" class="headerlink" title="字符串转数字"></a>字符串转数字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str :&#x3D; &quot;10&quot;</span><br><span class="line">&#x2F;&#x2F; 第一个参数：需要转换的数，第二个参数：进制， 参数三：32位或64位</span><br><span class="line">num,_ &#x3D; strconv.ParseInt(str, 10, 64)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 转换成float类型</span><br><span class="line">str2 :&#x3D; &quot;3.141592654&quot;</span><br><span class="line">num,_ &#x3D; strconv.ParseFloat(str2, 10)</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/go/">go</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://dayandnight2018.github.io/2021/01/20/go-03-basic-data-type/" data-title="Go基本数据类型 | 成华的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/blog/2021/01/20/go-02-variables/"  title="Go变量及常量">
+ <strong>下一篇：</strong><br/> 
+ <span>Go变量及常量
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Go%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">Go的基本数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">整型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E5%9E%8B%E7%9A%84%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">整型的字面量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E8%BF%9B%E5%88%B6%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BE%93%E5%87%BA"><span class="toc-number">4.</span> <span class="toc-text">不同进制类型数据的输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E5%9E%8B%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">5.</span> <span class="toc-text">整型的类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.</span> <span class="toc-text">浮点类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.</span> <span class="toc-text">布尔类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">8.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6"><span class="toc-number">9.</span> <span class="toc-text">字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-number">10.</span> <span class="toc-text">字符串的修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">11.</span> <span class="toc-text">其他类型转字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97"><span class="toc-number">12.</span> <span class="toc-text">字符串转数字</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/java/" title="java">java<sup>29</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot-2/" title="spring-boot-2">spring-boot-2<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/JavaEE/" title="JavaEE">JavaEE<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/alibaba/" title="alibaba">alibaba<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-boot/" title="spring-boot">spring-boot<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/SSM/" title="SSM">SSM<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/mysql/" title="mysql">mysql<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/go/" title="go">go<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/spring-mvc/" title="spring mvc">spring mvc<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/poem/" title="poem">poem<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/micro-service/" title="micro-service">micro-service<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/personal/" title="personal">personal<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/vim/" title="vim">vim<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 不忘初心，砥砺前行。 <br/>
+			只争朝夕，不负韶华！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/blog/about" target="_blank" title="成华">成华</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
