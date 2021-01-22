@@ -11,12 +11,12 @@
     
 
     
-    <meta name="description" content="枚举简介枚举主要用于限制输入范围：   枚举可以作为类的域变量出现：   其初始化方法类似于静态变量：   枚举也可以在类的内部定义：   java.lang.Enum 没有公共构造器，不能初始化变量  默认静态  可以调用方法进行迭代   构造函数初始化  使用私有构造器初始化成员 迭代枚举值可以获取枚举的values然后 使用foreach迭代：   Switch用法可以使用枚举作为switc">
+    <meta name="description" content="枚举简介枚举主要用于限制输入范围：  枚举可以作为类的域变量出现：  其初始化方法类似于静态变量：  枚举也可以在类的内部定义：  java.lang.Enum 没有公共构造器，不能初始化变量  默认静态  可以调用方法进行迭代   构造函数初始化 使用私有构造器初始化成员 迭代枚举值可以获取枚举的values然后 使用foreach迭代：  Switch用法可以使用枚举作为switch的条件：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java10 枚举">
 <meta property="og:url" content="https://dayandnight2018.github.io/2020/02/22/java10-Enums/index.html">
 <meta property="og:site_name" content="成华的博客">
-<meta property="og:description" content="枚举简介枚举主要用于限制输入范围：   枚举可以作为类的域变量出现：   其初始化方法类似于静态变量：   枚举也可以在类的内部定义：   java.lang.Enum 没有公共构造器，不能初始化变量  默认静态  可以调用方法进行迭代   构造函数初始化  使用私有构造器初始化成员 迭代枚举值可以获取枚举的values然后 使用foreach迭代：   Switch用法可以使用枚举作为switc">
+<meta property="og:description" content="枚举简介枚举主要用于限制输入范围：  枚举可以作为类的域变量出现：  其初始化方法类似于静态变量：  枚举也可以在类的内部定义：  java.lang.Enum 没有公共构造器，不能初始化变量  默认静态  可以调用方法进行迭代   构造函数初始化 使用私有构造器初始化成员 迭代枚举值可以获取枚举的values然后 使用foreach迭代：  Switch用法可以使用枚举作为switch的条件：">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java10-Enums/bfea2293-b740-4f18-90e9-01812dca2000.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java10-Enums/32fa17a6-e7ae-402a-82fd-87cbaf4c6e24.jpg">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java10-Enums/0ce8cc79-6e4a-49fa-98c5-b2fd4d2193fb.jpg">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2020/02/22/java10-Enums/da448e44-4ab9-498c-ab8a-40b18f4152da.jpg">
 <meta property="article:published_time" content="2020-02-22T01:32:02.000Z">
-<meta property="article:modified_time" content="2020-12-29T13:22:44.776Z">
+<meta property="article:modified_time" content="2021-01-21T12:01:00.240Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -108,17 +108,13 @@
 	<div class="article-content">
 		
 		<h2 id="枚举简介"><a href="#枚举简介" class="headerlink" title="枚举简介"></a>枚举简介</h2><p>枚举主要用于限制输入范围：</p>
-<img src="/blog/2020/02/22/java10-Enums/bfea2293-b740-4f18-90e9-01812dca2000.jpg">
-
+<p><img src="/blog/2020/02/22/java10-Enums/bfea2293-b740-4f18-90e9-01812dca2000.jpg" alt="image"></p>
 <p>枚举可以作为类的域变量出现：</p>
-<img src="/blog/2020/02/22/java10-Enums/32fa17a6-e7ae-402a-82fd-87cbaf4c6e24.jpg">
-
+<p><img src="/blog/2020/02/22/java10-Enums/32fa17a6-e7ae-402a-82fd-87cbaf4c6e24.jpg" alt="image"></p>
 <p>其初始化方法类似于静态变量：</p>
-<img src="/blog/2020/02/22/java10-Enums/6c5029a4-e99a-4116-91b3-381f39a4e900.jpg">
-
+<p><img src="/blog/2020/02/22/java10-Enums/6c5029a4-e99a-4116-91b3-381f39a4e900.jpg" alt="image"></p>
 <p>枚举也可以在类的内部定义：</p>
-<img src="/blog/2020/02/22/java10-Enums/13a62aa4-cdd4-4655-9b0e-8f513647f534.jpg">
-
+<p><img src="/blog/2020/02/22/java10-Enums/13a62aa4-cdd4-4655-9b0e-8f513647f534.jpg" alt="image"></p>
 <h2 id="java-lang-Enum"><a href="#java-lang-Enum" class="headerlink" title="java.lang.Enum"></a>java.lang.Enum</h2><ol>
 <li><p>没有公共构造器，不能初始化变量</p>
 </li>
@@ -127,16 +123,13 @@
 <li><p>可以调用方法进行迭代</p>
 </li>
 </ol>
-<h2 id="构造函数初始化"><a href="#构造函数初始化" class="headerlink" title="构造函数初始化"></a>构造函数初始化</h2><img src="/blog/2020/02/22/java10-Enums/f98cb8ec-206e-4e32-9243-6d98b6451ed0.jpg">
-
+<h2 id="构造函数初始化"><a href="#构造函数初始化" class="headerlink" title="构造函数初始化"></a>构造函数初始化</h2><p><img src="/blog/2020/02/22/java10-Enums/f98cb8ec-206e-4e32-9243-6d98b6451ed0.jpg" alt="image"></p>
 <p>使用私有构造器初始化成员</p>
 <h2 id="迭代枚举值"><a href="#迭代枚举值" class="headerlink" title="迭代枚举值"></a>迭代枚举值</h2><p>可以获取枚举的values然后 使用foreach迭代：</p>
-<img src="/blog/2020/02/22/java10-Enums/0ce8cc79-6e4a-49fa-98c5-b2fd4d2193fb.jpg">
-
+<p><img src="/blog/2020/02/22/java10-Enums/0ce8cc79-6e4a-49fa-98c5-b2fd4d2193fb.jpg" alt="image"></p>
 <h2 id="Switch用法"><a href="#Switch用法" class="headerlink" title="Switch用法"></a>Switch用法</h2><p>可以使用枚举作为switch的条件：</p>
-<img src="/blog/2020/02/22/java10-Enums/da448e44-4ab9-498c-ab8a-40b18f4152da.jpg">
-
-<p><code style="background:#ff3385;color:white;padding:5px;">case的写法</code>一定要注意！！</p>
+<p><img src="/blog/2020/02/22/java10-Enums/da448e44-4ab9-498c-ab8a-40b18f4152da.jpg" alt="image"></p>
+<p><code>case的写法</code>一定要注意！！</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -267,6 +260,10 @@
 			
 		
 			
+				<li><a href="/blog/tags/spring-boot/" title="spring boot">spring boot<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/blog/tags/micro-service/" title="micro-service">micro-service<sup>2</sup></a></li>
 			
 		
@@ -276,10 +273,6 @@
 		
 			
 				<li><a href="/blog/tags/other/" title="other">other<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/blog/tags/spring-boot/" title="spring boot">spring boot<sup>1</sup></a></li>
 			
 		
 			
