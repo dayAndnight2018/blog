@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/22/spring-rabbitMQ/80eb975d-c98b-47e1-b067-9dbb2db8c9e1.png">
 <meta property="og:image" content="https://dayandnight2018.github.io/blog/2021/01/22/spring-rabbitMQ/577420ba-dbc5-43b6-a388-baf2356e1ed1.png">
 <meta property="article:published_time" content="2021-01-22T02:18:51.000Z">
-<meta property="article:modified_time" content="2021-01-22T06:49:11.310Z">
+<meta property="article:modified_time" content="2021-01-22T06:49:22.166Z">
 <meta property="article:author" content="成华">
 <meta property="article:tag" content="spring boot">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Order receiveOrder() &#123;</span><br><span class="line">        return rabbit.receiveAndConvert(&quot;tacocloud.order.queue&quot;,</span><br><span class="line">                  new ParameterizedTypeReference&lt;Order&gt;() &#123;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="使用Push方式进行消费"><a href="#使用Push方式进行消费" class="headerlink" title="使用Push方式进行消费"></a>使用Push方式进行消费</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package tacos.kitchen.messaging.rabbit.listener;</span><br><span class="line"></span><br><span class="line">import org.springframework.amqp.rabbit.annotation.RabbitListener; </span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired; </span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class OrderListener &#123;</span><br><span class="line">        </span><br><span class="line">        private KitchenUI ui;</span><br><span class="line">  </span><br><span class="line">        @Autowired</span><br><span class="line">        public OrderListener(KitchenUI ui) &#123;</span><br><span class="line">                this.ui &#x3D; ui; </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @RabbitListener(queues &#x3D; &quot;tacocloud.order.queue&quot;) </span><br><span class="line">        public void receiveOrder(Order order) &#123;</span><br><span class="line">                ui.displayOrder(order); </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用RabbitListener注解的方法会自动接收消息并进行处理，此处要求这个方法在的类需要注册为Bean。</p>
+<p>使用RabbitListener注解的方法会自动接收消息并进行处理，此处要求这个方法在的类需要注册为Bean。在的类需要注册为Bean。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -227,6 +227,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/blog/2021/01/22/spring-kafka/" title="基于Spring使用Kafka">
+  <strong>上一篇：</strong><br/>
+  <span>
+  基于Spring使用Kafka</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/blog/2021/01/21/spring-jms/"  title="JMS">
@@ -279,11 +287,11 @@
 			
 		
 			
-				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
+				<li><a href="/blog/tags/spring/" title="spring">spring<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/blog/tags/spring/" title="spring">spring<sup>7</sup></a></li>
+				<li><a href="/blog/tags/microservice/" title="microservice">microservice<sup>7</sup></a></li>
 			
 		
 			
